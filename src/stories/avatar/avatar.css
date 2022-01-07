@@ -1,0 +1,199 @@
+/* The color variables are just for the color schemes. The text color vaariable is not necessary the same with the value provide.
+
+Let me explain with an example 
+
+--green-bold-background-color: #00B058;
+the above variable is for the green color scheme.
+
+--green-bold-text-color: #fff;
+the above variable is for the text color for the green color scheme. #fff is white but I am maintaining a name convention according to the color scheme.
+
+
+*/
+
+:root{
+    --cyan-light-background-color: #BDF3FC;
+    --cyan-light-text-color: #085E7A;
+    --cyan-bold-background-color: #0C9CCC;
+    --cyan-bold-text-color: #212934;
+    --green-light-background-color: #C4EFDF;
+    --green-light-text-color: #1F624A;
+    --green-bold-background-color: #00B058;
+    --green-bold-text-color: #fff;
+    --orange-light-background-color: #FFF0DB;
+    --orange-light-text-color: #995A06;
+    --orange-bold-background-color: #FF9505;
+    --orange-bold-text-color: #212934;
+    --red-light-background-color: #FCC5CE;
+    --red-light-text-color: #5C1E27;
+    --red-bold-background-color: #D62F4B;
+    --red-bold-text-color: #fff;
+    --gray-light-background-color: #E1E7EC;
+    --gray-light-text-color: #212934;
+    --gray-bold-background-color: #5F6B7A;
+    --gray-bold-text-color: #fff;
+    --blue-light-background-color: #DDEFFF;
+    --blue-light-text-color: #003F79;
+    --blue-bold-background-color: #0D7FE9;
+    --blue-bold-text-color: #fff;
+    --status-background-color-green: #27C079;
+    --status-background-color-orange: #FF9505;
+    --status-background-color-gray: #E1E7EC;
+}
+
+
+.avatar{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.status{
+    position: absolute;
+    border-radius: 50%;
+}
+
+/* .avatar::after{
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border: 1px solid red;
+} */
+
+.status-small{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 4px;
+    height: 4px;
+    border: 1px solid #fff;
+}
+
+.status-small::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.status-medium{
+    bottom: 0;
+    right: -5px;
+    width: 6px;
+    height: 6px;
+}
+
+.status-large{
+    bottom: 0;
+    right: -5px;
+    width: 8px;
+    height: 8px;
+}
+
+/* .status{
+    position: absolute;
+    bottom: 0;
+    right: -5px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+} */
+
+/* background color of status */
+.green{
+    background-color: var(--status-background-color-green);
+}
+
+.orange{
+    background-color: var(--status-background-color-orange);
+}
+
+.gray{
+    background-color: var(--status-background-color-gray);
+}
+
+.large{
+    width: 40px;
+    height: 40px;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.medium{
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.small{
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+    line-height: 12px;
+}
+
+
+.cyan-light{
+    background: var(--cyan-light-background-color);
+    color: var(--cyan-light-text-color);
+}
+
+.green-light{
+    background: #C4EFDF;
+    color: #1F624A;
+}
+
+.orange-light{
+    background: var(--orange-light-background-color);
+    color: var(--orange-light-text-color);
+}
+
+.red-light{
+    background: var(--red-light-background-color);
+    color: var(--red-light-text-color);
+}
+
+.gray-light{
+    background: var(--gray-light-background-color);
+    color: var(--gray-light-text-color);
+}
+
+.blue-light{
+    background: var(--blue-light-background-color);
+    color: var(--blue-light-text-color);
+}
+
+.cyan-bold{
+    background: var(--cyan-bold-background-color);
+    color: var(--cyan-bold-text-color);
+}
+
+.green-bold{
+    background: var(--green-bold-background-color);
+    color: var(--green-bold-text-color);
+}
+
+.orange-bold{
+    background: var(--orange-bold-background-color);
+    color: var(--orange-bold-text-color);
+}
+
+.red-bold{
+    background: var(--red-bold-background-color);
+    color: var(--red-bold-text-color);
+}
+
+.gray-bold{
+    background: var(--gray-bold-background-color);
+    color: var(--gray-bold-text-color);
+}
+
+.blue-bold{
+    background: var(--blue-bold-background-color);
+    color: var(--blue-bold-text-color);
+}
