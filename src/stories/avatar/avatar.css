@@ -55,24 +55,15 @@ the above variable is for the text color for the green color scheme. #fff is whi
     border-radius: 50%;
 }
 
-/* .avatar::after{
-    content: '';
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    border: 1px solid red;
-} */
-
-.status-small{
+.status-small, .status-medium, .status-large{
     position: absolute;
     bottom: 0px;
     right: 0px;
-    width: 4px;
-    height: 4px;
-    border: 1px solid #fff;
+    border: 1.5px solid #fff;
 }
 
-.status-small::after{
+
+.status-small::after, .status-medium::after, .status-large::after{
     content: '';
     position: absolute;
     width: 100%;
@@ -80,28 +71,21 @@ the above variable is for the text color for the green color scheme. #fff is whi
     border-radius: 50%;
 }
 
+.status-small{
+    width: 4px;
+    height: 4px;
+}
+
 .status-medium{
-    bottom: 0;
-    right: -5px;
     width: 6px;
     height: 6px;
 }
 
 .status-large{
-    bottom: 0;
-    right: -5px;
     width: 8px;
     height: 8px;
 }
 
-/* .status{
-    position: absolute;
-    bottom: 0;
-    right: -5px;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-} */
 
 /* background color of status */
 .green{
@@ -116,6 +100,7 @@ the above variable is for the text color for the green color scheme. #fff is whi
     background-color: var(--status-background-color-gray);
 }
 
+/* size of the avatar */
 .large{
     width: 40px;
     height: 40px;
