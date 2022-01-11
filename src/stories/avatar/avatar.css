@@ -48,6 +48,12 @@ the above variable is for the text color for the green color scheme. #fff is whi
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    font-family: "Circular Std";
+}
+
+img{
+    width: 100%;
+    height: 100%;
 }
 
 .status{

@@ -47,5 +47,5 @@ Avatar.propTypes = {
 Avatar.defaultProps = {
     status: false,
     statusColor: 'green',
-
+	size: 'small',
 };

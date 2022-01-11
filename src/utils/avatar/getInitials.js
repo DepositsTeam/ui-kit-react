@@ -3,7 +3,7 @@ const getInitials = (name, fallback = "?") => {
 	return name
 		.replace(/\s+/, " ")
 		.split(" ")
-		.slice(0, 2)
+		.slice(0, 3)
 		.map((firstLetter) => firstLetter && firstLetter[0])
 		.join("");
 };
