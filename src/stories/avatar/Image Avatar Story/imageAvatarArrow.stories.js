@@ -4,7 +4,7 @@ import Lady from "../../../assets/avatar/lady.png"
 export default {
 
 	component: Avatar,
-	title: "Avatar/Image Avatar",
+	title: "Avatar Arrow/Image Avatar",
 
 	argTypes:{
 		name: {
@@ -24,26 +24,34 @@ export default {
 		},
 		statusColor:{
 			description: "The color of the status."
-		}
+		},
+        icon: {
+            description: "Displays a drop down icon.",
+            defaultValue: false,
+        }
+    
 	}
 };
 
 const Template = (args) => <Avatar {...args} />;
 // image avatar
-export const ImageAvatarSmall = Template.bind({});
-ImageAvatarSmall.args = {
+export const ImageAvatarArrowSmall = Template.bind({});
+ImageAvatarArrowSmall.args = {
 	size: "small",
 	src: Lady,
+    icon: true,
 }
 
-export const ImageAvatarMedium = Template.bind({});
-ImageAvatarMedium.args = {
+export const ImageAvatarArrowMedium = Template.bind({});
+ImageAvatarArrowMedium.args = {
 	size: "medium",
 	src: Lady,
+    icon: true,
 }
 
-export const ImageAvatarLarge = Template.bind({});
-ImageAvatarLarge.args = {
+export const ImageAvatarArrowLarge = Template.bind({});
+ImageAvatarArrowLarge.args = {
 	size: "large",
 	src: Lady,
+    icon: true,
 }

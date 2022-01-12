@@ -41,6 +41,18 @@ the above variable is for the text color for the green color scheme. #fff is whi
     --status-background-color-gray: #E1E7EC;
 }
 
+.container{
+    display: flex;
+    align-items: center;
+}
+
+.icon-container{
+    margin-left: 4px;
+    display: block;
+    width: 7px;
+    height: 4px;
+}
+
 
 .avatar{
     display: flex;
