@@ -3,6 +3,13 @@ import Avatar from "..";
 export default {
 	component: Avatar,
 	title: "Avatar Arrow/Letter Solid",
+	parameter: {
+		docs: {
+		  description: {
+			component: "Displays avatar(s) for a user"
+		  }
+		}
+	  },
 	argTypes: {
 		name: {
 			description: "The name used for the initials and title attribute.",

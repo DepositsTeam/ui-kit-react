@@ -41,16 +41,48 @@ the above variable is for the text color for the green color scheme. #fff is whi
     --status-background-color-gray: #E1E7EC;
 }
 
-.container{
+.container, .stacked-avatar-item{
     display: flex;
     align-items: center;
 }
+
+.stacked-avatar-item-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-family: "Circular Std"; 
+    border: 3px solid #fff;
+    margin-left: -14px;
+
+}
+
+/* .stacked-item-large{
+    margin-left: -12px;
+}
+
+.stacked-item-medium{
+    margin-left: -12px;
+} */
 
 .icon-container{
     margin-left: 4px;
     display: block;
     width: 7px;
     height: 4px;
+}
+
+.extras-container{
+    position: relative;
+    left: -10px;
+    background: #F5F8FA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-family: "Circular Std";
+    color: #212934;
+    border: 3px solid #fff;
 }
 
 
