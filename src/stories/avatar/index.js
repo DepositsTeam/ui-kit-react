@@ -34,14 +34,14 @@ const Avatar = ({
 
 	const stackedAvatarItem = (avatars, size) => (
 		<div style={styles.stackedContainer}>
-			<div className="stacked-avatar-item">
+			<div data-testid='stacked-avatar-container' className="stacked-avatar-item">
 				{avatars?.slice(0, visibleAvatars)?.map((avatar, index) => (
 					<div key={index} className={`stacked-avatar-item-image ${stackedItemSize[size]} ${avatar.colorScheme} ${size}`}>
 						{avatar.imageSrc ? (
 							// eslint-disable-next-line jsx-a11y/alt-text
 							<img src={avatar?.imageSrc} />
 						) : (
-							<p>{getInitials(avatar.name)}</p>
+							<p data-testid='stack-letter-avatar-item'>{getInitials(avatar.name)}</p>
 						)}
 					</div>
 				))}
@@ -56,11 +56,12 @@ const Avatar = ({
 					stackedAvatarItem(avatars, size)
 			) : (
 				<div className="container">
-					<div className={`avatar ${size} ${colorScheme}`}>
-						{imageUnAvailable ? <p>{initial}</p> : <img src={src} alt="" />}
+					<div data-testid="letter-avatar-container" className={`avatar ${size} ${colorScheme}`}>
+						{imageUnAvailable ? <p data-testid="letter-avatar">{initial}</p> : <img data-testid="avatar" src={src} alt="" />}
 						{status && (
 							<div
 								className={`status ${statusSize[size]} ${statusColor}`}
+								data-testid="status"
 							></div>
 						)}
 					</div>
