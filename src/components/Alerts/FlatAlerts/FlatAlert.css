@@ -1,0 +1,161 @@
+.flat-alert{
+    width: 400px;
+    height: fit-content;
+    background: white;
+    border: 1px solid #E1E7EC;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.alert-card{
+    width: 90%;
+    padding: 12px 8px 0px 16px; ;
+}
+
+.label{
+    padding: 0;
+    margin: 0;
+    color:#212934;
+}
+
+.description{
+    color:#5F6B7A;
+}
+
+.alert-text{
+    margin-left: 8px;
+}
+
+/* --Flat alert styling-- */
+
+.neutral-alert {
+    border:#E1E7EC solid 1px;
+}
+.green-alert {
+    border: 1px solid #00B058; 
+    position: relative;
+}
+.red-alert {
+    border: 1px solid #D62F4B; 
+    position: relative;
+}
+.yellow-alert {
+    border: 1px solid #FF9505; 
+    position: relative;
+}
+.blue-alert {
+    border: 1px solid #0D7FE9; 
+    position: relative;
+}
+
+/* --left border styling-- */
+
+.green-alert::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #00B058;
+    width: 4px;
+    height: 100%;
+}
+
+.red-alert::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #D62F4B;
+    width: 4px;
+    height: 100%;
+}
+
+.yellow-alert::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #FF9505;
+    width: 4px;
+    height: 100%;
+}
+
+.blue-alert::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #0D7FE9;
+    width: 4px;
+    height: 100%;
+}
+
+/* --In-line alerts-- */
+
+.inline-success-alert,
+.inline-error-alert,
+.inline-warning-alert,
+.inline-info-alert{
+        border: none;
+}
+
+
+/* --Fill alerts-- */
+
+.warning-fill{
+    background: #FF9505;
+}
+.warning-fill
+.description{
+    color:#573302;
+}
+.warning-fill 
+.label{
+    color:#212934;
+}
+
+
+.info-fill{
+    background: #0D7FE9;
+    color: #FFFFFF;
+}
+.info-fill
+.description{
+    color:#FFFFFF;
+}
+.info-fill 
+.label{
+    color:#FFFFFF;
+}
+
+
+.success-fill{
+    background: #00B058;
+}
+.success-fill 
+.description
+{
+    color: #FFFFFF;
+}
+.success-fill
+.label{
+    color:#FFFFFF;
+}
+
+
+.error-fill{
+    background: #D62F4B;
+}
+.error-fill
+.description{
+    color:#FFFFFF;
+}
+.error-fill 
+.label{
+    color:#FFFFFF;
+}
+
+.neutral-fill{
+    background: #F5F8FA;
+}
+

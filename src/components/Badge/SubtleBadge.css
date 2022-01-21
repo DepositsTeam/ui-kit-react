@@ -1,0 +1,22 @@
+.subtle-badge{
+    width: 51px;
+    height: 16px;
+    border-radius: 10px;
+    padding: 2px 8px 2px 8px;
+    background: #fff;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.neutral {background:#E1E7EC; color:#212934;}
+.green {background: #C4EFDF; color: #158957;}
+.red {background: #FCC5CE; color: #842432;}
+.yellow {background: #FFF0DB; color: #E08304;}
+.cyan { background: #BDF3FC; color: #0B87B0;}
+.blue {background: #DDEFFF; color: #0059AC;}
+
+.small {width: 35px; height: 12px;}
+.medium {width: 51px; height: 20px}
+.large {width:58px; height: 24px}

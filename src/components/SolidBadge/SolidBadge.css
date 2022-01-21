@@ -1,0 +1,22 @@
+.solid-badge{
+    width: 51px;
+    height: 16px;
+    border-radius: 10px;
+    padding: 2px 8px 2px 8px;
+    background: #fff;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.solid-neutral {background:#8895A7; color:#FFFFFF;}
+.solid-green {background: #00B058; color: #FFFFFF;}
+.solid-red {background: #D62F4B; color: #FFFFFF;}
+.solid-yellow {background: #FF9505; color: #FFFFFF;}
+.solid-cyan { background: #0C9CCC; color: #FFFFFF;}
+.solid-blue {background: #0D7FE9; color: #FFFFFF;}
+
+.small {width: 35px; height: 12px}
+.medium {width: 51px; height: 20px}
+.large {width:58px; height: 24px}
