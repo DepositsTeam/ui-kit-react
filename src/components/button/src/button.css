@@ -1,0 +1,210 @@
+.ui-button {
+  font-family: "Hero New", sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  cursor: pointer;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid #e1e7ec;
+  box-shadow: 0 1px 0 rgba(27, 31, 35, 0.05);
+  background: #f5f8fa;
+  color: #212934;
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+}
+
+.ui-button .ui-button__button-text {
+  white-space: normal;
+}
+
+.ui-button .ui-svg {
+  width: 24px;
+  height: 24px;
+}
+
+.ui-button .ui-button__left-icon {
+  margin-right: 8px;
+}
+
+.ui-button .ui-button__dropdown-icon {
+  margin-left: 8px;
+}
+
+.ui-button:hover {
+  background: #e1e7ec;
+}
+
+.ui-button:focus {
+  box-shadow: 0 0 0 3px rgba(27, 92, 224, 0.2);
+}
+
+.ui-button:disabled,
+.ui-button.state__disabled {
+  background: #f5f8fa;
+  color: #ced6de;
+  cursor: not-allowed;
+  border-color: transparent;
+}
+
+.ui-button.semantic__primary {
+  background: #0db9e9;
+  border: 1px solid rgba(33, 41, 52, 0.07);
+}
+
+.ui-button.semantic__primary:hover {
+  background: #43d2fa;
+}
+
+.ui-button.semantic__primary:focus {
+  box-shadow: 0 0 0 3px rgba(67, 210, 250, 0.25);
+}
+
+.ui-button.semantic__primary:disabled,
+.ui-button.semantic__primary.state__disabled {
+  background: #bdf3fc;
+  color: #f5f8fa;
+  cursor: not-allowed;
+  border-color: transparent;
+}
+
+.ui-button.semantic__danger {
+  background: #d62f4b;
+  border: 1px solid rgba(33, 41, 52, 0.07);
+  color: #fff;
+}
+
+.ui-button.semantic__danger:hover {
+  background: #ad283d;
+}
+
+.ui-button.semantic__danger:focus {
+  box-shadow: 0 0 0 3px rgba(214, 47, 75, 0.3);
+}
+
+.ui-button.semantic__danger:disabled,
+.ui-button.semantic__danger.state__disabled {
+  background: #fff0f2;
+  color: #fff;
+  cursor: not-allowed;
+  border-color: transparent;
+}
+
+.ui-button.semantic__success {
+  background: #00b058;
+  border: 1px solid rgba(33, 41, 52, 0.07);
+  color: #fff;
+}
+
+.ui-button.semantic__success:hover {
+  background: #27c079;
+}
+
+.ui-button.semantic__success:focus {
+  box-shadow: 0 0 0 3px rgba(0, 176, 88, 0.3);
+}
+
+.ui-button.semantic__success:disabled,
+.ui-button.semantic__success.state__disabled {
+  background: #c4efdf;
+  color: #fff;
+  cursor: not-allowed;
+  border-color: transparent;
+}
+
+.ui-button:disabled:focus,
+.ui-button.state__disabled:focus {
+  box-shadow: 0 1px 0 rgba(27, 31, 35, 0.05);
+}
+
+.ui-button.semantic__outline {
+  color: #0d7fe9;
+  border: 1px solid #0d7fe9;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.ui-button.semantic__outline:focus {
+  box-shadow: 0 0 0 3px rgba(27, 92, 224, 0.2);
+}
+
+.ui-button.semantic__outline:hover {
+  background: #0d7fe9;
+  color: #fff;
+  box-shadow: 0 1px 0 rgba(27, 31, 35, 0.05);
+}
+
+.ui-button.semantic__outline:focus:hover {
+  box-shadow: 0 0 0 3px rgba(27, 92, 224, 0.2);
+}
+
+.ui-button.semantic__outline:disabled,
+.ui-button.semantic__outline.state__disabled {
+  color: #acd7ff;
+  border: 1px solid #acd7ff;
+  cursor: not-allowed;
+  background: transparent;
+}
+
+.ui-button.semantic__outline:disabled:focus,
+.ui-button.semantic__outline.state__disabled:focus {
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.ui-button.semantic__invisible {
+  color: #0d7fe9;
+  border-color: transparent;
+  background: transparent;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.ui-button.semantic__invisible:focus {
+  box-shadow: 0 0 0 3px rgba(27, 92, 224, 0.2);
+}
+
+.ui-button.semantic__invisible:hover {
+  color: #0059ac;
+}
+
+.ui-button.semantic__invisible:disabled,
+.ui-button.semantic__invisible.state__disabled {
+  color: #acd7ff;
+  cursor: not-allowed;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.ui-button.size__small {
+  padding: 4px 12px;
+}
+
+.ui-button.size__medium {
+  padding: 8px 16px;
+}
+
+.ui-button.size__large {
+  padding: 12px 24px;
+}
+
+.ui-button.size__xlarge {
+  padding: 16px 24px;
+}
+
+.ui-button.size__huge {
+  padding: 20px 24px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.ui-button.size__massive {
+  padding: 24px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.ui-button.size__massive .ui-svg {
+  height: 28px;
+  width: 28px;
+}
