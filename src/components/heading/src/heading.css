@@ -1,0 +1,56 @@
+.ui-heading {
+    font-weight: bold;
+    font-family: 'Hero New', sans-serif;
+}
+
+.ui-heading.h1 {
+    font-size: 64px;
+    line-height: 68px;
+    letter-spacing: -0.32px;
+}
+
+.ui-heading.h2 {
+    font-size: 48px;
+    line-height: 50px;
+}
+
+.ui-heading.h3 {
+    font-size: 36px;
+    line-height: 40px;
+}
+
+.ui-heading.h4 {
+    font-size: 28px;
+    line-height: 32px;
+}
+
+.ui-heading.h5 {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.ui-heading.h6 {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.ui-heading.subtitle-1 {
+    font-family: 'Circular Std', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.ui-heading.subtitle-2 {
+    font-family: 'Circular Std', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.ui-heading.subhead {
+    font-family: 'Circular Std', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+}
