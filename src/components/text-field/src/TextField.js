@@ -84,4 +84,6 @@ TextField.propTypes = {
   ]),
 };
 
-TextField.defaultProps = {};
+TextField.defaultProps = {
+    size: "medium"
+};

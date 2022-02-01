@@ -1,234 +1,172 @@
-/* The color variables are just for the color schemes. The text color vaariable is not necessary the same with the value provide.
-
-Let me explain with an example 
-
---green-bold-background-color: #00B058;
-the above variable is for the green color scheme.
-
---green-bold-text-color: #fff;
-the above variable is for the text color for the green color scheme. #fff is white but I am maintaining a name convention according to the color scheme.
-
-
-*/
-
-:root{
-    --cyan-light-background-color: #BDF3FC;
-    --cyan-light-text-color: #085E7A;
-    --cyan-bold-background-color: #0C9CCC;
-    --cyan-bold-text-color: #212934;
-    --green-light-background-color: #C4EFDF;
-    --green-light-text-color: #1F624A;
-    --green-bold-background-color: #00B058;
-    --green-bold-text-color: #fff;
-    --orange-light-background-color: #FFF0DB;
-    --orange-light-text-color: #995A06;
-    --orange-bold-background-color: #FF9505;
-    --orange-bold-text-color: #212934;
-    --red-light-background-color: #FCC5CE;
-    --red-light-text-color: #5C1E27;
-    --red-bold-background-color: #D62F4B;
-    --red-bold-text-color: #fff;
-    --gray-light-background-color: #E1E7EC;
-    --gray-light-text-color: #212934;
-    --gray-bold-background-color: #5F6B7A;
-    --gray-bold-text-color: #fff;
-    --blue-light-background-color: #DDEFFF;
-    --blue-light-text-color: #003F79;
-    --blue-bold-background-color: #0D7FE9;
-    --blue-bold-text-color: #fff;
-    --status-background-color-green: #27C079;
-    --status-background-color-orange: #FF9505;
-    --status-background-color-gray: #E1E7EC;
+.ui-avatars__wrapper {
+  display: inline-flex;
+  align-items: center;
 }
 
-.container, .stacked-avatar-item{
-    display: flex;
-    align-items: center;
+.ui-avatars__wrapper .ui-avatar {
+  height: 40px;
+  width: 40px;
 }
 
-.stacked-avatar-item-image{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-family: "Circular Std"; 
-    border: 3px solid #fff;
-    margin-left: -14px;
-
+.ui-avatars__wrapper.size__large .ui-avatar {
+  height: 40px;
+  width: 40px;
 }
 
-/* .stacked-item-large{
-    margin-left: -12px;
+.ui-avatars__wrapper.size__medium .ui-avatar {
+  height: 32px;
+  width: 32px;
 }
 
-.stacked-item-medium{
-    margin-left: -12px;
-} */
-
-.icon-container{
-    margin-left: 4px;
-    display: block;
-    width: 7px;
-    height: 4px;
+.ui-avatars__wrapper.size__small .ui-avatar {
+  height: 24px;
+  width: 24px;
 }
 
-.extras-container{
-    position: relative;
-    left: -10px;
-    background: #F5F8FA;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-family: "Circular Std";
-    color: #212934;
-    border: 3px solid #fff;
+.ui-avatar__wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
 }
 
-
-.avatar{
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    font-family: "Circular Std";
+.ui-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-img{
-    width: 100%;
-    height: 100%;
+.ui-avatar.background__cyan {
+  background: #0c9ccc;
+  color: #212934;
 }
 
-.status{
-    position: absolute;
-    border-radius: 50%;
+.ui-avatar.background__green {
+  background: #00b058;
+  color: #fff;
 }
 
-.status-small, .status-medium, .status-large{
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    border: 1.5px solid #fff;
+.ui-avatar.background__orange {
+  background: #ff9505;
+  color: #212934;
 }
 
-
-.status-small::after, .status-medium::after, .status-large::after{
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
+.ui-avatar.background__red {
+  background: #d62f4b;
+  color: #fff;
 }
 
-.status-small{
-    width: 4px;
-    height: 4px;
+.ui-avatar.background__gray {
+  background: #5f6b7a;
+  color: #fff;
 }
 
-.status-medium{
-    width: 6px;
-    height: 6px;
+.ui-avatar.background__blue {
+  background: #0d7fe9;
+  color: #fff;
 }
 
-.status-large{
-    width: 8px;
-    height: 8px;
+.ui-avatars__wrapper.subtle .ui-avatar.background__cyan {
+  background: #bdf3fc;
+  color: #085e7a;
 }
 
-
-/* background color of status */
-.green{
-    background-color: var(--status-background-color-green);
+.ui-avatars__wrapper.subtle .ui-avatar.background__green {
+  background: #c4efdf;
+  color: #1f624a;
 }
 
-.orange{
-    background-color: var(--status-background-color-orange);
+.ui-avatars__wrapper.subtle .ui-avatar.background__orange {
+  background: #fff0db;
+  color: #995a06;
 }
 
-.gray{
-    background-color: var(--status-background-color-gray);
+.ui-avatars__wrapper.subtle .ui-avatar.background__red {
+  background: #fcc5ce;
+  color: #5c1e27;
 }
 
-/* size of the avatar */
-.large{
-    width: 40px;
-    height: 40px;
-    font-size: 12px;
-    line-height: 16px;
+.ui-avatars__wrapper.subtle .ui-avatar.background__grey {
+  background: #e1e7ec;
+  color: #212934;
 }
 
-.medium{
-    width: 32px;
-    height: 32px;
-    font-size: 12px;
-    line-height: 16px;
+.ui-avatars__wrapper.subtle .ui-avatar.background__blue {
+  background: #ddefff;
+  color: #003f79;
 }
 
-.small{
-    width: 24px;
-    height: 24px;
-    font-size: 10px;
-    line-height: 12px;
+.ui-avatar.background__extra {
+  background: #e1e7ec;
+  color: #212934;
 }
 
-
-.cyan-light{
-    background: var(--cyan-light-background-color);
-    color: var(--cyan-light-text-color);
+.ui-avatar > .ui-avatar__avatar-status {
+  position: absolute;
+  height: 8px;
+  width: 8px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  bottom: 0;
+  right: -5%;
 }
 
-.green-light{
-    background: #C4EFDF;
-    color: #1F624A;
+.ui-avatar.status__green > .ui-avatar__avatar-status {
+  background-color: #27c079;
 }
 
-.orange-light{
-    background: var(--orange-light-background-color);
-    color: var(--orange-light-text-color);
+.ui-avatar.status__orange > .ui-avatar__avatar-status {
+  background-color: #ff9505;
 }
 
-.red-light{
-    background: var(--red-light-background-color);
-    color: var(--red-light-text-color);
+.ui-avatar.status__gray > .ui-avatar__avatar-status {
+  background-color: #e1e7ec;
 }
 
-.gray-light{
-    background: var(--gray-light-background-color);
-    color: var(--gray-light-text-color);
+.ui-avatars__wrapper.size__large .ui-avatar > .ui-avatar__avatar-status {
+  height: 8px;
+  width: 8px;
 }
 
-.blue-light{
-    background: var(--blue-light-background-color);
-    color: var(--blue-light-text-color);
+.ui-avatars__wrapper.size__medium .ui-avatar > .ui-avatar__avatar-status {
+  height: 6px;
+  width: 6px;
 }
 
-.cyan-bold{
-    background: var(--cyan-bold-background-color);
-    color: var(--cyan-bold-text-color);
+.ui-avatars__wrapper.size__small .ui-avatar > .ui-avatar__avatar-status {
+  height: 4px;
+  width: 4px;
 }
 
-.green-bold{
-    background: var(--green-bold-background-color);
-    color: var(--green-bold-text-color);
+.ui-avatar + .ui-avatar__dropdown-icon {
+  height: 20px;
+  width: 20px;
 }
 
-.orange-bold{
-    background: var(--orange-bold-background-color);
-    color: var(--orange-bold-text-color);
+.ui-avatars__wrapper.padded > .ui-avatar__wrapper {
+  margin-right: 24px;
 }
 
-.red-bold{
-    background: var(--red-bold-background-color);
-    color: var(--red-bold-text-color);
+.ui-avatars__wrapper.padded > .ui-avatar__wrapper:last-child {
+  margin-right: 0;
 }
 
-.gray-bold{
-    background: var(--gray-bold-background-color);
-    color: var(--gray-bold-text-color);
+.ui-avatars__wrapper.stacked .ui-avatar {
+  border: 3px solid #fff;
 }
 
-.blue-bold{
-    background: var(--blue-bold-background-color);
-    color: var(--blue-bold-text-color);
+.ui-avatars__wrapper.stacked > .ui-avatar__wrapper:not(:first-child) {
+  margin-left: -14px;
+}
+
+.ui-avatars__wrapper.size__medium.stacked > .ui-avatar__wrapper:not(:first-child) {
+  margin-left: -10px;
+}
+
+.ui-avatars__wrapper.size__small.stacked > .ui-avatar__wrapper:not(:first-child) {
+  margin-left: -7px;
 }

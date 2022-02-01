@@ -25,7 +25,13 @@ const Badge = ({
 
   return (
     <Box className={generatedClassName}>
-      <Text className={"ui-badge__text"} scale={size === "large" ? "footnote" : "overline"}>{children}</Text>
+      <Text
+        equalLineHeight
+        className={"ui-badge__text"}
+        scale={size === "large" ? "footnote" : "overline"}
+      >
+        {children}
+      </Text>
     </Box>
   );
 };

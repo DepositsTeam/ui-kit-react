@@ -2,7 +2,7 @@ import React from "react";
 import Text from "../src/Text";
 
 export default {
-  title: "Typography/Text",
+  title: "Text",
   component: Text,
 };
 

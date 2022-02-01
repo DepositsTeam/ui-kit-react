@@ -34,9 +34,13 @@
 .ui-toast__wrapper.position__bottom-left .ui-toast__column {
     left: 0;
     justify-content: flex-end;
+    bottom: 0;
+    top: auto;
 }
 
 .ui-toast__wrapper.position__bottom-right .ui-toast__column {
     right: 0;
     justify-content: flex-end;
+    bottom: 0;
+    top: auto;
 }

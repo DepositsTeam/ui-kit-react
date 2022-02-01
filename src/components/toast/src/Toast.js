@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import useToast from "./useToast";
 import "./toast.css";
 import Box from "../../box";
-import Alert from "../../e-alert";
+import Alert from "../../alert";
 import keyGen from "../../../utils/keyGen";
 import PropTypes from "prop-types";
+import classNames from "../../../utils/classNames";
 
 export let pushToast;
 
-const Toast = (props) => {
+const Toast = ({ position, ...props }) => {
   const [toasts, setToasts, setCountUp] = useToast(props);
 
   pushToast = (toast) => {
@@ -30,6 +31,11 @@ const Toast = (props) => {
     }
   };
 
+  const toastWrapperClassName = classNames({
+    "ui-toast__wrapper": true,
+    [`position__${position}`]: true,
+  });
+
   let renderedToasts = toasts.map((toast, index) => (
     <Alert
       {...toast}
@@ -39,7 +45,7 @@ const Toast = (props) => {
     />
   ));
   return (
-    <div className={"ui-toast__wrapper position__top-right"}>
+    <div className={toastWrapperClassName}>
       <Box className={"ui-toast__column"}>
         <Alert
           colorScheme={"info"}
@@ -56,8 +62,15 @@ export default Toast;
 
 Toast.propTypes = {
   autoClose: PropTypes.number,
+  position: PropTypes.oneOf([
+    "top-right",
+    "top-left",
+    "bottom-left",
+    "bottom-right",
+  ]),
 };
 
 Toast.defaultProps = {
   autoClose: 5000,
+  position: "top-right",
 };
