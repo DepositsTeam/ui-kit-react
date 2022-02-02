@@ -1,0 +1,61 @@
+.ui-text {
+    font-family: "Circular Std", sans-serif;
+}
+
+.ui-text.body {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.ui-text.body.equal-line-height {
+    line-height: 16px;
+}
+
+.ui-text.p-18 {
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.ui-text.p-18.equal-line-height {
+    line-height: 18px;
+}
+
+.ui-text.subhead {
+    font-family: "Circular Std", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.ui-text.subhead.equal-line-height {
+    line-height: 14px;
+}
+
+.ui-text.overline {
+    font-size: 10px;
+    line-height: 12px;
+}
+
+.ui-text.overline.equal-line-height {
+    line-height: 10px;
+}
+
+.ui-text.footnote {
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.ui-text.footnote.equal-line-height {
+    line-height: 12px;
+}
+
+.ui-text.footnote-caps {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.ui-text.footnote-caps.equal-line-height {
+    line-height: 12px;
+}
