@@ -20,7 +20,7 @@ const Color = ({ colorName, colorCode, textColor, colors }) => {
 
 	const generatedColors = colors?.length ? (
 		colors.map((color, index) => (
-			<div key={`ui-avatar__${keyGen()}`} className={`ui-color__container bg-${getProperColorName(color.colorName)} text-${color.textColor}`}>
+			<div key={`ui-color__${keyGen()}`} className={`ui-color__container bg-${getProperColorName(color.colorName)} text-${color.textColor}`}>
 				<p>{color.colorName}</p>
 				<p>{color.colorCode}</p>
 			</div>

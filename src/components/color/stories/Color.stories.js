@@ -217,7 +217,7 @@ Blue.args = {
 		},
 		{
 			colorName: "Blue 700",
-			colorCode: "",
+			colorCode: "#003F79",
 			textColor: "white",
 		},
 		{
@@ -246,7 +246,7 @@ Cyan200.args = {
 	colorName: "Cyan 200",
 	colorCode: "#BDF3FC",
 };
-Cyan100.storyName = "Cyan 200";
+Cyan200.storyName = "Cyan 200";
 
 export const Cyan300 = Template.bind({});
 Cyan300.args = {
@@ -562,7 +562,7 @@ Blue600.storyName = "Blue 600";
 export const Blue700 = Template.bind({});
 Blue700.args = {
 	colorName: "Blue 700",
-	colorCode: "",
+	colorCode: "#003F79",
 	textColor: "white",
 };
 Blue700.storyName = "Blue 700";
