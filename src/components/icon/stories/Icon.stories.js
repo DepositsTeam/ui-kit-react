@@ -7,6 +7,8 @@ import WarningIcon from "../../icons/Warning";
 import ErrorIcon from "../../icons/Error";
 import CheckIcon from "../../icons/Check";
 import CloseIcon from "../../icons/Close";
+import ScanCardIcon from "../../icons/ScanCard";
+import CardIcon from "../../icons/Card";
 
 export default {
   title: "Icons",
@@ -59,4 +61,14 @@ Check.args = {
 export const Close = Template.bind({});
 Close.args = {
   icon: CloseIcon,
+};
+
+export const ScanCard = Template.bind({});
+ScanCard.args = {
+  icon: ScanCardIcon,
+};
+
+export const Card = Template.bind({});
+Card.args = {
+  icon: CardIcon,
 };

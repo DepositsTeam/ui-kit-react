@@ -1,0 +1,9 @@
+.ui-select-field__wrapper::after {
+    content: '';
+    position: absolute;
+    background: #fff;
+    height: 11px;
+    width: 11px;
+    right: 2px;
+    z-index: 13;
+}

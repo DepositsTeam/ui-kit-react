@@ -1,14 +1,16 @@
 import React from "react";
-import "../../../styles/textfield.css";
+import "../../../styles/textfield.css"
+import "./SelectField.css";
+import classNames from "../../../utils/classNames";
 import Box from "../../box";
 import Text from "../../text";
-import PropTypes from "prop-types";
 import Icon from "../../icon";
 import ChevronFilledDown from "../../icons/ChevronFilledDown";
 import Error from "../../icons/Error";
-import classNames from "../../../utils/classNames";
+import PropTypes from "prop-types";
+import keyGen from "../../../utils/keyGen";
 
-const TextField = ({
+const SelectField = ({
   label,
   leftIcon,
   size,
@@ -16,6 +18,7 @@ const TextField = ({
   rightIcon,
   errorMessage,
   inputClassName,
+  options,
   className,
   ...props
 }) => {
@@ -30,9 +33,24 @@ const TextField = ({
   );
 
   const wrapperClasses = classNames(
-    [`size__${size}`, "ui-text-field__wrapper"],
+    [`size__${size}`, "ui-text-field__wrapper",],
     className
   );
+
+  const mappedOptions = options.map((option) => (
+    <option
+      key={keyGen()}
+      value={
+        typeof option === "string"
+          ? option
+          : option.value
+          ? option.value
+          : option.text
+      }
+    >
+      {typeof option === "string" ? option : option.text}
+    </option>
+  ));
 
   return (
     <Box className={wrapperClasses}>
@@ -41,17 +59,18 @@ const TextField = ({
           {label}
         </Text>
       </Box>
-      <div className={"ui-text-field__input-wrapper"}>
+      <div className={"ui-text-field__input-wrapper ui-select-field__wrapper"}>
         {leftIcon && (
           <Icon icon={leftIcon} className={"ui-text-field__left-icon"} />
         )}
-        <Box className={generateInputFieldClasses} is={"input"} {...props} />
-        {(dropDown || rightIcon) && (
-          <Icon
-            icon={dropDown ? ChevronFilledDown : rightIcon}
-            className={"ui-text-field__right-icon"}
-          />
-        )}
+        <Box className={generateInputFieldClasses} is={"select"} {...props}>
+          {mappedOptions}
+        </Box>
+
+        <Icon
+          icon={ChevronFilledDown}
+          className={"ui-text-field__right-icon"}
+        />
       </div>
       {errorMessage && (
         <div className={"ui-text-field__error"}>
@@ -69,9 +88,9 @@ const TextField = ({
   );
 };
 
-export default TextField;
+export default SelectField;
 
-TextField.propTypes = {
+SelectField.propTypes = {
   label: PropTypes.string,
   dropDown: PropTypes.bool,
   size: PropTypes.oneOf([
@@ -82,9 +101,10 @@ TextField.propTypes = {
     "huge",
     "massive",
   ]),
-  errorMessage: PropTypes.string,
+  options: PropTypes.array,
 };
 
-TextField.defaultProps = {
+SelectField.defaultProps = {
   size: "medium",
+  options: ["Item 1", "Item 2", "item 3"],
 };
