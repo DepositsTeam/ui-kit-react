@@ -1,6 +1,6 @@
 .ui-checkbox__wrapper {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .ui-checkbox__wrapper > * {

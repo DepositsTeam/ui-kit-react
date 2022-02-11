@@ -1,6 +1,6 @@
 .ui-radio__wrapper {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .ui-radio__wrapper > * {
