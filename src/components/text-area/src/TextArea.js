@@ -7,11 +7,11 @@ import Error from "../../icons/Error";
 import classNames from "../../../utils/classNames";
 import "./textarea.css";
 
-const TextArea = ({ label, errorMessage, className, ...props }) => {
+const TextArea = ({ label, errorMessage, textAreaClassName, className, ...props }) => {
 	const generateTextAreaClasses = classNames({
 		"ui-text-area__textarea": true,
 		"has-error": errorMessage,
-	});
+	}, textAreaClassName);
 
 	const wrapperClasses = classNames(["ui-text-area__wrapper"], className);
 	return (
