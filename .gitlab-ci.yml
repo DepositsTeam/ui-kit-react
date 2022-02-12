@@ -1,0 +1,31 @@
+stages:
+  - deploy
+
+deploy_development:
+  stage: deploy
+  tags:
+    - ui_kit
+  environment: Development
+  only:
+    - main
+  script:
+    - echo $CI_RUNNER_DESCRIPTION
+    # - npm run generate
+    - cp -R storybook-static/. /var/www/html/test/ui_kit/storybook/react/
+
+# deploy_production:
+#   stage: deploy
+#   tags:
+#     - rena
+#   environment: Production
+#   only:
+#     - production
+#   script:
+#     - echo $CI_RUNNER_DESCRIPTION
+#     # - npm run generate
+#     - cp -R dist/. /var/www/html/live/rena_app_v2/
+#     - cp -R . /var/www/html/live/demobank/
+#     - cd /var/www/html/live/demobank/
+#     - npm install
+#     - npm run build
+#     - cp -R dist/. /var/www/html/live/demobank/
