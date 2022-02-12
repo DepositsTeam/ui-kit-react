@@ -5,6 +5,6 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/preset-create-react-app",
   ],
-  staticDirs: ["../src/assets"],
+  // staticDirs: ["../src/assets"],
   framework: "@storybook/react",
 };
