@@ -13,6 +13,22 @@ deploy_development:
     # - npm run generate
     - cp -R storybook-static/. /var/www/html/test/ui_kit/storybook/react/
 
+deploy_test:
+  stage: deploy
+  tags:
+    - ui_kit
+  environment: Development
+  only:
+    - setup-deployment
+  script:
+    - cp -R src/. /var/www/html/test/ui_kit/storybook/react/react-pipeline-test/src/
+    - cp -R public/. /var/www/html/test/ui_kit/storybook/react/react-pipeline-test/public/
+    - cp -R .storybook/. /var/www/html/test/ui_kit/storybook/react/react-pipeline-test/.storybook/
+    - cp package.json /var/www/html/test/ui_kit/storybook/react/react-pipeline-test/
+    - cd /var/www/html/test/ui_kit/storybook/react/react-pipeline-test
+    - npm install
+    - npm build storybook
+
 # deploy_production:
 #   stage: deploy
 #   tags:
