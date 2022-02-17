@@ -9,11 +9,11 @@ deploy_development:
   only:
     - main
   script:
-    - cp -R src/. /var/www/html/test/ui_kit/storybook/react/react-ui-kit/src/
-    - cp -R public/. /var/www/html/test/ui_kit/storybook/react/react-ui-kit/public/
-    - cp -R .storybook/. /var/www/html/test/ui_kit/storybook/react/react-ui-kit/.storybook/
-    - cp package.json /var/www/html/test/ui_kit/storybook/react/react-ui-kit/
-    - cd /var/www/html/test/ui_kit/storybook/react/react-ui-kit
+    - cp -R src/. /var/www/html/test/ui_kit/storybook/react-ui-kit/src/
+    - cp -R public/. /var/www/html/test/ui_kit/storybook/react-ui-kit/public/
+    - cp -R .storybook/. /var/www/html/test/ui_kit/storybook/react-ui-kit/.storybook/
+    - cp package.json /var/www/html/test/ui_kit/storybook/react-ui-kit/
+    - cd /var/www/html/test/ui_kit/storybook/react-ui-kit
     - npm install
     - npm build storybook
 
