@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../styles/textfield.css"
+import "../../../styles/textfield.css";
 import "./SelectField.css";
 import classNames from "../../../utils/classNames";
 import Box from "../../box";
@@ -32,8 +32,14 @@ const SelectField = ({
     inputClassName
   );
 
+  const selectWrapperClasses = classNames({
+    "ui-text-field__input-wrapper": true,
+    "ui-select-field__wrapper": true,
+    "has-error": errorMessage,
+  });
+
   const wrapperClasses = classNames(
-    [`size__${size}`, "ui-text-field__wrapper",],
+    [`size__${size}`, "ui-text-field__wrapper"],
     className
   );
 
@@ -59,7 +65,7 @@ const SelectField = ({
           {label}
         </Text>
       </Box>
-      <div className={"ui-text-field__input-wrapper ui-select-field__wrapper"}>
+      <div className={selectWrapperClasses}>
         {leftIcon && (
           <Icon icon={leftIcon} className={"ui-text-field__left-icon"} />
         )}

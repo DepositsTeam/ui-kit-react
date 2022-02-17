@@ -5,11 +5,12 @@ import Text from "../../text";
 import PropTypes from "prop-types";
 import classNames from "../../../utils/classNames";
 
-const Radio = ({ className, ringed, label, ...props }) => {
+const Radio = ({ className, ringed, alignToTop, label, ...props }) => {
   const generateRadioClassName = classNames(
     {
       ringed,
       "ui-radio__wrapper": true,
+      alignToTop,
     },
     className
   );
@@ -25,8 +26,10 @@ export default Radio;
 
 Radio.defaultProps = {
   ringed: false,
+  alignToTop: false,
 };
 
 Radio.propTypes = {
   ringed: PropTypes.bool,
+  alignToTop: PropTypes.bool,
 };

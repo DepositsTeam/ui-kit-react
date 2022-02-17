@@ -9,6 +9,10 @@
     pointer-events: none;
 }
 
+.ui-select-field__wrapper.has-error::after {
+    background: #fff0f2;
+}
+
 .ui-select-field__wrapper.background-caret select {
     position: relative;
 }

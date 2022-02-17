@@ -70,3 +70,12 @@
 .ui-text-field__input.has-error + .ui-text-field__country-code {
     background: #FFF0F2;
 }
+
+.ui-text-field__wrapper.has-error .ui-text-field__country-code {
+    background: #fff0f2;
+}
+
+.ui-text-field__wrapper.disabled .ui-text-field__country-code {
+    background: #EDEEEF;
+    cursor: not-allowed;
+}

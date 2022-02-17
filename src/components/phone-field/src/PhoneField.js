@@ -17,12 +17,13 @@ const PhoneField = ({
   errorMessage,
   inputClassName,
   className,
+  disabled,
   ...props
 }) => {
   const phoneInputRef = useRef();
   useLayoutEffect(() => {
     const elem = phoneInputRef.current;
-    console.log(phoneInputRef)
+    console.log(phoneInputRef);
     const value = elem.value;
     elem.style.width = "calc(" + value.length + "ch + 4px)";
     const wrapper = elem.closest(".ui-text-field__wrapper");
@@ -34,7 +35,7 @@ const PhoneField = ({
     } else {
       offset = 26;
     }
-    elem.previousSibling.style.paddingLeft =
+    elem.nextSibling.style.paddingLeft =
       "calc(" +
       (value.length <= 2 ? 2 : value.length) +
       "ch + " +
@@ -53,7 +54,12 @@ const PhoneField = ({
   );
 
   const wrapperClasses = classNames(
-    [`size__${size}`, "ui-text-field__wrapper"],
+    {
+      [`size__${size}`]: true,
+      "ui-text-field__wrapper": true,
+      "has-error": errorMessage,
+      disabled,
+    },
     className
   );
 
@@ -69,7 +75,7 @@ const PhoneField = ({
     } else {
       offset = 26;
     }
-    elem.target.previousSibling.style.paddingLeft =
+    elem.target.nextSibling.style.paddingLeft =
       "calc(" +
       (value.length <= 2 ? 2 : value.length) +
       "ch + " +
@@ -88,17 +94,19 @@ const PhoneField = ({
         className={"ui-text-field__input-wrapper ui-text-field__phone-input"}
       >
         <Box
-          className={generateInputFieldClasses}
-          is={"input"}
-          {...props}
-        />
-        <Box
           onInput={resizeCountryCode}
           className={"ui-text-field__country-code"}
           placeholder={"+1"}
           ref={phoneInputRef}
           maxLength={4}
           is={"input"}
+          disabled={disabled}
+        />
+        <Box
+          className={generateInputFieldClasses}
+          disabled={disabled}
+          is={"input"}
+          {...props}
         />
       </div>
       {errorMessage && (
