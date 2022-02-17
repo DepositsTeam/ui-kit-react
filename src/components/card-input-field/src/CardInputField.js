@@ -326,8 +326,8 @@ const CardInputField = ({
           </Box>
         </Box>
       </Box>
-      <p>Card No: {cardNo}</p>
-      <p>Card Display No: {cardNoDisplay}</p>
+      {/*<p>Card No: {cardNo}</p>*/}
+      {/*<p>Card Display No: {cardNoDisplay}</p>*/}
       {errorMessage && (
         <Box className={"ui-card-input-field__error"}>
           <Icon icon={Error} className={"ui-card-input-field__error-icon"} />
