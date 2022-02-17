@@ -21,11 +21,11 @@ deploy_test:
   only:
     - setup-deployment
   script:
-    - cp -R src/. /var/www/html/test/ui_kit/storybook/react/react-pipeline-test/src/
-    - cp -R public/. /var/www/html/test/ui_kit/storybook/react/react-pipeline-test/public/
-    - cp -R .storybook/. /var/www/html/test/ui_kit/storybook/react/react-pipeline-test/.storybook/
-    - cp package.json /var/www/html/test/ui_kit/storybook/react/react-pipeline-test/
-    - cd /var/www/html/test/ui_kit/storybook/react/react-pipeline-test
+    - cp -R src/. /var/www/html/test/ui_kit/storybook/react/react-ui-kit/src/
+    - cp -R public/. /var/www/html/test/ui_kit/storybook/react/react-ui-kit/public/
+    - cp -R .storybook/. /var/www/html/test/ui_kit/storybook/react/react-ui-kit/.storybook/
+    - cp package.json /var/www/html/test/ui_kit/storybook/react/react-ui-kit/
+    - cd /var/www/html/test/ui_kit/storybook/react/react-ui-kit
     - npm install
     - npm build storybook
 
