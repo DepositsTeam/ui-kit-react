@@ -9,18 +9,6 @@ deploy_development:
   only:
     - main
   script:
-    - echo $CI_RUNNER_DESCRIPTION
-    # - npm run generate
-    - cp -R storybook-static/. /var/www/html/test/ui_kit/storybook/react/
-
-deploy_test:
-  stage: deploy
-  tags:
-    - ui_kit
-  environment: Development
-  only:
-    - setup-deployment
-  script:
     - cp -R src/. /var/www/html/test/ui_kit/storybook/react/react-ui-kit/src/
     - cp -R public/. /var/www/html/test/ui_kit/storybook/react/react-ui-kit/public/
     - cp -R .storybook/. /var/www/html/test/ui_kit/storybook/react/react-ui-kit/.storybook/
