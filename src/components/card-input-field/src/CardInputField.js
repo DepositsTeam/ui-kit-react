@@ -224,7 +224,7 @@ const CardInputField = ({
       }
     }
     if (value.length === 3) {
-      if (value.charAt(2) !== "/") {
+      if (value.charAt(2) !== "/" || value.substring(0, 2) > 12) {
         e.preventDefault();
         setCardExp(e.target.value.substring(0, 2));
         return;
