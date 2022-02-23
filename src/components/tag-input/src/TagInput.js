@@ -17,7 +17,7 @@ const TagInput = ({
 	onTagAdded,
 	onTagDeleted,
 	inputProps,
-	tagProps={},
+	tagProps = {},
 	tagClassname,
 	onTextChanged,
 	...props
@@ -55,11 +55,7 @@ const TagInput = ({
 	const handleKeyDown = (event) => {
 		const newTag = input.trim();
 		const key = _tagDelimiterKey[tagDelimiterKey];
-		if (
-			event.key === key &&
-			newTag.length &&
-			!inputTags.includes(newTag)
-		) {
+		if (event.key === key && newTag.length && !inputTags.includes(newTag)) {
 			event.preventDefault();
 			setInputTags((prev) => [...prev, newTag]);
 			const tagsArray = [...inputTags, newTag];
@@ -78,14 +74,21 @@ const TagInput = ({
 			const deletedTag = tagsArray.pop();
 			setInputTags(tagsArray);
 			setInput(deletedTag);
-			invokeFunction(onTagDeleted, inputTags);
+			setInputTags(state=> {
+				invokeFunction(onTagDeleted, deletedTag,state);
+				return state
+			})
 		}
 		setIsKeyReleased(false);
 	};
 
-	const handleDeleteTag = (index, onTagDelete) => {
+	const handleDeleteTag = (index) => {
+		const deletedTag = inputTags[index];
 		setInputTags((prev) => prev.filter((tag, i) => i !== index));
-		invokeFunction(onTagDelete, index);
+		setInputTags((state) => {
+			invokeFunction(onTagDeleted,deletedTag, state);
+			return state;
+		});
 	};
 
 	return (
@@ -97,7 +100,8 @@ const TagInput = ({
 			</Box>
 			<div className="ui-tag-input__input-wrapper">
 				{inputTags.map((tag, index) => (
-					<Box is='div'
+					<Box
+						is="div"
 						className={`ui-tag-input__input-tag ${tagClassname}`}
 						key={`ui-tag-input${keyGen()}`}
 						{...tagProps}
@@ -171,5 +175,6 @@ TagInput.defaultProps = {
 	tagDelimiterKey: "enter",
 	inputProps: { placeholder: "Add tag" },
 	onTagDelete: (index) => {
-		console.log(index)}
+		console.log(index);
+	},
 };
