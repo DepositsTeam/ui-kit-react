@@ -14,11 +14,12 @@ const TagInput = ({
 	size,
 	tagDelimiterKey,
 	values,
-	onTagAdd,
-	onTagDelete,
+	onTagAdded,
+	onTagDeleted,
 	inputProps,
 	tagProps={},
 	tagClassname,
+	onTextChanged,
 	...props
 }) => {
 	const [input, setInput] = useState("");
@@ -48,20 +49,22 @@ const TagInput = ({
 
 	const handleTextChange = (event) => {
 		setInput(event.target.value);
+		invokeFunction(onTextChanged, event.target.value);
 	};
 
 	const handleKeyDown = (event) => {
-		const trimmedInput = input.trim();
+		const newTag = input.trim();
 		const key = _tagDelimiterKey[tagDelimiterKey];
 		if (
 			event.key === key &&
-			trimmedInput.length &&
-			!inputTags.includes(trimmedInput)
+			newTag.length &&
+			!inputTags.includes(newTag)
 		) {
 			event.preventDefault();
-			setInputTags((prev) => [...prev, trimmedInput]);
-			invokeFunction(onTagAdd,trimmedInput, inputTags);
+			setInputTags((prev) => [...prev, newTag]);
+			const tagsArray = [...inputTags, newTag];
 			setInput("");
+			invokeFunction(onTagAdded, newTag, tagsArray);
 		}
 
 		if (
@@ -71,11 +74,11 @@ const TagInput = ({
 			isKeyReleased
 		) {
 			event.preventDefault();
-			const _inputTags = [...inputTags];
-			const poppedTag = _inputTags.pop();
-			setInputTags(_inputTags);
-			setInput(poppedTag);
-			invokeFunction(onTagDelete, poppedTag);
+			const tagsArray = [...inputTags];
+			const deletedTag = tagsArray.pop();
+			setInputTags(tagsArray);
+			setInput(deletedTag);
+			invokeFunction(onTagDeleted, inputTags);
 		}
 		setIsKeyReleased(false);
 	};
@@ -147,9 +150,13 @@ TagInput.propTypes = {
 	values: PropTypes.array,
 	/** Key to press in order to submit a new tag while typing. */
 	tagDelimiterKey: PropTypes.oneOf(["enter", "comma", "space"]),
-	onTagAdd: PropTypes.func,
-	onTagDelete: PropTypes.func,
+	/** Function to be called when a new tag is added. it contains the added tag and all the tags currently available as its arguments*/
+	onTagAdded: PropTypes.func,
+	/** Function to be called when a tag is deleted. it contains the deleted tag and all the tags currently available as its arguments*/
+	onTagDeleted: PropTypes.func,
+	onTextChanged: PropTypes.func,
 	/** Props to pass to the input component. */
+
 	inputProps: PropTypes.object,
 	/** Props to change the css properties of the tag component*/
 	tagProps: PropTypes.object,
