@@ -1,12 +1,13 @@
 import React from "react";
-import MultiInput from "../src/MultiInput";
+import TagInput from "../src/TagInput";
 
 export default {
-    title: "Multi-Input",
-    component: MultiInput,
+    title: "Tag-Input",
+    component: TagInput,
 }
 
-const Template = (props) => <MultiInput {...props} />;
+
+const Template = (props) => <TagInput {...props} />;
 
 export const SizeMassive = Template.bind({});
 SizeMassive.args = {

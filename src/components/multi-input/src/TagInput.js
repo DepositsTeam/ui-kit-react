@@ -1,23 +1,46 @@
 import React, { useState } from "react";
 import Box from "../../box";
 import Text from "../../text";
-import "./multiInput.css";
+import "./taginput.css";
 import classNames from "../../../utils/classNames";
 import Icon from "../../icon";
 import Close from "../../icons/Close";
 import PropTypes from "prop-types";
+import keyGen from "../../../utils/keyGen";
 
-const MultiInput = ({ label, className, size, values, ...props }) => {
+const TagInput = ({
+	label,
+	className,
+	size,
+	tagDelimiterKey,
+	values,
+	inputProps,
+	tagProps={},
+	tagClassname,
+	...props
+}) => {
 	const [input, setInput] = useState("");
 	const [inputTags, setInputTags] = useState(values || []);
 	const [isKeyReleased, setIsKeyReleased] = useState(false);
 
-	const generatedMultiInputClasses = classNames({
-		"ui-multi-input__input": true,
+	const invokeFunction = (func, ...args) => {
+		if (typeof func === "function") {
+			return func(...args);
+		}
+	};
+
+	const _tagDelimiterKey = {
+		space: " ",
+		enter: "Enter",
+		comma: ",",
+	};
+
+	const generatedTagInputClasses = classNames({
+		"ui-tag-input__input": true,
 	});
 
 	const wrapperClasses = classNames(
-		[`size__${size}`, "ui-multi-input__wrapper"],
+		[`size__${size}`, "ui-tag-input__wrapper"],
 		className
 	);
 
@@ -27,8 +50,9 @@ const MultiInput = ({ label, className, size, values, ...props }) => {
 
 	const handleKeyDown = (event) => {
 		const trimmedInput = input.trim();
+		const key = _tagDelimiterKey[tagDelimiterKey];
 		if (
-			event.key === "Enter" &&
+			event.key === key &&
 			trimmedInput.length &&
 			!inputTags.includes(trimmedInput)
 		) {
@@ -52,22 +76,27 @@ const MultiInput = ({ label, className, size, values, ...props }) => {
 		setIsKeyReleased(false);
 	};
 
-	const handleDeleteTag = (index) => {
+	const handleDeleteTag = (index, onTagDelete) => {
 		setInputTags((prev) => prev.filter((tag, i) => i !== index));
+		invokeFunction(onTagDelete, inputTags);
 	};
 
 	return (
 		<Box className={wrapperClasses}>
 			<Box is={"label"}>
-				<Text className={"ui-multi-input__label"} scale={"subhead"}>
+				<Text className={"ui-tag-input__label"} scale={"subhead"}>
 					{label}
 				</Text>
 			</Box>
-			<div className="ui-multi-input__input-wrapper">
+			<div className="ui-tag-input__input-wrapper">
 				{inputTags.map((tag, index) => (
-					<div className="ui-multi-input__input-tag">
+					<div
+						className={`ui-tag-input__input-tag ${tagClassname}`}
+						key={`ui-tag-input${keyGen()}`}
+						style={tagProps}
+					>
 						<Text
-							className="ui-multi-input__input-tag-text"
+							className="ui-tag-input__input-tag-text"
 							scale={"subhead"}
 							fontFace={"circularSTD"}
 						>
@@ -76,29 +105,31 @@ const MultiInput = ({ label, className, size, values, ...props }) => {
 						<Icon
 							icon={Close}
 							onClick={() => handleDeleteTag(index)}
-							className="ui-multi-input__close-icon"
+							className="ui-tag-input__close-icon"
 						/>
 					</div>
 				))}
 				<Box
-					className={generatedMultiInputClasses}
+					className={generatedTagInputClasses}
 					is="input"
 					{...props}
+					{...inputProps}
 					onKeyDown={handleKeyDown}
 					onKeyUp={() => setIsKeyReleased(true)}
 					value={input}
 					onChange={handleTextChange}
 					autoFocus
-                    onFocus={e => e.currentTarget.select()}
+					onFocus={(e) => e.currentTarget.select()}
 				/>
 			</div>
 		</Box>
 	);
 };
 
-export default MultiInput;
+export default TagInput;
 
-MultiInput.propTypes = {
+TagInput.propTypes = {
+	/** The label used above the input element. */
 	label: PropTypes.string,
 	size: PropTypes.oneOf([
 		"small",
@@ -108,11 +139,24 @@ MultiInput.propTypes = {
 		"huge",
 		"massive",
 	]),
+	/** Each value is rendered inside a tag. */
 	values: PropTypes.array,
+	/** Key to press in order to submit a new tag while typing. */
+	tagDelimiterKey: PropTypes.oneOf(["enter", "comma", "space"]),
+	onTagAdd: PropTypes.func,
+	onTagDelete: PropTypes.func,
+	/** Props to pass to the input component. */
+	inputProps: PropTypes.object,
+	/** Props to change the css properties of the tag component*/
+	tagProps: PropTypes.object,
+	/** The class name to apply to the container of the tag component. */
+	tagClassname: PropTypes.string,
 };
 
-MultiInput.defaultProps = {
+TagInput.defaultProps = {
 	label: "Form Label",
 	size: "medium",
 	values: ["Option 1", "Option 2", "Option 3"],
+	tagDelimiterKey: "enter",
+	inputProps: { placeholder: "Add tag" },
 };
