@@ -16,15 +16,15 @@ export const ExampleTagInputStory = (args) => {
 			values={input}
 			tagProps={{style: {backgroundColor: "red"}}}
 			inputProps={{ placeholder: "Enter new tag" }}
-            onTagAdded={(newTag, tagsArray) => {
-                console.log(newTag, tagsArray)
-            } }
-            onTagDeleted={(deletedTag,tagsArray) => {
-                console.log(deletedTag,tagsArray)
-            }}
-			onTextChanged={(value) => {
-				console.log(value);
-			}}
+            // onTagAdded={(newTag, tagsArray) => {
+            //     console.log(newTag, tagsArray)
+            // } }
+            // onTagDeleted={(deletedTag, tagsArray) => {
+            //     console.log(deletedTag, tagsArray)
+            // }}
+			// onTextChanged={(value) => {
+			// 	console.log(value);
+			// }}
 		/>
 	);
 };
