@@ -14,6 +14,8 @@ const TagInput = ({
 	size,
 	tagDelimiterKey,
 	values,
+	onTagAdd,
+	onTagDelete,
 	inputProps,
 	tagProps={},
 	tagClassname,
@@ -58,6 +60,7 @@ const TagInput = ({
 		) {
 			event.preventDefault();
 			setInputTags((prev) => [...prev, trimmedInput]);
+			invokeFunction(onTagAdd,trimmedInput, inputTags);
 			setInput("");
 		}
 
@@ -72,13 +75,14 @@ const TagInput = ({
 			const poppedTag = _inputTags.pop();
 			setInputTags(_inputTags);
 			setInput(poppedTag);
+			invokeFunction(onTagDelete, poppedTag);
 		}
 		setIsKeyReleased(false);
 	};
 
 	const handleDeleteTag = (index, onTagDelete) => {
 		setInputTags((prev) => prev.filter((tag, i) => i !== index));
-		invokeFunction(onTagDelete, inputTags);
+		invokeFunction(onTagDelete, index);
 	};
 
 	return (
@@ -159,4 +163,6 @@ TagInput.defaultProps = {
 	values: ["Option 1", "Option 2", "Option 3"],
 	tagDelimiterKey: "enter",
 	inputProps: { placeholder: "Add tag" },
+	onTagDelete: (index) => {
+		console.log(index)}
 };
