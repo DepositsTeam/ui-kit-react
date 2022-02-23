@@ -20,6 +20,7 @@ const TagInput = ({
 	tagProps = {},
 	tagClassname,
 	onTextChanged,
+	onTagChanged,
 	...props
 }) => {
 	const [input, setInput] = useState("");
@@ -54,13 +55,17 @@ const TagInput = ({
 
 	const handleKeyDown = (event) => {
 		const newTag = input.trim();
+		let oldTagArray = inputTags
 		const key = _tagDelimiterKey[tagDelimiterKey];
 		if (event.key === key && newTag.length && !inputTags.includes(newTag)) {
 			event.preventDefault();
 			setInputTags((prev) => [...prev, newTag]);
-			const tagsArray = [...inputTags, newTag];
+			setInputTags(state=>{
+				invokeFunction(onTagAdded, newTag, state);
+				invokeFunction(onTagChanged, oldTagArray, state);
+				return state;
+			})
 			setInput("");
-			invokeFunction(onTagAdded, newTag, tagsArray);
 		}
 
 		if (
@@ -76,6 +81,7 @@ const TagInput = ({
 			setInput(deletedTag);
 			setInputTags(state=> {
 				invokeFunction(onTagDeleted, deletedTag,state);
+				invokeFunction(onTagChanged,oldTagArray, state);
 				return state
 			})
 		}
@@ -84,9 +90,11 @@ const TagInput = ({
 
 	const handleDeleteTag = (index) => {
 		const deletedTag = inputTags[index];
+		let oldTagArray = inputTags
 		setInputTags((prev) => prev.filter((tag, i) => i !== index));
 		setInputTags((state) => {
 			invokeFunction(onTagDeleted,deletedTag, state);
+			invokeFunction(onTagChanged,oldTagArray, state);
 			return state;
 		});
 	};
@@ -159,8 +167,8 @@ TagInput.propTypes = {
 	/** Function to be called when a tag is deleted. it contains the deleted tag and all the tags currently available as its arguments*/
 	onTagDeleted: PropTypes.func,
 	onTextChanged: PropTypes.func,
+	onTagChanged: PropTypes.func,
 	/** Props to pass to the input component. */
-
 	inputProps: PropTypes.object,
 	/** Props to change the css properties of the tag component*/
 	tagProps: PropTypes.object,
