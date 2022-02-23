@@ -94,10 +94,10 @@ const TagInput = ({
 			</Box>
 			<div className="ui-tag-input__input-wrapper">
 				{inputTags.map((tag, index) => (
-					<div
+					<Box is='div'
 						className={`ui-tag-input__input-tag ${tagClassname}`}
 						key={`ui-tag-input${keyGen()}`}
-						style={tagProps}
+						{...tagProps}
 					>
 						<Text
 							className="ui-tag-input__input-tag-text"
@@ -111,7 +111,7 @@ const TagInput = ({
 							onClick={() => handleDeleteTag(index)}
 							className="ui-tag-input__close-icon"
 						/>
-					</div>
+					</Box>
 				))}
 				<Box
 					className={generatedTagInputClasses}
