@@ -1,0 +1,128 @@
+.ui-tag-input__input-wrapper {
+	border: 1px solid #CED6DE;
+	border-radius: 4px;
+	box-shadow: 0px 1px 2px rgba(63, 63, 68, 0.1);
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	/* overflow: scroll; */
+	/* width: 100%; */
+}
+
+.ui-tag-input__input {
+	/* width: 100%; */
+	min-width: 50%;
+	border: none;
+	outline: none;
+	display: flex;
+	/* flex: 1; */
+	background: #fff;
+}
+
+.ui-tag-input__wrapper.size__massive .ui-tag-input__input-wrapper {
+	min-height: 64px;
+	padding: 0 16px;
+}
+
+.ui-tag-input__wrapper.size__huge .ui-tag-input__input-wrapper {
+	min-height: 56px;
+	padding: 0 16px;
+}
+
+.ui-tag-input__wrapper.size__xlarge .ui-tag-input__input-wrapper {
+	height: 48px;
+	padding: 0 12px;
+}
+
+.ui-tag-input__wrapper.size__large .ui-tag-input__input-wrapper {
+	height: 40px;
+	padding: 0 12px;
+}
+
+.ui-tag-input__wrapper.size__medium .ui-tag-input__input-wrapper {
+	height: 32px;
+	padding: 0 12px;
+}
+
+.ui-tag-input__wrapper.size__small .ui-tag-input__input-wrapper {
+	height: 24px;
+	padding: 0 8px;
+}
+
+.ui-tag-input__input-tag {
+	display: flex;
+	align-items: center;
+	background: #e1e7ec;
+	white-space: nowrap;
+	border-radius: 4px;
+	margin-right: 4px;
+	padding: 0 8px;
+}
+
+.ui-tag-input__wrapper.size__massive .ui-tag-input__input-tag,
+.ui-tag-input__wrapper.size__huge .ui-tag-input__input-tag,
+.ui-tag-input__wrapper.size__xlarge .ui-tag-input__input-tag,
+.ui-tag-input__wrapper.size__large .ui-tag-input__input-tag {
+	height: 24px;
+}
+
+.ui-tag-input__wrapper.size__medium .ui-tag-input__input-tag {
+	height: 20px;
+}
+
+.ui-tag-input__wrapper.size__small .ui-tag-input__input-tag {
+	height: 16px;
+}
+
+.ui-tag-input__close-icon {
+	height: 8px;
+	width: 8px;
+	margin-left: 12px;
+	cursor: pointer;
+}
+
+.ui-tag-input__input-tag-text{
+	font-size: 12px;
+}
+
+/* .ui-tag-input__wrapper.size__massive .ui-tag-input__input-wrapper{
+	height: 64px;
+	padding: 0 16px;
+} */
+
+/* .ui-tag-input__input-wrapper{
+	border: 1px solid red;
+	display: flex;
+	align-items: center;
+}
+
+.ui-tag-input__input{
+    border: 2px solid green;
+    outline: none;
+	flex: 1;
+	display: flex;
+}
+
+.ui-tag-input__input-wrapper.size__massive {
+	height: 64px;
+	padding: 0 16px;
+}
+
+
+.ui-tag-input__input-tag{
+	display: flex;
+	align-items: center;
+	background: #e1e7ec;
+	white-space: nowrap;
+	border-radius: 4px;
+	margin-right: 4px;
+	padding-left: 8px;
+
+}
+
+.ui-tag-input__input-tag .ui-tag-input__input__tag-item{
+	fontSize: 12px;
+}
+
+
+ */
