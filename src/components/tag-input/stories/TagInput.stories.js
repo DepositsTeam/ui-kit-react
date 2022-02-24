@@ -14,7 +14,6 @@ export const ExampleTagInputStory = (args) => {
 	return (
 		<TagInput
 			values={input}
-			tagProps={{style: {backgroundColor: "red"}}}
 			inputProps={{ placeholder: "Enter new tag" }}
             onTagAdded={(newTag, tagsArray) => {
                 console.log(newTag, tagsArray)
