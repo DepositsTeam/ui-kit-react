@@ -16,9 +16,9 @@ const Pagination = ({...props}) => {
   return (
     <Box is='div' {...props} className={generatedClassName}>
         <Icon className='ui-pagination__left-arrow'  smartColor='currentcolor' icon={ChevronArrowLeft}/>
-        <Text className="ui-pagination__text"
+        {/* <Text className="ui-pagination__text"
 							scale={"subhead"}
-							fontFace={"circularSTD"}></Text>
+							fontFace={"circularSTD"}></Text> */}
         <Icon className='ui-pagination__Right-arrow'  smartColor='currentcolor' icon={ChevronArrowRight}/>
     </Box>
   )
