@@ -9,6 +9,8 @@ import CheckIcon from "../../icons/Check";
 import CloseIcon from "../../icons/Close";
 import ScanCardIcon from "../../icons/ScanCard";
 import CardIcon from "../../icons/Card";
+import ArrowLeftIcon from "../../icons/ArrowLeft";
+import ArrowRightIcon from "../../icons/ArrowRight";
 
 export default {
   title: "Icons",
@@ -71,4 +73,14 @@ ScanCard.args = {
 export const Card = Template.bind({});
 Card.args = {
   icon: CardIcon,
+};
+
+export const ArrowLeft = Template.bind({});
+ArrowLeft.args = {
+  icon: ArrowLeftIcon,
+};
+
+export const ArrowRight = Template.bind({});
+ArrowRight.args = {
+  icon: ArrowRightIcon,
 };
