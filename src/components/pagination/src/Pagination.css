@@ -1,0 +1,48 @@
+.ui-pagination {
+	display: flex;
+	align-items: center;
+}
+
+.ui-pagination__text-previous {
+	color: #8895a7;
+    margin-right: 8px;
+    cursor: pointer;
+
+}
+
+.ui-pagination__text-next {
+	color: #0DB9E9;
+    margin-left: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+
+}
+
+.ui-pagination__page-number__active{
+    background: #0DB9E9;
+    border-radius: 4px;
+    height: 32px;
+    width: 32px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+    cursor: pointer;
+
+}
+
+.ui-pagination__page-number{
+    margin-right: 24px;
+    cursor: pointer;
+
+}
+
+.ui-pagination__page-number_last{
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.ui-pagination__left-arrow, .ui-pagination__right-arrow{
+    cursor: pointer;
+}
