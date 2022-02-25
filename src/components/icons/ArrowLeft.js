@@ -1,0 +1,48 @@
+import React from "react";
+import PropTypes from "prop-types";
+
+const ArrowLeftComponent = ({
+  fill,
+  stroke,
+  smartColor,
+  strokeWidth,
+  strokeLineCap,
+  strokeLineJoin,
+  props,
+}) => {
+  return (
+    <>
+      <path
+        d="M10 4L6 8L10 12"
+        stroke={smartColor || stroke}
+        strokeWidth={strokeWidth}
+        strokeLinecap={strokeLineCap}
+        strokeLinejoin={strokeLineJoin}
+      />
+      x
+    </>
+  );
+};
+
+ArrowLeftComponent.propTypes = {
+  fill: PropTypes.string,
+  stroke: PropTypes.string,
+  strokeWidth: PropTypes.string,
+  strokeLineCap: PropTypes.string,
+  strokeLineJoin: PropTypes.string,
+  smartColor: PropTypes.string,
+};
+
+ArrowLeftComponent.defaultProps = {
+  strokeWidth: "1.5",
+  strokeLineCap: "round",
+  strokeLineJoin: "round",
+};
+
+const ArrowLeft = {
+  component: ArrowLeftComponent,
+  viewBox: "0 0 24 24",
+  fill: "none",
+};
+
+export default ArrowLeft;
