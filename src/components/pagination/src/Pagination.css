@@ -35,8 +35,9 @@
 }
 
 .ui-pagination__page-number_last{
-    /* margin-left: 15px; */
+    margin-left: 12px;
     cursor: pointer;
+    margin-right: 8px;
 }
 
 .ui-pagination__left-arrow, .ui-pagination__right-arrow{

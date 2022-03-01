@@ -54,7 +54,9 @@ const Pagination = ({ numberOfPage, maxPageNumber, className, ...props }) => {
 				))}
 				...
 				<div className="ui-pagination__page-number_last">
-					{numberOfPageArray.slice(-1)}
+					<Text scale={"subhead"} fontFace={"circularSTD"}>
+						{numberOfPageArray.slice(-1)}
+					</Text>
 				</div>
 			</>
 		);
