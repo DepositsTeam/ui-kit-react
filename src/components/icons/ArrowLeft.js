@@ -19,7 +19,6 @@ const ArrowLeftComponent = ({
         strokeLinecap={strokeLineCap}
         strokeLinejoin={strokeLineJoin}
       />
-      x
     </>
   );
 };

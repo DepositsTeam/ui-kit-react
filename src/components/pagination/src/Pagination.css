@@ -7,15 +7,12 @@
 	color: #8895a7;
     margin-right: 8px;
     cursor: pointer;
-
 }
 
 .ui-pagination__text-next {
 	color: #0DB9E9;
-    margin-left: 20px;
     margin-right: 10px;
     cursor: pointer;
-
 }
 
 .ui-pagination__page-number__active{
@@ -27,22 +24,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* margin-right: 12px; */
+    cursor: pointer;
+}
+
+.ui-pagination__page-number{
     margin-right: 12px;
     cursor: pointer;
 
 }
 
-.ui-pagination__page-number{
-    margin-right: 24px;
-    cursor: pointer;
-
-}
-
 .ui-pagination__page-number_last{
-    margin-left: 15px;
+    /* margin-left: 15px; */
     cursor: pointer;
 }
 
 .ui-pagination__left-arrow, .ui-pagination__right-arrow{
     cursor: pointer;
+    height: 100%;
+    width: 30px;
 }
+

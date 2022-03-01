@@ -20,20 +20,42 @@ const Pagination = ({ numberOfPage, maxPageNumber, className, ...props }) => {
 		className
 	);
 
-    const generatedPageNumberClassName = (numberOfPageArray, index = 0) => classNames(
-        {
-            "ui-pagination__page-number__active": numberOfPageArray[index] === 1,
-        },'ui-pagination__page-number'
-    )
+	const generatedPageNumberClassName = (numberOfPageArray, index = 0) =>
+		classNames(
+			{
+				"ui-pagination__page-number__active": numberOfPageArray[index] === 1,
+			},
+			"ui-pagination__page-number"
+		);
 
 	const generatedPageNumbers =
 		numberOfPageArray.length <= maxPageNumber ? (
-			numberOfPageArray.map((pageNumber, index) => <div className={generatedPageNumberClassName(numberOfPageArray, index)} key={index}>{pageNumber}</div>)
+			numberOfPageArray.map((pageNumber, index) => (
+				<div
+					className={generatedPageNumberClassName(numberOfPageArray, index)}
+					key={index}
+				>
+					<Text scale={"subhead"} fontFace={"circularSTD"}>
+						{pageNumber}
+					</Text>
+				</div>
+			))
 		) : (
 			<>
 				{numberOfPageArray.slice(0, maxPageNumber).map((pageNumber, index) => (
-					<div className={generatedPageNumberClassName(numberOfPageArray, index)} key={index}>{pageNumber}</div>
-				))}... <div className="ui-pagination__page-number_last">{numberOfPageArray.slice(-1)}</div>
+					<div
+						className={generatedPageNumberClassName(numberOfPageArray, index)}
+						key={index}
+					>
+						<Text scale={"subhead"} fontFace={"circularSTD"}>
+							{pageNumber}
+						</Text>
+					</div>
+				))}
+				...
+				<div className="ui-pagination__page-number_last">
+					{numberOfPageArray.slice(-1)}
+				</div>
 			</>
 		);
 	return (
