@@ -13,7 +13,7 @@ const ArrowLeftComponent = ({
   return (
     <>
       <path
-        d="M10 4L6 8L10 12"
+        d="M15 6L9 12L15 18"
         stroke={smartColor || stroke}
         strokeWidth={strokeWidth}
         strokeLinecap={strokeLineCap}
