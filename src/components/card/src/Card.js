@@ -16,7 +16,7 @@ const Card = ({ is, title, desc, radio, checkbox, icon, select, className, ...pr
     const generatedClassName = classNames(
         {
             "ui-card": true,
-            "state__selected" : selected,
+            [`state__selected`]: selected,
         },
         className
     );
@@ -53,7 +53,10 @@ const Card = ({ is, title, desc, radio, checkbox, icon, select, className, ...pr
                 </div>
 
                 {icon && (
-                    <Icon icon={CardIcon} />
+                    <Icon
+                        className={"ui-card__icon"}
+                        icon={CardIcon}
+                    />
                 )}
             </Box>
         // </Box>
