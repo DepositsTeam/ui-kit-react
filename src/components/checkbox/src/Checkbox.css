@@ -9,6 +9,8 @@
 
 .ui-checkbox__wrapper > * {
   margin: 0;
+  cursor: pointer;
+
 }
 
 .ui-checkbox__wrapper > input {
@@ -25,7 +27,7 @@
 }
 
 .ui-checkbox__wrapper > input {
-  cursor: not-allowed;
+  cursor: pointer;
 }
 
 .ui-checkbox__wrapper > input:checked {

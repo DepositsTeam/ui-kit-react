@@ -1,0 +1,65 @@
+.ui-card {
+    font-family: "Circular Std", sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+    color: #5F6B7A ;
+    text-decoration: none;
+    transition-property: border-color;
+    transition-duration: 0.5s;
+    border: 1px solid #CED6DE;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 0 rgba(27, 31, 35, 0.05);
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-between;
+    --tw-space-x-reverse: 0;
+    margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+    margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
+    cursor: pointer;
+}
+
+.ui-card:hover{
+    border: 1px solid #0DB9E9;
+}
+
+
+.state__selected {
+    border: 1px solid #0DB9E9;
+    color: #212934;
+    transition-property: color;
+    transition-duration: 0.5s;
+    
+}
+
+.ui-card__content {
+    width: 100%;
+    padding:0 5px;
+    
+}
+
+.ui-card__title {
+    font-weight: 700;
+    font-family: Hero New;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    width: 100%;
+}
+
+
+.ui-card__card-text {
+    font-family: Circular Std;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+text-align: left;
+
+}
