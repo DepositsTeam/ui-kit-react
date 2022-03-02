@@ -16,7 +16,7 @@ const Text = ({ className, scale, uppercase, equalLineHeight, ...props }) => {
     className
   );
   return (
-    <Box is={is} {...props} className={generatedClass}>
+    <Box is={is} {...props} data-testid="text" className={generatedClass}>
       {props.children}
     </Box>
   );

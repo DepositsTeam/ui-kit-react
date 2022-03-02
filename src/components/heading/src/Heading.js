@@ -23,7 +23,7 @@ const Heading = ({
     className
   );
   return (
-    <Box is={is} {...props} className={generatedClass}>
+    <Box is={is} {...props} data-testid="heading" className={generatedClass}>
       {props.children}
     </Box>
   );
