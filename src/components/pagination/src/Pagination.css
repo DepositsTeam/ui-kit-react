@@ -52,3 +52,9 @@
     margin-top: 0;
     margin-bottom: 0;
 }
+
+button {
+    border: none;
+    outline: none;
+    background: none;
+}
