@@ -1,5 +1,4 @@
 import React from 'react';
-import reactDom from 'react-dom';
 
 import Heading from './heading'
 import { render, cleanup } from '@testing-library/react'
@@ -9,7 +8,7 @@ describe('Heading testing', () => {
 
     it("Test to see if heading renders", () => {
         const { getByTestId } = render(<Heading />);
-        expect(getByTestId("heading")).toBeTruthy;
+        expect(getByTestId("heading").innerHTML).toBeTruthy();
     })
 
     it("Test to see if heading renders correctly", () => {

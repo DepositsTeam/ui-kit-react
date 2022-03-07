@@ -5,23 +5,26 @@ import Box from "../../box";
 import PropTypes from "prop-types";
 import classNames from "../../../utils/classNames";
 
-const Switch = ({ label, alignToTop, className, ...props }) => {
+const Switch = ({ label, colorScheme, disabled, className, ...props }) => {
     const switchClassName = classNames(
-        { "ui-switch__wrapper": true, alignToTop },
+        {
+            "ui-switch__wrapper": true,
+            [`state__disabled`]: disabled,
+            [`semantic__${colorScheme}`]: colorScheme,
+
+        },
         className
     );
     return (
         <Box is={"label"} className={switchClassName}>
-            <Box is={"label"} className="switch">
+            <Box is={"div"} className="ui__switch">
                 <Box
                     is={"input"}
-                    className={"slider"}
+                    className={"ui__slider"}
                     type={"checkbox"}
                     {...props}
                 />
-                <Box is={"span"} className={"slider round"}>
-
-                </Box>
+                <Box is={"span"} className={"ui__slider round"}/>
             </Box>
             <Text className={"ui-switch__label-text"}>{label}</Text>
         </Box>
@@ -30,12 +33,19 @@ const Switch = ({ label, alignToTop, className, ...props }) => {
 
 export default Switch;
 
-Switch.defaultProps = {
-    alignToTop: false,
-    disabled: false,
-};
 
 Switch.propTypes = {
+    colorScheme: PropTypes.oneOf([
+        "primary",
+        "danger",
+        "success",
+        "outline",
+        "invisible",
+    ]),
     disabled: PropTypes.bool,
-    alignToTop: PropTypes.bool,
+};
+
+Switch.defaultProps = {
+    colorScheme: 'success',
+    disabled: false,
 };

@@ -5,13 +5,13 @@ import PropTypes from "prop-types";
 import classNames from "../../../utils/classNames";
 import PropType from "prop-types";
 import Icon from "../../icon"
-// import Radio from "../../radio";
-// import Checkbox from "../../checkbox";
+import Radio from "../../radio";
+import Checkbox from "../../checkbox";
 import CardIcon from "../../icons/Card";
 
 
 
-const Card = ({ is, title, desc, radio, checkbox, icon, select, className, ...props }) => {
+const Card = ({ is, title, desc, children, radio, checkbox, icon, select, className, ...props }) => {
     const [selected, setSelected] = useState(select)
     const generatedClassName = classNames(
         {
@@ -21,44 +21,46 @@ const Card = ({ is, title, desc, radio, checkbox, icon, select, className, ...pr
         className
     );
 
-    
+
 
     return (
         // <Box is={is} >
-            <Box is={"label"} {...props} className={generatedClassName}>
+        <Box is={"label"} className={generatedClassName} >
+            {
+                (radio && <Radio
+                    is={"input"}
+                    className={"ui-radio"}
+                    type={"radio"}
+                    onClick={(e) => { setSelected(() => e.target.checked) }}
+                    {...props}
+                />)
+                ||
+                (checkbox && <Checkbox
+                    is={"input"}
+                    className={"ui-checkbox"}
+                    type={"checkbox"}
+                    onClick={(e) => { setSelected(() => e.target.checked) }}
+                    {...props}
+                />)
+            }
+
+            <div className="ui-card__content">
+                <div className="ui-card__title">{title}</div>
                 {
-                    (radio && <Box
-                        is={"input"}
-                        className={"ui-radio"}
-                        type={"radio"}
-                        onClick={(e)=>{setSelected(() => e.target.checked)}}
-                    />)
-                    ||
-                    (checkbox && <Box
-                        is={"input"}
-                        className={"ui-checkbox"}
-                        type={"checkbox"}
-                        onClick={(e)=>{setSelected(() => e.target.checked)}}
-                    />)
+                    (desc || children) &&
+                    <div className="ui-card__card-text">
+                        {desc || children}
+                    </div>
                 }
+            </div>
 
-                <div className="ui-card__content">
-                    <div className="ui-card__title">{title}</div>
-                    {
-                        (desc || props.children) &&
-                        <div className="ui-card__card-text">
-                            {desc || props.children}
-                        </div>
-                    }
-                </div>
-
-                {icon && (
-                    <Icon
-                        className={"ui-card__icon"}
-                        icon={CardIcon}
-                    />
-                )}
-            </Box>
+            {icon && (
+                <Icon
+                    className={"ui-card__icon"}
+                    icon={CardIcon}
+                />
+            )}
+        </Box>
         // </Box>
     )
 }

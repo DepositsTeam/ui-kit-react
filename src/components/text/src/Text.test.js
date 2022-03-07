@@ -1,6 +1,4 @@
 import React from 'react';
-import reactDom from 'react-dom';
-
 import Text from './Text'
 import { render, cleanup } from '@testing-library/react'
 
@@ -14,7 +12,7 @@ describe('Text testing', () => {
 
     it("Test to see if text renders", () => {
         const { getByTestId } = render(<Text />);
-        expect(getByTestId("text")).toBeTruthy;
+        expect(getByTestId("text")).toBeTruthy();
     })
 
     it("Test to see if text renders correctly", () => {
