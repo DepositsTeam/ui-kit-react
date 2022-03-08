@@ -17,14 +17,15 @@ const Switch = ({ label, colorScheme, disabled, className, ...props }) => {
     );
     return (
         <Box is={"label"} className={switchClassName}>
-            <Box is={"div"} className="ui__switch">
+            <Box is={"div"} className="ui-switch">
                 <Box
                     is={"input"}
-                    className={"ui__slider"}
+                    className={"ui-slider"}
                     type={"checkbox"}
+                    disabled={disabled && true}
                     {...props}
                 />
-                <Box is={"span"} className={"ui__slider round"}/>
+                <Box is={"span"} className={"ui-slider round"} />
             </Box>
             <Text className={"ui-switch__label-text"}>{label}</Text>
         </Box>
