@@ -51,13 +51,13 @@ const Alert = ({
     <Box className={generateAlertClassName} {...props}>
       <div className={"ui-alert__content-wrapper"}>
         <div className={"ui-alert__content"}>
-          {colorScheme !== "default" && (
+          {/* {colorScheme !== "default" && (
             <Icon
               className={"ui-alert__header-icon"}
               icon={schemeIcons[colorScheme]}
               smartColor={"currentcolor"}
             />
-          )}
+          )} */}
           <div className={"ui-alert__text"}>
             <Box className={"ui-alert__header"}>
               <Heading scale={"subtitle-2"} className={"ui-alert__header-text"}>

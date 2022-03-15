@@ -1,0 +1,84 @@
+.ui-date {
+  width: fit-content;
+  border: 1px solid #ced6de;
+}
+
+.ui-date .ui-date__header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 16px;
+  /* width: 470px; */
+}
+
+.ui-date .ui-date__signatureheader {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  /* padding: 1px; */
+  width: 550px;
+}
+
+.ui-date .ui-date__title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+  font-family: "Circular Std", sans-serif;
+}
+
+.ui-date .ui-date__close {
+  justify-content: flex-end;
+}
+
+.ui-date .ui-date__field {
+  margin: 0;
+  background: #e5e5e5;
+  padding: 16px;
+}
+
+.ui-date .ui-date__all {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.ui-date .ui-date__day {
+  margin-right: 30px;
+}
+
+.ui-date .ui-date__month {
+  margin-right: 30px;
+}
+
+.ui-date .ui-date__inputfield {
+  background: #fff;
+  margin: 0;
+  font-size: 14px;
+  box-shadow: 0 1px 2px rgba(63, 63, 68, 0.1);
+  border: 1px solid #ced6de;
+  border-radius: 4px;
+  color: #b8c4ce;
+  font-weight: lighter;
+  font-family: "Circular Std", sans-serif;
+  padding: 10px;
+  width: 80px;
+}
+
+.ui-date__button {
+  margin-top: 30px;
+  color: #212934;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  background: #0db9e9;
+  border-radius: 6px;
+  padding: 10px;
+  width: 450px;
+  /* background: #fff; */
+}
+
+.ui-date__wrapper {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding: 16px;
+}

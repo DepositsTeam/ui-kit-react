@@ -9,7 +9,7 @@
 
 .ui-alert.is-toast {
   box-shadow: 0 6px 14px rgba(10, 52, 64, 0.12);
-  border: 1px solid #E1E7EC;
+  border: 1px solid #e1e7ec;
 }
 
 .ui-alert .ui-alert__header-text {
@@ -129,7 +129,7 @@
 }
 
 .ui-alert__close-icon {
-  color: #8895A7;
+  color: #8895a7;
   height: 20px;
   width: 20px;
   cursor: pointer;
@@ -143,5 +143,5 @@
 
 .ui-alert.is-toast {
   box-shadow: 0 6px 14px rgba(10, 52, 64, 0.12);
-  border: 1px solid #E1E7EC;
+  border: 1px solid #e1e7ec;
 }

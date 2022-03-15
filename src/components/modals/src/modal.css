@@ -1,0 +1,94 @@
+.ui-modal {
+  width: fit-content;
+  border: 1px solid #ced6de;
+}
+
+.ui-modal .ui-modal__header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 16px;
+  width: 470px;
+}
+
+.ui-modal .ui-modal__signatureheader {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  /* padding: 1px; */
+  width: 550px;
+}
+
+.ui-modal .ui-modal__title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+  font-family: "Circular Std", sans-serif;
+}
+
+.ui-modal .ui-modal__close {
+  justify-content: flex-end;
+}
+
+.ui-modal .ui-modal__field {
+  margin: 0;
+  background: #e5e5e5;
+  padding: 16px;
+}
+
+.ui-modal .ui-modal__inputfield {
+  background: #fff;
+  margin: 0;
+  font-size: 14px;
+  box-shadow: 0 1px 2px rgba(63, 63, 68, 0.1);
+  border: 1px solid #ced6de;
+  border-radius: 4px;
+  color: #b8c4ce;
+  font-weight: lighter;
+  font-family: "Circular Std", sans-serif;
+  padding: 10px;
+  width: 450px;
+}
+
+.ui-modal__button {
+  margin-top: 30px;
+  color: #212934;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  background: #0db9e9;
+  border-radius: 6px;
+  padding: 10px;
+  width: 450px;
+  /* background: #fff; */
+}
+
+.ui-modal__wrapper {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding: 16px;
+}
+
+/* .ui-modal__input::placeholder {
+  color: #b8c4ce;
+  padding: 16px;
+} */
+
+/* .ui-modal .ui-modal__input {
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(63, 63, 68, 0.1);
+  border: 1px solid #ced6de;
+  border-radius: 4px;
+  font-family: "Circular Std", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 16px;
+  color: #212934;
+  width: 100%;
+} */
+
+/* .ui-modal .ui-modal__textinput {
+  padding: 16px;
+  background: #e5e5e5;
+} */
