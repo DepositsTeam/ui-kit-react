@@ -24,7 +24,6 @@ const Card = ({ is, title, desc, children, radio, checkbox, icon, select, classN
 
 
     return (
-        // <Box is={is} >
         <Box is={"label"} className={generatedClassName} >
             {
                 (radio && <Radio
@@ -61,7 +60,6 @@ const Card = ({ is, title, desc, children, radio, checkbox, icon, select, classN
                 />
             )}
         </Box>
-        // </Box>
     )
 }
 
