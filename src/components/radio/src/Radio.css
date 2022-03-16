@@ -9,6 +9,8 @@
 
 .ui-radio__wrapper > * {
   margin: 0;
+  cursor: pointer;
+
 }
 
 .ui-radio__wrapper > input {

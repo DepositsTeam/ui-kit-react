@@ -54,7 +54,7 @@ const CardInputField = ({
     setCardNoIsFocused(false);
     pseudoInput.current.classList.remove("focus");
     const strippedCardNo = cardNo.replace(/\s/g, "");
-    if (selectedCard == BRAND_ALIAS.AMEX) {
+    if (selectedCard === BRAND_ALIAS.AMEX) {
       if (strippedCardNo.length === 15) {
         setCardNoDisplay(`**** ${cardNo.substring(cardNo.length - 4)}`);
       }
@@ -86,7 +86,7 @@ const CardInputField = ({
       if (targetPosition !== null) {
         const position =
           targetPosition !== null
-            ? targetPosition.key == "Backspace"
+            ? targetPosition.key === "Backspace"
               ? targetPosition.pos - 1
               : targetPosition.pos
             : cardNo.length;
@@ -100,7 +100,7 @@ const CardInputField = ({
   };
 
   const handleCardNoKeyDown = (e) => {
-    if (e.key == "Backspace" || e.key == "Delete") {
+    if (e.key === "Backspace" || e.key === "Delete") {
       if (cardNoDisplay.length != e.target.selectionStart) {
         setTargetPosition({ pos: e.target.selectionStart, key: e.key });
       }
@@ -180,7 +180,7 @@ const CardInputField = ({
         break;
       case "3":
         if (value.length >= 2) {
-          if (value.charAt(1) == "4" || value.charAt(1) == "7") {
+          if (value.charAt(1) === "4" || value.charAt(1) === "7") {
             setSelectedCard(BRAND_ALIAS.AMEX);
           } else {
             setSelectedCard(BRAND_ALIAS.NOCARD);

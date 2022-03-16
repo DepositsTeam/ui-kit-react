@@ -4,7 +4,7 @@ import Box from "../../box";
 import classNames from "../../../utils/classNames";
 import PropTypes from "prop-types";
 
-const Icon = ({ className, icon, children, ...props }) => {
+const Icon = ({ className, icon, children,  ...props }) => {
   const defaultViewBox = "0 0 24 24";
   const IconComponent = icon.component;
 
@@ -23,7 +23,7 @@ const Icon = ({ className, icon, children, ...props }) => {
       fill={props.fill || icon.fill}
       {...props}
     >
-      <IconComponent {...props} />
+      <IconComponent smartColor= "currentcolor" {...props} />
     </Box>
   );
 };
@@ -32,7 +32,6 @@ export default Icon;
 
 Icon.propTypes = {
   icon: PropTypes.object.isRequired,
-  smartColor: PropTypes.string,
   fill: PropTypes.string,
   stroke: PropTypes.string,
   strokeWidth: PropTypes.string,
@@ -42,6 +41,3 @@ Icon.propTypes = {
   height: PropTypes.string,
 };
 
-Icon.defaultProps = {
-  smartColor: "currentcolor",
-};

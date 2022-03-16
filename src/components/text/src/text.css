@@ -1,6 +1,9 @@
 .ui-text {
     font-family: "Circular Std", sans-serif;
 }
+.uppercase{
+    text-transform: uppercase;
+}
 
 .ui-text.body {
     font-size: 16px;
