@@ -1,36 +1,97 @@
-import React, { useState } from "react";
+import React from "react";
+import "./date.css";
 import Box from "../../box";
+import Text from "../../text";
 import PropTypes from "prop-types";
-import classNames from "../../../utils/classNames";
 import Icon from "../../icon";
 import ChevronFilledDown from "../../icons/ChevronFilledDown";
 import Error from "../../icons/Error";
-import Text from "../../text";
-import "./date.css";
-import TextField from "../../text-field/src/TextField";
-import Close from "../../icons/Close";
-import Button from "../../button/src/Button";
-import { Primary } from "../../button/stories/Button.stories";
+import classNames from "../../../utils/classNames";
 import DatePickerComp from "./DatePickerComp";
 
-const Date = ({  
-  dateTitle,
+const TextField = ({
+  label,
+  leftIcon,
+  size,
+  dropDown,
+  rightIcon,
+  errorMessage,
   inputClassName,
   className,
-  ...props }) => {
+  ...props
+}) => {
+  const generateInputFieldClasses = classNames(
+    {
+      "ui-text-field__input": true,
+      "has-error": errorMessage,
+      "has-left-icon": leftIcon,
+      "has-right-icon": dropDown || rightIcon,
+    },
+    inputClassName
+  );
+
+  const wrapperClasses = classNames(
+    [`size__${size}`, "ui-text-field__wrapper"],
+    className
+  );
 
   return (
-      <Box >
-
+    <Box className={wrapperClasses}>
+      <Box is={"label"}>
         <Text className={"ui-text-field__label"} scale={"subhead"}>
-          {dateTitle}
+          {label}
         </Text>
+      </Box>
+      <div className={"ui-text-field__input-wrapper"}>
+        {leftIcon && (
+          <Icon icon={leftIcon} className={"ui-text-field__left-icon"} />
+        )}
+        {/* <Box className={generateInputFieldClasses} is={"date"} {...props} /> */}
+        <Box className={generateInputFieldClasses} {...props} >
+          <DatePickerComp />
+        </Box>
 
-        <DatePickerComp />
+        {/* <DatePickerComp className={generateInputFieldClasses} is={"input"} {...props}  /> */}
 
+        {(dropDown || rightIcon) && (
+          <Icon
+            icon={dropDown ? ChevronFilledDown : rightIcon}
+            className={"ui-text-field__right-icon"}
+          />
+        )}
+      </div>
+      {errorMessage && (
+        <div className={"ui-text-field__error"}>
+          <Icon icon={Error} className={"ui-text-field__error-icon"} />
+          <Text
+            className={"ui-text-field__error-text"}
+            scale={"subhead"}
+            fontFace={"circularSTD"}
+          >
+            {errorMessage}
+          </Text>
+        </div>
+      )}
     </Box>
   );
 };
 
+export default TextField;
 
-export default Date;
+TextField.propTypes = {
+  label: PropTypes.string,
+  dropDown: PropTypes.bool,
+  size: PropTypes.oneOf([
+    "small",
+    "medium",
+    "large",
+    "xlarge",
+    "huge",
+    "massive",
+  ]),
+  errorMessage: PropTypes.string,
+};
+
+TextField.defaultProps = {
+  size: "medium",
+};
