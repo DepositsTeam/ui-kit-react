@@ -4,9 +4,10 @@ import "./Table.css";
 import Checkbox from "../../checkbox";
 
 
-const TableContent = ({ data }) => {
+const TableContent = ({ data, nullify }) => {
+
     return (
-        <Box is='div' className='ui-table__content'>
+        <Box is='div' onClick={()=>nullify()} className='ui-table__content'>
             {data.map((item, itemIdx) => (
                 <Box key ={itemIdx} is='div' className = "ui-table__content-item-container">
                     <Checkbox className='ui-table__checkbox' />

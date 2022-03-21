@@ -39,6 +39,7 @@
 .ui-table__header-item{
 
     display: flex;
+    position:relative;
     width: 100%;
     align-items: center;
     cursor: pointer;
@@ -63,8 +64,7 @@
     height: 48px;
     width:100%;
     padding: 0px 16px;
-    border: none;
-    outline: none;
+    
 }   
 
 .ui-table__content-item{
@@ -75,8 +75,7 @@
     margin: 0 2px;
 }
 
-.ui-table__header-item-inner{
-  
+.ui-table__header-item-inner {
     display: flex;
     width: 100%;
     text-transform: uppercase;
@@ -87,9 +86,7 @@
 
 .sorting {
     position: absolute;
-                /* display: flex; */
     align-items: center;
-
     width: max-content;
     color: #0DB9E9;
     border: 1px #0DB9E9 solid;
@@ -104,14 +101,16 @@
 }
 
 .ui-table__header-sort_modal {
-    position: relative;
-    top: 90px;
+    font-family: Circular Std;
+    position: absolute;
+    top: 20px;
     left: 0px;
     background-color: #fff;
     color: #3F3E4D;
     width: 100%;
     text-transform: capitalize;
     font-weight: 400;
+    width: 208px;
     
     border-radius: 4px;
     --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
@@ -120,13 +119,21 @@
 }
 
 .ui-table__header-sort_modal-item{
+    display:flex;
     padding: 0 10px;
     min-height: 40px;
     width: 100%;
-    display: flex;
-    align-items: center;
+    align-items: center;    
+    /* border: 2px gray solid; */
+}
 
-    
+.ui-table__header-sort_modal-item.filter {
+    padding: 0;
+}
+
+.filter-bg {
+    background-color: #F5F8FA;
+    /* position:absolute; */
 }
 
 img{
@@ -135,4 +142,42 @@ img{
 .ui-table__header-sort_modal-item:hover{
     background-color:  #F5F8FA;
 
+}
+
+.ui-table__header-filter_modal {
+    z-index: 1;
+    /* width:max-content; */
+    /* float: right; */
+   position: absolute;
+    top: 20px;
+    left: 215px;
+    background-color: #fff;
+    color: #3F3E4D;
+    font-weight: 400;
+    padding: 10px;
+
+    border-radius: 4px;
+    --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+
+    /* --tw-space-y-reverse: 0;
+  margin-top: calc(5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(5rem * var(--tw-space-y-reverse)); */
+}
+.ui-table__header-filter_modal .ui-radio__wrapper{
+    margin: 10px;
+}
+
+
+.ui-table__header-filter_modal-actions {
+    display:flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+.filter-cancel{
+    color: red;
+}
+.filter-apply{
+    color: blue;
 }
