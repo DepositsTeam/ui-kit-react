@@ -60,12 +60,12 @@ const Table = ({ data, headings, columns, className, ...props }) => {
             let y = Object.values(b)[idx]
 
             if (type === 'asc') {
-                if (x > y) { return -1 }
-                if (y > x) { return 1 }
-            }
-            if (type === 'desc') {
                 if (x < y) { return -1 }
                 if (y < x) { return 1 }
+            }
+            if (type === 'desc') {
+                if (x > y) { return -1 }
+                if (y > x) { return 1 }
             }
             return 0;
 
