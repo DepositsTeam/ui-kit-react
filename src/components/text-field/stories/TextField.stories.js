@@ -20,6 +20,7 @@ Disabled.args = {
   placeholder: "Input placeholder",
   label: "Form Label",
   disabled: true,
+  background: "red",
 };
 
 export const Error = Template.bind({});
