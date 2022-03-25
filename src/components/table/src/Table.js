@@ -6,6 +6,8 @@ import PropTypes from "prop-types";
 import classNames from "../../../utils/classNames";
 import TableContent from "./TableContent";
 import TableHeader from "./TableHeader";
+import TagInput from "../../tag-input/src/TagInput";
+import TableTag from "./TableTag";
 
 const Table = ({ data, headings, columns, className, ...props }) => {
 
@@ -24,9 +26,12 @@ const Table = ({ data, headings, columns, className, ...props }) => {
     const [filterIndex, setFilterIndex] = useState(null)
     const [filterText, setFilterText] = useState('')
     const [dataCopy, setDataCopy] = useState(data)
+    const [filterCriteria, setFilterCriteria] = useState('Is')
+    const filterLabel = ['Is', 'Is not', 'Is empty', 'Is not empty', 'Is equal to', 'Is not equal to', 'Begins with', 'Ends with', 'Contains', 'Does not contain']
+    const [filterTag, setFilterTag] = useState([])
 
     // set Filter text to input value
-    const handleChange = (e, ind) => setFilterText(() => e.target.value)
+    const handleChange = (e, ind) => setFilterText(() => e.target.value.trim().toLowerCase())
 
     // reset all states
     const nullify = () => {
@@ -75,7 +80,7 @@ const Table = ({ data, headings, columns, className, ...props }) => {
 
     // // filter function running conditionally
     // const filte = (num) => {
-    //     setDataCopy(() => [...data].filter(item => {
+    //     setDataCopy(() => data.filter(item => {
     //         if (num === 0) return getArr(item).toLowerCase() === filterText.toLowerCase().trim();
     //         if (num === 1) return getArr(item).toLowerCase() !== filterText.toLowerCase().trim()
     //         if (num === 2) return getArr(item) === ''
@@ -89,24 +94,41 @@ const Table = ({ data, headings, columns, className, ...props }) => {
     //     }))
     // }
 
+    const applyFilter = (e) => {
+        filter[filterCriteria]();
+        if (filterText && filterText !== '' && filterText !== ' ') {
+            setFilterTag(() => [headings[sortIndex], filterCriteria, filterText])
+        }
+        nullify();
 
+    }
     // main object of filter functions
     const filter = {
-        0: () => setDataCopy(() => [...data].filter(item => getArr(item).toLowerCase() === filterText.toLowerCase().trim())),
-        1: () => setDataCopy(() => [...data].filter(item => getArr(item).toLowerCase() !== filterText.toLowerCase().trim())),
-        2: () => setDataCopy(() => [...data].filter(item => getArr(item) === '')),
-        3: () => setDataCopy(() => [...data].filter(item => getArr(item) !== '')),
-        4: () => setDataCopy(() => [...data].filter(item => getArr(item) === filterText)),
-        5: () => setDataCopy(() => [...data].filter(item => getArr(item) !== filterText)),
-        6: () => setDataCopy(() => [...data].filter(item => getArr(item).toLowerCase().startsWith(filterText.toLowerCase().trim()))),
-        7: () => setDataCopy(() => [...data].filter(item => getArr(item).toLowerCase().endsWith(filterText.toLowerCase().trim()))),
-        8: () => setDataCopy(() => [...data].filter(item => getArr(item).toLowerCase().includes(filterText.toLowerCase().trim()))),
-        9: () => setDataCopy(() => [...data].filter(item => !getArr(item).toLowerCase().includes(filterText.toLowerCase().trim()))),
+        [filterLabel[0]]: () => setDataCopy(() => data.filter(item => getArr(item).toLowerCase() === filterText.toLowerCase().trim())),
+        [filterLabel[1]]: () => setDataCopy(() => data.filter(item => getArr(item).toLowerCase() !== filterText.toLowerCase().trim())),
+        [filterLabel[2]]: () => setDataCopy(() => data.filter(item => getArr(item) === '')),
+        [filterLabel[3]]: () => setDataCopy(() => data.filter(item => getArr(item) !== '')),
+        [filterLabel[4]]: () => setDataCopy(() => data.filter(item => getArr(item) === filterText)),
+        [filterLabel[5]]: () => setDataCopy(() => data.filter(item => getArr(item) !== filterText)),
+        [filterLabel[6]]: () => setDataCopy(() => data.filter(item => getArr(item).toLowerCase().startsWith(filterText.toLowerCase().trim()))),
+        [filterLabel[7]]: () => setDataCopy(() => data.filter(item => getArr(item).toLowerCase().endsWith(filterText.toLowerCase().trim()))),
+        [filterLabel[8]]: () => setDataCopy(() => data.filter(item => getArr(item).toLowerCase().includes(filterText.toLowerCase().trim()))),
+        [filterLabel[9]]: () => setDataCopy(() => data.filter(item => !getArr(item).toLowerCase().includes(filterText.toLowerCase().trim()))),
     }
+
+    const closeTag = () => {
+        setFilterTag([])
+        setDataCopy(() => data)
+        nullify();
+    }
+
 
     return (
         <Box is={"div"} className={switchClassName} {...props} >
-            <TableHeader headings={headings} sortIndex={sortIndex} setSortIndex={setSortIndex} sortModalTrigger={sortModalTrigger} filterModalTrigger={filterModalTrigger} handleSort={handleSort} filterIndex={filterIndex} setFilterIndex={setFilterIndex} handleChange={handleChange} filterText={filterText} filter={filter} nullify={nullify} />
+            {filterTag.length !== 0 && <TableTag filterTag={filterTag} closeTag={closeTag} />}
+
+            <TableHeader headings={headings} sortIndex={sortIndex} setSortIndex={setSortIndex} sortModalTrigger={sortModalTrigger} filterModalTrigger={filterModalTrigger} handleSort={handleSort} filterIndex={filterIndex} setFilterIndex={setFilterIndex} handleChange={handleChange} filterText={filterText} applyFilter={applyFilter} nullify={nullify} filterCriteria={filterCriteria} setFilterCriteria={setFilterCriteria} filterLabel={filterLabel} />
+
             <TableContent data={dataCopy} nullify={nullify} />
         </Box>
     );

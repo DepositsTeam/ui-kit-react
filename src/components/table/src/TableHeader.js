@@ -12,10 +12,10 @@ import Radio from '../../radio/src/Radio';
 import TextField from "../../text-field/src/TextField";
 import { useState } from "react";
 
-const TableHeader = ({ headings, sortIndex, handleSort, sortModalTrigger, filterIndex, filterModalTrigger, setFilterIndex, handleChange, filterText, filter, nullify }) => {
-    const [showInput, setShowInput] = useState(0)
+const TableHeader = ({ headings, sortIndex, handleSort, sortModalTrigger, filterIndex, filterModalTrigger, setFilterIndex, handleChange, filterText, applyFilter, nullify, filterCriteria, setFilterCriteria, filterLabel }) => {
+    // const [filterCriteria, setFilterCriteria] = useState(0)
 
-    const filterLabel = ['Is', 'Is not', 'Is empty', 'Is not empty', 'Is equal to', 'Is not equal to', 'Begins with', 'Ends with', 'Contains', 'Does not contain']
+    // const filterLabel = ['Is', 'Is not', 'Is empty', 'Is not empty', 'Is equal to', 'Is not equal to', 'Begins with', 'Ends with', 'Contains', 'Does not contain']
 
     return (
         <Box is='div' className='ui-table__header'>
@@ -47,13 +47,12 @@ const TableHeader = ({ headings, sortIndex, handleSort, sortModalTrigger, filter
 
                     {/* Filter modal creation */}
                     {filterIndex === idx &&
-                        <Box is='form' className={`ui-table__header-filter_modal`}>
+                        <Box is='div' className={`ui-table__header-filter_modal`}>
                             <Box is="div" className={`ui-table__header-filter_modal-actions`} >
                                 <Box is="div" className="filter-cancel" onClick={(e) => setFilterIndex(() => null)}>Cancel</Box>
                                 <Box is="div" className="filter-apply" onClick={(e) => {
                                     //  reset other states and filter 
-                                    nullify();
-                                    filter[showInput]();
+                                    applyFilter(e)
                                 }}>
                                     Apply Filter
                                 </Box>
@@ -63,9 +62,9 @@ const TableHeader = ({ headings, sortIndex, handleSort, sortModalTrigger, filter
                             {filterLabel.map((label, ind) =>
                                 <Box key={ind} is="div" className=''>
 
-                                    <Radio label={label} onClick={() => setShowInput(ind)} />
+                                    <Radio label={label} onClick={() => setFilterCriteria(filterLabel[ind])} />
                                     {/* show filter text field if clicked */}
-                                    {showInput === ind && <TextField label='Value' onChange={(e) => handleChange(e, ind)} value={filterText} />}
+                                    {filterCriteria === label && <TextField label='Value' onChange={(e) => handleChange(e, ind)} onKeyDown={(e) => e.keyCode === 13 && applyFilter(e)}/>}
                                 </Box>
                             )}
 
