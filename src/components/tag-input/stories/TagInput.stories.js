@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import TagInput from "../src/TagInput";
 
 export default {
@@ -9,7 +9,8 @@ export default {
 const Template = (props) => <TagInput {...props} />;
 
 export const ExampleTagInputStory = (args) => {
-	const [input, setInput] = useState(["Option one", "Option 2", "Option 3"]);
+	// const [input, setInput] = useState();
+	const input = ["Option one", "Option 2", "Option 3"]
 
 	return (
 		<TagInput

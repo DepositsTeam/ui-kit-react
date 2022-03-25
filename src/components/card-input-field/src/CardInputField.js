@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import "./CardInput.css";
 import Box from "../../box";
 import Text from "../../text";
@@ -23,7 +23,7 @@ const CardInputField = ({
 }) => {
   const [selectedCard, setSelectedCard] = useState(-1);
   const [cardNo, setCardNo] = useState("");
-  const [cardNoIsFocused, setCardNoIsFocused] = useState(false);
+  // const [cardNoIsFocused, setCardNoIsFocused] = useState(false);
   const [cardNoDisplay, setCardNoDisplay] = useState("");
   const [cardExp, setCardExp] = useState("");
   const [cardCVV, setCardCVV] = useState("");
@@ -36,7 +36,7 @@ const CardInputField = ({
 
   const handleCardNoFocus = () => {
     pseudoInput.current.classList.add("focus");
-    setCardNoIsFocused(true);
+    // setCardNoIsFocused(true);
     setCardNoDisplay(cardNo);
   };
 
@@ -51,7 +51,7 @@ const CardInputField = ({
 
   const handleCardNoBlur = (e) => {
     e.preventDefault();
-    setCardNoIsFocused(false);
+    // setCardNoIsFocused(false);
     pseudoInput.current.classList.remove("focus");
     const strippedCardNo = cardNo.replace(/\s/g, "");
     if (selectedCard === BRAND_ALIAS.AMEX) {
@@ -101,7 +101,7 @@ const CardInputField = ({
 
   const handleCardNoKeyDown = (e) => {
     if (e.key === "Backspace" || e.key === "Delete") {
-      if (cardNoDisplay.length != e.target.selectionStart) {
+      if (cardNoDisplay.length !== e.target.selectionStart) {
         setTargetPosition({ pos: e.target.selectionStart, key: e.key });
       }
     }
@@ -113,12 +113,12 @@ const CardInputField = ({
     console.log(e.key);
 
     if (
-      e.key != "Backspace" &&
-      e.key != "Delete" &&
-      e.key != "ArrowUp" &&
-      e.key != "ArrowLeft" &&
-      e.key != "ArrowDown" &&
-      e.key != "ArrowRight"
+      e.key !== "Backspace" &&
+      e.key !== "Delete" &&
+      e.key !== "ArrowUp" &&
+      e.key !== "ArrowLeft" &&
+      e.key !== "ArrowDown" &&
+      e.key !== "ArrowRight"
     ) {
       if (selectedCard === BRAND_ALIAS.AMEX) {
         if (strippedCardNo.length === 15) {

@@ -61,7 +61,7 @@ const Toast = ({ position, ...props }) => {
 export default Toast;
 
 Toast.propTypes = {
-  autoClose: PropTypes.number,
+  autoclose: PropTypes.number,
   position: PropTypes.oneOf([
     "top-right",
     "top-left",
@@ -71,6 +71,6 @@ Toast.propTypes = {
 };
 
 Toast.defaultProps = {
-  autoClose: 5000,
+  autoclose: 5000,
   position: "top-right",
 };

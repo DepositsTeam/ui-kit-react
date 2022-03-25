@@ -46,11 +46,6 @@
     cursor: pointer;
 }
 
-.ui-table__header-item span{
-}
-.ui-table__header-item span .ui-button__dropdown-icon:hover {
-}
-
 .ui-table__content {
     justify-content: center;
     font-family: 'Circular Std', sans-serif;
