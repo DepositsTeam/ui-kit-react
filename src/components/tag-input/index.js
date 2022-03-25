@@ -1,1 +1,1 @@
-export {default} from "./src/MultiInput";
+export { default } from "./src/TagInput";

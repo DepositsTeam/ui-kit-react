@@ -1,0 +1,81 @@
+.ui-text-field__phone-input .ui-text-field__country-code {
+    position: absolute;
+    border: 1px solid transparent;
+    left: 18px;
+    border-right: 1px solid #E1E7EC;
+    border-radius: 1px;
+    padding: 0 4px 0 0;
+    display: inline-block;
+    max-width: calc(4ch + 4px);
+    min-width: calc(2ch + 4px);
+    width: calc(2ch + 4px);
+    font-size: 16px;
+    line-height: 16px;
+    outline: none;
+    font-family: "Circular Std", sans-serif;
+    color: #212934;
+}
+
+.ui-text-field__phone-input .ui-text-field__country-code::placeholder {
+    color: #B8C4CE;
+}
+
+.ui-text-field__wrapper.size__small .ui-text-field__phone-input .ui-text-field__input {
+    padding-left: calc(2ch + 16px);
+}
+
+.ui-text-field__wrapper.size__medium .ui-text-field__phone-input .ui-text-field__input {
+    padding-left: calc(2ch + 26px);
+}
+
+.ui-text-field__wrapper.size__large .ui-text-field__phone-input .ui-text-field__input {
+    padding-left: calc(2ch + 26px);
+}
+
+.ui-text-field__wrapper.size__xlarge .ui-text-field__phone-input .ui-text-field__input {
+    padding-left: calc(2ch + 20px);
+}
+
+.ui-text-field__wrapper.size__huge .ui-text-field__phone-input .ui-text-field__input {
+    padding-left: calc(2ch + 26px);
+}
+
+.ui-text-field__wrapper.size__massive .ui-text-field__phone-input .ui-text-field__input {
+    padding-left: calc(2ch + 26px);
+}
+
+.ui-text-field__wrapper.size__small .ui-text-field__phone-input .ui-text-field__country-code {
+    font-size: 12px;
+    line-height: 12px;
+    left: 8px;
+}
+
+.ui-text-field__wrapper.size__xlarge .ui-text-field__phone-input .ui-text-field__country-code {
+    left: 12px;
+}
+
+.ui-text-field__wrapper.size__large .ui-text-field__left-icon {
+    left: 12px;
+}
+
+.ui-text-field__wrapper.size__medium .ui-text-field__left-icon {
+    left: 12px;
+}
+
+.ui-text-field__input:disabled + .ui-text-field__country-code, .ui-text-field[disabled] + .ui-text-field__country-code {
+    background: #EDEEEF;
+    cursor: not-allowed;
+}
+
+.ui-text-field__input.has-error + .ui-text-field__country-code {
+    background: #FFF0F2;
+}
+
+.ui-text-field__wrapper.has-error .ui-text-field__country-code {
+    background: #fff0f2;
+}
+
+.ui-text-field__wrapper.disabled .ui-text-field__country-code {
+    background: #EDEEEF;
+    cursor: not-allowed;
+}

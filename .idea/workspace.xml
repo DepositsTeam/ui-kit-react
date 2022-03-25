@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/babel.config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/banner/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/banner/src/Banner.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/banner/src/Banner.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/banner/stories/Banner.stories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/card/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/card/src/Card.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/card/src/Card.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/card/stories/Card.stories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/date-picker/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/date-picker/src/Calendar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/date-picker/src/DatePicker.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/date-picker/src/DatePicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/date-picker/stories/DatePicker.stories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/heading/src/Heading.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/ArrowLeft.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/ArrowRight.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Calendar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modal/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modal/src/Modals.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modal/src/modal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modal/stories/Modals.stories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/pagination/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/pagination/src/Pagination.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/pagination/src/Pagination.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/pagination/stories/Pagination.stories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/switch/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/switch/src/Switch.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/switch/src/Switch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/switch/stories/Switch.stories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/tab/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/tab/src/Tab.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/tab/src/Tab.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/tab/stories/Tab.stories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/text/src/Text.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/hooks/pagination.hook.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Badge/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/badge/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Badge/src/Badge.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/badge/src/Badge.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Badge/src/badge.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/badge/src/badge.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Badge/stories/Badge.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/badge/stories/Badge.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/alert/src/alert.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/alert/src/alert.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/button/stories/Button.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/stories/Button.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/card-input-field/src/CardInputField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card-input-field/src/CardInputField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/checkbox/src/Checkbox.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/checkbox/src/Checkbox.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/heading/src/Heading.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/heading/src/Heading.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/src/Icon.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/src/Icon.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/src/icon.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/src/icon.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/stories/Icon.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/stories/Icon.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/radio/src/Radio.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/radio/src/Radio.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tag-input/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tag-input/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text/src/Text.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text/src/Text.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text/src/text.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text/src/text.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/textfield.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/textfield.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/classNames.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/classNames.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storybook-static/0.1e140da0.iframe.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/storybook-static/0.1e140da0.iframe.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storybook-static/main.e2663b1cf842947d1a59.manager.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/storybook-static/main.e2663b1cf842947d1a59.manager.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storybook-static/main.ffd456d5.iframe.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/storybook-static/main.ffd456d5.iframe.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storybook-static/vendors~main.aba18535.iframe.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/storybook-static/vendors~main.aba18535.iframe.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="pagination" />
+                    <option name="lastUsedInstant" value="1646216201" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="pagination-icons" />
+                    <option name="lastUsedInstant" value="1645798601" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="multi-input" />
+                    <option name="lastUsedInstant" value="1645798600" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="25ZVcarcqXcy52V7beNzRDcToKg" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/tab/stories" />
+      <recent name="$PROJECT_DIR$/src/components/tab" />
+      <recent name="$PROJECT_DIR$/src/components/tab/src" />
+      <recent name="$PROJECT_DIR$/src/components/banner/src" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="storybook" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="storybook" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.storybook" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="" />
+      <created>1645734679395</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1645734679395</updated>
+      <workItem from="1645734683437" duration="1614000" />
+      <workItem from="1645793701520" duration="2825000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
