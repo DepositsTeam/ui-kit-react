@@ -10,12 +10,8 @@ import funnel from '../assets/funnel.svg'
 import rightArrow from '../assets/right-arrow.svg'
 import Radio from '../../radio/src/Radio';
 import TextField from "../../text-field/src/TextField";
-import { useState } from "react";
 
 const TableHeader = ({ headings, sortIndex, handleSort, sortModalTrigger, filterIndex, filterModalTrigger, setFilterIndex, handleChange, filterText, applyFilter, nullify, filterCriteria, setFilterCriteria, filterLabel }) => {
-    // const [filterCriteria, setFilterCriteria] = useState(0)
-
-    // const filterLabel = ['Is', 'Is not', 'Is empty', 'Is not empty', 'Is equal to', 'Is not equal to', 'Begins with', 'Ends with', 'Contains', 'Does not contain']
 
     return (
         <Box is='div' className='ui-table__header'>

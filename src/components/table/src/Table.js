@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 import classNames from "../../../utils/classNames";
 import TableContent from "./TableContent";
 import TableHeader from "./TableHeader";
-import TagInput from "../../tag-input/src/TagInput";
 import TableTag from "./TableTag";
 
 const Table = ({ data, headings, columns, className, ...props }) => {
