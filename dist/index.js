@@ -21,6 +21,12 @@ Object.defineProperty(exports, "Badge", {
     return _badge.default;
   }
 });
+Object.defineProperty(exports, "Banner", {
+  enumerable: true,
+  get: function get() {
+    return _banner.default;
+  }
+});
 Object.defineProperty(exports, "Box", {
   enumerable: true,
   get: function get() {
@@ -135,6 +141,8 @@ var _alert = _interopRequireDefault(require("./components/alert"));
 var _avatar = _interopRequireDefault(require("./components/avatar"));
 
 var _badge = _interopRequireDefault(require("./components/badge"));
+
+var _banner = _interopRequireDefault(require("./components/banner"));
 
 var _box = _interopRequireDefault(require("./components/box"));
 

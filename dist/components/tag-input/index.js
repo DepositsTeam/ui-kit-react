@@ -6,10 +6,10 @@ Object.defineProperty(exports, "__esModule", {
 Object.defineProperty(exports, "default", {
   enumerable: true,
   get: function get() {
-    return _MultiInput.default;
+    return _TagInput.default;
   }
 });
 
-var _MultiInput = _interopRequireDefault(require("./src/MultiInput"));
+var _TagInput = _interopRequireDefault(require("./src/TagInput"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

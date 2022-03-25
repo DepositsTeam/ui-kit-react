@@ -91,7 +91,11 @@ const Alert = _ref => {
     className: "ui-alert__content-wrapper"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "ui-alert__content"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, colorScheme !== "default" && /*#__PURE__*/_react.default.createElement(_icon.default, {
+    className: "ui-alert__header-icon",
+    icon: schemeIcons[colorScheme],
+    smartColor: "currentcolor"
+  }), /*#__PURE__*/_react.default.createElement("div", {
     className: "ui-alert__text"
   }, /*#__PURE__*/_react.default.createElement(_box.default, {
     className: "ui-alert__header"

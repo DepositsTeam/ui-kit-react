@@ -60,38 +60,33 @@ const Card = _ref => {
     "ui-card": true,
     ["state__selected"]: selected
   }, className);
-  return (
-    /*#__PURE__*/
-    // <Box is={is} >
-    _react.default.createElement(_box.default, {
-      is: "label",
-      className: generatedClassName
-    }, radio && /*#__PURE__*/_react.default.createElement(_radio.default, _extends({
-      is: "input",
-      className: "ui-radio",
-      type: "radio",
-      onClick: e => {
-        setSelected(() => e.target.checked);
-      }
-    }, props)) || checkbox && /*#__PURE__*/_react.default.createElement(_checkbox.default, _extends({
-      is: "input",
-      className: "ui-checkbox",
-      type: "checkbox",
-      onClick: e => {
-        setSelected(() => e.target.checked);
-      }
-    }, props)), /*#__PURE__*/_react.default.createElement("div", {
-      className: "ui-card__content"
-    }, /*#__PURE__*/_react.default.createElement("div", {
-      className: "ui-card__title"
-    }, title), (desc || children) && /*#__PURE__*/_react.default.createElement("div", {
-      className: "ui-card__card-text"
-    }, desc || children)), icon && /*#__PURE__*/_react.default.createElement(_icon.default, {
-      className: "ui-card__icon",
-      icon: _Card2.default
-    })) // </Box>
-
-  );
+  return /*#__PURE__*/_react.default.createElement(_box.default, {
+    is: "label",
+    className: generatedClassName
+  }, radio && /*#__PURE__*/_react.default.createElement(_radio.default, _extends({
+    is: "input",
+    className: "ui-radio",
+    type: "radio",
+    onClick: e => {
+      setSelected(() => e.target.checked);
+    }
+  }, props)) || checkbox && /*#__PURE__*/_react.default.createElement(_checkbox.default, _extends({
+    is: "input",
+    className: "ui-checkbox",
+    type: "checkbox",
+    onClick: e => {
+      setSelected(() => e.target.checked);
+    }
+  }, props)), /*#__PURE__*/_react.default.createElement("div", {
+    className: "ui-card__content"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "ui-card__title"
+  }, title), (desc || children) && /*#__PURE__*/_react.default.createElement("div", {
+    className: "ui-card__card-text"
+  }, desc || children)), icon && /*#__PURE__*/_react.default.createElement(_icon.default, {
+    className: "ui-card__icon",
+    icon: _Card2.default
+  }));
 };
 
 Card.propTypes = {

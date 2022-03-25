@@ -6,10 +6,10 @@ Object.defineProperty(exports, "__esModule", {
 Object.defineProperty(exports, "default", {
   enumerable: true,
   get: function get() {
-    return _DatePicker.default;
+    return _Banner.default;
   }
 });
 
-var _DatePicker = _interopRequireDefault(require("./src/DatePicker"));
+var _Banner = _interopRequireDefault(require("./src/Banner"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

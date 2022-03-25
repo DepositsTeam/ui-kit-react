@@ -1,6 +1,7 @@
 .ui-radio__wrapper {
   display: flex;
   align-items: center;
+  width:max-content;
 }
 
 .ui-radio__wrapper.alignToTop {

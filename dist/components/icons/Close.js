@@ -24,9 +24,9 @@ const CloseComponent = _ref => {
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("path", {
     d: "M6 6L18 18M6 18L18 6L6 18Z",
     stroke: smartColor || stroke,
-    "stroke-width": strokeWidth,
-    "stroke-linecap": strokeLineCap,
-    "stroke-linejoin": strokeLineJoin
+    strokeWidth: strokeWidth,
+    strokeLinecap: strokeLineCap,
+    strokeLinejoin: strokeLineJoin
   }));
 };
 
