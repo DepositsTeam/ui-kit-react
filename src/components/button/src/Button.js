@@ -15,6 +15,7 @@ const Button = ({
   size,
   className,
   colorScheme,
+  responsive,
   ...props
 }) => {
   const generatedClassName = classNames(
@@ -23,6 +24,7 @@ const Button = ({
       [`semantic__${colorScheme}`]: colorScheme,
       [`state__disabled`]: disabled,
       [`size__${size}`]: size,
+      responsive,
     },
     className
   );
@@ -69,6 +71,7 @@ Button.propTypes = {
   ]),
   leftIcon: PropTypes.object,
   dropDown: PropTypes.bool,
+  responsive: PropTypes.bool,
 };
 
 Button.defaultProps = {
