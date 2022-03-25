@@ -15,6 +15,7 @@ import PhoneField from "./components/phone-field";
 import Radio from "./components/radio";
 import SelectField from "./components/select-field";
 import Switch from "./components/switch";
+import Tab from "./components/tab";
 import TagInput from "./components/tag-input";
 import Text from "./components/text";
 import TextArea from "./components/text-area";
@@ -44,4 +45,5 @@ export {
   TextArea,
   TextField,
   Toast,
+  Tab,
 };

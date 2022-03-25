@@ -5,22 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/table/assets/funnel.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/table/assets/right-arrow.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/table/assets/sort-ascending.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/table/assets/sort-descending.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/table/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/table/src/Table.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/table/src/Table.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/table/src/TableContent.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/table/src/TableHeader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/table/src/TableTag.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/table/stories/Table.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/card/src/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card/src/Card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icons/Close.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icons/Close.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/radio/src/Radio.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/radio/src/Radio.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/button/src/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/src/Button.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/button/src/button.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/src/button.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/src/Modals.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/src/Modal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/src/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/src/modal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/stories/Modals.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/stories/Modals.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,16 +42,16 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="pagination" />
-                    <option name="lastUsedInstant" value="1646216201" />
+                    <option name="branchName" value="modal" />
+                    <option name="lastUsedInstant" value="1648201602" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="pagination-icons" />
-                    <option name="lastUsedInstant" value="1645798601" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1648201176" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="multi-input" />
-                    <option name="lastUsedInstant" value="1645798600" />
+                    <option name="branchName" value="table" />
+                    <option name="lastUsedInstant" value="1648200637" />
                   </RecentBranch>
                 </list>
               </option>
@@ -129,6 +121,7 @@
       <updated>1645734679395</updated>
       <workItem from="1645734683437" duration="1614000" />
       <workItem from="1645793701520" duration="2825000" />
+      <workItem from="1648201854060" duration="8712000" />
     </task>
     <servers />
   </component>
