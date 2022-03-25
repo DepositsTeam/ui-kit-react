@@ -29,12 +29,13 @@
     font-size: 12px;
     font-style: normal;
     font-weight: 600;
-    line-height: 14px;z 
+    line-height: 14px;
     letter-spacing: 0.06em;
     text-align: left;
     background-color: #F5F8FA;  
     
 }
+
 
 .ui-table__header-item{
 
@@ -43,6 +44,11 @@
     width: 100%;
     align-items: center;
     cursor: pointer;
+}
+
+.ui-table__header-item span{
+}
+.ui-table__header-item span .ui-button__dropdown-icon:hover {
 }
 
 .ui-table__content {
@@ -181,3 +187,28 @@ img{
 .filter-apply{
     color: blue;
 }
+
+.ui-table__filter-tag {
+    background-color: #F5F8FA;  
+    text-transform: capitalize;
+    font-weight: 600;
+    width: max-content;
+    padding: 5px 7px;
+    margin: 5px 0px;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: smaller ;
+
+}
+
+.ui-table__filter-tag span {
+    text-transform: lowercase;
+    font-weight: 400;
+    margin: 0 4px;
+}
+
+.ui-table__filter-tag span.close{
+    cursor: pointer;
+    margin: auto 0px auto 10px;
+    }
