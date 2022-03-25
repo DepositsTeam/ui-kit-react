@@ -18,7 +18,7 @@ Default.args = {
 
 export const Primary = Template.bind({});
 Primary.args = { children: "Primary Button", colorScheme: "primary" };
-Primary.storyName = "Primary";
+// Primary.storyName = "Primary";
 
 export const Danger = Template.bind({});
 Danger.args = { children: "Danger Button", colorScheme: "danger" };

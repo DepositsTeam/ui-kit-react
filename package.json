@@ -1,13 +1,21 @@
 {
-  "name": "deposits-react-ui-kit",
-  "version": "0.1.0",
-  "private": true,
+  "name": "deposits-ui-kit-react",
+  "version": "0.0.1",
+  "private": false,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
+    "react-date-picker": "^8.4.0",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "react-transition-group": "^4.4.2",
@@ -20,7 +28,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build-npm": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files"
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +60,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
     "@storybook/addon-actions": "^6.4.9",
     "@storybook/addon-essentials": "^6.4.9",
     "@storybook/addon-links": "^6.4.9",

@@ -16,6 +16,8 @@ deploy_development:
     - cd /var/www/html/test/ui_kit/storybook/react-ui-kit
     - npm install
     - npm run build-storybook
+#    - npm run build-npm
+#    - npm publish
 
 # deploy_production:
 #   stage: deploy

@@ -15,9 +15,9 @@ const CloseComponent = ({
       <path
         d="M6 6L18 18M6 18L18 6L6 18Z"
         stroke={smartColor || stroke}
-        stroke-width={strokeWidth}
-        stroke-linecap={strokeLineCap}
-        stroke-linejoin={strokeLineJoin}
+        strokeWidth={strokeWidth}
+        strokeLinecap={strokeLineCap}
+        strokeLinejoin={strokeLineJoin}
       />
     </>
   );

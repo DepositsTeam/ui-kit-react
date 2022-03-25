@@ -5,11 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icons/ArrowLeft.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icons/ArrowLeft.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icons/ArrowRight.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icons/ArrowRight.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pagination/src/Pagination.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination/src/Pagination.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pagination/src/Pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination/src/Pagination.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/table/assets/funnel.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/table/assets/right-arrow.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/table/assets/sort-ascending.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/table/assets/sort-descending.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/table/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/table/src/Table.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/table/src/Table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/table/src/TableContent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/table/src/TableHeader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/table/src/TableTag.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/table/stories/Table.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/card/src/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card/src/Card.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icons/Close.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icons/Close.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/radio/src/Radio.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/radio/src/Radio.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +33,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -71,6 +83,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -78,7 +91,16 @@
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/tab/stories" />
+      <recent name="$PROJECT_DIR$/src/components/tab" />
+      <recent name="$PROJECT_DIR$/src/components/tab/src" />
+      <recent name="$PROJECT_DIR$/src/components/banner/src" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="storybook" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
