@@ -5,13 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Cart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Tag.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/src/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/src/Button.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/src/button.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/src/button.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/src/Modals.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/src/Modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/src/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/src/modal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/stories/Modals.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/stories/Modals.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/components/button/src/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/components/button/src/Button.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/components/button/src/button.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/components/button/src/button.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/components/modal/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/components/modal/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/components/modal/src/Modals.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/components/modal/src/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/components/modal/src/modal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/components/modal/stories/Modals.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/components/modal/stories/Modals.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icons/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icons/Search.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -121,7 +127,9 @@
       <updated>1645734679395</updated>
       <workItem from="1645734683437" duration="1614000" />
       <workItem from="1645793701520" duration="2825000" />
-      <workItem from="1648201854060" duration="8712000" />
+      <workItem from="1648201854060" duration="8894000" />
+      <workItem from="1648212923264" duration="582000" />
+      <workItem from="1648303995102" duration="1498000" />
     </task>
     <servers />
   </component>

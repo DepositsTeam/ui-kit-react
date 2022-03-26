@@ -21,7 +21,7 @@ var _icon = _interopRequireDefault(require("../../icon"));
 
 var _ChevronFilledDown = _interopRequireDefault(require("../../icons/ChevronFilledDown"));
 
-const _excluded = ["is", "leftIcon", "dropDown", "disabled", "size", "className", "colorScheme"];
+const _excluded = ["is", "leftIcon", "dropDown", "disabled", "size", "className", "colorScheme", "responsive"];
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39,7 +39,8 @@ const Button = _ref => {
     disabled,
     size,
     className,
-    colorScheme
+    colorScheme,
+    responsive
   } = _ref,
       props = _objectWithoutProperties(_ref, _excluded);
 
@@ -47,7 +48,8 @@ const Button = _ref => {
     "ui-button": true,
     ["semantic__".concat(colorScheme)]: colorScheme,
     ["state__disabled"]: disabled,
-    ["size__".concat(size)]: size
+    ["size__".concat(size)]: size,
+    responsive
   }, className);
   return /*#__PURE__*/_react.default.createElement(_box.default, _extends({
     is: is
@@ -72,7 +74,8 @@ Button.propTypes = {
   disabled: _propTypes.default.bool,
   size: _propTypes.default.oneOf(["small", "medium", "large", "xlarge", "huge", "massive"]),
   leftIcon: _propTypes.default.object,
-  dropDown: _propTypes.default.bool
+  dropDown: _propTypes.default.bool,
+  responsive: _propTypes.default.bool
 };
 Button.defaultProps = {
   is: "button",
