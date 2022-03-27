@@ -5,85 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Add.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/AddCircle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/AddFile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/AddItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/AddUser.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Alarm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Apps.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Attachment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Bank.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Cash.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/CheckCircle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/CloseCircle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Cloud.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/CloudDownload.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/CloudFlash.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/CloudRain.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/CloudUpload.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Command.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Compress.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Compress2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Copy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Crop.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Decrease.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Details.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Dial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/DialOff.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Document.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Edit.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Edit2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/ErrorCircle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/ExitFullScreen.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Expand.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Expand2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Eye.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/EyeOff.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/File.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/FullScreen.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Funnel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Gift.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Grid.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Image.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Inbox.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Increase.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/InfoOutline.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/List.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Location.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Lock.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/MenuH.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/MenuV.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Message.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Mic.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/MicOff.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Moon.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Mute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/NotificationBell.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Pie.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/PlayCircle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Power.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Print.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Profile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Scroll.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/SelectItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Share.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Shop.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Sound.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Stack.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/StopCircle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Stopwatch.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Sun.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Time.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Unlock.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Video.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/VideoOff.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Voucher.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Wallet.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/AddBookmark.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/BarChart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Basket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Book.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Bookmark.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Camera.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Chat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Download.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Folder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Heart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/HeartFilled.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Link.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Login2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Logout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Logout2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Menu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Menu2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Music.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Pulse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Star.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Wave.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/icon/stories/Icon.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/stories/Icon.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icons/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icons/Cart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/icons/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icons/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -203,7 +149,7 @@
       <workItem from="1645793701520" duration="2825000" />
       <workItem from="1648201854060" duration="8894000" />
       <workItem from="1648212923264" duration="582000" />
-      <workItem from="1648303995102" duration="27772000" />
+      <workItem from="1648303995102" duration="31942000" />
     </task>
     <servers />
   </component>

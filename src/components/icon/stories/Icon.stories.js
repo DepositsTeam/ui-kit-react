@@ -89,6 +89,29 @@ import NotificationBellIcon from "../../icons/NotificationBell";
 import InboxIcon from "../../icons/Inbox";
 import HomeIcon from "../../icons/Home";
 import ImageIcon from "../../icons/Image";
+import BasketIcon from "../../icons/Basket";
+import FolderIcon from "../../icons/Folder";
+import ChatIcon from "../../icons/Chat";
+import StarIcon from "../../icons/Star";
+import LinkIcon from "../../icons/Link";
+import PulseIcon from "../../icons/Pulse";
+import MusicIcon from "../../icons/Music";
+import BarChartIcon from "../../icons/BarChart";
+import TableIcon from "../../icons/Table";
+import WaveIcon from "../../icons/Wave";
+import BookIcon from "../../icons/Book";
+import LoginIcon from "../../icons/Login";
+import LogoutIcon from "../../icons/Logout";
+import Logout2Icon from "../../icons/Logout2";
+import Login2Icon from "../../icons/Login2";
+import DownloadIcon from "../../icons/Download";
+import CameraIcon from "../../icons/Camera";
+import BookmarkIcon from "../../icons/Bookmark";
+import AddBookmarkIcon from "../../icons/AddBookmark";
+import HeartIcon from "../../icons/Heart";
+import HeartFilledIcon from "../../icons/HeartFilled";
+import MenuIcon from "../../icons/Menu";
+import Menu2Icon from "../../icons/Menu2";
 
 export default {
   title: "Icons",
@@ -551,4 +574,119 @@ Home.args = {
 export const Image = Template.bind({});
 Image.args = {
   icon: ImageIcon,
+};
+
+export const Basket = Template.bind({});
+Basket.args = {
+  icon: BasketIcon,
+};
+
+export const Folder = Template.bind({});
+Folder.args = {
+  icon: FolderIcon,
+};
+
+export const Chat = Template.bind({});
+Chat.args = {
+  icon: ChatIcon,
+};
+
+export const Star = Template.bind({});
+Star.args = {
+  icon: StarIcon,
+};
+
+export const Link = Template.bind({});
+Link.args = {
+  icon: LinkIcon,
+};
+
+export const Pulse = Template.bind({});
+Pulse.args = {
+  icon: PulseIcon,
+};
+
+export const Music = Template.bind({});
+Music.args = {
+  icon: MusicIcon,
+};
+
+export const BarChart = Template.bind({});
+BarChart.args = {
+  icon: BarChartIcon,
+};
+
+export const Table = Template.bind({});
+Table.args = {
+  icon: TableIcon,
+};
+
+export const Wave = Template.bind({});
+Wave.args = {
+  icon: WaveIcon,
+};
+
+export const Book = Template.bind({});
+Book.args = {
+  icon: BookIcon,
+};
+
+export const Login = Template.bind({});
+Login.args = {
+  icon: LoginIcon,
+};
+
+export const Logout = Template.bind({});
+Logout.args = {
+  icon: LogoutIcon,
+};
+
+export const Logout2 = Template.bind({});
+Logout2.args = {
+  icon: Logout2Icon,
+};
+
+export const Login2 = Template.bind({});
+Login2.args = {
+  icon: Login2Icon,
+};
+
+export const Download = Template.bind({});
+Download.args = {
+  icon: DownloadIcon,
+};
+
+export const Camera = Template.bind({});
+Camera.args = {
+  icon: CameraIcon,
+};
+
+export const Bookmark = Template.bind({});
+Bookmark.args = {
+  icon: BookmarkIcon,
+};
+
+export const AddBookmark = Template.bind({});
+AddBookmark.args = {
+  icon: AddBookmarkIcon,
+};
+
+export const Heart = Template.bind({});
+Heart.args = {
+  icon: HeartIcon,
+};
+
+export const HeartFilled = Template.bind({});
+HeartFilled.args = {
+  icon: HeartFilledIcon,
+};
+
+export const Menu = Template.bind({});
+Menu.args = {
+  icon: MenuIcon,
+};
+
+export const Menu2 = Template.bind({});
+Menu2.args = {
+  icon: Menu2Icon,
 };
