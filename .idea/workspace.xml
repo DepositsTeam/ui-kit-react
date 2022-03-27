@@ -5,20 +5,86 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Cart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Tag.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Add.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/AddCircle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/AddFile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/AddItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/AddUser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Alarm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Apps.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Attachment.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Bank.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Cash.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/CheckCircle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/CloseCircle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Cloud.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/CloudDownload.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/CloudFlash.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/CloudRain.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/CloudUpload.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Command.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Compress.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Compress2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Copy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Crop.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Decrease.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Details.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Dial.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/DialOff.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Document.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Edit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Edit2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/ErrorCircle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/ExitFullScreen.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Expand.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Expand2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Eye.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/EyeOff.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/File.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/FullScreen.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Funnel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Gift.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Grid.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Home.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Image.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Inbox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Increase.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/InfoOutline.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/List.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Location.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Lock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/MenuH.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/MenuV.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Message.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Mic.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/MicOff.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Moon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Mute.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/NotificationBell.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Pie.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/PlayCircle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Power.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Print.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Profile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Scroll.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/SelectItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Share.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Shop.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Sound.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Stack.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/StopCircle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Stopwatch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Sun.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Time.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Unlock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Video.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/VideoOff.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Voucher.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icons/Wallet.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/components/button/src/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/components/button/src/Button.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/components/button/src/button.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/components/button/src/button.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/components/modal/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/components/modal/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/components/modal/src/Modals.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/components/modal/src/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/components/modal/src/modal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/components/modal/stories/Modals.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/components/modal/stories/Modals.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icons/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icons/Search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/stories/Icon.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/stories/Icon.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icons/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icons/Cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icons/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icons/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +113,10 @@
             <RecentBranchesForRepo>
               <option name="branches">
                 <list>
+                  <RecentBranch>
+                    <option name="branchName" value="icons" />
+                    <option name="lastUsedInstant" value="1648305656" />
+                  </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="modal" />
                     <option name="lastUsedInstant" value="1648201602" />
@@ -81,6 +151,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/icons" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -93,6 +164,9 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/icons" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components/tab/stories" />
       <recent name="$PROJECT_DIR$/src/components/tab" />
@@ -129,7 +203,7 @@
       <workItem from="1645793701520" duration="2825000" />
       <workItem from="1648201854060" duration="8894000" />
       <workItem from="1648212923264" duration="582000" />
-      <workItem from="1648303995102" duration="1498000" />
+      <workItem from="1648303995102" duration="27772000" />
     </task>
     <servers />
   </component>
