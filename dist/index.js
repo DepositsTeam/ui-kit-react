@@ -105,6 +105,12 @@ Object.defineProperty(exports, "Switch", {
     return _switch.default;
   }
 });
+Object.defineProperty(exports, "Tab", {
+  enumerable: true,
+  get: function get() {
+    return _tab.default;
+  }
+});
 Object.defineProperty(exports, "TagInput", {
   enumerable: true,
   get: function get() {
@@ -169,6 +175,8 @@ var _radio = _interopRequireDefault(require("./components/radio"));
 var _selectField = _interopRequireDefault(require("./components/select-field"));
 
 var _switch = _interopRequireDefault(require("./components/switch"));
+
+var _tab = _interopRequireDefault(require("./components/tab"));
 
 var _tagInput = _interopRequireDefault(require("./components/tag-input"));
 

@@ -30,7 +30,7 @@ export default function useToast(props) {
         return () => {
             clearInterval(interval);
         };
-    }, [toasts]);
+    });
 
-    return [toasts, setToasts, setCountUp, ]
+    return [toasts, setToasts, setCountUp,]
 }

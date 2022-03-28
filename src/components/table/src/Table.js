@@ -8,7 +8,7 @@ import TableContent from "./TableContent";
 import TableHeader from "./TableHeader";
 import TableTag from "./TableTag";
 
-const Table = ({ data, headings, columns, className, ...props }) => {
+const Table = ({ data, headings, columns, className, checkbox, ...props }) => {
 
     // const cols = Object.entries(dataCopy[0]).length
     const switchClassName = classNames(
@@ -59,15 +59,15 @@ const Table = ({ data, headings, columns, className, ...props }) => {
     // sort column ascending or descending 
     const handleSort = (idx, type) => {
         nullify()
-        setDataCopy(() => [...data].sort((a, b) => {
+        setDataCopy(() => [...dataCopy].sort((a, b) => {
             let x = Object.values(a)[idx]
             let y = Object.values(b)[idx]
 
-            if (type === 'asc') {
+            if (type === 'desc') {
                 if (x < y) { return -1 }
                 if (y < x) { return 1 }
             }
-            if (type === 'desc') {
+            if (type === 'asc') {
                 if (x > y) { return -1 }
                 if (y > x) { return 1 }
             }
@@ -123,12 +123,14 @@ const Table = ({ data, headings, columns, className, ...props }) => {
 
 
     return (
-        <Box is={"div"} className={switchClassName} {...props} >
-            {filterTag.length !== 0 && <TableTag filterTag={filterTag} closeTag={closeTag} />}
+        <Box is={"div"} >
+            {filterTag.length !== 0 && <TableTag filterTag={filterTag} closeTag={closeTag} nullify={nullify} filterLabel={filterLabel} />}
+            <Box is={"div"} className={switchClassName} {...props} >
 
-            <TableHeader headings={headings} sortIndex={sortIndex} setSortIndex={setSortIndex} sortModalTrigger={sortModalTrigger} filterModalTrigger={filterModalTrigger} handleSort={handleSort} filterIndex={filterIndex} setFilterIndex={setFilterIndex} handleChange={handleChange} filterText={filterText} applyFilter={applyFilter} nullify={nullify} filterCriteria={filterCriteria} setFilterCriteria={setFilterCriteria} filterLabel={filterLabel} />
+                <TableHeader headings={headings} sortIndex={sortIndex} setSortIndex={setSortIndex} sortModalTrigger={sortModalTrigger} filterModalTrigger={filterModalTrigger} handleSort={handleSort} filterIndex={filterIndex} setFilterIndex={setFilterIndex} handleChange={handleChange} filterText={filterText} applyFilter={applyFilter} nullify={nullify} filterCriteria={filterCriteria} setFilterCriteria={setFilterCriteria} filterLabel={filterLabel} checkbox={checkbox} />
 
-            <TableContent data={dataCopy} nullify={nullify} />
+                <TableContent data={dataCopy} nullify={nullify} checkbox={checkbox} filterLabel={filterLabel} filterCriteria={filterCriteria} setFilterCriteria={setFilterCriteria} />
+            </Box>
         </Box>
     );
 };
@@ -137,13 +139,14 @@ export default Table;
 
 
 Table.propTypes = {
-    headings: PropTypes.array,
-    data: PropTypes.array,
-    cols: PropTypes.number
+    headings: PropTypes.array.isRequired,
+    data: PropTypes.array.isRequired,
+    cols: PropTypes.number,
+    checkbox: PropTypes.bool,
 
 };
 
 Table.defaultProps = {
-    columns: 6
+    checkbox: false
 
 };
