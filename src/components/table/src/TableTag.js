@@ -8,13 +8,14 @@ import SelectField from '../../select-field/src/SelectField'
 
 const TableTag = ({ filterTag, closeTag, filterLabel, nullify }) => {
   const [showModal, setShowModal] = useState(false)
-  // const [toggleModal, setToggleModal] = useState(false)
+
   const triggerModal = () => {
     showModal && setShowModal(() => false)
     !showModal && setShowModal(() => true)
   }
   const applyFilter2 = (e) => {
     nullify()
+    setShowModal(() => true)
   }
  
   return (
@@ -32,7 +33,7 @@ const TableTag = ({ filterTag, closeTag, filterLabel, nullify }) => {
       </Box>
 
 
-      <Box is='div' className={`ui-table__filter-tag-field  ${showModal && 'hide'} `}>
+      <Box is='div' className={`ui-table__filter-tag-field  ${!showModal && 'hide'} `}>
         <Box is='div' >
           <SelectField label={'Filter'} size={'small'} options={filterLabel} dropDown />
           <SelectField label={'Filter'} size={'small'} options={filterLabel} dropDown />
@@ -49,7 +50,7 @@ const TableTag = ({ filterTag, closeTag, filterLabel, nullify }) => {
         </Box>
         <Box is='div' >
           <Button children='Apply Filter' colorScheme={'primary'} onClick={applyFilter2} />
-          <Button onClick={() => nullify()}>Cancel</Button>
+          <Button onClick={() => setShowModal(() => true)}>Cancel</Button>
         </Box>
       </Box>
     </Box>
