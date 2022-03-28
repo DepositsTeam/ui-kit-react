@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const ArrowLeftComponent = ({
+const CompassComponent = ({
   fill,
   stroke,
   smartColor,
@@ -13,21 +13,14 @@ const ArrowLeftComponent = ({
   return (
     <>
       <path
-        d="M5 12H19"
+        d="M8 16L10 10L16 8L14 14L8 16Z"
         stroke={smartColor || stroke}
         strokeWidth={strokeWidth}
         strokeLinecap={strokeLineCap}
         strokeLinejoin={strokeLineJoin}
       />
       <path
-        d="M5 12L11 18"
-        stroke={smartColor || stroke}
-        strokeWidth={strokeWidth}
-        strokeLinecap={strokeLineCap}
-        strokeLinejoin={strokeLineJoin}
-      />
-      <path
-        d="M5 12L11 6"
+        d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
         stroke={smartColor || stroke}
         strokeWidth={strokeWidth}
         strokeLinecap={strokeLineCap}
@@ -37,13 +30,13 @@ const ArrowLeftComponent = ({
   );
 };
 
-const ArrowLeft = {
-  component: ArrowLeftComponent,
+const Compass = {
+  component: CompassComponent,
   viewBox: "0 0 24 24",
   fill: "none",
 };
 
-ArrowLeftComponent.propTypes = {
+CompassComponent.propTypes = {
   fill: PropTypes.string,
   stroke: PropTypes.string,
   strokeWidth: PropTypes.string,
@@ -52,11 +45,11 @@ ArrowLeftComponent.propTypes = {
   smartColor: PropTypes.string,
 };
 
-ArrowLeftComponent.defaultProps = {
+CompassComponent.defaultProps = {
   stroke: "black",
   strokeWidth: "1.5",
   strokeLineCap: "round",
   strokeLineJoin: "round",
 };
 
-export default ArrowLeft;
+export default Compass;

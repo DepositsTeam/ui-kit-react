@@ -5,8 +5,8 @@ import Text from "../../text";
 import Box from "../../box";
 import "./Pagination.css";
 import Icon from "../../icon";
-import ArrowRight from "../../icons/ArrowRight";
-import ArrowLeft from "../../icons/ArrowLeft";
+import ChevronArrowRight from "../../icons/ChevronArrowRight";
+import ChevronArrowLeft from "../../icons/ChevronArrowLeft";
 import { usePagination } from "../../../utils/hooks/pagination.hook";
 
 const Pagination = ({
@@ -101,7 +101,7 @@ const Pagination = ({
 				<Icon
 					className="ui-pagination__left-arrow"
 					smartColor="currentcolor"
-					icon={ArrowLeft}
+					icon={ChevronArrowLeft}
 				/>
 				<Text
 					className="ui-pagination__text-previous ui-pagination__text"
@@ -129,7 +129,7 @@ const Pagination = ({
 				<Icon
 					className="ui-pagination__right-arrow"
 					smartColor="#0DB9E9"
-					icon={ArrowRight}
+					icon={ChevronArrowRight}
 				/>
 			</Box>
 		</Box>
@@ -161,8 +161,8 @@ Pagination.defaultProps = {
 // import Box from "../../box";
 // import "./Pagination.css";
 // import Icon from "../../icon";
-// import ArrowRight from "../../icons/ArrowRight";
-// import ArrowLeft from "../../icons/ArrowLeft";
+// import ChevronArrowRight from "../../icons/ChevronArrowRight";
+// import ChevronArrowLeft from "../../icons/ChevronArrowLeft";
 
 // const Pagination = ({ totalPage, currentPage, visiblePage, className, ...props }) => {
 //   const [page, setPage] = useState(1);
@@ -237,7 +237,7 @@ Pagination.defaultProps = {
 //         <Icon
 //           className="ui-pagination__left-arrow"
 //           smartColor="currentcolor"
-//           icon={ArrowLeft}
+//           icon={ChevronArrowLeft}
 //         />
 //         <Text
 //           className="ui-pagination__text-previous ui-pagination__text"
@@ -261,7 +261,7 @@ Pagination.defaultProps = {
 //         <Icon
 //           className="ui-pagination__right-arrow"
 //           smartColor="#0DB9E9"
-//           icon={ArrowRight}
+//           icon={ChevronArrowRight}
 //         />
 //       </Box>
 //     </Box>

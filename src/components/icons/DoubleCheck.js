@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const ArrowLeftComponent = ({
+const DoubleCheckComponent = ({
   fill,
   stroke,
   smartColor,
@@ -13,21 +13,7 @@ const ArrowLeftComponent = ({
   return (
     <>
       <path
-        d="M5 12H19"
-        stroke={smartColor || stroke}
-        strokeWidth={strokeWidth}
-        strokeLinecap={strokeLineCap}
-        strokeLinejoin={strokeLineJoin}
-      />
-      <path
-        d="M5 12L11 18"
-        stroke={smartColor || stroke}
-        strokeWidth={strokeWidth}
-        strokeLinecap={strokeLineCap}
-        strokeLinejoin={strokeLineJoin}
-      />
-      <path
-        d="M5 12L11 6"
+        d="M7.6041 12.417L12.0211 16.834L20.8551 8M9.71899 14.532L16.251 8M3 12.417L7.417 16.834"
         stroke={smartColor || stroke}
         strokeWidth={strokeWidth}
         strokeLinecap={strokeLineCap}
@@ -37,13 +23,13 @@ const ArrowLeftComponent = ({
   );
 };
 
-const ArrowLeft = {
-  component: ArrowLeftComponent,
+const DoubleCheck = {
+  component: DoubleCheckComponent,
   viewBox: "0 0 24 24",
   fill: "none",
 };
 
-ArrowLeftComponent.propTypes = {
+DoubleCheckComponent.propTypes = {
   fill: PropTypes.string,
   stroke: PropTypes.string,
   strokeWidth: PropTypes.string,
@@ -52,11 +38,11 @@ ArrowLeftComponent.propTypes = {
   smartColor: PropTypes.string,
 };
 
-ArrowLeftComponent.defaultProps = {
+DoubleCheckComponent.defaultProps = {
   stroke: "black",
   strokeWidth: "1.5",
   strokeLineCap: "round",
   strokeLineJoin: "round",
 };
 
-export default ArrowLeft;
+export default DoubleCheck;

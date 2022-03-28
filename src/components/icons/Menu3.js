@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const ArrowLeftComponent = ({
+const Menu3Component = ({
   fill,
   stroke,
   smartColor,
@@ -13,21 +13,7 @@ const ArrowLeftComponent = ({
   return (
     <>
       <path
-        d="M5 12H19"
-        stroke={smartColor || stroke}
-        strokeWidth={strokeWidth}
-        strokeLinecap={strokeLineCap}
-        strokeLinejoin={strokeLineJoin}
-      />
-      <path
-        d="M5 12L11 18"
-        stroke={smartColor || stroke}
-        strokeWidth={strokeWidth}
-        strokeLinecap={strokeLineCap}
-        strokeLinejoin={strokeLineJoin}
-      />
-      <path
-        d="M5 12L11 6"
+        d="M3 5H20.359M3 18.186H8.786M3 11.593H14.573"
         stroke={smartColor || stroke}
         strokeWidth={strokeWidth}
         strokeLinecap={strokeLineCap}
@@ -37,13 +23,13 @@ const ArrowLeftComponent = ({
   );
 };
 
-const ArrowLeft = {
-  component: ArrowLeftComponent,
+const Menu3 = {
+  component: Menu3Component,
   viewBox: "0 0 24 24",
   fill: "none",
 };
 
-ArrowLeftComponent.propTypes = {
+Menu3Component.propTypes = {
   fill: PropTypes.string,
   stroke: PropTypes.string,
   strokeWidth: PropTypes.string,
@@ -52,11 +38,11 @@ ArrowLeftComponent.propTypes = {
   smartColor: PropTypes.string,
 };
 
-ArrowLeftComponent.defaultProps = {
+Menu3Component.defaultProps = {
   stroke: "black",
   strokeWidth: "1.5",
   strokeLineCap: "round",
   strokeLineJoin: "round",
 };
 
-export default ArrowLeft;
+export default Menu3;

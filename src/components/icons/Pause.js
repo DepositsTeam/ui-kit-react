@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const ArrowLeftComponent = ({
+const PauseComponent = ({
   fill,
   stroke,
   smartColor,
@@ -13,21 +13,14 @@ const ArrowLeftComponent = ({
   return (
     <>
       <path
-        d="M5 12H19"
+        d="M15.25 6.75V17.25"
         stroke={smartColor || stroke}
         strokeWidth={strokeWidth}
         strokeLinecap={strokeLineCap}
         strokeLinejoin={strokeLineJoin}
       />
       <path
-        d="M5 12L11 18"
-        stroke={smartColor || stroke}
-        strokeWidth={strokeWidth}
-        strokeLinecap={strokeLineCap}
-        strokeLinejoin={strokeLineJoin}
-      />
-      <path
-        d="M5 12L11 6"
+        d="M8.75 6.75V17.25"
         stroke={smartColor || stroke}
         strokeWidth={strokeWidth}
         strokeLinecap={strokeLineCap}
@@ -37,13 +30,13 @@ const ArrowLeftComponent = ({
   );
 };
 
-const ArrowLeft = {
-  component: ArrowLeftComponent,
+const Pause = {
+  component: PauseComponent,
   viewBox: "0 0 24 24",
   fill: "none",
 };
 
-ArrowLeftComponent.propTypes = {
+PauseComponent.propTypes = {
   fill: PropTypes.string,
   stroke: PropTypes.string,
   strokeWidth: PropTypes.string,
@@ -52,11 +45,11 @@ ArrowLeftComponent.propTypes = {
   smartColor: PropTypes.string,
 };
 
-ArrowLeftComponent.defaultProps = {
+PauseComponent.defaultProps = {
   stroke: "black",
   strokeWidth: "1.5",
   strokeLineCap: "round",
   strokeLineJoin: "round",
 };
 
-export default ArrowLeft;
+export default Pause;

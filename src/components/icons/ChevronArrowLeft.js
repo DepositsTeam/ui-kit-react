@@ -13,21 +13,7 @@ const ArrowLeftComponent = ({
   return (
     <>
       <path
-        d="M5 12H19"
-        stroke={smartColor || stroke}
-        strokeWidth={strokeWidth}
-        strokeLinecap={strokeLineCap}
-        strokeLinejoin={strokeLineJoin}
-      />
-      <path
-        d="M5 12L11 18"
-        stroke={smartColor || stroke}
-        strokeWidth={strokeWidth}
-        strokeLinecap={strokeLineCap}
-        strokeLinejoin={strokeLineJoin}
-      />
-      <path
-        d="M5 12L11 6"
+        d="M15 6L9 12L15 18"
         stroke={smartColor || stroke}
         strokeWidth={strokeWidth}
         strokeLinecap={strokeLineCap}
@@ -35,12 +21,6 @@ const ArrowLeftComponent = ({
       />
     </>
   );
-};
-
-const ArrowLeft = {
-  component: ArrowLeftComponent,
-  viewBox: "0 0 24 24",
-  fill: "none",
 };
 
 ArrowLeftComponent.propTypes = {
@@ -53,10 +33,15 @@ ArrowLeftComponent.propTypes = {
 };
 
 ArrowLeftComponent.defaultProps = {
-  stroke: "black",
   strokeWidth: "1.5",
   strokeLineCap: "round",
   strokeLineJoin: "round",
 };
 
-export default ArrowLeft;
+const ChevronArrowLeft = {
+  component: ArrowLeftComponent,
+  viewBox: "0 0 24 24",
+  fill: "none",
+};
+
+export default ChevronArrowLeft;

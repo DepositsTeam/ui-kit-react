@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const ArrowLeftComponent = ({
+const Sort2Component = ({
   fill,
   stroke,
   smartColor,
@@ -13,21 +13,14 @@ const ArrowLeftComponent = ({
   return (
     <>
       <path
-        d="M5 12H19"
+        d="M3 9L7 5M7 5L11 9M7 5V19"
         stroke={smartColor || stroke}
         strokeWidth={strokeWidth}
         strokeLinecap={strokeLineCap}
         strokeLinejoin={strokeLineJoin}
       />
       <path
-        d="M5 12L11 18"
-        stroke={smartColor || stroke}
-        strokeWidth={strokeWidth}
-        strokeLinecap={strokeLineCap}
-        strokeLinejoin={strokeLineJoin}
-      />
-      <path
-        d="M5 12L11 6"
+        d="M21 15L17 19M17 19L13 15M17 19V5"
         stroke={smartColor || stroke}
         strokeWidth={strokeWidth}
         strokeLinecap={strokeLineCap}
@@ -37,13 +30,13 @@ const ArrowLeftComponent = ({
   );
 };
 
-const ArrowLeft = {
-  component: ArrowLeftComponent,
+const Sort2 = {
+  component: Sort2Component,
   viewBox: "0 0 24 24",
   fill: "none",
 };
 
-ArrowLeftComponent.propTypes = {
+Sort2Component.propTypes = {
   fill: PropTypes.string,
   stroke: PropTypes.string,
   strokeWidth: PropTypes.string,
@@ -52,11 +45,11 @@ ArrowLeftComponent.propTypes = {
   smartColor: PropTypes.string,
 };
 
-ArrowLeftComponent.defaultProps = {
+Sort2Component.defaultProps = {
   stroke: "black",
   strokeWidth: "1.5",
   strokeLineCap: "round",
   strokeLineJoin: "round",
 };
 
-export default ArrowLeft;
+export default Sort2;

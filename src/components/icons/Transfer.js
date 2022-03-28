@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const ArrowLeftComponent = ({
+const TransferComponent = ({
   fill,
   stroke,
   smartColor,
@@ -13,21 +13,28 @@ const ArrowLeftComponent = ({
   return (
     <>
       <path
-        d="M5 12H19"
+        d="M21 7H3"
         stroke={smartColor || stroke}
         strokeWidth={strokeWidth}
         strokeLinecap={strokeLineCap}
         strokeLinejoin={strokeLineJoin}
       />
       <path
-        d="M5 12L11 18"
+        d="M18 10L21 7L18 4"
         stroke={smartColor || stroke}
         strokeWidth={strokeWidth}
         strokeLinecap={strokeLineCap}
         strokeLinejoin={strokeLineJoin}
       />
       <path
-        d="M5 12L11 6"
+        d="M6 20L3 17L6 14"
+        stroke={smartColor || stroke}
+        strokeWidth={strokeWidth}
+        strokeLinecap={strokeLineCap}
+        strokeLinejoin={strokeLineJoin}
+      />
+      <path
+        d="M3 17H21"
         stroke={smartColor || stroke}
         strokeWidth={strokeWidth}
         strokeLinecap={strokeLineCap}
@@ -37,13 +44,13 @@ const ArrowLeftComponent = ({
   );
 };
 
-const ArrowLeft = {
-  component: ArrowLeftComponent,
+const Transfer = {
+  component: TransferComponent,
   viewBox: "0 0 24 24",
   fill: "none",
 };
 
-ArrowLeftComponent.propTypes = {
+TransferComponent.propTypes = {
   fill: PropTypes.string,
   stroke: PropTypes.string,
   strokeWidth: PropTypes.string,
@@ -52,11 +59,11 @@ ArrowLeftComponent.propTypes = {
   smartColor: PropTypes.string,
 };
 
-ArrowLeftComponent.defaultProps = {
+TransferComponent.defaultProps = {
   stroke: "black",
   strokeWidth: "1.5",
   strokeLineCap: "round",
   strokeLineJoin: "round",
 };
 
-export default ArrowLeft;
+export default Transfer;

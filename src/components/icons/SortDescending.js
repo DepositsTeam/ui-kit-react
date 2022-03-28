@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const ArrowLeftComponent = ({
+const SortDescendingComponent = ({
   fill,
   stroke,
   smartColor,
@@ -13,21 +13,35 @@ const ArrowLeftComponent = ({
   return (
     <>
       <path
-        d="M5 12H19"
+        d="M4.5 6H13.5"
         stroke={smartColor || stroke}
         strokeWidth={strokeWidth}
         strokeLinecap={strokeLineCap}
         strokeLinejoin={strokeLineJoin}
       />
       <path
-        d="M5 12L11 18"
+        d="M4.5 12H11.5"
         stroke={smartColor || stroke}
         strokeWidth={strokeWidth}
         strokeLinecap={strokeLineCap}
         strokeLinejoin={strokeLineJoin}
       />
       <path
-        d="M5 12L11 6"
+        d="M4.5 18H11.5"
+        stroke={smartColor || stroke}
+        strokeWidth={strokeWidth}
+        strokeLinecap={strokeLineCap}
+        strokeLinejoin={strokeLineJoin}
+      />
+      <path
+        d="M15.5 15L18.5 18L21.5 15"
+        stroke={smartColor || stroke}
+        strokeWidth={strokeWidth}
+        strokeLinecap={strokeLineCap}
+        strokeLinejoin={strokeLineJoin}
+      />
+      <path
+        d="M18.5 6V18"
         stroke={smartColor || stroke}
         strokeWidth={strokeWidth}
         strokeLinecap={strokeLineCap}
@@ -37,13 +51,13 @@ const ArrowLeftComponent = ({
   );
 };
 
-const ArrowLeft = {
-  component: ArrowLeftComponent,
+const SortDescending = {
+  component: SortDescendingComponent,
   viewBox: "0 0 24 24",
   fill: "none",
 };
 
-ArrowLeftComponent.propTypes = {
+SortDescendingComponent.propTypes = {
   fill: PropTypes.string,
   stroke: PropTypes.string,
   strokeWidth: PropTypes.string,
@@ -52,11 +66,11 @@ ArrowLeftComponent.propTypes = {
   smartColor: PropTypes.string,
 };
 
-ArrowLeftComponent.defaultProps = {
+SortDescendingComponent.defaultProps = {
   stroke: "black",
   strokeWidth: "1.5",
   strokeLineCap: "round",
   strokeLineJoin: "round",
 };
 
-export default ArrowLeft;
+export default SortDescending;

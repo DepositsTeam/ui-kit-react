@@ -9,8 +9,8 @@ import CheckIcon from "../../icons/Check";
 import CloseIcon from "../../icons/Close";
 import ScanCardIcon from "../../icons/ScanCard";
 import CardIcon from "../../icons/Card";
-import ArrowLeftIcon from "../../icons/ArrowLeft";
-import ArrowRightIcon from "../../icons/ArrowRight";
+import ChevronArrowLeftIcon from "../../icons/ChevronArrowLeft";
+import ChevronArrowRightIcon from "../../icons/ChevronArrowRight";
 import CalendarIcon from "../../icons/Calendar";
 import CartIcon from "../../icons/Cart";
 import TagIcon from "../../icons/Tag";
@@ -112,6 +112,88 @@ import HeartIcon from "../../icons/Heart";
 import HeartFilledIcon from "../../icons/HeartFilled";
 import MenuIcon from "../../icons/Menu";
 import Menu2Icon from "../../icons/Menu2";
+import Menu3Icon from "../../icons/Menu3";
+import Menu4Icon from "../../icons/Menu4";
+import Menu5Icon from "../../icons/Menu5";
+import Menu6Icon from "../../icons/Menu6";
+import Menu7Icon from "../../icons/Menu7";
+import Menu8Icon from "../../icons/Menu8";
+import SettingsIcon from "../../icons/Settings";
+import UploadIcon from "../../icons/Upload";
+import JustifyAlignIcon from "../../icons/JustifyAlign";
+import LeftAlignIcon from "../../icons/LeftAlign";
+import CenterAlignIcon from "../../icons/CenterAlign";
+import RightAlignIcon from "../../icons/RightAlign";
+import NetworkIcon from "../../icons/Network";
+import List2Icon from "../../icons/List2";
+import FilterIcon from "../../icons/Filter";
+import PreviousIcon from "../../icons/Previous";
+import NextIcon from "../../icons/Next";
+import SortIcon from "../../icons/Sort";
+import Increase2Icon from "../../icons/Increase2";
+import PauseIcon from "../../icons/Pause";
+import VerticalArrowsIcon from "../../icons/VerticalArrows";
+import PlayIcon from "../../icons/Play";
+import ForwardIcon from "../../icons/Forward";
+import MoveIcon from "../../icons/Move";
+import ChevronArrowDownIcon from "../../icons/ChevronArrowDown";
+import RotateLeftIcon from "../../icons/RotateLeft";
+import RotateRightIcon from "../../icons/RotateRight";
+import Decrease2Icon from "../../icons/Decrease2";
+import ArrowUpIcon from "../../icons/ArrowUp";
+import TransferIcon from "../../icons/Transfer";
+import PinIcon from "../../icons/Pin";
+import BendLeftIcon from "../../icons/BendLeft";
+import BendRightIcon from "../../icons/BendRight";
+import SortAscendingIcon from "../../icons/SortAscending";
+import SortDescendingIcon from "../../icons/SortDescending";
+import RefreshIcon from "../../icons/Refresh";
+import ArrowLeftIcon from "../../icons/ArrowLeft";
+import ArrowRightIcon from "../../icons/ArrowRight";
+import ArrowDownIcon from "../../icons/ArrowDown";
+import AvatarIcon from "../../icons/Avatar";
+import FlashIcon from "../../icons/Flash";
+import Sort2Icon from "../../icons/Sort2";
+import ReloadIcon from "../../icons/Reload";
+import WithdrawIcon from "../../icons/Withdraw";
+import CompassIcon from "../../icons/Compass";
+import GlobeIcon from "../../icons/Globe";
+import ExternalLinkIcon from "../../icons/ExternalLink";
+import ChevronFilledUpIcon from "../../icons/ChevronFilledUp";
+import DropIcon from "../../icons/Drop";
+import DepositsIcon from "../../icons/Deposits";
+import ShieldIcon from "../../icons/Shield";
+import GemIcon from "../../icons/Gem";
+import ShieldCheckIcon from "../../icons/ShieldCheck";
+import FlagIcon from "../../icons/Flag";
+import ArrowUpRightIcon from "../../icons/ArrowUpRight";
+import BoltIcon from "../../icons/Bolt";
+import AnnounceIcon from "../../icons/Announce";
+import DeleteIcon from "../../icons/Delete";
+import DisabledIcon from "../../icons/Disabled";
+import CertificateIcon from "../../icons/Certificate";
+import KeyIcon from "../../icons/Key";
+import CrownIcon from "../../icons/Crown";
+import ArrowUpLeftIcon from "../../icons/ArrowUpLeft";
+import SupportIcon from "../../icons/Support";
+import TrophyIcon from "../../icons/Trophy";
+import FlameIcon from "../../icons/Flame";
+import StaffIcon from "../../icons/Staff";
+import ShieldFlashIcon from "../../icons/ShieldFlash";
+import ChevronFilledRightIcon from "../../icons/ChevronFilledRight";
+import CutIcon from "../../icons/Cut";
+import ChevronArrowUpIcon from "../../icons/ChevronArrowUp";
+import RocketIcon from "../../icons/Rocket";
+import TextIcon from "../../icons/Text";
+import CompanyIcon from "../../icons/Company";
+import DoubleCheckIcon from "../../icons/DoubleCheck";
+import ChevronFilledLeftIcon from "../../icons/ChevronFilledLeft";
+import Certificate2Icon from "../../icons/Certificate2";
+import ChartIcon from "../../icons/Chart";
+import CircleIcon from "../../icons/Circle";
+import BriefcaseIcon from "../../icons/Briefcase";
+import ArrowDownRightIcon from "../../icons/ArrowDownRight";
+import SendIcon from "../../icons/Send";
 
 export default {
   title: "Icons",
@@ -176,14 +258,14 @@ Card.args = {
   icon: CardIcon,
 };
 
-export const ArrowLeft = Template.bind({});
-ArrowLeft.args = {
-  icon: ArrowLeftIcon,
+export const ChevronArrowLeft = Template.bind({});
+ChevronArrowLeft.args = {
+  icon: ChevronArrowLeftIcon,
 };
 
-export const ArrowRight = Template.bind({});
-ArrowRight.args = {
-  icon: ArrowRightIcon,
+export const ChevronArrowRight = Template.bind({});
+ChevronArrowRight.args = {
+  icon: ChevronArrowRightIcon,
 };
 
 export const Calendar = Template.bind({});
@@ -689,4 +771,414 @@ Menu.args = {
 export const Menu2 = Template.bind({});
 Menu2.args = {
   icon: Menu2Icon,
+};
+
+export const Menu3 = Template.bind({});
+Menu3.args = {
+  icon: Menu3Icon,
+};
+
+export const Menu4 = Template.bind({});
+Menu4.args = {
+  icon: Menu4Icon,
+};
+
+export const Menu5 = Template.bind({});
+Menu5.args = {
+  icon: Menu5Icon,
+};
+
+export const Menu6 = Template.bind({});
+Menu6.args = {
+  icon: Menu6Icon,
+};
+
+export const Menu7 = Template.bind({});
+Menu7.args = {
+  icon: Menu7Icon,
+};
+
+export const Menu8 = Template.bind({});
+Menu8.args = {
+  icon: Menu8Icon,
+};
+
+export const Settings = Template.bind({});
+Settings.args = {
+  icon: SettingsIcon,
+};
+
+export const Upload = Template.bind({});
+Upload.args = {
+  icon: UploadIcon,
+};
+
+export const JustifyAlign = Template.bind({});
+JustifyAlign.args = {
+  icon: JustifyAlignIcon,
+};
+
+export const LeftAlign = Template.bind({});
+LeftAlign.args = {
+  icon: LeftAlignIcon,
+};
+
+export const CenterAlign = Template.bind({});
+CenterAlign.args = {
+  icon: CenterAlignIcon,
+};
+
+export const RightAlign = Template.bind({});
+RightAlign.args = {
+  icon: RightAlignIcon,
+};
+
+export const Network = Template.bind({});
+Network.args = {
+  icon: NetworkIcon,
+};
+
+export const List2 = Template.bind({});
+List2.args = {
+  icon: List2Icon,
+};
+
+export const Filter = Template.bind({});
+Filter.args = {
+  icon: FilterIcon,
+};
+
+export const Previous = Template.bind({});
+Previous.args = {
+  icon: PreviousIcon,
+};
+
+export const Next = Template.bind({});
+Next.args = {
+  icon: NextIcon,
+};
+
+export const Sort = Template.bind({});
+Sort.args = {
+  icon: SortIcon,
+};
+
+export const Increase2 = Template.bind({});
+Increase2.args = {
+  icon: Increase2Icon,
+};
+
+export const Pause = Template.bind({});
+Pause.args = {
+  icon: PauseIcon,
+};
+
+export const VerticalArrows = Template.bind({});
+VerticalArrows.args = {
+  icon: VerticalArrowsIcon,
+};
+
+export const Play = Template.bind({});
+Play.args = {
+  icon: PlayIcon,
+};
+
+export const Forward = Template.bind({});
+Forward.args = {
+  icon: ForwardIcon,
+};
+
+export const Move = Template.bind({});
+Move.args = {
+  icon: MoveIcon,
+};
+
+export const ChevronArrowDown = Template.bind({});
+ChevronArrowDown.args = {
+  icon: ChevronArrowDownIcon,
+};
+
+export const RotateLeft = Template.bind({});
+RotateLeft.args = {
+  icon: RotateLeftIcon,
+};
+
+export const RotateRight = Template.bind({});
+RotateRight.args = {
+  icon: RotateRightIcon,
+};
+
+export const Decrease2 = Template.bind({});
+Decrease2.args = {
+  icon: Decrease2Icon,
+};
+
+export const ArrowUp = Template.bind({});
+ArrowUp.args = {
+  icon: ArrowUpIcon,
+};
+
+export const Transfer = Template.bind({});
+Transfer.args = {
+  icon: TransferIcon,
+};
+
+export const Pin = Template.bind({});
+Pin.args = {
+  icon: PinIcon,
+};
+
+export const BendLeft = Template.bind({});
+BendLeft.args = {
+  icon: BendLeftIcon,
+};
+
+export const BendRight = Template.bind({});
+BendRight.args = {
+  icon: BendRightIcon,
+};
+
+export const SortAscending = Template.bind({});
+SortAscending.args = {
+  icon: SortAscendingIcon,
+};
+
+export const SortDescending = Template.bind({});
+SortDescending.args = {
+  icon: SortDescendingIcon,
+};
+
+export const Refresh = Template.bind({});
+Refresh.args = {
+  icon: RefreshIcon,
+};
+
+export const ArrowLeft = Template.bind({});
+ArrowLeft.args = {
+  icon: ArrowLeftIcon,
+};
+
+export const ArrowRight = Template.bind({});
+ArrowRight.args = {
+  icon: ArrowRightIcon,
+};
+
+export const ArrowDown = Template.bind({});
+ArrowDown.args = {
+  icon: ArrowDownIcon,
+};
+
+export const Avatar = Template.bind({});
+Avatar.args = {
+  icon: AvatarIcon,
+};
+
+export const Flash = Template.bind({});
+Flash.args = {
+  icon: FlashIcon,
+};
+
+export const Sort2 = Template.bind({});
+Sort2.args = {
+  icon: Sort2Icon,
+};
+
+export const Reload = Template.bind({});
+Reload.args = {
+  icon: ReloadIcon,
+};
+
+export const Withdraw = Template.bind({});
+Withdraw.args = {
+  icon: WithdrawIcon,
+};
+
+export const Compass = Template.bind({});
+Compass.args = {
+  icon: CompassIcon,
+};
+
+export const Globe = Template.bind({});
+Globe.args = {
+  icon: GlobeIcon,
+};
+
+export const ExternalLink = Template.bind({});
+ExternalLink.args = {
+  icon: ExternalLinkIcon,
+};
+
+export const ChevronFilledUp = Template.bind({});
+ChevronFilledUp.args = {
+  icon: ChevronFilledUpIcon,
+};
+
+export const Drop = Template.bind({});
+Drop.args = {
+  icon: DropIcon,
+};
+
+export const Deposits = Template.bind({});
+Deposits.args = {
+  icon: DepositsIcon,
+};
+
+export const Shield = Template.bind({});
+Shield.args = {
+  icon: ShieldIcon,
+};
+
+export const Gem = Template.bind({});
+Gem.args = {
+  icon: GemIcon,
+};
+
+export const ShieldCheck = Template.bind({});
+ShieldCheck.args = {
+  icon: ShieldCheckIcon,
+};
+
+export const Flag = Template.bind({});
+Flag.args = {
+  icon: FlagIcon,
+};
+
+export const ArrowUpRight = Template.bind({});
+ArrowUpRight.args = {
+  icon: ArrowUpRightIcon,
+};
+
+export const Bolt = Template.bind({});
+Bolt.args = {
+  icon: BoltIcon,
+};
+
+export const Announce = Template.bind({});
+Announce.args = {
+  icon: AnnounceIcon,
+};
+
+export const Delete = Template.bind({});
+Delete.args = {
+  icon: DeleteIcon,
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  icon: DisabledIcon,
+};
+
+export const Certificate = Template.bind({});
+Certificate.args = {
+  icon: CertificateIcon,
+};
+
+export const Key = Template.bind({});
+Key.args = {
+  icon: KeyIcon,
+};
+
+export const Crown = Template.bind({});
+Crown.args = {
+  icon: CrownIcon,
+};
+
+export const ArrowUpLeft = Template.bind({});
+ArrowUpLeft.args = {
+  icon: ArrowUpLeftIcon,
+};
+
+export const Support = Template.bind({});
+Support.args = {
+  icon: SupportIcon,
+};
+
+export const Trophy = Template.bind({});
+Trophy.args = {
+  icon: TrophyIcon,
+};
+
+export const Flame = Template.bind({});
+Flame.args = {
+  icon: FlameIcon,
+};
+
+export const Staff = Template.bind({});
+Staff.args = {
+  icon: StaffIcon,
+};
+
+export const ShieldFlash = Template.bind({});
+ShieldFlash.args = {
+  icon: ShieldFlashIcon,
+};
+
+export const ChevronFilledRight = Template.bind({});
+ChevronFilledRight.args = {
+  icon: ChevronFilledRightIcon,
+};
+
+export const Cut = Template.bind({});
+Cut.args = {
+  icon: CutIcon,
+};
+
+export const ChevronArrowUp = Template.bind({});
+ChevronArrowUp.args = {
+  icon: ChevronArrowUpIcon,
+};
+
+export const Rocket = Template.bind({});
+Rocket.args = {
+  icon: RocketIcon,
+};
+
+export const Text = Template.bind({});
+Text.args = {
+  icon: TextIcon,
+};
+
+export const Company = Template.bind({});
+Company.args = {
+  icon: CompanyIcon,
+};
+
+export const DoubleCheck = Template.bind({});
+DoubleCheck.args = {
+  icon: DoubleCheckIcon,
+};
+
+export const ChevronFilledLeft = Template.bind({});
+ChevronFilledLeft.args = {
+  icon: ChevronFilledLeftIcon,
+};
+
+export const Certificate2 = Template.bind({});
+Certificate2.args = {
+  icon: Certificate2Icon,
+};
+
+export const Chart = Template.bind({});
+Chart.args = {
+  icon: ChartIcon,
+};
+
+export const Circle = Template.bind({});
+Circle.args = {
+  icon: CircleIcon,
+};
+
+export const Briefcase = Template.bind({});
+Briefcase.args = {
+  icon: BriefcaseIcon,
+};
+
+export const ArrowDownRight = Template.bind({});
+ArrowDownRight.args = {
+  icon: ArrowDownRightIcon,
+};
+
+export const Send = Template.bind({});
+Send.args = {
+  icon: SendIcon,
 };
