@@ -11,12 +11,12 @@ import rightArrow from '../assets/right-arrow.svg'
 import Radio from '../../radio/src/Radio';
 import TextField from "../../text-field/src/TextField";
 
-const TableHeader = ({ headings, sortIndex, handleSort, sortModalTrigger, filterIndex, filterModalTrigger, setFilterIndex, handleChange, filterText, applyFilter, nullify, filterCriteria, setFilterCriteria, filterLabel }) => {
+const TableHeader = ({ headings, sortIndex, handleSort, sortModalTrigger, filterIndex, filterModalTrigger, setFilterIndex, handleChange, filterText, applyFilter, nullify, filterCriteria, setFilterCriteria, filterLabel, checkbox }) => {
 
     return (
         <Box is='div' className='ui-table__header'>
 
-            <Checkbox className='ui-table__checkbox' />
+            {checkbox && <Checkbox className='ui-table__checkbox' />}
             {/* render headings */}
             {headings.map((item, idx) => (
                 <Box key={item} is='div' className={`ui-table__header-item `} >
