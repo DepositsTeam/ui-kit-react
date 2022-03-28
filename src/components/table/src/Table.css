@@ -249,7 +249,7 @@ img{
     margin-right: 10px 
 }
 .ui-table__filter-tag-field button {
-    margin-top: 32px;
+    margin-top: 10px;
     margin-right: 10px 
 }
 .ui-table__filter-tag-field label p {
@@ -263,6 +263,9 @@ select:hover {
 .ui-table__filter-tag-field div div div select{
     width: 225px !important;
 }
+.ui-table__filter-tag-field div div div input{
+    width: 225px !important;
+}
 
 .extra-filter{
     display: flex;
@@ -270,5 +273,11 @@ select:hover {
     padding-left: 20px;
     border-radius: 10px;
     height: 88px;
-;
+}
+.extra-filter.hide{
+    display: hide;  
+}
+.close{
+    padding: 10px 0 0 ;
+    cursor: pointer;
 }

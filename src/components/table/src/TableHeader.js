@@ -58,7 +58,7 @@ const TableHeader = ({ headings, sortIndex, handleSort, sortModalTrigger, filter
                             {filterLabel.map((label, ind) =>
                                 <Box key={ind} is="div" className=''>
 
-                                    <Radio label={label} onClick={() => setFilterCriteria(filterLabel[ind])} />
+                                    <Radio label={label} name='filter-label' onClick={() => setFilterCriteria(filterLabel[ind])} />
                                     {/* show filter text field if clicked */}
                                     {filterCriteria === label && <TextField label='Value' onChange={(e) => handleChange(e, ind)} onKeyDown={(e) => e.keyCode === 13 && applyFilter(e)}/>}
                                 </Box>
