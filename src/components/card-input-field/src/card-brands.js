@@ -1,4 +1,4 @@
-export default [
+const brands = [
   {
     brand: "American Xpress",
     src: "https://assets.deposits.com/img/card-brands/amexcard.svg",
@@ -24,3 +24,5 @@ export const BRAND_ALIAS = {
   VISACARD: 3,
   NOCARD: -1
 };
+
+export default brands

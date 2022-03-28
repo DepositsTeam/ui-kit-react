@@ -4,7 +4,7 @@ import Box from "../../box";
 import classNames from "../../../utils/classNames";
 import PropTypes from "prop-types";
 
-const Icon = ({ className, icon, children,  ...props }) => {
+const Icon = ({ className, icon, children, ...props }) => {
   const defaultViewBox = "0 0 24 24";
   const IconComponent = icon.component;
 
@@ -23,7 +23,7 @@ const Icon = ({ className, icon, children,  ...props }) => {
       fill={props.fill || icon.fill}
       {...props}
     >
-      <IconComponent smartColor= "currentcolor" {...props} />
+      <IconComponent smartcolor= "currentcolor" {...props} />
     </Box>
   );
 };

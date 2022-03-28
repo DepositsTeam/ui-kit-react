@@ -55,7 +55,7 @@ const Alert = ({
             <Icon
               className={"ui-alert__header-icon"}
               icon={schemeIcons[colorScheme]}
-              smartColor={"currentcolor"}
+              smartcolor={"currentcolor"}
             />
           )}
           <div className={"ui-alert__text"}>
@@ -78,7 +78,7 @@ const Alert = ({
       </div>
       {closable && theme !== "inline" && (
         <Icon
-          smartColor={"currentcolor"}
+          smartcolor={"currentcolor"}
           className={"ui-alert__close-icon"}
           icon={Close}
           onClick={props.onClick || remove}
