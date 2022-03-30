@@ -7,8 +7,7 @@ import Radio from '../../radio/src/Radio'
 import SelectField from '../../select-field/src/SelectField'
 import TextField from '../../text-field/src/TextField'
 
-const TableTag = ({ filterTag, closeTag, filterLabel, setFilterCriteria, handleChange, applyFilter, setSortIndex, filterCriteria, headings, dataCopy }) => {
-  // const [text, setText] = useState('')
+const TableTag = ({ filterTag, closeTag, filterLabel, setFilterCriteria, handleChange, applyFilter, setSortIndex, filterCriteria, headings }) => {
   const [showModal, setShowModal] = useState(false)
   const [secondFilter, setSecondFilter] = useState(false)
   const [joinType, setJoinType] = useState(null)
@@ -24,10 +23,6 @@ const TableTag = ({ filterTag, closeTag, filterLabel, setFilterCriteria, handleC
     setFilterCriteria(() => e.target.value)
   }
 
-  // const changeHandler = (e) => {
-  //   handleChange(e)
-
-  // }
 
   const applyFilter2 =  (e) => {
 

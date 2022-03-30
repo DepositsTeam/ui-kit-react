@@ -54,20 +54,24 @@ const Table = ({ data, headings, columns, className, checkbox, pagination, items
     }
 
     // get all values of the selected column of array of objects
-    const getArr = (data) => Object.values(data)[sortIndex]
+    const getArr = (data) => {
+        let item = Object.values(data)[sortIndex]
+        return item.alt || item
+    }
 
     // sort column ascending or descending 
     const handleSort = (idx, type) => {
         nullify()
         setDataCopy(() => [...dataCopy].sort((a, b) => {
-            let x = Object.values(a)[idx]
-            let y = Object.values(b)[idx]
+            
+            let x = Object.values(a)[idx].alt || Object.values(a)[idx]
+            let y = Object.values(b)[idx].alt || Object.values(b)[idx]
 
-            if (type === 'desc') {
+            if (type === 'asc') {
                 if (x < y) { return -1 }
                 if (y < x) { return 1 }
             }
-            if (type === 'asc') {
+            if (type === 'desc') {
                 if (x > y) { return -1 }
                 if (y > x) { return 1 }
             }
@@ -91,11 +95,12 @@ const Table = ({ data, headings, columns, className, checkbox, pagination, items
     //         if (num === 9) return !getArr(item).toLowerCase().includes(filterText.toLowerCase().trim())
     //         return getArr(item).toLowerCase().includes(filterText.toLowerCase().trim())
     //     }))
-    // }
+    // }        
 
     const applyFilter = (second) => {
-        !second === 'second' && filter[filterCriteria](data);
-        second === 'second' && filter[filterCriteria](dataCopy);
+        // !second === 'second' &&
+            filter[filterCriteria](data);
+        // second === 'second' && filter[filterCriteria](dataCopy);
 
         if (filterText && filterText !== '' && filterText !== ' ') {
             setFilterTag(() => [sortIndex, filterCriteria, filterText])
@@ -119,7 +124,8 @@ const Table = ({ data, headings, columns, className, checkbox, pagination, items
         [filterLabel[9]]: (dataF) => setDataCopy(() => dataF.filter(item => !getArr(item).toLowerCase().includes(filterText.toLowerCase().trim()))),
     }
 
-    const closeTag = () => {
+    const closeTag = (e) => {
+        e.stopPropagation()
         setFilterTag([])
         setDataCopy(() => data)
         nullify();
@@ -128,9 +134,8 @@ const Table = ({ data, headings, columns, className, checkbox, pagination, items
 
     return (
         <Box is={"div"} >
-            {filterTag.length !== 0 && <TableTag filterTag={filterTag} closeTag={closeTag} nullify={nullify} filterLabel={filterLabel} handleChange={handleChange} applyFilter={applyFilter}
-
-                dataCopy={dataCopy} headings={headings} sortIndex={sortIndex} setSortIndex={setSortIndex} sortModalTrigger={sortModalTrigger} filterModalTrigger={filterModalTrigger} handleSort={handleSort} filterIndex={filterIndex} setFilterIndex={setFilterIndex} filterCriteria={filterCriteria} setFilterCriteria={setFilterCriteria} checkbox={checkbox} />}
+            {filterTag.length !== 0 && <TableTag filterTag={filterTag} closeTag={closeTag} nullify={nullify} filterLabel={filterLabel} handleChange={handleChange} applyFilter={applyFilter} setFilterCriteria={setFilterCriteria} setSortIndex={setSortIndex} filterCriteria={filterCriteria} headings={headings} 
+                />}
 
             <Box is={"div"} className={switchClassName} {...props} >
                 <TableHeader data={data} headings={headings} sortIndex={sortIndex} setSortIndex={setSortIndex} sortModalTrigger={sortModalTrigger} filterModalTrigger={filterModalTrigger} handleSort={handleSort} filterIndex={filterIndex} setFilterIndex={setFilterIndex} handleChange={handleChange} applyFilter={applyFilter} filterCriteria={filterCriteria} setFilterCriteria={setFilterCriteria} filterLabel={filterLabel} checkbox={checkbox} />
