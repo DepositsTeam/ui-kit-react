@@ -73,7 +73,11 @@
     width: 100%;
     text-transform: capitalize;
     align-items: center;
-    margin: 0 2px;
+    /* margin: 0 2px; */
+}
+.ui-table__pagination{
+    display: flex;
+    justify-content: flex-end;
 }
 
 .ui-table__header-item-inner {

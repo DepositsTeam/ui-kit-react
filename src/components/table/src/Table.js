@@ -7,10 +7,10 @@ import classNames from "../../../utils/classNames";
 import TableContent from "./TableContent";
 import TableHeader from "./TableHeader";
 import TableTag from "./TableTag";
+// import Pagination from "../../pagination/src/Pagination";
 
-const Table = ({ data, headings, columns, className, checkbox, ...props }) => {
+const Table = ({ data, headings, columns, className, checkbox, pagination, itemsPerPage, ...props }) => {
 
-    // const cols = Object.entries(dataCopy[0]).length
     const switchClassName = classNames(
         {
             "ui-table__wrapper": true,
@@ -30,7 +30,7 @@ const Table = ({ data, headings, columns, className, checkbox, ...props }) => {
     const [filterTag, setFilterTag] = useState([])
 
     // set Filter text to input value
-    const handleChange = (e, ind) => setFilterText(() => e.target.value.trim().toLowerCase())
+    const handleChange = (e) => setFilterText(() => e.target.value.trim().toLowerCase())
 
     // reset all states
     const nullify = () => {
@@ -93,26 +93,30 @@ const Table = ({ data, headings, columns, className, checkbox, ...props }) => {
     //     }))
     // }
 
-    const applyFilter = (e) => {
-        filter[filterCriteria]();
+    const applyFilter = (second) => {
+        !second === 'second' && filter[filterCriteria](data);
+        second === 'second' && filter[filterCriteria](dataCopy);
+
         if (filterText && filterText !== '' && filterText !== ' ') {
-            setFilterTag(() => [headings[sortIndex], filterCriteria, filterText])
+            setFilterTag(() => [sortIndex, filterCriteria, filterText])
         }
         nullify();
 
     }
+
+  
     // main object of filter functions
     const filter = {
-        [filterLabel[0]]: () => setDataCopy(() => data.filter(item => getArr(item).toLowerCase() === filterText.toLowerCase().trim())),
-        [filterLabel[1]]: () => setDataCopy(() => data.filter(item => getArr(item).toLowerCase() !== filterText.toLowerCase().trim())),
-        [filterLabel[2]]: () => setDataCopy(() => data.filter(item => getArr(item) === '')),
-        [filterLabel[3]]: () => setDataCopy(() => data.filter(item => getArr(item) !== '')),
-        [filterLabel[4]]: () => setDataCopy(() => data.filter(item => getArr(item) === filterText)),
-        [filterLabel[5]]: () => setDataCopy(() => data.filter(item => getArr(item) !== filterText)),
-        [filterLabel[6]]: () => setDataCopy(() => data.filter(item => getArr(item).toLowerCase().startsWith(filterText.toLowerCase().trim()))),
-        [filterLabel[7]]: () => setDataCopy(() => data.filter(item => getArr(item).toLowerCase().endsWith(filterText.toLowerCase().trim()))),
-        [filterLabel[8]]: () => setDataCopy(() => data.filter(item => getArr(item).toLowerCase().includes(filterText.toLowerCase().trim()))),
-        [filterLabel[9]]: () => setDataCopy(() => data.filter(item => !getArr(item).toLowerCase().includes(filterText.toLowerCase().trim()))),
+        [filterLabel[0]]: (dataF) => setDataCopy(() => dataF.filter(item => getArr(item).toLowerCase() === filterText.toLowerCase().trim())),
+        [filterLabel[1]]: (dataF) => setDataCopy(() => dataF.filter(item => getArr(item).toLowerCase() !== filterText.toLowerCase().trim())),
+        [filterLabel[2]]: (dataF) => setDataCopy(() => dataF.filter(item => getArr(item) === '')),
+        [filterLabel[3]]: (dataF) => setDataCopy(() => dataF.filter(item => getArr(item) !== '')),
+        [filterLabel[4]]: (dataF) => setDataCopy(() => dataF.filter(item => getArr(item) === filterText)),
+        [filterLabel[5]]: (dataF) => setDataCopy(() => dataF.filter(item => getArr(item) !== filterText)),
+        [filterLabel[6]]: (dataF) => setDataCopy(() => dataF.filter(item => getArr(item).toLowerCase().startsWith(filterText.toLowerCase().trim()))),
+        [filterLabel[7]]: (dataF) => setDataCopy(() => dataF.filter(item => getArr(item).toLowerCase().endsWith(filterText.toLowerCase().trim()))),
+        [filterLabel[8]]: (dataF) => setDataCopy(() => dataF.filter(item => getArr(item).toLowerCase().includes(filterText.toLowerCase().trim()))),
+        [filterLabel[9]]: (dataF) => setDataCopy(() => dataF.filter(item => !getArr(item).toLowerCase().includes(filterText.toLowerCase().trim()))),
     }
 
     const closeTag = () => {
@@ -124,12 +128,14 @@ const Table = ({ data, headings, columns, className, checkbox, ...props }) => {
 
     return (
         <Box is={"div"} >
-            {filterTag.length !== 0 && <TableTag filterTag={filterTag} closeTag={closeTag} nullify={nullify} filterLabel={filterLabel} />}
+            {filterTag.length !== 0 && <TableTag filterTag={filterTag} closeTag={closeTag} nullify={nullify} filterLabel={filterLabel} handleChange={handleChange} applyFilter={applyFilter}
+
+                dataCopy={dataCopy} headings={headings} sortIndex={sortIndex} setSortIndex={setSortIndex} sortModalTrigger={sortModalTrigger} filterModalTrigger={filterModalTrigger} handleSort={handleSort} filterIndex={filterIndex} setFilterIndex={setFilterIndex} filterCriteria={filterCriteria} setFilterCriteria={setFilterCriteria} checkbox={checkbox} />}
+
             <Box is={"div"} className={switchClassName} {...props} >
+                <TableHeader data={data} headings={headings} sortIndex={sortIndex} setSortIndex={setSortIndex} sortModalTrigger={sortModalTrigger} filterModalTrigger={filterModalTrigger} handleSort={handleSort} filterIndex={filterIndex} setFilterIndex={setFilterIndex} handleChange={handleChange} applyFilter={applyFilter} filterCriteria={filterCriteria} setFilterCriteria={setFilterCriteria} filterLabel={filterLabel} checkbox={checkbox} />
 
-                <TableHeader headings={headings} sortIndex={sortIndex} setSortIndex={setSortIndex} sortModalTrigger={sortModalTrigger} filterModalTrigger={filterModalTrigger} handleSort={handleSort} filterIndex={filterIndex} setFilterIndex={setFilterIndex} handleChange={handleChange} filterText={filterText} applyFilter={applyFilter} nullify={nullify} filterCriteria={filterCriteria} setFilterCriteria={setFilterCriteria} filterLabel={filterLabel} checkbox={checkbox} />
-
-                <TableContent data={dataCopy} nullify={nullify} checkbox={checkbox} filterLabel={filterLabel} filterCriteria={filterCriteria} setFilterCriteria={setFilterCriteria} />
+                <TableContent data={dataCopy} nullify={nullify} checkbox={checkbox} filterLabel={filterLabel} filterCriteria={filterCriteria} setFilterCriteria={setFilterCriteria} pagination={pagination} itemsPerPage={itemsPerPage}/>
             </Box>
         </Box>
     );
@@ -141,8 +147,8 @@ export default Table;
 Table.propTypes = {
     headings: PropTypes.array.isRequired,
     data: PropTypes.array.isRequired,
-    cols: PropTypes.number,
     checkbox: PropTypes.bool,
+    pagination: PropTypes.bool,
 
 };
 
