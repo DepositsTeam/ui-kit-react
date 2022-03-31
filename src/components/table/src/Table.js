@@ -9,7 +9,7 @@ import TableHeader from "./TableHeader";
 import TableTag from "./TableTag";
 // import Pagination from "../../pagination/src/Pagination";
 
-const Table = ({ data, headings, columns, className, checkbox, pagination, itemsPerPage, ...props }) => {
+const Table = ({ data, headings, columns, className, checkbox, pagination, itemsPerPage, siblingCount, ...props }) => {
 
     const switchClassName = classNames(
         {
@@ -63,7 +63,7 @@ const Table = ({ data, headings, columns, className, checkbox, pagination, items
     const handleSort = (idx, type) => {
         nullify()
         setDataCopy(() => [...dataCopy].sort((a, b) => {
-            
+
             let x = Object.values(a)[idx].alt || Object.values(a)[idx]
             let y = Object.values(b)[idx].alt || Object.values(b)[idx]
 
@@ -81,25 +81,11 @@ const Table = ({ data, headings, columns, className, checkbox, pagination, items
         )
     }
 
-    // // filter function running conditionally
-    // const filte = (num) => {
-    //     setDataCopy(() => data.filter(item => {
-    //         if (num === 0) return getArr(item).toLowerCase() === filterText.toLowerCase().trim();
-    //         if (num === 1) return getArr(item).toLowerCase() !== filterText.toLowerCase().trim()
-    //         if (num === 2) return getArr(item) === ''
-    //         if (num === 3) return getArr(item) !== ''
-    //         if (num === 4) return getArr(item) === filterText
-    //         if (num === 5) return getArr(item) !== filterText
-    //         if (num === 6) return getArr(item).toLowerCase().startsWith(filterText.toLowerCase().trim())
-    //         if (num === 7) return getArr(item).toLowerCase().endsWith(filterText.toLowerCase().trim())
-    //         if (num === 9) return !getArr(item).toLowerCase().includes(filterText.toLowerCase().trim())
-    //         return getArr(item).toLowerCase().includes(filterText.toLowerCase().trim())
-    //     }))
-    // }        
+
 
     const applyFilter = (second) => {
         // !second === 'second' &&
-            filter[filterCriteria](data);
+        filter[filterCriteria](data);
         // second === 'second' && filter[filterCriteria](dataCopy);
 
         if (filterText && filterText !== '' && filterText !== ' ') {
@@ -109,7 +95,7 @@ const Table = ({ data, headings, columns, className, checkbox, pagination, items
 
     }
 
-  
+
     // main object of filter functions
     const filter = {
         [filterLabel[0]]: (dataF) => setDataCopy(() => dataF.filter(item => getArr(item).toLowerCase() === filterText.toLowerCase().trim())),
@@ -134,13 +120,13 @@ const Table = ({ data, headings, columns, className, checkbox, pagination, items
 
     return (
         <Box is={"div"} >
-            {filterTag.length !== 0 && <TableTag filterTag={filterTag} closeTag={closeTag} nullify={nullify} filterLabel={filterLabel} handleChange={handleChange} applyFilter={applyFilter} setFilterCriteria={setFilterCriteria} setSortIndex={setSortIndex} filterCriteria={filterCriteria} headings={headings} 
-                />}
+            {filterTag.length > 0 && <TableTag filterTag={filterTag} closeTag={closeTag} nullify={nullify} filterLabel={filterLabel} handleChange={handleChange} applyFilter={applyFilter} setFilterCriteria={setFilterCriteria} setSortIndex={setSortIndex} filterCriteria={filterCriteria} headings={headings}
+            />}
 
             <Box is={"div"} className={switchClassName} {...props} >
-                <TableHeader data={data} headings={headings} sortIndex={sortIndex} setSortIndex={setSortIndex} sortModalTrigger={sortModalTrigger} filterModalTrigger={filterModalTrigger} handleSort={handleSort} filterIndex={filterIndex} setFilterIndex={setFilterIndex} handleChange={handleChange} applyFilter={applyFilter} filterCriteria={filterCriteria} setFilterCriteria={setFilterCriteria} filterLabel={filterLabel} checkbox={checkbox} />
+                <TableHeader headings={headings} sortIndex={sortIndex} sortModalTrigger={sortModalTrigger} filterModalTrigger={filterModalTrigger} filterIndex={filterIndex} setFilterIndex={setFilterIndex} handleChange={handleChange} applyFilter={applyFilter} handleSort={handleSort} filterCriteria={filterCriteria} setFilterCriteria={setFilterCriteria} filterLabel={filterLabel} checkbox={checkbox} />
 
-                <TableContent data={dataCopy} nullify={nullify} checkbox={checkbox} filterLabel={filterLabel} filterCriteria={filterCriteria} setFilterCriteria={setFilterCriteria} pagination={pagination} itemsPerPage={itemsPerPage}/>
+                <TableContent data={dataCopy} nullify={nullify} checkbox={checkbox} itemsPerPage={itemsPerPage} siblingCount={siblingCount} />
             </Box>
         </Box>
     );

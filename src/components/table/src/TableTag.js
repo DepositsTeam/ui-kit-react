@@ -12,6 +12,7 @@ const TableTag = ({ filterTag, closeTag, filterLabel, setFilterCriteria, handleC
   const [secondFilter, setSecondFilter] = useState(false)
   const [joinType, setJoinType] = useState(null)
 
+  // trigger tabletag modal onclick of the table tag
   const triggerModal = () => {
     showModal && setShowModal(() => false)
     !showModal && setShowModal(() => true)
@@ -19,18 +20,14 @@ const TableTag = ({ filterTag, closeTag, filterLabel, setFilterCriteria, handleC
     setSortIndex(filterTag[0])
   }
 
-  const handleSelectChange = (e) => {
-    setFilterCriteria(() => e.target.value)
-  }
-
-
-  const applyFilter2 =  (e) => {
-
+// onclick of the apply filter button, apply the new filter set and close mpdal
+  const applyFilter2 =  () => {
     !joinType && applyFilter()
-    joinType==='and' && applyFilter('second')
+    // joinType==='and' && applyFilter('second')
     setShowModal(() => false)
   }
 
+  // *** second filter merge function making queries to have effect
   const joinFilter = (type) => {
     type === 'and' && setJoinType(() => type)
     type === 'or' && setJoinType(() => type)
@@ -39,6 +36,8 @@ const TableTag = ({ filterTag, closeTag, filterLabel, setFilterCriteria, handleC
 
   return (
     <Box is='div' className='ui-table__filter-tag-container' >
+
+      {/* Table filter tag */}
       <Box is='div' className={`ui-table__filter-tag`} onClick={triggerModal} >
 
         {headings[filterTag[0]]}
@@ -53,19 +52,22 @@ const TableTag = ({ filterTag, closeTag, filterLabel, setFilterCriteria, handleC
 
 
       {showModal &&
+        // show table tag modal
         <Box is='div' className={`ui-table__filter-tag-field  ${!showModal && 'hide'} `}>
           <Box is='div' >
-            <SelectField label='Filter' size='small' onChange={(e) => handleSelectChange(e)} value={filterCriteria} options={filterLabel} dropDown />
-            <TextField label='Value' size='small' onChange={(e) => handleChange(e)} />
+            <SelectField label='Filter' size='small' onChange={(e) => setFilterCriteria(() => e.target.value)} value={filterCriteria} options={filterLabel} dropDown />
+            <TextField label='Value' size='small' onChange={(e) => handleChange(e)} onKeyDown={(e) => e.keyCode === 13 && applyFilter2()} />
           </Box>
 
 
           {secondFilter &&
+            //  show filter join types, and and or radio options 
             <Box is='button' onClick={() => setSecondFilter(() => true)} style={{ color: 'blue', cursor: 'pointer', margin: ' 10px 0' }}>
               + Add condition
             </Box>}
 
           {secondFilter &&
+            // show second filter form
             <>
               <Box is='form'  >
                 <Radio label='And' name='join-type' onClick={(e) => joinFilter('and')} />
@@ -78,6 +80,8 @@ const TableTag = ({ filterTag, closeTag, filterLabel, setFilterCriteria, handleC
               </Box>
             </>
           }
+
+          {/* show Filter submit button to apply filter */}
           <Box is='div' >
             <Button children='Apply Filter' colorScheme={'primary'} onClick={applyFilter2} />
             <Button onClick={() => setShowModal(() => true)}>Cancel</Button>

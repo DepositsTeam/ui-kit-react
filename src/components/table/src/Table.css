@@ -78,6 +78,8 @@
 .ui-table__pagination{
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    height: 48px;
 }
 
 .ui-table__header-item-inner {

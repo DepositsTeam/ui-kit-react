@@ -11,11 +11,10 @@ import rightArrow from '../assets/right-arrow.svg'
 import Radio from '../../radio/src/Radio';
 import TextField from "../../text-field/src/TextField";
 
-const TableHeader = ({data, headings, sortIndex, handleSort, sortModalTrigger, filterIndex, filterModalTrigger, setFilterIndex, handleChange,  applyFilter, filterCriteria, setFilterCriteria, filterLabel, checkbox }) => {
-
+const TableHeader = ({ headings, sortIndex, handleSort, sortModalTrigger, filterIndex, filterModalTrigger, setFilterIndex, handleChange, applyFilter, filterCriteria, setFilterCriteria, filterLabel, checkbox }) => {
     return (
         <Box is='div' className='ui-table__header'>
-
+            {/* display checkbox if checkbox boolean is passed as true by user */}
             {checkbox && <Checkbox className='ui-table__checkbox' />}
             {/* render headings */}
             {headings.map((item, idx) => (
@@ -59,8 +58,9 @@ const TableHeader = ({data, headings, sortIndex, handleSort, sortModalTrigger, f
                                 <Box key={ind} is="div" className=''>
 
                                     <Radio label={label} name='filter-label' onClick={() => setFilterCriteria(filterLabel[ind])} />
+                                    
                                     {/* show filter text field if clicked */}
-                                    {filterCriteria === label && <TextField label='Value' onChange={(e) => handleChange(e)} onKeyDown={(e) => e.keyCode === 13 && applyFilter(e)}/>}
+                                    {filterCriteria === label && <TextField label='Value' onChange={(e) => handleChange(e)} onKeyDown={(e) => e.keyCode === 13 && applyFilter(e)} />}
                                 </Box>
                             )}
 

@@ -21,8 +21,8 @@ const state = [
 ]
 
 const data = [
-    { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Abel', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
-    { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
+    { [h[0]]: 'first', [h[1]]: 'Text', [h[2]]: 'Abel', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
+    { [h[0]]: 'second', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
     { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
     { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[1] },
     { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[3] },
@@ -30,8 +30,8 @@ const data = [
     { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[1] },
     { [h[0]]: 'Kainy', [h[1]]: 'Call', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[2] },
     { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[1] },
-/*10*/{ [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnso', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
-    { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
+/*10*/{ [h[0]]: 'tenth', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnso', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
+    { [h[0]]: 'eleven', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
     { [h[0]]: 'Kainy', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
     { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
     { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
@@ -40,13 +40,23 @@ const data = [
     { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
     { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
     { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
+    { [h[0]]: 'twenty', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
+    { [h[0]]: 'twenty-one', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
     { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
     { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
     { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
     { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
+   
     { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
     { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
-    { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & ', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
+    { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
+    { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
+  
+    { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
+    { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
+    { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
+    { [h[0]]: 'Kristen Watson', [h[1]]: 'Text', [h[2]]: 'Johnson & Johnson', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
+    { [h[0]]: 'Last', [h[1]]: 'Text', [h[2]]: 'Johnson & ', [h[3]]: 'Text', [h[4]]: '445', [h[5]]: state[0] },
 ]
 
 const Template = (args) => <Table {...args} />;
