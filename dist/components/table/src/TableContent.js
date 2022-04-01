@@ -18,7 +18,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const TableContent = _ref => {
   let {
     data,
-    nullify
+    nullify,
+    checkbox
   } = _ref;
   return /*#__PURE__*/_react.default.createElement(_box.default, {
     is: "div",
@@ -28,7 +29,7 @@ const TableContent = _ref => {
     key: itemIdx,
     is: "div",
     className: "ui-table__content-item-container"
-  }, /*#__PURE__*/_react.default.createElement(_checkbox.default, {
+  }, checkbox && /*#__PURE__*/_react.default.createElement(_checkbox.default, {
     className: "ui-table__checkbox"
   }), Object.values(item).map((value, valueIdx) => /*#__PURE__*/_react.default.createElement(_box.default, {
     key: valueIdx,

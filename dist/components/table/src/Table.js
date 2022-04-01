@@ -35,7 +35,7 @@ var _TableHeader = _interopRequireDefault(require("./TableHeader"));
 
 var _TableTag = _interopRequireDefault(require("./TableTag"));
 
-const _excluded = ["data", "headings", "columns", "className"];
+const _excluded = ["data", "headings", "columns", "className", "checkbox"];
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54,7 +54,8 @@ const Table = _ref => {
     data,
     headings,
     columns,
-    className
+    className,
+    checkbox
   } = _ref,
       props = _objectWithoutProperties(_ref, _excluded);
 
@@ -100,11 +101,11 @@ const Table = _ref => {
 
   const handleSort = (idx, type) => {
     nullify();
-    setDataCopy(() => [...data].sort((a, b) => {
+    setDataCopy(() => [...dataCopy].sort((a, b) => {
       let x = Object.values(a)[idx];
       let y = Object.values(b)[idx];
 
-      if (type === 'asc') {
+      if (type === 'desc') {
         if (x < y) {
           return -1;
         }
@@ -114,7 +115,7 @@ const Table = _ref => {
         }
       }
 
-      if (type === 'desc') {
+      if (type === 'asc') {
         if (x > y) {
           return -1;
         }
@@ -173,13 +174,17 @@ const Table = _ref => {
     nullify();
   };
 
-  return /*#__PURE__*/_react.default.createElement(_box.default, _extends({
+  return /*#__PURE__*/_react.default.createElement(_box.default, {
+    is: "div"
+  }, filterTag.length !== 0 && /*#__PURE__*/_react.default.createElement(_TableTag.default, {
+    filterTag: filterTag,
+    closeTag: closeTag,
+    nullify: nullify,
+    filterLabel: filterLabel
+  }), /*#__PURE__*/_react.default.createElement(_box.default, _extends({
     is: "div",
     className: switchClassName
-  }, props), filterTag.length !== 0 && /*#__PURE__*/_react.default.createElement(_TableTag.default, {
-    filterTag: filterTag,
-    closeTag: closeTag
-  }), /*#__PURE__*/_react.default.createElement(_TableHeader.default, {
+  }, props), /*#__PURE__*/_react.default.createElement(_TableHeader.default, {
     headings: headings,
     sortIndex: sortIndex,
     setSortIndex: setSortIndex,
@@ -194,20 +199,26 @@ const Table = _ref => {
     nullify: nullify,
     filterCriteria: filterCriteria,
     setFilterCriteria: setFilterCriteria,
-    filterLabel: filterLabel
+    filterLabel: filterLabel,
+    checkbox: checkbox
   }), /*#__PURE__*/_react.default.createElement(_TableContent.default, {
     data: dataCopy,
-    nullify: nullify
-  }));
+    nullify: nullify,
+    checkbox: checkbox,
+    filterLabel: filterLabel,
+    filterCriteria: filterCriteria,
+    setFilterCriteria: setFilterCriteria
+  })));
 };
 
 var _default = Table;
 exports.default = _default;
 Table.propTypes = {
-  headings: _propTypes.default.array,
-  data: _propTypes.default.array,
-  cols: _propTypes.default.number
+  headings: _propTypes.default.array.isRequired,
+  data: _propTypes.default.array.isRequired,
+  cols: _propTypes.default.number,
+  checkbox: _propTypes.default.bool
 };
 Table.defaultProps = {
-  columns: 6
+  checkbox: false
 };

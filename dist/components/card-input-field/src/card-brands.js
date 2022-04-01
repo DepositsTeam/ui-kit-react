@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = exports.BRAND_ALIAS = void 0;
-var _default = [{
+const brands = [{
   brand: "American Xpress",
   src: "https://assets.deposits.com/img/card-brands/amexcard.svg"
 }, {
@@ -17,7 +17,6 @@ var _default = [{
   brand: "Visacard",
   src: "https://assets.deposits.com/img/card-brands/visacard.svg"
 }];
-exports.default = _default;
 const BRAND_ALIAS = {
   AMEX: 0,
   DISCOVER: 1,
@@ -26,3 +25,5 @@ const BRAND_ALIAS = {
   NOCARD: -1
 };
 exports.BRAND_ALIAS = BRAND_ALIAS;
+var _default = brands;
+exports.default = _default;

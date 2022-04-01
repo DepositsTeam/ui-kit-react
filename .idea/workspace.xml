@@ -5,99 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Announce.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/ArrowDown.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/ArrowDownLeft.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/ArrowDownRight.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/ArrowUp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/ArrowUpLeft.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/ArrowUpRight.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Avatar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Backward.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/BendLeft.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/BendRight.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Bolt.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Briefcase.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/CenterAlign.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Certificate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Certificate2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/ChevronArrowDown.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/ChevronArrowLeft.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/ChevronArrowRight.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/ChevronArrowUp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/ChevronFilledLeft.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/ChevronFilledRight.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/ChevronFilledUp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Circle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Company.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Compass.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Crown.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Cut.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Decrease2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Delete.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Deposits.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Disabled.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/DoubleCheck.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Drop.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/ExternalLink.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Filter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Flag.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Flame.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Flash.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Forward.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Gem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Globe.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/HorizontalArrows.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Increase2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/JustifyAlign.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Key.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/LeftAlign.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/List2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Location2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Location3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Map.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Menu3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Menu4.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Menu5.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Menu6.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Menu7.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Menu8.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Move.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Network.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Next.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Pause.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Pin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Play.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Previous.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Refresh.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Reload.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/RightAlign.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Rocket.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/RotateLeft.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/RotateRight.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Settings.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Shield.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/ShieldCheck.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/ShieldFlash.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Sort.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Sort2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/SortAscending.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/SortDescending.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Staff.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Support.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Text.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Transfer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Trophy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Upload.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/VerticalArrows.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/Withdraw.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icon/stories/Icon.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/stories/Icon.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icons/ArrowLeft.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icons/ArrowLeft.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icons/ArrowRight.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icons/ArrowRight.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icons/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icons/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pagination/src/Pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination/src/Pagination.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +127,7 @@
       <workItem from="1648303995102" duration="31942000" />
       <workItem from="1648395265148" duration="271000" />
       <workItem from="1648454566025" duration="11467000" />
-      <workItem from="1648472901881" duration="17043000" />
+      <workItem from="1648472901881" duration="17449000" />
     </task>
     <servers />
   </component>

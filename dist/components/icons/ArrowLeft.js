@@ -22,7 +22,19 @@ const ArrowLeftComponent = _ref => {
     props
   } = _ref;
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("path", {
-    d: "M15 6L9 12L15 18",
+    d: "M5 12H19",
+    stroke: smartColor || stroke,
+    strokeWidth: strokeWidth,
+    strokeLinecap: strokeLineCap,
+    strokeLinejoin: strokeLineJoin
+  }), /*#__PURE__*/_react.default.createElement("path", {
+    d: "M5 12L11 18",
+    stroke: smartColor || stroke,
+    strokeWidth: strokeWidth,
+    strokeLinecap: strokeLineCap,
+    strokeLinejoin: strokeLineJoin
+  }), /*#__PURE__*/_react.default.createElement("path", {
+    d: "M5 12L11 6",
     stroke: smartColor || stroke,
     strokeWidth: strokeWidth,
     strokeLinecap: strokeLineCap,
@@ -30,6 +42,11 @@ const ArrowLeftComponent = _ref => {
   }));
 };
 
+const ArrowLeft = {
+  component: ArrowLeftComponent,
+  viewBox: "0 0 24 24",
+  fill: "none"
+};
 ArrowLeftComponent.propTypes = {
   fill: _propTypes.default.string,
   stroke: _propTypes.default.string,
@@ -39,14 +56,10 @@ ArrowLeftComponent.propTypes = {
   smartColor: _propTypes.default.string
 };
 ArrowLeftComponent.defaultProps = {
+  stroke: "black",
   strokeWidth: "1.5",
   strokeLineCap: "round",
   strokeLineJoin: "round"
-};
-const ArrowLeft = {
-  component: ArrowLeftComponent,
-  viewBox: "0 0 24 24",
-  fill: "none"
 };
 var _default = ArrowLeft;
 exports.default = _default;

@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _react = _interopRequireDefault(require("react"));
+
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -19,12 +21,12 @@ const SearchComponent = _ref => {
     strokeLineJoin,
     props
   } = _ref;
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("path", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("path", {
     d: "M19.25 19.25L15.5 15.5L19.25 19.25ZM4.75 11C4.75 7.54822 7.54822 4.75 11 4.75C14.4518 4.75 17.25 7.54822 17.25 11C17.25 14.4518 14.4518 17.25 11 17.25C7.54822 17.25 4.75 14.4518 4.75 11Z",
     stroke: smartColor || stroke,
-    "stroke-width": strokeWidth,
-    "stroke-linecap": strokeLineCap,
-    "stroke-linejoin": strokeLineJoin
+    strokeWidth: strokeWidth,
+    strokeLinecap: strokeLineCap,
+    strokeLinejoin: strokeLineJoin
   }));
 };
 

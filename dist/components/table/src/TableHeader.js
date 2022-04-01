@@ -44,12 +44,13 @@ const TableHeader = _ref => {
     nullify,
     filterCriteria,
     setFilterCriteria,
-    filterLabel
+    filterLabel,
+    checkbox
   } = _ref;
   return /*#__PURE__*/React.createElement(_box.default, {
     is: "div",
     className: "ui-table__header"
-  }, /*#__PURE__*/React.createElement(_checkbox.default, {
+  }, checkbox && /*#__PURE__*/React.createElement(_checkbox.default, {
     className: "ui-table__checkbox"
   }), headings.map((item, idx) => /*#__PURE__*/React.createElement(_box.default, {
     key: item,
@@ -111,6 +112,7 @@ const TableHeader = _ref => {
     className: ""
   }, /*#__PURE__*/React.createElement(_Radio.default, {
     label: label,
+    name: "filter-label",
     onClick: () => setFilterCriteria(filterLabel[ind])
   }), filterCriteria === label && /*#__PURE__*/React.createElement(_TextField.default, {
     label: "Value",
