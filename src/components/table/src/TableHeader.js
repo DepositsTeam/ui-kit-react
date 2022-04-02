@@ -11,11 +11,10 @@ import rightArrow from '../assets/right-arrow.svg'
 import Radio from '../../radio/src/Radio';
 import TextField from "../../text-field/src/TextField";
 
-const TableHeader = ({ headings, sortIndex, handleSort, sortModalTrigger, filterIndex, filterModalTrigger, setFilterIndex, handleChange, filterText, applyFilter, nullify, filterCriteria, setFilterCriteria, filterLabel, checkbox }) => {
-
+const TableHeader = ({ headings, sortIndex, handleSort, sortModalTrigger, filterIndex, filterModalTrigger, setFilterIndex, handleChange, applyFilter, filterCriteria, setFilterCriteria, filterLabel, checkbox }) => {
     return (
         <Box is='div' className='ui-table__header'>
-
+            {/* display checkbox if checkbox boolean is passed as true by user */}
             {checkbox && <Checkbox className='ui-table__checkbox' />}
             {/* render headings */}
             {headings.map((item, idx) => (
@@ -46,9 +45,9 @@ const TableHeader = ({ headings, sortIndex, handleSort, sortModalTrigger, filter
                         <Box is='div' className={`ui-table__header-filter_modal`}>
                             <Box is="div" className={`ui-table__header-filter_modal-actions`} >
                                 <Box is="div" className="filter-cancel" onClick={(e) => setFilterIndex(() => null)}>Cancel</Box>
-                                <Box is="div" className="filter-apply" onClick={(e) => {
+                                <Box is="div" className="filter-apply" onClick={() => {
                                     //  reset other states and filter 
-                                    applyFilter(e)
+                                    applyFilter()
                                 }}>
                                     Apply Filter
                                 </Box>
@@ -59,8 +58,9 @@ const TableHeader = ({ headings, sortIndex, handleSort, sortModalTrigger, filter
                                 <Box key={ind} is="div" className=''>
 
                                     <Radio label={label} name='filter-label' onClick={() => setFilterCriteria(filterLabel[ind])} />
+                                    
                                     {/* show filter text field if clicked */}
-                                    {filterCriteria === label && <TextField label='Value' onChange={(e) => handleChange(e, ind)} onKeyDown={(e) => e.keyCode === 13 && applyFilter(e)}/>}
+                                    {filterCriteria === label && <TextField label='Value' onChange={(e) => handleChange(e)} onKeyDown={(e) => e.keyCode === 13 && applyFilter(e)} />}
                                 </Box>
                             )}
 

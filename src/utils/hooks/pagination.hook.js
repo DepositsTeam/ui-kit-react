@@ -10,12 +10,12 @@ const range = (start, end) => {
 };
 
 
-export const usePagination = ({ totalPage, visiblePage, page, currentPage, siblingCount=1 }) => {
+export const usePagination = ({ totalPage, visiblePage, page, currentPage, siblingCount = 1 }) => {
 	const paginationRange = useMemo(() => {
 		if (totalPage <= visiblePage) {
 			return range(1, totalPage);
 		}
-
+		console.log('reached here');
 
 		// Calculate left and right sibling index and make sure they are within range 1 and totalPageCount
 		const leftSiblingIndex = Math.max(page - siblingCount, 1);
