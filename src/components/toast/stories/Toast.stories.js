@@ -21,7 +21,7 @@ Default.decorators = [
             pushToast({
                 colorScheme: "info",
                 message: "I am a tooltip no " + Default.count,
-                autoclose: 3,
+                autoClose: 3,
             })
         }
         }
