@@ -29,8 +29,9 @@ const usePagination = _ref => {
   const paginationRange = (0, _react.useMemo)(() => {
     if (totalPage <= visiblePage) {
       return range(1, totalPage);
-    } // Calculate left and right sibling index and make sure they are within range 1 and totalPageCount
+    }
 
+    console.log('reached here'); // Calculate left and right sibling index and make sure they are within range 1 and totalPageCount
 
     const leftSiblingIndex = Math.max(page - siblingCount, 1);
     const rightSiblingIndex = Math.min(page + siblingCount, totalPage); //   We do not show dots just when there is just one page number to be inserted between the extremes of sibling and the page limits i.e 1 and totalPageCount. Hence we are using leftSiblingIndex > 2 and rightSiblingIndex < totalPageCount - 2

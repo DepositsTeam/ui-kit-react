@@ -34,26 +34,36 @@ const TableTag = _ref => {
     filterTag,
     closeTag,
     filterLabel,
-    nullify
+    setFilterCriteria,
+    handleChange,
+    applyFilter,
+    setSortIndex,
+    filterCriteria,
+    headings
   } = _ref;
   const [showModal, setShowModal] = (0, _react.useState)(false);
   const [secondFilter, setSecondFilter] = (0, _react.useState)(false);
-  const [joinType, setJoinType] = (0, _react.useState)(null);
+  const [joinType, setJoinType] = (0, _react.useState)(null); // trigger tabletag modal onclick of the table tag
 
   const triggerModal = () => {
     showModal && setShowModal(() => false);
     !showModal && setShowModal(() => true);
     setSecondFilter(() => false);
-  };
+    setSortIndex(filterTag[0]);
+  }; // onclick of the apply filter button, apply the new filter set and close mpdal
 
-  const applyFilter2 = e => {
-    nullify();
-    setShowModal(() => true);
-  };
 
-  const joinFilter = (e, type) => {
+  const applyFilter2 = () => {
+    !joinType && applyFilter(); // joinType==='and' && applyFilter('second')
+
+    setShowModal(() => false);
+  }; // *** second filter merge function making queries to have effect
+
+
+  const joinFilter = type => {
     type === 'and' && setJoinType(() => type);
     type === 'or' && setJoinType(() => type);
+    applyFilter();
   };
 
   return /*#__PURE__*/_react.default.createElement(_box.default, {
@@ -63,7 +73,7 @@ const TableTag = _ref => {
     is: "div",
     className: "ui-table__filter-tag",
     onClick: triggerModal
-  }, filterTag[0], /*#__PURE__*/_react.default.createElement(_box.default, {
+  }, headings[filterTag[0]], /*#__PURE__*/_react.default.createElement(_box.default, {
     is: "span"
   }, " ", filterTag[1], " "), filterTag[2], /*#__PURE__*/_react.default.createElement(_box.default, {
     is: "span",
@@ -71,7 +81,10 @@ const TableTag = _ref => {
     className: "close"
   }, /*#__PURE__*/_react.default.createElement(_Icon.default, {
     icon: _Close.default
-  }))), showModal && /*#__PURE__*/_react.default.createElement(_box.default, {
+  }))), showModal &&
+  /*#__PURE__*/
+  // show table tag modal
+  _react.default.createElement(_box.default, {
     is: "div",
     className: "ui-table__filter-tag-field  ".concat(!showModal && 'hide', " ")
   }, /*#__PURE__*/_react.default.createElement(_box.default, {
@@ -79,23 +92,40 @@ const TableTag = _ref => {
   }, /*#__PURE__*/_react.default.createElement(_SelectField.default, {
     label: "Filter",
     size: "small",
-    defaultValue: filterTag[1],
+    onChange: e => setFilterCriteria(() => e.target.value),
+    value: filterCriteria,
     options: filterLabel,
     dropDown: true
   }), /*#__PURE__*/_react.default.createElement(_TextField.default, {
     label: "Value",
-    size: "small"
-  })), /*#__PURE__*/_react.default.createElement(_box.default, {
-    is: "form",
-    onClick: () => setSecondFilter(() => true)
+    size: "small",
+    onChange: e => handleChange(e),
+    onKeyDown: e => e.keyCode === 13 && applyFilter2()
+  })), secondFilter &&
+  /*#__PURE__*/
+  //  show filter join types, and and or radio options 
+  _react.default.createElement(_box.default, {
+    is: "button",
+    onClick: () => setSecondFilter(() => true),
+    style: {
+      color: 'blue',
+      cursor: 'pointer',
+      margin: ' 10px 0'
+    }
+  }, "+ Add condition"), secondFilter &&
+  /*#__PURE__*/
+  // show second filter form
+  _react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_box.default, {
+    is: "form"
   }, /*#__PURE__*/_react.default.createElement(_Radio.default, {
     label: "And",
     name: "join-type",
-    onClick: e => joinFilter(e, 'and')
+    onClick: e => joinFilter('and')
   }), /*#__PURE__*/_react.default.createElement(_Radio.default, {
     label: "Or",
-    name: "join-type"
-  })), secondFilter && /*#__PURE__*/_react.default.createElement(_box.default, {
+    name: "join-type",
+    onClick: e => joinFilter('and')
+  })), /*#__PURE__*/_react.default.createElement(_box.default, {
     is: "div",
     className: "extra-filter"
   }, /*#__PURE__*/_react.default.createElement(_SelectField.default, {
@@ -110,7 +140,7 @@ const TableTag = _ref => {
     className: "close",
     icon: _Close.default,
     onClick: () => setSecondFilter(() => null)
-  })), /*#__PURE__*/_react.default.createElement(_box.default, {
+  }))), /*#__PURE__*/_react.default.createElement(_box.default, {
     is: "div"
   }, /*#__PURE__*/_react.default.createElement(_button.default, {
     children: "Apply Filter",

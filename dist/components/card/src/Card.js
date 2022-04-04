@@ -65,14 +65,14 @@ const Card = _ref => {
     className: generatedClassName
   }, radio && /*#__PURE__*/_react.default.createElement(_radio.default, _extends({
     is: "input",
-    className: "ui-radio",
+    className: "ui-radio ui-card__form-selector",
     type: "radio",
     onClick: e => {
       setSelected(() => e.target.checked);
     }
   }, props)) || checkbox && /*#__PURE__*/_react.default.createElement(_checkbox.default, _extends({
     is: "input",
-    className: "ui-checkbox",
+    className: "ui-checkbox ui-card__form-selector",
     type: "checkbox",
     onClick: e => {
       setSelected(() => e.target.checked);
