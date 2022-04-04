@@ -34,6 +34,10 @@
     
 }
 
+.ui-card__form-selector {
+    margin-top: 4px;
+}
+
 .ui-card__content {
     width: 100%;
     padding:0 5px;

@@ -28,7 +28,7 @@ const Card = ({ is, title, desc, children, radio, checkbox, icon, select, classN
             {
                 (radio && <Radio
                     is={"input"}
-                    className={"ui-radio"}
+                    className={"ui-radio ui-card__form-selector"}
                     type={"radio"}
                     onClick={(e) => { setSelected(() => e.target.checked) }}
                     {...props}
@@ -36,7 +36,7 @@ const Card = ({ is, title, desc, children, radio, checkbox, icon, select, classN
                 ||
                 (checkbox && <Checkbox
                     is={"input"}
-                    className={"ui-checkbox"}
+                    className={"ui-checkbox ui-card__form-selector"}
                     type={"checkbox"}
                     onClick={(e) => { setSelected(() => e.target.checked) }}
                     {...props}
