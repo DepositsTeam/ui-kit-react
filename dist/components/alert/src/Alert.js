@@ -94,7 +94,7 @@ const Alert = _ref => {
   }, colorScheme !== "default" && /*#__PURE__*/_react.default.createElement(_icon.default, {
     className: "ui-alert__header-icon",
     icon: schemeIcons[colorScheme],
-    smartColor: "currentcolor"
+    smartcolor: "currentcolor"
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "ui-alert__text"
   }, /*#__PURE__*/_react.default.createElement(_box.default, {
@@ -108,7 +108,7 @@ const Alert = _ref => {
   }, description), button && theme !== "inline" && /*#__PURE__*/_react.default.createElement(_button.default, _extends({
     className: "ui-alert__call-to-action"
   }, button))))), closable && theme !== "inline" && /*#__PURE__*/_react.default.createElement(_icon.default, {
-    smartColor: "currentcolor",
+    smartcolor: "currentcolor",
     className: "ui-alert__close-icon",
     icon: _Close.default,
     onClick: props.onClick || remove

@@ -90,10 +90,10 @@ const Toast = _ref => {
 var _default = Toast;
 exports.default = _default;
 Toast.propTypes = {
-  autoClose: _propTypes.default.number,
+  autoclose: _propTypes.default.number,
   position: _propTypes.default.oneOf(["top-right", "top-left", "bottom-left", "bottom-right"])
 };
 Toast.defaultProps = {
-  autoClose: 5000,
+  autoclose: 5000,
   position: "top-right"
 };

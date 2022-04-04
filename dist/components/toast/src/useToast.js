@@ -38,6 +38,6 @@ function useToast(props) {
     return () => {
       clearInterval(interval);
     };
-  }, [toasts]);
+  });
   return [toasts, setToasts, setCountUp];
 }

@@ -53,7 +53,6 @@ export const GreyBody = Template.bind({});
 GreyBody.args = {
   heading: "Title",
   greyContent: true,
-  show: false,
   children: (
     <>
       <TextField label={"Form label"} />
@@ -70,11 +69,3 @@ GreyBody.args = {
     </>
   ),
 };
-
-Default.decorators = [
-  (Story, args) => (
-    <div>
-      <Story />
-    </div>
-  ),
-];

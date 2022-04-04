@@ -46,7 +46,7 @@ const Icon = _ref => {
     is: "svg",
     fill: props.fill || icon.fill
   }, props), /*#__PURE__*/_react.default.createElement(IconComponent, _extends({
-    smartColor: "currentcolor"
+    smartcolor: "currentcolor"
   }, props)));
 };
 

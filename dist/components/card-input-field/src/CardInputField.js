@@ -67,8 +67,8 @@ const CardInputField = _ref => {
       props = _objectWithoutProperties(_ref, _excluded);
 
   const [selectedCard, setSelectedCard] = (0, _react.useState)(-1);
-  const [cardNo, setCardNo] = (0, _react.useState)("");
-  const [cardNoIsFocused, setCardNoIsFocused] = (0, _react.useState)(false);
+  const [cardNo, setCardNo] = (0, _react.useState)(""); // const [cardNoIsFocused, setCardNoIsFocused] = useState(false);
+
   const [cardNoDisplay, setCardNoDisplay] = (0, _react.useState)("");
   const [cardExp, setCardExp] = (0, _react.useState)("");
   const [cardCVV, setCardCVV] = (0, _react.useState)("");
@@ -79,8 +79,8 @@ const CardInputField = _ref => {
   const cardExpInput = (0, _react.useRef)();
 
   const handleCardNoFocus = () => {
-    pseudoInput.current.classList.add("focus");
-    setCardNoIsFocused(true);
+    pseudoInput.current.classList.add("focus"); // setCardNoIsFocused(true);
+
     setCardNoDisplay(cardNo);
   };
 
@@ -95,8 +95,8 @@ const CardInputField = _ref => {
   };
 
   const handleCardNoBlur = e => {
-    e.preventDefault();
-    setCardNoIsFocused(false);
+    e.preventDefault(); // setCardNoIsFocused(false);
+
     pseudoInput.current.classList.remove("focus");
     const strippedCardNo = cardNo.replace(/\s/g, "");
 
@@ -140,7 +140,7 @@ const CardInputField = _ref => {
 
   const handleCardNoKeyDown = e => {
     if (e.key === "Backspace" || e.key === "Delete") {
-      if (cardNoDisplay.length != e.target.selectionStart) {
+      if (cardNoDisplay.length !== e.target.selectionStart) {
         setTargetPosition({
           pos: e.target.selectionStart,
           key: e.key
@@ -154,7 +154,7 @@ const CardInputField = _ref => {
     const strippedCardNo = cardNo.replace(/\s/g, "");
     console.log(e.key);
 
-    if (e.key != "Backspace" && e.key != "Delete" && e.key != "ArrowUp" && e.key != "ArrowLeft" && e.key != "ArrowDown" && e.key != "ArrowRight") {
+    if (e.key !== "Backspace" && e.key !== "Delete" && e.key !== "ArrowUp" && e.key !== "ArrowLeft" && e.key !== "ArrowDown" && e.key !== "ArrowRight") {
       if (selectedCard === _cardBrands.BRAND_ALIAS.AMEX) {
         if (strippedCardNo.length === 15) {
           e.preventDefault();

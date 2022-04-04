@@ -96,7 +96,7 @@ const Pagination = ({
 	));
 
 	return (
-		<Box is="button" {...props} className={generatedClassName}>
+		<Box is="div" {...props} className={generatedClassName}>
 			<Box className={"ui-pagination__control"} onClick={handlePreviousPage}>
 				<Icon
 					className="ui-pagination__left-arrow"

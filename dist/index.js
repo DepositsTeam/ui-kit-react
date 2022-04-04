@@ -69,6 +69,12 @@ Object.defineProperty(exports, "Heading", {
     return _heading.default;
   }
 });
+Object.defineProperty(exports, "Icon", {
+  enumerable: true,
+  get: function get() {
+    return _icon.default;
+  }
+});
 Object.defineProperty(exports, "Modal", {
   enumerable: true,
   get: function get() {
@@ -111,6 +117,12 @@ Object.defineProperty(exports, "Tab", {
     return _tab.default;
   }
 });
+Object.defineProperty(exports, "Table", {
+  enumerable: true,
+  get: function get() {
+    return _table.default;
+  }
+});
 Object.defineProperty(exports, "TagInput", {
   enumerable: true,
   get: function get() {
@@ -141,6 +153,12 @@ Object.defineProperty(exports, "Toast", {
     return _toast.default;
   }
 });
+Object.defineProperty(exports, "icons", {
+  enumerable: true,
+  get: function get() {
+    return _icons.default;
+  }
+});
 
 var _alert = _interopRequireDefault(require("./components/alert"));
 
@@ -164,6 +182,8 @@ var _datePicker = _interopRequireDefault(require("./components/date-picker"));
 
 var _heading = _interopRequireDefault(require("./components/heading"));
 
+var _icon = _interopRequireDefault(require("./components/icon"));
+
 var _modal = _interopRequireDefault(require("./components/modal"));
 
 var _pagination = _interopRequireDefault(require("./components/pagination"));
@@ -178,6 +198,8 @@ var _switch = _interopRequireDefault(require("./components/switch"));
 
 var _tab = _interopRequireDefault(require("./components/tab"));
 
+var _table = _interopRequireDefault(require("./components/table"));
+
 var _tagInput = _interopRequireDefault(require("./components/tag-input"));
 
 var _text = _interopRequireDefault(require("./components/text"));
@@ -187,5 +209,7 @@ var _textArea = _interopRequireDefault(require("./components/text-area"));
 var _textField = _interopRequireDefault(require("./components/text-field"));
 
 var _toast = _interopRequireDefault(require("./components/toast"));
+
+var _icons = _interopRequireDefault(require("./components/icons"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

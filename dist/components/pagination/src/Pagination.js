@@ -23,9 +23,9 @@ require("./Pagination.css");
 
 var _icon = _interopRequireDefault(require("../../icon"));
 
-var _ArrowRight = _interopRequireDefault(require("../../icons/ArrowRight"));
+var _ChevronArrowRight = _interopRequireDefault(require("../../icons/ChevronArrowRight"));
 
-var _ArrowLeft = _interopRequireDefault(require("../../icons/ArrowLeft"));
+var _ChevronArrowLeft = _interopRequireDefault(require("../../icons/ChevronArrowLeft"));
 
 var _pagination = require("../../../utils/hooks/pagination.hook");
 
@@ -139,7 +139,7 @@ const Pagination = _ref => {
   }, /*#__PURE__*/_react.default.createElement(_icon.default, {
     className: "ui-pagination__left-arrow",
     smartColor: "currentcolor",
-    icon: _ArrowLeft.default
+    icon: _ChevronArrowLeft.default
   }), /*#__PURE__*/_react.default.createElement(_text.default, {
     className: "ui-pagination__text-previous ui-pagination__text",
     scale: "subhead",
@@ -155,7 +155,7 @@ const Pagination = _ref => {
   }, "Next"), /*#__PURE__*/_react.default.createElement(_icon.default, {
     className: "ui-pagination__right-arrow",
     smartColor: "#0DB9E9",
-    icon: _ArrowRight.default
+    icon: _ChevronArrowRight.default
   })));
 };
 
@@ -184,8 +184,8 @@ Pagination.defaultProps = {
 // import Box from "../../box";
 // import "./Pagination.css";
 // import Icon from "../../icon";
-// import ArrowRight from "../../icons/ArrowRight";
-// import ArrowLeft from "../../icons/ArrowLeft";
+// import ChevronArrowRight from "../../icons/ChevronArrowRight";
+// import ChevronArrowLeft from "../../icons/ChevronArrowLeft";
 // const Pagination = ({ totalPage, currentPage, visiblePage, className, ...props }) => {
 //   const [page, setPage] = useState(1);
 //   const handleNextPage = () => {
@@ -257,7 +257,7 @@ Pagination.defaultProps = {
 //         <Icon
 //           className="ui-pagination__left-arrow"
 //           smartColor="currentcolor"
-//           icon={ArrowLeft}
+//           icon={ChevronArrowLeft}
 //         />
 //         <Text
 //           className="ui-pagination__text-previous ui-pagination__text"
@@ -279,7 +279,7 @@ Pagination.defaultProps = {
 //         <Icon
 //           className="ui-pagination__right-arrow"
 //           smartColor="#0DB9E9"
-//           icon={ArrowRight}
+//           icon={ChevronArrowRight}
 //         />
 //       </Box>
 //     </Box>

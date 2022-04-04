@@ -5,17 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = exports.SizeXLarge = exports.SizeSmall = exports.SizeMedium = exports.SizeMassive = exports.SizeLarge = exports.SizeHuge = exports.ExampleTagInputStory = void 0;
 
-require("core-js/modules/web.dom-collections.iterator.js");
-
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
 
 var _TagInput = _interopRequireDefault(require("../src/TagInput"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 var _default = {
   title: "Tag-Input",
@@ -26,7 +20,8 @@ exports.default = _default;
 const Template = props => /*#__PURE__*/_react.default.createElement(_TagInput.default, props);
 
 const ExampleTagInputStory = args => {
-  const [input, setInput] = (0, _react.useState)(["Option one", "Option 2", "Option 3"]);
+  // const [input, setInput] = useState();
+  const input = ["Option one", "Option 2", "Option 3"];
   return /*#__PURE__*/_react.default.createElement(_TagInput.default, {
     values: input,
     inputProps: {
