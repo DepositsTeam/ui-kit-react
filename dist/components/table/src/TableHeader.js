@@ -39,9 +39,7 @@ const TableHeader = _ref => {
     filterModalTrigger,
     setFilterIndex,
     handleChange,
-    filterText,
     applyFilter,
-    nullify,
     filterCriteria,
     setFilterCriteria,
     filterLabel,
@@ -102,9 +100,9 @@ const TableHeader = _ref => {
   }, "Cancel"), /*#__PURE__*/React.createElement(_box.default, {
     is: "div",
     className: "filter-apply",
-    onClick: e => {
+    onClick: () => {
       //  reset other states and filter 
-      applyFilter(e);
+      applyFilter();
     }
   }, "Apply Filter")), filterLabel.map((label, ind) => /*#__PURE__*/React.createElement(_box.default, {
     key: ind,
@@ -116,7 +114,7 @@ const TableHeader = _ref => {
     onClick: () => setFilterCriteria(filterLabel[ind])
   }), filterCriteria === label && /*#__PURE__*/React.createElement(_TextField.default, {
     label: "Value",
-    onChange: e => handleChange(e, ind),
+    onChange: e => handleChange(e),
     onKeyDown: e => e.keyCode === 13 && applyFilter(e)
   })))))));
 };

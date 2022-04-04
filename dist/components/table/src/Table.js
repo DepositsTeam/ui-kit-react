@@ -35,7 +35,7 @@ var _TableHeader = _interopRequireDefault(require("./TableHeader"));
 
 var _TableTag = _interopRequireDefault(require("./TableTag"));
 
-const _excluded = ["data", "headings", "columns", "className", "checkbox"];
+const _excluded = ["data", "headings", "columns", "className", "checkbox", "pagination", "itemsPerPage", "siblingCount"];
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49,17 +49,20 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
+// import Pagination from "../../pagination/src/Pagination";
 const Table = _ref => {
   let {
     data,
     headings,
     columns,
     className,
-    checkbox
+    checkbox,
+    pagination,
+    itemsPerPage,
+    siblingCount
   } = _ref,
       props = _objectWithoutProperties(_ref, _excluded);
 
-  // const cols = Object.entries(dataCopy[0]).length
   const switchClassName = (0, _classNames.default)({
     "ui-table__wrapper": true // "ui-table__header": true,
     // "ui-table__content": true,
@@ -73,7 +76,7 @@ const Table = _ref => {
   const filterLabel = ['Is', 'Is not', 'Is empty', 'Is not empty', 'Is equal to', 'Is not equal to', 'Begins with', 'Ends with', 'Contains', 'Does not contain'];
   const [filterTag, setFilterTag] = (0, _react.useState)([]); // set Filter text to input value
 
-  const handleChange = (e, ind) => setFilterText(() => e.target.value.trim().toLowerCase()); // reset all states
+  const handleChange = e => setFilterText(() => e.target.value.trim().toLowerCase()); // reset all states
 
 
   const nullify = () => {
@@ -96,16 +99,19 @@ const Table = _ref => {
   }; // get all values of the selected column of array of objects
 
 
-  const getArr = data => Object.values(data)[sortIndex]; // sort column ascending or descending 
+  const getArr = data => {
+    let item = Object.values(data)[sortIndex];
+    return item.alt || item;
+  }; // sort column ascending or descending 
 
 
   const handleSort = (idx, type) => {
     nullify();
     setDataCopy(() => [...dataCopy].sort((a, b) => {
-      let x = Object.values(a)[idx];
-      let y = Object.values(b)[idx];
+      let x = Object.values(a)[idx].alt || Object.values(a)[idx];
+      let y = Object.values(b)[idx].alt || Object.values(b)[idx];
 
-      if (type === 'desc') {
+      if (type === 'asc') {
         if (x < y) {
           return -1;
         }
@@ -115,7 +121,7 @@ const Table = _ref => {
         }
       }
 
-      if (type === 'asc') {
+      if (type === 'desc') {
         if (x > y) {
           return -1;
         }
@@ -127,28 +133,14 @@ const Table = _ref => {
 
       return 0;
     }));
-  }; // // filter function running conditionally
-  // const filte = (num) => {
-  //     setDataCopy(() => data.filter(item => {
-  //         if (num === 0) return getArr(item).toLowerCase() === filterText.toLowerCase().trim();
-  //         if (num === 1) return getArr(item).toLowerCase() !== filterText.toLowerCase().trim()
-  //         if (num === 2) return getArr(item) === ''
-  //         if (num === 3) return getArr(item) !== ''
-  //         if (num === 4) return getArr(item) === filterText
-  //         if (num === 5) return getArr(item) !== filterText
-  //         if (num === 6) return getArr(item).toLowerCase().startsWith(filterText.toLowerCase().trim())
-  //         if (num === 7) return getArr(item).toLowerCase().endsWith(filterText.toLowerCase().trim())
-  //         if (num === 9) return !getArr(item).toLowerCase().includes(filterText.toLowerCase().trim())
-  //         return getArr(item).toLowerCase().includes(filterText.toLowerCase().trim())
-  //     }))
-  // }
+  };
 
-
-  const applyFilter = e => {
-    filter[filterCriteria]();
+  const applyFilter = second => {
+    // !second === 'second' &&
+    filter[filterCriteria](data); // second === 'second' && filter[filterCriteria](dataCopy);
 
     if (filterText && filterText !== '' && filterText !== ' ') {
-      setFilterTag(() => [headings[sortIndex], filterCriteria, filterText]);
+      setFilterTag(() => [sortIndex, filterCriteria, filterText]);
     }
 
     nullify();
@@ -156,19 +148,20 @@ const Table = _ref => {
 
 
   const filter = {
-    [filterLabel[0]]: () => setDataCopy(() => data.filter(item => getArr(item).toLowerCase() === filterText.toLowerCase().trim())),
-    [filterLabel[1]]: () => setDataCopy(() => data.filter(item => getArr(item).toLowerCase() !== filterText.toLowerCase().trim())),
-    [filterLabel[2]]: () => setDataCopy(() => data.filter(item => getArr(item) === '')),
-    [filterLabel[3]]: () => setDataCopy(() => data.filter(item => getArr(item) !== '')),
-    [filterLabel[4]]: () => setDataCopy(() => data.filter(item => getArr(item) === filterText)),
-    [filterLabel[5]]: () => setDataCopy(() => data.filter(item => getArr(item) !== filterText)),
-    [filterLabel[6]]: () => setDataCopy(() => data.filter(item => getArr(item).toLowerCase().startsWith(filterText.toLowerCase().trim()))),
-    [filterLabel[7]]: () => setDataCopy(() => data.filter(item => getArr(item).toLowerCase().endsWith(filterText.toLowerCase().trim()))),
-    [filterLabel[8]]: () => setDataCopy(() => data.filter(item => getArr(item).toLowerCase().includes(filterText.toLowerCase().trim()))),
-    [filterLabel[9]]: () => setDataCopy(() => data.filter(item => !getArr(item).toLowerCase().includes(filterText.toLowerCase().trim())))
+    [filterLabel[0]]: dataF => setDataCopy(() => dataF.filter(item => getArr(item).toLowerCase() === filterText.toLowerCase().trim())),
+    [filterLabel[1]]: dataF => setDataCopy(() => dataF.filter(item => getArr(item).toLowerCase() !== filterText.toLowerCase().trim())),
+    [filterLabel[2]]: dataF => setDataCopy(() => dataF.filter(item => getArr(item) === '')),
+    [filterLabel[3]]: dataF => setDataCopy(() => dataF.filter(item => getArr(item) !== '')),
+    [filterLabel[4]]: dataF => setDataCopy(() => dataF.filter(item => getArr(item) === filterText)),
+    [filterLabel[5]]: dataF => setDataCopy(() => dataF.filter(item => getArr(item) !== filterText)),
+    [filterLabel[6]]: dataF => setDataCopy(() => dataF.filter(item => getArr(item).toLowerCase().startsWith(filterText.toLowerCase().trim()))),
+    [filterLabel[7]]: dataF => setDataCopy(() => dataF.filter(item => getArr(item).toLowerCase().endsWith(filterText.toLowerCase().trim()))),
+    [filterLabel[8]]: dataF => setDataCopy(() => dataF.filter(item => getArr(item).toLowerCase().includes(filterText.toLowerCase().trim()))),
+    [filterLabel[9]]: dataF => setDataCopy(() => dataF.filter(item => !getArr(item).toLowerCase().includes(filterText.toLowerCase().trim())))
   };
 
-  const closeTag = () => {
+  const closeTag = e => {
+    e.stopPropagation();
     setFilterTag([]);
     setDataCopy(() => data);
     nullify();
@@ -176,27 +169,30 @@ const Table = _ref => {
 
   return /*#__PURE__*/_react.default.createElement(_box.default, {
     is: "div"
-  }, filterTag.length !== 0 && /*#__PURE__*/_react.default.createElement(_TableTag.default, {
+  }, filterTag.length > 0 && /*#__PURE__*/_react.default.createElement(_TableTag.default, {
     filterTag: filterTag,
     closeTag: closeTag,
     nullify: nullify,
-    filterLabel: filterLabel
+    filterLabel: filterLabel,
+    handleChange: handleChange,
+    applyFilter: applyFilter,
+    setFilterCriteria: setFilterCriteria,
+    setSortIndex: setSortIndex,
+    filterCriteria: filterCriteria,
+    headings: headings
   }), /*#__PURE__*/_react.default.createElement(_box.default, _extends({
     is: "div",
     className: switchClassName
   }, props), /*#__PURE__*/_react.default.createElement(_TableHeader.default, {
     headings: headings,
     sortIndex: sortIndex,
-    setSortIndex: setSortIndex,
     sortModalTrigger: sortModalTrigger,
     filterModalTrigger: filterModalTrigger,
-    handleSort: handleSort,
     filterIndex: filterIndex,
     setFilterIndex: setFilterIndex,
     handleChange: handleChange,
-    filterText: filterText,
     applyFilter: applyFilter,
-    nullify: nullify,
+    handleSort: handleSort,
     filterCriteria: filterCriteria,
     setFilterCriteria: setFilterCriteria,
     filterLabel: filterLabel,
@@ -205,9 +201,8 @@ const Table = _ref => {
     data: dataCopy,
     nullify: nullify,
     checkbox: checkbox,
-    filterLabel: filterLabel,
-    filterCriteria: filterCriteria,
-    setFilterCriteria: setFilterCriteria
+    itemsPerPage: itemsPerPage,
+    siblingCount: siblingCount
   })));
 };
 
@@ -216,8 +211,8 @@ exports.default = _default;
 Table.propTypes = {
   headings: _propTypes.default.array.isRequired,
   data: _propTypes.default.array.isRequired,
-  cols: _propTypes.default.number,
-  checkbox: _propTypes.default.bool
+  checkbox: _propTypes.default.bool,
+  pagination: _propTypes.default.bool
 };
 Table.defaultProps = {
   checkbox: false

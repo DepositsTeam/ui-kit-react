@@ -80,7 +80,6 @@ exports.GreyBody = GreyBody;
 GreyBody.args = {
   heading: "Title",
   greyContent: true,
-  show: false,
   children: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_textField.default, {
     label: "Form label"
   }), /*#__PURE__*/_react.default.createElement(_textField.default, {
@@ -94,4 +93,3 @@ GreyBody.args = {
     colorScheme: "primary"
   }, "Primary Button"))
 };
-Default.decorators = [(Story, args) => /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Story, null))];

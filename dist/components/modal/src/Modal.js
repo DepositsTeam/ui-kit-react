@@ -23,6 +23,8 @@ var _classNames = _interopRequireDefault(require("../../../utils/classNames"));
 
 var _box = _interopRequireDefault(require("../../box"));
 
+var _Portal = require("../../../utils/components/Portal");
+
 const _excluded = ["greyContent", "show", "requestClose", "modalWidth"];
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -56,7 +58,7 @@ const Modal = _ref => {
     }
   };
 
-  return show ? /*#__PURE__*/_react.default.createElement(_box.default, {
+  return show ? /*#__PURE__*/_react.default.createElement(_Portal.Portal, null, /*#__PURE__*/_react.default.createElement(_box.default, {
     onClick: handleCloseClicks,
     className: generatedClassNames
   }, /*#__PURE__*/_react.default.createElement(_box.default, {
@@ -77,7 +79,7 @@ const Modal = _ref => {
     cursor: "pointer"
   })), /*#__PURE__*/_react.default.createElement("div", {
     className: "ui-modal__body"
-  }, props.children))) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null);
+  }, props.children)))) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null);
 };
 
 var _default = Modal;
@@ -87,5 +89,6 @@ Modal.propTypes = {
   show: _propTypes.default.bool,
   greyContent: _propTypes.default.bool,
   requestClose: _propTypes.default.func,
-  modalWidth: _propTypes.default.string
+  modalWidth: _propTypes.default.string,
+  title: _propTypes.default.string
 };

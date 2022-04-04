@@ -130,7 +130,7 @@ const Pagination = _ref => {
     fontFace: "circularSTD"
   }, pageNumber)));
   return /*#__PURE__*/_react.default.createElement(_box.default, _extends({
-    is: "button"
+    is: "div"
   }, props, {
     className: generatedClassName
   }), /*#__PURE__*/_react.default.createElement(_box.default, {

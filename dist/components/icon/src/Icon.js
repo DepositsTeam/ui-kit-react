@@ -17,7 +17,7 @@ var _classNames = _interopRequireDefault(require("../../../utils/classNames"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-const _excluded = ["className", "icon", "children"];
+const _excluded = ["className", "icon", "children", "smartColor"];
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31,7 +31,8 @@ const Icon = _ref => {
   let {
     className,
     icon,
-    children
+    children,
+    smartColor
   } = _ref,
       props = _objectWithoutProperties(_ref, _excluded);
 
@@ -46,7 +47,7 @@ const Icon = _ref => {
     is: "svg",
     fill: props.fill || icon.fill
   }, props), /*#__PURE__*/_react.default.createElement(IconComponent, _extends({
-    smartcolor: "currentcolor"
+    smartColor: smartColor || 'currentcolor'
   }, props)));
 };
 
