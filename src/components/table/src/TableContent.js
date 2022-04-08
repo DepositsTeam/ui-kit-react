@@ -38,7 +38,7 @@ const TableContent = ({ data, itemsPerPage, siblingCount, nullify, checkbox }) =
             ))}
 
             <Box className='ui-table__pagination'>
-                <Pagination totalPage={noOfPages} siblingCount={siblingCount} onPageChange={onPageChange} />
+                <Pagination totalPages={noOfPages} currentPageSiblings={siblingCount} onPageChange={onPageChange} />
             </Box>
 
         </Box>

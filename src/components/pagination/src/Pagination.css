@@ -1,21 +1,12 @@
 .ui-pagination {
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
 }
-
 .ui-pagination__text-previous {
-	color: #8895a7;
     margin-right: 8px;
-    cursor: pointer;
 }
-
-.ui-pagination__text-next {
-	color: #0DB9E9;
-    cursor: pointer;
-}
-
-.ui-pagination__page-number__active{
-    background: #0DB9E9;
+.ui-pagination__page-number__active {
+    background: #0db9e9;
     border-radius: 4px;
     height: 32px;
     width: 32px;
@@ -23,38 +14,36 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin-right: 12px; */
-    cursor: pointer;
 }
-
-.ui-pagination__page-number{
+.ui-pagination__page-number {
     margin-right: 12px;
     cursor: pointer;
-
 }
-
-.ui-pagination__page-number_last{
+.ui-pagination__page-number_last {
     margin-left: 12px;
-    cursor: pointer;
     margin-right: 8px;
 }
-
-.ui-pagination__left-arrow, .ui-pagination__right-arrow{
-    cursor: pointer;
+.ui-pagination__left-arrow, .ui-pagination__right-arrow {
+    color: #0db9e9;
 }
-
 .ui-pagination__control {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
-
+.ui-pagination__control .ui-pagination__text {
+    color: #0db9e9;
+}
+.ui-pagination__control.disabled {
+    cursor: not-allowed;
+}
+.ui-pagination__control.disabled .ui-pagination__left-arrow, .ui-pagination__control.disabled .ui-pagination__right-arrow {
+    color: #8895a7;
+}
+.ui-pagination__control.disabled .ui-pagination__text {
+    color: #8895a7;
+}
 .ui-pagination__control .ui-text {
     margin-top: 0;
     margin-bottom: 0;
-}
-
-button {
-    border: none;
-    outline: none;
-    background: none;
 }

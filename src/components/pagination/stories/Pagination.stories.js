@@ -11,9 +11,9 @@ export const ExamplePaginationStory = (args) => {
 
 	return (
 		<Pagination
-			totalPage={100}
-            visiblePage={5}
-            siblingCount={1}
+			totalPages={100}
+            currentPageSiblings={4}  
+            currentPage={1} 
             onPageChange={(page) => {
                 console.log("page changed to: ", page);
             } }
@@ -27,13 +27,13 @@ ExamplePaginationStory.storyname = "Pagination Story Example";
 
 export const PaginationOne = Template.bind({});
 PaginationOne.args = {
-    visiblePage: 5,
-    totalPage: 100,
-    siblingCount: 4,
+    currentPage: 5,
+    totalPages: 100,
+    currentPageSiblings: 4,
 }
 
 export const PaginationTwo = Template.bind({});
 PaginationTwo.args = {
-    visiblePage: 5,
-    totalPage: 5,
+    currentPage: 5,
+    totalPages: 5,
 }

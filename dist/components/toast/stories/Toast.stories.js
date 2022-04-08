@@ -36,7 +36,7 @@ Default.decorators = [Story => /*#__PURE__*/_react.default.createElement("div", 
     (0, _Toast.pushToast)({
       colorScheme: "info",
       message: "I am a tooltip no " + Default.count,
-      autoclose: 3
+      autoClose: 3
     });
   }
 }, "Trigger toast"))];
