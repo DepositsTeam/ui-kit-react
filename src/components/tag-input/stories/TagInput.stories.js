@@ -2,7 +2,7 @@ import React from "react";
 import TagInput from "../src/TagInput";
 
 export default {
-	title: "Tag-Input",
+	title: "Tag Input",
 	component: TagInput,
 };
 
