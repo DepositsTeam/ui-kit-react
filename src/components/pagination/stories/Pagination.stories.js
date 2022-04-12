@@ -32,6 +32,13 @@ PaginationOne.args = {
     currentPageSiblings: 4,
 }
 
+export const PaginationOneSibling = Template.bind({})
+PaginationOne.args = {
+    currentPage: 1,
+    totalPages: 100,
+    currentPageSiblings: 1,
+}
+
 export const PaginationTwo = Template.bind({});
 PaginationTwo.args = {
     currentPage: 5,

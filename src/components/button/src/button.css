@@ -187,8 +187,18 @@
   font-size: 12px;
 }
 
+.ui-button.size__small .ui-button__left-icon {
+  height: 20px;
+  width: 20px;
+}
+
 .ui-button.size__medium {
   padding: 8px 16px;
+}
+
+.ui-button.size__medium .ui-button__left-icon {
+  height: 20px;
+  width: 20px;
 }
 
 .ui-button.size__large {

@@ -15,18 +15,14 @@ export const usePagination = ({
   const [initializedCurrentPage, setInitializedCurrentPage] = useState(1);
   const [disablePrev, setDisablePrev] = useState(false);
   const [disableNext, setDisableNext] = useState(false);
-  const invokeFunction = (func, ...args) => {
-    if (typeof func === "function") {
-      return func(...args);
-    }
-  };
+
   const updatePage = (page) => {
     if (page > totalPages || page < 1 || page === "...") {
       return;
     }
     setInitializedCurrentPage(page);
     if (onPageChange && typeof onPageChange === "function") {
-      onPageChange(page)
+      onPageChange(page);
     }
   };
   useEffect(() => {
@@ -36,39 +32,36 @@ export const usePagination = ({
     setDisablePrev(initializedCurrentPage === 1);
     setDisableNext(initializedCurrentPage === totalPages);
 
-	const doubleVisibleSiblings = currentPageSiblings * 2;
-	let middleMin = initializedCurrentPage - currentPageSiblings;
-	let middleMax = initializedCurrentPage + currentPageSiblings;
-  
-	if (totalPages <= doubleVisibleSiblings + 2) {
-	  setRenderedPages(rangedArray(1, totalPages));
-	} else {
-	  if (initializedCurrentPage < doubleVisibleSiblings) {
-		setRenderedPages([
-		  ...rangedArray(1, doubleVisibleSiblings),
-		  dots,
-		  totalPages,
-		]);
-	  } else {
-		if (initializedCurrentPage < totalPages - doubleVisibleSiblings) {
-		  setRenderedPages([
-			1,
-			dots,
-			...rangedArray(middleMin, middleMax),
-			dots,
-			totalPages,
-		  ]);
-		} else {
-		  setRenderedPages([
-			1,
-			dots,
-			...rangedArray(totalPages - doubleVisibleSiblings, totalPages),
-		  ]);
-		}
-	  }
-	}
-  }, [initializedCurrentPage, totalPages]);
+    const doubleVisibleSiblings = currentPageSiblings * 2;
+    let middleMin = initializedCurrentPage - currentPageSiblings;
+    let middleMax = initializedCurrentPage + currentPageSiblings;
 
+    if (totalPages <= doubleVisibleSiblings + 2) {
+      setRenderedPages(rangedArray(1, totalPages));
+    } else {
+      if (initializedCurrentPage < doubleVisibleSiblings) {
+        setRenderedPages([
+          ...rangedArray(1, doubleVisibleSiblings),
+          dots,
+          totalPages,
+        ]);
+      } else {
+        if (initializedCurrentPage < totalPages - doubleVisibleSiblings) {
+          const rangedArrayHolder = rangedArray(middleMin, middleMax);
+          const sub = rangedArrayHolder.includes(1)
+            ? [...rangedArrayHolder, dots]
+            : [1, dots, ...rangedArrayHolder, dots];
+          setRenderedPages([...sub, totalPages]);
+        } else {
+          setRenderedPages([
+            1,
+            dots,
+            ...rangedArray(totalPages - doubleVisibleSiblings, totalPages),
+          ]);
+        }
+      }
+    }
+  }, [initializedCurrentPage, totalPages]);
 
   return {
     renderedPages,

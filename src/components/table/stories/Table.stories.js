@@ -67,3 +67,11 @@ Default.args = {
     data: data,
     itemsPerPage: 10,
 };
+
+export const Checkbox = Template.bind({})
+Checkbox.args = {
+    headings: h,
+    data: data,
+    itemsPerPage: 10,
+    checkbox: true
+}

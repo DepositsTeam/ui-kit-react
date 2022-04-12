@@ -72,6 +72,7 @@ Button.propTypes = {
   leftIcon: PropTypes.object,
   dropDown: PropTypes.bool,
   responsive: PropTypes.bool,
+  text: PropTypes.string,
 };
 
 Button.defaultProps = {
