@@ -131,6 +131,7 @@
   color: #0d7fe9;
   border: 1px solid #0d7fe9;
   box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  background: transparent;
 }
 
 .ui-button.semantic__outline:focus {

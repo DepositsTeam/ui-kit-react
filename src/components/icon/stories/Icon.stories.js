@@ -194,6 +194,10 @@ import CircleIcon from "../../icons/Circle";
 import BriefcaseIcon from "../../icons/Briefcase";
 import ArrowDownRightIcon from "../../icons/ArrowDownRight";
 import SendIcon from "../../icons/Send";
+import GitlabIcon from "../../icons/Gitlab";
+import LikeIcon from "../../icons/Like";
+import DislikeIcon from "../../icons/Dislike";
+import CopyFilledIcon from "../../icons/Copy";
 
 export default {
   title: "Icons",
@@ -1181,4 +1185,24 @@ ArrowDownRight.args = {
 export const Send = Template.bind({});
 Send.args = {
   icon: SendIcon,
+};
+
+export const Gitlab = Template.bind({});
+Gitlab.args = {
+  icon: GitlabIcon,
+};
+
+export const Like = Template.bind({});
+Like.args = {
+  icon: LikeIcon,
+};
+
+export const Dislike = Template.bind({});
+Dislike.args = {
+  icon: DislikeIcon,
+};
+
+export const CopyFilled = Template.bind({});
+CopyFilled.args = {
+  icon: CopyFilledIcon,
 };
