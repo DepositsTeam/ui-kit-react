@@ -17,6 +17,7 @@ const TextField = ({
   errorMessage,
   inputClassName,
   className,
+  isHookForm,
   ...props
 }) => {
   const generateInputFieldClasses = classNames(
@@ -34,14 +35,56 @@ const TextField = ({
     className
   );
 
-  return (
+  return isHookForm ? (
+    React.forwardRef(({ onChange, onBlur, name, label }, ref) => (
+      <Box className={wrapperClasses}>
+        <Box is={"label"}>
+          <Text className={"ui-text-field__label"} scale={"subhead"}>
+            {label}
+          </Text>
+        </Box>
+        <Box className={"ui-text-field__input-wrapper"}>
+          {leftIcon && (
+            <Icon icon={leftIcon} className={"ui-text-field__left-icon"} />
+          )}
+          <Box
+            className={generateInputFieldClasses}
+            is={"input"}
+            {...props}
+            ref={ref}
+            onChange={onChange}
+            onBlur={onBlur}
+            name={name}
+          />
+          {(dropDown || rightIcon) && (
+            <Icon
+              icon={dropDown ? ChevronFilledDown : rightIcon}
+              className={"ui-text-field__right-icon"}
+            />
+          )}
+        </Box>
+        {errorMessage && (
+          <Box className={"ui-text-field__error"}>
+            <Icon icon={Error} className={"ui-text-field__error-icon"} />
+            <Text
+              className={"ui-text-field__error-text"}
+              scale={"subhead"}
+              fontFace={"circularSTD"}
+            >
+              {errorMessage}
+            </Text>
+          </Box>
+        )}
+      </Box>
+    ))
+  ) : (
     <Box className={wrapperClasses}>
       <Box is={"label"}>
         <Text className={"ui-text-field__label"} scale={"subhead"}>
           {label}
         </Text>
       </Box>
-      <div className={"ui-text-field__input-wrapper"}>
+      <Box className={"ui-text-field__input-wrapper"}>
         {leftIcon && (
           <Icon icon={leftIcon} className={"ui-text-field__left-icon"} />
         )}
@@ -52,9 +95,9 @@ const TextField = ({
             className={"ui-text-field__right-icon"}
           />
         )}
-      </div>
+      </Box>
       {errorMessage && (
-        <div className={"ui-text-field__error"}>
+        <Box className={"ui-text-field__error"}>
           <Icon icon={Error} className={"ui-text-field__error-icon"} />
           <Text
             className={"ui-text-field__error-text"}
@@ -63,7 +106,7 @@ const TextField = ({
           >
             {errorMessage}
           </Text>
-        </div>
+        </Box>
       )}
     </Box>
   );
