@@ -21,9 +21,12 @@ import Table from "./components/table";
 import TagInput from "./components/tag-input";
 import Text from "./components/text";
 import TextArea from "./components/text-area";
-import TextField from "./components/text-field";
+import TextField, {
+  FormikTextField,
+  HookFormTextField,
+} from "./components/text-field";
 import Toast from "./components/toast";
-import icons from "./components/icons";
+// import icons from "./components/icons";
 
 export {
   Alert,
@@ -37,7 +40,9 @@ export {
   Checkbox,
   DatePicker,
   Heading,
-  icons,
+  FormikTextField,
+  HookFormTextField,
+  // icons,
   Icon,
   Modal,
   Pagination,

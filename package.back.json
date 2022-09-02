@@ -1,20 +1,9 @@
 {
   "name": "@deposits/ui-kit-react",
-  "version": "0.0.4",
-  "description": "A reusable suite of React components to make your development experience stellar. Inspired by the ui at Deposits.com - the future of Fintech",
-  "keywords": [
-    "deposits",
-    "deposits.com",
-    "ui",
-    "ui kit",
-    "design library",
-    "library",
-    "theme"
-  ],
+  "version": "0.0.2",
   "private": false,
   "main": "dist/index.js",
-  "browser": "dist/index.umd.js",
-  "module": "dist/index.es.js",
+  "module": "dist/index.js",
   "files": [
     "dist",
     "README.md"
@@ -25,13 +14,13 @@
   },
   "dependencies": {
     "prop-types": "^15.8.1",
+    "react": "^17.0.2",
     "react-date-picker": "^8.4.0",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
     "react-transition-group": "^4.4.2",
-    "ui-box": "^5.1.0"
-  },
-  "peerDependencies": {
-    "react": ">=17.x",
-    "react-dom": ">=17.x"
+    "ui-box": "^5.0.0",
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,7 +30,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "build-npm": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files",
-    "build-rollup": "rm -rf dist && rollup -c && cp package.json dist/package.json"
+    "build-rollup": "rollup -c"
   },
   "eslintConfig": {
     "extends": [
@@ -76,35 +65,24 @@
     "@babel/core": "^7.17.8",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.16.11",
-    "@lopatnov/rollup-plugin-uglify": "^2.1.2",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-node-resolve": "^13.3.0",
-    "@storybook/addon-actions": "^6.5.10",
-    "@storybook/addon-essentials": "^6.5.10",
-    "@storybook/addon-links": "^6.5.10",
-    "@storybook/builder-webpack5": "^6.5.10",
-    "@storybook/manager-webpack5": "^6.5.10",
-    "@storybook/node-logger": "^6.5.10",
-    "@storybook/preset-create-react-app": "^4.1.2",
-    "@storybook/react": "^6.5.10",
+    "@storybook/addon-actions": "^6.4.9",
+    "@storybook/addon-essentials": "^6.4.9",
+    "@storybook/addon-links": "^6.4.9",
+    "@storybook/node-logger": "^6.4.9",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.4.9",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "formik": "^2.2.9",
     "prettier": "^2.5.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1",
     "rollup": "^2.77.2",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-import-css": "^3.0.3",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-svg-import": "^1.6.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "terser": "^5.14.2",
-    "web-vitals": "^1.0.1"
+    "rollup-plugin-svg-import": "^1.6.0"
   }
 }
