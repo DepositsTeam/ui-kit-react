@@ -1,4 +1,4 @@
-export function getTextColor(hex, opposites = false) {
+export function getTextColor(hex,) {
   const hexCode = hex.charAt(0) === "#" ? hex.substr(1, 6) : hex;
 
   const hexR = parseInt(hexCode.substr(0, 2), 16);
@@ -8,12 +8,8 @@ export function getTextColor(hex, opposites = false) {
   const contrastRatio = (hexR + hexG + hexB) / (255 * 3);
 
   return contrastRatio >= 0.5
-    ? opposites
-      ? "white"
-      : "black"
-    : opposites
-    ? "white"
-    : "black";
+      ? 'black'
+      : 'white';
 }
 
 export function hexToRgbA(hex, alpha = 1) {
