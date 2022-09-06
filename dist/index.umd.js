@@ -19803,14 +19803,13 @@ ${rulesString}
   });
 
   function getTextColor(hex) {
-    let opposites = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
     const hexCode = hex.charAt(0) === "#" ? hex.substr(1, 6) : hex;
     const hexR = parseInt(hexCode.substr(0, 2), 16);
     const hexG = parseInt(hexCode.substr(2, 2), 16);
     const hexB = parseInt(hexCode.substr(4, 2), 16); // Gets the average value of the colors
 
     const contrastRatio = (hexR + hexG + hexB) / (255 * 3);
-    return contrastRatio >= 0.5 ? opposites ? "white" : "black" : opposites ? "white" : "black";
+    return contrastRatio >= 0.5 ? 'black' : 'white';
   }
 
   const AddComponent = _ref => {
