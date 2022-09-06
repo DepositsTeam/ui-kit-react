@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.es.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.es.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.umd.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.umd.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/colorManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/colorManager.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,16 +37,16 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
+                    <option name="branchName" value="text-color" />
+                    <option name="lastUsedInstant" value="1662460186" />
+                  </RecentBranch>
+                  <RecentBranch>
                     <option name="branchName" value="test-jsx-compilation" />
                     <option name="lastUsedInstant" value="1662128626" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
                     <option name="lastUsedInstant" value="1662128338" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="table" />
-                    <option name="lastUsedInstant" value="1648200637" />
                   </RecentBranch>
                 </list>
               </option>
@@ -255,6 +251,7 @@
       <workItem from="1662390777121" duration="164000" />
       <workItem from="1662391208756" duration="692000" />
       <workItem from="1662457630794" duration="524000" />
+      <workItem from="1662460165017" duration="161000" />
     </task>
     <servers />
   </component>
