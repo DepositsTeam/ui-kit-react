@@ -2,13 +2,14 @@ import React from "react";
 import "../../../styles/textfield.css";
 import Box from "../../box";
 import Text from "../../text";
-import PropTypes from "prop-types";
+import { propTypes, defaultProps } from "./textFieldProps";
 import Icon from "../../icon";
 import ChevronFilledDown from "../../icons/ChevronFilledDown";
 import Error from "../../icons/Error";
 import classNames from "../../../utils/classNames";
+import { useField } from "formik";
 
-const TextField = ({
+const FormikTextField = ({
   label,
   leftIcon,
   size,
@@ -17,10 +18,10 @@ const TextField = ({
   errorMessage,
   inputClassName,
   className,
-  isHookForm,
-  isFormik,
   ...props
 }) => {
+  const [field, meta, helpers] = useField(props);
+
   const generateInputFieldClasses = classNames(
     {
       "ui-text-field__input": true,
@@ -47,7 +48,12 @@ const TextField = ({
         {leftIcon && (
           <Icon icon={leftIcon} className={"ui-text-field__left-icon"} />
         )}
-        <Box className={generateInputFieldClasses} is={"input"} {...props} />
+        <Box
+          {...field}
+          {...props}
+          className={generateInputFieldClasses}
+          is={"input"}
+        />
         {(dropDown || rightIcon) && (
           <Icon
             icon={dropDown ? ChevronFilledDown : rightIcon}
@@ -55,7 +61,7 @@ const TextField = ({
           />
         )}
       </Box>
-      {errorMessage && (
+      {(errorMessage || (meta.touched && meta.error)) && (
         <Box className={"ui-text-field__error"}>
           <Icon icon={Error} className={"ui-text-field__error-icon"} />
           <Text
@@ -63,7 +69,7 @@ const TextField = ({
             scale={"subhead"}
             fontFace={"circularSTD"}
           >
-            {errorMessage}
+            {errorMessage ? errorMessage : meta.error}
           </Text>
         </Box>
       )}
@@ -71,22 +77,8 @@ const TextField = ({
   );
 };
 
-export default TextField;
+export default FormikTextField;
 
-TextField.propTypes = {
-  label: PropTypes.string,
-  dropDown: PropTypes.bool,
-  size: PropTypes.oneOf([
-    "small",
-    "medium",
-    "large",
-    "xlarge",
-    "huge",
-    "massive",
-  ]),
-  errorMessage: PropTypes.string,
-};
+FormikTextField.propTypes = { ...propTypes };
 
-TextField.defaultProps = {
-  size: "medium",
-};
+FormikTextField.defaultProps = { ...defaultProps };

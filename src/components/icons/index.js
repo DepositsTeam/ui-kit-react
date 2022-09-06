@@ -71,6 +71,7 @@ import Details from "./Details";
 import Dial from "./Dial";
 import DialOff from "./DialOff";
 import Disabled from "./Disabled";
+import Dislike from "./Dislike";
 import Document from "./Document";
 import DoubleCheck from "./DoubleCheck";
 import Download from "./Download";
@@ -96,6 +97,7 @@ import Funnel from "./Funnel";
 import FullScreen from "./FullScreen";
 import Gem from "./Gem";
 import Gift from "./Gift";
+import Gitlab from "./Gitlab"
 import Globe from "./Globe";
 import Grid from "./Grid";
 import Heart from "./Heart";
@@ -110,6 +112,7 @@ import InfoOutline from "./InfoOutline";
 import JustifyAlign from "./JustifyAlign";
 import Key from "./Key";
 import LeftAlign from "./LeftAlign";
+import Like from "./Like"
 import Link from "./Link";
 import List from "./List";
 import List2 from "./List2";
@@ -271,6 +274,7 @@ export {
   Dial,
   DialOff,
   Disabled,
+  Dislike,
   Document,
   DoubleCheck,
   Download,
@@ -296,6 +300,7 @@ export {
   FullScreen,
   Gem,
   Gift,
+  Gitlab,
   Globe,
   Grid,
   Heart,
@@ -310,6 +315,7 @@ export {
   JustifyAlign,
   Key,
   LeftAlign,
+  Like,
   Link,
   List,
   List2,

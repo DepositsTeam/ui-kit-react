@@ -2,11 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [Storybook](https://storybook.js.org/). This project contains components to allow developers build Fintech based UI elements with less code and at a faster pace.
 
-## Storybook Demo Link
+## 📖 Storybook Demo Link
 
 https://ui-kit.deposits.dev/storybook/react
 
-## Figma UI Link
+##  Figma UI Link
 https://www.figma.com/file/Wi9wPkCWJIbzyriC0oKAW9/Deposits-UI-Kit%2FDesign-System
 
 # Getting Started with Deposits React UI Kit

@@ -3,7 +3,7 @@ import TextField from "../../text-field";
 import Search from "../../icons/Search";
 
 export default {
-  title: "Text-Field",
+  title: "Text Field",
   component: TextField,
 };
 
