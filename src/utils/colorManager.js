@@ -9,11 +9,11 @@ export function getTextColor(hex, opposites = false) {
 
   return contrastRatio >= 0.5
     ? opposites
-      ? "#ffffff"
-      : "#212934"
+      ? "white"
+      : "black"
     : opposites
-    ? "#ffffff"
-    : "#212934";
+    ? "white"
+    : "black";
 }
 
 export function hexToRgbA(hex, alpha = 1) {

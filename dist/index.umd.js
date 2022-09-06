@@ -135,7 +135,7 @@
   };
 
   // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-  var global$h =
+  var global$i =
     // eslint-disable-next-line es-x/no-global-this -- safe
     check(typeof globalThis == 'object' && globalThis) ||
     check(typeof window == 'object' && window) ||
@@ -147,7 +147,7 @@
 
   var objectGetOwnPropertyDescriptor = {};
 
-  var fails$m = function (exec) {
+  var fails$n = function (exec) {
     try {
       return !!exec();
     } catch (error) {
@@ -155,17 +155,17 @@
     }
   };
 
-  var fails$l = fails$m;
+  var fails$m = fails$n;
 
   // Detect IE8's incomplete defineProperty implementation
-  var descriptors = !fails$l(function () {
+  var descriptors = !fails$m(function () {
     // eslint-disable-next-line es-x/no-object-defineproperty -- required for testing
     return Object.defineProperty({}, 1, { get: function () { return 7; } })[1] != 7;
   });
 
-  var fails$k = fails$m;
+  var fails$l = fails$n;
 
-  var functionBindNative = !fails$k(function () {
+  var functionBindNative = !fails$l(function () {
     // eslint-disable-next-line es-x/no-function-prototype-bind -- safe
     var test = (function () { /* empty */ }).bind();
     // eslint-disable-next-line no-prototype-builtins -- safe
@@ -174,10 +174,10 @@
 
   var NATIVE_BIND$2 = functionBindNative;
 
-  var call$a = Function.prototype.call;
+  var call$b = Function.prototype.call;
 
-  var functionCall = NATIVE_BIND$2 ? call$a.bind(call$a) : function () {
-    return call$a.apply(call$a, arguments);
+  var functionCall = NATIVE_BIND$2 ? call$b.bind(call$b) : function () {
+    return call$b.apply(call$b, arguments);
   };
 
   var objectPropertyIsEnumerable = {};
@@ -209,35 +209,35 @@
 
   var FunctionPrototype$2 = Function.prototype;
   var bind = FunctionPrototype$2.bind;
-  var call$9 = FunctionPrototype$2.call;
-  var uncurryThis$o = NATIVE_BIND$1 && bind.bind(call$9, call$9);
+  var call$a = FunctionPrototype$2.call;
+  var uncurryThis$q = NATIVE_BIND$1 && bind.bind(call$a, call$a);
 
   var functionUncurryThis = NATIVE_BIND$1 ? function (fn) {
-    return fn && uncurryThis$o(fn);
+    return fn && uncurryThis$q(fn);
   } : function (fn) {
     return fn && function () {
-      return call$9.apply(fn, arguments);
+      return call$a.apply(fn, arguments);
     };
   };
 
-  var uncurryThis$n = functionUncurryThis;
+  var uncurryThis$p = functionUncurryThis;
 
-  var toString$e = uncurryThis$n({}.toString);
-  var stringSlice$7 = uncurryThis$n(''.slice);
+  var toString$f = uncurryThis$p({}.toString);
+  var stringSlice$7 = uncurryThis$p(''.slice);
 
   var classofRaw$1 = function (it) {
-    return stringSlice$7(toString$e(it), 8, -1);
+    return stringSlice$7(toString$f(it), 8, -1);
   };
 
-  var uncurryThis$m = functionUncurryThis;
-  var fails$j = fails$m;
+  var uncurryThis$o = functionUncurryThis;
+  var fails$k = fails$n;
   var classof$6 = classofRaw$1;
 
   var $Object$4 = Object;
-  var split = uncurryThis$m(''.split);
+  var split = uncurryThis$o(''.split);
 
   // fallback for non-array-like ES3 and non-enumerable old V8 strings
-  var indexedObject = fails$j(function () {
+  var indexedObject = fails$k(function () {
     // throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
     // eslint-disable-next-line no-prototype-builtins -- safe
     return !$Object$4('z').propertyIsEnumerable(0);
@@ -245,12 +245,12 @@
     return classof$6(it) == 'String' ? split(it, '') : $Object$4(it);
   } : $Object$4;
 
-  var $TypeError$b = TypeError;
+  var $TypeError$c = TypeError;
 
   // `RequireObjectCoercible` abstract operation
   // https://tc39.es/ecma262/#sec-requireobjectcoercible
   var requireObjectCoercible$9 = function (it) {
-    if (it == undefined) throw $TypeError$b("Can't call method on " + it);
+    if (it == undefined) throw $TypeError$c("Can't call method on " + it);
     return it;
   };
 
@@ -264,40 +264,40 @@
 
   // `IsCallable` abstract operation
   // https://tc39.es/ecma262/#sec-iscallable
-  var isCallable$j = function (argument) {
+  var isCallable$k = function (argument) {
     return typeof argument == 'function';
   };
 
-  var isCallable$i = isCallable$j;
+  var isCallable$j = isCallable$k;
 
-  var isObject$a = function (it) {
-    return typeof it == 'object' ? it !== null : isCallable$i(it);
+  var isObject$b = function (it) {
+    return typeof it == 'object' ? it !== null : isCallable$j(it);
   };
 
-  var global$g = global$h;
-  var isCallable$h = isCallable$j;
+  var global$h = global$i;
+  var isCallable$i = isCallable$k;
 
   var aFunction = function (argument) {
-    return isCallable$h(argument) ? argument : undefined;
+    return isCallable$i(argument) ? argument : undefined;
   };
 
   var getBuiltIn$5 = function (namespace, method) {
-    return arguments.length < 2 ? aFunction(global$g[namespace]) : global$g[namespace] && global$g[namespace][method];
+    return arguments.length < 2 ? aFunction(global$h[namespace]) : global$h[namespace] && global$h[namespace][method];
   };
 
-  var uncurryThis$l = functionUncurryThis;
+  var uncurryThis$n = functionUncurryThis;
 
-  var objectIsPrototypeOf = uncurryThis$l({}.isPrototypeOf);
+  var objectIsPrototypeOf = uncurryThis$n({}.isPrototypeOf);
 
   var getBuiltIn$4 = getBuiltIn$5;
 
   var engineUserAgent = getBuiltIn$4('navigator', 'userAgent') || '';
 
-  var global$f = global$h;
+  var global$g = global$i;
   var userAgent$2 = engineUserAgent;
 
-  var process$1 = global$f.process;
-  var Deno = global$f.Deno;
+  var process$1 = global$g.process;
+  var Deno = global$g.Deno;
   var versions = process$1 && process$1.versions || Deno && Deno.version;
   var v8 = versions && versions.v8;
   var match, version;
@@ -324,10 +324,10 @@
   /* eslint-disable es-x/no-symbol -- required for testing */
 
   var V8_VERSION = engineV8Version;
-  var fails$i = fails$m;
+  var fails$j = fails$n;
 
   // eslint-disable-next-line es-x/no-object-getownpropertysymbols -- required for testing
-  var nativeSymbol = !!Object.getOwnPropertySymbols && !fails$i(function () {
+  var nativeSymbol = !!Object.getOwnPropertySymbols && !fails$j(function () {
     var symbol = Symbol();
     // Chrome 38 Symbol has incorrect toString conversion
     // `get-own-property-symbols` polyfill symbols converted to object are not Symbol instances
@@ -345,7 +345,7 @@
     && typeof Symbol.iterator == 'symbol';
 
   var getBuiltIn$3 = getBuiltIn$5;
-  var isCallable$g = isCallable$j;
+  var isCallable$h = isCallable$k;
   var isPrototypeOf$1 = objectIsPrototypeOf;
   var USE_SYMBOL_AS_UID$1 = useSymbolAsUid;
 
@@ -355,7 +355,7 @@
     return typeof it == 'symbol';
   } : function (it) {
     var $Symbol = getBuiltIn$3('Symbol');
-    return isCallable$g($Symbol) && isPrototypeOf$1($Symbol.prototype, $Object$3(it));
+    return isCallable$h($Symbol) && isPrototypeOf$1($Symbol.prototype, $Object$3(it));
   };
 
   var $String$3 = String;
@@ -368,15 +368,15 @@
     }
   };
 
-  var isCallable$f = isCallable$j;
+  var isCallable$g = isCallable$k;
   var tryToString$2 = tryToString$3;
 
-  var $TypeError$a = TypeError;
+  var $TypeError$b = TypeError;
 
   // `Assert: IsCallable(argument) is true`
   var aCallable$3 = function (argument) {
-    if (isCallable$f(argument)) return argument;
-    throw $TypeError$a(tryToString$2(argument) + ' is not a function');
+    if (isCallable$g(argument)) return argument;
+    throw $TypeError$b(tryToString$2(argument) + ' is not a function');
   };
 
   var aCallable$2 = aCallable$3;
@@ -388,42 +388,42 @@
     return func == null ? undefined : aCallable$2(func);
   };
 
-  var call$8 = functionCall;
-  var isCallable$e = isCallable$j;
-  var isObject$9 = isObject$a;
+  var call$9 = functionCall;
+  var isCallable$f = isCallable$k;
+  var isObject$a = isObject$b;
 
-  var $TypeError$9 = TypeError;
+  var $TypeError$a = TypeError;
 
   // `OrdinaryToPrimitive` abstract operation
   // https://tc39.es/ecma262/#sec-ordinarytoprimitive
   var ordinaryToPrimitive$1 = function (input, pref) {
     var fn, val;
-    if (pref === 'string' && isCallable$e(fn = input.toString) && !isObject$9(val = call$8(fn, input))) return val;
-    if (isCallable$e(fn = input.valueOf) && !isObject$9(val = call$8(fn, input))) return val;
-    if (pref !== 'string' && isCallable$e(fn = input.toString) && !isObject$9(val = call$8(fn, input))) return val;
-    throw $TypeError$9("Can't convert object to primitive value");
+    if (pref === 'string' && isCallable$f(fn = input.toString) && !isObject$a(val = call$9(fn, input))) return val;
+    if (isCallable$f(fn = input.valueOf) && !isObject$a(val = call$9(fn, input))) return val;
+    if (pref !== 'string' && isCallable$f(fn = input.toString) && !isObject$a(val = call$9(fn, input))) return val;
+    throw $TypeError$a("Can't convert object to primitive value");
   };
 
   var shared$4 = {exports: {}};
 
-  var global$e = global$h;
+  var global$f = global$i;
 
   // eslint-disable-next-line es-x/no-object-defineproperty -- safe
   var defineProperty$6 = Object.defineProperty;
 
   var defineGlobalProperty$3 = function (key, value) {
     try {
-      defineProperty$6(global$e, key, { value: value, configurable: true, writable: true });
+      defineProperty$6(global$f, key, { value: value, configurable: true, writable: true });
     } catch (error) {
-      global$e[key] = value;
+      global$f[key] = value;
     } return value;
   };
 
-  var global$d = global$h;
+  var global$e = global$i;
   var defineGlobalProperty$2 = defineGlobalProperty$3;
 
   var SHARED = '__core-js_shared__';
-  var store$3 = global$d[SHARED] || defineGlobalProperty$2(SHARED, {});
+  var store$3 = global$e[SHARED] || defineGlobalProperty$2(SHARED, {});
 
   var sharedStore = store$3;
 
@@ -449,10 +449,10 @@
     return $Object$2(requireObjectCoercible$7(argument));
   };
 
-  var uncurryThis$k = functionUncurryThis;
+  var uncurryThis$m = functionUncurryThis;
   var toObject$4 = toObject$5;
 
-  var hasOwnProperty$b = uncurryThis$k({}.hasOwnProperty);
+  var hasOwnProperty$b = uncurryThis$m({}.hasOwnProperty);
 
   // `HasOwnProperty` abstract operation
   // https://tc39.es/ecma262/#sec-hasownproperty
@@ -461,17 +461,17 @@
     return hasOwnProperty$b(toObject$4(it), key);
   };
 
-  var uncurryThis$j = functionUncurryThis;
+  var uncurryThis$l = functionUncurryThis;
 
   var id = 0;
   var postfix = Math.random();
-  var toString$d = uncurryThis$j(1.0.toString);
+  var toString$e = uncurryThis$l(1.0.toString);
 
   var uid$2 = function (key) {
-    return 'Symbol(' + (key === undefined ? '' : key) + ')_' + toString$d(++id + postfix, 36);
+    return 'Symbol(' + (key === undefined ? '' : key) + ')_' + toString$e(++id + postfix, 36);
   };
 
-  var global$c = global$h;
+  var global$d = global$i;
   var shared$3 = shared$4.exports;
   var hasOwn$9 = hasOwnProperty_1;
   var uid$1 = uid$2;
@@ -479,15 +479,15 @@
   var USE_SYMBOL_AS_UID = useSymbolAsUid;
 
   var WellKnownSymbolsStore = shared$3('wks');
-  var Symbol$3 = global$c.Symbol;
-  var symbolFor = Symbol$3 && Symbol$3['for'];
-  var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol$3 : Symbol$3 && Symbol$3.withoutSetter || uid$1;
+  var Symbol$4 = global$d.Symbol;
+  var symbolFor = Symbol$4 && Symbol$4['for'];
+  var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol$4 : Symbol$4 && Symbol$4.withoutSetter || uid$1;
 
   var wellKnownSymbol$d = function (name) {
     if (!hasOwn$9(WellKnownSymbolsStore, name) || !(NATIVE_SYMBOL$1 || typeof WellKnownSymbolsStore[name] == 'string')) {
       var description = 'Symbol.' + name;
-      if (NATIVE_SYMBOL$1 && hasOwn$9(Symbol$3, name)) {
-        WellKnownSymbolsStore[name] = Symbol$3[name];
+      if (NATIVE_SYMBOL$1 && hasOwn$9(Symbol$4, name)) {
+        WellKnownSymbolsStore[name] = Symbol$4[name];
       } else if (USE_SYMBOL_AS_UID && symbolFor) {
         WellKnownSymbolsStore[name] = symbolFor(description);
       } else {
@@ -496,27 +496,27 @@
     } return WellKnownSymbolsStore[name];
   };
 
-  var call$7 = functionCall;
-  var isObject$8 = isObject$a;
+  var call$8 = functionCall;
+  var isObject$9 = isObject$b;
   var isSymbol$2 = isSymbol$3;
   var getMethod$2 = getMethod$3;
   var ordinaryToPrimitive = ordinaryToPrimitive$1;
   var wellKnownSymbol$c = wellKnownSymbol$d;
 
-  var $TypeError$8 = TypeError;
+  var $TypeError$9 = TypeError;
   var TO_PRIMITIVE = wellKnownSymbol$c('toPrimitive');
 
   // `ToPrimitive` abstract operation
   // https://tc39.es/ecma262/#sec-toprimitive
   var toPrimitive$1 = function (input, pref) {
-    if (!isObject$8(input) || isSymbol$2(input)) return input;
+    if (!isObject$9(input) || isSymbol$2(input)) return input;
     var exoticToPrim = getMethod$2(input, TO_PRIMITIVE);
     var result;
     if (exoticToPrim) {
       if (pref === undefined) pref = 'default';
-      result = call$7(exoticToPrim, input, pref);
-      if (!isObject$8(result) || isSymbol$2(result)) return result;
-      throw $TypeError$8("Can't convert object to primitive value");
+      result = call$8(exoticToPrim, input, pref);
+      if (!isObject$9(result) || isSymbol$2(result)) return result;
+      throw $TypeError$9("Can't convert object to primitive value");
     }
     if (pref === undefined) pref = 'number';
     return ordinaryToPrimitive(input, pref);
@@ -532,23 +532,23 @@
     return isSymbol$1(key) ? key : key + '';
   };
 
-  var global$b = global$h;
-  var isObject$7 = isObject$a;
+  var global$c = global$i;
+  var isObject$8 = isObject$b;
 
-  var document$1 = global$b.document;
+  var document$1 = global$c.document;
   // typeof document.createElement is 'object' in old IE
-  var EXISTS$1 = isObject$7(document$1) && isObject$7(document$1.createElement);
+  var EXISTS$1 = isObject$8(document$1) && isObject$8(document$1.createElement);
 
   var documentCreateElement$2 = function (it) {
     return EXISTS$1 ? document$1.createElement(it) : {};
   };
 
   var DESCRIPTORS$9 = descriptors;
-  var fails$h = fails$m;
+  var fails$i = fails$n;
   var createElement = documentCreateElement$2;
 
   // Thanks to IE8 for its funny defineProperty
-  var ie8DomDefine = !DESCRIPTORS$9 && !fails$h(function () {
+  var ie8DomDefine = !DESCRIPTORS$9 && !fails$i(function () {
     // eslint-disable-next-line es-x/no-object-defineproperty -- required for testing
     return Object.defineProperty(createElement('div'), 'a', {
       get: function () { return 7; }
@@ -556,7 +556,7 @@
   });
 
   var DESCRIPTORS$8 = descriptors;
-  var call$6 = functionCall;
+  var call$7 = functionCall;
   var propertyIsEnumerableModule = objectPropertyIsEnumerable;
   var createPropertyDescriptor$3 = createPropertyDescriptor$4;
   var toIndexedObject$4 = toIndexedObject$5;
@@ -575,17 +575,17 @@
     if (IE8_DOM_DEFINE$1) try {
       return $getOwnPropertyDescriptor$1(O, P);
     } catch (error) { /* empty */ }
-    if (hasOwn$8(O, P)) return createPropertyDescriptor$3(!call$6(propertyIsEnumerableModule.f, O, P), O[P]);
+    if (hasOwn$8(O, P)) return createPropertyDescriptor$3(!call$7(propertyIsEnumerableModule.f, O, P), O[P]);
   };
 
   var objectDefineProperty = {};
 
   var DESCRIPTORS$7 = descriptors;
-  var fails$g = fails$m;
+  var fails$h = fails$n;
 
   // V8 ~ Chrome 36-
   // https://bugs.chromium.org/p/v8/issues/detail?id=3334
-  var v8PrototypeDefineBug = DESCRIPTORS$7 && fails$g(function () {
+  var v8PrototypeDefineBug = DESCRIPTORS$7 && fails$h(function () {
     // eslint-disable-next-line es-x/no-object-defineproperty -- required for testing
     return Object.defineProperty(function () { /* empty */ }, 'prototype', {
       value: 42,
@@ -593,15 +593,15 @@
     }).prototype != 42;
   });
 
-  var isObject$6 = isObject$a;
+  var isObject$7 = isObject$b;
 
   var $String$2 = String;
-  var $TypeError$7 = TypeError;
+  var $TypeError$8 = TypeError;
 
   // `Assert: Type(argument) is Object`
   var anObject$a = function (argument) {
-    if (isObject$6(argument)) return argument;
-    throw $TypeError$7($String$2(argument) + ' is not an object');
+    if (isObject$7(argument)) return argument;
+    throw $TypeError$8($String$2(argument) + ' is not an object');
   };
 
   var DESCRIPTORS$6 = descriptors;
@@ -610,7 +610,7 @@
   var anObject$9 = anObject$a;
   var toPropertyKey$1 = toPropertyKey$3;
 
-  var $TypeError$6 = TypeError;
+  var $TypeError$7 = TypeError;
   // eslint-disable-next-line es-x/no-object-defineproperty -- safe
   var $defineProperty = Object.defineProperty;
   // eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
@@ -643,7 +643,7 @@
     if (IE8_DOM_DEFINE) try {
       return $defineProperty(O, P, Attributes);
     } catch (error) { /* empty */ }
-    if ('get' in Attributes || 'set' in Attributes) throw $TypeError$6('Accessors not supported');
+    if ('get' in Attributes || 'set' in Attributes) throw $TypeError$7('Accessors not supported');
     if ('value' in Attributes) O[P] = Attributes.value;
     return O;
   };
@@ -679,14 +679,14 @@
     CONFIGURABLE: CONFIGURABLE
   };
 
-  var uncurryThis$i = functionUncurryThis;
-  var isCallable$d = isCallable$j;
+  var uncurryThis$k = functionUncurryThis;
+  var isCallable$e = isCallable$k;
   var store$1 = sharedStore;
 
-  var functionToString = uncurryThis$i(Function.toString);
+  var functionToString = uncurryThis$k(Function.toString);
 
   // this helper broken in `core-js@3.4.1-3.4.4`, so we can't use `shared` helper
-  if (!isCallable$d(store$1.inspectSource)) {
+  if (!isCallable$e(store$1.inspectSource)) {
     store$1.inspectSource = function (it) {
       return functionToString(it);
     };
@@ -694,13 +694,13 @@
 
   var inspectSource$3 = store$1.inspectSource;
 
-  var global$a = global$h;
-  var isCallable$c = isCallable$j;
+  var global$b = global$i;
+  var isCallable$d = isCallable$k;
   var inspectSource$2 = inspectSource$3;
 
-  var WeakMap$3 = global$a.WeakMap;
+  var WeakMap$3 = global$b.WeakMap;
 
-  var nativeWeakMap = isCallable$c(WeakMap$3) && /native code/.test(inspectSource$2(WeakMap$3));
+  var nativeWeakMap = isCallable$d(WeakMap$3) && /native code/.test(inspectSource$2(WeakMap$3));
 
   var shared$2 = shared$4.exports;
   var uid = uid$2;
@@ -714,9 +714,9 @@
   var hiddenKeys$4 = {};
 
   var NATIVE_WEAK_MAP = nativeWeakMap;
-  var global$9 = global$h;
-  var uncurryThis$h = functionUncurryThis;
-  var isObject$5 = isObject$a;
+  var global$a = global$i;
+  var uncurryThis$j = functionUncurryThis;
+  var isObject$6 = isObject$b;
   var createNonEnumerableProperty$4 = createNonEnumerableProperty$5;
   var hasOwn$6 = hasOwnProperty_1;
   var shared$1 = sharedStore;
@@ -724,8 +724,8 @@
   var hiddenKeys$3 = hiddenKeys$4;
 
   var OBJECT_ALREADY_INITIALIZED = 'Object already initialized';
-  var TypeError$1 = global$9.TypeError;
-  var WeakMap$2 = global$9.WeakMap;
+  var TypeError$1 = global$a.TypeError;
+  var WeakMap$2 = global$a.WeakMap;
   var set$1, get$1, has$1;
 
   var enforce = function (it) {
@@ -735,7 +735,7 @@
   var getterFor = function (TYPE) {
     return function (it) {
       var state;
-      if (!isObject$5(it) || (state = get$1(it)).type !== TYPE) {
+      if (!isObject$6(it) || (state = get$1(it)).type !== TYPE) {
         throw TypeError$1('Incompatible receiver, ' + TYPE + ' required');
       } return state;
     };
@@ -743,9 +743,9 @@
 
   if (NATIVE_WEAK_MAP || shared$1.state) {
     var store = shared$1.state || (shared$1.state = new WeakMap$2());
-    var wmget = uncurryThis$h(store.get);
-    var wmhas = uncurryThis$h(store.has);
-    var wmset = uncurryThis$h(store.set);
+    var wmget = uncurryThis$j(store.get);
+    var wmhas = uncurryThis$j(store.has);
+    var wmset = uncurryThis$j(store.set);
     set$1 = function (it, metadata) {
       if (wmhas(store, it)) throw new TypeError$1(OBJECT_ALREADY_INITIALIZED);
       metadata.facade = it;
@@ -783,8 +783,8 @@
     getterFor: getterFor
   };
 
-  var fails$f = fails$m;
-  var isCallable$b = isCallable$j;
+  var fails$g = fails$n;
+  var isCallable$c = isCallable$k;
   var hasOwn$5 = hasOwnProperty_1;
   var DESCRIPTORS$3 = descriptors;
   var CONFIGURABLE_FUNCTION_NAME$1 = functionName.CONFIGURABLE;
@@ -796,7 +796,7 @@
   // eslint-disable-next-line es-x/no-object-defineproperty -- safe
   var defineProperty$5 = Object.defineProperty;
 
-  var CONFIGURABLE_LENGTH = DESCRIPTORS$3 && !fails$f(function () {
+  var CONFIGURABLE_LENGTH = DESCRIPTORS$3 && !fails$g(function () {
     return defineProperty$5(function () { /* empty */ }, 'length', { value: 8 }).length !== 8;
   });
 
@@ -830,10 +830,10 @@
   // add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
   // eslint-disable-next-line no-extend-native -- required
   Function.prototype.toString = makeBuiltIn$1(function toString() {
-    return isCallable$b(this) && getInternalState$2(this).source || inspectSource$1(this);
+    return isCallable$c(this) && getInternalState$2(this).source || inspectSource$1(this);
   }, 'toString');
 
-  var isCallable$a = isCallable$j;
+  var isCallable$b = isCallable$k;
   var definePropertyModule$3 = objectDefineProperty;
   var makeBuiltIn = makeBuiltIn$2.exports;
   var defineGlobalProperty$1 = defineGlobalProperty$3;
@@ -842,7 +842,7 @@
     if (!options) options = {};
     var simple = options.enumerable;
     var name = options.name !== undefined ? options.name : key;
-    if (isCallable$a(value)) makeBuiltIn(value, name, options);
+    if (isCallable$b(value)) makeBuiltIn(value, name, options);
     if (options.global) {
       if (simple) O[key] = value;
       else defineGlobalProperty$1(key, value);
@@ -948,13 +948,13 @@
     indexOf: createMethod$3(false)
   };
 
-  var uncurryThis$g = functionUncurryThis;
+  var uncurryThis$i = functionUncurryThis;
   var hasOwn$4 = hasOwnProperty_1;
   var toIndexedObject$2 = toIndexedObject$5;
   var indexOf$1 = arrayIncludes.indexOf;
   var hiddenKeys$2 = hiddenKeys$4;
 
-  var push$3 = uncurryThis$g([].push);
+  var push$3 = uncurryThis$i([].push);
 
   var objectKeysInternal = function (object, names) {
     var O = toIndexedObject$2(object);
@@ -998,12 +998,12 @@
   objectGetOwnPropertySymbols.f = Object.getOwnPropertySymbols;
 
   var getBuiltIn$2 = getBuiltIn$5;
-  var uncurryThis$f = functionUncurryThis;
+  var uncurryThis$h = functionUncurryThis;
   var getOwnPropertyNamesModule = objectGetOwnPropertyNames;
   var getOwnPropertySymbolsModule = objectGetOwnPropertySymbols;
   var anObject$8 = anObject$a;
 
-  var concat$1 = uncurryThis$f([].concat);
+  var concat$1 = uncurryThis$h([].concat);
 
   // all object keys, includes non-enumerable and symbols
   var ownKeys$f = getBuiltIn$2('Reflect', 'ownKeys') || function ownKeys(it) {
@@ -1029,8 +1029,8 @@
     }
   };
 
-  var fails$e = fails$m;
-  var isCallable$9 = isCallable$j;
+  var fails$f = fails$n;
+  var isCallable$a = isCallable$k;
 
   var replacement = /#|\.prototype\./;
 
@@ -1038,7 +1038,7 @@
     var value = data$1[normalize(feature)];
     return value == POLYFILL ? true
       : value == NATIVE ? false
-      : isCallable$9(detection) ? fails$e(detection)
+      : isCallable$a(detection) ? fails$f(detection)
       : !!detection;
   };
 
@@ -1052,7 +1052,7 @@
 
   var isForced_1 = isForced$1;
 
-  var global$8 = global$h;
+  var global$9 = global$i;
   var getOwnPropertyDescriptor$2 = objectGetOwnPropertyDescriptor.f;
   var createNonEnumerableProperty$3 = createNonEnumerableProperty$5;
   var defineBuiltIn$3 = defineBuiltIn$4;
@@ -1081,11 +1081,11 @@
     var STATIC = options.stat;
     var FORCED, target, key, targetProperty, sourceProperty, descriptor;
     if (GLOBAL) {
-      target = global$8;
+      target = global$9;
     } else if (STATIC) {
-      target = global$8[TARGET] || defineGlobalProperty(TARGET, {});
+      target = global$9[TARGET] || defineGlobalProperty(TARGET, {});
     } else {
-      target = (global$8[TARGET] || {}).prototype;
+      target = (global$9[TARGET] || {}).prototype;
     }
     if (target) for (key in source) {
       sourceProperty = source[key];
@@ -1117,7 +1117,7 @@
   var toStringTagSupport = String(test$1) === '[object z]';
 
   var TO_STRING_TAG_SUPPORT = toStringTagSupport;
-  var isCallable$8 = isCallable$j;
+  var isCallable$9 = isCallable$k;
   var classofRaw = classofRaw$1;
   var wellKnownSymbol$a = wellKnownSymbol$d;
 
@@ -1143,40 +1143,40 @@
       // builtinTag case
       : CORRECT_ARGUMENTS ? classofRaw(O)
       // ES3 arguments fallback
-      : (result = classofRaw(O)) == 'Object' && isCallable$8(O.callee) ? 'Arguments' : result;
+      : (result = classofRaw(O)) == 'Object' && isCallable$9(O.callee) ? 'Arguments' : result;
   };
 
   var classof$4 = classof$5;
 
   var $String$1 = String;
 
-  var toString$c = function (argument) {
+  var toString$d = function (argument) {
     if (classof$4(argument) === 'Symbol') throw TypeError('Cannot convert a Symbol value to a string');
     return $String$1(argument);
   };
 
-  var $$a = _export;
+  var $$c = _export;
   var DESCRIPTORS$2 = descriptors;
-  var global$7 = global$h;
-  var uncurryThis$e = functionUncurryThis;
+  var global$8 = global$i;
+  var uncurryThis$g = functionUncurryThis;
   var hasOwn$2 = hasOwnProperty_1;
-  var isCallable$7 = isCallable$j;
+  var isCallable$8 = isCallable$k;
   var isPrototypeOf = objectIsPrototypeOf;
-  var toString$b = toString$c;
+  var toString$c = toString$d;
   var defineProperty$4 = objectDefineProperty.f;
   var copyConstructorProperties = copyConstructorProperties$2;
 
-  var NativeSymbol = global$7.Symbol;
+  var NativeSymbol = global$8.Symbol;
   var SymbolPrototype = NativeSymbol && NativeSymbol.prototype;
 
-  if (DESCRIPTORS$2 && isCallable$7(NativeSymbol) && (!('description' in SymbolPrototype) ||
+  if (DESCRIPTORS$2 && isCallable$8(NativeSymbol) && (!('description' in SymbolPrototype) ||
     // Safari 12 bug
     NativeSymbol().description !== undefined
   )) {
     var EmptyStringDescriptionStore = {};
     // wrap Symbol constructor for correct work with undefined description
     var SymbolWrapper = function Symbol() {
-      var description = arguments.length < 1 || arguments[0] === undefined ? undefined : toString$b(arguments[0]);
+      var description = arguments.length < 1 || arguments[0] === undefined ? undefined : toString$c(arguments[0]);
       var result = isPrototypeOf(SymbolPrototype, this)
         ? new NativeSymbol(description)
         // in Edge 13, String(Symbol(undefined)) === 'Symbol(undefined)'
@@ -1190,11 +1190,11 @@
     SymbolPrototype.constructor = SymbolWrapper;
 
     var NATIVE_SYMBOL = String(NativeSymbol('test')) == 'Symbol(test)';
-    var symbolToString$1 = uncurryThis$e(SymbolPrototype.toString);
-    var symbolValueOf$1 = uncurryThis$e(SymbolPrototype.valueOf);
+    var symbolToString$1 = uncurryThis$g(SymbolPrototype.toString);
+    var symbolValueOf$1 = uncurryThis$g(SymbolPrototype.valueOf);
     var regexp = /^Symbol\((.*)\)[^)]+$/;
-    var replace$4 = uncurryThis$e(''.replace);
-    var stringSlice$6 = uncurryThis$e(''.slice);
+    var replace$4 = uncurryThis$g(''.replace);
+    var stringSlice$6 = uncurryThis$g(''.slice);
 
     defineProperty$4(SymbolPrototype, 'description', {
       configurable: true,
@@ -1207,7 +1207,7 @@
       }
     });
 
-    $$a({ global: true, constructor: true, forced: true }, {
+    $$c({ global: true, constructor: true, forced: true }, {
       Symbol: SymbolWrapper
     });
   }
@@ -1401,9 +1401,9 @@
 
   var iterators = {};
 
-  var fails$d = fails$m;
+  var fails$e = fails$n;
 
-  var correctPrototypeGetter = !fails$d(function () {
+  var correctPrototypeGetter = !fails$e(function () {
     function F() { /* empty */ }
     F.prototype.constructor = null;
     // eslint-disable-next-line es-x/no-object-getprototypeof -- required for testing
@@ -1411,7 +1411,7 @@
   });
 
   var hasOwn$1 = hasOwnProperty_1;
-  var isCallable$6 = isCallable$j;
+  var isCallable$7 = isCallable$k;
   var toObject$3 = toObject$5;
   var sharedKey = sharedKey$3;
   var CORRECT_PROTOTYPE_GETTER = correctPrototypeGetter;
@@ -1427,18 +1427,18 @@
     var object = toObject$3(O);
     if (hasOwn$1(object, IE_PROTO)) return object[IE_PROTO];
     var constructor = object.constructor;
-    if (isCallable$6(constructor) && object instanceof constructor) {
+    if (isCallable$7(constructor) && object instanceof constructor) {
       return constructor.prototype;
     } return object instanceof $Object ? ObjectPrototype : null;
   };
 
-  var fails$c = fails$m;
-  var isCallable$5 = isCallable$j;
+  var fails$d = fails$n;
+  var isCallable$6 = isCallable$k;
   var getPrototypeOf$1 = objectGetPrototypeOf;
   var defineBuiltIn$2 = defineBuiltIn$4;
   var wellKnownSymbol$8 = wellKnownSymbol$d;
 
-  var ITERATOR$3 = wellKnownSymbol$8('iterator');
+  var ITERATOR$4 = wellKnownSymbol$8('iterator');
   var BUGGY_SAFARI_ITERATORS$1 = false;
 
   // `%IteratorPrototype%` object
@@ -1456,18 +1456,18 @@
     }
   }
 
-  var NEW_ITERATOR_PROTOTYPE = IteratorPrototype$2 == undefined || fails$c(function () {
+  var NEW_ITERATOR_PROTOTYPE = IteratorPrototype$2 == undefined || fails$d(function () {
     var test = {};
     // FF44- legacy iterators case
-    return IteratorPrototype$2[ITERATOR$3].call(test) !== test;
+    return IteratorPrototype$2[ITERATOR$4].call(test) !== test;
   });
 
   if (NEW_ITERATOR_PROTOTYPE) IteratorPrototype$2 = {};
 
   // `%IteratorPrototype%[@@iterator]()` method
   // https://tc39.es/ecma262/#sec-%iteratorprototype%-@@iterator
-  if (!isCallable$5(IteratorPrototype$2[ITERATOR$3])) {
-    defineBuiltIn$2(IteratorPrototype$2, ITERATOR$3, function () {
+  if (!isCallable$6(IteratorPrototype$2[ITERATOR$4])) {
+    defineBuiltIn$2(IteratorPrototype$2, ITERATOR$4, function () {
       return this;
     });
   }
@@ -1506,19 +1506,19 @@
     return IteratorConstructor;
   };
 
-  var isCallable$4 = isCallable$j;
+  var isCallable$5 = isCallable$k;
 
   var $String = String;
-  var $TypeError$5 = TypeError;
+  var $TypeError$6 = TypeError;
 
   var aPossiblePrototype$1 = function (argument) {
-    if (typeof argument == 'object' || isCallable$4(argument)) return argument;
-    throw $TypeError$5("Can't set " + $String(argument) + ' as a prototype');
+    if (typeof argument == 'object' || isCallable$5(argument)) return argument;
+    throw $TypeError$6("Can't set " + $String(argument) + ' as a prototype');
   };
 
   /* eslint-disable no-proto -- safe */
 
-  var uncurryThis$d = functionUncurryThis;
+  var uncurryThis$f = functionUncurryThis;
   var anObject$5 = anObject$a;
   var aPossiblePrototype = aPossiblePrototype$1;
 
@@ -1532,7 +1532,7 @@
     var setter;
     try {
       // eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
-      setter = uncurryThis$d(Object.getOwnPropertyDescriptor(Object.prototype, '__proto__').set);
+      setter = uncurryThis$f(Object.getOwnPropertyDescriptor(Object.prototype, '__proto__').set);
       setter(test, []);
       CORRECT_SETTER = test instanceof Array;
     } catch (error) { /* empty */ }
@@ -1545,10 +1545,10 @@
     };
   }() : undefined);
 
-  var $$9 = _export;
-  var call$5 = functionCall;
+  var $$b = _export;
+  var call$6 = functionCall;
   var FunctionName = functionName;
-  var isCallable$3 = isCallable$j;
+  var isCallable$4 = isCallable$k;
   var createIteratorConstructor = createIteratorConstructor$1;
   var getPrototypeOf = objectGetPrototypeOf;
   var setPrototypeOf = objectSetPrototypeOf;
@@ -1563,7 +1563,7 @@
   var CONFIGURABLE_FUNCTION_NAME = FunctionName.CONFIGURABLE;
   var IteratorPrototype = IteratorsCore.IteratorPrototype;
   var BUGGY_SAFARI_ITERATORS = IteratorsCore.BUGGY_SAFARI_ITERATORS;
-  var ITERATOR$2 = wellKnownSymbol$6('iterator');
+  var ITERATOR$3 = wellKnownSymbol$6('iterator');
   var KEYS = 'keys';
   var VALUES = 'values';
   var ENTRIES = 'entries';
@@ -1586,7 +1586,7 @@
     var TO_STRING_TAG = NAME + ' Iterator';
     var INCORRECT_VALUES_NAME = false;
     var IterablePrototype = Iterable.prototype;
-    var nativeIterator = IterablePrototype[ITERATOR$2]
+    var nativeIterator = IterablePrototype[ITERATOR$3]
       || IterablePrototype['@@iterator']
       || DEFAULT && IterablePrototype[DEFAULT];
     var defaultIterator = !BUGGY_SAFARI_ITERATORS && nativeIterator || getIterationMethod(DEFAULT);
@@ -1600,8 +1600,8 @@
         if (getPrototypeOf(CurrentIteratorPrototype) !== IteratorPrototype) {
           if (setPrototypeOf) {
             setPrototypeOf(CurrentIteratorPrototype, IteratorPrototype);
-          } else if (!isCallable$3(CurrentIteratorPrototype[ITERATOR$2])) {
-            defineBuiltIn$1(CurrentIteratorPrototype, ITERATOR$2, returnThis);
+          } else if (!isCallable$4(CurrentIteratorPrototype[ITERATOR$3])) {
+            defineBuiltIn$1(CurrentIteratorPrototype, ITERATOR$3, returnThis);
           }
         }
         // Set @@toStringTag to native iterators
@@ -1615,7 +1615,7 @@
         createNonEnumerableProperty$2(IterablePrototype, 'name', VALUES);
       } else {
         INCORRECT_VALUES_NAME = true;
-        defaultIterator = function values() { return call$5(nativeIterator, this); };
+        defaultIterator = function values() { return call$6(nativeIterator, this); };
       }
     }
 
@@ -1630,12 +1630,12 @@
         if (BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME || !(KEY in IterablePrototype)) {
           defineBuiltIn$1(IterablePrototype, KEY, methods[KEY]);
         }
-      } else $$9({ target: NAME, proto: true, forced: BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME }, methods);
+      } else $$b({ target: NAME, proto: true, forced: BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME }, methods);
     }
 
     // define iterator
-    if (IterablePrototype[ITERATOR$2] !== defaultIterator) {
-      defineBuiltIn$1(IterablePrototype, ITERATOR$2, defaultIterator, { name: DEFAULT });
+    if (IterablePrototype[ITERATOR$3] !== defaultIterator) {
+      defineBuiltIn$1(IterablePrototype, ITERATOR$3, defaultIterator, { name: DEFAULT });
     }
     Iterators$1[NAME] = defaultIterator;
 
@@ -1702,24 +1702,24 @@
     defineProperty$1(values$4, 'name', { value: 'values' });
   } catch (error) { /* empty */ }
 
-  var global$6 = global$h;
+  var global$7 = global$i;
   var DOMIterables = domIterables;
   var DOMTokenListPrototype = domTokenListPrototype;
   var ArrayIteratorMethods = es_array_iterator;
   var createNonEnumerableProperty$1 = createNonEnumerableProperty$5;
   var wellKnownSymbol$5 = wellKnownSymbol$d;
 
-  var ITERATOR$1 = wellKnownSymbol$5('iterator');
+  var ITERATOR$2 = wellKnownSymbol$5('iterator');
   var TO_STRING_TAG = wellKnownSymbol$5('toStringTag');
   var ArrayValues = ArrayIteratorMethods.values;
 
   var handlePrototype = function (CollectionPrototype, COLLECTION_NAME) {
     if (CollectionPrototype) {
       // some Chrome versions have non-configurable methods on DOMTokenList
-      if (CollectionPrototype[ITERATOR$1] !== ArrayValues) try {
-        createNonEnumerableProperty$1(CollectionPrototype, ITERATOR$1, ArrayValues);
+      if (CollectionPrototype[ITERATOR$2] !== ArrayValues) try {
+        createNonEnumerableProperty$1(CollectionPrototype, ITERATOR$2, ArrayValues);
       } catch (error) {
-        CollectionPrototype[ITERATOR$1] = ArrayValues;
+        CollectionPrototype[ITERATOR$2] = ArrayValues;
       }
       if (!CollectionPrototype[TO_STRING_TAG]) {
         createNonEnumerableProperty$1(CollectionPrototype, TO_STRING_TAG, COLLECTION_NAME);
@@ -1736,7 +1736,7 @@
   };
 
   for (var COLLECTION_NAME in DOMIterables) {
-    handlePrototype(global$6[COLLECTION_NAME] && global$6[COLLECTION_NAME].prototype, COLLECTION_NAME);
+    handlePrototype(global$7[COLLECTION_NAME] && global$7[COLLECTION_NAME].prototype, COLLECTION_NAME);
   }
 
   handlePrototype(DOMTokenListPrototype, 'DOMTokenList');
@@ -3159,7 +3159,7 @@
     }
   }
 
-  function isObject$4(value) {
+  function isObject$5(value) {
     return value instanceof Object && !Array.isArray(value);
   }
 
@@ -3172,7 +3172,7 @@
         var value = style[property];
 
         // handle nested objects
-        if (isObject$4(value)) {
+        if (isObject$5(value)) {
           style[property] = prefix(value);
           // handle array values
         } else if (Array.isArray(value)) {
@@ -5637,14 +5637,14 @@ ${rulesString}
   }
   src.clearStyles = clearStyles;
 
-  const _excluded$B = ["fontFace", "className", "children"];
+  const _excluded$D = ["fontFace", "className", "children"];
   const Box = /*#__PURE__*/React__default["default"].forwardRef((_ref, ref) => {
     let {
       fontFace,
       className,
       children
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$B);
+        props = _objectWithoutProperties$b(_ref, _excluded$D);
 
     return /*#__PURE__*/React__default["default"].createElement(_default, _extends$e({
       ref: ref,
@@ -5657,7 +5657,7 @@ ${rulesString}
   var IndexedObject = indexedObject;
   var lengthOfArrayLike$2 = lengthOfArrayLike$4;
 
-  var $TypeError$4 = TypeError;
+  var $TypeError$5 = TypeError;
 
   // `Array.prototype.{ reduce, reduceRight }` methods implementation
   var createMethod$2 = function (IS_RIGHT) {
@@ -5676,7 +5676,7 @@ ${rulesString}
         }
         index += i;
         if (IS_RIGHT ? index < 0 : length <= index) {
-          throw $TypeError$4('Reduce of empty array with no initial value');
+          throw $TypeError$5('Reduce of empty array with no initial value');
         }
       }
       for (;IS_RIGHT ? index >= 0 : length > index; index += i) if (index in self) {
@@ -5695,22 +5695,22 @@ ${rulesString}
     right: createMethod$2(true)
   };
 
-  var fails$b = fails$m;
+  var fails$c = fails$n;
 
   var arrayMethodIsStrict$2 = function (METHOD_NAME, argument) {
     var method = [][METHOD_NAME];
-    return !!method && fails$b(function () {
+    return !!method && fails$c(function () {
       // eslint-disable-next-line no-useless-call -- required for testing
       method.call(null, argument || function () { return 1; }, 1);
     });
   };
 
   var classof$3 = classofRaw$1;
-  var global$5 = global$h;
+  var global$6 = global$i;
 
-  var engineIsNode = classof$3(global$5.process) == 'process';
+  var engineIsNode = classof$3(global$6.process) == 'process';
 
-  var $$8 = _export;
+  var $$a = _export;
   var $reduce = arrayReduce.left;
   var arrayMethodIsStrict$1 = arrayMethodIsStrict$2;
   var CHROME_VERSION = engineV8Version;
@@ -5723,7 +5723,7 @@ ${rulesString}
 
   // `Array.prototype.reduce` method
   // https://tc39.es/ecma262/#sec-array.prototype.reduce
-  $$8({ target: 'Array', proto: true, forced: !STRICT_METHOD$1 || CHROME_BUG }, {
+  $$a({ target: 'Array', proto: true, forced: !STRICT_METHOD$1 || CHROME_BUG }, {
     reduce: function reduce(callbackfn /* , initialValue */) {
       var length = arguments.length;
       return $reduce(this, callbackfn, length, length > 1 ? arguments[1] : undefined);
@@ -5731,23 +5731,23 @@ ${rulesString}
   });
 
   // a string of all valid unicode whitespaces
-  var whitespaces$3 = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u2002' +
+  var whitespaces$4 = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u2002' +
     '\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
 
-  var uncurryThis$c = functionUncurryThis;
+  var uncurryThis$e = functionUncurryThis;
   var requireObjectCoercible$6 = requireObjectCoercible$9;
-  var toString$a = toString$c;
-  var whitespaces$2 = whitespaces$3;
+  var toString$b = toString$d;
+  var whitespaces$3 = whitespaces$4;
 
-  var replace$3 = uncurryThis$c(''.replace);
-  var whitespace = '[' + whitespaces$2 + ']';
+  var replace$3 = uncurryThis$e(''.replace);
+  var whitespace = '[' + whitespaces$3 + ']';
   var ltrim = RegExp('^' + whitespace + whitespace + '*');
   var rtrim = RegExp(whitespace + whitespace + '*$');
 
   // `String.prototype.{ trim, trimStart, trimEnd, trimLeft, trimRight }` methods implementation
   var createMethod$1 = function (TYPE) {
     return function ($this) {
-      var string = toString$a(requireObjectCoercible$6($this));
+      var string = toString$b(requireObjectCoercible$6($this));
       if (TYPE & 1) string = replace$3(string, ltrim, '');
       if (TYPE & 2) string = replace$3(string, rtrim, '');
       return string;
@@ -5767,28 +5767,28 @@ ${rulesString}
   };
 
   var PROPER_FUNCTION_NAME = functionName.PROPER;
-  var fails$a = fails$m;
-  var whitespaces$1 = whitespaces$3;
+  var fails$b = fails$n;
+  var whitespaces$2 = whitespaces$4;
 
   var non = '\u200B\u0085\u180E';
 
   // check that a method works with the correct list
   // of whitespaces and has a correct name
   var stringTrimForced = function (METHOD_NAME) {
-    return fails$a(function () {
-      return !!whitespaces$1[METHOD_NAME]()
+    return fails$b(function () {
+      return !!whitespaces$2[METHOD_NAME]()
         || non[METHOD_NAME]() !== non
-        || (PROPER_FUNCTION_NAME && whitespaces$1[METHOD_NAME].name !== METHOD_NAME);
+        || (PROPER_FUNCTION_NAME && whitespaces$2[METHOD_NAME].name !== METHOD_NAME);
     });
   };
 
-  var $$7 = _export;
+  var $$9 = _export;
   var $trim = stringTrim.trim;
   var forcedStringTrimMethod = stringTrimForced;
 
   // `String.prototype.trim` method
   // https://tc39.es/ecma262/#sec-string.prototype.trim
-  $$7({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
+  $$9({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
     trim: function trim() {
       return $trim(this);
     }
@@ -5806,9 +5806,9 @@ ${rulesString}
     return (generatedClass + (className ? " ".concat(className) : "")).trim();
   }
 
-  const _excluded$A = ["className", "scale", "uppercase", "equalLineHeight"];
+  const _excluded$C = ["className", "scale", "uppercase", "equalLineHeight"];
 
-  const Text = _ref => {
+  const Text$1 = _ref => {
     var _props$is;
 
     let {
@@ -5817,7 +5817,7 @@ ${rulesString}
       uppercase,
       equalLineHeight
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$A);
+        props = _objectWithoutProperties$b(_ref, _excluded$C);
 
     const is = (_props$is = props.is) !== null && _props$is !== void 0 ? _props$is : "p";
     const generatedClass = classNames({
@@ -5834,20 +5834,20 @@ ${rulesString}
     }), props.children);
   };
 
-  Text.propTypes = {
+  Text$1.propTypes = {
     is: propTypes$2.exports.oneOf(["p", "span", "small", "sub", "sup"]),
     scale: propTypes$2.exports.oneOf(["body", "subhead", "p-18", "overline", "footnote", "overline", "footnote-caps"]),
     uppercase: propTypes$2.exports.bool,
     equalLineHeight: propTypes$2.exports.bool
   };
-  Text.defaultProps = {
+  Text$1.defaultProps = {
     is: "p",
     scale: "body",
     uppercase: false,
     equalLineHeight: false
   };
 
-  const _excluded$z = ["className", "icon", "children", "smartColor"];
+  const _excluded$B = ["className", "icon", "children", "smartColor"];
 
   const Icon = _ref => {
     let {
@@ -5856,7 +5856,7 @@ ${rulesString}
       children,
       smartColor
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$z);
+        props = _objectWithoutProperties$b(_ref, _excluded$B);
 
     const defaultViewBox = "0 0 24 24";
     const IconComponent = icon.component;
@@ -5916,7 +5916,7 @@ ${rulesString}
     fill: "none"
   };
 
-  const _excluded$y = ["is", "leftIcon", "dropDown", "disabled", "size", "className", "colorScheme", "responsive"];
+  const _excluded$A = ["is", "leftIcon", "dropDown", "disabled", "size", "className", "colorScheme", "responsive"];
 
   const Button = _ref => {
     let {
@@ -5929,7 +5929,7 @@ ${rulesString}
       colorScheme,
       responsive
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$y);
+        props = _objectWithoutProperties$b(_ref, _excluded$A);
 
     const generatedClassName = classNames({
       "ui-button": true,
@@ -6151,7 +6151,7 @@ ${rulesString}
     fill: "none"
   };
 
-  const _excluded$x = ["className", "equalLineHeight", "scale", "uppercase"];
+  const _excluded$z = ["className", "equalLineHeight", "scale", "uppercase"];
 
   const Heading = _ref => {
     var _props$is;
@@ -6162,7 +6162,7 @@ ${rulesString}
       scale,
       uppercase
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$x);
+        props = _objectWithoutProperties$b(_ref, _excluded$z);
 
     const is = (_props$is = props.is) !== null && _props$is !== void 0 ? _props$is : "h2";
     const generatedClass = classNames({
@@ -6193,7 +6193,7 @@ ${rulesString}
     equalLineHeight: false
   };
 
-  const _excluded$w = ["message", "description", "colorScheme", "theme", "button", "buttonAction", "onAction", "className", "closable"];
+  const _excluded$y = ["message", "description", "colorScheme", "theme", "button", "buttonAction", "onAction", "className", "closable"];
 
   const Alert = _ref => {
     let {
@@ -6207,7 +6207,7 @@ ${rulesString}
       className,
       closable
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$w);
+        props = _objectWithoutProperties$b(_ref, _excluded$y);
 
     const [showAlert, setShowAlert] = React$1.useState(true);
     const generateAlertClassName = classNames({
@@ -6244,7 +6244,7 @@ ${rulesString}
     }, /*#__PURE__*/React__default["default"].createElement(Heading, {
       scale: "subtitle-2",
       className: "ui-alert__header-text"
-    }, message)), description && theme !== "inline" && /*#__PURE__*/React__default["default"].createElement(Text, {
+    }, message)), description && theme !== "inline" && /*#__PURE__*/React__default["default"].createElement(Text$1, {
       scale: "subhead",
       className: "ui-alert__body"
     }, description), button && theme !== "inline" && /*#__PURE__*/React__default["default"].createElement(Button, _extends$e({
@@ -6290,13 +6290,13 @@ ${rulesString}
     return result;
   };
 
-  var fails$9 = fails$m;
-  var global$4 = global$h;
+  var fails$a = fails$n;
+  var global$5 = global$i;
 
   // babel-minify and Closure Compiler transpiles RegExp('a', 'y') -> /a/y and it causes SyntaxError
-  var $RegExp$2 = global$4.RegExp;
+  var $RegExp$2 = global$5.RegExp;
 
-  var UNSUPPORTED_Y$2 = fails$9(function () {
+  var UNSUPPORTED_Y$2 = fails$a(function () {
     var re = $RegExp$2('a', 'y');
     re.lastIndex = 2;
     return re.exec('abcd') != null;
@@ -6304,11 +6304,11 @@ ${rulesString}
 
   // UC Browser bug
   // https://github.com/zloirock/core-js/issues/1008
-  var MISSED_STICKY = UNSUPPORTED_Y$2 || fails$9(function () {
+  var MISSED_STICKY = UNSUPPORTED_Y$2 || fails$a(function () {
     return !$RegExp$2('a', 'y').sticky;
   });
 
-  var BROKEN_CARET = UNSUPPORTED_Y$2 || fails$9(function () {
+  var BROKEN_CARET = UNSUPPORTED_Y$2 || fails$a(function () {
     // https://bugzilla.mozilla.org/show_bug.cgi?id=773687
     var re = $RegExp$2('^r', 'gy');
     re.lastIndex = 2;
@@ -6321,24 +6321,24 @@ ${rulesString}
     UNSUPPORTED_Y: UNSUPPORTED_Y$2
   };
 
-  var fails$8 = fails$m;
-  var global$3 = global$h;
+  var fails$9 = fails$n;
+  var global$4 = global$i;
 
   // babel-minify and Closure Compiler transpiles RegExp('.', 's') -> /./s and it causes SyntaxError
-  var $RegExp$1 = global$3.RegExp;
+  var $RegExp$1 = global$4.RegExp;
 
-  var regexpUnsupportedDotAll = fails$8(function () {
+  var regexpUnsupportedDotAll = fails$9(function () {
     var re = $RegExp$1('.', 's');
     return !(re.dotAll && re.exec('\n') && re.flags === 's');
   });
 
-  var fails$7 = fails$m;
-  var global$2 = global$h;
+  var fails$8 = fails$n;
+  var global$3 = global$i;
 
   // babel-minify and Closure Compiler transpiles RegExp('(?<a>b)', 'g') -> /(?<a>b)/g and it causes SyntaxError
-  var $RegExp = global$2.RegExp;
+  var $RegExp = global$3.RegExp;
 
-  var regexpUnsupportedNcg = fails$7(function () {
+  var regexpUnsupportedNcg = fails$8(function () {
     var re = $RegExp('(?<a>b)', 'g');
     return re.exec('b').groups.a !== 'b' ||
       'b'.replace(re, '$<a>c') !== 'bc';
@@ -6346,9 +6346,9 @@ ${rulesString}
 
   /* eslint-disable regexp/no-empty-capturing-group, regexp/no-empty-group, regexp/no-lazy-ends -- testing */
   /* eslint-disable regexp/no-useless-quantifier -- testing */
-  var call$4 = functionCall;
-  var uncurryThis$b = functionUncurryThis;
-  var toString$9 = toString$c;
+  var call$5 = functionCall;
+  var uncurryThis$d = functionUncurryThis;
+  var toString$a = toString$d;
   var regexpFlags = regexpFlags$1;
   var stickyHelpers$1 = regexpStickyHelpers;
   var shared = shared$4.exports;
@@ -6360,16 +6360,16 @@ ${rulesString}
   var nativeReplace = shared('native-string-replace', String.prototype.replace);
   var nativeExec = RegExp.prototype.exec;
   var patchedExec = nativeExec;
-  var charAt$4 = uncurryThis$b(''.charAt);
-  var indexOf = uncurryThis$b(''.indexOf);
-  var replace$2 = uncurryThis$b(''.replace);
-  var stringSlice$5 = uncurryThis$b(''.slice);
+  var charAt$4 = uncurryThis$d(''.charAt);
+  var indexOf = uncurryThis$d(''.indexOf);
+  var replace$2 = uncurryThis$d(''.replace);
+  var stringSlice$5 = uncurryThis$d(''.slice);
 
   var UPDATES_LAST_INDEX_WRONG = (function () {
     var re1 = /a/;
     var re2 = /b*/g;
-    call$4(nativeExec, re1, 'a');
-    call$4(nativeExec, re2, 'a');
+    call$5(nativeExec, re1, 'a');
+    call$5(nativeExec, re2, 'a');
     return re1.lastIndex !== 0 || re2.lastIndex !== 0;
   })();
 
@@ -6384,20 +6384,20 @@ ${rulesString}
     patchedExec = function exec(string) {
       var re = this;
       var state = getInternalState(re);
-      var str = toString$9(string);
+      var str = toString$a(string);
       var raw = state.raw;
       var result, reCopy, lastIndex, match, i, object, group;
 
       if (raw) {
         raw.lastIndex = re.lastIndex;
-        result = call$4(patchedExec, raw, str);
+        result = call$5(patchedExec, raw, str);
         re.lastIndex = raw.lastIndex;
         return result;
       }
 
       var groups = state.groups;
       var sticky = UNSUPPORTED_Y$1 && re.sticky;
-      var flags = call$4(regexpFlags, re);
+      var flags = call$5(regexpFlags, re);
       var source = re.source;
       var charsAdded = 0;
       var strCopy = str;
@@ -6425,7 +6425,7 @@ ${rulesString}
       }
       if (UPDATES_LAST_INDEX_WRONG) lastIndex = re.lastIndex;
 
-      match = call$4(nativeExec, sticky ? reCopy : re, strCopy);
+      match = call$5(nativeExec, sticky ? reCopy : re, strCopy);
 
       if (sticky) {
         if (match) {
@@ -6440,7 +6440,7 @@ ${rulesString}
       if (NPCG_INCLUDED && match && match.length > 1) {
         // Fix browsers whose `exec` methods don't consistently return `undefined`
         // for NPCG, like IE8. NOTE: This doesn't work for /(.?)?/
-        call$4(nativeReplace, match[0], reCopy, function () {
+        call$5(nativeReplace, match[0], reCopy, function () {
           for (i = 1; i < arguments.length - 2; i++) {
             if (arguments[i] === undefined) match[i] = undefined;
           }
@@ -6461,32 +6461,32 @@ ${rulesString}
 
   var regexpExec$3 = patchedExec;
 
-  var $$6 = _export;
-  var exec$2 = regexpExec$3;
+  var $$8 = _export;
+  var exec$3 = regexpExec$3;
 
   // `RegExp.prototype.exec` method
   // https://tc39.es/ecma262/#sec-regexp.prototype.exec
-  $$6({ target: 'RegExp', proto: true, forced: /./.exec !== exec$2 }, {
-    exec: exec$2
+  $$8({ target: 'RegExp', proto: true, forced: /./.exec !== exec$3 }, {
+    exec: exec$3
   });
 
   var NATIVE_BIND = functionBindNative;
 
   var FunctionPrototype = Function.prototype;
   var apply$2 = FunctionPrototype.apply;
-  var call$3 = FunctionPrototype.call;
+  var call$4 = FunctionPrototype.call;
 
   // eslint-disable-next-line es-x/no-reflect -- safe
-  var functionApply = typeof Reflect == 'object' && Reflect.apply || (NATIVE_BIND ? call$3.bind(apply$2) : function () {
-    return call$3.apply(apply$2, arguments);
+  var functionApply = typeof Reflect == 'object' && Reflect.apply || (NATIVE_BIND ? call$4.bind(apply$2) : function () {
+    return call$4.apply(apply$2, arguments);
   });
 
   // TODO: Remove from `core-js@4` since it's moved to entry points
 
-  var uncurryThis$a = functionUncurryThis;
+  var uncurryThis$c = functionUncurryThis;
   var defineBuiltIn = defineBuiltIn$4;
   var regexpExec$2 = regexpExec$3;
-  var fails$6 = fails$m;
+  var fails$7 = fails$n;
   var wellKnownSymbol$4 = wellKnownSymbol$d;
   var createNonEnumerableProperty = createNonEnumerableProperty$5;
 
@@ -6496,14 +6496,14 @@ ${rulesString}
   var fixRegexpWellKnownSymbolLogic = function (KEY, exec, FORCED, SHAM) {
     var SYMBOL = wellKnownSymbol$4(KEY);
 
-    var DELEGATES_TO_SYMBOL = !fails$6(function () {
+    var DELEGATES_TO_SYMBOL = !fails$7(function () {
       // String methods call symbol-named RegEp methods
       var O = {};
       O[SYMBOL] = function () { return 7; };
       return ''[KEY](O) != 7;
     });
 
-    var DELEGATES_TO_EXEC = DELEGATES_TO_SYMBOL && !fails$6(function () {
+    var DELEGATES_TO_EXEC = DELEGATES_TO_SYMBOL && !fails$7(function () {
       // Symbol-named RegExp methods call .exec
       var execCalled = false;
       var re = /a/;
@@ -6532,9 +6532,9 @@ ${rulesString}
       !DELEGATES_TO_EXEC ||
       FORCED
     ) {
-      var uncurriedNativeRegExpMethod = uncurryThis$a(/./[SYMBOL]);
+      var uncurriedNativeRegExpMethod = uncurryThis$c(/./[SYMBOL]);
       var methods = exec(SYMBOL, ''[KEY], function (nativeMethod, regexp, str, arg2, forceStringMethod) {
-        var uncurriedNativeMethod = uncurryThis$a(nativeMethod);
+        var uncurriedNativeMethod = uncurryThis$c(nativeMethod);
         var $exec = regexp.exec;
         if ($exec === regexpExec$2 || $exec === RegExpPrototype.exec) {
           if (DELEGATES_TO_SYMBOL && !forceStringMethod) {
@@ -6555,7 +6555,7 @@ ${rulesString}
     if (SHAM) createNonEnumerableProperty(RegExpPrototype[SYMBOL], 'sham', true);
   };
 
-  var isObject$3 = isObject$a;
+  var isObject$4 = isObject$b;
   var classof$2 = classofRaw$1;
   var wellKnownSymbol$3 = wellKnownSymbol$d;
 
@@ -6565,12 +6565,12 @@ ${rulesString}
   // https://tc39.es/ecma262/#sec-isregexp
   var isRegexp = function (it) {
     var isRegExp;
-    return isObject$3(it) && ((isRegExp = it[MATCH$1]) !== undefined ? !!isRegExp : classof$2(it) == 'RegExp');
+    return isObject$4(it) && ((isRegExp = it[MATCH$1]) !== undefined ? !!isRegExp : classof$2(it) == 'RegExp');
   };
 
-  var uncurryThis$9 = functionUncurryThis;
-  var fails$5 = fails$m;
-  var isCallable$2 = isCallable$j;
+  var uncurryThis$b = functionUncurryThis;
+  var fails$6 = fails$n;
+  var isCallable$3 = isCallable$k;
   var classof$1 = classof$5;
   var getBuiltIn = getBuiltIn$5;
   var inspectSource = inspectSource$3;
@@ -6579,11 +6579,11 @@ ${rulesString}
   var empty = [];
   var construct = getBuiltIn('Reflect', 'construct');
   var constructorRegExp = /^\s*(?:class|function)\b/;
-  var exec$1 = uncurryThis$9(constructorRegExp.exec);
+  var exec$2 = uncurryThis$b(constructorRegExp.exec);
   var INCORRECT_TO_STRING = !constructorRegExp.exec(noop);
 
   var isConstructorModern = function isConstructor(argument) {
-    if (!isCallable$2(argument)) return false;
+    if (!isCallable$3(argument)) return false;
     try {
       construct(noop, empty, argument);
       return true;
@@ -6593,7 +6593,7 @@ ${rulesString}
   };
 
   var isConstructorLegacy = function isConstructor(argument) {
-    if (!isCallable$2(argument)) return false;
+    if (!isCallable$3(argument)) return false;
     switch (classof$1(argument)) {
       case 'AsyncFunction':
       case 'GeneratorFunction':
@@ -6603,7 +6603,7 @@ ${rulesString}
       // we can't check .prototype since constructors produced by .bind haven't it
       // `Function#toString` throws on some built-it function in some legacy engines
       // (for example, `DOMQuad` and similar in FF41-)
-      return INCORRECT_TO_STRING || !!exec$1(constructorRegExp, inspectSource(argument));
+      return INCORRECT_TO_STRING || !!exec$2(constructorRegExp, inspectSource(argument));
     } catch (error) {
       return true;
     }
@@ -6613,7 +6613,7 @@ ${rulesString}
 
   // `IsConstructor` abstract operation
   // https://tc39.es/ecma262/#sec-isconstructor
-  var isConstructor$1 = !construct || fails$5(function () {
+  var isConstructor$1 = !construct || fails$6(function () {
     var called;
     return isConstructorModern(isConstructorModern.call)
       || !isConstructorModern(Object)
@@ -6624,12 +6624,12 @@ ${rulesString}
   var isConstructor = isConstructor$1;
   var tryToString$1 = tryToString$3;
 
-  var $TypeError$3 = TypeError;
+  var $TypeError$4 = TypeError;
 
   // `Assert: IsConstructor(argument) is true`
   var aConstructor$1 = function (argument) {
     if (isConstructor(argument)) return argument;
-    throw $TypeError$3(tryToString$1(argument) + ' is not a constructor');
+    throw $TypeError$4(tryToString$1(argument) + ' is not a constructor');
   };
 
   var anObject$3 = anObject$a;
@@ -6646,18 +6646,18 @@ ${rulesString}
     return C === undefined || (S = anObject$3(C)[SPECIES]) == undefined ? defaultConstructor : aConstructor(S);
   };
 
-  var uncurryThis$8 = functionUncurryThis;
+  var uncurryThis$a = functionUncurryThis;
   var toIntegerOrInfinity$1 = toIntegerOrInfinity$4;
-  var toString$8 = toString$c;
+  var toString$9 = toString$d;
   var requireObjectCoercible$5 = requireObjectCoercible$9;
 
-  var charAt$3 = uncurryThis$8(''.charAt);
-  var charCodeAt = uncurryThis$8(''.charCodeAt);
-  var stringSlice$4 = uncurryThis$8(''.slice);
+  var charAt$3 = uncurryThis$a(''.charAt);
+  var charCodeAt = uncurryThis$a(''.charCodeAt);
+  var stringSlice$4 = uncurryThis$a(''.slice);
 
   var createMethod = function (CONVERT_TO_STRING) {
     return function ($this, pos) {
-      var S = toString$8(requireObjectCoercible$5($this));
+      var S = toString$9(requireObjectCoercible$5($this));
       var position = toIntegerOrInfinity$1(pos);
       var size = S.length;
       var first, second;
@@ -6718,30 +6718,30 @@ ${rulesString}
     return result;
   };
 
-  var call$2 = functionCall;
+  var call$3 = functionCall;
   var anObject$2 = anObject$a;
-  var isCallable$1 = isCallable$j;
+  var isCallable$2 = isCallable$k;
   var classof = classofRaw$1;
   var regexpExec$1 = regexpExec$3;
 
-  var $TypeError$2 = TypeError;
+  var $TypeError$3 = TypeError;
 
   // `RegExpExec` abstract operation
   // https://tc39.es/ecma262/#sec-regexpexec
   var regexpExecAbstract = function (R, S) {
     var exec = R.exec;
-    if (isCallable$1(exec)) {
-      var result = call$2(exec, R, S);
+    if (isCallable$2(exec)) {
+      var result = call$3(exec, R, S);
       if (result !== null) anObject$2(result);
       return result;
     }
-    if (classof(R) === 'RegExp') return call$2(regexpExec$1, R, S);
-    throw $TypeError$2('RegExp#exec called on incompatible receiver');
+    if (classof(R) === 'RegExp') return call$3(regexpExec$1, R, S);
+    throw $TypeError$3('RegExp#exec called on incompatible receiver');
   };
 
   var apply$1 = functionApply;
-  var call$1 = functionCall;
-  var uncurryThis$7 = functionUncurryThis;
+  var call$2 = functionCall;
+  var uncurryThis$9 = functionUncurryThis;
   var fixRegExpWellKnownSymbolLogic$1 = fixRegexpWellKnownSymbolLogic;
   var isRegExp$1 = isRegexp;
   var anObject$1 = anObject$a;
@@ -6749,25 +6749,25 @@ ${rulesString}
   var speciesConstructor = speciesConstructor$1;
   var advanceStringIndex$1 = advanceStringIndex$2;
   var toLength$3 = toLength$5;
-  var toString$7 = toString$c;
+  var toString$8 = toString$d;
   var getMethod$1 = getMethod$3;
   var arraySlice$1 = arraySliceSimple;
   var callRegExpExec = regexpExecAbstract;
   var regexpExec = regexpExec$3;
   var stickyHelpers = regexpStickyHelpers;
-  var fails$4 = fails$m;
+  var fails$5 = fails$n;
 
   var UNSUPPORTED_Y = stickyHelpers.UNSUPPORTED_Y;
   var MAX_UINT32 = 0xFFFFFFFF;
   var min$3 = Math.min;
   var $push = [].push;
-  var exec = uncurryThis$7(/./.exec);
-  var push$2 = uncurryThis$7($push);
-  var stringSlice$3 = uncurryThis$7(''.slice);
+  var exec$1 = uncurryThis$9(/./.exec);
+  var push$2 = uncurryThis$9($push);
+  var stringSlice$3 = uncurryThis$9(''.slice);
 
   // Chrome 51 has a buggy "split" implementation when RegExp#exec !== nativeExec
   // Weex JS has frozen built-in prototypes, so use try / catch wrapper
-  var SPLIT_WORKS_WITH_OVERWRITTEN_EXEC = !fails$4(function () {
+  var SPLIT_WORKS_WITH_OVERWRITTEN_EXEC = !fails$5(function () {
     // eslint-disable-next-line regexp/no-empty-group -- required for testing
     var re = /(?:)/;
     var originalExec = re.exec;
@@ -6791,13 +6791,13 @@ ${rulesString}
     ) {
       // based on es5-shim implementation, need to rework it
       internalSplit = function (separator, limit) {
-        var string = toString$7(requireObjectCoercible$4(this));
+        var string = toString$8(requireObjectCoercible$4(this));
         var lim = limit === undefined ? MAX_UINT32 : limit >>> 0;
         if (lim === 0) return [];
         if (separator === undefined) return [string];
         // If `separator` is not a regex, use native split
         if (!isRegExp$1(separator)) {
-          return call$1(nativeSplit, string, separator, lim);
+          return call$2(nativeSplit, string, separator, lim);
         }
         var output = [];
         var flags = (separator.ignoreCase ? 'i' : '') +
@@ -6808,7 +6808,7 @@ ${rulesString}
         // Make `global` and avoid `lastIndex` issues by working with a copy
         var separatorCopy = new RegExp(separator.source, flags + 'g');
         var match, lastIndex, lastLength;
-        while (match = call$1(regexpExec, separatorCopy, string)) {
+        while (match = call$2(regexpExec, separatorCopy, string)) {
           lastIndex = separatorCopy.lastIndex;
           if (lastIndex > lastLastIndex) {
             push$2(output, stringSlice$3(string, lastLastIndex, match.index));
@@ -6820,14 +6820,14 @@ ${rulesString}
           if (separatorCopy.lastIndex === match.index) separatorCopy.lastIndex++; // Avoid an infinite loop
         }
         if (lastLastIndex === string.length) {
-          if (lastLength || !exec(separatorCopy, '')) push$2(output, '');
+          if (lastLength || !exec$1(separatorCopy, '')) push$2(output, '');
         } else push$2(output, stringSlice$3(string, lastLastIndex));
         return output.length > lim ? arraySlice$1(output, 0, lim) : output;
       };
     // Chakra, V8
     } else if ('0'.split(undefined, 0).length) {
       internalSplit = function (separator, limit) {
-        return separator === undefined && limit === 0 ? [] : call$1(nativeSplit, this, separator, limit);
+        return separator === undefined && limit === 0 ? [] : call$2(nativeSplit, this, separator, limit);
       };
     } else internalSplit = nativeSplit;
 
@@ -6838,8 +6838,8 @@ ${rulesString}
         var O = requireObjectCoercible$4(this);
         var splitter = separator == undefined ? undefined : getMethod$1(separator, SPLIT);
         return splitter
-          ? call$1(splitter, separator, O, limit)
-          : call$1(internalSplit, toString$7(O), separator, limit);
+          ? call$2(splitter, separator, O, limit)
+          : call$2(internalSplit, toString$8(O), separator, limit);
       },
       // `RegExp.prototype[@@split]` method
       // https://tc39.es/ecma262/#sec-regexp.prototype-@@split
@@ -6848,7 +6848,7 @@ ${rulesString}
       // the 'y' flag.
       function (string, limit) {
         var rx = anObject$1(this);
-        var S = toString$7(string);
+        var S = toString$8(string);
         var res = maybeCallNative(internalSplit, rx, S, limit, internalSplit !== nativeSplit);
 
         if (res.done) return res.value;
@@ -6895,13 +6895,13 @@ ${rulesString}
     ];
   }, !SPLIT_WORKS_WITH_OVERWRITTEN_EXEC, UNSUPPORTED_Y);
 
-  var uncurryThis$6 = functionUncurryThis;
+  var uncurryThis$8 = functionUncurryThis;
   var toObject$1 = toObject$5;
 
   var floor$1 = Math.floor;
-  var charAt$1 = uncurryThis$6(''.charAt);
-  var replace$1 = uncurryThis$6(''.replace);
-  var stringSlice$2 = uncurryThis$6(''.slice);
+  var charAt$1 = uncurryThis$8(''.charAt);
+  var replace$1 = uncurryThis$8(''.replace);
+  var stringSlice$2 = uncurryThis$8(''.slice);
   var SUBSTITUTION_SYMBOLS = /\$([$&'`]|\d{1,2}|<[^>]*>)/g;
   var SUBSTITUTION_SYMBOLS_NO_NAMED = /\$([$&'`]|\d{1,2})/g;
 
@@ -6941,15 +6941,15 @@ ${rulesString}
   };
 
   var apply = functionApply;
-  var call = functionCall;
-  var uncurryThis$5 = functionUncurryThis;
+  var call$1 = functionCall;
+  var uncurryThis$7 = functionUncurryThis;
   var fixRegExpWellKnownSymbolLogic = fixRegexpWellKnownSymbolLogic;
-  var fails$3 = fails$m;
+  var fails$4 = fails$n;
   var anObject = anObject$a;
-  var isCallable = isCallable$j;
+  var isCallable$1 = isCallable$k;
   var toIntegerOrInfinity = toIntegerOrInfinity$4;
   var toLength$2 = toLength$5;
-  var toString$6 = toString$c;
+  var toString$7 = toString$d;
   var requireObjectCoercible$3 = requireObjectCoercible$9;
   var advanceStringIndex = advanceStringIndex$2;
   var getMethod = getMethod$3;
@@ -6960,10 +6960,10 @@ ${rulesString}
   var REPLACE = wellKnownSymbol$1('replace');
   var max = Math.max;
   var min$2 = Math.min;
-  var concat = uncurryThis$5([].concat);
-  var push$1 = uncurryThis$5([].push);
-  var stringIndexOf$1 = uncurryThis$5(''.indexOf);
-  var stringSlice$1 = uncurryThis$5(''.slice);
+  var concat = uncurryThis$7([].concat);
+  var push$1 = uncurryThis$7([].push);
+  var stringIndexOf$1 = uncurryThis$7(''.indexOf);
+  var stringSlice$1 = uncurryThis$7(''.slice);
 
   var maybeToString = function (it) {
     return it === undefined ? it : String(it);
@@ -6984,7 +6984,7 @@ ${rulesString}
     return false;
   })();
 
-  var REPLACE_SUPPORTS_NAMED_GROUPS = !fails$3(function () {
+  var REPLACE_SUPPORTS_NAMED_GROUPS = !fails$4(function () {
     var re = /./;
     re.exec = function () {
       var result = [];
@@ -7006,14 +7006,14 @@ ${rulesString}
         var O = requireObjectCoercible$3(this);
         var replacer = searchValue == undefined ? undefined : getMethod(searchValue, REPLACE);
         return replacer
-          ? call(replacer, searchValue, O, replaceValue)
-          : call(nativeReplace, toString$6(O), searchValue, replaceValue);
+          ? call$1(replacer, searchValue, O, replaceValue)
+          : call$1(nativeReplace, toString$7(O), searchValue, replaceValue);
       },
       // `RegExp.prototype[@@replace]` method
       // https://tc39.es/ecma262/#sec-regexp.prototype-@@replace
       function (string, replaceValue) {
         var rx = anObject(this);
-        var S = toString$6(string);
+        var S = toString$7(string);
 
         if (
           typeof replaceValue == 'string' &&
@@ -7024,8 +7024,8 @@ ${rulesString}
           if (res.done) return res.value;
         }
 
-        var functionalReplace = isCallable(replaceValue);
-        if (!functionalReplace) replaceValue = toString$6(replaceValue);
+        var functionalReplace = isCallable$1(replaceValue);
+        if (!functionalReplace) replaceValue = toString$7(replaceValue);
 
         var global = rx.global;
         if (global) {
@@ -7040,7 +7040,7 @@ ${rulesString}
           push$1(results, result);
           if (!global) break;
 
-          var matchStr = toString$6(result[0]);
+          var matchStr = toString$7(result[0]);
           if (matchStr === '') rx.lastIndex = advanceStringIndex(S, toLength$2(rx.lastIndex), fullUnicode);
         }
 
@@ -7049,7 +7049,7 @@ ${rulesString}
         for (var i = 0; i < results.length; i++) {
           result = results[i];
 
-          var matched = toString$6(result[0]);
+          var matched = toString$7(result[0]);
           var position = max(min$2(toIntegerOrInfinity(result.index), S.length), 0);
           var captures = [];
           // NOTE: This is equivalent to
@@ -7062,7 +7062,7 @@ ${rulesString}
           if (functionalReplace) {
             var replacerArgs = concat([matched], captures, position, S);
             if (namedCaptures !== undefined) push$1(replacerArgs, namedCaptures);
-            var replacement = toString$6(apply(replaceValue, undefined, replacerArgs));
+            var replacement = toString$7(apply(replaceValue, undefined, replacerArgs));
           } else {
             replacement = getSubstitution(matched, S, position, captures, namedCaptures, replaceValue);
           }
@@ -7094,7 +7094,7 @@ ${rulesString}
     return result;
   }
 
-  const _excluded$v = ["avatar", "subtle", "dropdown", "size", "visibleAvatars", "stacked", "avatars", "className"];
+  const _excluded$x = ["avatar", "subtle", "dropdown", "size", "visibleAvatars", "stacked", "avatars", "className"];
   const colorSchemes = ["cyan", "green", "orange", "red", "gray", "blue"];
 
   const generateAvatarColorScheme = (avatar, index) => {
@@ -7109,7 +7109,7 @@ ${rulesString}
     }, "ui-avatar");
   };
 
-  const Avatar = _ref => {
+  const Avatar$1 = _ref => {
     let {
       avatar,
       subtle,
@@ -7120,7 +7120,7 @@ ${rulesString}
       avatars,
       className
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$v);
+        props = _objectWithoutProperties$b(_ref, _excluded$x);
 
     const wrapperClassName = classNames({
       "ui-avatars__wrapper": true,
@@ -7138,7 +7138,7 @@ ${rulesString}
           backgroundImage: "url(".concat(avatar.imgURL, ")")
         } : {}),
         className: generateAvatarClassName(avatar, index)
-      }, !avatar.imgURL && /*#__PURE__*/React__default["default"].createElement(Text, {
+      }, !avatar.imgURL && /*#__PURE__*/React__default["default"].createElement(Text$1, {
         equalLineHeight: true,
         scale: size === "small" ? "overline" : "footnote"
       }, getInitials(avatar.name)), avatar.status && !stacked && /*#__PURE__*/React__default["default"].createElement("div", {
@@ -7162,12 +7162,12 @@ ${rulesString}
       className: "ui-avatar__wrapper"
     }, /*#__PURE__*/React__default["default"].createElement("div", {
       className: "ui-avatar background__extra"
-    }, /*#__PURE__*/React__default["default"].createElement(Text, {
+    }, /*#__PURE__*/React__default["default"].createElement(Text$1, {
       scale: size === "small" ? "overline" : "footnote"
     }, "+", extraAvatars))));
   };
 
-  Avatar.propTypes = {
+  Avatar$1.propTypes = {
     subtle: propTypes$2.exports.bool,
     stacked: propTypes$2.exports.bool,
     size: propTypes$2.exports.oneOf(["small", "medium", "large"]),
@@ -7176,7 +7176,7 @@ ${rulesString}
     dropdown: propTypes$2.exports.bool,
     visibleAvatars: propTypes$2.exports.number
   };
-  Avatar.defaultProps = {
+  Avatar$1.defaultProps = {
     subtle: false,
     stacked: false,
     size: "large",
@@ -7188,7 +7188,7 @@ ${rulesString}
     avatars: []
   };
 
-  const _excluded$u = ["children", "colorScheme", "className", "subtle", "size"];
+  const _excluded$w = ["children", "colorScheme", "className", "subtle", "size"];
 
   const Badge = _ref => {
     let {
@@ -7198,7 +7198,7 @@ ${rulesString}
       subtle,
       size
     } = _ref;
-        _objectWithoutProperties$b(_ref, _excluded$u);
+        _objectWithoutProperties$b(_ref, _excluded$w);
 
     const generatedClassName = classNames({
       ["color-scheme__".concat(colorScheme)]: true,
@@ -7208,7 +7208,7 @@ ${rulesString}
     }, className);
     return /*#__PURE__*/React__default["default"].createElement(Box, {
       className: generatedClassName
-    }, /*#__PURE__*/React__default["default"].createElement(Text, {
+    }, /*#__PURE__*/React__default["default"].createElement(Text$1, {
       equalLineHeight: true,
       className: "ui-badge__text",
       scale: size === "large" ? "footnote" : "overline"
@@ -7256,11 +7256,11 @@ ${rulesString}
     }, colorScheme !== "default" && /*#__PURE__*/React__default["default"].createElement(Icon, {
       className: "ui-banner-icon",
       icon: schemeIcons[colorScheme]
-    }), /*#__PURE__*/React__default["default"].createElement(Text, {
+    }), /*#__PURE__*/React__default["default"].createElement(Text$1, {
       scale: "subhead",
       className: "ui-banner__title text-gray-700",
       "font-face": "circularSTD"
-    }, title), /*#__PURE__*/React__default["default"].createElement(Text, {
+    }, title), /*#__PURE__*/React__default["default"].createElement(Text$1, {
       scale: "subhead",
       className: "ui-banner__description text-gray-600",
       "font-face": "circularSTD"
@@ -7286,7 +7286,7 @@ ${rulesString}
     onClick: propTypes$2.exports.func
   };
 
-  const _excluded$t = ["className", "ringed", "alignToTop", "label"];
+  const _excluded$v = ["className", "ringed", "alignToTop", "label"];
 
   const Radio = _ref => {
     let {
@@ -7295,7 +7295,7 @@ ${rulesString}
       alignToTop,
       label
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$t);
+        props = _objectWithoutProperties$b(_ref, _excluded$v);
 
     const generateRadioClassName = classNames({
       ringed,
@@ -7308,7 +7308,7 @@ ${rulesString}
     }, /*#__PURE__*/React__default["default"].createElement("input", _extends$e({
       className: "ui-radio",
       type: "radio"
-    }, props)), /*#__PURE__*/React__default["default"].createElement(Text, {
+    }, props)), /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-radio__label-text"
     }, label));
   };
@@ -7321,7 +7321,7 @@ ${rulesString}
     alignToTop: propTypes$2.exports.bool
   };
 
-  const _excluded$s = ["label", "alignToTop", "dashed", "className"];
+  const _excluded$u = ["label", "alignToTop", "dashed", "className"];
 
   const Checkbox = _ref => {
     let {
@@ -7330,7 +7330,7 @@ ${rulesString}
       dashed,
       className
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$s);
+        props = _objectWithoutProperties$b(_ref, _excluded$u);
 
     const checkboxClassName = classNames({
       "ui-checkbox__wrapper": true,
@@ -7344,7 +7344,7 @@ ${rulesString}
       is: "input",
       className: "ui-checkbox",
       type: "checkbox"
-    }, props)), /*#__PURE__*/React__default["default"].createElement(Text, {
+    }, props)), /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-checkbox__label-text"
     }, label));
   };
@@ -7359,7 +7359,7 @@ ${rulesString}
     dashed: propTypes$2.exports.bool
   };
 
-  const _excluded$r = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
+  const _excluded$t = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
 
   const CardComponent = _ref => {
     let {
@@ -7370,7 +7370,7 @@ ${rulesString}
       strokeLineCap,
       strokeLineJoin
     } = _ref;
-        _objectWithoutProperties$b(_ref, _excluded$r);
+        _objectWithoutProperties$b(_ref, _excluded$t);
 
     return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
       d: "M21 12.7707V15.9881C21 16.5216 20.7893 17.0333 20.4143 17.4106C20.0392 17.7879 19.5306 18 19.0001 18H4.99995C4.46951 18 3.96087 17.7879 3.5858 17.4106C3.21073 17.0333 3.00006 16.5216 3.00006 15.9881V7.01176C3.00006 6.47819 3.21073 5.96653 3.5858 5.58924C3.96087 5.21195 4.46951 5.00003 4.99995 5.00003H19.0001C19.5306 5.00003 20.0392 5.21195 20.4143 5.58924C20.7893 5.96653 21 6.47819 21 7.01176V9.84096",
@@ -7417,7 +7417,7 @@ ${rulesString}
     fill: "none"
   };
 
-  const _excluded$q = ["is", "title", "desc", "children", "radio", "checkbox", "icon", "select", "className"];
+  const _excluded$s = ["is", "title", "desc", "children", "radio", "checkbox", "icon", "select", "className"];
 
   const Card = _ref => {
     let {
@@ -7431,7 +7431,7 @@ ${rulesString}
       select,
       className
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$q);
+        props = _objectWithoutProperties$b(_ref, _excluded$s);
 
     const [selected, setSelected] = React$1.useState(select);
     const generatedClassName = classNames({
@@ -7483,35 +7483,35 @@ ${rulesString}
 
   };
 
-  var global$1 = global$h;
-  var fails$2 = fails$m;
-  var uncurryThis$4 = functionUncurryThis;
-  var toString$5 = toString$c;
-  var trim = stringTrim.trim;
-  var whitespaces = whitespaces$3;
+  var global$2 = global$i;
+  var fails$3 = fails$n;
+  var uncurryThis$6 = functionUncurryThis;
+  var toString$6 = toString$d;
+  var trim$1 = stringTrim.trim;
+  var whitespaces$1 = whitespaces$4;
 
-  var charAt = uncurryThis$4(''.charAt);
-  var n$ParseFloat = global$1.parseFloat;
-  var Symbol$2 = global$1.Symbol;
-  var ITERATOR = Symbol$2 && Symbol$2.iterator;
-  var FORCED$1 = 1 / n$ParseFloat(whitespaces + '-0') !== -Infinity
+  var charAt = uncurryThis$6(''.charAt);
+  var n$ParseFloat = global$2.parseFloat;
+  var Symbol$3 = global$2.Symbol;
+  var ITERATOR$1 = Symbol$3 && Symbol$3.iterator;
+  var FORCED$2 = 1 / n$ParseFloat(whitespaces$1 + '-0') !== -Infinity
     // MS Edge 18- broken with boxed symbols
-    || (ITERATOR && !fails$2(function () { n$ParseFloat(Object(ITERATOR)); }));
+    || (ITERATOR$1 && !fails$3(function () { n$ParseFloat(Object(ITERATOR$1)); }));
 
   // `parseFloat` method
   // https://tc39.es/ecma262/#sec-parsefloat-string
-  var numberParseFloat = FORCED$1 ? function parseFloat(string) {
-    var trimmedString = trim(toString$5(string));
+  var numberParseFloat = FORCED$2 ? function parseFloat(string) {
+    var trimmedString = trim$1(toString$6(string));
     var result = n$ParseFloat(trimmedString);
     return result === 0 && charAt(trimmedString, 0) == '-' ? -0 : result;
   } : n$ParseFloat;
 
-  var $$5 = _export;
+  var $$7 = _export;
   var $parseFloat = numberParseFloat;
 
   // `parseFloat` method
   // https://tc39.es/ecma262/#sec-parsefloat-string
-  $$5({ global: true, forced: parseFloat != $parseFloat }, {
+  $$7({ global: true, forced: parseFloat != $parseFloat }, {
     parseFloat: $parseFloat
   });
 
@@ -7609,7 +7609,7 @@ ${rulesString}
     NOCARD: -1
   };
 
-  const _excluded$p = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className"];
+  const _excluded$r = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className"];
 
   const CardInputField = _ref => {
     let {
@@ -7622,7 +7622,7 @@ ${rulesString}
       inputClassName,
       className
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$p);
+        props = _objectWithoutProperties$b(_ref, _excluded$r);
 
     const [selectedCard, setSelectedCard] = React$1.useState(-1);
     const [cardNo, setCardNo] = React$1.useState(""); // const [cardNoIsFocused, setCardNoIsFocused] = useState(false);
@@ -7855,7 +7855,7 @@ ${rulesString}
       className: wrapperClasses
     }, /*#__PURE__*/React__default["default"].createElement(Box, {
       is: "label"
-    }, /*#__PURE__*/React__default["default"].createElement(Text, {
+    }, /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-card-input-field__label",
       scale: "subhead"
     }, label)), /*#__PURE__*/React__default["default"].createElement(Box, {
@@ -7920,7 +7920,7 @@ ${rulesString}
     }, /*#__PURE__*/React__default["default"].createElement(Icon, {
       icon: Error$1,
       className: "ui-card-input-field__error-icon"
-    }), /*#__PURE__*/React__default["default"].createElement(Text, {
+    }), /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-card-input-field__error-text",
       scale: "subhead",
       fontFace: "circularSTD"
@@ -8216,7 +8216,7 @@ ${rulesString}
   var splice$1 = arrayProto$1.splice;
 
   /* Built-in method references that are verified to be native. */
-  var Map$2 = getNative$1(root$1, 'Map'),
+  var Map$3 = getNative$1(root$1, 'Map'),
       nativeCreate$1 = getNative$1(Object, 'create');
 
   /**
@@ -8457,7 +8457,7 @@ ${rulesString}
   function mapCacheClear$1() {
     this.__data__ = {
       'hash': new Hash$1,
-      'map': new (Map$2 || ListCache$1),
+      'map': new (Map$3 || ListCache$1),
       'string': new Hash$1
     };
   }
@@ -8550,7 +8550,7 @@ ${rulesString}
    *  else `false`.
    */
   function baseIsNative$1(value) {
-    if (!isObject$2(value) || isMasked$1(value)) {
+    if (!isObject$3(value) || isMasked$1(value)) {
       return false;
     }
     var pattern = (isFunction$2(value) || isHostObject(value)) ? reIsNative$1 : reIsHostCtor$1;
@@ -8752,7 +8752,7 @@ ${rulesString}
   function isFunction$2(value) {
     // The use of `Object#toString` avoids issues with the `typeof` operator
     // in Safari 8-9 which returns 'object' for typed array and other constructors.
-    var tag = isObject$2(value) ? objectToString$1.call(value) : '';
+    var tag = isObject$3(value) ? objectToString$1.call(value) : '';
     return tag == funcTag$3 || tag == genTag$2;
   }
 
@@ -8781,7 +8781,7 @@ ${rulesString}
    * _.isObject(null);
    * // => false
    */
-  function isObject$2(value) {
+  function isObject$3(value) {
     var type = typeof value;
     return !!value && (type == 'object' || type == 'function');
   }
@@ -9975,7 +9975,7 @@ ${rulesString}
     views: isViews.isRequired
   };
 
-  var _excluded$o = ["children", "className", "direction", "count", "offset", "style", "wrap"];
+  var _excluded$q = ["children", "className", "direction", "count", "offset", "style", "wrap"];
 
   function _extends$d() { _extends$d = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$d.apply(this, arguments); }
 
@@ -10001,7 +10001,7 @@ ${rulesString}
         offset = _ref.offset,
         style = _ref.style,
         wrap = _ref.wrap,
-        otherProps = _objectWithoutProperties$a(_ref, _excluded$o);
+        otherProps = _objectWithoutProperties$a(_ref, _excluded$q);
 
     return /*#__PURE__*/React__default["default"].createElement("div", _extends$d({
       className: className,
@@ -10152,7 +10152,7 @@ ${rulesString}
     return classes;
   }
 
-  var _excluded$n = ["className", "count", "dateTransform", "dateType", "end", "hover", "offset", "start", "step", "tile", "value", "valueType"];
+  var _excluded$p = ["className", "count", "dateTransform", "dateType", "end", "hover", "offset", "start", "step", "tile", "value", "valueType"];
 
   function ownKeys$c(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -10180,7 +10180,7 @@ ${rulesString}
         Tile = _ref.tile,
         value = _ref.value,
         valueType = _ref.valueType,
-        tileProps = _objectWithoutProperties$9(_ref, _excluded$n);
+        tileProps = _objectWithoutProperties$9(_ref, _excluded$p);
 
     var tiles = [];
 
@@ -10357,7 +10357,7 @@ ${rulesString}
     minDateTransform: propTypes$2.exports.func.isRequired
   });
 
-  var _excluded$m = ["classes", "formatYear"];
+  var _excluded$o = ["classes", "formatYear"];
 
   function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -10375,7 +10375,7 @@ ${rulesString}
     var classes = _ref.classes,
         _ref$formatYear = _ref.formatYear,
         formatYear$1 = _ref$formatYear === void 0 ? formatYear : _ref$formatYear,
-        otherProps = _objectWithoutProperties$8(_ref, _excluded$m);
+        otherProps = _objectWithoutProperties$8(_ref, _excluded$o);
 
     var date = otherProps.date,
         locale = otherProps.locale;
@@ -10423,7 +10423,7 @@ ${rulesString}
     }, renderDecades());
   }
 
-  var _excluded$l = ["classes", "formatYear"];
+  var _excluded$n = ["classes", "formatYear"];
 
   function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -10441,7 +10441,7 @@ ${rulesString}
     var classes = _ref.classes,
         _ref$formatYear = _ref.formatYear,
         formatYear$1 = _ref$formatYear === void 0 ? formatYear : _ref$formatYear,
-        otherProps = _objectWithoutProperties$7(_ref, _excluded$l);
+        otherProps = _objectWithoutProperties$7(_ref, _excluded$n);
 
     var date = otherProps.date,
         locale = otherProps.locale;
@@ -10493,7 +10493,7 @@ ${rulesString}
     }, renderYears());
   }
 
-  var _excluded$k = ["classes", "formatMonth", "formatMonthYear"];
+  var _excluded$m = ["classes", "formatMonth", "formatMonthYear"];
 
   function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -10513,7 +10513,7 @@ ${rulesString}
         formatMonth = _ref$formatMonth === void 0 ? formatMonth$1 : _ref$formatMonth,
         _ref$formatMonthYear = _ref.formatMonthYear,
         formatMonthYear$1 = _ref$formatMonthYear === void 0 ? formatMonthYear : _ref$formatMonthYear,
-        otherProps = _objectWithoutProperties$6(_ref, _excluded$k);
+        otherProps = _objectWithoutProperties$6(_ref, _excluded$m);
 
     var date = otherProps.date,
         locale = otherProps.locale;
@@ -10570,7 +10570,7 @@ ${rulesString}
     }, renderMonths());
   }
 
-  var _excluded$j = ["formatDay", "formatLongDate", "calendarType", "classes", "currentMonthIndex"];
+  var _excluded$l = ["formatDay", "formatLongDate", "calendarType", "classes", "currentMonthIndex"];
 
   function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -10592,7 +10592,7 @@ ${rulesString}
         calendarType = _ref.calendarType,
         classes = _ref.classes,
         currentMonthIndex = _ref.currentMonthIndex,
-        otherProps = _objectWithoutProperties$5(_ref, _excluded$j);
+        otherProps = _objectWithoutProperties$5(_ref, _excluded$l);
 
     var date = otherProps.date,
         locale = otherProps.locale;
@@ -10610,7 +10610,7 @@ ${rulesString}
     formatLongDate: propTypes$2.exports.func
   });
 
-  var _excluded$i = ["showFixedNumberOfWeeks", "showNeighboringMonth"];
+  var _excluded$k = ["showFixedNumberOfWeeks", "showNeighboringMonth"];
 
   function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -10629,7 +10629,7 @@ ${rulesString}
 
     var showFixedNumberOfWeeks = props.showFixedNumberOfWeeks,
         showNeighboringMonth = props.showNeighboringMonth,
-        otherProps = _objectWithoutProperties$4(props, _excluded$i);
+        otherProps = _objectWithoutProperties$4(props, _excluded$k);
 
     var year = getYear(activeStartDate);
     var monthIndex = getMonth(activeStartDate);
@@ -10730,7 +10730,7 @@ ${rulesString}
     onMouseLeave: propTypes$2.exports.func
   };
 
-  var _excluded$h = ["date", "onClickWeekNumber", "weekNumber"];
+  var _excluded$j = ["date", "onClickWeekNumber", "weekNumber"];
 
   function _extends$3() { _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3.apply(this, arguments); }
 
@@ -10748,7 +10748,7 @@ ${rulesString}
     var date = _ref.date,
         onClickWeekNumber = _ref.onClickWeekNumber,
         weekNumber = _ref.weekNumber,
-        otherProps = _objectWithoutProperties$3(_ref, _excluded$h);
+        otherProps = _objectWithoutProperties$3(_ref, _excluded$j);
 
     var props = _objectSpread$2({
       className: className
@@ -10829,7 +10829,7 @@ ${rulesString}
     showFixedNumberOfWeeks: propTypes$2.exports.bool
   };
 
-  var _excluded$g = ["calendarType", "formatShortWeekday", "onClickWeekNumber", "showWeekNumbers"];
+  var _excluded$i = ["calendarType", "formatShortWeekday", "onClickWeekNumber", "showWeekNumbers"];
 
   function _extends$2() { _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$2.apply(this, arguments); }
 
@@ -10854,7 +10854,7 @@ ${rulesString}
         formatShortWeekday = props.formatShortWeekday,
         onClickWeekNumber = props.onClickWeekNumber,
         showWeekNumbers = props.showWeekNumbers,
-        childProps = _objectWithoutProperties$2(props, _excluded$g);
+        childProps = _objectWithoutProperties$2(props, _excluded$i);
 
     function renderWeekdays() {
       return /*#__PURE__*/React__default["default"].createElement(Weekdays, {
@@ -10911,7 +10911,7 @@ ${rulesString}
     showWeekNumbers: propTypes$2.exports.bool
   };
 
-  var _excluded$f = ["activeStartDate", "defaultActiveStartDate", "defaultValue", "defaultView", "maxDetail", "minDetail", "value", "view"];
+  var _excluded$h = ["activeStartDate", "defaultActiveStartDate", "defaultValue", "defaultView", "maxDetail", "minDetail", "value", "view"];
 
   function _extends$1() { _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$1.apply(this, arguments); }
 
@@ -11094,7 +11094,7 @@ ${rulesString}
         minDetail = props.minDetail,
         value = props.value,
         view = props.view,
-        otherProps = _objectWithoutProperties$1(props, _excluded$f);
+        otherProps = _objectWithoutProperties$1(props, _excluded$h);
 
     var rangeType = getView(view, minDetail, maxDetail);
     var valueFrom = activeStartDate || defaultActiveStartDate;
@@ -11748,7 +11748,7 @@ ${rulesString}
     }
   }
 
-  var _excluded$e = ["invertAxis", "invertSecondaryAxis"];
+  var _excluded$g = ["invertAxis", "invertSecondaryAxis"];
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -11923,7 +11923,7 @@ ${rulesString}
   function alignBothAxis(args) {
     var invertAxis = args.invertAxis,
         invertSecondaryAxis = args.invertSecondaryAxis,
-        commonArgs = _objectWithoutProperties(args, _excluded$e);
+        commonArgs = _objectWithoutProperties(args, _excluded$g);
 
     alignMainAxis(_objectSpread(_objectSpread({}, commonArgs), {}, {
       invertAxis: invertAxis
@@ -14386,7 +14386,7 @@ ${rulesString}
 
   var DatePickerDependency = /*@__PURE__*/getDefaultExportFromCjs(entry_nostyle);
 
-  const _excluded$d = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "format", "noCalendarIcon"];
+  const _excluded$f = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "format", "noCalendarIcon"];
 
   const DatePickerField = _ref => {
     let {
@@ -14401,7 +14401,7 @@ ${rulesString}
       format,
       noCalendarIcon
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$d);
+        props = _objectWithoutProperties$b(_ref, _excluded$f);
 
     const [value, onChange] = React$1.useState(new Date());
     const generateInputFieldClasses = classNames({
@@ -14416,7 +14416,7 @@ ${rulesString}
       className: wrapperClasses
     }, /*#__PURE__*/React__default["default"].createElement(Box, {
       is: "label"
-    }, /*#__PURE__*/React__default["default"].createElement(Text, {
+    }, /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-text-field__label",
       scale: "subhead"
     }, label)), /*#__PURE__*/React__default["default"].createElement("div", {
@@ -14441,7 +14441,7 @@ ${rulesString}
     }, /*#__PURE__*/React__default["default"].createElement(Icon, {
       icon: Error$1,
       className: "ui-text-field__error-icon"
-    }), /*#__PURE__*/React__default["default"].createElement(Text, {
+    }), /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-text-field__error-text",
       scale: "subhead",
       fontFace: "circularSTD"
@@ -14483,7 +14483,7 @@ ${rulesString}
     return /*#__PURE__*/ReactDOM__default["default"].createPortal(children, container);
   };
 
-  const _excluded$c = ["greyContent", "show", "requestClose", "modalWidth"];
+  const _excluded$e = ["greyContent", "show", "requestClose", "modalWidth"];
 
   const Modal = _ref => {
     let {
@@ -14492,7 +14492,7 @@ ${rulesString}
       requestClose,
       modalWidth
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$c);
+        props = _objectWithoutProperties$b(_ref, _excluded$e);
 
     const generatedClassNames = classNames({
       greyContent,
@@ -14538,7 +14538,7 @@ ${rulesString}
     title: propTypes$2.exports.string
   };
 
-  const ArrowRightComponent = _ref => {
+  const ArrowRightComponent$1 = _ref => {
     let {
       fill,
       stroke,
@@ -14557,7 +14557,7 @@ ${rulesString}
     }));
   };
 
-  ArrowRightComponent.propTypes = {
+  ArrowRightComponent$1.propTypes = {
     fill: propTypes$2.exports.string,
     stroke: propTypes$2.exports.string,
     strokeWidth: propTypes$2.exports.string,
@@ -14565,18 +14565,18 @@ ${rulesString}
     strokeLineJoin: propTypes$2.exports.string,
     smartColor: propTypes$2.exports.string
   };
-  ArrowRightComponent.defaultProps = {
+  ArrowRightComponent$1.defaultProps = {
     strokeWidth: "1.5",
     strokeLineCap: "round",
     strokeLineJoin: "round"
   };
   const ChevronArrowRight = {
-    component: ArrowRightComponent,
+    component: ArrowRightComponent$1,
     viewBox: "0 0 24 24",
     fill: "none"
   };
 
-  const ArrowLeftComponent = _ref => {
+  const ArrowLeftComponent$1 = _ref => {
     let {
       fill,
       stroke,
@@ -14595,7 +14595,7 @@ ${rulesString}
     }));
   };
 
-  ArrowLeftComponent.propTypes = {
+  ArrowLeftComponent$1.propTypes = {
     fill: propTypes$2.exports.string,
     stroke: propTypes$2.exports.string,
     strokeWidth: propTypes$2.exports.string,
@@ -14603,30 +14603,30 @@ ${rulesString}
     strokeLineJoin: propTypes$2.exports.string,
     smartColor: propTypes$2.exports.string
   };
-  ArrowLeftComponent.defaultProps = {
+  ArrowLeftComponent$1.defaultProps = {
     strokeWidth: "1.5",
     strokeLineCap: "round",
     strokeLineJoin: "round"
   };
   const ChevronArrowLeft = {
-    component: ArrowLeftComponent,
+    component: ArrowLeftComponent$1,
     viewBox: "0 0 24 24",
     fill: "none"
   };
 
-  var $$4 = _export;
+  var $$6 = _export;
   var $includes = arrayIncludes.includes;
-  var fails$1 = fails$m;
+  var fails$2 = fails$n;
   var addToUnscopables = addToUnscopables$2;
 
   // FF99+ bug
-  var BROKEN_ON_SPARSE = fails$1(function () {
+  var BROKEN_ON_SPARSE = fails$2(function () {
     return !Array(1).includes();
   });
 
   // `Array.prototype.includes` method
   // https://tc39.es/ecma262/#sec-array.prototype.includes
-  $$4({ target: 'Array', proto: true, forced: BROKEN_ON_SPARSE }, {
+  $$6({ target: 'Array', proto: true, forced: BROKEN_ON_SPARSE }, {
     includes: function includes(el /* , fromIndex = 0 */) {
       return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
     }
@@ -14637,11 +14637,11 @@ ${rulesString}
 
   var isRegExp = isRegexp;
 
-  var $TypeError$1 = TypeError;
+  var $TypeError$2 = TypeError;
 
   var notARegexp = function (it) {
     if (isRegExp(it)) {
-      throw $TypeError$1("The method doesn't accept regular expressions");
+      throw $TypeError$2("The method doesn't accept regular expressions");
     } return it;
   };
 
@@ -14661,22 +14661,22 @@ ${rulesString}
     } return false;
   };
 
-  var $$3 = _export;
-  var uncurryThis$3 = functionUncurryThis;
+  var $$5 = _export;
+  var uncurryThis$5 = functionUncurryThis;
   var notARegExp$2 = notARegexp;
   var requireObjectCoercible$2 = requireObjectCoercible$9;
-  var toString$4 = toString$c;
+  var toString$5 = toString$d;
   var correctIsRegExpLogic$2 = correctIsRegexpLogic;
 
-  var stringIndexOf = uncurryThis$3(''.indexOf);
+  var stringIndexOf = uncurryThis$5(''.indexOf);
 
   // `String.prototype.includes` method
   // https://tc39.es/ecma262/#sec-string.prototype.includes
-  $$3({ target: 'String', proto: true, forced: !correctIsRegExpLogic$2('includes') }, {
+  $$5({ target: 'String', proto: true, forced: !correctIsRegExpLogic$2('includes') }, {
     includes: function includes(searchString /* , position = 0 */) {
       return !!~stringIndexOf(
-        toString$4(requireObjectCoercible$2(this)),
-        toString$4(notARegExp$2(searchString)),
+        toString$5(requireObjectCoercible$2(this)),
+        toString$5(notARegExp$2(searchString)),
         arguments.length > 1 ? arguments[1] : undefined
       );
     }
@@ -14755,7 +14755,7 @@ ${rulesString}
     };
   };
 
-  const _excluded$b = ["currentPage", "totalPages", "currentPageSiblings", "onPageChange", "className"];
+  const _excluded$d = ["currentPage", "totalPages", "currentPageSiblings", "onPageChange", "className"];
 
   const Pagination = _ref => {
     let {
@@ -14765,7 +14765,7 @@ ${rulesString}
       onPageChange,
       className
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$b);
+        props = _objectWithoutProperties$b(_ref, _excluded$d);
 
     const {
       renderedPages,
@@ -14796,7 +14796,7 @@ ${rulesString}
       className: generatedPageNumberClassName(pageNumber),
       key: index,
       onClick: () => updatePage(pageNumber)
-    }, /*#__PURE__*/React__default["default"].createElement(Text, {
+    }, /*#__PURE__*/React__default["default"].createElement(Text$1, {
       scale: "subhead",
       fontFace: "circularSTD"
     }, pageNumber)));
@@ -14810,14 +14810,14 @@ ${rulesString}
     }, /*#__PURE__*/React__default["default"].createElement(Icon, {
       className: "ui-pagination__left-arrow",
       icon: ChevronArrowLeft
-    }), /*#__PURE__*/React__default["default"].createElement(Text, {
+    }), /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-pagination__text-previous ui-pagination__text",
       scale: "subhead",
       fontFace: "circularSTD"
     }, "Previous")), generatedPageNumbers, /*#__PURE__*/React__default["default"].createElement(Box, {
       className: rightControlClasses,
       onClick: () => updatePage(initializedCurrentPage + 1)
-    }, /*#__PURE__*/React__default["default"].createElement(Text, {
+    }, /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-pagination__text-next ui-pagination__text",
       scale: "subhead",
       fontFace: "circularSTD"
@@ -14838,7 +14838,7 @@ ${rulesString}
     currentPageSiblings: 3
   };
 
-  const _excluded$a = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "disabled"];
+  const _excluded$c = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "disabled"];
 
   const PhoneField = _ref => {
     let {
@@ -14852,7 +14852,7 @@ ${rulesString}
       className,
       disabled
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$a);
+        props = _objectWithoutProperties$b(_ref, _excluded$c);
 
     const phoneInputRef = React$1.useRef();
     React$1.useLayoutEffect(() => {
@@ -14907,7 +14907,7 @@ ${rulesString}
       className: wrapperClasses
     }, /*#__PURE__*/React__default["default"].createElement(Box, {
       is: "label"
-    }, /*#__PURE__*/React__default["default"].createElement(Text, {
+    }, /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-text-field__label",
       scale: "subhead"
     }, label)), /*#__PURE__*/React__default["default"].createElement("div", {
@@ -14929,7 +14929,7 @@ ${rulesString}
     }, /*#__PURE__*/React__default["default"].createElement(Icon, {
       icon: Error$1,
       className: "ui-text-field__error-icon"
-    }), /*#__PURE__*/React__default["default"].createElement(Text, {
+    }), /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-text-field__error-text",
       scale: "subhead",
       fontFace: "circularSTD"
@@ -14944,7 +14944,7 @@ ${rulesString}
     size: "medium"
   };
 
-  const _excluded$9 = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "options", "className"];
+  const _excluded$b = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "options", "className"];
 
   const SelectField = _ref => {
     let {
@@ -14958,7 +14958,7 @@ ${rulesString}
       options,
       className
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$9);
+        props = _objectWithoutProperties$b(_ref, _excluded$b);
 
     const generateInputFieldClasses = classNames({
       "ui-text-field__input": true,
@@ -14980,7 +14980,7 @@ ${rulesString}
       className: wrapperClasses
     }, /*#__PURE__*/React__default["default"].createElement(Box, {
       is: "label"
-    }, /*#__PURE__*/React__default["default"].createElement(Text, {
+    }, /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-text-field__label",
       scale: "subhead"
     }, label)), /*#__PURE__*/React__default["default"].createElement("div", {
@@ -14999,7 +14999,7 @@ ${rulesString}
     }, /*#__PURE__*/React__default["default"].createElement(Icon, {
       icon: Error$1,
       className: "ui-text-field__error-icon"
-    }), /*#__PURE__*/React__default["default"].createElement(Text, {
+    }), /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-text-field__error-text",
       scale: "subhead",
       fontFace: "circularSTD"
@@ -15016,7 +15016,7 @@ ${rulesString}
     options: ["Item 1", "Item 2", "item 3"]
   };
 
-  const _excluded$8 = ["label", "colorScheme", "disabled", "className"];
+  const _excluded$a = ["label", "colorScheme", "disabled", "className"];
 
   const Switch = _ref => {
     let {
@@ -15025,7 +15025,7 @@ ${rulesString}
       disabled,
       className
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$8);
+        props = _objectWithoutProperties$b(_ref, _excluded$a);
 
     const switchClassName = classNames({
       "ui-switch__wrapper": true,
@@ -15046,7 +15046,7 @@ ${rulesString}
     }, props)), /*#__PURE__*/React__default["default"].createElement(Box, {
       is: "span",
       className: "ui-slider round"
-    })), /*#__PURE__*/React__default["default"].createElement(Text, {
+    })), /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-switch__label-text"
     }, label));
   };
@@ -15059,7 +15059,7 @@ ${rulesString}
     disabled: false
   };
 
-  const _excluded$7 = ["is", "text", "tabs", "horizontal", "spacing"],
+  const _excluded$9 = ["is", "text", "tabs", "horizontal", "spacing"],
         _excluded2 = ["text", "is"];
 
   const Tab = _ref => {
@@ -15070,7 +15070,7 @@ ${rulesString}
       horizontal,
       spacing
     } = _ref;
-        _objectWithoutProperties$b(_ref, _excluded$7);
+        _objectWithoutProperties$b(_ref, _excluded$9);
 
     const wrapperClassNames = classNames({
       "ui-tabs": true,
@@ -15106,7 +15106,7 @@ ${rulesString}
       }, spacing, tab, {
         key: keyGen(),
         className: "ui-tab"
-      }), /*#__PURE__*/React__default["default"].createElement(Text, {
+      }), /*#__PURE__*/React__default["default"].createElement(Text$1, {
         is: "span",
         scale: "subhead"
       }, text));
@@ -15124,10 +15124,10 @@ ${rulesString}
 
   var tryToString = tryToString$3;
 
-  var $TypeError = TypeError;
+  var $TypeError$1 = TypeError;
 
   var deletePropertyOrThrow$1 = function (O, P) {
-    if (!delete O[P]) throw $TypeError('Cannot delete property ' + tryToString(P) + ' of ' + tryToString(O));
+    if (!delete O[P]) throw $TypeError$1('Cannot delete property ' + tryToString(P) + ' of ' + tryToString(O));
   };
 
   var arraySlice = arraySliceSimple;
@@ -15191,14 +15191,14 @@ ${rulesString}
 
   var engineWebkitVersion = !!webkit && +webkit[1];
 
-  var $$2 = _export;
-  var uncurryThis$2 = functionUncurryThis;
+  var $$4 = _export;
+  var uncurryThis$4 = functionUncurryThis;
   var aCallable = aCallable$3;
   var toObject = toObject$5;
   var lengthOfArrayLike = lengthOfArrayLike$4;
   var deletePropertyOrThrow = deletePropertyOrThrow$1;
-  var toString$3 = toString$c;
-  var fails = fails$m;
+  var toString$4 = toString$d;
+  var fails$1 = fails$n;
   var internalSort = arraySort;
   var arrayMethodIsStrict = arrayMethodIsStrict$2;
   var FF = engineFfVersion;
@@ -15207,21 +15207,21 @@ ${rulesString}
   var WEBKIT = engineWebkitVersion;
 
   var test = [];
-  var un$Sort = uncurryThis$2(test.sort);
-  var push = uncurryThis$2(test.push);
+  var un$Sort = uncurryThis$4(test.sort);
+  var push = uncurryThis$4(test.push);
 
   // IE8-
-  var FAILS_ON_UNDEFINED = fails(function () {
+  var FAILS_ON_UNDEFINED = fails$1(function () {
     test.sort(undefined);
   });
   // V8 bug
-  var FAILS_ON_NULL = fails(function () {
+  var FAILS_ON_NULL = fails$1(function () {
     test.sort(null);
   });
   // Old WebKit
   var STRICT_METHOD = arrayMethodIsStrict('sort');
 
-  var STABLE_SORT = !fails(function () {
+  var STABLE_SORT = !fails$1(function () {
     // feature detection can be too slow, so check engines versions
     if (V8) return V8 < 70;
     if (FF && FF > 3) return;
@@ -15256,20 +15256,20 @@ ${rulesString}
     return result !== 'DGBEFHACIJK';
   });
 
-  var FORCED = FAILS_ON_UNDEFINED || !FAILS_ON_NULL || !STRICT_METHOD || !STABLE_SORT;
+  var FORCED$1 = FAILS_ON_UNDEFINED || !FAILS_ON_NULL || !STRICT_METHOD || !STABLE_SORT;
 
   var getSortCompare = function (comparefn) {
     return function (x, y) {
       if (y === undefined) return -1;
       if (x === undefined) return 1;
       if (comparefn !== undefined) return +comparefn(x, y) || 0;
-      return toString$3(x) > toString$3(y) ? 1 : -1;
+      return toString$4(x) > toString$4(y) ? 1 : -1;
     };
   };
 
   // `Array.prototype.sort` method
   // https://tc39.es/ecma262/#sec-array.prototype.sort
-  $$2({ target: 'Array', proto: true, forced: FORCED }, {
+  $$4({ target: 'Array', proto: true, forced: FORCED$1 }, {
     sort: function sort(comparefn) {
       if (comparefn !== undefined) aCallable(comparefn);
 
@@ -15297,18 +15297,18 @@ ${rulesString}
     }
   });
 
-  var $$1 = _export;
-  var uncurryThis$1 = functionUncurryThis;
+  var $$3 = _export;
+  var uncurryThis$3 = functionUncurryThis;
   var getOwnPropertyDescriptor$1 = objectGetOwnPropertyDescriptor.f;
   var toLength$1 = toLength$5;
-  var toString$2 = toString$c;
+  var toString$3 = toString$d;
   var notARegExp$1 = notARegexp;
   var requireObjectCoercible$1 = requireObjectCoercible$9;
   var correctIsRegExpLogic$1 = correctIsRegexpLogic;
 
   // eslint-disable-next-line es-x/no-string-prototype-startswith -- safe
-  var un$StartsWith = uncurryThis$1(''.startsWith);
-  var stringSlice = uncurryThis$1(''.slice);
+  var un$StartsWith = uncurryThis$3(''.startsWith);
+  var stringSlice = uncurryThis$3(''.slice);
   var min$1 = Math.min;
 
   var CORRECT_IS_REGEXP_LOGIC$1 = correctIsRegExpLogic$1('startsWith');
@@ -15320,30 +15320,30 @@ ${rulesString}
 
   // `String.prototype.startsWith` method
   // https://tc39.es/ecma262/#sec-string.prototype.startswith
-  $$1({ target: 'String', proto: true, forced: !MDN_POLYFILL_BUG$1 && !CORRECT_IS_REGEXP_LOGIC$1 }, {
+  $$3({ target: 'String', proto: true, forced: !MDN_POLYFILL_BUG$1 && !CORRECT_IS_REGEXP_LOGIC$1 }, {
     startsWith: function startsWith(searchString /* , position = 0 */) {
-      var that = toString$2(requireObjectCoercible$1(this));
+      var that = toString$3(requireObjectCoercible$1(this));
       notARegExp$1(searchString);
       var index = toLength$1(min$1(arguments.length > 1 ? arguments[1] : undefined, that.length));
-      var search = toString$2(searchString);
+      var search = toString$3(searchString);
       return un$StartsWith
         ? un$StartsWith(that, search, index)
         : stringSlice(that, index, index + search.length) === search;
     }
   });
 
-  var $ = _export;
-  var uncurryThis = functionUncurryThis;
+  var $$2 = _export;
+  var uncurryThis$2 = functionUncurryThis;
   var getOwnPropertyDescriptor = objectGetOwnPropertyDescriptor.f;
   var toLength = toLength$5;
-  var toString$1 = toString$c;
+  var toString$2 = toString$d;
   var notARegExp = notARegexp;
   var requireObjectCoercible = requireObjectCoercible$9;
   var correctIsRegExpLogic = correctIsRegexpLogic;
 
   // eslint-disable-next-line es-x/no-string-prototype-endswith -- safe
-  var un$EndsWith = uncurryThis(''.endsWith);
-  var slice = uncurryThis(''.slice);
+  var un$EndsWith = uncurryThis$2(''.endsWith);
+  var slice = uncurryThis$2(''.slice);
   var min = Math.min;
 
   var CORRECT_IS_REGEXP_LOGIC = correctIsRegExpLogic('endsWith');
@@ -15355,14 +15355,14 @@ ${rulesString}
 
   // `String.prototype.endsWith` method
   // https://tc39.es/ecma262/#sec-string.prototype.endswith
-  $({ target: 'String', proto: true, forced: !MDN_POLYFILL_BUG && !CORRECT_IS_REGEXP_LOGIC }, {
+  $$2({ target: 'String', proto: true, forced: !MDN_POLYFILL_BUG && !CORRECT_IS_REGEXP_LOGIC }, {
     endsWith: function endsWith(searchString /* , endPosition = @length */) {
-      var that = toString$1(requireObjectCoercible(this));
+      var that = toString$2(requireObjectCoercible(this));
       notARegExp(searchString);
       var endPosition = arguments.length > 1 ? arguments[1] : undefined;
       var len = that.length;
       var end = endPosition === undefined ? len : min(toLength(endPosition), len);
-      var search = toString$1(searchString);
+      var search = toString$2(searchString);
       return un$EndsWith
         ? un$EndsWith(that, search, end)
         : slice(that, end - search.length, end) === search;
@@ -15428,7 +15428,7 @@ ${rulesString}
     return (new DOMParser().parseFromString("<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9.65718 7.11118L14.8872 12.2335C15.0376 12.3807 15.0376 12.6194 14.8872 12.7667L9.65718 17.8888C9.41466 18.1263 9 17.9582 9 17.6223V7.37779C9 7.04189 9.41467 6.87367 9.65718 7.11118Z\" fill=\"#8895A7\"/>\n</svg>\n", 'image/svg+xml')).firstChild;
   }
 
-  const _excluded$6 = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik"];
+  const _excluded$8 = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik"];
 
   const TextField = _ref => {
     let {
@@ -15443,7 +15443,7 @@ ${rulesString}
       isHookForm,
       isFormik
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$6);
+        props = _objectWithoutProperties$b(_ref, _excluded$8);
 
     const generateInputFieldClasses = classNames({
       "ui-text-field__input": true,
@@ -15456,7 +15456,7 @@ ${rulesString}
       className: wrapperClasses
     }, /*#__PURE__*/React__default["default"].createElement(Box, {
       is: "label"
-    }, /*#__PURE__*/React__default["default"].createElement(Text, {
+    }, /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-text-field__label",
       scale: "subhead"
     }, label)), /*#__PURE__*/React__default["default"].createElement(Box, {
@@ -15475,7 +15475,7 @@ ${rulesString}
     }, /*#__PURE__*/React__default["default"].createElement(Icon, {
       icon: Error$1,
       className: "ui-text-field__error-icon"
-    }), /*#__PURE__*/React__default["default"].createElement(Text, {
+    }), /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-text-field__error-text",
       scale: "subhead",
       fontFace: "circularSTD"
@@ -15703,9 +15703,9 @@ ${rulesString}
     }, "Cancel"))));
   };
 
-  const _excluded$5 = ["data", "headings", "columns", "className", "checkbox", "pagination", "itemsPerPage", "siblingCount"];
+  const _excluded$7 = ["data", "headings", "columns", "className", "checkbox", "pagination", "itemsPerPage", "siblingCount"];
 
-  const Table = _ref => {
+  const Table$1 = _ref => {
     let {
       data,
       headings,
@@ -15716,7 +15716,7 @@ ${rulesString}
       itemsPerPage,
       siblingCount
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$5);
+        props = _objectWithoutProperties$b(_ref, _excluded$7);
 
     const switchClassName = classNames({
       "ui-table__wrapper": true // "ui-table__header": true,
@@ -15860,17 +15860,17 @@ ${rulesString}
       siblingCount: siblingCount
     })));
   };
-  Table.propTypes = {
+  Table$1.propTypes = {
     headings: propTypes$2.exports.array.isRequired,
     data: propTypes$2.exports.array.isRequired,
     checkbox: propTypes$2.exports.bool,
     pagination: propTypes$2.exports.bool
   };
-  Table.defaultProps = {
+  Table$1.defaultProps = {
     checkbox: false
   };
 
-  const _excluded$4 = ["label", "className", "size", "tagDelimiterKey", "values", "onTagAdded", "onTagDeleted", "inputProps", "tagProps", "tagClassname", "onTextChanged", "onTagChanged"];
+  const _excluded$6 = ["label", "className", "size", "tagDelimiterKey", "values", "onTagAdded", "onTagDeleted", "inputProps", "tagProps", "tagClassname", "onTextChanged", "onTagChanged"];
 
   const TagInput = _ref => {
     let {
@@ -15887,7 +15887,7 @@ ${rulesString}
       onTextChanged,
       onTagChanged
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$4);
+        props = _objectWithoutProperties$b(_ref, _excluded$6);
 
     const [input, setInput] = React$1.useState("");
     const [inputTags, setInputTags] = React$1.useState(values || []);
@@ -15965,7 +15965,7 @@ ${rulesString}
       className: wrapperClasses
     }, /*#__PURE__*/React__default["default"].createElement(Box, {
       is: "label"
-    }, /*#__PURE__*/React__default["default"].createElement(Text, {
+    }, /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-tag-input__label",
       scale: "subhead"
     }, label)), /*#__PURE__*/React__default["default"].createElement("div", {
@@ -15974,7 +15974,7 @@ ${rulesString}
       is: "div",
       className: "ui-tag-input__input-tag ".concat(tagClassname),
       key: "ui-tag-input".concat(keyGen())
-    }, tagProps), /*#__PURE__*/React__default["default"].createElement(Text, {
+    }, tagProps), /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-tag-input__input-tag-text",
       scale: "subhead",
       fontFace: "circularSTD"
@@ -16035,7 +16035,7 @@ ${rulesString}
     }
   };
 
-  const _excluded$3 = ["label", "errorMessage", "textAreaClassName", "className", "isHookForm"];
+  const _excluded$5 = ["label", "errorMessage", "textAreaClassName", "className", "isHookForm"];
 
   const TextArea = _ref => {
     let {
@@ -16045,7 +16045,7 @@ ${rulesString}
       className,
       isHookForm
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$3);
+        props = _objectWithoutProperties$b(_ref, _excluded$5);
 
     const generateTextAreaClasses = classNames({
       "ui-text-area__textarea": true,
@@ -16062,7 +16062,7 @@ ${rulesString}
       return /*#__PURE__*/React__default["default"].createElement(Box, null, /*#__PURE__*/React__default["default"].createElement(Box, {
         is: "label",
         className: wrapperClasses
-      }, /*#__PURE__*/React__default["default"].createElement(Text, {
+      }, /*#__PURE__*/React__default["default"].createElement(Text$1, {
         scale: "subhead",
         className: "ui-text-area__label"
       }, label)), /*#__PURE__*/React__default["default"].createElement(Box, _extends$e({
@@ -16078,7 +16078,7 @@ ${rulesString}
       }, /*#__PURE__*/React__default["default"].createElement(Icon, {
         icon: Error$1,
         className: "ui-text-area__error-icon"
-      }), /*#__PURE__*/React__default["default"].createElement(Text, {
+      }), /*#__PURE__*/React__default["default"].createElement(Text$1, {
         className: "ui-text-area__error-text",
         scale: "footnote",
         fontFace: "circularSTD"
@@ -16086,7 +16086,7 @@ ${rulesString}
     }) : /*#__PURE__*/React__default["default"].createElement(Box, null, /*#__PURE__*/React__default["default"].createElement(Box, {
       is: "label",
       className: wrapperClasses
-    }, /*#__PURE__*/React__default["default"].createElement(Text, {
+    }, /*#__PURE__*/React__default["default"].createElement(Text$1, {
       scale: "subhead",
       className: "ui-text-area__label"
     }, label)), /*#__PURE__*/React__default["default"].createElement(Box, _extends$e({
@@ -16097,7 +16097,7 @@ ${rulesString}
     }, /*#__PURE__*/React__default["default"].createElement(Icon, {
       icon: Error$1,
       className: "ui-text-area__error-icon"
-    }), /*#__PURE__*/React__default["default"].createElement(Text, {
+    }), /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-text-area__error-text",
       scale: "footnote",
       fontFace: "circularSTD"
@@ -16225,7 +16225,7 @@ ${rulesString}
   var root = freeGlobal || freeSelf || Function('return this')();
 
   /** Built-in value references. */
-  var Symbol$1 = root.Symbol;
+  var Symbol$2 = root.Symbol;
 
   /** Used for built-in method references. */
   var objectProto$c = Object.prototype;
@@ -16241,7 +16241,7 @@ ${rulesString}
   var nativeObjectToString$1 = objectProto$c.toString;
 
   /** Built-in value references. */
-  var symToStringTag$1 = Symbol$1 ? Symbol$1.toStringTag : undefined;
+  var symToStringTag$1 = Symbol$2 ? Symbol$2.toStringTag : undefined;
 
   /**
    * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
@@ -16296,7 +16296,7 @@ ${rulesString}
       undefinedTag = '[object Undefined]';
 
   /** Built-in value references. */
-  var symToStringTag = Symbol$1 ? Symbol$1.toStringTag : undefined;
+  var symToStringTag = Symbol$2 ? Symbol$2.toStringTag : undefined;
 
   /**
    * The base implementation of `getTag` without fallbacks for buggy environments.
@@ -16623,7 +16623,7 @@ ${rulesString}
    * _.isObject(null);
    * // => false
    */
-  function isObject$1(value) {
+  function isObject$2(value) {
     var type = typeof value;
     return value != null && (type == 'object' || type == 'function');
   }
@@ -16652,7 +16652,7 @@ ${rulesString}
    * // => false
    */
   function isFunction$1(value) {
-    if (!isObject$1(value)) {
+    if (!isObject$2(value)) {
       return false;
     }
     // The use of `Object#toString` avoids issues with the `typeof` operator
@@ -16740,7 +16740,7 @@ ${rulesString}
    *  else `false`.
    */
   function baseIsNative(value) {
-    if (!isObject$1(value) || isMasked(value)) {
+    if (!isObject$2(value) || isMasked(value)) {
       return false;
     }
     var pattern = isFunction$1(value) ? reIsNative : reIsHostCtor;
@@ -16773,7 +16773,7 @@ ${rulesString}
   }
 
   /* Built-in method references that are verified to be native. */
-  var Map$1 = getNative(root, 'Map');
+  var Map$2 = getNative(root, 'Map');
 
   /* Built-in method references that are verified to be native. */
   var nativeCreate = getNative(Object, 'create');
@@ -16909,7 +16909,7 @@ ${rulesString}
     this.size = 0;
     this.__data__ = {
       'hash': new Hash,
-      'map': new (Map$1 || ListCache),
+      'map': new (Map$2 || ListCache),
       'string': new Hash
     };
   }
@@ -17045,7 +17045,7 @@ ${rulesString}
     var data = this.__data__;
     if (data instanceof ListCache) {
       var pairs = data.__data__;
-      if (!Map$1 || (pairs.length < LARGE_ARRAY_SIZE - 1)) {
+      if (!Map$2 || (pairs.length < LARGE_ARRAY_SIZE - 1)) {
         pairs.push([key, value]);
         this.size = ++data.size;
         return this;
@@ -17064,17 +17064,17 @@ ${rulesString}
    * @constructor
    * @param {Array} [entries] The key-value pairs to cache.
    */
-  function Stack(entries) {
+  function Stack$1(entries) {
     var data = this.__data__ = new ListCache(entries);
     this.size = data.size;
   }
 
   // Add methods to `Stack`.
-  Stack.prototype.clear = stackClear;
-  Stack.prototype['delete'] = stackDelete;
-  Stack.prototype.get = stackGet;
-  Stack.prototype.has = stackHas;
-  Stack.prototype.set = stackSet;
+  Stack$1.prototype.clear = stackClear;
+  Stack$1.prototype['delete'] = stackDelete;
+  Stack$1.prototype.get = stackGet;
+  Stack$1.prototype.has = stackHas;
+  Stack$1.prototype.set = stackSet;
 
   /**
    * A specialized version of `_.forEach` for arrays without support for
@@ -17697,7 +17697,7 @@ ${rulesString}
    * @returns {Array} Returns the array of property names.
    */
   function baseKeysIn(object) {
-    if (!isObject$1(object)) {
+    if (!isObject$2(object)) {
       return nativeKeysIn(object);
     }
     var isProto = isPrototype(object),
@@ -17998,7 +17998,7 @@ ${rulesString}
 
   /** Used to detect maps, sets, and weakmaps. */
   var dataViewCtorString = toSource(DataView),
-      mapCtorString = toSource(Map$1),
+      mapCtorString = toSource(Map$2),
       promiseCtorString = toSource(Promise$1),
       setCtorString = toSource(Set),
       weakMapCtorString = toSource(WeakMap$1);
@@ -18014,7 +18014,7 @@ ${rulesString}
 
   // Fallback for data views, maps, sets, and weak maps in IE 11 and promises in Node.js < 6.
   if ((DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag$2) ||
-      (Map$1 && getTag(new Map$1) != mapTag$3) ||
+      (Map$2 && getTag(new Map$2) != mapTag$3) ||
       (Promise$1 && getTag(Promise$1.resolve()) != promiseTag) ||
       (Set && getTag(new Set) != setTag$3) ||
       (WeakMap$1 && getTag(new WeakMap$1) != weakMapTag$1)) {
@@ -18109,7 +18109,7 @@ ${rulesString}
   }
 
   /** Used to convert symbols to primitives and strings. */
-  var symbolProto$1 = Symbol$1 ? Symbol$1.prototype : undefined,
+  var symbolProto$1 = Symbol$2 ? Symbol$2.prototype : undefined,
       symbolValueOf = symbolProto$1 ? symbolProto$1.valueOf : undefined;
 
   /**
@@ -18220,7 +18220,7 @@ ${rulesString}
   var baseCreate = (function() {
     function object() {}
     return function(proto) {
-      if (!isObject$1(proto)) {
+      if (!isObject$2(proto)) {
         return {};
       }
       if (objectCreate) {
@@ -18396,7 +18396,7 @@ ${rulesString}
     if (result !== undefined) {
       return result;
     }
-    if (!isObject$1(value)) {
+    if (!isObject$2(value)) {
       return value;
     }
     var isArr = isArray(value);
@@ -18427,7 +18427,7 @@ ${rulesString}
       }
     }
     // Check for circular references and return its corresponding clone.
-    stack || (stack = new Stack);
+    stack || (stack = new Stack$1);
     var stacked = stack.get(value);
     if (stacked) {
       return stacked;
@@ -18677,7 +18677,7 @@ ${rulesString}
   var INFINITY = 1 / 0;
 
   /** Used to convert symbols to primitives and strings. */
-  var symbolProto = Symbol$1 ? Symbol$1.prototype : undefined,
+  var symbolProto = Symbol$2 ? Symbol$2.prototype : undefined,
       symbolToString = symbolProto ? symbolProto.toString : undefined;
 
   /**
@@ -18725,7 +18725,7 @@ ${rulesString}
    * _.toString([1, 2, 3]);
    * // => '1,2,3'
    */
-  function toString(value) {
+  function toString$1(value) {
     return value == null ? '' : baseToString(value);
   }
 
@@ -18750,7 +18750,7 @@ ${rulesString}
     if (isArray(value)) {
       return arrayMap(value, toKey);
     }
-    return isSymbol(value) ? [value] : copyArray(stringToPath(toString(value)));
+    return isSymbol(value) ? [value] : copyArray(stringToPath(toString$1(value)));
   }
 
   var reactIs$1 = {exports: {}};
@@ -19083,7 +19083,7 @@ ${rulesString}
   };
   /** @private is the given object an Object? */
 
-  var isObject = function isObject(obj) {
+  var isObject$1 = function isObject(obj) {
     return obj !== null && typeof obj === 'object';
   };
   /** @private is the given object an integer? */
@@ -19149,7 +19149,7 @@ ${rulesString}
       var currentPath = pathArray[i];
       var currentObj = getIn(obj, pathArray.slice(0, i + 1));
 
-      if (currentObj && (isObject(currentObj) || Array.isArray(currentObj))) {
+      if (currentObj && (isObject$1(currentObj) || Array.isArray(currentObj))) {
         resVal = resVal[currentPath] = clone(currentObj);
       } else {
         var nextPath = pathArray[i + 1];
@@ -19194,7 +19194,7 @@ ${rulesString}
         getFieldHelpers = formik.getFieldHelpers,
         registerField = formik.registerField,
         unregisterField = formik.unregisterField;
-    var isAnObject = isObject(propsOrFieldName); // Normalize propsOrFieldName to FieldHookConfig<Val>
+    var isAnObject = isObject$1(propsOrFieldName); // Normalize propsOrFieldName to FieldHookConfig<Val>
 
     var props = isAnObject ? propsOrFieldName : {
       name: propsOrFieldName
@@ -19536,7 +19536,7 @@ ${rulesString}
     validateOnChange: true
   };
 
-  const _excluded$2 = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className"];
+  const _excluded$4 = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className"];
 
   const FormikTextField = _ref => {
     let {
@@ -19549,7 +19549,7 @@ ${rulesString}
       inputClassName,
       className
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$2);
+        props = _objectWithoutProperties$b(_ref, _excluded$4);
 
     const [field, meta, helpers] = useField(props);
     const generateInputFieldClasses = classNames({
@@ -19563,7 +19563,7 @@ ${rulesString}
       className: wrapperClasses
     }, /*#__PURE__*/React__default["default"].createElement(Box, {
       is: "label"
-    }, /*#__PURE__*/React__default["default"].createElement(Text, {
+    }, /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-text-field__label",
       scale: "subhead"
     }, label)), /*#__PURE__*/React__default["default"].createElement(Box, {
@@ -19582,7 +19582,7 @@ ${rulesString}
     }, /*#__PURE__*/React__default["default"].createElement(Icon, {
       icon: Error$1,
       className: "ui-text-field__error-icon"
-    }), /*#__PURE__*/React__default["default"].createElement(Text, {
+    }), /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-text-field__error-text",
       scale: "subhead",
       fontFace: "circularSTD"
@@ -19591,7 +19591,7 @@ ${rulesString}
   FormikTextField.propTypes = _objectSpread2({}, propTypes);
   FormikTextField.defaultProps = _objectSpread2({}, defaultProps);
 
-  const _excluded$1 = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onChange", "onBlur", "name"];
+  const _excluded$3 = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onChange", "onBlur", "name"];
   const HookFormTextField = /*#__PURE__*/React__default["default"].forwardRef((_ref, ref) => {
     let {
       label,
@@ -19608,7 +19608,7 @@ ${rulesString}
       onBlur,
       name
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded$1);
+        props = _objectWithoutProperties$b(_ref, _excluded$3);
 
     const generateInputFieldClasses = classNames({
       "ui-text-field__input": true,
@@ -19621,7 +19621,7 @@ ${rulesString}
       className: wrapperClasses
     }, /*#__PURE__*/React__default["default"].createElement(Box, {
       is: "label"
-    }, /*#__PURE__*/React__default["default"].createElement(Text, {
+    }, /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-text-field__label",
       scale: "subhead"
     }, label)), /*#__PURE__*/React__default["default"].createElement(Box, {
@@ -19645,7 +19645,7 @@ ${rulesString}
     }, /*#__PURE__*/React__default["default"].createElement(Icon, {
       icon: Error$1,
       className: "ui-text-field__error-icon"
-    }), /*#__PURE__*/React__default["default"].createElement(Text, {
+    }), /*#__PURE__*/React__default["default"].createElement(Text$1, {
       className: "ui-text-field__error-text",
       scale: "subhead",
       fontFace: "circularSTD"
@@ -19687,13 +19687,13 @@ ${rulesString}
     return [toasts, setToasts, setCountUp];
   }
 
-  const _excluded = ["position"];
+  const _excluded$2 = ["position"];
 
   const Toast = _ref => {
     let {
       position
     } = _ref,
-        props = _objectWithoutProperties$b(_ref, _excluded);
+        props = _objectWithoutProperties$b(_ref, _excluded$2);
 
     const [toasts, setToasts, setCountUp] = useToast(props);
 
@@ -19735,33 +19735,9232 @@ ${rulesString}
     position: "top-right"
   };
 
+  var global$1 = global$i;
+  var fails = fails$n;
+  var uncurryThis$1 = functionUncurryThis;
+  var toString = toString$d;
+  var trim = stringTrim.trim;
+  var whitespaces = whitespaces$4;
+
+  var $parseInt$1 = global$1.parseInt;
+  var Symbol$1 = global$1.Symbol;
+  var ITERATOR = Symbol$1 && Symbol$1.iterator;
+  var hex = /^[+-]?0x/i;
+  var exec = uncurryThis$1(hex.exec);
+  var FORCED = $parseInt$1(whitespaces + '08') !== 8 || $parseInt$1(whitespaces + '0x16') !== 22
+    // MS Edge 18- broken with boxed symbols
+    || (ITERATOR && !fails(function () { $parseInt$1(Object(ITERATOR)); }));
+
+  // `parseInt` method
+  // https://tc39.es/ecma262/#sec-parseint-string-radix
+  var numberParseInt = FORCED ? function parseInt(string, radix) {
+    var S = trim(toString(string));
+    return $parseInt$1(S, (radix >>> 0) || (exec(hex, S) ? 16 : 10));
+  } : $parseInt$1;
+
+  var $$1 = _export;
+  var $parseInt = numberParseInt;
+
+  // `parseInt` method
+  // https://tc39.es/ecma262/#sec-parseint-string-radix
+  $$1({ global: true, forced: parseInt != $parseInt }, {
+    parseInt: $parseInt
+  });
+
+  // TODO: Remove from `core-js@4` since it's moved to entry points
+
+  var $ = _export;
+  var call = functionCall;
+  var uncurryThis = functionUncurryThis;
+  var isCallable = isCallable$k;
+  var isObject = isObject$b;
+
+  var DELEGATES_TO_EXEC = function () {
+    var execCalled = false;
+    var re = /[ac]/;
+    re.exec = function () {
+      execCalled = true;
+      return /./.exec.apply(this, arguments);
+    };
+    return re.test('abc') === true && execCalled;
+  }();
+
+  var $TypeError = TypeError;
+  var un$Test = uncurryThis(/./.test);
+
+  // `RegExp.prototype.test` method
+  // https://tc39.es/ecma262/#sec-regexp.prototype.test
+  $({ target: 'RegExp', proto: true, forced: !DELEGATES_TO_EXEC }, {
+    test: function (str) {
+      var exec = this.exec;
+      if (!isCallable(exec)) return un$Test(this, str);
+      var result = call(exec, this, str);
+      if (result !== null && !isObject(result)) {
+        throw new $TypeError('RegExp exec method returned something other than an Object or null');
+      }
+      return !!result;
+    }
+  });
+
+  function getTextColor(hex) {
+    let opposites = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    const hexCode = hex.charAt(0) === "#" ? hex.substr(1, 6) : hex;
+    const hexR = parseInt(hexCode.substr(0, 2), 16);
+    const hexG = parseInt(hexCode.substr(2, 2), 16);
+    const hexB = parseInt(hexCode.substr(4, 2), 16); // Gets the average value of the colors
+
+    const contrastRatio = (hexR + hexG + hexB) / (255 * 3);
+    return contrastRatio >= 0.5 ? opposites ? "white" : "black" : opposites ? "white" : "black";
+  }
+
+  const AddComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12 5.75V18.25",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18.25 12H5.75",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Add = {
+    component: AddComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  AddComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  AddComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const AddBookmarkComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16.958 3.00195V9.53895",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16.958 12.854V20.854L10.479 17.318L4 20.854V4.98401C4 4.45782 4.20898 3.95313 4.58105 3.58105C4.95313 3.20898 5.45794 3 5.98413 3H13.5391",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M13.668 6.26978H20.112",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const AddBookmark = {
+    component: AddBookmarkComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  AddBookmarkComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  AddBookmarkComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const AddCircleComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M7.78429 12H16.2162",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12 16.216V7.78406",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const AddCircle = {
+    component: AddCircleComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  AddCircleComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  AddCircleComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const AddFileComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      fillRule,
+      clipRule,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      fillRule: fillRule,
+      clipRule: clipRule,
+      fill: smartColor || fill,
+      d: "M4.85707 3.85483C5.08826 3.62889 5.40567 3.4989 5.74011 3.4989H11.1442V7.00002C11.1442 7.59144 11.3847 8.15482 11.8071 8.56757C12.2287 8.97962 12.7972 9.20858 13.3866 9.20858H17.0597V9.58078C17.0597 9.99499 17.3955 10.3308 17.8097 10.3308C18.224 10.3308 18.5597 9.99499 18.5597 9.58078V8.49478C18.5603 8.48278 18.5606 8.47071 18.5606 8.45858C18.5606 8.44644 18.5603 8.43437 18.5597 8.42238V7.71852C18.5597 7.51146 18.4741 7.31361 18.3232 7.17185L13.0324 2.20224C12.8934 2.07161 12.7097 1.9989 12.5189 1.9989H5.74011C5.01905 1.9989 4.32383 2.2786 3.80867 2.78206C3.29291 3.28609 3.00009 3.97353 3.00009 4.69372V18.3065C3.00009 19.0268 3.29299 19.714 3.80867 20.2179C4.32383 20.7214 5.01905 21.0011 5.74011 21.0011H15.8207C16.2349 21.0011 16.5707 20.6653 16.5707 20.2511C16.5707 19.8369 16.2349 19.5011 15.8207 19.5011H5.74011C5.40567 19.5011 5.08826 19.3711 4.85707 19.1451C4.6264 18.9197 4.50009 18.6177 4.50009 18.3065V4.69372C4.50009 4.38239 4.62647 4.08019 4.85707 3.85483ZM16.7037 7.70858L12.6442 3.8955V7.00002C12.6442 7.18225 12.718 7.36049 12.8555 7.49479C12.9936 7.6298 13.1845 7.70858 13.3866 7.70858H16.7037Z"
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M17.8368 12.1666V18.5741",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14.5371 15.3708H20.9994",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const AddFile = {
+    component: AddFileComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  AddFileComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string,
+    fillRule: propTypes$2.exports.string,
+    clipRule: propTypes$2.exports.string
+  };
+  AddFileComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round",
+    fillRule: "evenodd",
+    clipRule: "evenodd"
+  };
+
+  const AddItemComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M17.3604 12.016V18.2315C17.3604 18.7006 17.1729 19.1504 16.8395 19.4821C16.506 19.8138 16.0539 20.0003 15.5824 20.0003H5.77742C5.3059 20.0003 4.85376 19.8138 4.52035 19.4821C4.18694 19.1504 3.99945 18.7006 3.99945 18.2315V8.47685C3.99945 8.00775 4.18694 7.55771 4.52035 7.22601C4.85376 6.89431 5.3059 6.70801 5.77742 6.70801H11.9543",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M17.3597 3.99976V9.32732",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14.7207 6.66357H19.9996",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const AddItem = {
+    component: AddItemComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  AddItemComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  AddItemComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const AlarmComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.6733 7.26514V11.5181L15.0303 13.125",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.64941 4.6058C9.60288 4.18687 10.6329 3.97055 11.6743 3.97055C12.7158 3.97055 13.7458 4.18687 14.6992 4.6058",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14.6994 4.6058C16.5114 5.40155 17.9394 6.87552 18.6774 8.71176",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.67139 8.71274C5.40928 6.87643 6.83739 5.40244 8.64941 4.60678",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.67243 8.71307C4.21231 9.85839 4.04014 11.099 4.17097 12.3264C4.30179 13.5537 4.73147 14.73 5.42268 15.7526C6.11389 16.7752 7.04547 17.6127 8.13557 18.1916C9.22566 18.7705 10.4411 19.0734 11.6754 19.0734C12.9096 19.0734 14.1251 18.7705 15.2152 18.1916C16.3053 17.6127 17.2368 16.7752 17.928 15.7526C18.6193 14.73 19.0489 13.5537 19.1798 12.3264C19.3106 11.099 19.1384 9.85839 18.6783 8.71307",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14.6994 4.60596L15.7243 3.58105C15.9085 3.39679 16.1274 3.2506 16.3681 3.15088C16.6088 3.05116 16.8668 3 17.1274 3C17.3879 3 17.6459 3.05116 17.8867 3.15088C18.1274 3.2506 18.346 3.39679 18.5302 3.58105L19.7663 4.81787C19.9506 5.00211 20.0967 5.2207 20.1965 5.46143C20.2962 5.70215 20.3476 5.96062 20.3476 6.22119C20.3476 6.48176 20.2962 6.73974 20.1965 6.98047C20.0967 7.2212 19.9506 7.43979 19.7663 7.62402L18.6774 8.71289",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.64941 4.60596L7.62427 3.58105C7.44003 3.39679 7.22144 3.2506 6.98071 3.15088C6.73998 3.05116 6.482 3 6.22144 3C5.96087 3 5.70264 3.05116 5.46191 3.15088C5.22119 3.2506 5.00259 3.39679 4.81836 3.58105L3.5813 4.81787C3.39704 5.00211 3.25085 5.2207 3.15112 5.46143C3.0514 5.70215 3 5.96062 3 6.22119C3 6.48176 3.0514 6.73974 3.15112 6.98047C3.25085 7.2212 3.39704 7.43979 3.5813 7.62402L4.67041 8.71289",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18.2641 20.944L15.8691 17.842",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5.08545 20.944L7.48045 17.842",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Alarm = {
+    component: AlarmComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  AlarmComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  AlarmComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const AddUserComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.99277 13.6949C11.8712 13.6949 13.394 12.1364 13.394 10.2139C13.394 8.2914 11.8712 6.73291 9.99277 6.73291C8.11431 6.73291 6.59152 8.2914 6.59152 10.2139C6.59152 12.1364 8.11431 13.6949 9.99277 13.6949Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4 19.0001C4 17.5937 4.54588 16.245 5.51754 15.2506C6.4892 14.2561 7.80705 13.6974 9.18119 13.6974H10.8017C12.1758 13.6974 13.4937 14.2561 14.4653 15.2506C15.437 16.245 15.9829 17.5937 15.9829 19.0001",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18.4231 4V9.46579",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.7351 6.73291H21",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const AddUser = {
+    component: AddUserComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  AddUserComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  AddUserComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const AnnounceComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M10.3101 10.0508L3.83725 13.982C3.44252 14.2219 3.15917 14.6089 3.04965 15.0577C2.94013 15.5064 3.01344 15.9803 3.25326 16.3751L4.41415 18.2891C4.6541 18.6838 5.0409 18.967 5.48959 19.0767C5.93828 19.1864 6.41224 19.1135 6.80722 18.8741L13.3412 14.9048M13.3412 14.9048L20.3683 15.7159C20.4492 15.7253 20.5312 15.7117 20.6048 15.6768C20.6784 15.6419 20.7408 15.5872 20.7848 15.5186C20.8287 15.45 20.8524 15.3706 20.8534 15.2891C20.8543 15.2077 20.8324 15.1278 20.7901 15.0582L13.5902 3.20904C13.5476 3.13913 13.4861 3.08258 13.4129 3.04595C13.3397 3.00932 13.2578 2.99418 13.1764 3.00201C13.0949 3.00983 13.0171 3.04049 12.9522 3.09039C12.8873 3.14028 12.8377 3.20701 12.8092 3.28375L11.2313 7.54986M13.3412 14.9048L10.3331 10.052M10.0633 19.3017L10.3062 19.7021C10.3994 19.8559 10.522 19.9897 10.667 20.0961C10.812 20.2025 10.9764 20.2795 11.1511 20.3222C11.3259 20.3649 11.5073 20.3726 11.6851 20.3452C11.8628 20.3177 12.0336 20.2555 12.1873 20.162C12.3411 20.0689 12.4749 19.9462 12.5813 19.8012C12.6877 19.6562 12.7644 19.4915 12.8071 19.3168C12.8499 19.1421 12.8578 18.9609 12.8303 18.7831C12.8029 18.6054 12.7407 18.4344 12.6472 18.2807L11.3372 16.123L8.99513 17.5439",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Announce = {
+    component: AnnounceComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  AnnounceComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  AnnounceComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const AppsComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.444 5.5C12.8582 5.5 13.194 5.16421 13.194 4.75C13.194 4.33579 12.8582 4 12.444 4C12.0298 4 11.694 4.33579 11.694 4.75C11.694 5.16421 12.0298 5.5 12.444 5.5Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.444 13.194C12.8582 13.194 13.194 12.8582 13.194 12.444C13.194 12.0298 12.8582 11.694 12.444 11.694C12.0298 11.694 11.694 12.0298 11.694 12.444C11.694 12.8582 12.0298 13.194 12.444 13.194Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.444 20.889C12.8582 20.889 13.194 20.5532 13.194 20.139C13.194 19.7248 12.8582 19.389 12.444 19.389C12.0298 19.389 11.694 19.7248 11.694 20.139C11.694 20.5532 12.0298 20.889 12.444 20.889Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.139 5.5C20.5532 5.5 20.889 5.16421 20.889 4.75C20.889 4.33579 20.5532 4 20.139 4C19.7248 4 19.389 4.33579 19.389 4.75C19.389 5.16421 19.7248 5.5 20.139 5.5Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.139 13.194C20.5532 13.194 20.889 12.8582 20.889 12.444C20.889 12.0298 20.5532 11.694 20.139 11.694C19.7248 11.694 19.389 12.0298 19.389 12.444C19.389 12.8582 19.7248 13.194 20.139 13.194Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.139 20.889C20.5532 20.889 20.889 20.5532 20.889 20.139C20.889 19.7248 20.5532 19.389 20.139 19.389C19.7248 19.389 19.389 19.7248 19.389 20.139C19.389 20.5532 19.7248 20.889 20.139 20.889Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.75 5.5C5.16421 5.5 5.5 5.16421 5.5 4.75C5.5 4.33579 5.16421 4 4.75 4C4.33579 4 4 4.33579 4 4.75C4 5.16421 4.33579 5.5 4.75 5.5Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.75 13.194C5.16421 13.194 5.5 12.8582 5.5 12.444C5.5 12.0298 5.16421 11.694 4.75 11.694C4.33579 11.694 4 12.0298 4 12.444C4 12.8582 4.33579 13.194 4.75 13.194Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.75 20.889C5.16421 20.889 5.5 20.5532 5.5 20.139C5.5 19.7248 5.16421 19.389 4.75 19.389C4.33579 19.389 4 19.7248 4 20.139C4 20.5532 4.33579 20.889 4.75 20.889Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Apps = {
+    component: AppsComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  AppsComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  AppsComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ArrowDownComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12 5V19",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18 13L12 19",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6 13L12 19",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const ArrowDown = {
+    component: ArrowDownComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ArrowDownComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ArrowDownComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ArrowDownLeftComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M17 7L7 17",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16 17H7V8",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const ArrowDownLeft = {
+    component: ArrowDownLeftComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ArrowDownLeftComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ArrowDownLeftComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ArrowDownRightComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M7 7L17 17",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M17 8V17H8",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const ArrowDownRight = {
+    component: ArrowDownRightComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ArrowDownRightComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ArrowDownRightComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ArrowLeftComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5 12H19",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5 12L11 18",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5 12L11 6",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const ArrowLeft = {
+    component: ArrowLeftComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ArrowLeftComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ArrowLeftComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ArrowRightComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5 12H19",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M13 18L19 12",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M13 6L19 12",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const ArrowRight = {
+    component: ArrowRightComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ArrowRightComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ArrowRightComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ArrowUpComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12 5V19",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18 11L12 5",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6 11L12 5",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const ArrowUp = {
+    component: ArrowUpComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ArrowUpComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ArrowUpComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ArrowUpLeftComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M7 7L17 17",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16 7H7V16",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const ArrowUpLeft = {
+    component: ArrowUpLeftComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ArrowUpLeftComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ArrowUpLeftComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ArrowUpRightComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M17 7L7 17",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8 7H17V16",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const ArrowUpRight = {
+    component: ArrowUpRightComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ArrowUpRightComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ArrowUpRightComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const AttachmentComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18.4709 13.1455L11.9509 19.6465C11.0813 20.5132 9.9022 21 8.6727 21C7.44319 21 6.26382 20.5132 5.39428 19.6465V19.6465C4.50139 18.7562 4 17.5487 4 16.2896C4 15.0306 4.50139 13.823 5.39428 12.9328L14.3952 3.95861C15.011 3.3449 15.846 3 16.7166 3C17.5873 3 18.4225 3.3449 19.0383 3.95861C19.3432 4.26264 19.5851 4.62339 19.7501 5.02062C19.9152 5.41786 20 5.8437 20 6.27367C20 6.70363 19.9152 7.12947 19.7501 7.52671C19.5851 7.92395 19.3432 8.28469 19.0383 8.58872L10.4509 17.1508C10.2775 17.3238 10.0716 17.4608 9.845 17.5545C9.61837 17.6482 9.37554 17.6963 9.13021 17.6963C8.88488 17.6963 8.64205 17.6482 8.41542 17.5545C8.18879 17.4608 7.9829 17.3238 7.80951 17.1508V17.1508C7.45923 16.8015 7.26237 16.3276 7.26237 15.8337C7.26237 15.3398 7.45923 14.8659 7.80951 14.5167L13.8239 8.52028",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Attachment = {
+    component: AttachmentComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  AttachmentComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  AttachmentComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const AvatarComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M17.3061 18.5508C17.3061 17.3173 16.816 16.1344 15.9438 15.2622C15.0715 14.39 13.8885 13.8999 12.6549 13.8999H11.2001C9.96667 13.9002 8.78371 14.3905 7.91154 15.2627C7.03936 16.1349 6.54925 17.3173 6.54899 18.5508M14.981 10.8469C14.981 12.5331 13.6141 13.8999 11.928 13.8999C10.2419 13.8999 8.87501 12.5331 8.87501 10.8469C8.87501 9.16082 10.2419 7.79395 11.928 7.79395C13.6141 7.79395 14.981 9.16082 14.981 10.8469ZM20.856 11.928C20.856 16.8588 16.8588 20.856 11.928 20.856C6.9972 20.856 3 16.8588 3 11.928C3 6.9972 6.9972 3 11.928 3C16.8588 3 20.856 6.9972 20.856 11.928Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Avatar = {
+    component: AvatarComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  AvatarComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  AvatarComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const BackwardComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16 15.8603L19.25 18.25V5.75L16 8.13971",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.75 12L13.25 5.75V18.25L4.75 12Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Backward = {
+    component: BackwardComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  BackwardComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  BackwardComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const BankComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M2 20H22V22H2V20ZM4 12H6V19H4V12ZM9 12H11V19H9V12ZM13 12H15V19H13V12ZM18 12H20V19H18V12ZM2 7L12 2L22 7V11H2V7ZM4 8.236V9H20V8.236L12 4.236L4 8.236ZM12 8C11.8022 8 11.6089 7.94135 11.4444 7.83147C11.28 7.72159 11.1518 7.56541 11.0761 7.38268C11.0004 7.19996 10.9806 6.99889 11.0192 6.80491C11.0578 6.61093 11.153 6.43275 11.2929 6.29289C11.4327 6.15304 11.6109 6.0578 11.8049 6.01921C11.9989 5.98063 12.2 6.00043 12.3827 6.07612C12.5654 6.15181 12.7216 6.27998 12.8315 6.44443C12.9414 6.60888 13 6.80222 13 7C13 7.26522 12.8946 7.51957 12.7071 7.70711C12.5196 7.89464 12.2652 8 12 8Z",
+      fill: smartColor || fill
+    }));
+  };
+
+  const Bank = {
+    component: BankComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  BankComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  BankComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round",
+    fill: "black"
+  };
+
+  const BarChartComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      fillRule,
+      clipRule,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      fillRule: fillRule,
+      clipRule: clipRule,
+      fill: smartColor || fill,
+      d: "M13.875 3.75C13.875 3.33579 14.2108 3 14.625 3H19.875C20.2892 3 20.625 3.33579 20.625 3.75V18.75H21.375C21.7892 18.75 22.125 19.0858 22.125 19.5C22.125 19.9142 21.7892 20.25 21.375 20.25H2.625C2.21079 20.25 1.875 19.9142 1.875 19.5C1.875 19.0858 2.21079 18.75 2.625 18.75H3.375V12.75C3.375 12.3358 3.71079 12 4.125 12H8.625V8.25C8.625 7.83579 8.96079 7.5 9.375 7.5H13.875V3.75ZM13.875 9H10.125V18.75H13.875V9ZM15.375 18.75H19.125V4.5H15.375V18.75ZM8.625 18.75V13.5H4.875V18.75H8.625Z"
+    }));
+  };
+
+  const BarChart = {
+    component: BarChartComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  BarChartComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  BarChartComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round",
+    fillRule: "evenodd",
+    clipRule: "evenodd"
+  };
+
+  const BasketComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M7.55688 7.26703C7.55675 6.70673 7.66702 6.15185 7.88135 5.63416C8.09568 5.11646 8.40976 4.64606 8.80591 4.24982C9.20206 3.85358 9.67255 3.53928 10.1902 3.32483C10.7078 3.11038 11.2625 3 11.8228 3C12.9544 3 14.0399 3.44954 14.8401 4.24976C15.6403 5.04997 16.0898 6.13535 16.0898 7.26703V8.17902M16.0899 8.17383H19.014C19.2358 8.17397 19.4548 8.22372 19.6549 8.3194C19.855 8.41507 20.0314 8.55426 20.1707 8.72681C20.3101 8.89936 20.4091 9.10089 20.4605 9.31665C20.512 9.53241 20.5146 9.75693 20.4681 9.97382L18.398 19.5048C18.3159 19.8848 18.1062 20.2252 17.8036 20.4692C17.5009 20.7132 17.1237 20.8462 16.735 20.8459H6.76694C6.37803 20.8464 6.00066 20.7136 5.69785 20.4695C5.39503 20.2255 5.18525 19.885 5.10312 19.5048L3.03305 9.97382C2.98654 9.75693 2.98916 9.53241 3.04062 9.31665C3.09208 9.10089 3.19103 8.89936 3.33042 8.72681C3.4698 8.55426 3.64592 8.41507 3.84604 8.3194C4.04616 8.22372 4.2651 8.17397 4.48691 8.17383H12.9649M7.14087 15.5669H19.2189",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Basket = {
+    component: BasketComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  BasketComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  BasketComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const BendLeftComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18.8879 4V8.04102C18.8879 8.78703 18.7407 9.52569 18.4551 10.2148C18.1694 10.904 17.7507 11.5301 17.2229 12.0574C16.6951 12.5846 16.0686 13.0027 15.3792 13.2876C14.6897 13.5725 13.9509 13.7188 13.2048 13.718L4.00488 13.709M9.16895 18.8799L4 13.7109L9.16895 8.54199",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const BendLeft = {
+    component: BendLeftComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  BendLeftComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  BendLeftComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const BendRightComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4 5V9.04102C4 9.78703 4.14695 10.5257 4.43262 11.2148C4.71829 11.904 5.137 12.5301 5.66479 13.0574C6.19259 13.5846 6.81909 14.0027 7.50854 14.2876C8.198 14.5725 8.93684 14.7188 9.68286 14.718L18.8879 14.709M15.6139 9.40088L20.7828 14.5698L15.6139 19.7388",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const BendRight = {
+    component: BendRightComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  BendRightComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  BendRightComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const BoltComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M10.5781 20.855L12.1531 13.4224H5L9.08301 3M14.4871 8.85791H19.3751L10.5281 20.8579M9.05219 3H16.5661L14.506 8.8584",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Bolt = {
+    component: BoltComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  BoltComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  BoltComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const BookComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.924 16.0908V6.7398M11.928 19.51C10.644 18.5538 9.06134 18.0864 7.46388 18.1911C6.17203 18.1572 4.89089 18.4313 3.72609 18.9909C3.65079 19.0313 3.56614 19.0516 3.48072 19.0495C3.3953 19.0474 3.31199 19.0228 3.23878 18.9787C3.16557 18.9347 3.1051 18.8726 3.06324 18.7981C3.02139 18.7236 2.99957 18.6394 3.00001 18.5539V7.12277C2.99939 6.98999 3.0256 6.85891 3.07716 6.73654C3.12872 6.61418 3.2046 6.50316 3.30006 6.41086C4.46777 5.44498 5.95205 4.94628 7.46608 5.01096C8.23091 5.00727 8.99173 5.11955 9.72291 5.34397M11.9241 19.5099C13.2082 18.554 14.7905 18.0865 16.3879 18.191C17.6798 18.157 18.9612 18.4311 20.126 18.9908C20.2013 19.0312 20.2857 19.0516 20.3711 19.0494C20.4565 19.0473 20.5401 19.0227 20.6133 18.9786C20.6865 18.9346 20.747 18.8725 20.7888 18.798C20.8307 18.7235 20.8525 18.6393 20.8521 18.5538V7.12268C20.8526 6.98992 20.8262 6.8588 20.7747 6.73645C20.7231 6.61411 20.6474 6.50314 20.552 6.41077C19.3842 5.44514 17.9 4.94648 16.386 5.01087C15.5612 4.95995 14.7352 5.08839 13.9646 5.38684C13.194 5.68529 12.4972 6.14669 11.9219 6.73987",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Book = {
+    component: BookComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  BookComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  BookComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const BookmarkComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18.9991 4.49984C18.9992 4.30283 18.9607 4.10773 18.8857 3.92569C18.8107 3.74365 18.7008 3.57834 18.5622 3.43904C18.4235 3.29973 18.2589 3.18915 18.0777 3.11382C17.8965 3.03849 17.7024 2.99987 17.5063 3H7.99042C7.46256 3 6.95615 3.21066 6.5829 3.58571C6.20964 3.96076 6 4.4695 6 4.9999V21L12.4995 17.4357L19 20.9999V4.50168",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Bookmark = {
+    component: BookmarkComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  BookmarkComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  BookmarkComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const BriefcaseComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.331 6.092H15.586V5.569C15.5855 5.15304 15.42 4.75426 15.1259 4.46013C14.8317 4.166 14.433 4.00053 14.017 4H9.833C9.41721 4.00079 9.01869 4.16639 8.72478 4.46049C8.43087 4.75459 8.26553 5.15321 8.265 5.569V6.092H3.523C3.38437 6.09226 3.2515 6.14745 3.15348 6.24548C3.05545 6.3435 3.00026 6.47637 3 6.615V18.115C3.00053 18.531 3.166 18.9297 3.46013 19.2239C3.75426 19.518 4.15304 19.6835 4.569 19.684H19.281C19.6961 19.6835 20.0941 19.5187 20.3881 19.2256C20.6821 18.9326 20.8482 18.5351 20.85 18.12V6.624C20.8533 6.55427 20.8422 6.48461 20.8174 6.41936C20.7926 6.35411 20.7547 6.29467 20.7059 6.24475C20.6571 6.19484 20.5985 6.15551 20.5338 6.12923C20.4692 6.10294 20.3998 6.09027 20.33 6.092H20.331ZM9.31 5.569C9.31026 5.43037 9.36545 5.2975 9.46348 5.19948C9.5615 5.10145 9.69437 5.04626 9.833 5.046H14.017C14.1556 5.04626 14.2885 5.10145 14.3865 5.19948C14.4845 5.2975 14.5397 5.43037 14.54 5.569V6.092H9.31V5.569ZM19.6 7.138L17.978 12.01C17.9433 12.1149 17.8762 12.2061 17.7863 12.2704C17.6965 12.3348 17.5885 12.3689 17.478 12.368H14.54V11.844C14.54 11.7053 14.4849 11.5723 14.3868 11.4742C14.2887 11.3761 14.1557 11.321 14.017 11.321H9.833C9.69429 11.321 9.56126 11.3761 9.46318 11.4742C9.3651 11.5723 9.31 11.7053 9.31 11.844V12.367H6.369C6.25849 12.3679 6.15054 12.3338 6.06069 12.2694C5.97083 12.2051 5.90372 12.1139 5.869 12.009L4.249 7.138H19.6ZM13.494 12.367V13.413H10.356V12.367H13.494ZM19.8 18.12C19.7997 18.2586 19.7445 18.3915 19.6465 18.4895C19.5485 18.5875 19.4156 18.6427 19.277 18.643H4.569C4.43037 18.6427 4.2975 18.5875 4.19948 18.4895C4.10145 18.3915 4.04626 18.2586 4.046 18.12V9.837L4.88 12.337C4.98336 12.6502 5.18293 12.9229 5.45028 13.1161C5.71764 13.3093 6.03914 13.4132 6.369 13.413H9.31V13.936C9.31 14.0747 9.3651 14.2077 9.46318 14.3058C9.56126 14.4039 9.69429 14.459 9.833 14.459H14.017C14.1557 14.459 14.2887 14.4039 14.3868 14.3058C14.4849 14.2077 14.54 14.0747 14.54 13.936V13.413H17.482C17.8113 13.4132 18.1323 13.3096 18.3994 13.117C18.6665 12.9244 18.8662 12.6525 18.97 12.34L19.804 9.84L19.8 18.12Z",
+      fill: smartColor || fill
+    }));
+  };
+
+  const Briefcase = {
+    component: BriefcaseComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  BriefcaseComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  BriefcaseComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CameraComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.8411 6.63501L15.541 6.06604C15.3734 5.74465 15.121 5.47542 14.811 5.28748C14.5011 5.09954 14.1454 5.00004 13.783 5H10.083C9.72039 4.99997 9.3648 5.09942 9.05469 5.28735C8.74457 5.47529 8.49176 5.74457 8.32397 6.06604L8.02417 6.63501C7.85652 6.95666 7.60383 7.22619 7.2937 7.41431C6.98358 7.60243 6.62786 7.70196 6.26514 7.70203H4.98413C4.45794 7.70203 3.95313 7.91113 3.58105 8.2832C3.20898 8.65528 3 9.15985 3 9.68604V17.4191C3 17.9453 3.20898 18.4498 3.58105 18.8219C3.95313 19.194 4.45794 19.4031 4.98413 19.4031H18.8721C19.3983 19.4031 19.9028 19.194 20.2749 18.8219C20.647 18.4498 20.856 17.9453 20.856 17.4191V9.68604C20.856 9.15985 20.647 8.65528 20.2749 8.2832C19.9028 7.91113 19.3983 7.70203 18.8721 7.70203H17.592C17.2307 7.7005 16.8767 7.60039 16.5681 7.41235C16.2595 7.22431 16.0081 6.95546 15.8411 6.63501Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.9382 16.205C13.7729 16.205 15.2602 14.7177 15.2602 12.883C15.2602 11.0483 13.7729 9.56104 11.9382 9.56104C10.1035 9.56104 8.61621 11.0483 8.61621 12.883C8.61621 14.7177 10.1035 16.205 11.9382 16.205Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Camera = {
+    component: CameraComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CameraComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CameraComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CartComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M10.3519 18C10.4925 18 10.6064 17.8925 10.6064 17.7599C10.6064 17.6273 10.4925 17.5198 10.3519 17.5198C10.2114 17.5198 10.0974 17.6273 10.0974 17.7599C10.0974 17.8925 10.2114 18 10.3519 18Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M17.5523 18C17.6929 18 17.8068 17.8925 17.8068 17.7599C17.8068 17.6273 17.6929 17.5198 17.5523 17.5198C17.4117 17.5198 17.2978 17.6273 17.2978 17.7599C17.2978 17.8925 17.4117 18 17.5523 18Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3.00006 5.07068H4.87588C5.23051 5.07064 5.57417 5.18707 5.84774 5.39995C6.12132 5.61283 6.30794 5.90896 6.37539 6.23743L7.65392 12.4754C7.72136 12.8038 7.90798 13.1 8.18156 13.3129C8.45514 13.5257 8.79855 13.6422 9.15317 13.6421H18.3073C18.6619 13.642 19.0054 13.5255 19.2789 13.3126C19.5524 13.0998 19.7389 12.8038 19.8066 12.4754L20.9723 6.7844C21.015 6.57592 21.0084 6.36115 20.9528 6.1554C20.8972 5.94966 20.7939 5.758 20.6506 5.59425C20.5074 5.4305 20.3276 5.29876 20.124 5.20825C19.9204 5.11773 19.6981 5.07068 19.4731 5.07068L9.01988 5",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Cart = {
+    component: CartComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CartComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CartComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CashComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18.9838 5H5.01624C3.9027 5 3 5.908 3 7.02808V15.9719C3 17.092 3.9027 18 5.01624 18H18.9838C20.0973 18 21 17.092 21 15.9719V7.02808C21 5.908 20.0973 5 18.9838 5Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M21.0001 13.6448V16.9911C21.0001 17.2579 20.8947 17.5138 20.7072 17.7024C20.5196 17.8911 20.2652 17.997 20 17.997H16.6702C16.671 16.8425 17.1275 15.7355 17.9394 14.9193C18.7514 14.1032 19.8522 13.6448 21.0001 13.6448V13.6448Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16.6702 5H19.997C20.2622 5 20.5166 5.10598 20.7041 5.29463C20.8917 5.48328 20.997 5.73914 20.997 6.00593V9.35226C19.8497 9.35146 18.7496 8.89266 17.9384 8.07662C17.1271 7.26059 16.671 6.15404 16.6702 5V5Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M7.3298 18L4.003 18C3.73777 18 3.4834 17.894 3.29585 17.7054C3.10831 17.5167 3.00294 17.2609 3.00294 16.9941L3.00294 13.6477C4.15025 13.6485 5.25034 14.1073 6.06161 14.9234C6.87288 15.7394 7.329 16.846 7.3298 18V18Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M2.99992 9.35535V6.00901C2.99992 5.74222 3.10528 5.48636 3.29283 5.29771C3.48038 5.10907 3.73474 5.00308 3.99998 5.00308H7.3298C7.329 6.15766 6.87246 7.26466 6.06054 8.08078C5.24862 8.8969 4.14775 9.35535 2.99992 9.35535V9.35535Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.7251 11.5009H11.6042C11.1792 11.5007 10.7716 11.3309 10.4711 11.0286C10.1705 10.7263 10.0015 10.3163 10.0012 9.88877V9.88877C10.0015 9.46133 10.1705 9.05136 10.4711 8.74921C10.7716 8.44706 11.1793 8.27734 11.6042 8.27734H13.318",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.7248 11.5011H12.2449C12.4554 11.5011 12.6638 11.5426 12.8582 11.6236C13.0527 11.7047 13.2294 11.8235 13.3783 11.9732C13.5271 12.1229 13.6453 12.3007 13.7258 12.4963C13.8064 12.6919 13.8479 12.9015 13.8479 13.1133V13.1133C13.8479 13.5409 13.6789 13.9509 13.3783 14.2533C13.0777 14.5557 12.67 14.7257 12.2449 14.7257H10.5311",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Cash = {
+    component: CashComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CashComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CashComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CenterAlignComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3 4H20.359M5.04498 9.11694H18.315M3 14.2349H20.359M7.04901 19.353H16.313",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const CenterAlign = {
+    component: CenterAlignComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CenterAlignComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CenterAlignComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CertificateComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3 11.9272C3 13.0742 4.1319 13.9884 4.5459 14.9854C4.9739 16.0184 4.83599 17.4622 5.61499 18.2402C6.39399 19.0182 7.83587 18.8811 8.86987 19.3091C9.86987 19.7231 10.781 20.854 11.927 20.854C13.073 20.854 13.9869 19.7221 14.9849 19.3091C16.0189 18.8801 17.461 19.0192 18.24 18.2402C19.019 17.4612 18.8808 16.0184 19.3088 14.9854C19.7228 13.9854 20.855 13.0742 20.855 11.9272C20.855 10.7802 19.7228 9.86712 19.3088 8.87012C18.8808 7.83612 19.019 6.39326 18.24 5.61426C17.461 4.83526 16.0189 4.97439 14.9849 4.54639C13.9849 4.13239 13.074 3 11.927 3C10.78 3 9.86687 4.13239 8.86987 4.54639C7.83687 4.97439 6.39399 4.83623 5.61499 5.61523C4.83599 6.39423 4.9749 7.83612 4.5459 8.87012C4.1329 9.86312 3 10.7802 3 11.9272Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M13.777 10.0801L10.082 13.7751",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M10.187 11.0352C10.6012 11.0352 10.937 10.6994 10.937 10.2852C10.937 9.87094 10.6012 9.53516 10.187 9.53516C9.7728 9.53516 9.43701 9.87094 9.43701 10.2852C9.43701 10.6994 9.7728 11.0352 10.187 11.0352Z",
+      fill: smartColor || fill
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M13.687 14.5352C14.1012 14.5352 14.437 14.1994 14.437 13.7852C14.437 13.3709 14.1012 13.0352 13.687 13.0352C13.2728 13.0352 12.937 13.3709 12.937 13.7852C12.937 14.1994 13.2728 14.5352 13.687 14.5352Z",
+      fill: smartColor || fill
+    }));
+  };
+
+  const Certificate = {
+    component: CertificateComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CertificateComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CertificateComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const Certificate2Component = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.258 9.38721L11.157 13.4882L8.89099 11.4222M3 11.9282C3 13.0742 4.13192 13.9893 4.54492 14.9863C4.97392 16.0203 4.83501 17.4632 5.61401 18.2412C6.39301 19.0192 7.8359 18.8811 8.8689 19.3101C9.8689 19.7241 10.779 20.855 11.927 20.855C13.075 20.855 13.9869 19.7231 14.9839 19.3101C16.0179 18.8811 17.461 19.0202 18.24 18.2412C19.019 17.4622 18.8801 16.0203 19.3091 14.9863C19.7231 13.9863 20.855 13.0752 20.855 11.9282C20.855 10.7812 19.7231 9.86812 19.3091 8.87012C18.8801 7.83612 19.019 6.39423 18.24 5.61523C17.461 4.83623 16.0181 4.9739 14.9851 4.5459C13.9851 4.1329 13.075 3 11.928 3C10.781 3 9.86812 4.1329 8.87012 4.5459C7.83612 4.9749 6.39299 4.83723 5.61499 5.61523C4.83699 6.39323 4.9739 7.83612 4.5459 8.87012C4.1319 9.86812 3 10.7812 3 11.9282Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Certificate2 = {
+    component: Certificate2Component,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  Certificate2Component.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  Certificate2Component.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ChartComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.855 4L13.0278 11.8271L10.042 8.84131L3 15.8833M20.855 4H15.7128M20.855 4L20.8559 9.14307M8.03198 4H3.00293V19.3931H20.8579V16.2271",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Chart = {
+    component: ChartComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ChartComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ChartComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CheckCircleComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M10.9386 14.1397L15.6797 9.39868",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M10.9389 14.1396L8.31885 11.7516",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const CheckCircle = {
+    component: CheckCircleComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CheckCircleComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CheckCircleComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ChevronArrowDownComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6 9L12 15L18 9",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const ChevronArrowDown = {
+    component: ChevronArrowDownComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ChevronArrowDownComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ChevronArrowDownComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ChevronArrowUpComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6 15L12 9L18 15",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const ChevronArrowUp = {
+    component: ChevronArrowUpComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ChevronArrowUpComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ChevronArrowUpComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ChevronFilledLeftComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14.3598 6.64019L9.26517 11.7349C9.11873 11.8814 9.11873 12.1188 9.26517 12.2652L14.3598 17.3598C14.5961 17.5961 15 17.4288 15 17.0948V6.90536C15 6.57126 14.5961 6.40395 14.3598 6.64019Z",
+      fill: smartColor || fill
+    }));
+  };
+
+  const ChevronFilledLeft = {
+    component: ChevronFilledLeftComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ChevronFilledLeftComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ChevronFilledLeftComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ChevronFilledRightComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.65718 7.11118L14.8872 12.2335C15.0376 12.3807 15.0376 12.6194 14.8872 12.7667L9.65718 17.8888C9.41466 18.1263 9 17.9582 9 17.6223V7.37779C9 7.04189 9.41467 6.87367 9.65718 7.11118Z",
+      fill: smartColor || fill
+    }));
+  };
+
+  const ChevronFilledRight = {
+    component: ChevronFilledRightComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ChevronFilledRightComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ChevronFilledRightComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ChevronFilledUpComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6.64017 14.3598L11.7349 9.26517C11.8813 9.11872 12.1188 9.11872 12.2652 9.26517L17.3598 14.3598C17.596 14.5961 17.4288 15 17.0946 15H6.90534C6.57125 15 6.40394 14.5961 6.64017 14.3598Z",
+      fill: smartColor || fill
+    }));
+  };
+
+  const ChevronFilledUp = {
+    component: ChevronFilledUpComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ChevronFilledUpComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ChevronFilledUpComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CircleComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      fillRule,
+      clipRule,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("g", {
+      clipPath: "url(#clip0_379_504)"
+    }, /*#__PURE__*/React__default["default"].createElement("path", {
+      fillRule: fillRule,
+      clipRule: clipRule,
+      fill: smartColor || fill,
+      d: "M7.40381 7.40381C4.8654 9.94221 4.8654 14.0578 7.40381 16.5962C9.94221 19.1346 14.0578 19.1346 16.5962 16.5962C19.1346 14.0578 19.1346 9.94221 16.5962 7.40381C14.0578 4.8654 9.94221 4.8654 7.40381 7.40381ZM6.34315 17.6569C3.21895 14.5327 3.21895 9.46734 6.34315 6.34315C9.46734 3.21895 14.5327 3.21895 17.6569 6.34315C20.781 9.46734 20.781 14.5327 17.6569 17.6569C14.5327 20.781 9.46734 20.781 6.34315 17.6569Z"
+    })), /*#__PURE__*/React__default["default"].createElement("defs", null, /*#__PURE__*/React__default["default"].createElement("clipPath", {
+      id: "clip0_379_504"
+    }, /*#__PURE__*/React__default["default"].createElement("rect", {
+      width: "16",
+      height: "16",
+      fill: "white",
+      transform: "translate(4 4)"
+    }))), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3.73396 15.2779L8.72224 20.2663C9.19206 20.736 9.82939 21 10.4938 21C11.1581 21 11.7952 20.736 12.265 20.2663L19.5595 12.9717C19.8412 12.6897 19.9996 12.3075 20 11.909V4H12.0914C11.6928 4.00009 11.3105 4.15856 11.0287 4.44048L3.73396 11.7351C3.50124 11.9676 3.3166 12.2438 3.19064 12.5477C3.06469 12.8517 3 13.1774 3 13.5064C3 13.8354 3.06469 14.1613 3.19064 14.4653C3.3166 14.7692 3.50124 15.0454 3.73396 15.2779Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.1222 10.0612C15.6801 10.0612 16.1324 9.60889 16.1324 9.05097C16.1324 8.49305 15.6801 8.04077 15.1222 8.04077C14.5643 8.04077 14.112 8.49305 14.112 9.05097C14.112 9.60889 14.5643 10.0612 15.1222 10.0612Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Circle = {
+    component: CircleComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CircleComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string,
+    fillRule: propTypes$2.exports.string,
+    clipRule: propTypes$2.exports.string
+  };
+  CircleComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round",
+    fillRule: "evenodd",
+    clipRule: "evenodd"
+  };
+
+  const CloseCircleComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.0191 9.0188L14.9815 14.9812",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.0191 14.9812L14.9815 9.0188",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const CloseCircle = {
+    component: CloseCircleComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CloseCircleComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CloseCircleComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CloudComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M10.0569 18.8937H17.6321C18.4262 18.8929 19.1919 18.5993 19.7825 18.0685C20.3731 17.5377 20.747 16.8072 20.8323 16.0177C20.9176 15.2282 20.7083 14.4353 20.2446 13.7907C19.781 13.146 19.0957 12.6954 18.3201 12.525C18.5586 11.117 18.2494 9.67075 17.4558 8.48352C16.6622 7.29629 15.4442 6.45813 14.052 6.14026C12.6598 5.82239 11.1987 6.04939 9.96851 6.77454C8.73827 7.49969 7.83218 8.66767 7.43604 10.0397H7.427C6.25289 10.0397 5.12685 10.5063 4.29663 11.3366C3.46641 12.1668 3 13.2928 3 14.4669C3 15.641 3.46641 16.7671 4.29663 17.5973C5.12685 18.4275 6.25289 18.8937 7.427 18.8937",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Cloud = {
+    component: CloudComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CloudComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CloudComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CloudDownloadComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14.7234 15.8873H17.6333C18.4281 15.8874 19.195 15.5941 19.7864 15.0631C20.3778 14.5321 20.7519 13.801 20.8372 13.0108C20.9224 12.2206 20.7126 11.4272 20.248 10.7823C19.7835 10.1375 19.0968 9.68704 18.3203 9.51768C18.5564 8.11058 18.2458 6.66609 17.4519 5.48057C16.658 4.29506 15.441 3.45779 14.05 3.14024C12.6591 2.82268 11.1994 3.04902 9.96973 3.77256C8.74003 4.49611 7.83325 5.66218 7.4353 7.03233H7.42749C6.25324 7.03233 5.12695 7.49889 4.29663 8.3292C3.46631 9.15952 3 10.2858 3 11.4601C3 12.6343 3.46631 13.7606 4.29663 14.5909C5.12695 15.4212 6.25324 15.8873 7.42749 15.8873H11.6753M14.5953 18.1384L11.9263 20.8074M11.9263 20.8074L9.2574 18.1384M11.9263 20.8074L11.9264 11.6244",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const CloudDownload = {
+    component: CloudDownloadComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CloudDownloadComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CloudDownloadComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CloudFlashComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16.283 16.8938H17.6321C18.4262 16.893 19.1919 16.5994 19.7825 16.0686C20.3731 15.5378 20.747 14.8073 20.8323 14.0178C20.9176 13.2283 20.7083 12.4354 20.2446 11.7908C19.781 11.1461 19.0957 10.6955 18.3201 10.5251C18.5586 9.11715 18.2494 7.67086 17.4558 6.48363C16.6622 5.2964 15.4442 4.45823 14.052 4.14037C12.6598 3.8225 11.1987 4.049 9.96851 4.77415C8.73827 5.49931 7.83218 6.66777 7.43604 8.03978H7.427C6.25289 8.03978 5.12685 8.50643 4.29663 9.33665C3.46641 10.1669 3 11.2929 3 12.467C3 13.6411 3.46641 14.7672 4.29663 15.5974C5.12685 16.4276 6.25289 16.8938 7.427 16.8938M11.926 12.5146L10.0391 16.4619H13.813L11.926 20.4079",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const CloudFlash = {
+    component: CloudFlashComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CloudFlashComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CloudFlashComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CloudRainComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.5991 16.8917H17.6321C18.4262 16.8909 19.1919 16.5968 19.7825 16.066C20.3731 15.5352 20.747 14.8052 20.8323 14.0157C20.9176 13.2262 20.7083 12.4328 20.2446 11.7882C19.781 11.1435 19.0957 10.6929 18.3201 10.5226C18.558 9.1148 18.2483 7.66925 17.4546 6.48251C16.6609 5.29577 15.4432 4.4579 14.0513 4.14023C12.6593 3.82256 11.1985 4.04915 9.96851 4.77402C8.73849 5.49889 7.83245 6.66709 7.43604 8.03866H7.427C6.25289 8.03866 5.12685 8.50532 4.29663 9.33554C3.46641 10.1658 3 11.2913 3 12.4654C3 13.6395 3.46641 14.7656 4.29663 15.5958C5.12685 16.426 6.25289 16.8927 7.427 16.8927M8.27206 15.2355V19.6465M15.6171 14.3485V18.9495M11.9441 16.5015V20.5805",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const CloudRain = {
+    component: CloudRainComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CloudRainComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CloudRainComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CloudUploadComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14.7236 16.8848H17.6326C18.4274 16.8852 19.1943 16.5915 19.7859 16.0606C20.3775 15.5297 20.752 14.7991 20.8374 14.0089C20.9228 13.2186 20.7129 12.4243 20.2483 11.7794C19.7837 11.1344 19.0972 10.6841 18.3206 10.5147C18.556 9.10784 18.2449 7.66411 17.4509 6.47907C16.6569 5.29404 15.44 4.45757 14.0493 4.14021C12.6586 3.82285 11.1994 4.04877 9.96997 4.77204C8.7405 5.49532 7.83375 6.6611 7.43555 8.03083H7.42749C6.25324 8.03083 5.12719 8.49739 4.29688 9.32771C3.46656 10.158 3 11.2838 3 12.4581C3 13.6323 3.46656 14.7586 4.29688 15.5889C5.12719 16.4193 6.25324 16.8858 7.42749 16.8858H11.6587M14.5966 12.6337L11.9276 9.96474M11.9276 9.96474L9.25867 12.6337M11.9276 9.96474L11.9276 19.1477",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const CloudUpload = {
+    component: CloudUploadComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CloudUploadComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CloudUploadComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CommandComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6.82257 4C7.57116 4 8.28909 4.29738 8.81843 4.82671C9.34776 5.35605 9.64514 6.07398 9.64514 6.82257V9.64514H6.82257C6.07398 9.64514 5.35605 9.34776 4.82671 8.81843C4.29738 8.28909 4 7.57116 4 6.82257V6.82257C4 6.07398 4.29738 5.35605 4.82671 4.82671C5.35605 4.29738 6.07398 4 6.82257 4V4Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6.82262 14.3548H9.64519V17.1774C9.64519 17.926 9.34781 18.6439 8.81847 19.1732C8.28914 19.7026 7.57121 19.9999 6.82262 19.9999V19.9999C6.07402 19.9999 5.35609 19.7026 4.82676 19.1732C4.29742 18.6439 4.00005 17.926 4.00005 17.1774V17.1774C4.00005 16.4288 4.29742 15.7108 4.82676 15.1815C5.35609 14.6522 6.07402 14.3548 6.82262 14.3548V14.3548Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M17.1776 4.00006C17.9262 4.00006 18.6441 4.29744 19.1735 4.82677C19.7028 5.35611 20.0002 6.07404 20.0002 6.82263V6.82263C20.0002 7.57122 19.7028 8.28916 19.1735 8.81849C18.6441 9.34782 17.9262 9.6452 17.1776 9.6452H14.355V6.82263C14.355 6.07404 14.6524 5.35611 15.1817 4.82677C15.7111 4.29744 16.429 4.00006 17.1776 4.00006V4.00006Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.64412 9.64532H14.3537V14.3549H9.64412V9.64532Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14.355 14.3548H17.1776C17.9262 14.3548 18.6441 14.6522 19.1735 15.1815C19.7028 15.7108 20.0002 16.4288 20.0002 17.1774V17.1774C20.0002 17.926 19.7028 18.6439 19.1735 19.1732C18.6441 19.7026 17.9262 19.9999 17.1776 19.9999V19.9999C16.429 19.9999 15.7111 19.7026 15.1817 19.1732C14.6524 18.6439 14.355 17.926 14.355 17.1774V14.3548Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Command = {
+    component: CommandComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CommandComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CommandComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CompanyComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.7981 20.86V15.06H14.3049V20.86",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M2.99997 20.86H20.8601",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18.6731 20.86V5.45398H5.05197V20.86",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6.88889 5.45401V3H12.2441V5.45401",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.194 9.09399V8.09399M7.444 8.34399H9.444H7.444ZM8.694 8.09399V9.09399V8.09399ZM9.444 8.84399H7.444H9.444Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.167 9.09399V8.09399M14.417 8.34399H16.417H14.417ZM15.667 8.09399V9.09399V8.09399ZM16.417 8.84399H14.417H16.417Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.194 12.21V11.21M7.444 11.46H9.444H7.444ZM8.694 11.21V12.21V11.21ZM9.444 11.96H7.444H9.444Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.167 12.21V11.21M14.417 11.46H16.417H14.417ZM15.667 11.21V12.21V11.21ZM16.417 11.96H14.417H16.417Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3.73396 15.2779L8.72224 20.2663C9.19206 20.736 9.82939 21 10.4938 21C11.1581 21 11.7952 20.736 12.265 20.2663L19.5595 12.9717C19.8412 12.6897 19.9996 12.3075 20 11.909V4H12.0914C11.6928 4.00009 11.3105 4.15856 11.0287 4.44048L3.73396 11.7351C3.50124 11.9676 3.3166 12.2438 3.19064 12.5477C3.06469 12.8517 3 13.1774 3 13.5064C3 13.8354 3.06469 14.1613 3.19064 14.4653C3.3166 14.7692 3.50124 15.0454 3.73396 15.2779Z"
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.1222 10.0612C15.6801 10.0612 16.1324 9.60889 16.1324 9.05097C16.1324 8.49305 15.6801 8.04077 15.1222 8.04077C14.5643 8.04077 14.112 8.49305 14.112 9.05097C14.112 9.60889 14.5643 10.0612 15.1222 10.0612Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Company = {
+    component: CompanyComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CompanyComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CompanyComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CompassComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8 16L10 10L16 8L14 14L8 16Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Compass = {
+    component: CompassComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CompassComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CompassComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CompressComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M19.3559 9.85907H14.1407V4.6441",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.0001 3.99988L14.1407 9.85927",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.64401 14.1409H9.85919V19.3558",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4 20.0001L9.85939 14.1407",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.6441 9.85907H9.85928V4.6441",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.00012 4L9.85951 9.85939",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M19.356 14.1409H14.1408V19.3558",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.0001 20.0001L14.1407 14.1407",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Compress = {
+    component: CompressComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CompressComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CompressComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const Compress2Component = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M19.3559 9.85907H14.1407V4.6441",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.0001 3.99988L14.1407 9.85927",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.64444 14.1409H9.8594V19.3558",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4 20.0001L9.85939 14.1407",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M19.3559 9.85907H14.1407V4.6441",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.0001 3.99988L14.1407 9.85927",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.64444 14.1409H9.8594V19.3558",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4 20.0001L9.85939 14.1407",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Compress2 = {
+    component: Compress2Component,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  Compress2Component.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  Compress2Component.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CopyComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.48309 8.37329H14.1976C14.5473 8.37329 14.8828 8.51352 15.1301 8.76317C15.3773 9.01282 15.5162 9.35149 15.5162 9.70456V15.6253",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.48279 8.37329H5.31864C4.96894 8.37329 4.6335 8.51352 4.38622 8.76317C4.13895 9.01282 4.00006 9.35149 4.00006 9.70456V18.6689C4.00006 19.022 4.13895 19.3604 4.38622 19.6101C4.6335 19.8598 4.96894 20 5.31864 20H14.1976C14.5473 20 14.8825 19.8598 15.1298 19.6101C15.377 19.3604 15.5159 19.022 15.5159 18.6689V15.627",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.48309 8.37326V5.33133C8.48333 4.97834 8.62225 4.63998 8.86947 4.39038C9.1167 4.14077 9.45204 4.0003 9.80167 4.00006H18.6815C19.0312 4.00006 19.3666 4.1405 19.6139 4.39016C19.8611 4.63981 20 4.97826 20 5.33133V14.2957C20 14.6488 19.8611 14.9874 19.6139 15.2371C19.3666 15.4867 19.0312 15.627 18.6815 15.627H15.5171",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Component = {
+    component: CopyComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CopyComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CopyComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CropComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M7.92819 7.00611V3",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M21 15.9947H7.92819V9.80219",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M17.0718 16.2187V20",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4 7.00592H17.0709V13.1985",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Crop = {
+    component: CropComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CropComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CropComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CrownComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12 6L16 12L21 8L19 18H5L3 8L8 12L12 6Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Crown = {
+    component: CrownComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CrownComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CrownComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const CutComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.768 4.15405L9.10901 15.9361M13.056 11.7989L9.33002 8.03394M20.768 19.593L15.049 13.814M9.88 17.9161C9.88 19.5398 8.56372 20.8561 6.94 20.8561C5.31628 20.8561 4 19.5398 4 17.9161C4 16.2924 5.31628 14.9761 6.94 14.9761C8.56372 14.9761 9.88 16.2924 9.88 17.9161ZM9.88 5.94C9.88 7.56372 8.56372 8.88 6.94 8.88C5.31628 8.88 4 7.56372 4 5.94C4 4.31628 5.31628 3 6.94 3C8.56372 3 9.88 4.31628 9.88 5.94Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Cut = {
+    component: CutComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  CutComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  CutComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const DecreaseComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5 4H9.07462C9.82658 4 10.5711 4.14811 11.2658 4.43587C11.9604 4.72362 12.5914 5.1454 13.1229 5.67705C13.6544 6.2087 14.0758 6.84013 14.3631 7.53465C14.6504 8.22917 14.7981 8.97327 14.7975 9.7248L14.7874 19",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20 13.7922L14.7893 19L9.57866 13.7922",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Decrease = {
+    component: DecreaseComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  DecreaseComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  DecreaseComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const Decrease2Component = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M19.8829 5H15.8409C15.0951 5 14.3566 5.147 13.6676 5.43262C12.9786 5.71824 12.3525 6.13685 11.8253 6.66455C11.2982 7.19225 10.8802 7.81872 10.5953 8.50806C10.3104 9.19739 10.1644 9.936 10.1652 10.6819L10.174 19.8821M5 14.72L10.1689 19.8889L15.3381 14.72",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Decrease2 = {
+    component: Decrease2Component,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  Decrease2Component.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  Decrease2Component.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const DeleteComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.162 6.33105H20.855M9.162 6.33105L14.692 6.331V5.765C14.692 5.03168 14.4007 4.32839 13.8822 3.80985C13.3636 3.29131 12.6603 3 11.927 3C11.1937 3 10.4904 3.29131 9.97185 3.80985C9.45331 4.32839 9.162 5.03168 9.162 5.765L9.162 6.33105ZM3 6.33105H6.82M19.218 6.33099V18.872C19.218 19.3982 19.009 19.9028 18.637 20.2748C18.2649 20.6469 17.7601 20.8559 17.2339 20.8559H6.67701C6.15082 20.8559 5.64625 20.6469 5.27417 20.2748C4.9021 19.9028 4.69312 19.3982 4.69312 18.872V6.33099M15.6 10.0191V17.1681M8.312 10.0191V17.1681M11.965 10.0191V17.1681",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Delete = {
+    component: DeleteComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  DeleteComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  DeleteComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const DepositsComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20 8V5H4V8H20ZM20 10H4V19H20V10ZM3 3H21C21.2652 3 21.5196 3.10536 21.7071 3.29289C21.8946 3.48043 22 3.73478 22 4V20C22 20.2652 21.8946 20.5196 21.7071 20.7071C21.5196 20.8946 21.2652 21 21 21H3C2.73478 21 2.48043 20.8946 2.29289 20.7071C2.10536 20.5196 2 20.2652 2 20V4C2 3.73478 2.10536 3.48043 2.29289 3.29289C2.48043 3.10536 2.73478 3 3 3ZM11 14H17V16H6.5L11 11.5V14Z",
+      fill: smartColor || fill
+    }));
+  };
+
+  const Deposits = {
+    component: DepositsComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  DepositsComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  DepositsComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const DetailsComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4 20.8549V4.98376C4 4.45758 4.20923 3.953 4.5813 3.58093C4.95337 3.20886 5.45794 2.99988 5.98413 2.99988H18.884C19.4102 2.99988 19.9148 3.20886 20.2869 3.58093C20.6589 3.953 20.8682 4.45758 20.8682 4.98376V18.871C20.8682 19.3972 20.6589 19.9017 20.2869 20.2738C19.9148 20.6459 19.4102 20.8549 18.884 20.8549H7.43115",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.7832 15.374H11.3072",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.7832 11.927H15.9552",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.7832 8.48102H16.0812",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Details = {
+    component: DetailsComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  DetailsComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  DetailsComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const DialComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.2585 15.7603L18.8804 14.3823C18.692 14.1939 18.4686 14.0444 18.2224 13.9424C17.9763 13.8404 17.7125 13.7881 17.446 13.7881C17.1796 13.7881 16.9158 13.8404 16.6697 13.9424C16.4235 14.0444 16.1998 14.1939 16.0115 14.3823L15.2654 15.1274C14.7898 15.6029 14.1449 15.8701 13.4724 15.8701C12.7999 15.8701 12.155 15.6029 11.6794 15.1274L8.72534 12.1743C8.48977 11.9388 8.30303 11.6593 8.17554 11.3516C8.04804 11.0438 7.98242 10.714 7.98242 10.3809C7.98242 10.0478 8.04804 9.71789 8.17554 9.41016C8.30303 9.10242 8.48977 8.8229 8.72534 8.5874L9.47144 7.84131C9.6599 7.65297 9.80937 7.42924 9.91138 7.18311C10.0134 6.93697 10.0659 6.67318 10.0659 6.40674C10.0659 6.1403 10.0134 5.87651 9.91138 5.63037C9.80937 5.38423 9.6599 5.1605 9.47144 4.97217L8.09351 3.59424C7.90517 3.40577 7.68144 3.2563 7.4353 3.1543C7.18916 3.05229 6.92537 3 6.65894 3C6.3925 3 6.12871 3.05229 5.88257 3.1543C5.63643 3.2563 5.4127 3.40577 5.22437 3.59424V3.59424C3.80001 5.01939 3 6.95189 3 8.9668C3 10.9817 3.80001 12.9142 5.22437 14.3394L9.5144 18.6294C10.9396 20.0537 12.8721 20.854 14.887 20.854C16.9019 20.854 18.8344 20.0537 20.2595 18.6294C20.6398 18.2488 20.8532 17.7328 20.853 17.1948C20.8528 16.6568 20.6391 16.1406 20.2585 15.7603V15.7603Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Dial = {
+    component: DialComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  DialComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  DialComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const DialOffComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M19.311 4.5434L3 20.8544",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.44287 11.8364C8.10075 11.3479 7.94172 10.7543 7.99365 10.1602C8.04559 9.56599 8.30536 9.00919 8.72705 8.5874L9.4729 7.84131C9.85328 7.46082 10.0669 6.94475 10.0669 6.40674C10.0669 5.86872 9.85328 5.35315 9.4729 4.97266L8.09497 3.59424C7.90664 3.40577 7.68291 3.2563 7.43677 3.1543C7.19063 3.05229 6.92684 3 6.6604 3C6.39396 3 6.13017 3.05229 5.88403 3.1543C5.6379 3.2563 5.41417 3.40577 5.22583 3.59424V3.59424C3.80148 5.01939 3.00146 6.95189 3.00146 8.9668C3.00146 10.9817 3.80148 12.9142 5.22583 14.3394",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M7.46494 16.5805L9.51498 18.6303C10.9402 20.0549 12.8729 20.8554 14.888 20.8554C16.9032 20.8554 18.8356 20.0549 20.2608 18.6303V18.6303C20.6412 18.2498 20.8551 17.7337 20.8551 17.1957C20.8551 16.6577 20.6412 16.1421 20.2608 15.7616L18.8829 14.3832C18.6946 14.1947 18.4711 14.0453 18.2249 13.9433C17.9788 13.8413 17.7148 13.789 17.4483 13.789C17.1819 13.789 16.9181 13.8413 16.672 13.9433C16.4258 14.0453 16.2023 14.1947 16.014 14.3832L15.2679 15.1283C14.7923 15.6038 14.1474 15.871 13.4749 15.871C12.8025 15.871 12.1576 15.6038 11.682 15.1283L10.2608 13.7074",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const DialOff = {
+    component: DialOffComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  DialOffComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  DialOffComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const DisabledComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5.621 18.235L18.235 5.621M20.856 11.928C20.856 16.8588 16.8588 20.856 11.928 20.856C6.9972 20.856 3 16.8588 3 11.928C3 6.9972 6.9972 3 11.928 3C16.8588 3 20.856 6.9972 20.856 11.928Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Disabled = {
+    component: DisabledComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  DisabledComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  DisabledComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const DislikeComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      fillRule,
+      clipRule,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M13.0084 4.58333V13.05C13.0084 13.3833 12.9084 13.7083 12.7251 13.9833L10.4501 17.3667C10.0918 17.9083 9.2001 18.2917 8.44176 18.0083C7.62509 17.7333 7.08343 16.8167 7.25843 16L7.69176 13.275C7.72509 13.025 7.65843 12.8 7.51676 12.625C7.3751 12.4667 7.16676 12.3667 6.94176 12.3667H3.51676C2.85843 12.3667 2.29176 12.1 1.95843 11.6333C1.64176 11.1833 1.58343 10.6 1.79176 10.0083L3.84176 3.76666C4.10009 2.73333 5.2251 1.89166 6.34176 1.89166H9.59176C10.1501 1.89166 10.9334 2.08333 11.2918 2.44166L12.3584 3.26666C12.7668 3.58333 13.0084 4.06666 13.0084 4.58333Z",
+      fill: smartColor || fill
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.6582 14.675H16.5166C17.8082 14.675 18.3332 14.175 18.3332 12.9416V4.56665C18.3332 3.33331 17.8082 2.83331 16.5166 2.83331H15.6582C14.3666 2.83331 13.8416 3.33331 13.8416 4.56665V12.95C13.8416 14.175 14.3666 14.675 15.6582 14.675Z",
+      fill: smartColor || fill
+    }));
+  };
+
+  const Dislike = {
+    component: DislikeComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  DislikeComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string,
+    fillRule: propTypes$2.exports.string,
+    clipRule: propTypes$2.exports.string
+  };
+  DislikeComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round",
+    fillRule: "evenodd",
+    clipRule: "evenodd"
+  };
+
+  const DocumentComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      fillRule,
+      clipRule,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      fillRule: fillRule,
+      clipRule: clipRule,
+      fill: smartColor || fill,
+      d: "M5.86896 3.86273C6.11025 3.63398 6.44559 3.49895 6.80321 3.4989H6.80341L12.3982 3.50043V7.001C12.3982 7.6001 12.6496 8.16577 13.0828 8.57645C13.5145 8.98572 14.0921 9.20955 14.6868 9.20955H18.4968V18.3065C18.4968 18.6101 18.37 18.9097 18.13 19.1372C17.8887 19.366 17.5533 19.5011 17.1956 19.5011H6.80341C6.44572 19.5011 6.1103 19.366 5.86896 19.1372C5.62898 18.9097 5.50219 18.6101 5.50219 18.3065V4.69348C5.50219 4.38992 5.62898 4.09024 5.86896 3.86273ZM19.9968 8.424V7.72043C19.9968 7.50942 19.9079 7.30818 19.7519 7.16606L14.298 2.19644C14.1599 2.07063 13.9799 2.00087 13.7931 2.00082L6.80362 1.9989H6.80341C6.073 1.9989 5.36503 2.27355 4.83697 2.77415C4.30755 3.27605 4.00219 3.96551 4.00219 4.69348V18.3065C4.00219 19.0345 4.30755 19.7239 4.83697 20.2258C5.36503 20.7264 6.073 21.0011 6.80341 21.0011H17.1956C17.926 21.0011 18.634 20.7264 19.162 20.2258C19.6914 19.7239 19.9968 19.0345 19.9968 18.3065V8.4951C19.9973 8.48332 19.9976 8.47147 19.9976 8.45955C19.9976 8.44763 19.9973 8.43578 19.9968 8.424ZM18.1213 7.70955H14.6868C14.4653 7.70955 14.2601 7.62565 14.1148 7.48787C13.971 7.35149 13.8982 7.17555 13.8982 7.001V3.86149L18.1213 7.70955Z"
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M7.61208 16.0422H16.1979",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M7.63608 11.7598H16.2219",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M7.61208 7.47729H10.0129",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Document = {
+    component: DocumentComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  DocumentComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string,
+    fillRule: propTypes$2.exports.string,
+    clipRule: propTypes$2.exports.string
+  };
+  DocumentComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round",
+    fillRule: "evenodd",
+    clipRule: "evenodd"
+  };
+
+  const DoubleCheckComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M7.6041 12.417L12.0211 16.834L20.8551 8M9.71899 14.532L16.251 8M3 12.417L7.417 16.834",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const DoubleCheck = {
+    component: DoubleCheckComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  DoubleCheckComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  DoubleCheckComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const DownloadComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5.65325 13.3083L4.46296 14.6411C4.16465 14.9764 4.0002 15.4054 4 15.8492V18.493C4 18.8926 4.16283 19.276 4.45271 19.5586C4.74259 19.8412 5.13578 20 5.54574 20H19.4543C19.8642 20 20.2574 19.8412 20.5473 19.5586C20.8372 19.276 21 18.8926 21 18.493V15.8492C21.0001 15.4053 20.8358 14.9763 20.5373 14.6411L19.347 13.3083M7.98002 9.32613L12.498 13.731L17.0172 9.32613M12.4982 3V13.5083",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Download = {
+    component: DownloadComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  DownloadComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  DownloadComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const DropComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.0025 20.854C12.9383 20.8526 13.8644 20.6637 14.7261 20.2988C15.5879 19.934 16.368 19.4005 17.0203 18.7295C17.6727 18.0585 18.184 17.2638 18.5245 16.3921C18.8649 15.5204 19.0275 14.5893 19.0025 13.6538C18.7385 7.29081 12.0025 3 12.0025 3C9.2862 4.82059 7.12041 7.34943 5.74042 10.314C5.63242 10.5813 5.53447 10.8545 5.44647 11.1338M12.0025 20.8552C11.0667 20.8537 10.1408 20.6645 9.27908 20.2996C8.41738 19.9347 7.63744 19.4012 6.98513 18.7302C6.33282 18.0593 5.82122 17.2645 5.48074 16.3928C5.14026 15.5212 4.97765 14.5905 5.00247 13.655",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Drop = {
+    component: DropComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  DropComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  DropComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const EditComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.30656 14.913L3 20.2908L8.37781 18.9842L19.452 7.90982C19.9909 7.37006 20.2938 6.63862 20.2938 5.87584C20.2938 5.11307 19.9909 4.38139 19.452 3.84164V3.84164C18.9122 3.30266 18.1808 3 17.418 3C16.6552 3 15.9235 3.30266 15.3838 3.84164L4.30656 14.913Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.1781 6.46466L17.3953 8.68184",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3.49881 18.2422L5.04377 19.794",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M10.1871 20.2899H20.2947",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Edit = {
+    component: EditComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  EditComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  EditComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const Edit2Component = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M10.3262 11.1715L9.53613 14.4085L12.7892 13.6226L19.4903 6.95737C19.8167 6.63235 20.0001 6.19174 20.0001 5.73228C20.0001 5.27282 19.8167 4.83221 19.4903 4.50719V4.50719C19.1635 4.18243 18.7206 4 18.2587 4C17.7969 4 17.354 4.18243 17.0272 4.50719L10.3262 11.1715Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16.9046 6.0863L18.2461 7.42078",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18.695 11.4376V18.2221C18.695 18.6937 18.5067 19.1459 18.1715 19.4793C17.8363 19.8128 17.3817 20.0003 16.9076 20.0003H5.78754C5.31349 20.0003 4.85869 19.8128 4.52348 19.4793C4.18828 19.1459 4 18.6937 4 18.2221V6.71447C4 6.36078 4.14121 6.02174 4.39261 5.77164C4.64402 5.52155 4.98506 5.38107 5.3406 5.38107L12.2526 5.33075",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Edit2 = {
+    component: Edit2Component,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  Edit2Component.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  Edit2Component.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ErrorCircleComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M7.78429 12H16.2162",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const ErrorCircle = {
+    component: ErrorCircleComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ErrorCircleComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ErrorCircleComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ExitFullScreenComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M7.92025 21V16.0918H3",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M7.92025 3V7.90819H3",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16.0797 21V16.0918H20.9999",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16.0799 3V7.90819H21.0001",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const ExitFullScreen = {
+    component: ExitFullScreenComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ExitFullScreenComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ExitFullScreenComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ExpandComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14.7854 4.00024H20.0004V9.21516",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14.1409 9.85934L20.0002 4",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.21518 20.0002H4V14.7849",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.8595 14.1407L4.00011 20.0001",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.21535 4.00031H4.00017V9.21522",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.85961 9.85947L4.00021 4.00012",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14.7854 20.0002H20.0004V14.7849",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14.1409 14.1407L20.0002 20.0001",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Expand = {
+    component: ExpandComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ExpandComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ExpandComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const Expand2Component = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.1317 3.00024H20.9987V8.86695",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14.4082 9.59168L20.9999 3",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.86996 21.0001H3.00296V15.1329",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.59173 14.4082L3 20.9999",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Expand2 = {
+    component: Expand2Component,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  Expand2Component.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  Expand2Component.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ExternalLinkComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14.1676 4.00171H20V10.4174M19.9964 14.7V18.6662C19.9964 19.0198 19.856 19.3587 19.606 19.6087C19.356 19.8587 19.0169 19.9994 18.6633 19.9994H5.33315C4.97958 19.9994 4.64044 19.8587 4.39043 19.6087C4.14042 19.3587 4 19.0198 4 18.6662V5.33586C4 4.98229 4.14042 4.64337 4.39043 4.39336C4.64044 4.14335 4.97958 4.00293 5.33315 4.00293H10.1657M11.9987 11.9987L19.9973 4",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const ExternalLink = {
+    component: ExternalLinkComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ExternalLinkComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ExternalLinkComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const EyeComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.8589 11.8552C20.103 13.5947 18.8555 15.0753 17.2695 16.1154C15.6835 17.1555 13.828 17.7097 11.9314 17.7097C10.0348 17.7097 8.17952 17.1555 6.59351 16.1154C5.00749 15.0753 3.75981 13.5947 3.00391 11.8552M12.928 6.0542C12.5959 6.01807 12.262 5.99984 11.928 6C10.0432 6.05179 8.20999 6.62714 6.6333 7.66113C5.05662 8.69513 3.79864 10.147 3 11.855M20.8599 11.8549C19.6781 9.44015 17.6339 7.55638 15.1309 6.57516M14.422 11.8551C14.422 13.2303 13.3071 14.3451 11.932 14.3451C10.5568 14.3451 9.44196 13.2303 9.44196 11.8551C9.44196 10.4799 10.5568 9.36511 11.932 9.36511C13.3071 9.36511 14.422 10.4799 14.422 11.8551Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Eye = {
+    component: EyeComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  EyeComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  EyeComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const EyeOffComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5.15613 14.8959C4.28466 14.0271 3.5569 13.0255 3.00012 11.9281C3.79859 10.2202 5.05618 8.76807 6.63269 7.73407C8.2092 6.70007 10.0425 6.1248 11.9271 6.07294C12.6234 6.07344 13.3171 6.1542 13.995 6.31317M16.543 7.31195C18.3982 8.39918 19.8964 10.0033 20.8549 11.9281C20.0562 13.636 18.7983 15.0881 17.2216 16.1219C15.6449 17.1558 13.8116 17.7305 11.9269 17.7821C10.3067 17.7796 8.71552 17.3522 7.31195 16.5428L3 20.855M16.543 7.31195L20.855 3M16.543 7.31195L13.688 10.1668M10.1671 13.6878C10.397 13.9247 10.6716 14.1137 10.9752 14.2435C11.2787 14.3732 11.605 14.4412 11.9351 14.4437C12.2652 14.4461 12.5926 14.3828 12.898 14.2576C13.2035 14.1324 13.481 13.9481 13.7144 13.7147C13.9478 13.4812 14.1324 13.2037 14.2576 12.8983C14.3828 12.5928 14.4461 12.2655 14.4437 11.9354C14.4412 11.6053 14.3732 11.279 14.2435 10.9754C14.1137 10.6718 13.9249 10.3967 13.688 10.1668M13.688 10.1668L7.31201 16.544",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const EyeOff = {
+    component: EyeOffComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  EyeOffComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  EyeOffComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const FileComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      fillRule,
+      clipRule,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      fillRule: fillRule,
+      clipRule: clipRule,
+      fill: smartColor || fill,
+      d: "M5.86913 3.86269C6.11037 3.63396 6.44561 3.49895 6.80309 3.4989H6.80329L12.3994 3.50043V7.001C12.3994 7.60038 12.6513 8.16594 13.0842 8.5764C13.5157 8.9856 14.093 9.20955 14.6877 9.20955H18.4935V18.3065C18.4935 18.6101 18.3668 18.9098 18.1268 19.1373C17.8855 19.3661 17.5502 19.5011 17.1927 19.5011H6.80329C6.44573 19.5011 6.11042 19.3661 5.86913 19.1373C5.62903 18.9096 5.50217 18.6099 5.50217 18.3065V4.69348C5.50217 4.39012 5.62903 4.09035 5.86913 3.86269ZM19.9935 8.37932V7.72043C19.9935 7.50944 19.9047 7.30822 19.7487 7.1661L14.2957 2.19649C14.1576 2.07064 13.9776 2.00087 13.7907 2.00082L6.8035 1.9989H6.80329C6.07294 1.9989 5.36504 2.27357 4.83706 2.7742C4.30789 3.27594 4.00217 3.96531 4.00217 4.69348V18.3065C4.00217 19.0347 4.30789 19.724 4.83706 20.2258C5.36504 20.7264 6.07294 21.0011 6.80329 21.0011H17.1927C17.923 21.0011 18.6309 20.7264 19.1589 20.2258C19.6882 19.7239 19.9935 19.0344 19.9935 18.3065V8.53978C19.9963 8.51342 19.9978 8.48666 19.9978 8.45955C19.9978 8.43245 19.9963 8.40568 19.9935 8.37932ZM18.1182 7.70955H14.6877C14.4665 7.70955 14.2616 7.62576 14.1162 7.48791C13.9722 7.35132 13.8994 7.17527 13.8994 7.001V3.8648L18.1182 7.70955Z"
+    }));
+  };
+
+  const File = {
+    component: FileComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  FileComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string,
+    fillRule: propTypes$2.exports.string,
+    clipRule: propTypes$2.exports.string
+  };
+  FileComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round",
+    fillRule: "evenodd",
+    clipRule: "evenodd"
+  };
+
+  const FilterComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14 8C15.1046 8 16 7.10457 16 6C16 4.89543 15.1046 4 14 4C12.8954 4 12 4.89543 12 6C12 7.10457 12.8954 8 14 8Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4 6H12",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16 6H20",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8 14C9.10457 14 10 13.1046 10 12C10 10.8954 9.10457 10 8 10C6.89543 10 6 10.8954 6 12C6 13.1046 6.89543 14 8 14Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4 12H6",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M10 12H20",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M17 20C18.1046 20 19 19.1046 19 18C19 16.8954 18.1046 16 17 16C15.8954 16 15 16.8954 15 18C15 19.1046 15.8954 20 17 20Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4 18H15",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M19 18H20",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Filter = {
+    component: FilterComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  FilterComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  FilterComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const FlagComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5 20.856V5.97607C5 5.18679 5.31347 4.42969 5.87158 3.87158C6.42969 3.31347 7.18655 3 7.97583 3H18.614L16.2349 8.01514L18.614 13.0308H8.72388",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Flag = {
+    component: FlagComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  FlagComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  FlagComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const FlameComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M13.4128 3C11.853 3.90947 10.6799 5.35839 10.1147 7.07324C9.54958 8.78809 9.63156 10.6504 10.345 12.3091C8.95144 11.5933 7.84434 10.4222 7.20776 8.99072C7.11976 8.79072 7.04192 8.59086 6.97192 8.38086C5.92442 9.72763 5.26898 11.3378 5.07788 13.0332C5.02827 13.3576 5.00232 13.6851 5 14.0132C5 14.0422 5 14.0711 5 14.0991C5.0221 15.898 5.752 17.6155 7.03174 18.8799C8.31148 20.1443 10.0379 20.8536 11.8369 20.854M11.8409 20.854C13.6406 20.8557 15.3681 20.1472 16.6483 18.8823C17.9285 17.6175 18.6578 15.8987 18.6779 14.0991C18.6779 14.0701 18.6779 14.0422 18.6779 14.0132C18.672 13.6852 18.646 13.358 18.6 13.0332C18.589 12.9392 18.5738 12.846 18.5548 12.751C18.4144 12.0542 18.1318 11.3941 17.7247 10.8115C17.3176 10.2289 16.7948 9.73664 16.1888 9.36523C15.1342 8.71181 14.3036 7.75265 13.807 6.61572C13.3104 5.4788 13.1714 4.21772 13.4088 3",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Flame = {
+    component: FlameComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  FlameComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  FlameComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const FlashComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.353 10.292H11.928V3L3 13.564H11.928V20.856L20.856 10.292H15.356",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Flash = {
+    component: FlashComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  FlashComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  FlashComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const FolderComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3 11.327V6.98401C3 6.45782 3.20898 5.95313 3.58105 5.58105C3.95313 5.20898 4.45794 5 4.98413 5H9.98999C10.5054 5.00017 11.0007 5.20057 11.3711 5.55896L12.5591 6.70996C12.929 7.06847 13.4238 7.26903 13.939 7.26904H18.8721C19.3983 7.26904 19.9028 7.47803 20.2749 7.8501C20.647 8.22217 20.856 8.72686 20.856 9.25305V17.453C20.856 17.9792 20.647 18.4839 20.2749 18.856C19.9028 19.228 19.3983 19.437 18.8721 19.437H4.98511C4.45892 19.437 3.9541 19.228 3.58203 18.856C3.20996 18.4839 3.00098 17.9792 3.00098 17.453V14.067",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Folder = {
+    component: FolderComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  FolderComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  FolderComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ForwardComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8 15.8603L4.75 18.25V5.75L8 8.13971",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M19.25 12L10.75 5.75V18.25L19.25 12Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Forward = {
+    component: ForwardComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ForwardComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ForwardComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const FunnelComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5 3V6.19387C5.00002 6.46603 5.05342 6.73548 5.15697 6.98545C5.26051 7.23542 5.41211 7.46054 5.6023 7.64756L9.59847 11.5744C9.78863 11.7613 9.94025 11.9867 10.0438 12.2365C10.1473 12.4863 10.2007 12.7551 10.2008 13.0271V21L14.7673 19.1097V13.0355C14.7674 12.7623 14.8213 12.4917 14.9257 12.241C15.0301 11.9902 15.1828 11.7644 15.3743 11.5774L19.3939 7.6515C19.5854 7.46444 19.7381 7.23864 19.8423 6.98791C19.9466 6.73718 20.0001 6.46703 20 6.19387V3.00394H8.06146",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Funnel = {
+    component: FunnelComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  FunnelComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  FunnelComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const FullScreenComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3 16.1296V21.0001H7.88364",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3 7.87041V3H7.88364",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M21 16.1296V21.0001H16.1163",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.9999 7.87041V3H16.1163",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const FullScreen = {
+    component: FullScreenComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  FullScreenComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  FullScreenComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const GemComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3.43091 6.82202L2 9.21509L12.116 20.8552C12.146 20.7642 15.0828 9.21631 15.0828 9.21631L13.1219 3.00024M4.79999 4.53223L5.716 3H18.5159L22.2329 9.21631L12.117 20.856M12.4969 9.21606H22.0739M9.41089 9.21606H9.99689",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Gem = {
+    component: GemComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  GemComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  GemComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const GiftComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M19.8478 7.18091H4.15221C3.51586 7.18091 3 7.68827 3 8.31414V10.3447C3 10.9706 3.51586 11.4779 4.15221 11.4779H19.8478C20.4841 11.4779 21 10.9706 21 10.3447V8.31414C21 7.68827 20.4841 7.18091 19.8478 7.18091Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M19.3984 13.8162V18.133C19.3984 18.6547 19.1876 19.1552 18.8126 19.5241C18.4375 19.893 17.9288 20.1 17.3984 20.1H6.60485C6.07442 20.1 5.56576 19.893 5.19069 19.5241C4.81561 19.1552 4.60488 18.6547 4.60488 18.133V11.4779",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12 6.34985C12 5.70014 12.2624 5.07704 12.7295 4.61762C13.1966 4.15821 13.8301 3.90015 14.4907 3.90015V3.90015C15.1513 3.90015 15.7849 4.15821 16.252 4.61762C16.7191 5.07704 16.9817 5.70014 16.9817 6.34985",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12 11.7782V20.1001",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M7.01748 6.34985C7.01748 5.70014 7.27986 5.07704 7.74697 4.61762C8.21409 4.15821 8.84762 3.90015 9.50821 3.90015V3.90015C10.1688 3.90015 10.8023 4.15821 11.2694 4.61762C11.7366 5.07704 11.9989 5.70014 11.9989 6.34985",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Gift = {
+    component: GiftComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  GiftComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  GiftComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const GitlabComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      fillRule,
+      clipRule,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("mask", {
+      id: "path-1-inside-1_717_2965",
+      fill: "white"
+    }, /*#__PURE__*/React__default["default"].createElement("path", {
+      fillRule: fillRule,
+      clipRule: clipRule,
+      d: "M22.6112 8.49003L23.9556 12.6125C23.9601 12.6265 23.9642 12.6406 23.968 12.6548C24.0145 12.8256 24.0103 13.0066 23.9554 13.1757C23.8959 13.359 23.7799 13.5188 23.6239 13.6324L20.4785 15.9112L11.9993 22.0597L11.9937 22.0557L11.9968 22.0597L0.376048 13.6324C0.220079 13.5188 0.104068 13.359 0.0445737 13.1757C-0.0149204 12.9924 -0.0148564 12.795 0.044757 12.6117L1.38982 8.48926L1.39058 8.49023L1.39227 8.48506L4.04757 0.313164C4.07819 0.22194 4.13678 0.142626 4.21504 0.0864302C4.29331 0.0302348 4.38729 0 4.48372 0C4.58014 0 4.67413 0.0302348 4.7524 0.0864302C4.83066 0.142626 4.88925 0.22194 4.91987 0.313164L6.12994 4.03029L7.58286 8.48506H7.58323L7.58301 8.48438H16.4194H16.4198H16.42L19.0786 0.313164C19.1093 0.22194 19.1678 0.142626 19.2461 0.0864302C19.3244 0.0302348 19.4184 0 19.5148 0C19.6112 0 19.7052 0.0302348 19.7835 0.0864302C19.8617 0.142626 19.9203 0.22194 19.9509 0.313164L20.4005 1.69508L22.6107 8.48438H22.6115L22.611 8.48512L22.6123 8.48921H22.6109L22.6112 8.49003Z"
+    })), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M23.9556 12.6125L25.2884 12.184L25.2866 12.1785L23.9556 12.6125ZM22.6112 8.49003L21.2797 8.92247L21.2802 8.92408L22.6112 8.49003ZM23.968 12.6548L22.6161 13.0184L22.617 13.0219L23.968 12.6548ZM23.9554 13.1757L25.287 13.6079L25.287 13.6079L23.9554 13.1757ZM23.6239 13.6324L24.4453 14.7662L24.4482 14.7641L23.6239 13.6324ZM20.4785 15.9112L19.6571 14.7775L19.6566 14.7778L20.4785 15.9112ZM11.9993 22.0597L11.1773 23.1931L11.9992 23.7891L12.8211 23.1931L11.9993 22.0597ZM11.9937 22.0557L12.8157 20.9224L10.8906 22.9178L11.9937 22.0557ZM11.9968 22.0597L11.1749 23.193L13.0999 21.1976L11.9968 22.0597ZM0.376048 13.6324L-0.448219 14.7641L-0.445847 14.7658L0.376048 13.6324ZM0.0445737 13.1757L1.37619 12.7434V12.7434L0.0445737 13.1757ZM0.044757 12.6117L-1.28619 12.1775L-1.28658 12.1787L0.044757 12.6117ZM1.38982 8.48926L2.49308 7.62738L0.874429 5.55543L0.0588775 8.055L1.38982 8.48926ZM1.39058 8.49023L0.287332 9.35211L1.90672 11.425L2.72169 8.92398L1.39058 8.49023ZM1.39227 8.48506L2.72338 8.91881L2.72374 8.9177L1.39227 8.48506ZM4.04757 0.313164L2.7203 -0.13242L2.71609 -0.119473L4.04757 0.313164ZM4.21504 0.0864302L5.03158 1.22365L5.03158 1.22365L4.21504 0.0864302ZM4.7524 0.0864302L5.56894 -1.05079L5.56893 -1.05079L4.7524 0.0864302ZM4.91987 0.313164L6.25116 -0.120224L6.24708 -0.132393L4.91987 0.313164ZM6.12994 4.03029L4.79871 4.46366L4.79895 4.4644L6.12994 4.03029ZM7.58286 8.48506L6.25186 8.91916L6.56689 9.88506H7.58286V8.48506ZM7.58323 8.48506V9.88506H9.51114L8.9145 8.0518L7.58323 8.48506ZM7.58301 8.48438V7.08437H5.6551L6.25174 8.91764L7.58301 8.48438ZM16.42 8.48438V9.88437H17.4367L17.7513 8.91754L16.42 8.48438ZM19.0786 0.313164L17.7514 -0.132431L17.7473 -0.119996L19.0786 0.313164ZM19.2461 0.0864302L20.0626 1.22365L20.0627 1.22364L19.2461 0.0864302ZM19.7835 0.0864302L18.9669 1.22364L19.7835 0.0864302ZM19.9509 0.313164L21.2823 -0.119987L21.2781 -0.132387L19.9509 0.313164ZM20.4005 1.69508L19.0692 2.12821L19.0693 2.12845L20.4005 1.69508ZM22.6107 8.48438L21.2795 8.91775L21.5942 9.88437H22.6107V8.48438ZM22.6115 8.48438L23.714 9.34721L25.485 7.08437H22.6115V8.48438ZM22.611 8.48512L21.5085 7.62229L21.0489 8.20954L21.2798 8.91861L22.611 8.48512ZM22.6123 8.48921V9.88921H24.5405L23.9435 8.05572L22.6123 8.48921ZM22.6109 8.48921V7.08921H20.6843L21.2794 8.92165L22.6109 8.48921ZM25.2866 12.1785L23.9422 8.05598L21.2802 8.92408L22.6246 13.0466L25.2866 12.1785ZM25.32 12.2911C25.3103 12.2552 25.2998 12.2195 25.2884 12.184L22.6228 13.041C22.6203 13.0335 22.6181 13.026 22.6161 13.0184L25.32 12.2911ZM25.287 13.6079C25.426 13.1795 25.4367 12.7207 25.3191 12.2877L22.617 13.0219C22.5922 12.9305 22.5945 12.8338 22.6238 12.7435L25.287 13.6079ZM24.4482 14.7641C24.8424 14.4769 25.1362 14.0724 25.287 13.6079L22.6238 12.7434C22.6556 12.6456 22.7173 12.5608 22.7997 12.5008L24.4482 14.7641ZM21.2998 17.045L24.4453 14.7662L22.8026 12.4987L19.6571 14.7775L21.2998 17.045ZM12.8211 23.1931L21.3003 17.0446L19.6566 14.7778L11.1774 20.9263L12.8211 23.1931ZM11.1718 23.1891L11.1773 23.1931L12.8212 20.9264L12.8157 20.9224L11.1718 23.1891ZM13.0999 21.1976L13.0968 21.1936L10.8906 22.9178L10.8937 22.9218L13.0999 21.1976ZM-0.445847 14.7658L11.1749 23.193L12.8187 20.9263L1.19794 12.4991L-0.445847 14.7658ZM-1.28704 13.6079C-1.13628 14.0723 -0.842491 14.4769 -0.448217 14.7641L1.20031 12.5008C1.28265 12.5608 1.34442 12.6456 1.37619 12.7434L-1.28704 13.6079ZM-1.28658 12.1787C-1.43765 12.6431 -1.43781 13.1433 -1.28704 13.6079L1.37619 12.7434C1.40797 12.8414 1.40794 12.9469 1.37609 13.0448L-1.28658 12.1787ZM0.0588775 8.055L-1.28619 12.1775L1.3757 13.046L2.72077 8.92351L0.0588775 8.055ZM2.49383 7.62835L2.49308 7.62738L0.286574 9.35114L0.287332 9.35211L2.49383 7.62835ZM0.0611548 8.05131L0.0594711 8.05647L2.72169 8.92398L2.72338 8.91881L0.0611548 8.05131ZM2.71609 -0.119473L0.0607915 8.05242L2.72374 8.9177L5.37904 0.745802L2.71609 -0.119473ZM3.3985 -1.05079C3.08201 -0.823543 2.84458 -0.50241 2.72036 -0.132399L5.37477 0.758728C5.3118 0.946291 5.19154 1.10879 5.03158 1.22365L3.3985 -1.05079ZM4.48372 -1.4C4.09456 -1.4 3.71494 -1.27799 3.3985 -1.05079L5.03158 1.22365C4.87167 1.33846 4.68003 1.4 4.48372 1.4V-1.4ZM5.56893 -1.05079C5.25249 -1.278 4.87287 -1.4 4.48372 -1.4V1.4C4.28741 1.4 4.09577 1.33847 3.93586 1.22365L5.56893 -1.05079ZM6.24708 -0.132393C6.12286 -0.502412 5.88542 -0.823544 5.56894 -1.05079L3.93585 1.22365C3.7759 1.1088 3.65563 0.946293 3.59266 0.758722L6.24708 -0.132393ZM7.46118 3.59692L6.25111 -0.120206L3.58863 0.746535L4.79871 4.46366L7.46118 3.59692ZM8.91386 8.05096L7.46094 3.59619L4.79895 4.4644L6.25186 8.91916L8.91386 8.05096ZM7.58323 7.08506H7.58286V9.88506H7.58323V7.08506ZM6.25174 8.91764L6.25196 8.91833L8.9145 8.0518L8.91428 8.05111L6.25174 8.91764ZM16.4194 7.08437H7.58301V9.88437H16.4194V7.08437ZM16.4198 7.08437H16.4194V9.88437H16.4198V7.08437ZM16.42 7.08437H16.4198V9.88437H16.42V7.08437ZM17.7473 -0.119996L15.0887 8.05121L17.7513 8.91754L20.4099 0.746325L17.7473 -0.119996ZM18.4296 -1.05079C18.1131 -0.823541 17.8756 -0.502406 17.7514 -0.132411L20.4058 0.75874C20.3429 0.946287 20.2226 1.10879 20.0626 1.22365L18.4296 -1.05079ZM19.5148 -1.4C19.1256 -1.4 18.746 -1.278 18.4296 -1.05078L20.0627 1.22364C19.9027 1.33847 19.7111 1.4 19.5148 1.4V-1.4ZM20.6 -1.05078C20.2836 -1.278 19.9039 -1.4 19.5148 -1.4V1.4C19.3185 1.4 19.1268 1.33847 18.9669 1.22364L20.6 -1.05078ZM21.2781 -0.132387C21.1539 -0.502414 20.9165 -0.823545 20.6 -1.05078L18.9669 1.22364C18.807 1.1088 18.6867 0.946295 18.6237 0.758715L21.2781 -0.132387ZM21.7318 1.26195L21.2822 -0.119968L18.6196 0.746297L19.0692 2.12821L21.7318 1.26195ZM19.0693 2.12845L21.2795 8.91775L23.942 8.051L21.7318 1.26171L19.0693 2.12845ZM22.6115 7.08437H22.6107V9.88437H22.6115V7.08437ZM23.7135 9.34795L23.714 9.34721L21.509 7.62154L21.5085 7.62229L23.7135 9.34795ZM21.2798 8.91861L21.2811 8.9227L23.9435 8.05572L23.9422 8.05163L21.2798 8.91861ZM22.6123 7.08921H22.6109V9.88921H22.6123V7.08921ZM23.9428 8.05759L23.9425 8.05677L21.2794 8.92165L21.2797 8.92246L23.9428 8.05759Z",
+      fill: smartColor || fill || stroke,
+      mask: "url(#path-1-inside-1_717_2965)"
+    }));
+  };
+
+  const Gitlab = {
+    component: GitlabComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  GitlabComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string,
+    fillRule: propTypes$2.exports.string,
+    clipRule: propTypes$2.exports.string
+  };
+  GitlabComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round",
+    fillRule: "evenodd",
+    clipRule: "evenodd"
+  };
+
+  const _excluded$1 = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin", "fillRule", "clipRule"];
+
+  const GlobeComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      fillRule,
+      clipRule
+    } = _ref;
+        _objectWithoutProperties$b(_ref, _excluded$1);
+
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      fillRule: fillRule,
+      clipRule: clipRule,
+      fill: smartColor || fill,
+      d: "M4.73565 11.1562H7.81049C7.97274 8.82285 8.78426 6.9305 9.58899 5.58928C9.72198 5.36763 9.85504 5.16056 9.98535 4.96855C7.18785 5.76859 5.0761 8.19301 4.73565 11.1562ZM7.8105 12.8438H4.73565C5.0761 15.807 7.1879 18.2315 9.98545 19.0315C9.85512 18.8394 9.72201 18.6323 9.58899 18.4106C8.78427 17.0694 7.97276 15.1771 7.8105 12.8438ZM9.50279 12.8438H14.4972C14.3391 14.7962 13.6548 16.391 12.964 17.5424C12.6195 18.1166 12.2756 18.5764 12 18.91C11.7244 18.5764 11.3805 18.1166 11.036 17.5424C10.3452 16.391 9.66089 14.7962 9.50279 12.8438ZM14.4973 11.1562H9.50278C9.66087 9.20377 10.3452 7.60887 11.036 6.45748C11.3805 5.88327 11.7244 5.42342 12 5.08991C12.2756 5.42342 12.6195 5.88327 12.964 6.45748C13.6548 7.60887 14.3391 9.20377 14.4973 11.1562ZM16.1895 12.8438C16.0273 15.1771 15.2157 17.0694 14.411 18.4106C14.278 18.6323 14.1449 18.8394 14.0145 19.0315C16.8121 18.2315 18.9239 15.807 19.2644 12.8438H16.1895ZM19.2644 11.1562H16.1895C16.0273 8.82285 15.2157 6.9305 14.411 5.58928C14.278 5.36763 14.1449 5.16056 14.0147 4.96854C16.8122 5.76858 18.9239 8.19301 19.2644 11.1562ZM12 3C7.02943 3 3 7.02943 3 12C3 16.9706 7.02943 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02943 16.9706 3 12 3Z"
+    }));
+  };
+
+  const Globe = {
+    component: GlobeComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  GlobeComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string,
+    fillRule: propTypes$2.exports.string,
+    clipRule: propTypes$2.exports.string
+  };
+  GlobeComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round",
+    fillRule: "evenodd",
+    clipRule: "evenodd"
+  };
+
+  const GridComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.35081 3H3V9.35081H9.35081V3Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.35081 14.6492H3V21H9.35081V14.6492Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.35081 3H3V9.35081H9.35081V3Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.35081 14.6492H3V21H9.35081V14.6492Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M21.0002 3H14.6493V9.35081H21.0002V3Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M21.0001 14.6492H14.6493V21H21.0001V14.6492Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M21.0002 3H14.6493V9.35081H21.0002V3Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M21.0001 14.6492H14.6493V21H21.0001V14.6492Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Grid = {
+    component: GridComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  GridComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  GridComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const HeartComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.9136 6.81458C9.4276 2.40958 3.74856 3.56169 3.07156 7.60169C2.33356 12.0097 7.4446 16.7266 11.9136 19.3696C16.3816 16.7266 21.6534 12.0297 20.7544 7.60169C19.9394 3.58769 14.3996 2.40958 11.9136 6.81458Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Heart = {
+    component: HeartComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  HeartComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  HeartComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const HeartFilledComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.9136 6.81458C9.4276 2.40958 3.74856 3.56169 3.07156 7.60169C2.33356 12.0097 7.4446 16.7266 11.9136 19.3696C16.3816 16.7266 21.6534 12.0297 20.7544 7.60169C19.9394 3.58769 14.3996 2.40958 11.9136 6.81458Z",
+      fill: smartColor || fill
+    }));
+  };
+
+  const HeartFilled = {
+    component: HeartFilledComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  HeartFilledComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  HeartFilledComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const HomeComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6.75024 19.2502H17.2502C18.3548 19.2502 19.2502 18.3548 19.2502 17.2502V9.75025L12.0002 4.75024L4.75024 9.75025V17.2502C4.75024 18.3548 5.64568 19.2502 6.75024 19.2502Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.74963 15.7493C9.74963 14.6447 10.6451 13.7493 11.7496 13.7493H12.2496C13.3542 13.7493 14.2496 14.6447 14.2496 15.7493V19.2493H9.74963V15.7493Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Home = {
+    component: HomeComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  HomeComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  HomeComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ImageComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15 8H15.01",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M17 4H7C5.34315 4 4 5.34315 4 7V17C4 18.6569 5.34315 20 7 20H17C18.6569 20 20 18.6569 20 17V7C20 5.34315 18.6569 4 17 4Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4 15L8 11C8.45606 10.5612 8.97339 10.3301 9.5 10.3301C10.0266 10.3301 10.5439 10.5612 11 11L16 16",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14 14L15 13C15.4561 12.5612 15.9734 12.3301 16.5 12.3301C17.0266 12.3301 17.5439 12.5612 18 13L20 15",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Image = {
+    component: ImageComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ImageComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ImageComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const InboxComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3 14.2369V17.3199C3 17.8461 3.20898 18.3507 3.58105 18.7228C3.95313 19.0949 4.45794 19.304 4.98413 19.304H19.3669C19.8931 19.304 20.3979 19.0949 20.77 18.7228C21.1421 18.3507 21.3511 17.8461 21.3511 17.3199V11.1499H15.7571C15.5737 11.9629 15.1192 12.6894 14.4683 13.2098C13.8173 13.7303 13.0085 14.0139 12.175 14.0139C11.3416 14.0139 10.5328 13.7303 9.88184 13.2098C9.23087 12.6894 8.77642 11.9629 8.59302 11.1499H3M12.185 14.212C13.0181 14.2117 13.8263 13.9284 14.4772 13.4083C15.1281 12.8883 15.5829 12.1625 15.767 11.35H21.361L18.4401 4H5.93007L3.00918 11.35H8.60317C8.78746 12.1624 9.24214 12.8881 9.89296 13.4081C10.5438 13.9281 11.3519 14.2115 12.185 14.212Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Inbox = {
+    component: InboxComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  InboxComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  InboxComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const IncreaseComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M19.9999 19H15.9246C15.1723 18.9999 14.4275 18.8515 13.7326 18.5637C13.0377 18.2759 12.4061 17.8543 11.8745 17.3227C11.3428 16.791 10.9212 16.1598 10.6338 15.4653C10.3464 14.7708 10.1988 14.0264 10.1995 13.2749L10.2096 4.00195",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5 9.20708L10.2128 4L15.4255 9.20708",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Increase = {
+    component: IncreaseComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  IncreaseComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  IncreaseComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const Increase2Component = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5 19.887H9.04102C9.78695 19.887 10.5255 19.74 11.2146 19.4543C11.9037 19.1687 12.5297 18.7501 13.0569 18.2224C13.5841 17.6947 14.0024 17.0682 14.2874 16.3789C14.5724 15.6896 14.7187 14.951 14.718 14.2051L14.708 5.00488M19.8789 10.1689L14.71 5L9.54102 10.1689",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Increase2 = {
+    component: Increase2Component,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  Increase2Component.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  Increase2Component.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const InfoOutlineComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      fillRule,
+      clipRule,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.8646 11.0753V15.5834",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.8557 9.43359C12.3506 9.43359 12.7517 9.03242 12.7517 8.53754C12.7517 8.04266 12.3506 7.64148 11.8557 7.64148C11.3608 7.64148 10.9596 8.04266 10.9596 8.53754C10.9596 9.03242 11.3608 9.43359 11.8557 9.43359Z",
+      fill: smartColor || fill
+    }));
+  };
+
+  const InfoOutline = {
+    component: InfoOutlineComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  InfoOutlineComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string,
+    fillRule: propTypes$2.exports.string,
+    clipRule: propTypes$2.exports.string
+  };
+  InfoOutlineComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round",
+    fillRule: "evenodd",
+    clipRule: "evenodd"
+  };
+
+  const JustifyAlignComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3 4H20.359M3 9.11694H20.359M3 14.2349H20.359M3 19.353H20.359",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const JustifyAlign = {
+    component: JustifyAlignComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  JustifyAlignComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  JustifyAlignComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const KeyComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M10.6243 11.6885C11.3516 12.4158 11.8054 13.3717 11.9093 14.395C12.0131 15.4183 11.7607 16.4461 11.1944 17.3047C10.6281 18.1633 9.78285 18.8004 8.80134 19.1079C7.81984 19.4154 6.76216 19.3747 5.8072 18.9927C4.85224 18.6106 4.05847 17.9104 3.55989 17.0107C3.06131 16.1111 2.88841 15.067 3.07063 14.0547C3.25284 13.0424 3.77889 12.1244 4.55989 11.4551C5.34088 10.7858 6.32901 10.4064 7.35725 10.3813M16.9852 9.30322L17.8182 10.1362L20.8541 7.1001L17.7542 4L10.3311 11.4233",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Key = {
+    component: KeyComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  KeyComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  KeyComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const LeftAlignComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3 4H20.359M3 9.11694H18.118M3 14.2349H20.359M3 19.353H15.876",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const LeftAlign = {
+    component: LeftAlignComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  LeftAlignComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  LeftAlignComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const LikeComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      fillRule,
+      clipRule,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6.9917 15.4084V6.94169C6.9917 6.60835 7.0917 6.28335 7.27503 6.00835L9.55003 2.62502C9.90837 2.08335 10.8 1.70002 11.5584 1.98335C12.375 2.25835 12.9167 3.17502 12.7417 3.99169L12.3084 6.71669C12.275 6.96669 12.3417 7.19169 12.4834 7.36669C12.625 7.52502 12.8334 7.62502 13.0584 7.62502H16.4834C17.1417 7.62502 17.7084 7.89169 18.0417 8.35835C18.3584 8.80835 18.4167 9.39169 18.2084 9.98335L16.1584 16.225C15.9 17.2584 14.775 18.1 13.6584 18.1H10.4084C9.85003 18.1 9.0667 17.9084 8.70837 17.55L7.6417 16.725C7.23337 16.4167 6.9917 15.925 6.9917 15.4084Z",
+      fill: smartColor || fill
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.34175 5.31665H3.48341C2.19175 5.31665 1.66675 5.81665 1.66675 7.04998V15.4333C1.66675 16.6667 2.19175 17.1667 3.48341 17.1667H4.34175C5.63341 17.1667 6.15841 16.6667 6.15841 15.4333V7.04998C6.15841 5.81665 5.63341 5.31665 4.34175 5.31665Z",
+      fill: smartColor || fill
+    }));
+  };
+
+  const Like = {
+    component: LikeComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  LikeComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string,
+    fillRule: propTypes$2.exports.string,
+    clipRule: propTypes$2.exports.string
+  };
+  LikeComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round",
+    fillRule: "evenodd",
+    clipRule: "evenodd"
+  };
+
+  const LinkComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.06177 10.6437L4.08691 14.6188C3.39101 15.3147 3 16.2581 3 17.2423C3 18.2265 3.39101 19.1704 4.08691 19.8663C4.78294 20.5617 5.72659 20.9523 6.71045 20.9523C7.69431 20.9523 8.63771 20.5617 9.33374 19.8663L13.3088 15.8917M16.0087 13.1904L19.8649 9.33447C20.5605 8.63857 20.9511 7.69488 20.9511 6.71094C20.9511 5.727 20.5605 4.7833 19.8649 4.0874C19.5204 3.74271 19.1113 3.46927 18.6611 3.28271C18.2108 3.09616 17.7283 3 17.2409 3C16.7536 3 16.271 3.09616 15.8207 3.28271C15.3705 3.46927 14.9614 3.74271 14.6169 4.0874L10.7609 7.94336M9.69086 14.2615L14.2609 9.69153",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Link = {
+    component: LinkComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  LinkComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  LinkComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ListComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.855 3H3V9.3H20.855V3Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.855 14.556H3V20.856H20.855V14.556Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.855 3H3V9.3H20.855V3Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.855 14.556H3V20.856H20.855V14.556Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const List = {
+    component: ListComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ListComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ListComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const List2Component = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9 6H20",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9 12H20",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9 18H20",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5 6V6.01",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5 12V12.01",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5 18V18.01",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const List2 = {
+    component: List2Component,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  List2Component.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  List2Component.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const LocationComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M13.756 11.5189C14.7245 10.5504 14.7245 8.98018 13.756 8.01168C12.7875 7.04318 11.2172 7.04318 10.2487 8.01168C9.28022 8.98018 9.28022 10.5504 10.2487 11.5189C11.2172 12.4874 12.7875 12.4874 13.756 11.5189Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.0023 3C12.9381 3.0014 13.8641 3.19009 14.7259 3.55493C15.5877 3.91978 16.3677 4.45354 17.0201 5.12451C17.6724 5.79549 18.1838 6.59022 18.5242 7.46191C18.8647 8.33361 19.0272 9.26471 19.0023 10.2002C18.7373 16.5632 12.0023 20.853 12.0023 20.853",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5.44626 12.7201C5.53359 12.9994 5.63178 13.2726 5.74045 13.5399C7.12044 16.5045 9.2861 19.0345 12.0024 20.8551",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.0025 3C11.0667 3.0014 10.1406 3.19009 9.27886 3.55493C8.4171 3.91978 7.63701 4.45354 6.98467 5.12451C6.33234 5.79549 5.82071 6.59022 5.48028 7.46191C5.13985 8.33361 4.97754 9.26471 5.0025 10.2002",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Location = {
+    component: LocationComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  LocationComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  LocationComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const Location2Component = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M21 3L14.5 21C14.4561 21.0957 14.3857 21.1769 14.2971 21.2338C14.2084 21.2906 14.1053 21.3209 14 21.3209C13.8947 21.3209 13.7916 21.2906 13.703 21.2338C13.6143 21.1769 13.5439 21.0957 13.5 21L10 14L3 10.5C2.90426 10.4561 2.82313 10.3857 2.76625 10.2971C2.70937 10.2084 2.67913 10.1053 2.67913 10C2.67913 9.89468 2.70937 9.79158 2.76625 9.70295C2.82313 9.61431 2.90426 9.54387 3 9.5L21 3Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Location2 = {
+    component: Location2Component,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  Location2Component.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  Location2Component.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const Location3Component = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.225 16.831V10.386M6.45801 14.698C6.04635 14.9367 5.69874 15.2716 5.44482 15.6741C5.1909 16.0765 5.03823 16.5347 5 17.009C5 19.134 8.23507 20.8562 12.2261 20.8562C16.2171 20.8562 19.4509 19.133 19.4509 17.009C19.4161 16.544 19.2702 16.094 19.0254 15.697C18.7805 15.3001 18.4439 14.9676 18.0439 14.7278C18.0299 14.7178 18.013 14.708 17.999 14.699M15.808 6.583C15.808 8.56184 14.2039 10.166 12.225 10.166C10.2462 10.166 8.64203 8.56184 8.64203 6.583C8.64203 4.60416 10.2462 3 12.225 3C14.2039 3 15.808 4.60416 15.808 6.583Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Location3 = {
+    component: Location3Component,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  Location3Component.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  Location3Component.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const LockComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.0996 8.10577H9.90036C7.19397 8.10577 5 10.3624 5 13.1461V15.9596C5 18.7433 7.19397 20.9999 9.90036 20.9999H15.0996C17.806 20.9999 20 18.7433 20 15.9596V13.1461C20 10.3624 17.806 8.10577 15.0996 8.10577Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.76715 8.1048V6.83882C8.76715 5.82073 9.16049 4.84413 9.8604 4.12423C10.5603 3.40433 11.5095 3 12.4994 3C13.4892 3 14.4384 3.40433 15.1383 4.12423C15.8382 4.84413 16.2313 5.82073 16.2313 6.83882V8.1048",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.4994 12.9849V15.8781",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Lock = {
+    component: LockComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  LockComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  LockComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const LoginComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.9031 20.3669H4.48804C4.09339 20.3669 3.71485 20.2102 3.43579 19.9312C3.15674 19.6521 3 19.2735 3 18.8789V5.48792C3 5.09327 3.15674 4.71485 3.43579 4.43579C3.71485 4.15674 4.09339 4 4.48804 4H11.9031M15.291 17.834L20.9409 12.184L15.291 6.53394M10.27 12.1829H20.702",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Login = {
+    component: LoginComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  LoginComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  LoginComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const Login2Component = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.038 20.3669H19.4531C19.8477 20.3669 20.226 20.2102 20.5051 19.9312C20.7841 19.6521 20.9411 19.2735 20.9411 18.8789V5.48792C20.9411 5.09327 20.7841 4.71485 20.5051 4.43579C20.226 4.15674 19.8477 4 19.4531 4H12.038M8.0199 17.834L13.67 12.184L8.0199 6.53394M3 12.1829H13.432",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Login2 = {
+    component: Login2Component,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  Login2Component.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  Login2Component.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const LogoutComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.0338 20.3669H19.4488C19.8435 20.3669 20.222 20.2102 20.5011 19.9312C20.7801 19.6521 20.9369 19.2735 20.9369 18.8789V5.48792C20.9369 5.09327 20.7801 4.71485 20.5011 4.43579C20.222 4.15674 19.8435 4 19.4488 4H12.0338M8.6499 17.834L3 12.184L8.6499 6.53394M13.6669 12.1829H3.23489",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Logout = {
+    component: LogoutComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  LogoutComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  LogoutComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const Logout2Component = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.9031 20.3669H4.48804C4.09339 20.3669 3.71485 20.2102 3.43579 19.9312C3.15674 19.6521 3 19.2735 3 18.8789V5.48792C3 5.09327 3.15674 4.71485 3.43579 4.43579C3.71485 4.15674 4.09339 4 4.48804 4H11.9031M15.9191 17.833L10.269 12.183L15.9191 6.53296M20.9411 12.1829H10.5091",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Logout2 = {
+    component: Logout2Component,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  Logout2Component.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  Logout2Component.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const MapComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.95215 17.8818V4L3 5.16406V19.0459L8.95215 17.8818ZM8.95215 17.8818L14.9042 19.0459V5.16895L8.95203 4.00488M14.904 19.041V5.16406L20.8561 4V17.8818L14.904 19.041Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Map$1 = {
+    component: MapComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  MapComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  MapComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const MenuComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3 5H20.359M3 18.186H20.359M3 11.592H20.359",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Menu = {
+    component: MenuComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  MenuComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  MenuComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const Menu2Component = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3 5H20.359M3 18.186H11.68M3 11.592H20.359",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Menu2 = {
+    component: Menu2Component,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  Menu2Component.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  Menu2Component.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const Menu3Component = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3 5H20.359M3 18.186H8.786M3 11.593H14.573",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Menu3 = {
+    component: Menu3Component,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  Menu3Component.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  Menu3Component.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const Menu4Component = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3 5H20.359M8.78601 18.186H14.572M5.89203 11.593H17.465",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Menu4 = {
+    component: Menu4Component,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  Menu4Component.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  Menu4Component.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const Menu5Component = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.359 5H3M20.359 18.186H14.573M20.36 11.593H8.78699",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Menu5 = {
+    component: Menu5Component,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  Menu5Component.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  Menu5Component.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const Menu6Component = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.359 11.592H3M8.786 18.186H3M14.573 5H3",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Menu6 = {
+    component: Menu6Component,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  Menu6Component.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  Menu6Component.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const Menu7Component = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.359 11.592H3M14.573 18.186H8.78699M17.466 5H5.89301",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Menu7 = {
+    component: Menu7Component,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  Menu7Component.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  Menu7Component.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const Menu8Component = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.359 11.592H3M8.786 18.186H3M14.573 5H3",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Menu8 = {
+    component: Menu8Component,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  Menu8Component.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  Menu8Component.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const MenuHComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.139 12.5C20.5532 12.5 20.889 12.1642 20.889 11.75C20.889 11.3358 20.5532 11 20.139 11C19.7248 11 19.389 11.3358 19.389 11.75C19.389 12.1642 19.7248 12.5 20.139 12.5Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.444 12.5C12.8582 12.5 13.194 12.1642 13.194 11.75C13.194 11.3358 12.8582 11 12.444 11C12.0298 11 11.694 11.3358 11.694 11.75C11.694 12.1642 12.0298 12.5 12.444 12.5Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.75 12.5C5.16421 12.5 5.5 12.1642 5.5 11.75C5.5 11.3358 5.16421 11 4.75 11C4.33579 11 4 11.3358 4 11.75C4 12.1642 4.33579 12.5 4.75 12.5Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const MenuH = {
+    component: MenuHComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  MenuHComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  MenuHComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const MenuVComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.75 5.5C12.1642 5.5 12.5 5.16421 12.5 4.75C12.5 4.33579 12.1642 4 11.75 4C11.3358 4 11 4.33579 11 4.75C11 5.16421 11.3358 5.5 11.75 5.5Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.75 13.194C12.1642 13.194 12.5 12.8582 12.5 12.444C12.5 12.0298 12.1642 11.694 11.75 11.694C11.3358 11.694 11 12.0298 11 12.444C11 12.8582 11.3358 13.194 11.75 13.194Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.75 20.889C12.1642 20.889 12.5 20.5532 12.5 20.139C12.5 19.7248 12.1642 19.389 11.75 19.389C11.3358 19.389 11 19.7248 11 20.139C11 20.5532 11.3358 20.889 11.75 20.889Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const MenuV = {
+    component: MenuVComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  MenuVComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  MenuVComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const MessageComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6.76923 4H5.00057C4.46996 4 3.96114 4.20663 3.58594 4.5745C3.21074 4.94237 3 5.44149 3 5.96175V14.0622C3 14.5825 3.21074 15.0816 3.58594 15.4494C3.96114 15.8173 4.46996 16.0239 5.00057 16.0239H8.13881C8.66842 16.0246 9.17605 16.231 9.55049 16.5982L11.9999 19L14.4495 16.5982C14.8239 16.231 15.3316 16.0246 15.8612 16.0239H18.9994C19.53 16.0239 20.0389 15.8173 20.4141 15.4494C20.7893 15.0816 21 14.5825 21 14.0622V5.96271C21 5.44246 20.7893 4.94358 20.4141 4.57571C20.0389 4.20783 19.53 4.00097 18.9994 4.00097H9.20557",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16.0598 10.5475C16.1801 10.5475 16.2776 10.4479 16.2776 10.325C16.2776 10.2021 16.1801 10.1025 16.0598 10.1025C15.9395 10.1025 15.842 10.2021 15.842 10.325C15.842 10.4479 15.9395 10.5475 16.0598 10.5475Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.29385 10.5475C8.41415 10.5475 8.51167 10.4479 8.51167 10.325C8.51167 10.2021 8.41415 10.1025 8.29385 10.1025C8.17355 10.1025 8.07603 10.2021 8.07603 10.325C8.07603 10.4479 8.17355 10.5475 8.29385 10.5475Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.1773 10.5475C12.2976 10.5475 12.3951 10.4479 12.3951 10.325C12.3951 10.2021 12.2976 10.1025 12.1773 10.1025C12.057 10.1025 11.9595 10.2021 11.9595 10.325C11.9595 10.4479 12.057 10.5475 12.1773 10.5475Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Message = {
+    component: MessageComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  MessageComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  MessageComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const MicComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18.7729 12.2128C18.7729 13.9065 18.1002 15.5311 16.9026 16.7289C15.705 17.9266 14.0807 18.5997 12.387 18.6C10.693 18.6 9.0684 17.9272 7.87061 16.7294C6.67281 15.5316 6 13.9067 6 12.2128M12.3859 20.855V18.599M12.3859 3C13.8832 3 15.0969 4.21376 15.0969 5.711V12.176C15.0969 13.6732 13.8832 14.887 12.3859 14.887C10.8887 14.887 9.67493 13.6732 9.67493 12.176V5.711C9.67493 4.21376 10.8887 3 12.3859 3Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Mic = {
+    component: MicComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  MicComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  MicComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const MicOffComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.89197 13.9686C10.2551 14.3833 10.7362 14.6778 11.2709 14.8119C11.8056 14.946 12.3685 14.9138 12.8844 14.7196C13.4003 14.5254 13.8448 14.1784 14.1583 13.725C14.4718 13.2716 14.6395 12.7333 14.639 12.182V9.22205M20.855 3.00287L3 20.8579M14.5831 5.32056V5.16773C14.4484 4.5094 14.074 3.92457 13.5325 3.52662C12.9911 3.12866 12.3212 2.94591 11.6527 3.01392C10.9841 3.08193 10.3646 3.39546 9.91437 3.89429C9.46415 4.39313 9.21521 5.04167 9.21588 5.71363V10.5916M18.314 12.2156C18.314 13.9094 17.6412 15.534 16.4436 16.7318C15.246 17.9295 13.6217 18.6026 11.928 18.6028V20.8579M11.9321 18.6019C11.0596 18.6022 10.1962 18.423 9.39594 18.0755C8.59564 17.728 7.87539 17.2196 7.27997 16.5818M5.54102 12.2156C5.54049 12.8001 5.62029 13.3819 5.77808 13.9446",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const MicOff = {
+    component: MicOffComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  MicOffComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  MicOffComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const MoonComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.9347 11.9237C11.13 10.5283 10.804 8.90801 11.0062 7.30993C11.2084 5.71185 11.9279 4.22362 13.0548 3.07263C11.4051 2.86082 9.72906 3.11447 8.21594 3.80505C6.70282 4.49563 5.41299 5.5958 4.49206 6.98083C3.57113 8.36586 3.05572 9.98048 3.00427 11.6429C2.95282 13.3054 3.36729 14.9492 4.2008 16.3885V16.3885C5.03048 17.8301 6.24662 19.011 7.71203 19.7977C9.17745 20.5845 10.8338 20.9456 12.4938 20.8407C14.1537 20.7357 15.7512 20.169 17.1058 19.204C18.4605 18.2389 19.5183 16.9143 20.1598 15.3798C18.5995 15.78 16.9512 15.6585 15.4662 15.0345C13.9812 14.4106 12.7409 13.3182 11.9347 11.9237V11.9237Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Moon = {
+    component: MoonComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  MoonComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  MoonComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const MoveComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.1516 19.0984L12.5 21.75L9.84839 19.0984",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.5 15V21.75",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.84839 4.90163L12.5 2.25L15.1516 4.90163",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.5 9V2.25",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5.40163 14.6516L2.75 12L5.40163 9.34839",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.5 12H2.75",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M19.5984 9.34839L22.25 12L19.5984 14.6516",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.5 12H22.25",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Move = {
+    component: MoveComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  MoveComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  MoveComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const MusicComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16.5269 8.63965L9.02887 10.8247V6.01807L19.386 3V7.80566M19.387 7.80688V15.8169M19.387 15.8169C19.387 17.2059 18.261 18.3319 16.872 18.3319C15.483 18.3319 14.357 17.2059 14.357 15.8169C14.357 14.4279 15.483 13.3019 16.872 13.3019C18.261 13.3019 19.387 14.4279 19.387 15.8169ZM9.03 10.3308V18.3408M9.03 18.3408C9.03 19.7298 7.904 20.8568 6.515 20.8568C5.126 20.8568 4 19.7308 4 18.3418C4 16.9528 5.126 15.8268 6.515 15.8268C7.904 15.8268 9.03 16.9518 9.03 18.3408Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Music = {
+    component: MusicComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  MusicComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  MusicComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const MuteComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6.53394 9.11145H4.48999C4.09473 9.11172 3.71568 9.26887 3.43628 9.54846C3.15688 9.82805 3 10.2074 3 10.6027V12.7028C2.99987 12.8985 3.03822 13.0922 3.11304 13.2731C3.18786 13.454 3.29766 13.6185 3.43604 13.757C3.57441 13.8954 3.73884 14.0053 3.91968 14.0802C4.10052 14.1551 4.29424 14.1935 4.48999 14.1935H6.53394C6.91443 14.1934 7.28046 14.3392 7.55689 14.6007L10.2849 17.1744C10.356 17.2393 10.4444 17.2825 10.5393 17.2985C10.6342 17.3144 10.7317 17.3024 10.8201 17.2643C10.9084 17.2262 10.984 17.1636 11.0376 17.0836C11.0912 17.0037 11.1205 16.9098 11.1221 16.8136V6.49182C11.1205 6.39559 11.0912 6.30177 11.0376 6.2218C10.984 6.14184 10.9084 6.07877 10.8201 6.04065C10.7317 6.00253 10.6342 5.99103 10.5393 6.00696C10.4444 6.02289 10.356 6.06561 10.2849 6.13049L7.55689 8.70471C7.28024 8.96584 6.91435 9.11116 6.53394 9.11145V9.11145Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.8547 8.43848L14.4277 14.8655",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14.4277 8.43848L20.8547 14.8655",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Mute = {
+    component: MuteComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  MuteComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  MuteComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const NetworkComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M19.353 3V20.359M14.235 7.08911V20.3591M9.117 12.7761V20.3591M4 17.1162V20.3592",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Network = {
+    component: NetworkComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  NetworkComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  NetworkComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const NextComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18.6979 3L18.6989 20.359M6.02783 3.64386L17.8069 11.1138C17.9021 11.1743 17.9806 11.2579 18.0349 11.3568C18.0892 11.4556 18.1177 11.5667 18.1177 11.6795C18.1177 11.7923 18.0892 11.9032 18.0349 12.002C17.9806 12.1009 17.9021 12.1844 17.8069 12.2449L6.02783 19.7139C5.92652 19.778 5.80999 19.8136 5.69019 19.8172C5.57038 19.8208 5.45168 19.7922 5.34668 19.7344C5.24168 19.6766 5.15427 19.5918 5.09326 19.4886C5.03225 19.3854 5.00006 19.2679 5 19.148V4.21002C5.00006 4.09016 5.03225 3.97238 5.09326 3.8692C5.15427 3.76603 5.24168 3.68116 5.34668 3.62335C5.45168 3.56554 5.57038 3.53697 5.69019 3.54059C5.80999 3.54421 5.92652 3.57982 6.02783 3.64386Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Next = {
+    component: NextComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  NextComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  NextComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const NotificationBellComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6.96313 5.09998C7.54969 4.44229 8.26798 3.91545 9.07153 3.55365C9.87508 3.19185 10.746 3.0032 11.6272 3C12.4937 3.02102 13.3476 3.21254 14.1401 3.5636C14.9327 3.91466 15.6483 4.41838 16.2461 5.04602C16.8439 5.67366 17.3122 6.4129 17.6243 7.22156C17.9364 8.03022 18.0863 8.89243 18.0652 9.75897V11.859C17.9571 14.32 18.7339 16.7384 20.2551 18.676H3C4.52118 16.7384 5.29828 14.32 5.19019 11.859V9.75897C5.18864 8.88948 5.34829 8.02727 5.66113 7.216M12.7138 18.9397C12.8482 19.1553 12.923 19.4029 12.93 19.6569C12.9371 19.9109 12.8762 20.1622 12.754 20.385C12.6317 20.6077 12.4523 20.7938 12.2343 20.9242C12.0162 21.0547 11.7675 21.1248 11.5134 21.1272C11.2593 21.1296 11.0091 21.0642 10.7886 20.9379C10.5682 20.8115 10.3852 20.6288 10.2588 20.4084C10.1324 20.188 10.0672 19.9377 10.0695 19.6836C10.0718 19.4296 10.1414 19.1807 10.2717 18.9626",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const NotificationBell = {
+    component: NotificationBellComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  NotificationBellComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  NotificationBellComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const PauseComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.25 6.75V17.25",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.75 6.75V17.25",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Pause = {
+    component: PauseComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  PauseComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  PauseComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const PieComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M10.3579 7.14514C8.67163 7.14514 7.05454 7.82236 5.8622 9.02773C4.66986 10.2331 3.99997 11.8681 3.99997 13.5728C3.99997 15.2774 4.66986 16.912 5.8622 18.1174C7.05454 19.3227 8.67163 19.9999 10.3579 19.9999V19.9999C12.0437 19.9987 13.6601 19.3211 14.8522 18.116C16.0443 16.9109 16.7145 15.2771 16.7157 13.5728H10.3579V7.14514Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M13.6424 3.99994V10.432H20.0003C20.0003 8.72691 19.3305 7.09172 18.1383 5.88563C16.9461 4.67953 15.329 4.00114 13.6424 3.99994Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Pie = {
+    component: PieComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  PieComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  PieComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const PinComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.736 5.16016L20.15 9.54004C20.336 9.72516 20.4409 9.97638 20.442 10.2388C20.4431 10.5012 20.3402 10.7532 20.1559 10.9399L18.8829 12.2231C18.6998 12.408 18.4512 12.5132 18.191 12.5166C17.9308 12.52 17.6799 12.4208 17.4921 12.2407L16.1539 10.959L14.901 12.2339C14.5198 12.6215 14.2223 13.0833 14.0272 13.5908C13.8321 14.0983 13.7436 14.6409 13.767 15.1841L13.8199 16.438C13.8316 16.713 13.7859 16.9873 13.6857 17.2437C13.5855 17.5 13.433 17.7326 13.2379 17.9268L11.7169 19.4429L7.35803 15.1182L3.08606 19.418M17.2539 6.667L12.8389 2.28663C12.6523 2.10214 12.4003 1.99907 12.1379 2.00001C11.8756 2.00094 11.6242 2.10618 11.439 2.292L10.166 3.57471C9.98266 3.75933 9.87924 4.00886 9.87793 4.26905C9.87662 4.52924 9.97744 4.77938 10.1589 4.96583L11.4509 6.29395L10.2139 7.55274C9.82802 7.94502 9.36486 8.25273 8.85376 8.45655C8.34266 8.66037 7.79478 8.75594 7.24487 8.73682L6.00098 8.69385C5.7295 8.68427 5.45892 8.73034 5.20605 8.8296C4.95319 8.92885 4.72348 9.07932 4.53101 9.271L3 10.7959L5.20605 12.9839",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Pin = {
+    component: PinComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  PinComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  PinComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const PlayCircleComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M10.1354 11.8261V9.01715L15.0941 11.9972L10.1354 14.9776",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const PlayCircle = {
+    component: PlayCircleComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  PlayCircleComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  PlayCircleComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const PowerComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16.5844 5.01849C17.9661 6.01285 19.0072 7.43129 19.5591 9.07088C20.1111 10.7105 20.1457 12.4875 19.6578 14.1484C19.17 15.8094 18.1847 17.2694 16.8428 18.3199C15.5008 19.3703 13.8708 19.9576 12.1853 19.9978C10.4997 20.038 8.84482 19.5288 7.45704 18.5435C6.06926 17.5581 5.01944 16.1466 4.45744 14.5106C3.89543 12.8747 3.85018 11.0981 4.32779 9.43399C4.80539 7.76986 5.78161 6.30357 7.1171 5.24445",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.0001 10.4775V3",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Power = {
+    component: PowerComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  PowerComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  PowerComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const PreviousComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5.001 3L5 20.359M17.6721 3.64388L5.89304 11.1139C5.79784 11.1743 5.71932 11.2579 5.66501 11.3568C5.6107 11.4556 5.58224 11.5667 5.58224 11.6795C5.58224 11.7923 5.6107 11.9032 5.66501 12.002C5.71932 12.1009 5.79784 12.1845 5.89304 12.245L17.6721 19.7139C17.7734 19.7783 17.89 19.8142 18.01 19.818C18.1299 19.8217 18.2488 19.793 18.354 19.7352C18.4591 19.6773 18.5468 19.5924 18.6079 19.4891C18.6689 19.3858 18.701 19.268 18.7009 19.148V4.21004C18.701 4.09003 18.6689 3.97206 18.6079 3.86874C18.5468 3.76541 18.4591 3.68048 18.354 3.62264C18.2488 3.5648 18.1299 3.53612 18.01 3.53988C17.89 3.54363 17.7734 3.57958 17.6721 3.64388Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Previous = {
+    component: PreviousComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  PreviousComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  PreviousComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const PrintComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.98389 16.6428C4.4577 16.6428 3.95313 16.4338 3.58105 16.0618C3.20898 15.6897 3 15.1851 3 14.6589V9.19702C3 8.93653 3.05116 8.6784 3.15088 8.43774C3.2506 8.19709 3.39681 7.97834 3.58105 7.79419C3.7653 7.61004 3.98391 7.4641 4.22461 7.3645C4.46531 7.26491 4.72339 7.21398 4.98389 7.21411H18.8708C19.1313 7.21398 19.3894 7.26491 19.6301 7.3645C19.8708 7.4641 20.0894 7.61004 20.2737 7.79419C20.4579 7.97834 20.6041 8.19709 20.7039 8.43774C20.8036 8.6784 20.855 8.93653 20.855 9.19702V14.6589C20.855 15.1851 20.6458 15.6897 20.2737 16.0618C19.9016 16.4338 19.397 16.6428 18.8708 16.6428",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6.13379 7.21289V3H17.7219V7.21289",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.03687 11.2341H17.7229V20.4269H6.13477V11.2341",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.61182 14.5939H14.4998",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.61182 16.9589H14.4998",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Print = {
+    component: PrintComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  PrintComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  PrintComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ProfileComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.9987 13.0811C14.5073 13.0811 16.5409 11.0482 16.5409 8.54054C16.5409 6.03287 14.5073 4 11.9987 4C9.49014 4 7.45654 6.03287 7.45654 8.54054C7.45654 11.0482 9.49014 13.0811 11.9987 13.0811Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20 20.0001C19.9997 18.1655 19.2707 16.4062 17.9728 15.109C16.675 13.8118 14.9148 13.083 13.0795 13.083H10.9205C9.08523 13.083 7.32522 13.8118 6.0274 15.109C4.72958 16.4062 4.00025 18.1655 4 20.0001",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Profile = {
+    component: ProfileComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ProfileComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ProfileComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const PulseComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3 14.166H6.56592L9.146 9.58301L11.751 18.1538L15.4351 6L17.7351 14.166H20.856",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Pulse = {
+    component: PulseComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  PulseComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  PulseComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const RefreshComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16.1659 9.68896L19.5099 6.34399L16.1659 3M5 13.1918V9.16694C5 8.79635 5.07302 8.42924 5.21484 8.08686C5.35666 7.74448 5.56437 7.43338 5.82642 7.17134C6.08846 6.90929 6.39956 6.70158 6.74194 6.55976C7.08432 6.41794 7.45143 6.34492 7.82202 6.34492H19.511M8.34502 14.1661L5.00005 17.5111M5.00005 17.5111L8.34502 20.8551M5.00005 17.5111L16.689 17.511C17.4373 17.5107 18.1549 17.2133 18.6839 16.6841C19.2129 16.1549 19.51 15.4372 19.51 14.689V10.6641",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Refresh = {
+    component: RefreshComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  RefreshComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  RefreshComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ReloadComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M19.95 11C19.6971 9.07074 18.7498 7.29978 17.2853 6.01862C15.8209 4.73747 13.9397 4.03395 11.9939 4.03977C10.0482 4.04559 8.17123 4.76034 6.71446 6.05023C5.25769 7.34012 4.32096 9.11672 4.07962 11.0475C3.83828 12.9782 4.30887 14.9307 5.4033 16.5395C6.49774 18.1483 8.14098 19.3031 10.0254 19.7877C11.9099 20.2723 13.9064 20.0534 15.6411 19.1722C17.3759 18.2909 18.73 16.8077 19.45 15M19.95 20V15H14.95",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.1222 10.0612C15.6801 10.0612 16.1324 9.60889 16.1324 9.05097C16.1324 8.49305 15.6801 8.04077 15.1222 8.04077C14.5643 8.04077 14.112 8.49305 14.112 9.05097C14.112 9.60889 14.5643 10.0612 15.1222 10.0612Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Reload = {
+    component: ReloadComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ReloadComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ReloadComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const RightAlignComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3 4H20.359M7.08899 9.11694H20.359M3 14.2349H20.359M11.095 19.353H20.359",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const RightAlign = {
+    component: RightAlignComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  RightAlignComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  RightAlignComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const RocketComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.1521 19.553L12.7842 21.1849L13.5371 20.4319C14.0838 19.8851 14.396 19.1469 14.408 18.3738L14.459 15.1419L17.0161 12.5862C17.9502 12.3734 18.81 11.9137 19.5063 11.2557C20.2027 10.5977 20.71 9.76508 20.9753 8.84454C21.2407 7.924 21.2546 6.94947 21.0154 6.02179C20.7762 5.09411 20.2927 4.24756 19.6152 3.57013C18.9378 2.8927 18.0913 2.40896 17.1636 2.16974C16.2359 1.93052 15.2609 1.94441 14.3403 2.20978C13.4198 2.47515 12.5872 2.98221 11.9292 3.67853C11.2712 4.37485 10.812 5.23517 10.5991 6.16925L8.04199 8.72492L4.81006 8.77618C4.03731 8.78841 3.29973 9.10038 2.75317 9.64679L2 10.4002L3.66699 12.0672M15.5291 7.6521C15.7148 7.83845 15.8537 8.06624 15.9344 8.31665C16.015 8.56706 16.035 8.83333 15.993 9.09302C15.9509 9.3527 15.848 9.59864 15.6924 9.81079C15.5369 10.0229 15.3332 10.195 15.0982 10.3132C14.8689 10.4321 14.6145 10.4944 14.3562 10.4944C14.098 10.4944 13.8433 10.4321 13.614 10.3132C13.3791 10.1949 13.1757 10.0225 13.0203 9.8103C12.8648 9.5981 12.7617 9.3522 12.7198 9.09253C12.6778 8.83285 12.6981 8.56701 12.7788 8.31665C12.8595 8.06629 12.9984 7.83839 13.1841 7.6521C13.2285 7.60799 13.2754 7.56627 13.3242 7.5271M7.16709 13.4182L4.24109 16.3442M9.73309 16.0522L7.45309 18.3322",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Rocket = {
+    component: RocketComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  RocketComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  RocketComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const RotateLeftComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.8872 19.8799V15.8428C20.8872 15.0968 20.7402 14.3583 20.4546 13.6692C20.169 12.9801 19.7503 12.3539 19.2227 11.8267C18.695 11.2994 18.0685 10.8814 17.3792 10.5964C16.6898 10.3114 15.951 10.1651 15.2051 10.1658L6 10.1748M11.1692 5L6 10.1689L11.1692 15.3379",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const RotateLeft = {
+    component: RotateLeftComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  RotateLeftComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  RotateLeftComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const RotateRightComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5 19.8799V15.8428C5 15.0968 5.14695 14.3581 5.43262 13.6689C5.71829 12.9798 6.137 12.3537 6.66479 11.8264C7.19259 11.2992 7.81909 10.8811 8.50854 10.5962C9.198 10.3113 9.93684 10.165 10.6829 10.1658L19.8828 10.1748M14.718 5L19.887 10.1689L14.718 15.3379",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const RotateRight = {
+    component: RotateRightComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  RotateRightComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  RotateRightComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ScrollComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M19.585 20.856H6.47192C5.55109 20.856 4.66797 20.4905 4.01685 19.8394C3.36572 19.1882 3 18.3051 3 17.3843V3.99219C3 3.86192 3.02559 3.73266 3.07544 3.6123C3.12529 3.49195 3.19841 3.38264 3.29053 3.29053C3.38264 3.19841 3.49195 3.12554 3.6123 3.07568C3.73266 3.02583 3.86167 3 3.99194 3H16.0779C16.2082 3 16.3372 3.02583 16.4575 3.07568C16.5779 3.12554 16.6874 3.19841 16.7795 3.29053C16.8717 3.38264 16.9445 3.49195 16.9944 3.6123C17.0442 3.73266 17.0701 3.86192 17.0701 3.99219V15.3989",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M17.0698 11.1082V18.6008C17.0701 19.1988 17.3079 19.7722 17.7307 20.1951C18.1535 20.6179 18.727 20.8559 19.325 20.8562C19.9231 20.8562 20.4966 20.6184 20.9197 20.1956C21.3427 19.7727 21.5805 19.199 21.5808 18.6008V12.1008C21.5808 11.8377 21.4763 11.5857 21.2903 11.3997C21.1042 11.2136 20.852 11.1091 20.5889 11.1091H19.9109",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6.24902 8.0871H8.77302",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6.24902 11.5331H13.421",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6.24902 14.9801H13.547",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Scroll = {
+    component: ScrollComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ScrollComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ScrollComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const SearchComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M19.25 19.25L15.5 15.5L19.25 19.25ZM4.75 11C4.75 7.54822 7.54822 4.75 11 4.75C14.4518 4.75 17.25 7.54822 17.25 11C17.25 14.4518 14.4518 17.25 11 17.25C7.54822 17.25 4.75 14.4518 4.75 11Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Search = {
+    component: SearchComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  SearchComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  SearchComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const SelectItemComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M17.3609 12.0708V18.2217C17.3609 18.6933 17.1737 19.1456 16.8403 19.479C16.5068 19.8125 16.0545 20 15.5829 20H5.77778C5.30626 20 4.85411 19.8125 4.52069 19.479C4.18727 19.1456 4 18.6933 4 18.2217V8.41597C4 7.94437 4.18727 7.49215 4.52069 7.15868C4.85411 6.82521 5.30626 6.6377 5.77778 6.6377H11.9547",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14.7218 6.59932V6.67459C14.7275 7.36916 15.0086 8.03312 15.5035 8.52047C15.9983 9.00783 16.6664 9.27863 17.3609 9.27362V9.27362C18.0554 9.27863 18.7235 9.00783 19.2183 8.52047C19.7132 8.03312 19.9943 7.36916 20 6.67459V6.59932C19.9941 5.90482 19.7129 5.24096 19.2181 4.75365C18.7233 4.26635 18.0553 3.99529 17.3609 4.00007V4.00007C16.6664 3.99506 15.9983 4.26608 15.5035 4.75343C15.0086 5.24079 14.7275 5.90475 14.7218 6.59932V6.59932Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const SelectItem = {
+    component: SelectItemComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  SelectItemComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  SelectItemComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const SendComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M10 14L21 3",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20 4L14.3234 19.7198C14.2851 19.8034 14.2236 19.8742 14.1462 19.9239C14.0688 19.9736 13.9787 20 13.8868 20C13.7948 20 13.7047 19.9736 13.6273 19.9239C13.5499 19.8742 13.4884 19.8034 13.4501 19.7198L10.3935 13.6065L4.28022 10.5499C4.19661 10.5116 4.12576 10.4501 4.07608 10.3727C4.02641 10.2953 4 10.2052 4 10.1132C4 10.0213 4.02641 9.93123 4.07608 9.85383C4.12576 9.77642 4.19661 9.7149 4.28022 9.67659L20 4Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Send = {
+    component: SendComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  SendComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  SendComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const SettingsComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.922 14.8101C13.5137 14.8101 14.804 13.5198 14.804 11.9281C14.804 10.3365 13.5137 9.04614 11.922 9.04614C10.3304 9.04614 9.04004 10.3365 9.04004 11.9281C9.04004 13.5198 10.3304 14.8101 11.922 14.8101Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.8489 13.6101V10.2471H18.1489C18.0052 9.71112 17.7924 9.19615 17.5159 8.71509L19.426 6.80505L17.0481 4.427L15.1379 6.33801C14.6566 6.06076 14.1418 5.84641 13.606 5.70007V3H10.2429V5.70007C9.70703 5.84624 9.19217 6.0606 8.71094 6.33801L6.80103 4.427L4.4231 6.80505L6.33301 8.71509C6.05677 9.19629 5.84395 9.71122 5.69995 10.2471H3V13.6101H5.69995C5.84395 14.146 6.05677 14.6609 6.33301 15.1421L4.4231 17.052L6.80103 19.4301L8.71094 17.519C9.19217 17.7965 9.70703 18.0109 10.2429 18.1571V20.8571H13.606V18.1571C14.1418 18.0108 14.6566 17.7963 15.1379 17.519L17.0481 19.4301L19.426 17.052L17.5159 15.1421C17.7924 14.661 18.0052 14.1461 18.1489 13.6101H20.8489Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Settings = {
+    component: SettingsComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  SettingsComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  SettingsComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ShareComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6 15C7.65685 15 9 13.6569 9 12C9 10.3431 7.65685 9 6 9C4.34315 9 3 10.3431 3 12C3 13.6569 4.34315 15 6 15Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18 9C19.6569 9 21 7.65685 21 6C21 4.34315 19.6569 3 18 3C16.3431 3 15 4.34315 15 6C15 7.65685 16.3431 9 18 9Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18 21C19.6569 21 21 19.6569 21 18C21 16.3431 19.6569 15 18 15C16.3431 15 15 16.3431 15 18C15 19.6569 16.3431 21 18 21Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.7 10.7L15.3 7.29999",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.7 13.3L15.3 16.7",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Share = {
+    component: ShareComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ShareComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ShareComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ShieldComponent$1 = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.45518 4.021L12.13 3L19.2591 5.72021V11.2783C19.2589 13.4292 18.5651 15.5227 17.2809 17.248C15.9966 18.9734 14.1903 20.2384 12.13 20.856C10.0695 20.2386 8.26294 18.9725 6.97852 17.2471C5.6941 15.5217 5.00028 13.4283 5 11.2773V5.71924L6.9751 4.96631",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Shield$1 = {
+    component: ShieldComponent$1,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ShieldComponent$1.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ShieldComponent$1.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const _excluded = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
+
+  const ShieldComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin
+    } = _ref;
+        _objectWithoutProperties$b(_ref, _excluded);
+
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.4601 9.38818L11.3591 13.4892L9.09308 11.4232M9.45518 4.021L12.13 3L19.2601 5.72021V11.2783C19.2598 13.4293 18.566 15.5226 17.2816 17.248C15.9972 18.9735 14.1905 20.2386 12.13 20.856C10.0695 20.2386 8.26294 18.9725 6.97852 17.2471C5.6941 15.5217 5.00028 13.4284 5 11.2774V5.71926L6.97412 4.96633",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Shield = {
+    component: ShieldComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ShieldComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ShieldComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ShieldFlashComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.13 20.855C14.1905 20.2377 15.9971 18.9725 17.2816 17.2471C18.566 15.5217 19.2598 13.4279 19.2601 11.2769V5.71979L12.13 3.00006L9.4549 4.02008",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6.97507 4.96594L4.99997 5.71887V11.277C5.00025 13.428 5.69406 15.5218 6.97849 17.2472C8.26291 18.9726 10.0696 20.2378 12.1301 20.8551",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.1301 7.53906L9.80811 11.0981H14.4519L12.1301 14.9272",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const ShieldFlash = {
+    component: ShieldFlashComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ShieldFlashComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ShieldFlashComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const ShopComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M19.2131 11.7781V18.373C19.2131 18.8992 19.0042 19.4041 18.6321 19.7761C18.26 20.1482 17.7554 20.3572 17.2292 20.3572H6.63916C6.11297 20.3572 5.6084 20.1482 5.23633 19.7761C4.86426 19.4041 4.65527 18.8992 4.65527 18.373V14.1931",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M5.72049 5C5.41129 4.99994 5.10968 5.09618 4.8577 5.27539C4.60573 5.45461 4.4159 5.70789 4.31449 6L3.13163 9.41797C3.01738 9.69213 2.97644 9.99138 3.01298 10.2861C3.04951 10.5809 3.16216 10.8612 3.33988 11.0991C3.5176 11.3371 3.75415 11.5246 4.0264 11.6433C4.29866 11.762 4.5973 11.8078 4.89261 11.7761C5.41002 11.7633 5.91652 11.6248 6.36844 11.3726C6.82037 11.1203 7.20413 10.7618 7.48661 10.3281C7.63221 10.7646 7.91567 11.1419 8.29447 11.4031C8.67327 11.6643 9.12673 11.7952 9.58646 11.7761C9.8051 11.3402 10.1407 10.9737 10.5557 10.7175C10.9707 10.4614 11.4489 10.3257 11.9366 10.3257C12.4242 10.3257 12.9024 10.4614 13.3174 10.7175C13.7324 10.9737 14.068 11.3402 14.2867 11.7761C14.7464 11.7952 15.1998 11.6643 15.5786 11.4031C15.9575 11.1419 16.2409 10.7646 16.3865 10.3281C16.669 10.7618 17.0528 11.1203 17.5047 11.3726C17.9566 11.6248 18.4631 11.7633 18.9805 11.7761C19.2758 11.8078 19.5742 11.762 19.8465 11.6433C20.1187 11.5246 20.3555 11.3371 20.5332 11.0991C20.711 10.8612 20.8236 10.5809 20.8601 10.2861C20.8967 9.99138 20.8557 9.69213 20.7415 9.41797L19.5596 6C19.4582 5.70789 19.2681 5.45461 19.0161 5.27539C18.7642 5.09618 18.4628 4.99994 18.1536 5H5.72049Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14.0823 20.356H9.83936V16.5081C9.83936 15.9728 10.052 15.4595 10.4304 15.0811C10.8089 14.7026 11.322 14.49 11.8572 14.49H12.0632C12.5984 14.49 13.1118 14.7026 13.4902 15.0811C13.8687 15.4595 14.0813 15.9728 14.0813 16.5081L14.0823 20.356Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Shop = {
+    component: ShopComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  ShopComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  ShopComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const SortComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6 9L12 3L18 9M18 15L12 21L6 15",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Sort = {
+    component: SortComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  SortComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  SortComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const Sort2Component = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3 9L7 5M7 5L11 9M7 5V19",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M21 15L17 19M17 19L13 15M17 19V5",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Sort2 = {
+    component: Sort2Component,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  Sort2Component.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  Sort2Component.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const SortAscendingComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4 6H11",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4 12H11",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4 18H13",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15 9L18 6L21 9",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18 6V18",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const SortAscending = {
+    component: SortAscendingComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  SortAscendingComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  SortAscendingComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const SortDescendingComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.5 6H13.5",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.5 12H11.5",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.5 18H11.5",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.5 15L18.5 18L21.5 15",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18.5 6V18",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const SortDescending = {
+    component: SortDescendingComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  SortDescendingComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  SortDescendingComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const SoundComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6.52808 9.71173H4.48804C4.09339 9.71173 3.71485 9.86871 3.43579 10.1478C3.15674 10.4268 3 10.8054 3 11.2V13.2938C3 13.6884 3.15674 14.067 3.43579 14.346C3.71485 14.6251 4.09339 14.7816 4.48804 14.7816H6.52808C6.90774 14.7817 7.273 14.9272 7.54907 15.1878L10.271 17.7576C10.3421 17.8222 10.4304 17.8649 10.5251 17.8807C10.6199 17.8964 10.7172 17.8846 10.8054 17.8465C10.8936 17.8084 10.969 17.7461 11.0225 17.6663C11.076 17.5865 11.1054 17.4928 11.1072 17.3968V7.09698C11.1054 7.00095 11.076 6.90723 11.0225 6.82745C10.969 6.74768 10.8936 6.68487 10.8054 6.64679C10.7172 6.60871 10.6199 6.59686 10.5251 6.61261C10.4304 6.62836 10.3421 6.67109 10.271 6.73566L7.54907 9.30597C7.27311 9.56678 6.90778 9.71181 6.52808 9.71173V9.71173Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.0859 14.6928C15.5295 14.383 15.8918 13.9705 16.1418 13.4907C16.3919 13.0109 16.5225 12.4781 16.5225 11.937C16.5225 11.3959 16.3919 10.8626 16.1418 10.3828C15.8918 9.90298 15.5295 9.49052 15.0859 9.18063",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18.07 6C18.9429 6.72356 19.6454 7.63063 20.1276 8.65674C20.6099 9.68284 20.8598 10.8028 20.8598 11.9365C20.8598 13.0703 20.6099 14.1897 20.1276 15.2158C19.6454 16.2419 18.9429 17.1495 18.07 17.873",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Sound = {
+    component: SoundComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  SoundComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  SoundComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const StackComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16.6129 11.937L11.9659 15.0908L7.26012 11.918",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16.614 11.937L20.874 9.0459L11.908 3L3.00001 9.0459L7.26002 11.9189",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16.614 11.937L20.874 14.8101L11.9661 20.855L3.00001 14.8101L5.04688 13.4199",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Stack = {
+    component: StackComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  StackComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  StackComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const StaffComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.9119 13.118C14.7059 13.118 16.9709 10.853 16.9709 8.059C16.9709 5.26499 14.7059 3 11.9119 3C9.11791 3 6.85292 5.26499 6.85292 8.059C6.85292 10.853 9.11791 13.118 11.9119 13.118Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.8259 20.83C20.8261 19.8176 20.6268 18.8153 20.2395 17.88C19.8522 16.9447 19.2844 16.0948 18.5686 15.3789C17.8528 14.663 17.0031 14.0952 16.0679 13.7078C15.1326 13.3203 14.1302 13.121 13.1179 13.121H10.708C8.66363 13.1212 6.70307 13.9336 5.25757 15.3793C3.81207 16.825 3 18.7856 3 20.83V20.83",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16.4448 17.989H17.1021",
+      stroke: smartColor || stroke,
+      strokeLinecap: strokeLineCap
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.9127 13.5181L9.75397 19.4671L11.9127 13.5181Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.398 13.5181L13.6328 19.4671L11.398 13.5181Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Staff = {
+    component: StaffComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  StaffComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  StaffComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const StarComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.1741 17.5499L17.845 20.5499L16.762 14.2019L21.3499 9.7019L15.01 8.776L12.175 3L9.34009 8.776L3 9.7019L7.58789 14.2019L6.50488 20.5499L12.1741 17.5499Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Star = {
+    component: StarComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  StarComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  StarComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const StopCircleComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.9987 9.28864H14.7103V14.7122H9.28558V9.28864",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const StopCircle = {
+    component: StopCircleComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  StopCircleComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  StopCircleComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const StopwatchComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.412 20.856C16.5055 20.856 19.824 17.5375 19.824 13.444C19.824 9.35045 16.5055 6.03198 12.412 6.03198C8.31847 6.03198 5 9.35045 5 13.444C5 17.5375 8.31847 20.856 12.412 20.856Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.4109 9.26715V13.4439L14.711 15.5108",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9 3H15.378",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12 3V6.032",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Stopwatch = {
+    component: StopwatchComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  StopwatchComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  StopwatchComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const SunComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.928 3V4.994M11.928 18.861V20.855M3 11.927H4.994M18.861 11.927H20.855M18.24 5.61499L16.83 7.02499M7.02501 16.83L5.61501 18.24M5.61501 5.61499L7.02501 7.02499M16.83 16.83L18.24 18.24M15.751 11.928C15.751 14.0394 14.0394 15.751 11.928 15.751C9.81661 15.751 8.105 14.0394 8.105 11.928C8.105 9.8166 9.81661 8.10498 11.928 8.10498C14.0394 8.10498 15.751 9.8166 15.751 11.928Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Sun = {
+    component: SunComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  SunComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  SunComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const SupportComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M14.0361 20.5952C12.6519 20.9429 11.2032 20.9429 9.81904 20.5952V15.4622M14.0361 20.5952C15.625 20.2076 17.0768 19.3909 18.2333 18.2344C19.3898 17.0779 20.2066 15.626 20.5941 14.0371M14.0361 20.5952L14.036 15.4619M14.0361 3.26076C12.6519 2.91308 11.2032 2.91308 9.81904 3.26076M14.0361 3.26076C15.6251 3.64823 17.077 4.46484 18.2335 5.62134C19.39 6.77784 20.2075 8.23011 20.5949 9.81909M14.0361 3.26076V8.39185M9.81904 3.26076C8.23011 3.64833 6.77826 4.46534 5.62178 5.62183C4.46529 6.77831 3.64851 8.23016 3.26094 9.81909M9.81904 3.26076V8.39185M20.5949 9.81909C20.9429 11.2032 20.9429 12.6518 20.5949 14.0359L15.463 14.0361M20.5949 9.81909H15.463C15.8459 10.4557 16.0482 11.1846 16.0482 11.9275C16.0482 12.6704 15.8459 13.3995 15.463 14.0361M3.26094 9.81909C2.91292 11.2032 2.91307 12.6518 3.26108 14.0359H8.3921C8.00951 13.3991 7.80738 12.6704 7.80738 11.9275C7.80738 11.1846 8.00951 10.4559 8.3921 9.81909H3.26094ZM9.82197 20.5933C8.23309 20.2056 6.78117 19.3889 5.62471 18.2324C4.46824 17.076 3.65179 15.624 3.26411 14.0352M14.0361 8.39185C13.3995 8.00873 12.6704 7.8064 11.9274 7.8064C11.1845 7.8064 10.4556 8.00873 9.81904 8.39185M14.0361 8.39185C14.6223 8.74188 15.1126 9.23186 15.463 9.81787M9.81904 8.39185C9.23294 8.74208 8.74274 9.23201 8.3921 9.81787M14.036 15.4619C14.6223 15.1119 15.1126 14.6222 15.463 14.0361M14.036 15.4619C13.3994 15.845 12.6704 16.0476 11.9274 16.0476C11.1845 16.0476 10.4556 15.8453 9.81904 15.4622M9.81904 15.4622C9.23289 15.112 8.74268 14.623 8.3921 14.0371",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Support = {
+    component: SupportComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  SupportComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  SupportComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const TableComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      fillRule,
+      clipRule,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      fillRule: fillRule,
+      clipRule: clipRule,
+      fill: smartColor || fill,
+      d: "M2.25 5.25C2.25 4.83579 2.58579 4.5 3 4.5H21C21.4142 4.5 21.75 4.83579 21.75 5.25V18C21.75 18.3978 21.592 18.7794 21.3107 19.0607C21.0294 19.342 20.6478 19.5 20.25 19.5H3.75C3.35218 19.5 2.97065 19.342 2.68934 19.0607C2.40804 18.7794 2.25 18.3978 2.25 18V5.25ZM3.75 10.5V13.5H7.50001V10.5H3.75ZM3.75 9V6H20.25V9H3.75ZM9.00001 10.5V13.5H20.25V10.5H9.00001ZM20.25 15H9.00001V18H20.25V15ZM7.50001 18V15H3.75V18H7.50001Z"
+    }));
+  };
+
+  const Table = {
+    component: TableComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  TableComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string,
+    fillRule: propTypes$2.exports.string,
+    clipRule: propTypes$2.exports.string
+  };
+  TableComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round",
+    fillRule: "evenodd",
+    clipRule: "evenodd"
+  };
+
+  const TagComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3.73396 15.2779L8.72224 20.2663C9.19206 20.736 9.82939 21 10.4938 21C11.1581 21 11.7952 20.736 12.265 20.2663L19.5595 12.9717C19.8412 12.6897 19.9996 12.3075 20 11.909V4H12.0914C11.6928 4.00009 11.3105 4.15856 11.0287 4.44048L3.73396 11.7351C3.50124 11.9676 3.3166 12.2438 3.19064 12.5477C3.06469 12.8517 3 13.1774 3 13.5064C3 13.8354 3.06469 14.1613 3.19064 14.4653C3.3166 14.7692 3.50124 15.0454 3.73396 15.2779Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.1222 10.0612C15.6801 10.0612 16.1324 9.60889 16.1324 9.05097C16.1324 8.49305 15.6801 8.04077 15.1222 8.04077C14.5643 8.04077 14.112 8.49305 14.112 9.05097C14.112 9.60889 14.5643 10.0612 15.1222 10.0612Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Tag = {
+    component: TagComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  TagComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  TagComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const TextComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.28998 19.0481H13.912M11.601 4V19.048M5 5.53589V4.00024H18.2V5.53589",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Text = {
+    component: TextComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  TextComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  TextComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const TimeComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.928 20.856C16.8588 20.856 20.856 16.8588 20.856 11.928C20.856 6.9972 16.8588 3 11.928 3C6.9972 3 3 6.9972 3 11.928C3 16.8588 6.9972 20.856 11.928 20.856Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.9238 6.89587V11.9271H16.6289",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Time = {
+    component: TimeComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  TimeComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  TimeComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const TransferComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M21 7H3",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18 10L21 7L18 4",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M6 20L3 17L6 14",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3 17H21",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Transfer = {
+    component: TransferComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  TransferComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  TransferComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const TrophyComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.99103 4H15.7371C16.1318 4 16.5103 4.15649 16.7894 4.43555C17.0684 4.7146 17.2252 5.09315 17.2252 5.48779V9.9458C17.2349 11.4514 16.6587 12.9017 15.6185 13.9902C14.5783 15.0788 13.1557 15.7202 11.6512 15.7788C10.1467 15.7202 8.72384 15.0788 7.68365 13.9902C6.64346 12.9017 6.0675 11.4514 6.07721 9.9458V4.84619M15.747 19.9058V19.9542C15.747 20.1929 15.6521 20.4216 15.4833 20.5904C15.3146 20.7592 15.0858 20.8541 14.8471 20.8541H8.44696C8.32877 20.8541 8.21167 20.8304 8.10248 20.7852C7.99329 20.74 7.8943 20.674 7.81073 20.5904C7.72716 20.5068 7.66065 20.4076 7.61542 20.2984C7.57019 20.1892 7.54706 20.0724 7.54706 19.9542V19.9058M11.65 15.779V20.852M20.3 6.46509V11.1941M3 11.1941V6.46509",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Trophy = {
+    component: TrophyComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  TrophyComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  TrophyComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const UnlockComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M15.0996 8.1153H9.90036C7.19397 8.1153 5 10.3703 5 13.1519V15.9633C5 18.745 7.19397 21 9.90036 21H15.0996C17.806 21 20 18.745 20 15.9633V13.1519C20 10.3703 17.806 8.1153 15.0996 8.1153Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8.77323 8.11628L8.73016 8.00266C8.58106 7.5228 8.52535 7.01726 8.56626 6.51529C8.60717 6.01331 8.74402 5.52477 8.96872 5.0771C9.19342 4.62942 9.50154 4.23121 9.87581 3.90599C10.2501 3.58077 10.6831 3.33473 11.15 3.18148C11.8987 2.93598 12.7037 2.93969 13.4503 3.19181C14.197 3.44394 14.8474 3.93167 15.3086 4.58573",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.0953 14.5581H13.9081",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Unlock = {
+    component: UnlockComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  UnlockComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  UnlockComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const UploadComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.69312 10.03L3.47412 8.63C3.16854 8.27784 3.00012 7.82722 3 7.36096V4.58301C3 4.16317 3.16675 3.76049 3.46362 3.46362C3.76049 3.16675 4.16317 3 4.58301 3H18.8281C19.248 3 19.6506 3.16675 19.9475 3.46362C20.2444 3.76049 20.4111 4.16317 20.4111 4.58301V7.36096C20.4111 7.82724 20.2427 8.27789 19.937 8.63L18.718 10.03M7.07599 14.2091L11.7032 9.58105L16.3311 14.2091M11.7041 20.8532V9.81519",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Upload = {
+    component: UploadComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  UploadComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  UploadComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const VerticalArrowsComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8 7L12 3L16 7",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M8 17L12 21L16 17",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12 3V21",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const VerticalArrows = {
+    component: VerticalArrowsComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  VerticalArrowsComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  VerticalArrowsComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const VideoComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.98413 6.00195C4.45794 6.00195 3.95313 6.21094 3.58105 6.58301C3.20898 6.95508 3 7.45965 3 7.98584V16.0068C3 16.533 3.20898 17.0376 3.58105 17.4097C3.95313 17.7817 4.45794 17.9907 4.98413 17.9907H13.0051C13.5313 17.9907 14.0359 17.7817 14.408 17.4097C14.78 17.0376 14.989 16.533 14.989 16.0068V14.2158L19.4121 16.479C19.5633 16.5564 19.7318 16.5933 19.9016 16.5869C20.0714 16.5805 20.2367 16.5305 20.3816 16.4419C20.5265 16.3533 20.6462 16.2292 20.7292 16.0811C20.8123 15.9329 20.856 15.7656 20.856 15.5957V8.396C20.856 8.22611 20.8123 8.05883 20.7292 7.91064C20.6462 7.76246 20.5265 7.63794 20.3816 7.54932C20.2367 7.46069 20.0714 7.41122 19.9016 7.40479C19.7318 7.39835 19.5633 7.43529 19.4121 7.5127L14.989 9.77588V7.98389C14.989 7.4577 14.78 6.95313 14.408 6.58105C14.0359 6.20898 13.5313 6 13.0051 6H7.46313",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Video = {
+    component: VideoComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  VideoComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  VideoComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const VideoOffComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M4.94006 17.3965C5.25995 17.5966 5.63155 17.7027 6.0109 17.702H14.0912C14.6212 17.702 15.1295 17.4954 15.5044 17.1277C15.8792 16.7599 16.0897 16.2611 16.0897 15.741V13.9707L20.5455 16.2073C20.6978 16.2838 20.8676 16.3208 21.0386 16.3144C21.2096 16.3081 21.3761 16.2587 21.5221 16.1711C21.6681 16.0835 21.7886 15.9604 21.8723 15.8139C21.956 15.6674 22.0002 15.5026 22.0002 15.3347V8.21764C22.0001 8.04974 21.956 7.88482 21.8723 7.73838C21.7886 7.59193 21.6681 7.46889 21.5221 7.38122C21.3762 7.29356 21.2098 7.24393 21.0388 7.23739C20.8678 7.23086 20.6979 7.2678 20.5455 7.34406L16.0897 9.58061V7.81029C16.0902 7.45152 15.9899 7.09976 15.7997 6.79337",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.2896 5.85147H6.00666C5.47659 5.85147 4.96804 6.05804 4.59322 6.42581C4.2184 6.79359 4.00787 7.29233 4.00787 7.81244V14.3749",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M18.3066 4L2 20",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const VideoOff = {
+    component: VideoOffComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  VideoOffComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  VideoOffComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const VoucherComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.9998 18H20.5775C20.6895 18 20.797 17.9575 20.8763 17.882C20.9555 17.8065 20.9998 17.7042 20.9998 17.5974V14.35H20.9656C20.6466 14.3502 20.3308 14.2904 20.036 14.1741C19.7413 14.0578 19.4733 13.8874 19.2477 13.6725C19.0221 13.4575 18.8432 13.2021 18.7211 12.9212C18.599 12.6403 18.5362 12.3392 18.5362 12.0351V12.0351C18.5362 11.4208 18.7921 10.8318 19.2477 10.3974C19.7034 9.9631 20.3213 9.71916 20.9656 9.71916H20.9998V6.4026C20.9998 6.29581 20.9555 6.19353 20.8763 6.11801C20.797 6.0425 20.6895 6 20.5775 6H8.78311",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.9987 9.71899H20.9645C20.3204 9.71925 19.7025 9.96344 19.2471 10.3977C18.7918 10.832 18.5359 11.4208 18.5359 12.0349V12.0349C18.5358 12.339 18.5985 12.6403 18.7205 12.9213C18.8425 13.2023 19.0214 13.4575 19.2469 13.6725C19.4724 13.8876 19.7403 14.0582 20.0349 14.1746C20.3296 14.291 20.6455 14.351 20.9645 14.351H20.9987",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M11.9999 18H3.42348C3.36793 18.0001 3.3129 17.9897 3.26154 17.9695C3.21018 17.9493 3.16329 17.9198 3.12396 17.8824C3.08463 17.845 3.05345 17.8004 3.03216 17.7515C3.01087 17.7026 2.99992 17.6503 2.99992 17.5974V14.35H3.03438C3.35337 14.3502 3.66919 14.2904 3.96394 14.1741C4.25869 14.0578 4.52638 13.8874 4.75199 13.6725C4.97759 13.4575 5.15656 13.2021 5.27866 12.9212C5.40077 12.6403 5.46374 12.3392 5.46374 12.0351V12.0351C5.46374 11.4208 5.20784 10.8318 4.75223 10.3974C4.29662 9.9631 3.67871 9.71916 3.03438 9.71916H2.99992V6.4026C3.00019 6.29572 3.04508 6.1935 3.12446 6.11801C3.20383 6.04253 3.31136 6 3.42348 6H5.78417",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M3 9.71899H3.03446C3.67879 9.71899 4.2967 9.96294 4.75231 10.3973C5.20792 10.8316 5.46381 11.4207 5.46381 12.0349V12.0349C5.46381 12.6491 5.20792 13.2384 4.75231 13.6728C4.2967 14.1071 3.67879 14.351 3.03446 14.351H3",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.70652 10.5858H14.2922",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.70652 10.5858H14.2922",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.7065 13.4141H14.2922",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Voucher = {
+    component: VoucherComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  VoucherComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  VoucherComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const WalletComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M20.999 6.26391V5.93689C20.999 5.42317 20.7884 4.93055 20.4135 4.56729C20.0385 4.20404 19.5298 4.00001 18.9995 4.00001H5.42472C5.10625 3.99936 4.79077 4.05957 4.49641 4.17734C4.20206 4.29511 3.93477 4.46807 3.70958 4.68623C3.48438 4.90439 3.30585 5.16357 3.18428 5.44873C3.06272 5.7339 3.00032 6.03953 3.00098 6.34805V6.34805C3.00032 6.65658 3.06272 6.96221 3.18428 7.24737C3.30585 7.53254 3.48438 7.79147 3.70958 8.00963C3.93477 8.2278 4.20206 8.40075 4.49641 8.51852C4.79077 8.6363 5.10625 8.6965 5.42472 8.69586H18.9955C19.5258 8.69586 20.0343 8.90013 20.4093 9.26339C20.7843 9.62664 20.9949 10.1193 20.9949 10.633V17.5472C20.9949 17.9325 20.8369 18.3021 20.5557 18.5745C20.2745 18.847 19.8932 19 19.4955 19H5.99923C5.2038 19 4.44106 18.6937 3.87861 18.1488C3.31616 17.6039 3 16.865 3 16.0944V6.45722C3 5.80549 3.26734 5.18045 3.74304 4.7196C4.21874 4.25876 4.86393 4.00001 5.53667 4.00001H15.2939",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16.831 11.9745H21.0002V15.4462H16.831C16.3558 15.4462 15.9001 15.2633 15.564 14.9378C15.228 14.6123 15.0392 14.1707 15.0392 13.7104V13.7104C15.0392 13.25 15.228 12.8085 15.564 12.4829C15.9001 12.1574 16.3558 11.9745 16.831 11.9745V11.9745Z",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Wallet = {
+    component: WalletComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  WalletComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  WalletComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const WaveComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M9.26312 12.7419V18.7629C9.26312 19.125 9.40679 19.4723 9.66278 19.7283C9.91877 19.9843 10.2661 20.1282 10.6281 20.1282C10.9901 20.1282 11.3372 19.9843 11.5932 19.7283C11.8492 19.4723 11.9931 19.125 11.9931 18.7629L11.993 5.36523C11.993 5.00321 12.1369 4.65589 12.3929 4.3999C12.6489 4.14392 12.996 4 13.358 4C13.72 4 14.0671 4.14392 14.3231 4.3999C14.579 4.65589 14.723 5.00321 14.723 5.36523L14.7229 16.0642C14.7229 16.4262 14.8668 16.7736 15.1228 17.0296C15.3788 17.2855 15.7261 17.429 16.0881 17.429C16.4502 17.429 16.7972 17.2855 17.0532 17.0296C17.3092 16.7736 17.4531 16.4262 17.4531 16.0642V14.3342C17.4636 13.9073 17.6408 13.5015 17.947 13.2039C18.2532 12.9062 18.664 12.7403 19.0911 12.742L20.855 12.7422M9.26208 12.7423V8.86438C9.26208 8.50236 9.11817 8.15504 8.86218 7.89905C8.6062 7.64306 8.25912 7.49915 7.89709 7.49915C7.53507 7.49915 7.18775 7.64306 6.93176 7.89905C6.67578 8.15504 6.5321 8.50236 6.5321 8.86438V11.194C6.5321 11.6045 6.3688 11.9984 6.07849 12.2887C5.78818 12.579 5.39456 12.7423 4.98401 12.7423L3 12.7422",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Wave = {
+    component: WaveComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  WaveComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  WaveComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  const WithdrawComponent = _ref => {
+    let {
+      fill,
+      stroke,
+      smartColor,
+      strokeWidth,
+      strokeLineCap,
+      strokeLineJoin,
+      props
+    } = _ref;
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M12.0001 9.51472V20.4853",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M7 12.75C7.41421 12.75 7.75 12.4142 7.75 12C7.75 11.5858 7.41421 11.25 7 11.25V12.75ZM17 11.25C16.5858 11.25 16.25 11.5858 16.25 12C16.25 12.4142 16.5858 12.75 17 12.75V11.25ZM6 4.75H18V3.25H6V4.75ZM19.25 6V10H20.75V6H19.25ZM4.75 10V6H3.25V10H4.75ZM7 11.25H6V12.75H7V11.25ZM18 11.25H17V12.75H18V11.25ZM3.25 10C3.25 11.5188 4.48122 12.75 6 12.75V11.25C5.30964 11.25 4.75 10.6904 4.75 10H3.25ZM19.25 10C19.25 10.6904 18.6904 11.25 18 11.25V12.75C19.5188 12.75 20.75 11.5188 20.75 10H19.25ZM18 4.75C18.6904 4.75 19.25 5.30964 19.25 6H20.75C20.75 4.48122 19.5188 3.25 18 3.25V4.75ZM6 3.25C4.48122 3.25 3.25 4.48122 3.25 6H4.75C4.75 5.30964 5.30964 4.75 6 4.75V3.25Z",
+      stroke: smartColor || fill
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: "M16.2427 16.2426L12.0001 20.4852L7.75742 16.2426",
+      stroke: smartColor || stroke,
+      strokeWidth: strokeWidth,
+      strokeLinecap: strokeLineCap,
+      strokeLinejoin: strokeLineJoin
+    }));
+  };
+
+  const Withdraw = {
+    component: WithdrawComponent,
+    viewBox: "0 0 24 24",
+    fill: "none"
+  };
+  WithdrawComponent.propTypes = {
+    fill: propTypes$2.exports.string,
+    stroke: propTypes$2.exports.string,
+    strokeWidth: propTypes$2.exports.string,
+    strokeLineCap: propTypes$2.exports.string,
+    strokeLineJoin: propTypes$2.exports.string,
+    smartColor: propTypes$2.exports.string
+  };
+  WithdrawComponent.defaultProps = {
+    stroke: "black",
+    strokeWidth: "1.5",
+    strokeLineCap: "round",
+    strokeLineJoin: "round"
+  };
+
+  exports.AddBookmarkIcon = AddBookmark;
+  exports.AddCircleIcon = AddCircle;
+  exports.AddFileIcon = AddFile;
+  exports.AddIcon = Add;
+  exports.AddItemIcon = AddItem;
+  exports.AddUserIcon = AddUser;
+  exports.AlarmIcon = Alarm;
   exports.Alert = Alert;
-  exports.Avatar = Avatar;
+  exports.AnnounceIcon = Announce;
+  exports.AppsIcon = Apps;
+  exports.ArrowDownIcon = ArrowDown;
+  exports.ArrowDownLeftIcon = ArrowDownLeft;
+  exports.ArrowDownRightIcon = ArrowDownRight;
+  exports.ArrowLeftIcon = ArrowLeft;
+  exports.ArrowRightIcon = ArrowRight;
+  exports.ArrowUpIcon = ArrowUp;
+  exports.ArrowUpLeftIcon = ArrowUpLeft;
+  exports.ArrowUpRightIcon = ArrowUpRight;
+  exports.AttachmentIcon = Attachment;
+  exports.Avatar = Avatar$1;
+  exports.AvatarIcon = Avatar;
+  exports.BackwardIcon = Backward;
   exports.Badge = Badge;
+  exports.BankIcon = Bank;
   exports.Banner = Banner;
+  exports.BarChartIcon = BarChart;
+  exports.BasketIcon = Basket;
+  exports.BendLeftIcon = BendLeft;
+  exports.BendRightIcon = BendRight;
+  exports.BoltIcon = Bolt;
+  exports.BookIcon = Book;
+  exports.BookmarkIcon = Bookmark;
   exports.Box = Box;
+  exports.BriefcaseIcon = Briefcase;
   exports.Button = Button;
+  exports.CalendarIcon = Calendar$1;
+  exports.CameraIcon = Camera;
   exports.Card = Card;
+  exports.CardIcon = Card$1;
   exports.CardInputField = CardInputField;
+  exports.CartIcon = Cart;
+  exports.CashIcon = Cash;
+  exports.CenterAlignIcon = CenterAlign;
+  exports.Certificate2Icon = Certificate2;
+  exports.CertificateIcon = Certificate;
+  exports.ChartIcon = Chart;
+  exports.CheckCircleIcon = CheckCircle;
+  exports.CheckIcon = Check;
   exports.Checkbox = Checkbox;
+  exports.ChevronArrowDownIcon = ChevronArrowDown;
+  exports.ChevronArrowLeftIcon = ChevronArrowLeft;
+  exports.ChevronArrowRightIcon = ChevronArrowRight;
+  exports.ChevronArrowUpIcon = ChevronArrowUp;
+  exports.ChevronFilledDownIcon = ChevronFilledDown;
+  exports.ChevronFilledLeftIcon = ChevronFilledLeft;
+  exports.ChevronFilledRightIcon = ChevronFilledRight;
+  exports.ChevronFilledUpIcon = ChevronFilledUp;
+  exports.CircleIcon = Circle;
+  exports.CloseCircleIcon = CloseCircle;
+  exports.CloseIcon = Close;
+  exports.CloudDownloadIcon = CloudDownload;
+  exports.CloudFlashIcon = CloudFlash;
+  exports.CloudIcon = Cloud;
+  exports.CloudRainIcon = CloudRain;
+  exports.CloudUploadIcon = CloudUpload;
+  exports.CommandIcon = Command;
+  exports.CompanyIcon = Company;
+  exports.CompassIcon = Compass;
+  exports.Compress2Icon = Compress2;
+  exports.CompressIcon = Compress;
+  exports.CopyIcon = Component;
+  exports.CropIcon = Crop;
+  exports.CrownIcon = Crown;
+  exports.CutIcon = Cut;
   exports.DatePicker = DatePickerField;
+  exports.Decrease2Icon = Decrease2;
+  exports.DecreaseIcon = Decrease;
+  exports.DeleteIcon = Delete;
+  exports.DepositsIcon = Deposits;
+  exports.DetailsIcon = Details;
+  exports.DialIcon = Dial;
+  exports.DialOffIcon = DialOff;
+  exports.DisabledIcon = Disabled;
+  exports.DislikeIcon = Dislike;
+  exports.DocumentIcon = Document;
+  exports.DoubleCheckIcon = DoubleCheck;
+  exports.DownloadIcon = Download;
+  exports.DropIcon = Drop;
+  exports.Edit2Icon = Edit2;
+  exports.EditIcon = Edit;
+  exports.ErrorCircleIcon = ErrorCircle;
+  exports.ErrorIcon = Error$1;
+  exports.ExitFullScreenIcon = ExitFullScreen;
+  exports.Expand2Icon = Expand2;
+  exports.ExpandIcon = Expand;
+  exports.ExternalLinkIcon = ExternalLink;
+  exports.EyeIcon = Eye;
+  exports.EyeOffIcon = EyeOff;
+  exports.FileIcon = File;
+  exports.FilterIcon = Filter;
+  exports.FlagIcon = Flag;
+  exports.FlameIcon = Flame;
+  exports.FlashIcon = Flash;
+  exports.FolderIcon = Folder;
   exports.FormikTextField = FormikTextField;
+  exports.ForwardIcon = Forward;
+  exports.FullScreenIcon = FullScreen;
+  exports.FunnelIcon = Funnel;
+  exports.GemIcon = Gem;
+  exports.GiftIcon = Gift;
+  exports.GitlabIcon = Gitlab;
+  exports.GlobeIcon = Globe;
+  exports.GridIcon = Grid;
   exports.Heading = Heading;
+  exports.HeartFilledIcon = HeartFilled;
+  exports.HeartIcon = Heart;
+  exports.HomeIcon = Home;
   exports.HookFormTextField = HookFormTextField;
   exports.Icon = Icon;
+  exports.ImageIcon = Image;
+  exports.InboxIcon = Inbox;
+  exports.Increase2Icon = Increase2;
+  exports.IncreaseIcon = Increase;
+  exports.InfoIcon = Info;
+  exports.InfoOutlineIcon = InfoOutline;
+  exports.JustifyAlignIcon = JustifyAlign;
+  exports.KeyIcon = Key;
+  exports.LeftAlignIcon = LeftAlign;
+  exports.LikeIcon = Like;
+  exports.LinkIcon = Link;
+  exports.List2Icon = List2;
+  exports.ListIcon = List;
+  exports.Location2Icon = Location2;
+  exports.Location3Icon = Location3;
+  exports.LocationIcon = Location;
+  exports.LockIcon = Lock;
+  exports.Login2Icon = Login2;
+  exports.LoginIcon = Login;
+  exports.Logout2Icon = Logout2;
+  exports.LogoutIcon = Logout;
+  exports.MapIcon = Map$1;
+  exports.Menu2Icon = Menu2;
+  exports.Menu3Icon = Menu3;
+  exports.Menu4Icon = Menu4;
+  exports.Menu5Icon = Menu5;
+  exports.Menu6Icon = Menu6;
+  exports.Menu7Icon = Menu7;
+  exports.Menu8Icon = Menu8;
+  exports.MenuHIcon = MenuH;
+  exports.MenuIcon = Menu;
+  exports.MenuVIcon = MenuV;
+  exports.MessageIcon = Message;
+  exports.MicIcon = Mic;
+  exports.MicOffIcon = MicOff;
   exports.Modal = Modal;
+  exports.MoonIcon = Moon;
+  exports.MoveIcon = Move;
+  exports.MusicIcon = Music;
+  exports.MuteIcon = Mute;
+  exports.NetworkIcon = Network;
+  exports.NextIcon = Next;
+  exports.NotificationBellIcon = NotificationBell;
   exports.Pagination = Pagination;
+  exports.PauseIcon = Pause;
   exports.PhoneField = PhoneField;
+  exports.PieIcon = Pie;
+  exports.PinIcon = Pin;
+  exports.PlayCircleIcon = PlayCircle;
+  exports.PowerIcon = Power;
+  exports.PreviousIcon = Previous;
+  exports.PrintIcon = Print;
+  exports.ProfileIcon = Profile;
+  exports.PulseIcon = Pulse;
   exports.Radio = Radio;
+  exports.RefreshIcon = Refresh;
+  exports.ReloadIcon = Reload;
+  exports.RightAlignIcon = RightAlign;
+  exports.RocketIcon = Rocket;
+  exports.RotateLeftIcon = RotateLeft;
+  exports.RotateRightIcon = RotateRight;
+  exports.ScanCardIcon = ScanCard;
+  exports.ScrollIcon = Scroll;
+  exports.SearchIcon = Search;
   exports.SelectField = SelectField;
+  exports.SelectItemIcon = SelectItem;
+  exports.SendIcon = Send;
+  exports.SettingsIcon = Settings;
+  exports.ShareIcon = Share;
+  exports.ShieldCheckIcon = Shield;
+  exports.ShieldFlashIcon = ShieldFlash;
+  exports.ShieldIcon = Shield$1;
+  exports.ShopIcon = Shop;
+  exports.Sort2Icon = Sort2;
+  exports.SortAscendingIcon = SortAscending;
+  exports.SortDescendingIcon = SortDescending;
+  exports.SortIcon = Sort;
+  exports.SoundIcon = Sound;
+  exports.StackIcon = Stack;
+  exports.StaffIcon = Staff;
+  exports.StarIcon = Star;
+  exports.StopCircleIcon = StopCircle;
+  exports.StopwatchIcon = Stopwatch;
+  exports.SunIcon = Sun;
+  exports.SupportIcon = Support;
   exports.Switch = Switch;
   exports.Tab = Tab;
-  exports.Table = Table;
+  exports.Table = Table$1;
+  exports.TableIcon = Table;
+  exports.TagIcon = Tag;
   exports.TagInput = TagInput;
-  exports.Text = Text;
+  exports.Text = Text$1;
   exports.TextArea = TextArea;
   exports.TextField = TextField;
+  exports.TextIconIcon = Text;
+  exports.TimeIcon = Time;
   exports.Toast = Toast;
+  exports.TransferIcon = Transfer;
+  exports.TrophyIcon = Trophy;
+  exports.UnlockIcon = Unlock;
+  exports.UploadIcon = Upload;
+  exports.VerticalArrowsIcon = VerticalArrows;
+  exports.VideoIcon = Video;
+  exports.VideoOffIcon = VideoOff;
+  exports.VoucherIcon = Voucher;
+  exports.WalletIcon = Wallet;
+  exports.WarningIcon = Warning;
+  exports.WaveIcon = Wave;
+  exports.WithdrawIcon = Withdraw;
+  exports.getTextColor = getTextColor;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
