@@ -9,9 +9,9 @@
       <change beforePath="$PROJECT_DIR$/dist/index.es.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.es.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/index.umd.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.umd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/colorManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/colorManager.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,7 +251,10 @@
       <workItem from="1659999852571" duration="7771000" />
       <workItem from="1662115399662" duration="2820000" />
       <workItem from="1662128902268" duration="1046000" />
-      <workItem from="1662137816154" duration="277000" />
+      <workItem from="1662137816154" duration="354000" />
+      <workItem from="1662390777121" duration="164000" />
+      <workItem from="1662391208756" duration="692000" />
+      <workItem from="1662457630794" duration="524000" />
     </task>
     <servers />
   </component>

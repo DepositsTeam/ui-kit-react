@@ -27,6 +27,7 @@ import TextField, {
 } from "./components/text-field";
 import Toast from "./components/toast";
 // import icons from "./components/icons";
+import { getTextColor } from "./utils/colorManager";
 
 import AddIcon from "./components/icons/Add";
 import AddBookmarkIcon from "./components/icons/AddBookmark";
@@ -463,4 +464,5 @@ export {
   TextArea,
   TextField,
   Toast,
+  getTextColor,
 };
