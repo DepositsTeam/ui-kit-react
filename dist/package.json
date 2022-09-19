@@ -1,10 +1,10 @@
 {
   "name": "@deposits/ui-kit-react",
   "version": "0.0.8",
-  "description": "A reusable suite of React components to make your development experience stellar. Inspired by the ui at Deposits.com - the future of Fintech",
+  "description": "A reusable suite of React components to make your development experience stellar. Inspired by the ui at Deposits - the future of Fintech",
   "keywords": [
     "deposits",
-    "deposits.com",
+    "deposits.inc",
     "ui",
     "ui kit",
     "design library",

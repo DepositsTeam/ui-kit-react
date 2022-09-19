@@ -265,14 +265,14 @@ CyanStatusGray.args = {
 export const ImageAvatar = Template.bind({});
 ImageAvatar.args = {
   avatar: {
-    imgURL: "https://assets.deposits.com/img/ui-kit-demo/avatar/lady1.png",
+    imgURL: "https://assets.deposits.inc/img/ui-kit-demo/avatar/lady1.png",
   },
 };
 
 export const ImageAvatarStatus = Template.bind({});
 ImageAvatarStatus.args = {
   avatar: {
-    imgURL: "https://assets.deposits.com/img/ui-kit-demo/avatar/lady1.png",
+    imgURL: "https://assets.deposits.inc/img/ui-kit-demo/avatar/lady1.png",
     status: "green",
   },
 };
