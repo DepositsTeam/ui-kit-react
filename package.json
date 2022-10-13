@@ -104,6 +104,7 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-svg-import": "^1.6.0",
     "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.55.0",
     "terser": "^5.14.2",
     "web-vitals": "^1.0.1"
   }
