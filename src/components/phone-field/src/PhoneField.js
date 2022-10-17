@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useRef } from "react";
-import "../../../styles/textfield.css";
+import "../../../styles/textfield.scss";
 import "./PhoneField.css";
 import Box from "../../box";
 import Text from "../../text";

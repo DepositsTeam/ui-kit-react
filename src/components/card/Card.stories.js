@@ -1,92 +1,89 @@
 import React from "react";
 import Card from "./Card";
+import Text from "../text";
 
 export default { title: "Card", component: Card };
 
+const Template = ({ children, ...args }) => <Card {...args}> {children} </Card>;
 
-const Template = ({ children, ...args }) => (
-    <Card {...args} > {children} </Card>
-)
+const text =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu ac consectetur mauris in ipsum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu ac tr yi ng sth consectetur mauris in ipsum.";
 
-const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu ac consectetur mauris in ipsum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu ac tr yi ng sth consectetur mauris in ipsum.'
-
-export const Default = Template.bind({})
+export const Default = Template.bind({});
 Default.args = {
-    children: text
-}
+  title: "Login to your account",
+  subtitle:
+    "Welcome back, provide your login details below to access your dashboard.",
+};
 
-export const Icon = Template.bind({})
+export const Icon = Template.bind({});
 Icon.args = {
-    children: text,
-    icon: true,
-}
-Icon.storyName = "Icon"
+  children: text,
+  icon: true,
+};
+Icon.storyName = "Icon";
 
-export const Radio = Template.bind({})
+export const Radio = Template.bind({});
 Radio.args = {
-    children: text,
-    radio: true,
-}
-Radio.storyName = "Radio"
+  children: text,
+  radio: true,
+};
+Radio.storyName = "Radio";
 
-export const CheckBox = Template.bind({})
+export const CheckBox = Template.bind({});
 CheckBox.args = {
-    children: text,
-    checkbox: true,
-}
-CheckBox.storyName = "Checkbox"
+  children: text,
+  checkbox: true,
+};
+CheckBox.storyName = "Checkbox";
 
-export const RadioIcon = Template.bind({})
+export const RadioIcon = Template.bind({});
 RadioIcon.args = {
-    children: text,
-    radio: true,
-    icon: true
-}
-RadioIcon.storyName = "Radio & Icon"
+  children: text,
+  radio: true,
+  icon: true,
+};
+RadioIcon.storyName = "Radio & Icon";
 
-export const CheckIcon = Template.bind({})
+export const CheckIcon = Template.bind({});
 CheckIcon.args = {
-    children: text,
-    checkbox: true,
-    icon: true
-}
-CheckIcon.storyName = "Checkbox & Icon"
+  children: text,
+  checkbox: true,
+  icon: true,
+};
+CheckIcon.storyName = "Checkbox & Icon";
 
+export const NoDesc = Template.bind({});
+NoDesc.storyName = "No Description";
 
-
-export const NoDesc = Template.bind({})
-NoDesc.storyName = "No Description"
-
-
-
-export const NoDescIcon = Template.bind({})
+export const NoDescIcon = Template.bind({});
 NoDescIcon.args = {
-    icon: true,
-}
-NoDescIcon.storyName = "Icon - No description"
+  icon: true,
+};
+NoDescIcon.storyName = "Icon - No description";
 
-export const NoDescRadio = Template.bind({})
+export const NoDescRadio = Template.bind({});
 NoDescRadio.args = {
-    radio: true,
-}
-NoDescRadio.storyName = "Radio - No description"
+  radio: true,
+};
+NoDescRadio.storyName = "Radio - No description";
 
-export const NoDescCheckBox = Template.bind({})
+export const NoDescCheckBox = Template.bind({});
 NoDescCheckBox.args = {
-    checkbox: true,
-}
-NoDescCheckBox.storyName = "Checkbox - No description"
+  checkbox: true,
+};
+NoDescCheckBox.storyName = "Checkbox - No description";
 
-export const NoDescRadioIcon = Template.bind({})
+export const NoDescRadioIcon = Template.bind({});
 NoDescRadioIcon.args = {
-    radio: true,
-    icon: true
-}
-NoDescRadioIcon.storyName = "Radio & Icon - No description"
+  radio: true,
+  icon: true,
+};
+NoDescRadioIcon.storyName = "Radio & Icon - No description";
 
-export const NoDescCheckIcon = Template.bind({})
+export const NoDescCheckIcon = Template.bind({});
 NoDescCheckIcon.args = {
-    checkbox: true,
-    icon: true
-}
-NoDescCheckIcon.storyName = "Checkbox & Icon - No description"
+  checkbox: true,
+  icon: true,
+};
+NoDescCheckIcon.storyName = "Checkbox & Icon - No description";

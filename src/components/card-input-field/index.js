@@ -1,1 +1,1 @@
-export { default } from "./src/CardInputField";
+export { default } from "./CardInputField";

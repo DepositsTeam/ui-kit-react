@@ -11,6 +11,7 @@ import CardIcon from "../icons/Card";
 
 const Card = ({
   title,
+  subtitle,
   desc,
   children,
   radio,
@@ -46,47 +47,59 @@ const Card = ({
     className
   );
   return (
-    <Box
-      is={radio || checkbox ? "label" : "div"}
-      className={generatedClassName}
-    >
-      {(radio && (
-        <Radio
-          is={"input"}
-          className={"ui-radio ui-card__form-selector"}
-          type={"radio"}
-          onClick={(e) => {
-            setSelected(() => e.target.checked);
-          }}
-          {...props}
-        />
-      )) ||
-        (checkbox && (
-          <Checkbox
+    <Box className={"ui-card__wrapper"}>
+      {header}
+      <Box
+        is={radio || checkbox ? "label" : "div"}
+        className={generatedClassName}
+      >
+        {(radio && (
+          <Radio
             is={"input"}
-            className={"ui-checkbox ui-card__form-selector"}
-            type={"checkbox"}
+            className={"ui-radio ui-card__form-selector"}
+            type={"radio"}
             onClick={(e) => {
               setSelected(() => e.target.checked);
             }}
             {...props}
           />
-        ))}
+        )) ||
+          (checkbox && (
+            <Checkbox
+              is={"input"}
+              className={"ui-checkbox ui-card__form-selector"}
+              type={"checkbox"}
+              onClick={(e) => {
+                setSelected(() => e.target.checked);
+              }}
+              {...props}
+            />
+          ))}
 
-      <div className="ui-card__content">
-        <div className="ui-card__title">{title}</div>
-        {(desc || children) && (
-          <div className="ui-card__card-text">{desc || children}</div>
-        )}
-      </div>
+        <div className="ui-card__content">
+          <div
+            className={`ui-card__title ${classNames({
+              centered_title: !radio && !checkbox,
+            })}`}
+          >
+            {title}
+          </div>
+          <div className={"ui-card__subtitle"}>{subtitle}</div>
+          {(desc || children) && (
+            <div className="ui-card__card-text">{desc || children}</div>
+          )}
+        </div>
 
-      {icon && <Icon className={"ui-card__icon"} icon={CardIcon} />}
+        {icon && <Icon className={"ui-card__icon"} icon={CardIcon} />}
+      </Box>
+      {footer}
     </Box>
   );
 };
 
 Card.propTypes = {
   title: PropTypes.string,
+  subtitle: PropTypes.string,
   icon: PropTypes.bool,
   isSelected: PropType.bool,
   radio: PropType.bool,
@@ -103,7 +116,6 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  title: "Title",
   icon: false,
   isSelected: false,
   radio: false,

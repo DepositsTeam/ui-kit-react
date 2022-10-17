@@ -1,13 +1,13 @@
-import React, { useState, useRef } from "react";
-import "./CardInput.css";
-import Box from "../../box";
-import Text from "../../text";
+import React, { useState, useRef, useEffect } from "react";
+import "./CardInput.scss";
+import Box from "../box";
+import Text from "../text";
 import PropTypes from "prop-types";
-import Icon from "../../icon";
-import CardIcon from "../../icons/Card";
-import ScanCardIcon from "../../icons/ScanCard";
-import Error from "../../icons/Error";
-import classNames from "../../../utils/classNames";
+import Icon from "../icon";
+import CardIcon from "../icons/Card";
+import ScanCardIcon from "../icons/ScanCard";
+import Error from "../icons/Error";
+import classNames from "../../utils/classNames";
 import CardBrands, { BRAND_ALIAS } from "./card-brands";
 
 const CardInputField = ({
@@ -19,6 +19,10 @@ const CardInputField = ({
   errorMessage,
   inputClassName,
   className,
+  initialCardExp,
+  initialCardNo,
+  initialCardCvv,
+  onChange,
   ...props
 }) => {
   const [selectedCard, setSelectedCard] = useState(-1);
@@ -33,6 +37,26 @@ const CardInputField = ({
   const cardNoInput = useRef();
   const cardCVCInput = useRef();
   const cardExpInput = useRef();
+
+  useEffect(() => {
+    if (initialCardNo) {
+      handleCardNoInput(initialCardNo);
+    }
+    if (initialCardExp) {
+      handleCardExpInput(initialCardExp);
+    }
+    if (initialCardCvv) {
+      handleCardCvvInput(initialCardCvv);
+    }
+  }, []);
+
+  useEffect(() => {
+    onChange({
+      cardNo,
+      cardExp,
+      cardCVV,
+    });
+  }, [cardNo, cardExp, cardCVV]);
 
   const handleCardNoFocus = () => {
     pseudoInput.current.classList.add("focus");
@@ -138,8 +162,18 @@ const CardInputField = ({
     }
   };
 
+  const handleCardCvvInput = (e) => {
+    const value = typeof e === "object" ? e.target.value : e;
+    setCardCVV(value);
+    onChange({
+      cardNo,
+      cardExp,
+      cardCVV,
+    });
+  };
+
   const handleCardNoInput = (e) => {
-    const value = e.target.value.replace(/\s/g, "");
+    const value = typeof e === "object" ? e.target.value.replace(/\s/g, "") : e;
     function parse(type) {
       switch (type) {
         case BRAND_ALIAS.AMEX:
@@ -209,14 +243,21 @@ const CardInputField = ({
         setCardNo(parse(null));
         setCardNoDisplay(parse(null));
     }
+    onChange({
+      cardNo,
+      cardExp,
+      cardCVV,
+    });
   };
 
   const handleCardExpInput = (e) => {
-    setCardExp(e.target.value);
-    const value = e.target.value;
+    const value = typeof e === "object" ? e.target.value : e;
+    setCardExp(value);
     if (value.length === 2) {
       if (value > 12 || !isFinite(value)) {
-        e.preventDefault();
+        if (typeof e === "object") {
+          e.preventDefault();
+        }
         return;
       } else {
         setCardExp(`${value}/`);
@@ -225,14 +266,18 @@ const CardInputField = ({
     }
     if (value.length === 3) {
       if (value.charAt(2) !== "/" || value.substring(0, 2) > 12) {
-        e.preventDefault();
+        if (typeof e === "object") {
+          e.preventDefault();
+        }
         setCardExp(e.target.value.substring(0, 2));
         return;
       }
     }
     if (value.length === 1 && value === "/") setCardExp("");
     if (value.length === 5) {
-      e.preventDefault();
+      if (typeof e === "object") {
+        e.preventDefault();
+      }
       cardCVCInput.current.focus();
       return;
     }
@@ -249,7 +294,10 @@ const CardInputField = ({
   );
 
   const wrapperClasses = classNames(
-    [`size__${size}`, "ui-card-input-field__wrapper"],
+    [
+      `size__${size}`,
+      "ui-text-field__wrapper heroNew ui-card-input-field__wrapper",
+    ],
     className
   );
 
@@ -315,7 +363,7 @@ const CardInputField = ({
                 onKeyPress={allowOnlyNumbers}
                 value={cardCVV}
                 ref={cardCVCInput}
-                onChange={(e) => setCardCVV(e.target.value)}
+                onChange={handleCardCvvInput}
               />
               <Icon
                 icon={ScanCardIcon}

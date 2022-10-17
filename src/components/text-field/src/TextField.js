@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../styles/textfield.css";
+import "../../../styles/textfield.scss";
 import Box from "../../box";
 import Text from "../../text";
 import PropTypes from "prop-types";
