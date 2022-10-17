@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "../src/Button";
-import Search from "../../icons/Search";
+import Button from "./Button";
+import Search from "../icons/Search";
 
 export default {
   title: "Button",

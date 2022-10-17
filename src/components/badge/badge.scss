@@ -1,0 +1,97 @@
+.ui-badge {
+  display: inline-flex;
+  border-radius: 900000000px;
+  padding: 2px 8px;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  &.smartColor {
+    background: var(--smart-color);
+    color: var(--smart-text-color);
+  }
+}
+
+.ui-badge__text {
+  margin: 0;
+}
+
+.ui-badge {
+  &.sizeCustom {
+    padding: 2px 8px;
+    height: var(--size);
+  }
+  &:not(.sizeCustom) {
+    &.size__small {
+      padding: 2px 8px;
+    }
+
+    &.size__medium,
+    &.size__large {
+      padding: 4px 8px;
+    }
+
+    &.size__huge {
+      height: 30px;
+      min-width: 60px;
+      padding: 7px 14px;
+    }
+  }
+
+  &:not(.smartColor) {
+    &.color-scheme__neutral {
+      background: #8895a7;
+    }
+
+    &.color-scheme__green {
+      background: #00b058;
+    }
+
+    &.color-scheme__red {
+      background: #d62f4b;
+    }
+
+    &.color-scheme__yellow {
+      background: #ff9505;
+    }
+
+    &.color-scheme__cyan {
+      background: #0c9ccc;
+    }
+
+    &.color-scheme__blue {
+      background: #0d7fe9;
+    }
+
+    &.subtle {
+      &.color-scheme__neutral {
+        color: #212934;
+        background: #e1e7ec;
+      }
+
+      &.color-scheme__green {
+        color: #158957;
+        background: #c4efdf;
+      }
+
+      &.color-scheme__red {
+        color: #842432;
+        background: #fcc5ce;
+      }
+
+      &.color-scheme__yellow {
+        color: #e08304;
+        background: #fff0db;
+      }
+
+      &.color-scheme__cyan {
+        color: #0b87b0;
+        background: #bdf3fc;
+      }
+
+      &.color-scheme__blue {
+        color: #0059ac;
+        background: #ddefff;
+      }
+    }
+  }
+}

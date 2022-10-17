@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Box from "../../box";
-import "./badge.css";
-import classNames from "../../../utils/classNames";
-import Text from "../../text";
+import Box from "../box";
+import "./badge.scss";
+import classNames from "../../utils/classNames";
+import Text from "../text";
+import { getTextColor } from "../../utils/colorManager";
 
 const Badge = ({
   children,
@@ -11,6 +12,8 @@ const Badge = ({
   className,
   subtle,
   size,
+  customSize,
+  smartColor,
   ...props
 }) => {
   const generatedClassName = classNames(
@@ -19,16 +22,25 @@ const Badge = ({
       subtle,
       [`size__${size}`]: true,
       "ui-badge": true,
+      sizeCustom: customSize,
+      smartColor,
     },
     className
   );
 
+  const cssVars = {
+    "--size": typeof customSize === "number" ? `${customSize}px` : customSize,
+    "--smart-color": smartColor,
+    "--smart-text-color": getTextColor(smartColor),
+  };
+
   return (
-    <Box className={generatedClassName}>
+    <Box className={generatedClassName} style={cssVars}>
       <Text
         equalLineHeight
         className={"ui-badge__text"}
         scale={size === "large" ? "footnote" : "overline"}
+        fontSize={size === "huge" ? "12px" : null}
       >
         {children}
       </Text>
@@ -48,7 +60,9 @@ Badge.propTypes = {
     "blue",
   ]).isRequired,
   subtle: PropTypes.bool,
-  size: PropTypes.oneOf(["small", "medium", "large"]).isRequired,
+  size: PropTypes.oneOf(["small", "medium", "large", "huge"]).isRequired,
+  customSize: PropTypes.string,
+  smartColor: PropTypes.string,
 };
 
 Badge.defaultProps = {

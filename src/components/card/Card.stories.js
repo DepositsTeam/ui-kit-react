@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../src/Card";
+import Card from "./Card";
 
 export default { title: "Card", component: Card };
 

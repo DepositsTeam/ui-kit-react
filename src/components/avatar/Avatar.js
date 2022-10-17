@@ -1,13 +1,13 @@
 import React from "react";
-import "./avatar.css";
-import Box from "../../box";
-import classNames from "../../../utils/classNames";
-import getInitials from "../utils/getInitials";
+import "./avatar.scss";
+import Box from "../box";
+import classNames from "../../utils/classNames";
+import getInitials from "./utils/getInitials";
 import PropTypes from "prop-types";
-import Text from "../../text";
-import Icon from "../../icon";
-import ChevronFilledDown from "../../icons/ChevronFilledDown";
-import keyGen from "../../../utils/keyGen";
+import Text from "../text";
+import Icon from "../icon";
+import ChevronFilledDown from "../icons/ChevronFilledDown";
+import keyGen from "../../utils/keyGen";
 
 const colorSchemes = ["cyan", "green", "orange", "red", "gray", "blue"];
 

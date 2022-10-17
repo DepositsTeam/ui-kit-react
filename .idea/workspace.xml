@@ -5,10 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/utils/convertObjToVars.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/default-theme.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/alert/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/alert/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/alert/src/Alert.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/alert/Alert.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/alert/src/alert.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/alert/alert.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/alert/stories/Alert.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/alert/Alert.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/avatar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/avatar/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/avatar/src/Avatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/avatar/Avatar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/avatar/src/avatar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/avatar/avatar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/avatar/stories/Avatar.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/avatar/Avatar.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/badge/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/badge/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/badge/src/Badge.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/badge/Badge.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/badge/src/badge.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/badge/badge.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/badge/stories/Badge.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/badge/Badge.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/banner/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/banner/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/banner/src/Banner.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/banner/Banner.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/banner/src/Banner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/banner/Banner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/banner/stories/Banner.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/banner/Banner.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/box/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/box/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/box/src/Box.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/box/Box.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/box/src/box.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/box/box.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/button/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/button/src/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/Button.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/button/src/button.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/button.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/button/stories/Button.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/Button.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/card/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/card/src/Card.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card/Card.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/card/src/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card/Card.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/card/stories/Card.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card/Card.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/colorManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/colorManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storybook-static/0.e5489f12ab94aa497491.manager.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/storybook-static/0.e5489f12ab94aa497491.manager.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storybook-static/51.72e8b645.iframe.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/storybook-static/51.72e8b645.iframe.bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,8 +71,8 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="road-to-v1" />
-                    <option name="lastUsedInstant" value="1665674175" />
+                    <option name="branchName" value="unstable" />
+                    <option name="lastUsedInstant" value="1666027649" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -69,7 +101,7 @@
     <setting file="file://$PROJECT_DIR$/package.back.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/package.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/rollup.config.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/box/src/Box.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/box/Box.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/icons/Add.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/icons/AddCircle.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/icons/AddFile.js" root0="FORCE_HIGHLIGHTING" />
@@ -204,11 +236,11 @@
       <recent name="$PROJECT_DIR$/src/components/icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/accordion" />
-      <recent name="$PROJECT_DIR$/src/components/accordion/src" />
-      <recent name="$PROJECT_DIR$/src/components/tab/stories" />
-      <recent name="$PROJECT_DIR$/src/components/tab" />
-      <recent name="$PROJECT_DIR$/src/components/tab/src" />
+      <recent name="$PROJECT_DIR$/src/components/card" />
+      <recent name="$PROJECT_DIR$/src/components/button" />
+      <recent name="$PROJECT_DIR$/src/components/box" />
+      <recent name="$PROJECT_DIR$/src/components/banner" />
+      <recent name="$PROJECT_DIR$/src/components/badge" />
     </key>
   </component>
   <component name="RunManager" selected="npm.storybook">
@@ -277,7 +309,8 @@
       <workItem from="1665436084494" duration="279000" />
       <workItem from="1665672665495" duration="1287000" />
       <workItem from="1665677513026" duration="1306000" />
-      <workItem from="1665689113539" duration="345000" />
+      <workItem from="1665689113539" duration="1299000" />
+      <workItem from="1665929877668" duration="22573000" />
     </task>
     <servers />
   </component>

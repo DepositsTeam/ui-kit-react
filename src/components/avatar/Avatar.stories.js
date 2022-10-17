@@ -1,5 +1,5 @@
 import React from "react";
-import Avatar from "../src/Avatar";
+import Avatar from "./Avatar";
 
 export default {
   title: "Avatar",
@@ -39,8 +39,7 @@ SubtleLargeAvatars.args = {
     {
       status: "green",
       name: "Charles Babbage",
-      imgURL:
-          "https://scontent-los2-1.xx.fbcdn.net/v/t39.30808-6/242107088_4173627519426881_5983806533700593233_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=fCYdyTSZ2O0AX-cL--J&_nc_ht=scontent-los2-1.xx&oh=00_AT_B0QyvGgFgYNygC16ovQYHLjLMfcpLc_gY6k_xS_rrvA&oe=61F72E6C",
+      imgURL: "https://assets.deposits.inc/img/ui-kit-demo/avatar/lady1.png",
     },
   ],
 };
@@ -77,8 +76,7 @@ SubtleMediumAvatars.args = {
     {
       status: "green",
       name: "Charles Babbage",
-      imgURL:
-          "https://scontent-los2-1.xx.fbcdn.net/v/t39.30808-6/242107088_4173627519426881_5983806533700593233_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=fCYdyTSZ2O0AX-cL--J&_nc_ht=scontent-los2-1.xx&oh=00_AT_B0QyvGgFgYNygC16ovQYHLjLMfcpLc_gY6k_xS_rrvA&oe=61F72E6C",
+      imgURL: "https://assets.deposits.inc/img/ui-kit-demo/avatar/lady1.png",
     },
   ],
 };
@@ -115,8 +113,7 @@ SubtleSmallAvatars.args = {
     {
       status: "green",
       name: "Charles Babbage",
-      imgURL:
-          "https://scontent-los2-1.xx.fbcdn.net/v/t39.30808-6/242107088_4173627519426881_5983806533700593233_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=fCYdyTSZ2O0AX-cL--J&_nc_ht=scontent-los2-1.xx&oh=00_AT_B0QyvGgFgYNygC16ovQYHLjLMfcpLc_gY6k_xS_rrvA&oe=61F72E6C",
+      imgURL: "https://assets.deposits.inc/img/ui-kit-demo/avatar/lady1.png",
     },
   ],
 };
@@ -276,5 +273,3 @@ ImageAvatarStatus.args = {
     status: "green",
   },
 };
-
-

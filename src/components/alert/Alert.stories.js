@@ -1,9 +1,14 @@
 import React from "react";
-import Alert from "../src/Alert";
+import Alert from "./Alert";
 
 export default {
   title: "Alert",
   component: Alert,
+  argTypes: {
+    message: {
+      control: { type: "text", default: "This is a simple message" },
+    },
+  },
 };
 
 const Template = ({ children, ...args }) => <Alert {...args} />;

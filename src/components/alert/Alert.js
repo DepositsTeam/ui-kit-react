@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import Box from "../../box";
-import "./alert.css";
+import Box from "../box";
+import "./alert.scss";
 import PropTypes from "prop-types";
-import Text from "../../text";
-import classNames from "../../../utils/classNames";
-import Button from "../../button";
-import Icon from "../../icon";
-import Check from "../../icons/Check";
-import Error from "../../icons/Error";
-import Warning from "../../icons/Warning";
-import Info from "../../icons/Info";
-import Close from "../../icons/Close";
-import Heading from "../../heading";
+import Text from "../text";
+import classNames from "../../utils/classNames";
+import Button from "../button";
+import Icon from "../icon";
+import Check from "../icons/Check";
+import Error from "../icons/Error";
+import Warning from "../icons/Warning";
+import Info from "../icons/Info";
+import Close from "../icons/Close";
+import Heading from "../heading";
 
 const Alert = ({
   message,
@@ -23,6 +23,10 @@ const Alert = ({
   onAction,
   className,
   closable,
+  bordered,
+  smartColor,
+  iconColor,
+  icon,
   ...props
 }) => {
   const [showAlert, setShowAlert] = useState(true);
@@ -32,9 +36,15 @@ const Alert = ({
       [`color-scheme__${colorScheme}`]: true,
       "ui-alert": true,
       "is-toast": closable,
+      smartColor: smartColor,
+      iconColor: iconColor,
     },
     className
   );
+  const smartColors = {
+    "--smart-color": smartColor,
+    "--icon-color": iconColor,
+  };
 
   const schemeIcons = {
     info: Info,
@@ -48,14 +58,13 @@ const Alert = ({
   };
 
   return showAlert ? (
-    <Box className={generateAlertClassName} {...props}>
+    <Box className={generateAlertClassName} {...props} style={smartColors}>
       <div className={"ui-alert__content-wrapper"}>
         <div className={"ui-alert__content"}>
           {colorScheme !== "default" && (
             <Icon
               className={"ui-alert__header-icon"}
-              icon={schemeIcons[colorScheme]}
-              smartcolor={"currentcolor"}
+              icon={icon ? icon : schemeIcons[colorScheme]}
             />
           )}
           <div className={"ui-alert__text"}>
@@ -106,6 +115,10 @@ Alert.propTypes = {
   button: PropTypes.object,
   action: PropTypes.func,
   closable: PropTypes.bool,
+  bordered: PropTypes.bool,
+  smartColor: PropTypes.string,
+  iconColor: PropTypes.string,
+  icon: PropTypes.object,
 };
 
 Alert.defaultProps = {
