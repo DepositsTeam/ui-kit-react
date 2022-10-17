@@ -1,8 +1,8 @@
 import React from "react";
-import Box from "../../box";
+import Box from "../box";
 import PropTypes from "prop-types";
-import classNames from "../../../utils/classNames";
-import keyGen from "../../../utils/keyGen";
+import classNames from "../../utils/classNames";
+import keyGen from "../../utils/keyGen";
 import "./color.css";
 
 const Color = ({ colorName, colorCode, textColor, colors }) => {

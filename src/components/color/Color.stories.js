@@ -1,4 +1,4 @@
-import Color from "../src/Color";
+import Color from "./Color";
 
 export default {
 	title: "Color",
