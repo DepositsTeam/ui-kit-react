@@ -5,23 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/scss/_variables.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/card-input-field/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card-input-field/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/card-input-field/src/CardInput.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card-input-field/CardInput.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/card-input-field/src/CardInputField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card-input-field/CardInputField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/card-input-field/src/card-brands.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card-input-field/card-brands.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/card-input-field/stories/CardInput.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card-input-field/CardInput.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/card/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card/Card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/card/Card.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card/Card.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/card/Card.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card/Card.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/phone-field/src/PhoneField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/phone-field/src/PhoneField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/select-field/src/SelectField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select-field/src/SelectField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/src/FormikTextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/src/FormikTextField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/src/HookFormTextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/src/HookFormTextField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/src/TextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/src/TextField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/textfield.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/textfield.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/checkbox/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/checkbox/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/checkbox/src/Checkbox.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/checkbox/Checkbox.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/checkbox/src/Checkbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/checkbox/Checkbox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/checkbox/stories/Checkbox.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/checkbox/Checkbox.stories.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,23 +176,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.laravel-idea.search-composer-json": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "list.type.of.created.stylesheet": "SCSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "prettierjs.PrettierConfiguration.Package": "/Users/ericmcwinner/Documents/Projects/Work/React/deposits-react-ui-kit/node_modules/prettier",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.laravel-idea.search-composer-json&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/ericmcwinner/Documents/Projects/Work/React/deposits-react-ui-kit/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MTConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -217,11 +206,11 @@
       <recent name="$PROJECT_DIR$/src/components/icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/checkbox" />
       <recent name="$PROJECT_DIR$/src/components/card-input-field" />
       <recent name="$PROJECT_DIR$/src/components/card" />
       <recent name="$PROJECT_DIR$/src/components/button" />
       <recent name="$PROJECT_DIR$/src/components/box" />
-      <recent name="$PROJECT_DIR$/src/components/banner" />
     </key>
   </component>
   <component name="RunManager" selected="npm.storybook">
@@ -293,7 +282,8 @@
       <workItem from="1665689113539" duration="1299000" />
       <workItem from="1665929877668" duration="26723000" />
       <workItem from="1666038028477" duration="2725000" />
-      <workItem from="1666042762768" duration="4779000" />
+      <workItem from="1666042762768" duration="5462000" />
+      <workItem from="1666048440015" duration="913000" />
     </task>
     <servers />
   </component>

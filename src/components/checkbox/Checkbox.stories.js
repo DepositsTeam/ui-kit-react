@@ -1,8 +1,8 @@
 import React from "react";
-import Checkbox from "../src/Checkbox";
+import Checkbox from "./Checkbox";
 
 export default {
-  title: "Checkbox",
+  title: "Forms/Checkbox",
   component: Checkbox,
 };
 
@@ -17,4 +17,10 @@ export const Dashed = Template.bind({});
 Dashed.args = {
   label: "I agree to the terms and conditions",
   dashed: true,
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  label: "Disabled checkbox",
+  disabled: true,
 };
