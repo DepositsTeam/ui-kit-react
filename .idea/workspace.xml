@@ -5,22 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/counter/Counter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/counter/Counter.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/counter/Counter.stories.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/counter/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/checkbox/Checkbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/checkbox/Checkbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/checkbox/Checkbox.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/checkbox/Checkbox.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/color/Color.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/color/Color.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/color/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/color/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/phone-field/src/PhoneField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/phone-field/src/PhoneField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/select-field/src/SelectField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select-field/src/SelectField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/src/FormikTextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/src/FormikTextField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/src/HookFormTextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/src/HookFormTextField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/src/TextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/src/TextField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/default-theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/default-theme.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/date-picker/DatePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/date-picker/DatePicker.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +19,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="SCSS File" />
         <option value="JavaScript File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -216,11 +201,11 @@
       <recent name="$PROJECT_DIR$/src/components/icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/text" />
+      <recent name="$PROJECT_DIR$/src/components/date-picker" />
       <recent name="$PROJECT_DIR$/src/components/color" />
       <recent name="$PROJECT_DIR$/src/components/checkbox" />
       <recent name="$PROJECT_DIR$/src/components/card-input-field" />
-      <recent name="$PROJECT_DIR$/src/components/card" />
-      <recent name="$PROJECT_DIR$/src/components/button" />
     </key>
   </component>
   <component name="RunManager" selected="npm.storybook">
@@ -294,7 +279,7 @@
       <workItem from="1666038028477" duration="2725000" />
       <workItem from="1666042762768" duration="5462000" />
       <workItem from="1666048440015" duration="3046000" />
-      <workItem from="1666051922688" duration="2599000" />
+      <workItem from="1666051922688" duration="5706000" />
     </task>
     <servers />
   </component>

@@ -1,10 +1,19 @@
 import React from "react";
-import "./text.css";
-import Box from "../../box";
+import "./text.scss";
+import Box from "../box";
 import PropTypes from "prop-types";
-import classNames from "../../../utils/classNames";
+import classNames from "../../utils/classNames";
 
-const Text = ({ className, scale, uppercase, equalLineHeight, ...props }) => {
+const Text = ({
+  className,
+  scale,
+  uppercase,
+  equalLineHeight,
+  fontWeight,
+  fontSize,
+  lineHeight,
+  ...props
+}) => {
   const is = props.is ?? "p";
   const generatedClass = classNames(
     {
@@ -12,6 +21,9 @@ const Text = ({ className, scale, uppercase, equalLineHeight, ...props }) => {
       uppercase,
       "equal-line-height": equalLineHeight,
       "ui-text": true,
+      customFontWeight: fontWeight,
+      customFontSize: fontSize,
+      customLineHeight: lineHeight,
     },
     className
   );
@@ -23,7 +35,10 @@ const Text = ({ className, scale, uppercase, equalLineHeight, ...props }) => {
 };
 
 Text.propTypes = {
-  is: PropTypes.oneOf(["p", "span", "small", "sub", "sup"]),
+  is: PropTypes.oneOfType([
+    PropTypes.oneOf(["p", "span", "small", "sub", "sup", "subhead", "a"]),
+    PropTypes.elementType,
+  ]),
   scale: PropTypes.oneOf([
     "body",
     "subhead",
@@ -35,6 +50,9 @@ Text.propTypes = {
   ]),
   uppercase: PropTypes.bool,
   equalLineHeight: PropTypes.bool,
+  fontWeight: PropTypes.string,
+  fontSize: PropTypes.string,
+  lineHeight: PropTypes.string,
 };
 
 Text.defaultProps = {

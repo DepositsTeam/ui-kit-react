@@ -88,7 +88,7 @@ const Button = ({
 Button.propTypes = {
   is: PropTypes.oneOfType([
     PropTypes.oneOf(["button", "a", "span", "div"]),
-    PropTypes.object,
+    PropTypes.elementType,
   ]),
   colorScheme: PropTypes.oneOf([
     "primary",

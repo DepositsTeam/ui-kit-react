@@ -1,5 +1,5 @@
 import React from "react";
-import Text from "../src/Text";
+import Text from "./Text";
 
 export default {
   title: "Text",

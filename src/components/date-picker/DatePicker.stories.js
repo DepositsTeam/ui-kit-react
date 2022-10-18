@@ -1,9 +1,9 @@
 import React from "react";
-import DatePicker from "../src/DatePicker";
-import Search from "../../icons/Search";
+import DatePicker from "./DatePicker";
+import Search from "../icons/Search";
 
 export default {
-  title: "Date Picker",
+  title: "Forms/Date Picker",
   component: DatePicker,
 };
 
@@ -51,7 +51,6 @@ LeftIconAndDropDown.args = {
   leftIcon: Search,
 };
 
-
 export const SizeMassive = Template.bind({});
 SizeMassive.args = {
   placeholder: "Input placeholder",
@@ -79,30 +78,29 @@ SizeXLarge.args = {
   size: "xlarge",
 };
 
-export const SizeLarge = Template.bind({})
+export const SizeLarge = Template.bind({});
 SizeLarge.args = {
   placeholder: "Input placeholder",
   label: "DatePicker Title",
   dropDown: true,
   leftIcon: Search,
   size: "large",
-}
+};
 
-export const SizeMedium = Template.bind({})
+export const SizeMedium = Template.bind({});
 SizeMedium.args = {
   placeholder: "Input placeholder",
   label: "DatePicker Title",
   dropDown: true,
   leftIcon: Search,
   size: "medium",
-}
+};
 
-export const SizeSmall = Template.bind({})
+export const SizeSmall = Template.bind({});
 SizeSmall.args = {
   placeholder: "Input placeholder",
   label: "DatePicker Title",
   dropDown: true,
   leftIcon: Search,
   size: "small",
-}
-
+};

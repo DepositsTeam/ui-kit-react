@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "prop-types": "^15.8.1",
-    "react-date-picker": "^8.4.0",
+    "react-datepicker": "^4.8.0",
     "react-transition-group": "^4.4.2",
     "tinycolor2": "^1.4.2",
     "ui-box": "^5.1.0"
