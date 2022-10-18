@@ -9,23 +9,19 @@ const Checkbox = ({
   label,
   alignToTop,
   dashed,
-  className,
   disabled,
   labelClass,
   wrapperClass,
   labelComponent,
   ...props
 }) => {
-  const checkboxClassName = classNames(
-    {
-      "ui-checkbox__wrapper": true,
-      alignToTop,
-      dashed,
-      disabled,
-      [wrapperClass]: wrapperClass,
-    },
-    className
-  );
+  const checkboxClassName = classNames({
+    "ui-checkbox__wrapper": true,
+    alignToTop,
+    dashed,
+    disabled,
+    [wrapperClass]: wrapperClass,
+  });
   return (
     <Box is={"label"} className={checkboxClassName}>
       <Box
@@ -63,10 +59,11 @@ Checkbox.defaultProps = {
 };
 
 Checkbox.propTypes = {
-  disabled: PropTypes.bool,
+  label: PropTypes.string,
   alignToTop: PropTypes.bool,
   dashed: PropTypes.bool,
-  top: PropTypes.bool,
+  disabled: PropTypes.bool,
   labelClass: PropTypes.string,
   wrapperClass: PropTypes.string,
+  labelComponent: PropTypes.object,
 };

@@ -21,6 +21,7 @@
       &.hasLabel {
         margin-right: 8px;
       }
+
       position: relative;
       height: 16px;
       width: 16px;
@@ -31,10 +32,12 @@
       -moz-appearance: none;
       appearance: none;
       cursor: pointer;
+
       &.dark_mode {
         background: #202b3c;
         border: 1px solid #384860;
       }
+
       &.disabled,
       &:disabled {
         cursor: not-allowed;
@@ -66,3 +69,4 @@
       cursor: not-allowed;
     }
   }
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../styles/textfield.scss";
+import "../../../scss/textfield.scss";
 import Box from "../../box";
 import Text from "../../text";
 import Icon from "../../icon";
