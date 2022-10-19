@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/debit-card/DebitCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/debit-card/DebitCard.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/debit-card/DebitCard.spec.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/debit-card/DebitCard.stories.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/debit-card/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/debit-card/rfid.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/debitCardUtils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/hooks/debitCard.hook.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/debit-card-balance/DebitCardBalance.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/debit-card-balance/DebitCardBalance.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/debit-card-balance/DebitCardBalance.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/debit-card-balance/DebitCardBalance.stories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/debit-card-balance/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text/Text.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text/Text.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,7 +294,7 @@
       <workItem from="1666048440015" duration="3046000" />
       <workItem from="1666051922688" duration="5824000" />
       <workItem from="1666109106613" duration="145000" />
-      <workItem from="1666143275063" duration="2719000" />
+      <workItem from="1666143275063" duration="4117000" />
     </task>
     <servers />
   </component>
