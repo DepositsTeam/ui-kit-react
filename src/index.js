@@ -7,7 +7,9 @@ import Button from "./components/button";
 import Card from "./components/card";
 import CardInputField from "./components/card-input-field";
 import Checkbox from "./components/checkbox";
+import Counter from "./components/counter/Counter";
 import DatePicker from "./components/date-picker";
+import DebitCard from "./components/debit-card";
 import Heading from "./components/heading";
 import Icon from "./components/icon";
 import Modal from "./components/modal";
@@ -445,7 +447,9 @@ export {
   Card,
   CardInputField,
   Checkbox,
+  Counter,
   DatePicker,
+  DebitCard,
   Heading,
   FormikTextField,
   HookFormTextField,
