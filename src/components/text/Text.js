@@ -57,7 +57,6 @@ Text.propTypes = {
 
 Text.defaultProps = {
   is: "p",
-  scale: "body",
   uppercase: false,
   equalLineHeight: false,
 };
