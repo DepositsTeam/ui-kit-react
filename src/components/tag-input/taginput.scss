@@ -1,0 +1,151 @@
+.ui-tag-input__input-wrapper {
+  border: 1px solid #ced6de;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(63, 63, 68, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: #fff;
+  &.dark_mode {
+    background: var(--dark-input-background-color);
+    border-color: var(--dark-input-border-color);
+  }
+
+  /* overflow: scroll; */
+  /* width: 100%; */
+}
+
+.ui-tag-input__input {
+  /* width: 100%; */
+  min-width: 320px;
+  border: none;
+  outline: none;
+  display: flex;
+
+  /* flex: 1; */
+}
+
+.ui-tag-input__wrapper {
+  box-sizing: border-box;
+  &.size__massive .ui-tag-input__input-wrapper {
+    //min-height: calc(64px - 16px);
+    padding: 0 16px;
+    min-height: 64px;
+  }
+
+  &.size__huge .ui-tag-input__input-wrapper {
+    //min-height: calc(56px - 16px);
+    padding: 0 16px;
+    min-height: 56px;
+  }
+
+  &.size__xlarge .ui-tag-input__input-wrapper {
+    //min-height: calc(48px - 16px);
+    padding: 0 12px;
+    min-height: 48px;
+  }
+
+  &.size__large .ui-tag-input__input-wrapper {
+    //min-height: calc(40px - 16px);
+    padding: 0 12px;
+    min-height: 40px;
+  }
+
+  &.size__medium .ui-tag-input__input-wrapper {
+    //min-height: calc(32px - 16px);
+    padding: 0 12px;
+    min-height: 32px;
+  }
+
+  &.size__small .ui-tag-input__input-wrapper {
+    //min-height: calc(24px - 8px);
+    padding: 0 8px;
+    min-height: 24px;
+  }
+}
+
+.ui-tag-input__input-tag {
+  display: flex;
+  align-items: center;
+  background: #e1e7ec;
+  white-space: nowrap;
+  border-radius: 4px;
+  margin-right: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding: 0 8px;
+  &.dark_mode {
+    background: var(--dark-input-background-color);
+    color: #cbd5e1;
+  }
+}
+
+.ui-tag-input__wrapper {
+  &.size__massive .ui-tag-input__input-tag,
+  &.size__huge .ui-tag-input__input-tag,
+  &.size__xlarge .ui-tag-input__input-tag,
+  &.size__large .ui-tag-input__input-tag {
+    height: 24px;
+  }
+
+  &.size__medium .ui-tag-input__input-tag {
+    height: 20px;
+  }
+
+  &.size__small .ui-tag-input__input-tag {
+    height: 16px;
+  }
+}
+
+.ui-tag-input__close-icon {
+  height: 16px;
+  width: 16px;
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+.ui-tag-input__input-tag-text {
+  font-size: 12px;
+}
+
+/* .ui-tag-input__wrapper.size__massive .ui-tag-input__input-wrapper{
+	height: 64px;
+	padding: 0 16px;
+} */
+
+/* .ui-tag-input__input-wrapper{
+	border: 1px solid red;
+	display: flex;
+	align-items: center;
+}
+
+.ui-tag-input__input{
+    border: 2px solid green;
+    outline: none;
+	flex: 1;
+	display: flex;
+}
+
+.ui-tag-input__input-wrapper.size__massive {
+	height: 64px;
+	padding: 0 16px;
+}
+
+
+.ui-tag-input__input-tag{
+	display: flex;
+	align-items: center;
+	background: #e1e7ec;
+	white-space: nowrap;
+	border-radius: 4px;
+	margin-right: 4px;
+	padding-left: 8px;
+
+}
+
+.ui-tag-input__input-tag .ui-tag-input__input__tag-item{
+	fontSize: 12px;
+}
+
+
+ */

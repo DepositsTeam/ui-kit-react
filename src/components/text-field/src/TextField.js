@@ -10,6 +10,7 @@ import classNames from "../../../utils/classNames";
 
 const TextField = ({
   label,
+  labelComponent,
   leftIcon,
   size,
   dropDown,
@@ -19,6 +20,8 @@ const TextField = ({
   className,
   isHookForm,
   isFormik,
+  onLeftIconClick,
+  onRightIconClick,
   ...props
 }) => {
   const generateInputFieldClasses = classNames(
@@ -38,11 +41,16 @@ const TextField = ({
 
   return (
     <Box className={wrapperClasses}>
-      <Box is={"label"}>
-        <Text className={"ui-text-field__label"} scale={"subhead"}>
-          {label}
-        </Text>
-      </Box>
+      {labelComponent
+        ? labelComponent
+        : !!label && (
+            <Box is={"label"}>
+              <Text className={"ui-text-field__label"} scale={"subhead"}>
+                {label}
+              </Text>
+            </Box>
+          )}
+
       <Box className={"ui-text-field__input-wrapper"}>
         {leftIcon && (
           <Icon icon={leftIcon} className={"ui-text-field__left-icon"} />
@@ -75,6 +83,7 @@ export default TextField;
 
 TextField.propTypes = {
   label: PropTypes.string,
+  labelComponent: PropTypes.node,
   dropDown: PropTypes.bool,
   size: PropTypes.oneOf([
     "small",
@@ -85,6 +94,8 @@ TextField.propTypes = {
     "massive",
   ]),
   errorMessage: PropTypes.string,
+  onLeftIconClick: PropTypes.func,
+  onRightIconClick: PropTypes.func,
 };
 
 TextField.defaultProps = {

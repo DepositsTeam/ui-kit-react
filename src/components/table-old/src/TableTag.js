@@ -12,7 +12,7 @@ const TableTag = ({ filterTag, closeTag, filterLabel, setFilterCriteria, handleC
   const [secondFilter, setSecondFilter] = useState(false)
   const [joinType, setJoinType] = useState(null)
 
-  // trigger tabletag modal onclick of the table tag
+  // trigger tabletag modal onclick of the table-old tag
   const triggerModal = () => {
     showModal && setShowModal(() => false)
     !showModal && setShowModal(() => true)
@@ -52,7 +52,7 @@ const TableTag = ({ filterTag, closeTag, filterLabel, setFilterCriteria, handleC
 
 
       {showModal &&
-        // show table tag modal
+        // show table-old tag modal
         <Box is='div' className={`ui-table__filter-tag-field  ${!showModal && 'hide'} `}>
           <Box is='div' >
             <SelectField label='Filter' size='small' onChange={(e) => setFilterCriteria(() => e.target.value)} value={filterCriteria} options={filterLabel} dropDown />

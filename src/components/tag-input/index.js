@@ -1,1 +1,1 @@
-export { default } from "./src/TagInput";
+export { default } from "./TagInput";
