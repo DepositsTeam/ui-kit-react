@@ -6,7 +6,15 @@ import { Box, Text } from "../../index";
 import classNames from "../../utils/classNames";
 import { CardBrands } from "../../utils/debitCardUtils";
 
-const DebitBalance = ({ logo, theme, name, balance, width, ...props }) => {
+const DebitBalance = ({
+  logo,
+  theme,
+  name,
+  balance,
+  className,
+  width,
+  ...props
+}) => {
   const computedLogo = props.logo
     ? props.logo
     : `https://assets.ondeposits.com/img/logo/renapay/svg/logo_all_${
@@ -20,7 +28,11 @@ const DebitBalance = ({ logo, theme, name, balance, width, ...props }) => {
 
   return (
     <Box
-      className={classNames(["d-debit-card-balance", `theme__${theme}`])}
+      className={classNames([
+        "d-debit-card-balance",
+        `theme__${theme}`,
+        className,
+      ])}
       style={{ "--width": width }}
       onClick={toggleHidden}
     >

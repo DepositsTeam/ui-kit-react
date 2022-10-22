@@ -1,11 +1,11 @@
 import React from "react";
-import "../../../scss/textfield.scss";
-import Box from "../../box";
-import Text from "../../text";
-import Icon from "../../icon";
-import ChevronFilledDown from "../../icons/ChevronFilledDown";
-import Error from "../../icons/Error";
-import classNames from "../../../utils/classNames";
+import "../../scss/textfield.scss";
+import Box from "../box";
+import Text from "../text";
+import Icon from "../icon";
+import ChevronFilledDown from "../icons/ChevronFilledDown";
+import Error from "../icons/Error";
+import classNames from "../../utils/classNames";
 import { propTypes, defaultProps } from "./textFieldProps";
 
 const HookFormTextField = React.forwardRef(

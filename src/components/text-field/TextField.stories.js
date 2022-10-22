@@ -1,9 +1,9 @@
 import React from "react";
-import TextField from "../../text-field";
-import Search from "../../icons/Search";
+import TextField from "./index";
+import Search from "../icons/Search";
 
 export default {
-  title: "Text Field",
+  title: "Forms/Text Field",
   component: TextField,
 };
 

@@ -2,14 +2,14 @@
 import ChevronFilledDown from "../../icons/ChevronFilledDown";
 import Checkbox from "../../checkbox";
 import Box from '../../box'
-import "./Table.css";
+import "./Table.scss";
 import Icon from "../../icon";
 import ascending from '../assets/sort-ascending.svg'
 import descending from '../assets/sort-descending.svg'
 import funnel from '../assets/funnel.svg'
 import rightArrow from '../assets/right-arrow.svg'
 import Radio from '../../radio/src/Radio';
-import TextField from "../../text-field/src/TextField";
+import TextField from "../../text-field/TextField";
 
 const TableHeader = ({ headings, sortIndex, handleSort, sortModalTrigger, filterIndex, filterModalTrigger, setFilterIndex, handleChange, applyFilter, filterCriteria, setFilterCriteria, filterLabel, checkbox }) => {
     return (

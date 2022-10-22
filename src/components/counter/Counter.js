@@ -21,6 +21,7 @@ const Counter = ({
   spacing,
   value,
   onChange,
+  className,
   ...props
 }) => {
   const [internalValue, setInternalValue] = useState(null);
@@ -52,7 +53,7 @@ const Counter = ({
 
   return (
     <Box
-      className={"ui-counter"}
+      className={`ui-counter ${className ?? className}`}
       style={{
         "--counter-spacing": spacing,
       }}

@@ -3,6 +3,7 @@ import { generateColorSpectrum, getTextColor, hexToRgbA } from "./colorManager";
 
 const defaultTheme = {
   "light-primary-action-color": "#0db9e9",
+  "light-primary-color": "#0db9e9",
   "light-primary-action-text-color": "#212934",
   "light-text-color": "#212934",
   "light-primary-action-hover-color": "#43d2fa",
@@ -98,6 +99,7 @@ const defaultTheme = {
   "dark-warning-900": "#271701",
 
   "dark-primary-action-color": "#0db9e9",
+  "dark-primary-color": "#0db9e9",
   "dark-text-color": "#212934",
   "dark-primary-action-hover-color": "#43d2fa",
   "dark-primary-action-disabled-color": "#bdf3fc",

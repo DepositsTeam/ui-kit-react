@@ -1,12 +1,12 @@
 import React from "react";
-import "../../../scss/textfield.scss";
-import Box from "../../box";
-import Text from "../../text";
+import "../../scss/textfield.scss";
+import Box from "../box";
+import Text from "../text";
 import PropTypes from "prop-types";
-import Icon from "../../icon";
-import ChevronFilledDown from "../../icons/ChevronFilledDown";
-import Error from "../../icons/Error";
-import classNames from "../../../utils/classNames";
+import Icon from "../icon";
+import ChevronFilledDown from "../icons/ChevronFilledDown";
+import Error from "../icons/Error";
+import classNames from "../../utils/classNames";
 
 const TextField = ({
   label,

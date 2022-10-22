@@ -5,12 +5,12 @@ import { Box, Text } from "../../index";
 import { useDebitCard } from "../../utils/hooks/debitCard.hook";
 import rfid from "./rfid.svg";
 
-const DebitCard = ({ logo, name, width, ...props }) => {
+const DebitCard = ({ logo, name, width, className, ...props }) => {
   const { computedCardNo, computedExp, computedCVV, cardBrand, toggleHidden } =
     useDebitCard(props);
 
   return (
-    <Box className="ui-d-debitcard__wrapper">
+    <Box className={`ui-d-debitcard__wrapper ${className ?? className}`}>
       <Box
         className="ui-d-debitcard"
         style={{ "--width": width }}

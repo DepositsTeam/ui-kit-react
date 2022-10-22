@@ -5,7 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/accordion/Accordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accordion/Accordion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/banner/Banner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/banner/Banner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/checkbox/Checkbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/checkbox/Checkbox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/counter/Counter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/counter/Counter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/debit-card-balance/DebitCardBalance.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/debit-card-balance/DebitCardBalance.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/debit-card/DebitCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/debit-card/DebitCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pagination/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pagination/src/Pagination.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination/Pagination.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pagination/src/Pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination/Pagination.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pagination/stories/Pagination.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination/Pagination.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/table-old/src/Table.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/src/Table.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/table-old/src/Table.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/src/Table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/table-old/src/TableContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/src/TableContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/table-old/src/TableHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/src/TableHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/table-old/src/TableTag.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/src/TableTag.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text-field/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text-field/src/FormikTextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/FormikTextField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text-field/src/HookFormTextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/HookFormTextField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text-field/src/TextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text-field/src/textFieldProps.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/textFieldProps.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text-field/stories/TextField.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/default-theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/default-theme.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,12 +172,12 @@
     <setting file="file://$PROJECT_DIR$/src/components/icons/VideoOff.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/icons/Voucher.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/icons/index.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/text-field/FormikTextField.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/text-field/HookFormTextField.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/text-field/TextField.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/text-field/TextField.stories.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/text-field/index.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/text-field/src/FormikTextField.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/text-field/src/HookFormTextField.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/text-field/src/TextField.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/text-field/src/textFieldProps.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/text-field/stories/TextField.stories.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/text-field/textFieldProps.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/toast/src/Toast.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/toast/src/useToast.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/toast/stories/Toast.stories.js" root0="FORCE_HIGHLIGHTING" />
@@ -209,11 +231,11 @@
       <recent name="$PROJECT_DIR$/src/components/icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/pagination" />
+      <recent name="$PROJECT_DIR$/src/components/text-field" />
       <recent name="$PROJECT_DIR$/src/components/tag-input" />
       <recent name="$PROJECT_DIR$/src/components/tag-input/src" />
       <recent name="$PROJECT_DIR$/src/components/text" />
-      <recent name="$PROJECT_DIR$/src/components/date-picker" />
-      <recent name="$PROJECT_DIR$/src/components/color" />
     </key>
   </component>
   <component name="RunManager" selected="npm.storybook">
@@ -294,7 +316,7 @@
       <workItem from="1666236740256" duration="2474000" />
       <workItem from="1666340758160" duration="3853000" />
       <workItem from="1666366210538" duration="2870000" />
-      <workItem from="1666395532294" duration="1326000" />
+      <workItem from="1666395532294" duration="6549000" />
     </task>
     <servers />
   </component>

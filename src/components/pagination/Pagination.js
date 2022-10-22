@@ -1,13 +1,13 @@
 import React from "react";
-import classNames from "../../../utils/classNames";
+import classNames from "../../utils/classNames";
 import PropTypes from "prop-types";
-import Text from "../../text";
-import Box from "../../box";
-import "./Pagination.css";
-import Icon from "../../icon";
-import ChevronArrowRight from "../../icons/ChevronArrowRight";
-import ChevronArrowLeft from "../../icons/ChevronArrowLeft";
-import { usePagination } from "../../../utils/hooks/pagination.hook";
+import Text from "../text";
+import Box from "../box";
+import "./Pagination.scss";
+import Icon from "../icon";
+import ChevronArrowRight from "../icons/ChevronArrowRight";
+import ChevronArrowLeft from "../icons/ChevronArrowLeft";
+import { usePagination } from "../../utils/hooks/pagination.hook";
 
 const Pagination = ({
   currentPage,
@@ -15,6 +15,7 @@ const Pagination = ({
   currentPageSiblings,
   onPageChange,
   className,
+  smartColor,
   ...props
 }) => {
   const {
@@ -61,15 +62,23 @@ const Pagination = ({
   ));
 
   return (
-    <Box is="div" {...props} className={`ui-pagination ${className}`}>
+    <Box
+      is="div"
+      {...props}
+      className={classNames({
+        "ui-pagination": true,
+        [className]: className,
+        smartColor,
+      })}
+      style={{
+        "--smart-color": smartColor,
+      }}
+    >
       <Box
         className={leftControlClasses}
         onClick={() => updatePage(initializedCurrentPage - 1)}
       >
-        <Icon
-          className="ui-pagination__left-arrow"
-          icon={ChevronArrowLeft}
-        />
+        <Icon className="ui-pagination__left-arrow" icon={ChevronArrowLeft} />
         <Text
           className="ui-pagination__text-previous ui-pagination__text"
           scale={"subhead"}
@@ -92,10 +101,7 @@ const Pagination = ({
         >
           Next
         </Text>
-        <Icon
-          className="ui-pagination__right-arrow"
-          icon={ChevronArrowRight}
-        />
+        <Icon className="ui-pagination__right-arrow" icon={ChevronArrowRight} />
       </Box>
     </Box>
   );
@@ -108,6 +114,7 @@ Pagination.propTypes = {
   totalPages: PropTypes.number,
   currentPageSiblings: PropTypes.number,
   onPageChange: PropTypes.func,
+  smartColor: PropTypes.string,
 };
 
 Pagination.defaultProps = {

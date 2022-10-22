@@ -13,6 +13,7 @@ const Checkbox = ({
   labelClass,
   wrapperClass,
   labelComponent,
+  className,
   ...props
 }) => {
   const checkboxClassName = classNames({
@@ -21,6 +22,7 @@ const Checkbox = ({
     dashed,
     disabled,
     [wrapperClass]: wrapperClass,
+    [className]: className,
   });
   return (
     <Box is={"label"} className={checkboxClassName}>

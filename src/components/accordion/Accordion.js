@@ -13,6 +13,7 @@ const Accordion = ({
   leftIconInactive,
   rightIcon,
   children,
+  className,
   ...props
 }) => {
   const [visible, setVisible] = useState(false);
@@ -20,6 +21,7 @@ const Accordion = ({
   const generateAccordionHeaderClassName = classNames({
     active: visible,
     "ui-accordion__header": true,
+    [className]: true,
   });
 
   return (

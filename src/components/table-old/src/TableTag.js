@@ -5,7 +5,7 @@ import Icon from '../../icon/src/Icon'
 import Close from '../../icons/Close'
 import Radio from '../../radio/src/Radio'
 import SelectField from '../../select-field/src/SelectField'
-import TextField from '../../text-field/src/TextField'
+import TextField from '../../text-field/TextField'
 
 const TableTag = ({ filterTag, closeTag, filterLabel, setFilterCriteria, handleChange, applyFilter, setSortIndex, filterCriteria, headings }) => {
   const [showModal, setShowModal] = useState(false)

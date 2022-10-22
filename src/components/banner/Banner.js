@@ -24,6 +24,8 @@ const Banner = ({
   iconColor,
   noIcon,
   smartColor,
+  className,
+  ...props
 }) => {
   const [visible, setVisible] = useState(true);
   const schemeIcons = {
@@ -38,14 +40,17 @@ const Banner = ({
     "--smart-description-color": getTextColor(smartColor, "#6D7786", "#94A3B8"),
     "--icon-color": iconColor,
   };
-  const bannerClasses = classNames({
-    "ui-banner": true,
-    [`color-scheme__${colorScheme}`]: true,
-    alignTop,
-    full,
-    smartColor,
-    iconColor,
-  });
+  const bannerClasses = classNames(
+    {
+      "ui-banner": true,
+      [`color-scheme__${colorScheme}`]: true,
+      alignTop,
+      full,
+      smartColor,
+      iconColor,
+    },
+    className
+  );
 
   const remove = () => {
     if (onRemove && typeof onRemove === "function") {
@@ -54,7 +59,7 @@ const Banner = ({
     setVisible(false);
   };
   return visible ? (
-    <Box className={bannerClasses} style={cssVars}>
+    <Box className={bannerClasses} style={cssVars} {...props}>
       <Box className="text-content">
         {(colorScheme !== "default" || icon) && !noIcon && (
           <Icon

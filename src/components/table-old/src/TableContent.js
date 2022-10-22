@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Box from "../../box";
-import "./Table.css";
+import "./Table.scss";
 import Checkbox from "../../checkbox";
-import Pagination from '../../pagination/src/Pagination';
+import Pagination from '../../pagination/Pagination';
 
 
 const TableContent = ({ data, itemsPerPage, siblingCount, nullify, checkbox }) => {

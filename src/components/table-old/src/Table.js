@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Table.css";
+import "./Table.scss";
 // import Text from "../../text";
 import Box from "../../box";
 import PropTypes from "prop-types";
