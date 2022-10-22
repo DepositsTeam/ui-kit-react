@@ -28,7 +28,15 @@ const Text = ({
     className
   );
   return (
-    <Box is={is} {...props} data-testid="text" className={generatedClass}>
+    <Box
+      fontWeight={fontWeight}
+      fontSize={fontSize}
+      lineHeight={lineHeight}
+      is={is}
+      {...props}
+      data-testid="text"
+      className={generatedClass}
+    >
       {props.children}
     </Box>
   );

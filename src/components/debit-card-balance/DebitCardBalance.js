@@ -115,6 +115,7 @@ DebitBalance.propTypes = {
   brand: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf(CardBrands)]),
   width: PropTypes.string,
   theme: PropTypes.oneOf(["light", "dark"]),
+  balance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 DebitBalance.defaultProps = {
@@ -126,4 +127,5 @@ DebitBalance.defaultProps = {
   width: "336px",
   logo: "https://assets.ondeposits.com/img/logo/renapay/svg/logo_all_white.svg",
   theme: "light",
+  balance: "12568",
 };

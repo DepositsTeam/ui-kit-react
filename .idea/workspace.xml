@@ -5,39 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/debit-card-vertical/DebitCardVertical.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/debit-card-vertical/DebitCardVertical.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/debit-card-vertical/DebitCardVertical.spec.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/debit-card-vertical/DebitCardVertical.stories.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/debit-card-vertical/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/table-old/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/table/Table.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/table/Table.spec.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/table/Table.stories.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/tag-input/TagInput.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/tag-input/taginput.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/assets/funnel.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/assets/funnel.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/assets/right-arrow.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/assets/right-arrow.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/assets/sort-ascending.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/assets/sort-ascending.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/assets/sort-descending.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/assets/sort-descending.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/src/Table.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/src/Table.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/src/Table.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/src/Table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/src/TableContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/src/TableContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/src/TableHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/src/TableHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/src/TableTag.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/src/TableTag.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/stories/Table.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/stories/Table.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tag-input/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tag-input/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tag-input/src/TagInput.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tag-input/src/taginput.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tag-input/stories/TagInput.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tag-input/TagInput.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/src/TextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/src/TextField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storybook-static/282.9fef324a.iframe.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/storybook-static/282.9fef324a.iframe.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storybook-static/807.a2ccc5eb.iframe.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/storybook-static/807.a2ccc5eb.iframe.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storybook-static/9.acd0ef9064e0667433ac.manager.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/storybook-static/9.acd0ef9064e0667433ac.manager.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storybook-static/vendors~main.7c47903ea43e951c3707.manager.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/storybook-static/vendors~main.7c47903ea43e951c3707.manager.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/debit-card-balance/DebitCardBalance.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/debit-card-balance/DebitCardBalance.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -326,7 +294,7 @@
       <workItem from="1666236740256" duration="2474000" />
       <workItem from="1666340758160" duration="3853000" />
       <workItem from="1666366210538" duration="2870000" />
-      <workItem from="1666395532294" duration="985000" />
+      <workItem from="1666395532294" duration="1326000" />
     </task>
     <servers />
   </component>
