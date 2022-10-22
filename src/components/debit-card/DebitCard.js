@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { CardBrands } from "../../utils/debitCardUtils";
-import "./DebitCard.scss";
+import "./DebitCard.css";
 import { Box, Text } from "../../index";
 import { useDebitCard } from "../../utils/hooks/debitCard.hook";
 import rfid from "./rfid.svg";

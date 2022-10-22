@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Box from "../box";
-import "./badge.scss";
+import "./badge.css";
 import classNames from "../../utils/classNames";
 import Text from "../text";
 import { getTextColor } from "../../utils/colorManager";

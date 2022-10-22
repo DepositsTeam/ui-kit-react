@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Banner.scss";
+import "./Banner.css";
 import PropType from "prop-types";
 import Box from "../box";
 import Text from "../text";

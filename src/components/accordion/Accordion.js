@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import classNames from "../../utils/classNames";
 import { ChevronFilledDownIcon, Text } from "../../index";
 import { Icon } from "../../index";
-import "./accordion.scss";
+import "./accordion.css";
 import { ChevronFilledUp } from "../icons";
 
 const Accordion = ({

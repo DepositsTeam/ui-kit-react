@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Card.scss";
+import "./Card.css";
 import Box from "../box";
 import PropTypes from "prop-types";
 import classNames from "../../utils/classNames";

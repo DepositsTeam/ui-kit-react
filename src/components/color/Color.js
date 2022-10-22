@@ -3,7 +3,7 @@ import Box from "../box";
 import PropTypes from "prop-types";
 import classNames from "../../utils/classNames";
 import keyGen from "../../utils/keyGen";
-import "./color.scss";
+import "./color.css";
 
 const Color = ({ colorName, colorCode, textColor, colors }) => {
   const getProperColorName = (colorName) => {

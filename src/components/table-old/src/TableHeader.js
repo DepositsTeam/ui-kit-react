@@ -2,7 +2,7 @@
 import ChevronFilledDown from "../../icons/ChevronFilledDown";
 import Checkbox from "../../checkbox";
 import Box from '../../box'
-import "./Table.scss";
+import "./Table.css";
 import Icon from "../../icon";
 import ascending from '../assets/sort-ascending.svg'
 import descending from '../assets/sort-descending.svg'

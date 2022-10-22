@@ -1,5 +1,5 @@
 import React from "react";
-import "./button.scss";
+import "./button.css";
 import Box from "../box";
 import PropTypes from "prop-types";
 import classNames from "../../utils/classNames";

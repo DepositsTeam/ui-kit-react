@@ -1,0 +1,160 @@
+.ui-card-input-field__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.ui-card-input-field__wrapper.size__massive {
+  height: 64px;
+}
+.ui-card-input-field__wrapper.size__massive .ui-card-input-field__pseudo-input {
+  height: 64px;
+}
+.ui-card-input-field__wrapper.size__huge {
+  height: 56px;
+}
+.ui-card-input-field__wrapper.size__huge .ui-card-input-field__pseudo-input {
+  height: 56px;
+}
+.ui-card-input-field__wrapper.size__xlarge {
+  height: 48px;
+}
+.ui-card-input-field__wrapper.size__xlarge .ui-card-input-field__pseudo-input {
+  height: 48px;
+}
+.ui-card-input-field__wrapper.size__large {
+  height: 40px;
+}
+.ui-card-input-field__wrapper.size__large .ui-card-input-field__pseudo-input {
+  height: 40px;
+}
+.ui-card-input-field__wrapper.size__medium {
+  height: 32px;
+}
+.ui-card-input-field__wrapper.size__medium .ui-card-input-field__pseudo-input {
+  height: 32px;
+}
+.ui-card-input-field__wrapper.size__small {
+  height: 24px;
+}
+.ui-card-input-field__wrapper.size__small .ui-card-input-field__pseudo-input {
+  height: 24px;
+  padding: 8px 16px;
+}
+.ui-card-input-field__wrapper.size__small
+  .ui-card-input-field__pseudo-input
+  input {
+  height: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.ui-card-input-field__pseudo-input {
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(63, 63, 68, 0.1);
+  border: 1px solid #ced6de;
+  border-radius: 4px;
+  font-family: "Circular Std", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 16px;
+  color: #212934;
+  display: flex;
+  align-items: center;
+}
+.ui-card-input-field__pseudo-input.dark_mode {
+  background: var(--dark-input-background-color);
+  border-color: var(--dark-input-border-color);
+}
+.ui-card-input-field__pseudo-input * {
+  font-family: "Circular Std", sans-serif;
+  font-size: 16px;
+}
+.ui-card-input-field__pseudo-input.hasError,
+.ui-card-input-field__pseudo-input.hasError input {
+  background: #fff0f2;
+  border-color: #d62f4b;
+}
+.ui-card-input-field__pseudo-input.focus:not(.hasError) {
+  border-color: var(--light-primary-action-color);
+  box-shadow: 0 0 0 3px var(--light-primary-action-box-shadow-color);
+}
+.ui-card-input-field__pseudo-input:hover:not(.hasError) {
+  border-color: var(--light-primary-action-color);
+}
+.ui-card-input-field__inputs {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  align-items: center;
+}
+.ui-card-input__pushed-right {
+  display: flex;
+  align-items: center;
+}
+.ui-card-input-field__pseudo-input input {
+  border: none;
+}
+.ui-card-input-field__pseudo-input input::placeholder {
+  color: #b8c4ce;
+}
+.ui-card-input-field__pseudo-input input:focus {
+  border: none;
+  outline: none;
+}
+.ui-card-input-field__pseudo-input input.dark_mode {
+  background: transparent;
+  color: #fff;
+}
+.ui-card-input-field__pseudo-input input.dark_mode::placeholder {
+  color: var(--dark-input-label-color);
+}
+.ui-card-input-field__cvv,
+.ui-card-input-field__exp {
+  width: 60px;
+  background: transparent;
+}
+@media only screen and (max-width: 375px) {
+  .ui-card-input-field__cvv {
+    width: 40px;
+  }
+}
+.ui-card-input-field__card-no {
+  margin-right: 8px;
+}
+@media only screen and (max-width: 500px) {
+  .ui-card-input-field__card-no {
+    width: 142px;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .ui-card-input-field__card-no {
+    width: 122px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .ui-card-input-field__card-no {
+    width: 92px;
+  }
+}
+@media only screen and (min-width: 500px) {
+  .ui-card-input-field__card-no {
+    flex: 1;
+  }
+}
+.ui-card-input-field__left-icon {
+  margin-right: 8px;
+  height: 24px;
+}
+@media only screen and (max-width: 500px) {
+  .ui-card-input-field__right-icon {
+    height: 24px;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .ui-card-input-field__right-icon {
+    height: 20px;
+  }
+}
+@media only screen and (max-width: 350px) {
+  .ui-card-input-field__right-icon {
+    display: none;
+  }
+}

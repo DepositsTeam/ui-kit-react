@@ -4,22 +4,19 @@
   padding: 8px 16px;
   border-radius: 4px;
 }
-
 .ui-tab:hover {
   color: #0d7fe9;
   background: #f5f8fa;
 }
-
 .ui-tab:active {
   color: #fff;
   background: #0d7fe9;
 }
 
 .ui-tabs {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
-
 .ui-tabs.horizontal {
-    flex-direction: row;
+  flex-direction: row;
 }

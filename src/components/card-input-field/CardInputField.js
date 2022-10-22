@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./CardInput.scss";
+import "./CardInput.css";
 import Box from "../box";
 import Text from "../text";
 import PropTypes from "prop-types";

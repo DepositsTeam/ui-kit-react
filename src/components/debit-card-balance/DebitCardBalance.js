@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import "./DebitCardBalance.scss";
+import "./DebitCardBalance.css";
 import { useDebitCard } from "../../utils/hooks/debitCard.hook";
 import number_format from "../../utils/number_format";
 import { Box, Text } from "../../index";

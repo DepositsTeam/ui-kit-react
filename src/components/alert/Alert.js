@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Box from "../box";
-import "./alert.scss";
+import "./alert.css";
 import PropTypes from "prop-types";
 import Text from "../text";
 import classNames from "../../utils/classNames";

@@ -1,0 +1,28 @@
+.ui-text-field--counter_input_button {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid #8895a7;
+  border-radius: 6px;
+  color: #8895a7;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.ui-text-field--counter_input_button.dark_mode {
+  border-color: #64748b;
+  color: #64748b;
+}
+.ui-text-field--counter_input_button:hover,
+.ui-text-field--counter_input_button.coloredButtons {
+  border-color: var(--light-primary-action-color);
+  color: var(--light-primary-action-color);
+}
+.ui-text-field--counter_input_button.left {
+  margin-right: var(--counter-spacing);
+}
+.ui-text-field--counter_input_button.right {
+  margin-left: var(--counter-spacing);
+}

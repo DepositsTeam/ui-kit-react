@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Box from "../box";
 import Text from "../text";
-import "./taginput.scss";
+import "./taginput.css";
 import classNames from "../../utils/classNames";
 import Icon from "../icon";
 import Close from "../icons/Close";

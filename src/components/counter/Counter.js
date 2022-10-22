@@ -1,6 +1,7 @@
 import { Box, Text, ErrorIcon } from "../../index";
 import classNames from "../../utils/classNames";
-import "./Counter.scss";
+import "../../scss/textfield.css";
+import "./Counter.css";
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import number_format from "../../utils/number_format";

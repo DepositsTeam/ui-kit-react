@@ -5,29 +5,76 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/text/text.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.es.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.es.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.umd.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.umd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rollup.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/rollup.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/accordion/Accordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accordion/Accordion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/accordion/accordion.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accordion/accordion.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/alert/Alert.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/alert/Alert.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/alert/alert.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/alert/alert.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/avatar/Avatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/avatar/Avatar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/avatar/avatar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/avatar/avatar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/badge/Badge.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/badge/Badge.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/badge/badge.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/badge/badge.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/banner/Banner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/banner/Banner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/banner/Banner.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/banner/Banner.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/box/Box.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/box/Box.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/box/box.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/box/box.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/button/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/Button.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/button/button.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/button.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/card-input-field/CardInput.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card-input-field/CardInput.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/card-input-field/CardInputField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card-input-field/CardInputField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/card/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card/Card.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/card/Card.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card/Card.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/checkbox/Checkbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/checkbox/Checkbox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/checkbox/Checkbox.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/checkbox/Checkbox.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/color/Color.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/color/Color.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/color/color.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/color/color.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/counter/Counter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/counter/Counter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/counter/Counter.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/counter/Counter.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/date-picker/DatePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/date-picker/DatePicker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/date-picker/DatePicker.scss" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/debit-card-balance/DebitCardBalance.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/debit-card-balance/DebitCardBalance.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/debit-card-balance/DebitCardBalance.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/debit-card-balance/DebitCardBalance.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/debit-card-vertical/DebitCardVertical.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/debit-card-vertical/DebitCardVertical.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/debit-card-vertical/DebitCardVertical.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/debit-card-vertical/DebitCardVertical.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/debit-card/DebitCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/debit-card/DebitCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pagination/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pagination/src/Pagination.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination/Pagination.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pagination/src/Pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination/Pagination.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pagination/stories/Pagination.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination/Pagination.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table-old/src/Table.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/src/Table.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/debit-card/DebitCard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/debit-card/DebitCard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/heading/src/heading.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/heading/src/heading.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/src/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/src/modal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pagination/Pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination/Pagination.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pagination/Pagination.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination/Pagination.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/phone-field/src/PhoneField.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/phone-field/src/PhoneField.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/phone-field/src/PhoneField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/phone-field/src/PhoneField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/radio/src/Radio.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/radio/src/Radio.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/select-field/src/SelectField.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select-field/src/SelectField.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/select-field/src/SelectField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select-field/src/SelectField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/switch/src/Switch.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/switch/src/Switch.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tab/src/Tab.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tab/src/Tab.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/table-old/src/Table.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/src/Table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/table-old/src/Table.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/src/Table.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/table-old/src/TableContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/src/TableContent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/table-old/src/TableHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/src/TableHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table-old/src/TableTag.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table-old/src/TableTag.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/src/FormikTextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/FormikTextField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/src/HookFormTextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/HookFormTextField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/src/TextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/src/textFieldProps.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/textFieldProps.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/stories/TextField.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/default-theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/default-theme.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tag-input/TagInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tag-input/TagInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tag-input/taginput.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tag-input/taginput.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text-area/src/textarea.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-area/src/textarea.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text-field/FormikTextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/FormikTextField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text-field/HookFormTextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/HookFormTextField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text-field/TextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text/Text.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text/Text.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text/text.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/toast/src/toast.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/toast/src/toast.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/_variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/textfield.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/textfield.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,30 +240,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.laravel-idea.search-composer-json&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/ericmcwinner/Documents/Projects/Work/React/deposits-react-ui-kit/src/components/debit-card&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/ericmcwinner/Documents/Projects/Work/React/deposits-react-ui-kit/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MTConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.laravel-idea.search-composer-json": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/ericmcwinner/Documents/Projects/Work/React/deposits-react-ui-kit/src/components/debit-card",
+    "list.type.of.created.stylesheet": "SCSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "prettierjs.PrettierConfiguration.Package": "/Users/ericmcwinner/Documents/Projects/Work/React/deposits-react-ui-kit/node_modules/prettier",
+    "settings.editor.selected.configurable": "editor.preferences.appearance",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;JavaScript&quot;,
-      &quot;Vue&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "JavaScript",
+      "Vue"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -316,7 +363,7 @@
       <workItem from="1666236740256" duration="2474000" />
       <workItem from="1666340758160" duration="3853000" />
       <workItem from="1666366210538" duration="2870000" />
-      <workItem from="1666395532294" duration="6549000" />
+      <workItem from="1666395532294" duration="17354000" />
     </task>
     <servers />
   </component>

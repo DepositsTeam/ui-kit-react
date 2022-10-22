@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import "./DebitCardVertical.scss";
+import "./DebitCardVertical.css";
 
 const DebitCardVertical = ({
   brand,
