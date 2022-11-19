@@ -1,5 +1,5 @@
 import React from "react";
-import "./text.css";
+import "./Text.scss";
 import Box from "../box";
 import PropTypes from "prop-types";
 import classNames from "../../utils/classNames";

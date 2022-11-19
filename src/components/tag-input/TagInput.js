@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Box from "../box";
 import Text from "../text";
-import "./taginput.css";
+import "./Taginput.scss";
 import classNames from "../../utils/classNames";
 import Icon from "../icon";
 import Close from "../icons/Close";
@@ -171,7 +171,7 @@ TagInput.propTypes = {
 TagInput.defaultProps = {
   label: "Form Label",
   size: "medium",
-  values: ["Option 1", "Option 2", "Option 3"],
+  values: [],
   tagDelimiterKey: "enter",
   inputProps: { placeholder: "Add tag" },
   onTagDelete: (index) => {

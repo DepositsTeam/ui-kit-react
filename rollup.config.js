@@ -1,13 +1,10 @@
 import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
-import css from "rollup-plugin-import-css";
 import scss from "rollup-plugin-scss";
 import svg from "rollup-plugin-svg-import";
 import resolve from "@rollup/plugin-node-resolve";
 import external from "rollup-plugin-peer-deps-external";
 import { terser } from "rollup-plugin-terser";
-import bundleScss from "rollup-plugin-bundle-scss";
-import sass from "rollup-plugin-sass";
 
 import packageJSON from "./package.json";
 const input = "./src/index.js";
@@ -24,13 +21,15 @@ export default [
       babel({
         exclude: "node_modules/**",
       }),
+      commonjs(),
+      babel({
+        exclude: "node_modules/**",
+      }),
       external(),
       resolve(),
-      commonjs(),
-      css({
-        output: "index.css",
-      }),
+      scss(),
       svg(),
+      terser(),
     ],
   },
   //UMD
@@ -49,13 +48,15 @@ export default [
       babel({
         exclude: "node_modules/**",
       }),
+      commonjs(),
+      babel({
+        exclude: "node_modules/**",
+      }),
       external(),
       resolve(),
-      commonjs(),
-      css({
-        output: "index.css",
-      }),
+      scss(),
       svg(),
+      terser(),
     ],
   },
   // ES
@@ -70,12 +71,13 @@ export default [
       babel({
         exclude: "node_modules/**",
       }),
+      commonjs(),
+      babel({
+        exclude: "node_modules/**",
+      }),
       external(),
       resolve(),
-      commonjs(),
-      css({
-        output: "index.css",
-      }),
+      scss(),
       svg(),
       terser(),
     ],

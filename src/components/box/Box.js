@@ -1,5 +1,5 @@
 import React from "react";
-import "./box.css";
+import "./Box.scss";
 import { default as BoxComponent } from "ui-box";
 import { defaultThemeVars } from "../../utils/default-theme";
 

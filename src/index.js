@@ -1,3 +1,4 @@
+import Accordion from "./components/accordion";
 import Alert from "./components/alert";
 import Avatar from "./components/avatar";
 import Badge from "./components/badge";
@@ -10,6 +11,7 @@ import Checkbox from "./components/checkbox";
 import Counter from "./components/counter/Counter";
 import DatePicker from "./components/date-picker";
 import DebitCard from "./components/debit-card";
+import DebitCardBalance from "./components/debit-card-balance";
 import Heading from "./components/heading";
 import Icon from "./components/icon";
 import Modal from "./components/modal";
@@ -19,7 +21,7 @@ import Radio from "./components/radio";
 import SelectField from "./components/select-field";
 import Switch from "./components/switch";
 import Tab from "./components/tab";
-import Table from "./components/table";
+import Table from "./components/table-old";
 import TagInput from "./components/tag-input";
 import Text from "./components/text";
 import TextArea from "./components/text-area";
@@ -29,7 +31,7 @@ import TextField, {
 } from "./components/text-field";
 import Toast from "./components/toast";
 // import icons from "./components/icons";
-import { getTextColor } from "./utils/colorManager";
+import { getTextColor, hexToRgbA } from "./utils/colorManager";
 
 import AddIcon from "./components/icons/Add";
 import AddBookmarkIcon from "./components/icons/AddBookmark";
@@ -438,6 +440,7 @@ export {
 };
 
 export {
+  Accordion,
   Alert,
   Avatar,
   Badge,
@@ -450,6 +453,7 @@ export {
   Counter,
   DatePicker,
   DebitCard,
+  DebitCardBalance,
   Heading,
   FormikTextField,
   HookFormTextField,
@@ -469,4 +473,5 @@ export {
   TextField,
   Toast,
   getTextColor,
+  hexToRgbA
 };

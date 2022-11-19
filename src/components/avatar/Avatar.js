@@ -1,5 +1,5 @@
 import React from "react";
-import "./avatar.css";
+import "./Avatar.scss";
 import Box from "../box";
 import classNames from "../../utils/classNames";
 import getInitials from "./utils/getInitials";

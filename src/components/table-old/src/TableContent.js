@@ -3,7 +3,7 @@ import Box from "../../box";
 import "./Table.css";
 import Checkbox from "../../checkbox";
 import Pagination from "../../pagination/Pagination";
-import { Text } from "../../../index";
+import Text from "../../text";
 
 const TableContent = ({
   data,

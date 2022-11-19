@@ -11,7 +11,9 @@ export default {
   },
 };
 
-const Template = ({ children, ...args }) => <Alert {...args} />;
+const Template = ({children, ...args}) => {
+  return <Alert {...args} />;
+};
 
 export const FlatDefault = Template.bind({});
 

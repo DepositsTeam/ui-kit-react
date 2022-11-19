@@ -1,0 +1,111 @@
+.uppercase {
+  text-transform: uppercase;
+}
+
+.ui-text {
+  b:not(.customFontWeight),
+  strong:not(.customFontWeight) {
+    font-weight: 700;
+  }
+
+  &.center {
+    text-align: center;
+  }
+
+  &.my0 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  &.mt0 {
+    margin-top: 0;
+  }
+
+  &.mb0 {
+    margin-bottom: 0;
+  }
+
+  &.body:not(.customFontSize),
+  &.p-16:not(.customFontSize) {
+    font-size: 16px;
+  }
+
+  &.body:not(.customLineHeight),
+  &.p-16:not(.customLineHeight) {
+    line-height: 24px;
+  }
+
+  &.body.equal-line-height:not(.customLineHeight),
+  &.p-16.equal-line-height:not(.customLineHeight) {
+    line-height: 16px;
+  }
+
+  &.p-18 {
+    &:not(.customFontSize) {
+      font-size: 18px;
+    }
+
+    &:not(.customLineHeight) {
+      line-height: 30px;
+    }
+
+    &.equal-line-height:not(.customLineHeight) {
+      line-height: 18px;
+    }
+  }
+
+  &.subhead {
+    &:not(.customFontSize) {
+      font-size: 14px;
+    }
+
+    &:not(.customLineHeight) {
+      line-height: 24px;
+    }
+
+    &.equal-line-height:not(.customLineHeight) {
+      line-height: 14px;
+    }
+  }
+
+  &.overline {
+    &:not(.customFontSize) {
+      font-size: 10px;
+    }
+
+    &:not(.customLineHeight) {
+      line-height: 12px;
+    }
+
+    &.equal-line-height:not(.customLineHeight) {
+      line-height: 10px;
+    }
+  }
+
+  &.footnote {
+    &:not(.customFontSize) {
+      font-size: 12px;
+    }
+
+    &:not(.customLineHeight) {
+      line-height: 16px;
+    }
+
+    &.equal-line-height:not(.customLineHeight) {
+      line-height: 12px;
+    }
+  }
+
+  &.footnote-caps {
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    &:not(.customFontSize) {
+      font-size: 12px;
+    }
+
+    &:not(.customLineHeight) {
+      line-height: 16px;
+    }
+  }
+}

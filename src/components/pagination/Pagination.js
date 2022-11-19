@@ -3,7 +3,7 @@ import classNames from "../../utils/classNames";
 import PropTypes from "prop-types";
 import Text from "../text";
 import Box from "../box";
-import "./Pagination.css";
+import "./Pagination.scss";
 import Icon from "../icon";
 import ChevronArrowRight from "../icons/ChevronArrowRight";
 import ChevronArrowLeft from "../icons/ChevronArrowLeft";

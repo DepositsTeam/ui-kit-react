@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Box from "../box";
-import "./alert.css";
+import "./Alert.scss";
 import PropTypes from "prop-types";
 import Text from "../text";
 import classNames from "../../utils/classNames";
@@ -12,6 +12,7 @@ import Warning from "../icons/Warning";
 import Info from "../icons/Info";
 import Close from "../icons/Close";
 import Heading from "../heading";
+import { getTextColor } from "../../utils/colorManager";
 
 const Alert = ({
   message,
@@ -44,6 +45,7 @@ const Alert = ({
   const smartColors = {
     "--smart-color": smartColor,
     "--icon-color": iconColor,
+    "--smart-text-color": getTextColor(smartColor),
   };
 
   const schemeIcons = {
@@ -59,15 +61,15 @@ const Alert = ({
 
   return showAlert ? (
     <Box className={generateAlertClassName} {...props} style={smartColors}>
-      <div className={"ui-alert__content-wrapper"}>
-        <div className={"ui-alert__content"}>
+      <Box className={"ui-alert__content-wrapper"}>
+        <Box className={"ui-alert__content"}>
           {colorScheme !== "default" && (
             <Icon
               className={"ui-alert__header-icon"}
-              icon={icon ? icon : schemeIcons[colorScheme]}
+              icon={icon || schemeIcons[colorScheme]}
             />
           )}
-          <div className={"ui-alert__text"}>
+          <Box className={"ui-alert__text"}>
             <Box className={"ui-alert__header"}>
               <Heading scale={"subtitle-2"} className={"ui-alert__header-text"}>
                 {message}
@@ -82,9 +84,9 @@ const Alert = ({
             {button && theme !== "inline" && (
               <Button className={"ui-alert__call-to-action"} {...button} />
             )}
-          </div>
-        </div>
-      </div>
+          </Box>
+        </Box>
+      </Box>
       {closable && theme !== "inline" && (
         <Icon
           smartcolor={"currentcolor"}

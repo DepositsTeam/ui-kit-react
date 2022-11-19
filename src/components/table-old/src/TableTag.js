@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import Box from '../../box'
 import Button from '../../button'
-import Icon from '../../icon/src/Icon'
+import Icon from '../../icon/Icon'
 import Close from '../../icons/Close'
-import Radio from '../../radio/src/Radio'
-import SelectField from '../../select-field/src/SelectField'
+import Radio from '../../radio/Radio'
+import SelectField from '../../select-field/SelectField'
 import TextField from '../../text-field/TextField'
 
 const TableTag = ({ filterTag, closeTag, filterLabel, setFilterCriteria, handleChange, applyFilter, setSortIndex, filterCriteria, headings }) => {

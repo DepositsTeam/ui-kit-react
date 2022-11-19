@@ -1,1 +1,1 @@
-export { default } from "./src/Toast";
+export { default } from "./Toast";

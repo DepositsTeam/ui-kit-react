@@ -21,20 +21,13 @@ const Table = ({
   paginationSmartColor,
   ...props
 }) => {
-  const switchClassName = classNames(
-    {
-      "ui-table__wrapper": true,
-      // "ui-table__header": true,
-      // "ui-table__content": true,
-    },
-    className
-  );
-
   const [sortIndex, setSortIndex] = useState(null);
   const [filterIndex, setFilterIndex] = useState(null);
   const [filterText, setFilterText] = useState("");
   const [dataCopy, setDataCopy] = useState(data);
   const [filterCriteria, setFilterCriteria] = useState("Is");
+  const [filterTag, setFilterTag] = useState([]);
+
   const filterLabel = [
     "Is",
     "Is not",
@@ -47,7 +40,15 @@ const Table = ({
     "Contains",
     "Does not contain",
   ];
-  const [filterTag, setFilterTag] = useState([]);
+
+  const switchClassName = classNames(
+    {
+      "ui-table__wrapper": true,
+      // "ui-table__header": true,
+      // "ui-table__content": true,
+    },
+    className
+  );
 
   // set Filter text to input value
   const handleChange = (e) =>

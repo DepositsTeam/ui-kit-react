@@ -1,1 +1,1 @@
-export { default } from "./src/Tab";
+export { default } from "./Tab";

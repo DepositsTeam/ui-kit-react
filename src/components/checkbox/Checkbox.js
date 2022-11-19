@@ -1,5 +1,5 @@
 import React from "react";
-import "./Checkbox.css";
+import "./Checkbox.scss";
 import Text from "../text";
 import Box from "../box";
 import PropTypes from "prop-types";

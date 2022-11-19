@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import Box from "../box";
 import PropTypes from "prop-types";
 import classNames from "../../utils/classNames";
-import { ChevronFilledDownIcon, Text } from "../../index";
-import { Icon } from "../../index";
-import "./accordion.css";
-import { ChevronFilledUp } from "../icons";
+import Icon from "../icon";
+import "./Accordion.scss";
+import Text from "../text";
+import {
+  ChevronFilledUp,
+  ChevronFilledDown as ChevronFilledDownIcon,
+} from "../icons";
 
 const Accordion = ({
   title,
@@ -32,25 +35,25 @@ const Accordion = ({
       >
         <Box className={"ui-accordion__header__left-content"}>
           <Box className={"ui-accordion__header__left-icon"}>
-            {visible ? (
-              leftIconActive ? (
-                leftIconActive
-              ) : (
-                <Box className={"text-grey-500"}>
-                  <Icon icon={ChevronFilledUp} height={"32px"} width={"32px"} />
-                </Box>
-              )
-            ) : leftIconInactive ? (
-              leftIconInactive
-            ) : (
-              <Box className={"text-grey-500"}>
-                <Icon
-                  icon={ChevronFilledDownIcon}
-                  height={"32px"}
-                  width={"32px"}
-                />
-              </Box>
-            )}
+            {visible
+              ? leftIconActive || (
+                  <Box className={"text-grey-500"}>
+                    <Icon
+                      icon={ChevronFilledUp}
+                      height={"32px"}
+                      width={"32px"}
+                    />
+                  </Box>
+                )
+              : leftIconInactive || (
+                  <Box className={"text-grey-500"}>
+                    <Icon
+                      icon={ChevronFilledDownIcon}
+                      height={"32px"}
+                      width={"32px"}
+                    />
+                  </Box>
+                )}
           </Box>
           <Box className={"ui-accordion__header__title"}>
             <Text
@@ -78,4 +81,8 @@ export default Accordion;
 
 Accordion.propTypes = {
   title: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  leftIconActive: PropTypes.element,
+  leftIconInactive: PropTypes.element,
+  rightIcon: PropTypes.element,
 };

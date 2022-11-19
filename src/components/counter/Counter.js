@@ -1,10 +1,12 @@
-import { Box, Text, ErrorIcon } from "../../index";
 import classNames from "../../utils/classNames";
 import "../../scss/textfield.css";
-import "./Counter.css";
+import "./Counter.scss";
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import number_format from "../../utils/number_format";
+import Box from "../box";
+import Text from "../text";
+import { Error as ErrorIcon } from "../icons";
 
 const Counter = ({
   label,

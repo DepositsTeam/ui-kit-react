@@ -1,1 +1,1 @@
-export { default } from "./src/Heading";
+export { default } from "./Heading";

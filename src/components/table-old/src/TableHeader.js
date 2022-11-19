@@ -8,7 +8,7 @@ import ascending from '../assets/sort-ascending.svg'
 import descending from '../assets/sort-descending.svg'
 import funnel from '../assets/funnel.svg'
 import rightArrow from '../assets/right-arrow.svg'
-import Radio from '../../radio/src/Radio';
+import Radio from '../../radio/Radio';
 import TextField from "../../text-field/TextField";
 
 const TableHeader = ({ headings, sortIndex, handleSort, sortModalTrigger, filterIndex, filterModalTrigger, setFilterIndex, handleChange, applyFilter, filterCriteria, setFilterCriteria, filterLabel, checkbox }) => {

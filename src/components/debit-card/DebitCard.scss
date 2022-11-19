@@ -1,0 +1,62 @@
+@import url("https://assets.ondeposits.com/fonts/css/Ocrb.css");
+
+.ui-d-debitcard__wrapper {
+  .ui-d-debitcard {
+    background: linear-gradient(112.27deg, #0c258f 0.01%, #2843b4 98.37%);
+    backdrop-filter: blur(4px);
+    aspect-ratio: 25/16;
+    width: var(--width);
+    border-radius: 18px;
+    padding: 17px;
+    cursor: pointer;
+
+    .ui-d-debitcard__logo {
+      height: calc(var(--width) / 1.5625 / 100 * 8);
+    }
+
+    .ui-d-debitcard__rfid {
+      height: calc(var(--width) / 1.5625 / 100 * 16);
+      height: calc(var(--width) / 1.5625 / 100 * 16);
+    }
+  }
+
+  .ui-d-debitcard__brand {
+    width: calc(var(--width) / 100 * 18);
+  }
+
+  .ui-d-debitcard__column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .ocrb {
+    font-family: "Ocrb", sans-serif;
+  }
+
+  .ui-d-debitcard__cardno {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: white;
+    letter-spacing: 1px;
+  }
+
+  .ui-d-debitcard__exp,
+  .ui-d-debitcard__cvv {
+    font-size: 12px;
+    color: white;
+  }
+
+  .ui-d-debitcard__name {
+    font-size: 14px;
+    color: white;
+  }
+
+  .card__row {
+    margin-bottom: 16px;
+
+    > :first-child {
+      margin-right: 8px;
+    }
+  }
+}
