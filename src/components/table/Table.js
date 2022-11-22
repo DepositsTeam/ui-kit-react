@@ -15,6 +15,8 @@ import { getColumnWidth } from "./utils/getColumnWidth";
 import useExportCsv from "./hooks/useExportCsv";
 import { search as searchItems, filter as filterItems } from "./utils/filter";
 import uniqueRandomString from "../../utils/uniqueRandomString";
+import CustomizeViewModal from "./components/CustomizeViewModal";
+import Column from "./utils/Column";
 
 const Table = ({
   showCheckboxes,
@@ -46,14 +48,37 @@ const Table = ({
   const [searchValue, setSearchValue] = useState("");
   const [columnHashMap, setColumnHashMap] = useState([]);
   const [selectedRows, setSelectedRows] = useState([]);
+  const [showCustomizeView, setShowCustomizeView] = useState(false);
+  const [internalColumns, setInternalColumns] = useState([]);
+
+  const updateInternalColumns = (columns) => {
+    setInternalColumns(
+      columns.map((column) => ({
+        display: "",
+        dataSelector: "",
+        uppercase: true,
+        sortable: true,
+        sortNumerically: false,
+        filterable: true,
+        width: "",
+        minWidth: "",
+        maxWidth: "",
+        excludeFromCSV: false,
+        position: "left",
+        visible: true,
+        ...column,
+      }))
+    );
+  };
 
   useEffect(() => {
     setInternalCurrentPage(initialCurrentPage);
+    updateInternalColumns(columns);
   }, []);
 
   useEffect(() => {
     const hashMap = {};
-    columns.forEach((column) => {
+    internalColumns.forEach((column) => {
       hashMap[column.dataSelector] = column;
     });
     setColumnHashMap(hashMap);
@@ -90,7 +115,9 @@ const Table = ({
     }
   }, [internalCurrentPage, onPageChange]);
 
-  const filteredColumns = columns.filter((column) => column.visible !== false);
+  const filteredColumns = internalColumns.filter(
+    (column) => column.visible !== false
+  );
 
   const paginatedData =
     paginate && !asyncPagination
@@ -214,7 +241,9 @@ const Table = ({
           })}
         >
           {enableCustomizeView && (
-            <Button size={"medium"}>Customize view</Button>
+            <Button onClick={() => setShowCustomizeView(true)} size={"medium"}>
+              Customize view
+            </Button>
           )}
           {enableCsvExport && (
             <Button leftIcon={ExternalLink} size={"medium"} onClick={exportCsv}>
@@ -265,6 +294,12 @@ const Table = ({
           />
         </Box>
       )}
+      <CustomizeViewModal
+        show={showCustomizeView}
+        onCloseModal={() => setShowCustomizeView(false)}
+        columns={internalColumns}
+        onColumnsOrderChanged={updateInternalColumns}
+      />
     </Box>
   );
 };

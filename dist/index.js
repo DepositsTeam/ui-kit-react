@@ -4122,7 +4122,7 @@ var global$i =
 
 var objectGetOwnPropertyDescriptor = {};
 
-var fails$o = function (exec) {
+var fails$n = function (exec) {
   try {
     return !!exec();
   } catch (error) {
@@ -4130,17 +4130,17 @@ var fails$o = function (exec) {
   }
 };
 
-var fails$n = fails$o;
+var fails$m = fails$n;
 
 // Detect IE8's incomplete defineProperty implementation
-var descriptors = !fails$n(function () {
+var descriptors = !fails$m(function () {
   // eslint-disable-next-line es-x/no-object-defineproperty -- required for testing
   return Object.defineProperty({}, 1, { get: function () { return 7; } })[1] != 7;
 });
 
-var fails$m = fails$o;
+var fails$l = fails$n;
 
-var functionBindNative = !fails$m(function () {
+var functionBindNative = !fails$l(function () {
   // eslint-disable-next-line es-x/no-function-prototype-bind -- safe
   var test = (function () { /* empty */ }).bind();
   // eslint-disable-next-line no-prototype-builtins -- safe
@@ -4149,10 +4149,10 @@ var functionBindNative = !fails$m(function () {
 
 var NATIVE_BIND$2 = functionBindNative;
 
-var call$c = Function.prototype.call;
+var call$d = Function.prototype.call;
 
-var functionCall = NATIVE_BIND$2 ? call$c.bind(call$c) : function () {
-  return call$c.apply(call$c, arguments);
+var functionCall = NATIVE_BIND$2 ? call$d.bind(call$d) : function () {
+  return call$d.apply(call$d, arguments);
 };
 
 var objectPropertyIsEnumerable = {};
@@ -4184,35 +4184,35 @@ var NATIVE_BIND$1 = functionBindNative;
 
 var FunctionPrototype$2 = Function.prototype;
 var bind = FunctionPrototype$2.bind;
-var call$b = FunctionPrototype$2.call;
-var uncurryThis$r = NATIVE_BIND$1 && bind.bind(call$b, call$b);
+var call$c = FunctionPrototype$2.call;
+var uncurryThis$q = NATIVE_BIND$1 && bind.bind(call$c, call$c);
 
 var functionUncurryThis = NATIVE_BIND$1 ? function (fn) {
-  return fn && uncurryThis$r(fn);
+  return fn && uncurryThis$q(fn);
 } : function (fn) {
   return fn && function () {
-    return call$b.apply(fn, arguments);
+    return call$c.apply(fn, arguments);
   };
 };
 
-var uncurryThis$q = functionUncurryThis;
+var uncurryThis$p = functionUncurryThis;
 
-var toString$f = uncurryThis$q({}.toString);
-var stringSlice$7 = uncurryThis$q(''.slice);
+var toString$f = uncurryThis$p({}.toString);
+var stringSlice$7 = uncurryThis$p(''.slice);
 
 var classofRaw$1 = function (it) {
   return stringSlice$7(toString$f(it), 8, -1);
 };
 
-var uncurryThis$p = functionUncurryThis;
-var fails$l = fails$o;
+var uncurryThis$o = functionUncurryThis;
+var fails$k = fails$n;
 var classof$6 = classofRaw$1;
 
 var $Object$4 = Object;
-var split = uncurryThis$p(''.split);
+var split = uncurryThis$o(''.split);
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
-var indexedObject = fails$l(function () {
+var indexedObject = fails$k(function () {
   // throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
   // eslint-disable-next-line no-prototype-builtins -- safe
   return !$Object$4('z').propertyIsEnumerable(0);
@@ -4220,21 +4220,21 @@ var indexedObject = fails$l(function () {
   return classof$6(it) == 'String' ? split(it, '') : $Object$4(it);
 } : $Object$4;
 
-var $TypeError$c = TypeError;
+var $TypeError$b = TypeError;
 
 // `RequireObjectCoercible` abstract operation
 // https://tc39.es/ecma262/#sec-requireobjectcoercible
-var requireObjectCoercible$9 = function (it) {
-  if (it == undefined) throw $TypeError$c("Can't call method on " + it);
+var requireObjectCoercible$a = function (it) {
+  if (it == undefined) throw $TypeError$b("Can't call method on " + it);
   return it;
 };
 
 // toObject with fallback for non-array-like ES3 strings
 var IndexedObject$2 = indexedObject;
-var requireObjectCoercible$8 = requireObjectCoercible$9;
+var requireObjectCoercible$9 = requireObjectCoercible$a;
 
 var toIndexedObject$5 = function (it) {
-  return IndexedObject$2(requireObjectCoercible$8(it));
+  return IndexedObject$2(requireObjectCoercible$9(it));
 };
 
 // `IsCallable` abstract operation
@@ -4260,16 +4260,16 @@ var getBuiltIn$5 = function (namespace, method) {
   return arguments.length < 2 ? aFunction(global$h[namespace]) : global$h[namespace] && global$h[namespace][method];
 };
 
-var uncurryThis$o = functionUncurryThis;
+var uncurryThis$n = functionUncurryThis;
 
-var objectIsPrototypeOf = uncurryThis$o({}.isPrototypeOf);
+var objectIsPrototypeOf = uncurryThis$n({}.isPrototypeOf);
 
 var getBuiltIn$4 = getBuiltIn$5;
 
 var engineUserAgent = getBuiltIn$4('navigator', 'userAgent') || '';
 
 var global$g = global$i;
-var userAgent$2 = engineUserAgent;
+var userAgent = engineUserAgent;
 
 var process$1 = global$g.process;
 var Deno = global$g.Deno;
@@ -4286,10 +4286,10 @@ if (v8) {
 
 // BrowserFS NodeJS `process` polyfill incorrectly set `.v8` to `0.0`
 // so check `userAgent` even if `.v8` exists, but 0
-if (!version && userAgent$2) {
-  match$1 = userAgent$2.match(/Edge\/(\d+)/);
+if (!version && userAgent) {
+  match$1 = userAgent.match(/Edge\/(\d+)/);
   if (!match$1 || match$1[1] >= 74) {
-    match$1 = userAgent$2.match(/Chrome\/(\d+)/);
+    match$1 = userAgent.match(/Chrome\/(\d+)/);
     if (match$1) version = +match$1[1];
   }
 }
@@ -4299,10 +4299,10 @@ var engineV8Version = version;
 /* eslint-disable es-x/no-symbol -- required for testing */
 
 var V8_VERSION = engineV8Version;
-var fails$k = fails$o;
+var fails$j = fails$n;
 
 // eslint-disable-next-line es-x/no-object-getownpropertysymbols -- required for testing
-var nativeSymbol = !!Object.getOwnPropertySymbols && !fails$k(function () {
+var nativeSymbol = !!Object.getOwnPropertySymbols && !fails$j(function () {
   var symbol = Symbol();
   // Chrome 38 Symbol has incorrect toString conversion
   // `get-own-property-symbols` polyfill symbols converted to object are not Symbol instances
@@ -4335,7 +4335,7 @@ var isSymbol$3 = USE_SYMBOL_AS_UID$1 ? function (it) {
 
 var $String$3 = String;
 
-var tryToString$3 = function (argument) {
+var tryToString$2 = function (argument) {
   try {
     return $String$3(argument);
   } catch (error) {
@@ -4344,39 +4344,39 @@ var tryToString$3 = function (argument) {
 };
 
 var isCallable$g = isCallable$k;
-var tryToString$2 = tryToString$3;
+var tryToString$1 = tryToString$2;
 
-var $TypeError$b = TypeError;
+var $TypeError$a = TypeError;
 
 // `Assert: IsCallable(argument) is true`
-var aCallable$3 = function (argument) {
+var aCallable$2 = function (argument) {
   if (isCallable$g(argument)) return argument;
-  throw $TypeError$b(tryToString$2(argument) + ' is not a function');
+  throw $TypeError$a(tryToString$1(argument) + ' is not a function');
 };
 
-var aCallable$2 = aCallable$3;
+var aCallable$1 = aCallable$2;
 
 // `GetMethod` abstract operation
 // https://tc39.es/ecma262/#sec-getmethod
-var getMethod$3 = function (V, P) {
+var getMethod$4 = function (V, P) {
   var func = V[P];
-  return func == null ? undefined : aCallable$2(func);
+  return func == null ? undefined : aCallable$1(func);
 };
 
-var call$a = functionCall;
+var call$b = functionCall;
 var isCallable$f = isCallable$k;
 var isObject$8 = isObject$9;
 
-var $TypeError$a = TypeError;
+var $TypeError$9 = TypeError;
 
 // `OrdinaryToPrimitive` abstract operation
 // https://tc39.es/ecma262/#sec-ordinarytoprimitive
 var ordinaryToPrimitive$1 = function (input, pref) {
   var fn, val;
-  if (pref === 'string' && isCallable$f(fn = input.toString) && !isObject$8(val = call$a(fn, input))) return val;
-  if (isCallable$f(fn = input.valueOf) && !isObject$8(val = call$a(fn, input))) return val;
-  if (pref !== 'string' && isCallable$f(fn = input.toString) && !isObject$8(val = call$a(fn, input))) return val;
-  throw $TypeError$a("Can't convert object to primitive value");
+  if (pref === 'string' && isCallable$f(fn = input.toString) && !isObject$8(val = call$b(fn, input))) return val;
+  if (isCallable$f(fn = input.valueOf) && !isObject$8(val = call$b(fn, input))) return val;
+  if (pref !== 'string' && isCallable$f(fn = input.toString) && !isObject$8(val = call$b(fn, input))) return val;
+  throw $TypeError$9("Can't convert object to primitive value");
 };
 
 var shared$4 = {exports: {}};
@@ -4414,33 +4414,33 @@ var store$2 = sharedStore;
   source: 'https://github.com/zloirock/core-js'
 });
 
-var requireObjectCoercible$7 = requireObjectCoercible$9;
+var requireObjectCoercible$8 = requireObjectCoercible$a;
 
 var $Object$2 = Object;
 
 // `ToObject` abstract operation
 // https://tc39.es/ecma262/#sec-toobject
-var toObject$6 = function (argument) {
-  return $Object$2(requireObjectCoercible$7(argument));
+var toObject$5 = function (argument) {
+  return $Object$2(requireObjectCoercible$8(argument));
 };
 
-var uncurryThis$n = functionUncurryThis;
-var toObject$5 = toObject$6;
+var uncurryThis$m = functionUncurryThis;
+var toObject$4 = toObject$5;
 
-var hasOwnProperty$a = uncurryThis$n({}.hasOwnProperty);
+var hasOwnProperty$a = uncurryThis$m({}.hasOwnProperty);
 
 // `HasOwnProperty` abstract operation
 // https://tc39.es/ecma262/#sec-hasownproperty
 // eslint-disable-next-line es-x/no-object-hasown -- safe
 var hasOwnProperty_1 = Object.hasOwn || function hasOwn(it, key) {
-  return hasOwnProperty$a(toObject$5(it), key);
+  return hasOwnProperty$a(toObject$4(it), key);
 };
 
-var uncurryThis$m = functionUncurryThis;
+var uncurryThis$l = functionUncurryThis;
 
 var id = 0;
 var postfix = Math.random();
-var toString$e = uncurryThis$m(1.0.toString);
+var toString$e = uncurryThis$l(1.0.toString);
 
 var uid$3 = function (key) {
   return 'Symbol(' + (key === undefined ? '' : key) + ')_' + toString$e(++id + postfix, 36);
@@ -4471,27 +4471,27 @@ var wellKnownSymbol$d = function (name) {
   } return WellKnownSymbolsStore[name];
 };
 
-var call$9 = functionCall;
+var call$a = functionCall;
 var isObject$7 = isObject$9;
 var isSymbol$2 = isSymbol$3;
-var getMethod$2 = getMethod$3;
+var getMethod$3 = getMethod$4;
 var ordinaryToPrimitive = ordinaryToPrimitive$1;
 var wellKnownSymbol$c = wellKnownSymbol$d;
 
-var $TypeError$9 = TypeError;
+var $TypeError$8 = TypeError;
 var TO_PRIMITIVE = wellKnownSymbol$c('toPrimitive');
 
 // `ToPrimitive` abstract operation
 // https://tc39.es/ecma262/#sec-toprimitive
 var toPrimitive$1 = function (input, pref) {
   if (!isObject$7(input) || isSymbol$2(input)) return input;
-  var exoticToPrim = getMethod$2(input, TO_PRIMITIVE);
+  var exoticToPrim = getMethod$3(input, TO_PRIMITIVE);
   var result;
   if (exoticToPrim) {
     if (pref === undefined) pref = 'default';
-    result = call$9(exoticToPrim, input, pref);
+    result = call$a(exoticToPrim, input, pref);
     if (!isObject$7(result) || isSymbol$2(result)) return result;
-    throw $TypeError$9("Can't convert object to primitive value");
+    throw $TypeError$8("Can't convert object to primitive value");
   }
   if (pref === undefined) pref = 'number';
   return ordinaryToPrimitive(input, pref);
@@ -4519,11 +4519,11 @@ var documentCreateElement$2 = function (it) {
 };
 
 var DESCRIPTORS$a = descriptors;
-var fails$j = fails$o;
+var fails$i = fails$n;
 var createElement = documentCreateElement$2;
 
 // Thanks to IE8 for its funny defineProperty
-var ie8DomDefine = !DESCRIPTORS$a && !fails$j(function () {
+var ie8DomDefine = !DESCRIPTORS$a && !fails$i(function () {
   // eslint-disable-next-line es-x/no-object-defineproperty -- required for testing
   return Object.defineProperty(createElement('div'), 'a', {
     get: function () { return 7; }
@@ -4531,7 +4531,7 @@ var ie8DomDefine = !DESCRIPTORS$a && !fails$j(function () {
 });
 
 var DESCRIPTORS$9 = descriptors;
-var call$8 = functionCall;
+var call$9 = functionCall;
 var propertyIsEnumerableModule$1 = objectPropertyIsEnumerable;
 var createPropertyDescriptor$3 = createPropertyDescriptor$4;
 var toIndexedObject$4 = toIndexedObject$5;
@@ -4550,17 +4550,17 @@ objectGetOwnPropertyDescriptor.f = DESCRIPTORS$9 ? $getOwnPropertyDescriptor$1 :
   if (IE8_DOM_DEFINE$1) try {
     return $getOwnPropertyDescriptor$1(O, P);
   } catch (error) { /* empty */ }
-  if (hasOwn$8(O, P)) return createPropertyDescriptor$3(!call$8(propertyIsEnumerableModule$1.f, O, P), O[P]);
+  if (hasOwn$8(O, P)) return createPropertyDescriptor$3(!call$9(propertyIsEnumerableModule$1.f, O, P), O[P]);
 };
 
 var objectDefineProperty = {};
 
 var DESCRIPTORS$8 = descriptors;
-var fails$i = fails$o;
+var fails$h = fails$n;
 
 // V8 ~ Chrome 36-
 // https://bugs.chromium.org/p/v8/issues/detail?id=3334
-var v8PrototypeDefineBug = DESCRIPTORS$8 && fails$i(function () {
+var v8PrototypeDefineBug = DESCRIPTORS$8 && fails$h(function () {
   // eslint-disable-next-line es-x/no-object-defineproperty -- required for testing
   return Object.defineProperty(function () { /* empty */ }, 'prototype', {
     value: 42,
@@ -4571,21 +4571,21 @@ var v8PrototypeDefineBug = DESCRIPTORS$8 && fails$i(function () {
 var isObject$5 = isObject$9;
 
 var $String$2 = String;
-var $TypeError$8 = TypeError;
+var $TypeError$7 = TypeError;
 
 // `Assert: Type(argument) is Object`
-var anObject$a = function (argument) {
+var anObject$b = function (argument) {
   if (isObject$5(argument)) return argument;
-  throw $TypeError$8($String$2(argument) + ' is not an object');
+  throw $TypeError$7($String$2(argument) + ' is not an object');
 };
 
 var DESCRIPTORS$7 = descriptors;
 var IE8_DOM_DEFINE = ie8DomDefine;
 var V8_PROTOTYPE_DEFINE_BUG$1 = v8PrototypeDefineBug;
-var anObject$9 = anObject$a;
+var anObject$a = anObject$b;
 var toPropertyKey$1 = toPropertyKey$3;
 
-var $TypeError$7 = TypeError;
+var $TypeError$6 = TypeError;
 // eslint-disable-next-line es-x/no-object-defineproperty -- safe
 var $defineProperty = Object.defineProperty;
 // eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
@@ -4597,9 +4597,9 @@ var WRITABLE = 'writable';
 // `Object.defineProperty` method
 // https://tc39.es/ecma262/#sec-object.defineproperty
 objectDefineProperty.f = DESCRIPTORS$7 ? V8_PROTOTYPE_DEFINE_BUG$1 ? function defineProperty(O, P, Attributes) {
-  anObject$9(O);
+  anObject$a(O);
   P = toPropertyKey$1(P);
-  anObject$9(Attributes);
+  anObject$a(Attributes);
   if (typeof O === 'function' && P === 'prototype' && 'value' in Attributes && WRITABLE in Attributes && !Attributes[WRITABLE]) {
     var current = $getOwnPropertyDescriptor(O, P);
     if (current && current[WRITABLE]) {
@@ -4612,13 +4612,13 @@ objectDefineProperty.f = DESCRIPTORS$7 ? V8_PROTOTYPE_DEFINE_BUG$1 ? function de
     }
   } return $defineProperty(O, P, Attributes);
 } : $defineProperty : function defineProperty(O, P, Attributes) {
-  anObject$9(O);
+  anObject$a(O);
   P = toPropertyKey$1(P);
-  anObject$9(Attributes);
+  anObject$a(Attributes);
   if (IE8_DOM_DEFINE) try {
     return $defineProperty(O, P, Attributes);
   } catch (error) { /* empty */ }
-  if ('get' in Attributes || 'set' in Attributes) throw $TypeError$7('Accessors not supported');
+  if ('get' in Attributes || 'set' in Attributes) throw $TypeError$6('Accessors not supported');
   if ('value' in Attributes) O[P] = Attributes.value;
   return O;
 };
@@ -4654,11 +4654,11 @@ var functionName = {
   CONFIGURABLE: CONFIGURABLE
 };
 
-var uncurryThis$l = functionUncurryThis;
+var uncurryThis$k = functionUncurryThis;
 var isCallable$e = isCallable$k;
 var store$1 = sharedStore;
 
-var functionToString = uncurryThis$l(Function.toString);
+var functionToString = uncurryThis$k(Function.toString);
 
 // this helper broken in `core-js@3.4.1-3.4.4`, so we can't use `shared` helper
 if (!isCallable$e(store$1.inspectSource)) {
@@ -4690,7 +4690,7 @@ var hiddenKeys$4 = {};
 
 var NATIVE_WEAK_MAP = nativeWeakMap;
 var global$a = global$i;
-var uncurryThis$k = functionUncurryThis;
+var uncurryThis$j = functionUncurryThis;
 var isObject$4 = isObject$9;
 var createNonEnumerableProperty$4 = createNonEnumerableProperty$5;
 var hasOwn$6 = hasOwnProperty_1;
@@ -4718,9 +4718,9 @@ var getterFor = function (TYPE) {
 
 if (NATIVE_WEAK_MAP || shared$1.state) {
   var store = shared$1.state || (shared$1.state = new WeakMap$1());
-  var wmget = uncurryThis$k(store.get);
-  var wmhas = uncurryThis$k(store.has);
-  var wmset = uncurryThis$k(store.set);
+  var wmget = uncurryThis$j(store.get);
+  var wmhas = uncurryThis$j(store.has);
+  var wmset = uncurryThis$j(store.set);
   set = function (it, metadata) {
     if (wmhas(store, it)) throw new TypeError$1(OBJECT_ALREADY_INITIALIZED);
     metadata.facade = it;
@@ -4758,7 +4758,7 @@ var internalState = {
   getterFor: getterFor
 };
 
-var fails$h = fails$o;
+var fails$g = fails$n;
 var isCallable$c = isCallable$k;
 var hasOwn$5 = hasOwnProperty_1;
 var DESCRIPTORS$4 = descriptors;
@@ -4771,7 +4771,7 @@ var getInternalState$2 = InternalStateModule$1.get;
 // eslint-disable-next-line es-x/no-object-defineproperty -- safe
 var defineProperty$6 = Object.defineProperty;
 
-var CONFIGURABLE_LENGTH = DESCRIPTORS$4 && !fails$h(function () {
+var CONFIGURABLE_LENGTH = DESCRIPTORS$4 && !fails$g(function () {
   return defineProperty$6(function () { /* empty */ }, 'length', { value: 8 }).length !== 8;
 });
 
@@ -4839,14 +4839,14 @@ var defineBuiltIn$4 = function (O, key, value, options) {
 var objectGetOwnPropertyNames = {};
 
 var ceil = Math.ceil;
-var floor$2 = Math.floor;
+var floor$1 = Math.floor;
 
 // `Math.trunc` method
 // https://tc39.es/ecma262/#sec-math.trunc
 // eslint-disable-next-line es-x/no-math-trunc -- safe
 var mathTrunc = Math.trunc || function trunc(x) {
   var n = +x;
-  return (n > 0 ? floor$2 : ceil)(n);
+  return (n > 0 ? floor$1 : ceil)(n);
 };
 
 var trunc = mathTrunc;
@@ -4886,19 +4886,19 @@ var toLength$4 = toLength$5;
 
 // `LengthOfArrayLike` abstract operation
 // https://tc39.es/ecma262/#sec-lengthofarraylike
-var lengthOfArrayLike$4 = function (obj) {
+var lengthOfArrayLike$3 = function (obj) {
   return toLength$4(obj.length);
 };
 
 var toIndexedObject$3 = toIndexedObject$5;
 var toAbsoluteIndex$1 = toAbsoluteIndex$2;
-var lengthOfArrayLike$3 = lengthOfArrayLike$4;
+var lengthOfArrayLike$2 = lengthOfArrayLike$3;
 
 // `Array.prototype.{ indexOf, includes }` methods implementation
 var createMethod$3 = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIndexedObject$3($this);
-    var length = lengthOfArrayLike$3(O);
+    var length = lengthOfArrayLike$2(O);
     var index = toAbsoluteIndex$1(fromIndex, length);
     var value;
     // Array#includes uses SameValueZero equality algorithm
@@ -4923,23 +4923,23 @@ var arrayIncludes = {
   indexOf: createMethod$3(false)
 };
 
-var uncurryThis$j = functionUncurryThis;
+var uncurryThis$i = functionUncurryThis;
 var hasOwn$4 = hasOwnProperty_1;
 var toIndexedObject$2 = toIndexedObject$5;
 var indexOf$1 = arrayIncludes.indexOf;
 var hiddenKeys$2 = hiddenKeys$4;
 
-var push$3 = uncurryThis$j([].push);
+var push$2 = uncurryThis$i([].push);
 
 var objectKeysInternal = function (object, names) {
   var O = toIndexedObject$2(object);
   var i = 0;
   var result = [];
   var key;
-  for (key in O) !hasOwn$4(hiddenKeys$2, key) && hasOwn$4(O, key) && push$3(result, key);
+  for (key in O) !hasOwn$4(hiddenKeys$2, key) && hasOwn$4(O, key) && push$2(result, key);
   // Don't enum bug & hidden keys
   while (names.length > i) if (hasOwn$4(O, key = names[i++])) {
-    ~indexOf$1(result, key) || push$3(result, key);
+    ~indexOf$1(result, key) || push$2(result, key);
   }
   return result;
 };
@@ -4973,16 +4973,16 @@ var objectGetOwnPropertySymbols = {};
 objectGetOwnPropertySymbols.f = Object.getOwnPropertySymbols;
 
 var getBuiltIn$2 = getBuiltIn$5;
-var uncurryThis$i = functionUncurryThis;
+var uncurryThis$h = functionUncurryThis;
 var getOwnPropertyNamesModule = objectGetOwnPropertyNames;
 var getOwnPropertySymbolsModule$1 = objectGetOwnPropertySymbols;
-var anObject$8 = anObject$a;
+var anObject$9 = anObject$b;
 
-var concat$2 = uncurryThis$i([].concat);
+var concat$2 = uncurryThis$h([].concat);
 
 // all object keys, includes non-enumerable and symbols
 var ownKeys$1 = getBuiltIn$2('Reflect', 'ownKeys') || function ownKeys(it) {
-  var keys = getOwnPropertyNamesModule.f(anObject$8(it));
+  var keys = getOwnPropertyNamesModule.f(anObject$9(it));
   var getOwnPropertySymbols = getOwnPropertySymbolsModule$1.f;
   return getOwnPropertySymbols ? concat$2(keys, getOwnPropertySymbols(it)) : keys;
 };
@@ -5004,7 +5004,7 @@ var copyConstructorProperties$2 = function (target, source, exceptions) {
   }
 };
 
-var fails$g = fails$o;
+var fails$f = fails$n;
 var isCallable$a = isCallable$k;
 
 var replacement = /#|\.prototype\./;
@@ -5013,7 +5013,7 @@ var isForced$1 = function (feature, detection) {
   var value = data[normalize(feature)];
   return value == POLYFILL ? true
     : value == NATIVE ? false
-    : isCallable$a(detection) ? fails$g(detection)
+    : isCallable$a(detection) ? fails$f(detection)
     : !!detection;
 };
 
@@ -5093,24 +5093,24 @@ var objectKeys$2 = Object.keys || function keys(O) {
 };
 
 var DESCRIPTORS$3 = descriptors;
-var uncurryThis$h = functionUncurryThis;
-var call$7 = functionCall;
-var fails$f = fails$o;
+var uncurryThis$g = functionUncurryThis;
+var call$8 = functionCall;
+var fails$e = fails$n;
 var objectKeys$1 = objectKeys$2;
 var getOwnPropertySymbolsModule = objectGetOwnPropertySymbols;
 var propertyIsEnumerableModule = objectPropertyIsEnumerable;
-var toObject$4 = toObject$6;
+var toObject$3 = toObject$5;
 var IndexedObject$1 = indexedObject;
 
 // eslint-disable-next-line es-x/no-object-assign -- safe
 var $assign = Object.assign;
 // eslint-disable-next-line es-x/no-object-defineproperty -- required for testing
 var defineProperty$5 = Object.defineProperty;
-var concat$1 = uncurryThis$h([].concat);
+var concat$1 = uncurryThis$g([].concat);
 
 // `Object.assign` method
 // https://tc39.es/ecma262/#sec-object.assign
-var objectAssign = !$assign || fails$f(function () {
+var objectAssign = !$assign || fails$e(function () {
   // should have correct order of operations (Edge bug)
   if (DESCRIPTORS$3 && $assign({ b: 1 }, $assign(defineProperty$5({}, 'a', {
     enumerable: true,
@@ -5131,7 +5131,7 @@ var objectAssign = !$assign || fails$f(function () {
   alphabet.split('').forEach(function (chr) { B[chr] = chr; });
   return $assign({}, A)[symbol] != 7 || objectKeys$1($assign({}, B)).join('') != alphabet;
 }) ? function assign(target, source) { // eslint-disable-line no-unused-vars -- required for `.length`
-  var T = toObject$4(target);
+  var T = toObject$3(target);
   var argumentsLength = arguments.length;
   var index = 1;
   var getOwnPropertySymbols = getOwnPropertySymbolsModule.f;
@@ -5144,18 +5144,18 @@ var objectAssign = !$assign || fails$f(function () {
     var key;
     while (length > j) {
       key = keys[j++];
-      if (!DESCRIPTORS$3 || call$7(propertyIsEnumerable, S, key)) T[key] = S[key];
+      if (!DESCRIPTORS$3 || call$8(propertyIsEnumerable, S, key)) T[key] = S[key];
     }
   } return T;
 } : $assign;
 
-var $$d = _export;
+var $$c = _export;
 var assign$1 = objectAssign;
 
 // `Object.assign` method
 // https://tc39.es/ecma262/#sec-object.assign
 // eslint-disable-next-line es-x/no-object-assign -- required for testing
-$$d({ target: 'Object', stat: true, arity: 2, forced: Object.assign !== assign$1 }, {
+$$c({ target: 'Object', stat: true, arity: 2, forced: Object.assign !== assign$1 }, {
   assign: assign$1
 });
 
@@ -5168,11 +5168,11 @@ var convertObjToVars = function convertObjToVars(obj) {
 var wellKnownSymbol$b = wellKnownSymbol$d;
 
 var TO_STRING_TAG$3 = wellKnownSymbol$b('toStringTag');
-var test$1 = {};
+var test = {};
 
-test$1[TO_STRING_TAG$3] = 'z';
+test[TO_STRING_TAG$3] = 'z';
 
-var toStringTagSupport = String(test$1) === '[object z]';
+var toStringTagSupport = String(test) === '[object z]';
 
 var TO_STRING_TAG_SUPPORT = toStringTagSupport;
 var isCallable$9 = isCallable$k;
@@ -5213,12 +5213,12 @@ var toString$d = function (argument) {
   return $String$1(argument);
 };
 
-var anObject$7 = anObject$a;
+var anObject$8 = anObject$b;
 
 // `RegExp.prototype.flags` getter implementation
 // https://tc39.es/ecma262/#sec-get-regexp.prototype.flags
 var regexpFlags$1 = function () {
-  var that = anObject$7(this);
+  var that = anObject$8(this);
   var result = '';
   if (that.hasIndices) result += 'd';
   if (that.global) result += 'g';
@@ -5231,13 +5231,13 @@ var regexpFlags$1 = function () {
   return result;
 };
 
-var fails$e = fails$o;
+var fails$d = fails$n;
 var global$8 = global$i;
 
 // babel-minify and Closure Compiler transpiles RegExp('a', 'y') -> /a/y and it causes SyntaxError
 var $RegExp$2 = global$8.RegExp;
 
-var UNSUPPORTED_Y$2 = fails$e(function () {
+var UNSUPPORTED_Y$2 = fails$d(function () {
   var re = $RegExp$2('a', 'y');
   re.lastIndex = 2;
   return re.exec('abcd') != null;
@@ -5245,11 +5245,11 @@ var UNSUPPORTED_Y$2 = fails$e(function () {
 
 // UC Browser bug
 // https://github.com/zloirock/core-js/issues/1008
-var MISSED_STICKY = UNSUPPORTED_Y$2 || fails$e(function () {
+var MISSED_STICKY = UNSUPPORTED_Y$2 || fails$d(function () {
   return !$RegExp$2('a', 'y').sticky;
 });
 
-var BROKEN_CARET = UNSUPPORTED_Y$2 || fails$e(function () {
+var BROKEN_CARET = UNSUPPORTED_Y$2 || fails$d(function () {
   // https://bugzilla.mozilla.org/show_bug.cgi?id=773687
   var re = $RegExp$2('^r', 'gy');
   re.lastIndex = 2;
@@ -5267,7 +5267,7 @@ var objectDefineProperties = {};
 var DESCRIPTORS$2 = descriptors;
 var V8_PROTOTYPE_DEFINE_BUG = v8PrototypeDefineBug;
 var definePropertyModule$1 = objectDefineProperty;
-var anObject$6 = anObject$a;
+var anObject$7 = anObject$b;
 var toIndexedObject$1 = toIndexedObject$5;
 var objectKeys = objectKeys$2;
 
@@ -5275,7 +5275,7 @@ var objectKeys = objectKeys$2;
 // https://tc39.es/ecma262/#sec-object.defineproperties
 // eslint-disable-next-line es-x/no-object-defineproperties -- safe
 objectDefineProperties.f = DESCRIPTORS$2 && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {
-  anObject$6(O);
+  anObject$7(O);
   var props = toIndexedObject$1(Properties);
   var keys = objectKeys(Properties);
   var length = keys.length;
@@ -5291,7 +5291,7 @@ var html$1 = getBuiltIn$1('document', 'documentElement');
 
 /* global ActiveXObject -- old IE, WSH */
 
-var anObject$5 = anObject$a;
+var anObject$6 = anObject$b;
 var definePropertiesModule = objectDefineProperties;
 var enumBugKeys = enumBugKeys$3;
 var hiddenKeys = hiddenKeys$4;
@@ -5365,7 +5365,7 @@ hiddenKeys[IE_PROTO$1] = true;
 var objectCreate$1 = Object.create || function create(O, Properties) {
   var result;
   if (O !== null) {
-    EmptyConstructor[PROTOTYPE] = anObject$5(O);
+    EmptyConstructor[PROTOTYPE] = anObject$6(O);
     result = new EmptyConstructor();
     EmptyConstructor[PROTOTYPE] = null;
     // add "__proto__" for Object.getPrototypeOf polyfill
@@ -5374,24 +5374,24 @@ var objectCreate$1 = Object.create || function create(O, Properties) {
   return Properties === undefined ? result : definePropertiesModule.f(result, Properties);
 };
 
-var fails$d = fails$o;
+var fails$c = fails$n;
 var global$7 = global$i;
 
 // babel-minify and Closure Compiler transpiles RegExp('.', 's') -> /./s and it causes SyntaxError
 var $RegExp$1 = global$7.RegExp;
 
-var regexpUnsupportedDotAll = fails$d(function () {
+var regexpUnsupportedDotAll = fails$c(function () {
   var re = $RegExp$1('.', 's');
   return !(re.dotAll && re.exec('\n') && re.flags === 's');
 });
 
-var fails$c = fails$o;
+var fails$b = fails$n;
 var global$6 = global$i;
 
 // babel-minify and Closure Compiler transpiles RegExp('(?<a>b)', 'g') -> /(?<a>b)/g and it causes SyntaxError
 var $RegExp = global$6.RegExp;
 
-var regexpUnsupportedNcg = fails$c(function () {
+var regexpUnsupportedNcg = fails$b(function () {
   var re = $RegExp('(?<a>b)', 'g');
   return re.exec('b').groups.a !== 'b' ||
     'b'.replace(re, '$<a>c') !== 'bc';
@@ -5399,8 +5399,8 @@ var regexpUnsupportedNcg = fails$c(function () {
 
 /* eslint-disable regexp/no-empty-capturing-group, regexp/no-empty-group, regexp/no-lazy-ends -- testing */
 /* eslint-disable regexp/no-useless-quantifier -- testing */
-var call$6 = functionCall;
-var uncurryThis$g = functionUncurryThis;
+var call$7 = functionCall;
+var uncurryThis$f = functionUncurryThis;
 var toString$c = toString$d;
 var regexpFlags = regexpFlags$1;
 var stickyHelpers$1 = regexpStickyHelpers;
@@ -5413,16 +5413,16 @@ var UNSUPPORTED_NCG = regexpUnsupportedNcg;
 var nativeReplace = shared('native-string-replace', String.prototype.replace);
 var nativeExec = RegExp.prototype.exec;
 var patchedExec = nativeExec;
-var charAt$4 = uncurryThis$g(''.charAt);
-var indexOf = uncurryThis$g(''.indexOf);
-var replace$4 = uncurryThis$g(''.replace);
-var stringSlice$6 = uncurryThis$g(''.slice);
+var charAt$4 = uncurryThis$f(''.charAt);
+var indexOf = uncurryThis$f(''.indexOf);
+var replace$4 = uncurryThis$f(''.replace);
+var stringSlice$6 = uncurryThis$f(''.slice);
 
 var UPDATES_LAST_INDEX_WRONG = (function () {
   var re1 = /a/;
   var re2 = /b*/g;
-  call$6(nativeExec, re1, 'a');
-  call$6(nativeExec, re2, 'a');
+  call$7(nativeExec, re1, 'a');
+  call$7(nativeExec, re2, 'a');
   return re1.lastIndex !== 0 || re2.lastIndex !== 0;
 })();
 
@@ -5443,14 +5443,14 @@ if (PATCH) {
 
     if (raw) {
       raw.lastIndex = re.lastIndex;
-      result = call$6(patchedExec, raw, str);
+      result = call$7(patchedExec, raw, str);
       re.lastIndex = raw.lastIndex;
       return result;
     }
 
     var groups = state.groups;
     var sticky = UNSUPPORTED_Y$1 && re.sticky;
-    var flags = call$6(regexpFlags, re);
+    var flags = call$7(regexpFlags, re);
     var source = re.source;
     var charsAdded = 0;
     var strCopy = str;
@@ -5478,7 +5478,7 @@ if (PATCH) {
     }
     if (UPDATES_LAST_INDEX_WRONG) lastIndex = re.lastIndex;
 
-    match = call$6(nativeExec, sticky ? reCopy : re, strCopy);
+    match = call$7(nativeExec, sticky ? reCopy : re, strCopy);
 
     if (sticky) {
       if (match) {
@@ -5493,7 +5493,7 @@ if (PATCH) {
     if (NPCG_INCLUDED && match && match.length > 1) {
       // Fix browsers whose `exec` methods don't consistently return `undefined`
       // for NPCG, like IE8. NOTE: This doesn't work for /(.?)?/
-      call$6(nativeReplace, match[0], reCopy, function () {
+      call$7(nativeReplace, match[0], reCopy, function () {
         for (i = 1; i < arguments.length - 2; i++) {
           if (arguments[i] === undefined) match[i] = undefined;
         }
@@ -5514,20 +5514,20 @@ if (PATCH) {
 
 var regexpExec$3 = patchedExec;
 
-var $$c = _export;
+var $$b = _export;
 var exec$3 = regexpExec$3;
 
 // `RegExp.prototype.exec` method
 // https://tc39.es/ecma262/#sec-regexp.prototype.exec
-$$c({ target: 'RegExp', proto: true, forced: /./.exec !== exec$3 }, {
+$$b({ target: 'RegExp', proto: true, forced: /./.exec !== exec$3 }, {
   exec: exec$3
 });
 
 // TODO: Remove from `core-js@4` since it's moved to entry points
 
-var $$b = _export;
-var call$5 = functionCall;
-var uncurryThis$f = functionUncurryThis;
+var $$a = _export;
+var call$6 = functionCall;
+var uncurryThis$e = functionUncurryThis;
 var isCallable$8 = isCallable$k;
 var isObject$3 = isObject$9;
 
@@ -5541,18 +5541,18 @@ var DELEGATES_TO_EXEC = function () {
   return re.test('abc') === true && execCalled;
 }();
 
-var $TypeError$6 = TypeError;
-var un$Test = uncurryThis$f(/./.test);
+var $TypeError$5 = TypeError;
+var un$Test = uncurryThis$e(/./.test);
 
 // `RegExp.prototype.test` method
 // https://tc39.es/ecma262/#sec-regexp.prototype.test
-$$b({ target: 'RegExp', proto: true, forced: !DELEGATES_TO_EXEC }, {
+$$a({ target: 'RegExp', proto: true, forced: !DELEGATES_TO_EXEC }, {
   test: function (str) {
     var exec = this.exec;
     if (!isCallable$8(exec)) return un$Test(this, str);
-    var result = call$5(exec, this, str);
+    var result = call$6(exec, this, str);
     if (result !== null && !isObject$3(result)) {
-      throw new $TypeError$6('RegExp exec method returned something other than an Object or null');
+      throw new $TypeError$5('RegExp exec method returned something other than an Object or null');
     }
     return !!result;
   }
@@ -5562,12 +5562,12 @@ $$b({ target: 'RegExp', proto: true, forced: !DELEGATES_TO_EXEC }, {
 var whitespaces$4 = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u2002' +
   '\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
 
-var uncurryThis$e = functionUncurryThis;
-var requireObjectCoercible$6 = requireObjectCoercible$9;
+var uncurryThis$d = functionUncurryThis;
+var requireObjectCoercible$7 = requireObjectCoercible$a;
 var toString$b = toString$d;
 var whitespaces$3 = whitespaces$4;
 
-var replace$3 = uncurryThis$e(''.replace);
+var replace$3 = uncurryThis$d(''.replace);
 var whitespace = '[' + whitespaces$3 + ']';
 var ltrim = RegExp('^' + whitespace + whitespace + '*');
 var rtrim = RegExp(whitespace + whitespace + '*$');
@@ -5575,7 +5575,7 @@ var rtrim = RegExp(whitespace + whitespace + '*$');
 // `String.prototype.{ trim, trimStart, trimEnd, trimLeft, trimRight }` methods implementation
 var createMethod$2 = function (TYPE) {
   return function ($this) {
-    var string = toString$b(requireObjectCoercible$6($this));
+    var string = toString$b(requireObjectCoercible$7($this));
     if (TYPE & 1) string = replace$3(string, ltrim, '');
     if (TYPE & 2) string = replace$3(string, rtrim, '');
     return string;
@@ -5595,8 +5595,8 @@ var stringTrim = {
 };
 
 var global$5 = global$i;
-var fails$b = fails$o;
-var uncurryThis$d = functionUncurryThis;
+var fails$a = fails$n;
+var uncurryThis$c = functionUncurryThis;
 var toString$a = toString$d;
 var trim$1 = stringTrim.trim;
 var whitespaces$2 = whitespaces$4;
@@ -5605,24 +5605,24 @@ var $parseInt$1 = global$5.parseInt;
 var Symbol$3 = global$5.Symbol;
 var ITERATOR$4 = Symbol$3 && Symbol$3.iterator;
 var hex = /^[+-]?0x/i;
-var exec$2 = uncurryThis$d(hex.exec);
-var FORCED$2 = $parseInt$1(whitespaces$2 + '08') !== 8 || $parseInt$1(whitespaces$2 + '0x16') !== 22
+var exec$2 = uncurryThis$c(hex.exec);
+var FORCED$1 = $parseInt$1(whitespaces$2 + '08') !== 8 || $parseInt$1(whitespaces$2 + '0x16') !== 22
   // MS Edge 18- broken with boxed symbols
-  || (ITERATOR$4 && !fails$b(function () { $parseInt$1(Object(ITERATOR$4)); }));
+  || (ITERATOR$4 && !fails$a(function () { $parseInt$1(Object(ITERATOR$4)); }));
 
 // `parseInt` method
 // https://tc39.es/ecma262/#sec-parseint-string-radix
-var numberParseInt = FORCED$2 ? function parseInt(string, radix) {
+var numberParseInt = FORCED$1 ? function parseInt(string, radix) {
   var S = trim$1(toString$a(string));
   return $parseInt$1(S, (radix >>> 0) || (exec$2(hex, S) ? 16 : 10));
 } : $parseInt$1;
 
-var $$a = _export;
+var $$9 = _export;
 var $parseInt = numberParseInt;
 
 // `parseInt` method
 // https://tc39.es/ecma262/#sec-parseint-string-radix
-$$a({ global: true, forced: parseInt != $parseInt }, {
+$$9({ global: true, forced: parseInt != $parseInt }, {
   parseInt: $parseInt
 });
 
@@ -5630,19 +5630,19 @@ var NATIVE_BIND = functionBindNative;
 
 var FunctionPrototype = Function.prototype;
 var apply$2 = FunctionPrototype.apply;
-var call$4 = FunctionPrototype.call;
+var call$5 = FunctionPrototype.call;
 
 // eslint-disable-next-line es-x/no-reflect -- safe
-var functionApply = typeof Reflect == 'object' && Reflect.apply || (NATIVE_BIND ? call$4.bind(apply$2) : function () {
-  return call$4.apply(apply$2, arguments);
+var functionApply = typeof Reflect == 'object' && Reflect.apply || (NATIVE_BIND ? call$5.bind(apply$2) : function () {
+  return call$5.apply(apply$2, arguments);
 });
 
 // TODO: Remove from `core-js@4` since it's moved to entry points
 
-var uncurryThis$c = functionUncurryThis;
+var uncurryThis$b = functionUncurryThis;
 var defineBuiltIn$2 = defineBuiltIn$4;
 var regexpExec$2 = regexpExec$3;
-var fails$a = fails$o;
+var fails$9 = fails$n;
 var wellKnownSymbol$9 = wellKnownSymbol$d;
 var createNonEnumerableProperty$2 = createNonEnumerableProperty$5;
 
@@ -5652,14 +5652,14 @@ var RegExpPrototype = RegExp.prototype;
 var fixRegexpWellKnownSymbolLogic = function (KEY, exec, FORCED, SHAM) {
   var SYMBOL = wellKnownSymbol$9(KEY);
 
-  var DELEGATES_TO_SYMBOL = !fails$a(function () {
+  var DELEGATES_TO_SYMBOL = !fails$9(function () {
     // String methods call symbol-named RegEp methods
     var O = {};
     O[SYMBOL] = function () { return 7; };
     return ''[KEY](O) != 7;
   });
 
-  var DELEGATES_TO_EXEC = DELEGATES_TO_SYMBOL && !fails$a(function () {
+  var DELEGATES_TO_EXEC = DELEGATES_TO_SYMBOL && !fails$9(function () {
     // Symbol-named RegExp methods call .exec
     var execCalled = false;
     var re = /a/;
@@ -5688,9 +5688,9 @@ var fixRegexpWellKnownSymbolLogic = function (KEY, exec, FORCED, SHAM) {
     !DELEGATES_TO_EXEC ||
     FORCED
   ) {
-    var uncurriedNativeRegExpMethod = uncurryThis$c(/./[SYMBOL]);
+    var uncurriedNativeRegExpMethod = uncurryThis$b(/./[SYMBOL]);
     var methods = exec(SYMBOL, ''[KEY], function (nativeMethod, regexp, str, arg2, forceStringMethod) {
-      var uncurriedNativeMethod = uncurryThis$c(nativeMethod);
+      var uncurriedNativeMethod = uncurryThis$b(nativeMethod);
       var $exec = regexp.exec;
       if ($exec === regexpExec$2 || $exec === RegExpPrototype.exec) {
         if (DELEGATES_TO_SYMBOL && !forceStringMethod) {
@@ -5724,8 +5724,8 @@ var isRegexp = function (it) {
   return isObject$2(it) && ((isRegExp = it[MATCH$1]) !== undefined ? !!isRegExp : classof$3(it) == 'RegExp');
 };
 
-var uncurryThis$b = functionUncurryThis;
-var fails$9 = fails$o;
+var uncurryThis$a = functionUncurryThis;
+var fails$8 = fails$n;
 var isCallable$7 = isCallable$k;
 var classof$2 = classof$5;
 var getBuiltIn = getBuiltIn$5;
@@ -5735,7 +5735,7 @@ var noop = function () { /* empty */ };
 var empty = [];
 var construct = getBuiltIn('Reflect', 'construct');
 var constructorRegExp = /^\s*(?:class|function)\b/;
-var exec$1 = uncurryThis$b(constructorRegExp.exec);
+var exec$1 = uncurryThis$a(constructorRegExp.exec);
 var INCORRECT_TO_STRING = !constructorRegExp.exec(noop);
 
 var isConstructorModern = function isConstructor(argument) {
@@ -5769,7 +5769,7 @@ isConstructorLegacy.sham = true;
 
 // `IsConstructor` abstract operation
 // https://tc39.es/ecma262/#sec-isconstructor
-var isConstructor$1 = !construct || fails$9(function () {
+var isConstructor$1 = !construct || fails$8(function () {
   var called;
   return isConstructorModern(isConstructorModern.call)
     || !isConstructorModern(Object)
@@ -5778,17 +5778,17 @@ var isConstructor$1 = !construct || fails$9(function () {
 }) ? isConstructorLegacy : isConstructorModern;
 
 var isConstructor = isConstructor$1;
-var tryToString$1 = tryToString$3;
+var tryToString = tryToString$2;
 
-var $TypeError$5 = TypeError;
+var $TypeError$4 = TypeError;
 
 // `Assert: IsConstructor(argument) is true`
 var aConstructor$1 = function (argument) {
   if (isConstructor(argument)) return argument;
-  throw $TypeError$5(tryToString$1(argument) + ' is not a constructor');
+  throw $TypeError$4(tryToString(argument) + ' is not a constructor');
 };
 
-var anObject$4 = anObject$a;
+var anObject$5 = anObject$b;
 var aConstructor = aConstructor$1;
 var wellKnownSymbol$7 = wellKnownSymbol$d;
 
@@ -5797,23 +5797,23 @@ var SPECIES = wellKnownSymbol$7('species');
 // `SpeciesConstructor` abstract operation
 // https://tc39.es/ecma262/#sec-speciesconstructor
 var speciesConstructor$1 = function (O, defaultConstructor) {
-  var C = anObject$4(O).constructor;
+  var C = anObject$5(O).constructor;
   var S;
-  return C === undefined || (S = anObject$4(C)[SPECIES]) == undefined ? defaultConstructor : aConstructor(S);
+  return C === undefined || (S = anObject$5(C)[SPECIES]) == undefined ? defaultConstructor : aConstructor(S);
 };
 
-var uncurryThis$a = functionUncurryThis;
+var uncurryThis$9 = functionUncurryThis;
 var toIntegerOrInfinity$1 = toIntegerOrInfinity$4;
 var toString$9 = toString$d;
-var requireObjectCoercible$5 = requireObjectCoercible$9;
+var requireObjectCoercible$6 = requireObjectCoercible$a;
 
-var charAt$3 = uncurryThis$a(''.charAt);
-var charCodeAt = uncurryThis$a(''.charCodeAt);
-var stringSlice$5 = uncurryThis$a(''.slice);
+var charAt$3 = uncurryThis$9(''.charAt);
+var charCodeAt = uncurryThis$9(''.charCodeAt);
+var stringSlice$5 = uncurryThis$9(''.slice);
 
 var createMethod$1 = function (CONVERT_TO_STRING) {
   return function ($this, pos) {
-    var S = toString$9(requireObjectCoercible$5($this));
+    var S = toString$9(requireObjectCoercible$6($this));
     var position = toIntegerOrInfinity$1(pos);
     var size = S.length;
     var first, second;
@@ -5858,14 +5858,14 @@ var createProperty$1 = function (object, key, value) {
 };
 
 var toAbsoluteIndex = toAbsoluteIndex$2;
-var lengthOfArrayLike$2 = lengthOfArrayLike$4;
+var lengthOfArrayLike$1 = lengthOfArrayLike$3;
 var createProperty = createProperty$1;
 
 var $Array = Array;
 var max$3 = Math.max;
 
 var arraySliceSimple = function (O, start, end) {
-  var length = lengthOfArrayLike$2(O);
+  var length = lengthOfArrayLike$1(O);
   var k = toAbsoluteIndex(start, length);
   var fin = toAbsoluteIndex(end === undefined ? length : end, length);
   var result = $Array(max$3(fin - k, 0));
@@ -5874,56 +5874,56 @@ var arraySliceSimple = function (O, start, end) {
   return result;
 };
 
-var call$3 = functionCall;
-var anObject$3 = anObject$a;
+var call$4 = functionCall;
+var anObject$4 = anObject$b;
 var isCallable$6 = isCallable$k;
 var classof$1 = classofRaw$1;
 var regexpExec$1 = regexpExec$3;
 
-var $TypeError$4 = TypeError;
+var $TypeError$3 = TypeError;
 
 // `RegExpExec` abstract operation
 // https://tc39.es/ecma262/#sec-regexpexec
 var regexpExecAbstract = function (R, S) {
   var exec = R.exec;
   if (isCallable$6(exec)) {
-    var result = call$3(exec, R, S);
-    if (result !== null) anObject$3(result);
+    var result = call$4(exec, R, S);
+    if (result !== null) anObject$4(result);
     return result;
   }
-  if (classof$1(R) === 'RegExp') return call$3(regexpExec$1, R, S);
-  throw $TypeError$4('RegExp#exec called on incompatible receiver');
+  if (classof$1(R) === 'RegExp') return call$4(regexpExec$1, R, S);
+  throw $TypeError$3('RegExp#exec called on incompatible receiver');
 };
 
 var apply$1 = functionApply;
-var call$2 = functionCall;
-var uncurryThis$9 = functionUncurryThis;
-var fixRegExpWellKnownSymbolLogic$1 = fixRegexpWellKnownSymbolLogic;
+var call$3 = functionCall;
+var uncurryThis$8 = functionUncurryThis;
+var fixRegExpWellKnownSymbolLogic$2 = fixRegexpWellKnownSymbolLogic;
 var isRegExp$1 = isRegexp;
-var anObject$2 = anObject$a;
-var requireObjectCoercible$4 = requireObjectCoercible$9;
+var anObject$3 = anObject$b;
+var requireObjectCoercible$5 = requireObjectCoercible$a;
 var speciesConstructor = speciesConstructor$1;
 var advanceStringIndex$1 = advanceStringIndex$2;
 var toLength$3 = toLength$5;
 var toString$8 = toString$d;
-var getMethod$1 = getMethod$3;
-var arraySlice$1 = arraySliceSimple;
+var getMethod$2 = getMethod$4;
+var arraySlice = arraySliceSimple;
 var callRegExpExec = regexpExecAbstract;
 var regexpExec = regexpExec$3;
 var stickyHelpers = regexpStickyHelpers;
-var fails$8 = fails$o;
+var fails$7 = fails$n;
 
 var UNSUPPORTED_Y = stickyHelpers.UNSUPPORTED_Y;
 var MAX_UINT32 = 0xFFFFFFFF;
 var min$5 = Math.min;
 var $push = [].push;
-var exec = uncurryThis$9(/./.exec);
-var push$2 = uncurryThis$9($push);
-var stringSlice$4 = uncurryThis$9(''.slice);
+var exec = uncurryThis$8(/./.exec);
+var push$1 = uncurryThis$8($push);
+var stringSlice$4 = uncurryThis$8(''.slice);
 
 // Chrome 51 has a buggy "split" implementation when RegExp#exec !== nativeExec
 // Weex JS has frozen built-in prototypes, so use try / catch wrapper
-var SPLIT_WORKS_WITH_OVERWRITTEN_EXEC = !fails$8(function () {
+var SPLIT_WORKS_WITH_OVERWRITTEN_EXEC = !fails$7(function () {
   // eslint-disable-next-line regexp/no-empty-group -- required for testing
   var re = /(?:)/;
   var originalExec = re.exec;
@@ -5933,7 +5933,7 @@ var SPLIT_WORKS_WITH_OVERWRITTEN_EXEC = !fails$8(function () {
 });
 
 // @@split logic
-fixRegExpWellKnownSymbolLogic$1('split', function (SPLIT, nativeSplit, maybeCallNative) {
+fixRegExpWellKnownSymbolLogic$2('split', function (SPLIT, nativeSplit, maybeCallNative) {
   var internalSplit;
   if (
     'abbc'.split(/(b)*/)[1] == 'c' ||
@@ -5947,13 +5947,13 @@ fixRegExpWellKnownSymbolLogic$1('split', function (SPLIT, nativeSplit, maybeCall
   ) {
     // based on es5-shim implementation, need to rework it
     internalSplit = function (separator, limit) {
-      var string = toString$8(requireObjectCoercible$4(this));
+      var string = toString$8(requireObjectCoercible$5(this));
       var lim = limit === undefined ? MAX_UINT32 : limit >>> 0;
       if (lim === 0) return [];
       if (separator === undefined) return [string];
       // If `separator` is not a regex, use native split
       if (!isRegExp$1(separator)) {
-        return call$2(nativeSplit, string, separator, lim);
+        return call$3(nativeSplit, string, separator, lim);
       }
       var output = [];
       var flags = (separator.ignoreCase ? 'i' : '') +
@@ -5964,11 +5964,11 @@ fixRegExpWellKnownSymbolLogic$1('split', function (SPLIT, nativeSplit, maybeCall
       // Make `global` and avoid `lastIndex` issues by working with a copy
       var separatorCopy = new RegExp(separator.source, flags + 'g');
       var match, lastIndex, lastLength;
-      while (match = call$2(regexpExec, separatorCopy, string)) {
+      while (match = call$3(regexpExec, separatorCopy, string)) {
         lastIndex = separatorCopy.lastIndex;
         if (lastIndex > lastLastIndex) {
-          push$2(output, stringSlice$4(string, lastLastIndex, match.index));
-          if (match.length > 1 && match.index < string.length) apply$1($push, output, arraySlice$1(match, 1));
+          push$1(output, stringSlice$4(string, lastLastIndex, match.index));
+          if (match.length > 1 && match.index < string.length) apply$1($push, output, arraySlice(match, 1));
           lastLength = match[0].length;
           lastLastIndex = lastIndex;
           if (output.length >= lim) break;
@@ -5976,14 +5976,14 @@ fixRegExpWellKnownSymbolLogic$1('split', function (SPLIT, nativeSplit, maybeCall
         if (separatorCopy.lastIndex === match.index) separatorCopy.lastIndex++; // Avoid an infinite loop
       }
       if (lastLastIndex === string.length) {
-        if (lastLength || !exec(separatorCopy, '')) push$2(output, '');
-      } else push$2(output, stringSlice$4(string, lastLastIndex));
-      return output.length > lim ? arraySlice$1(output, 0, lim) : output;
+        if (lastLength || !exec(separatorCopy, '')) push$1(output, '');
+      } else push$1(output, stringSlice$4(string, lastLastIndex));
+      return output.length > lim ? arraySlice(output, 0, lim) : output;
     };
   // Chakra, V8
   } else if ('0'.split(undefined, 0).length) {
     internalSplit = function (separator, limit) {
-      return separator === undefined && limit === 0 ? [] : call$2(nativeSplit, this, separator, limit);
+      return separator === undefined && limit === 0 ? [] : call$3(nativeSplit, this, separator, limit);
     };
   } else internalSplit = nativeSplit;
 
@@ -5991,11 +5991,11 @@ fixRegExpWellKnownSymbolLogic$1('split', function (SPLIT, nativeSplit, maybeCall
     // `String.prototype.split` method
     // https://tc39.es/ecma262/#sec-string.prototype.split
     function split(separator, limit) {
-      var O = requireObjectCoercible$4(this);
-      var splitter = separator == undefined ? undefined : getMethod$1(separator, SPLIT);
+      var O = requireObjectCoercible$5(this);
+      var splitter = separator == undefined ? undefined : getMethod$2(separator, SPLIT);
       return splitter
-        ? call$2(splitter, separator, O, limit)
-        : call$2(internalSplit, toString$8(O), separator, limit);
+        ? call$3(splitter, separator, O, limit)
+        : call$3(internalSplit, toString$8(O), separator, limit);
     },
     // `RegExp.prototype[@@split]` method
     // https://tc39.es/ecma262/#sec-regexp.prototype-@@split
@@ -6003,7 +6003,7 @@ fixRegExpWellKnownSymbolLogic$1('split', function (SPLIT, nativeSplit, maybeCall
     // NOTE: This cannot be properly polyfilled in engines that don't support
     // the 'y' flag.
     function (string, limit) {
-      var rx = anObject$2(this);
+      var rx = anObject$3(this);
       var S = toString$8(string);
       var res = maybeCallNative(internalSplit, rx, S, limit, internalSplit !== nativeSplit);
 
@@ -6036,16 +6036,16 @@ fixRegExpWellKnownSymbolLogic$1('split', function (SPLIT, nativeSplit, maybeCall
         ) {
           q = advanceStringIndex$1(S, q, unicodeMatching);
         } else {
-          push$2(A, stringSlice$4(S, p, q));
+          push$1(A, stringSlice$4(S, p, q));
           if (A.length === lim) return A;
           for (var i = 1; i <= z.length - 1; i++) {
-            push$2(A, z[i]);
+            push$1(A, z[i]);
             if (A.length === lim) return A;
           }
           q = p = e;
         }
       }
-      push$2(A, stringSlice$4(S, p));
+      push$1(A, stringSlice$4(S, p));
       return A;
     }
   ];
@@ -7537,13 +7537,13 @@ var defaultTheme = {
 };
 var defaultThemeVars = _objectSpread2(_objectSpread2({}, convertObjToVars(defaultTheme)), generateColorSpectrum("#121A26", "--dark-background-"));
 
-var _excluded$w = ["fontFace", "className", "children", "style"];
+var _excluded$x = ["fontFace", "className", "children", "style"];
 var Box = /*#__PURE__*/React__default.forwardRef(function (_ref, ref) {
   var fontFace = _ref.fontFace,
       className = _ref.className,
       children = _ref.children,
       style = _ref.style,
-      props = _objectWithoutProperties(_ref, _excluded$w);
+      props = _objectWithoutProperties(_ref, _excluded$x);
 
   return /*#__PURE__*/React__default.createElement(_default, _extends$1({
     ref: ref,
@@ -7553,20 +7553,20 @@ var Box = /*#__PURE__*/React__default.forwardRef(function (_ref, ref) {
   }), children);
 });
 
-var aCallable$1 = aCallable$3;
-var toObject$3 = toObject$6;
+var aCallable = aCallable$2;
+var toObject$2 = toObject$5;
 var IndexedObject = indexedObject;
-var lengthOfArrayLike$1 = lengthOfArrayLike$4;
+var lengthOfArrayLike = lengthOfArrayLike$3;
 
-var $TypeError$3 = TypeError;
+var $TypeError$2 = TypeError;
 
 // `Array.prototype.{ reduce, reduceRight }` methods implementation
 var createMethod = function (IS_RIGHT) {
   return function (that, callbackfn, argumentsLength, memo) {
-    aCallable$1(callbackfn);
-    var O = toObject$3(that);
+    aCallable(callbackfn);
+    var O = toObject$2(that);
     var self = IndexedObject(O);
-    var length = lengthOfArrayLike$1(O);
+    var length = lengthOfArrayLike(O);
     var index = IS_RIGHT ? length - 1 : 0;
     var i = IS_RIGHT ? -1 : 1;
     if (argumentsLength < 2) while (true) {
@@ -7577,7 +7577,7 @@ var createMethod = function (IS_RIGHT) {
       }
       index += i;
       if (IS_RIGHT ? index < 0 : length <= index) {
-        throw $TypeError$3('Reduce of empty array with no initial value');
+        throw $TypeError$2('Reduce of empty array with no initial value');
       }
     }
     for (;IS_RIGHT ? index >= 0 : length > index; index += i) if (index in self) {
@@ -7596,11 +7596,11 @@ var arrayReduce = {
   right: createMethod(true)
 };
 
-var fails$7 = fails$o;
+var fails$6 = fails$n;
 
-var arrayMethodIsStrict$2 = function (METHOD_NAME, argument) {
+var arrayMethodIsStrict$1 = function (METHOD_NAME, argument) {
   var method = [][METHOD_NAME];
-  return !!method && fails$7(function () {
+  return !!method && fails$6(function () {
     // eslint-disable-next-line no-useless-call -- required for testing
     method.call(null, argument || function () { return 1; }, 1);
   });
@@ -7611,20 +7611,20 @@ var global$4 = global$i;
 
 var engineIsNode = classof(global$4.process) == 'process';
 
-var $$9 = _export;
+var $$8 = _export;
 var $reduce = arrayReduce.left;
-var arrayMethodIsStrict$1 = arrayMethodIsStrict$2;
+var arrayMethodIsStrict = arrayMethodIsStrict$1;
 var CHROME_VERSION = engineV8Version;
 var IS_NODE = engineIsNode;
 
-var STRICT_METHOD$1 = arrayMethodIsStrict$1('reduce');
+var STRICT_METHOD = arrayMethodIsStrict('reduce');
 // Chrome 80-82 has a critical bug
 // https://bugs.chromium.org/p/chromium/issues/detail?id=1049982
 var CHROME_BUG = !IS_NODE && CHROME_VERSION > 79 && CHROME_VERSION < 83;
 
 // `Array.prototype.reduce` method
 // https://tc39.es/ecma262/#sec-array.prototype.reduce
-$$9({ target: 'Array', proto: true, forced: !STRICT_METHOD$1 || CHROME_BUG }, {
+$$8({ target: 'Array', proto: true, forced: !STRICT_METHOD || CHROME_BUG }, {
   reduce: function reduce(callbackfn /* , initialValue */) {
     var length = arguments.length;
     return $reduce(this, callbackfn, length, length > 1 ? arguments[1] : undefined);
@@ -7632,7 +7632,7 @@ $$9({ target: 'Array', proto: true, forced: !STRICT_METHOD$1 || CHROME_BUG }, {
 });
 
 var PROPER_FUNCTION_NAME$1 = functionName.PROPER;
-var fails$6 = fails$o;
+var fails$5 = fails$n;
 var whitespaces$1 = whitespaces$4;
 
 var non = '\u200B\u0085\u180E';
@@ -7640,20 +7640,20 @@ var non = '\u200B\u0085\u180E';
 // check that a method works with the correct list
 // of whitespaces and has a correct name
 var stringTrimForced = function (METHOD_NAME) {
-  return fails$6(function () {
+  return fails$5(function () {
     return !!whitespaces$1[METHOD_NAME]()
       || non[METHOD_NAME]() !== non
       || (PROPER_FUNCTION_NAME$1 && whitespaces$1[METHOD_NAME].name !== METHOD_NAME);
   });
 };
 
-var $$8 = _export;
+var $$7 = _export;
 var $trim = stringTrim.trim;
 var forcedStringTrimMethod = stringTrimForced;
 
 // `String.prototype.trim` method
 // https://tc39.es/ecma262/#sec-string.prototype.trim
-$$8({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
+$$7({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
   trim: function trim() {
     return $trim(this);
   }
@@ -7675,14 +7675,14 @@ function classNames(obj, className) {
   return (generatedClass + (className ? " ".concat(className) : "")).trim();
 }
 
-var _excluded$v = ["className", "icon", "children", "smartColor"];
+var _excluded$w = ["className", "icon", "children", "smartColor"];
 
 var Icon = function Icon(_ref) {
   var className = _ref.className,
       icon = _ref.icon;
       _ref.children;
       var smartColor = _ref.smartColor,
-      props = _objectWithoutProperties(_ref, _excluded$v);
+      props = _objectWithoutProperties(_ref, _excluded$w);
 
   var defaultViewBox = "0 0 24 24";
   var IconComponent = icon.component;
@@ -7709,7 +7709,7 @@ Icon.propTypes = {
   height: propTypes$1.exports.string
 };
 
-var _excluded$u = ["className", "scale", "uppercase", "equalLineHeight", "fontWeight", "fontSize", "lineHeight"];
+var _excluded$v = ["className", "scale", "uppercase", "equalLineHeight", "fontWeight", "fontSize", "lineHeight"];
 
 var Text$1 = function Text(_ref) {
   var _props$is, _classNames;
@@ -7721,7 +7721,7 @@ var Text$1 = function Text(_ref) {
       fontWeight = _ref.fontWeight,
       fontSize = _ref.fontSize,
       lineHeight = _ref.lineHeight,
-      props = _objectWithoutProperties(_ref, _excluded$u);
+      props = _objectWithoutProperties(_ref, _excluded$v);
 
   var is = (_props$is = props.is) !== null && _props$is !== void 0 ? _props$is : "p";
   var generatedClass = classNames((_classNames = {}, _defineProperty$w(_classNames, scale, scale), _defineProperty$w(_classNames, "uppercase", uppercase), _defineProperty$w(_classNames, "equal-line-height", equalLineHeight), _defineProperty$w(_classNames, "ui-text", true), _defineProperty$w(_classNames, "customFontWeight", fontWeight), _defineProperty$w(_classNames, "customFontSize", fontSize), _defineProperty$w(_classNames, "customLineHeight", lineHeight), _classNames), className);
@@ -9200,7 +9200,7 @@ CameraComponent.defaultProps = {
   strokeLineJoin: "round"
 };
 
-var _excluded$t = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
+var _excluded$u = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
 
 var CardComponent = function CardComponent(_ref) {
   var fill = _ref.fill,
@@ -9209,7 +9209,7 @@ var CardComponent = function CardComponent(_ref) {
       strokeWidth = _ref.strokeWidth,
       strokeLineCap = _ref.strokeLineCap,
       strokeLineJoin = _ref.strokeLineJoin;
-      _objectWithoutProperties(_ref, _excluded$t);
+      _objectWithoutProperties(_ref, _excluded$u);
 
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M21 12.7707V15.9881C21 16.5216 20.7893 17.0333 20.4143 17.4106C20.0392 17.7879 19.5306 18 19.0001 18H4.99995C4.46951 18 3.96087 17.7879 3.5858 17.4106C3.21073 17.0333 3.00006 16.5216 3.00006 15.9881V7.01176C3.00006 6.47819 3.21073 5.96653 3.5858 5.58924C3.96087 5.21195 4.46951 5.00003 4.99995 5.00003H19.0001C19.5306 5.00003 20.0392 5.21195 20.4143 5.58924C20.7893 5.96653 21 6.47819 21 7.01176V9.84096",
@@ -12339,7 +12339,7 @@ GitlabComponent.defaultProps = {
   clipRule: "evenodd"
 };
 
-var _excluded$s = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin", "fillRule", "clipRule"];
+var _excluded$t = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin", "fillRule", "clipRule"];
 
 var GlobeComponent = function GlobeComponent(_ref) {
   var fill = _ref.fill;
@@ -12350,7 +12350,7 @@ var GlobeComponent = function GlobeComponent(_ref) {
       _ref.strokeLineJoin;
       var fillRule = _ref.fillRule,
       clipRule = _ref.clipRule;
-      _objectWithoutProperties(_ref, _excluded$s);
+      _objectWithoutProperties(_ref, _excluded$t);
 
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     fillRule: fillRule,
@@ -15357,7 +15357,7 @@ ShieldComponent$1.defaultProps = {
   strokeLineJoin: "round"
 };
 
-var _excluded$r = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
+var _excluded$s = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
 
 var ShieldComponent = function ShieldComponent(_ref) {
   _ref.fill;
@@ -15366,7 +15366,7 @@ var ShieldComponent = function ShieldComponent(_ref) {
       strokeWidth = _ref.strokeWidth,
       strokeLineCap = _ref.strokeLineCap,
       strokeLineJoin = _ref.strokeLineJoin;
-      _objectWithoutProperties(_ref, _excluded$r);
+      _objectWithoutProperties(_ref, _excluded$s);
 
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M15.4601 9.38818L11.3591 13.4892L9.09308 11.4232M9.45518 4.021L12.13 3L19.2601 5.72021V11.2783C19.2598 13.4293 18.566 15.5226 17.2816 17.248C15.9972 18.9735 14.1905 20.2386 12.13 20.856C10.0695 20.2386 8.26294 18.9725 6.97852 17.2471C5.6941 15.5217 5.00028 13.4284 5 11.2774V5.71926L6.97412 4.96633",
@@ -16773,7 +16773,7 @@ WithdrawComponent.defaultProps = {
   strokeLineJoin: "round"
 };
 
-var _excluded$q = ["title", "leftIconActive", "leftIconInactive", "rightIcon", "children", "className"];
+var _excluded$r = ["title", "leftIconActive", "leftIconInactive", "rightIcon", "children", "className"];
 
 var Accordion = function Accordion(_ref) {
   var title = _ref.title,
@@ -16782,7 +16782,7 @@ var Accordion = function Accordion(_ref) {
       rightIcon = _ref.rightIcon,
       children = _ref.children,
       className = _ref.className;
-      _objectWithoutProperties(_ref, _excluded$q);
+      _objectWithoutProperties(_ref, _excluded$r);
 
   var _useState = useState(false),
       _useState2 = _slicedToArray$1(_useState, 2),
@@ -16841,10 +16841,10 @@ Accordion.propTypes = {
   rightIcon: propTypes$1.exports.element
 };
 
-var $$7 = _export;
+var $$6 = _export;
 var DESCRIPTORS$1 = descriptors;
 var global$3 = global$i;
-var uncurryThis$8 = functionUncurryThis;
+var uncurryThis$7 = functionUncurryThis;
 var hasOwn$2 = hasOwnProperty_1;
 var isCallable$5 = isCallable$k;
 var isPrototypeOf = objectIsPrototypeOf;
@@ -16876,11 +16876,11 @@ if (DESCRIPTORS$1 && isCallable$5(NativeSymbol) && (!('description' in SymbolPro
   SymbolPrototype.constructor = SymbolWrapper;
 
   var NATIVE_SYMBOL = String(NativeSymbol('test')) == 'Symbol(test)';
-  var symbolToString$1 = uncurryThis$8(SymbolPrototype.toString);
-  var symbolValueOf$1 = uncurryThis$8(SymbolPrototype.valueOf);
+  var symbolToString$1 = uncurryThis$7(SymbolPrototype.toString);
+  var symbolValueOf$1 = uncurryThis$7(SymbolPrototype.valueOf);
   var regexp = /^Symbol\((.*)\)[^)]+$/;
-  var replace$2 = uncurryThis$8(''.replace);
-  var stringSlice$3 = uncurryThis$8(''.slice);
+  var replace$2 = uncurryThis$7(''.replace);
+  var stringSlice$3 = uncurryThis$7(''.slice);
 
   defineProperty$4(SymbolPrototype, 'description', {
     configurable: true,
@@ -16893,12 +16893,12 @@ if (DESCRIPTORS$1 && isCallable$5(NativeSymbol) && (!('description' in SymbolPro
     }
   });
 
-  $$7({ global: true, constructor: true, forced: true }, {
+  $$6({ global: true, constructor: true, forced: true }, {
     Symbol: SymbolWrapper
   });
 }
 
-var _excluded$p = ["is", "leftIcon", "rightIcon", "dropDown", "disabled", "size", "className", "colorScheme", "responsive", "text", "loading", "loadingText", "pill", "smartColor", "smartHoverColor"];
+var _excluded$q = ["is", "leftIcon", "rightIcon", "dropDown", "disabled", "size", "className", "colorScheme", "responsive", "text", "loading", "loadingText", "pill", "smartColor", "smartHoverColor"];
 
 var Button = function Button(_ref) {
   var _classNames;
@@ -16918,7 +16918,7 @@ var Button = function Button(_ref) {
       pill = _ref.pill,
       smartColor = _ref.smartColor,
       smartHoverColor = _ref.smartHoverColor,
-      props = _objectWithoutProperties(_ref, _excluded$p);
+      props = _objectWithoutProperties(_ref, _excluded$q);
 
   var generatedClassName = classNames((_classNames = {
     "ui-button": true
@@ -16983,7 +16983,7 @@ Button.defaultProps = {
   loadingText: "Loading"
 };
 
-var _excluded$o = ["className", "equalLineHeight", "scale", "uppercase"];
+var _excluded$p = ["className", "equalLineHeight", "scale", "uppercase"];
 
 var Heading = function Heading(_ref) {
   var _props$is, _classNames;
@@ -16992,7 +16992,7 @@ var Heading = function Heading(_ref) {
       equalLineHeight = _ref.equalLineHeight,
       scale = _ref.scale,
       uppercase = _ref.uppercase,
-      props = _objectWithoutProperties(_ref, _excluded$o);
+      props = _objectWithoutProperties(_ref, _excluded$p);
 
   var is = (_props$is = props.is) !== null && _props$is !== void 0 ? _props$is : "h2";
   var generatedClass = classNames((_classNames = {}, _defineProperty$w(_classNames, scale, scale), _defineProperty$w(_classNames, is, is), _defineProperty$w(_classNames, "uppercase", uppercase), _defineProperty$w(_classNames, "ui-heading", true), _defineProperty$w(_classNames, "equal-line-height", equalLineHeight), _classNames), className);
@@ -17017,7 +17017,7 @@ Heading.defaultProps = {
   equalLineHeight: false
 };
 
-var _excluded$n = ["message", "description", "colorScheme", "theme", "button", "buttonAction", "onAction", "className", "closable", "bordered", "smartColor", "iconColor", "icon"];
+var _excluded$o = ["message", "description", "colorScheme", "theme", "button", "buttonAction", "onAction", "className", "closable", "bordered", "smartColor", "iconColor", "icon"];
 
 var Alert = function Alert(_ref) {
   var _classNames;
@@ -17035,7 +17035,7 @@ var Alert = function Alert(_ref) {
       var smartColor = _ref.smartColor,
       iconColor = _ref.iconColor,
       icon = _ref.icon,
-      props = _objectWithoutProperties(_ref, _excluded$n);
+      props = _objectWithoutProperties(_ref, _excluded$o);
 
   var _useState = useState(true),
       _useState2 = _slicedToArray$1(_useState, 2),
@@ -17109,13 +17109,13 @@ Alert.defaultProps = {
   closable: false
 };
 
-var uncurryThis$7 = functionUncurryThis;
-var toObject$2 = toObject$6;
+var uncurryThis$6 = functionUncurryThis;
+var toObject$1 = toObject$5;
 
-var floor$1 = Math.floor;
-var charAt$1 = uncurryThis$7(''.charAt);
-var replace$1 = uncurryThis$7(''.replace);
-var stringSlice$2 = uncurryThis$7(''.slice);
+var floor = Math.floor;
+var charAt$1 = uncurryThis$6(''.charAt);
+var replace$1 = uncurryThis$6(''.replace);
+var stringSlice$2 = uncurryThis$6(''.slice);
 var SUBSTITUTION_SYMBOLS = /\$([$&'`]|\d{1,2}|<[^>]*>)/g;
 var SUBSTITUTION_SYMBOLS_NO_NAMED = /\$([$&'`]|\d{1,2})/g;
 
@@ -17126,7 +17126,7 @@ var getSubstitution$1 = function (matched, str, position, captures, namedCapture
   var m = captures.length;
   var symbols = SUBSTITUTION_SYMBOLS_NO_NAMED;
   if (namedCaptures !== undefined) {
-    namedCaptures = toObject$2(namedCaptures);
+    namedCaptures = toObject$1(namedCaptures);
     symbols = SUBSTITUTION_SYMBOLS;
   }
   return replace$1(replacement, symbols, function (match, ch) {
@@ -17143,7 +17143,7 @@ var getSubstitution$1 = function (matched, str, position, captures, namedCapture
         var n = +ch;
         if (n === 0) return match;
         if (n > m) {
-          var f = floor$1(n / 10);
+          var f = floor(n / 10);
           if (f === 0) return match;
           if (f <= m) return captures[f - 1] === undefined ? charAt$1(ch, 1) : captures[f - 1] + charAt$1(ch, 1);
           return match;
@@ -17155,29 +17155,29 @@ var getSubstitution$1 = function (matched, str, position, captures, namedCapture
 };
 
 var apply = functionApply;
-var call$1 = functionCall;
-var uncurryThis$6 = functionUncurryThis;
-var fixRegExpWellKnownSymbolLogic = fixRegexpWellKnownSymbolLogic;
-var fails$5 = fails$o;
-var anObject$1 = anObject$a;
+var call$2 = functionCall;
+var uncurryThis$5 = functionUncurryThis;
+var fixRegExpWellKnownSymbolLogic$1 = fixRegexpWellKnownSymbolLogic;
+var fails$4 = fails$n;
+var anObject$2 = anObject$b;
 var isCallable$4 = isCallable$k;
 var toIntegerOrInfinity = toIntegerOrInfinity$4;
 var toLength$2 = toLength$5;
 var toString$6 = toString$d;
-var requireObjectCoercible$3 = requireObjectCoercible$9;
+var requireObjectCoercible$4 = requireObjectCoercible$a;
 var advanceStringIndex = advanceStringIndex$2;
-var getMethod = getMethod$3;
+var getMethod$1 = getMethod$4;
 var getSubstitution = getSubstitution$1;
-var regExpExec = regexpExecAbstract;
+var regExpExec$1 = regexpExecAbstract;
 var wellKnownSymbol$6 = wellKnownSymbol$d;
 
 var REPLACE = wellKnownSymbol$6('replace');
 var max$2 = Math.max;
 var min$4 = Math.min;
-var concat = uncurryThis$6([].concat);
-var push$1 = uncurryThis$6([].push);
-var stringIndexOf$1 = uncurryThis$6(''.indexOf);
-var stringSlice$1 = uncurryThis$6(''.slice);
+var concat = uncurryThis$5([].concat);
+var push = uncurryThis$5([].push);
+var stringIndexOf$1 = uncurryThis$5(''.indexOf);
+var stringSlice$1 = uncurryThis$5(''.slice);
 
 var maybeToString = function (it) {
   return it === undefined ? it : String(it);
@@ -17198,7 +17198,7 @@ var REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE = (function () {
   return false;
 })();
 
-var REPLACE_SUPPORTS_NAMED_GROUPS = !fails$5(function () {
+var REPLACE_SUPPORTS_NAMED_GROUPS = !fails$4(function () {
   var re = /./;
   re.exec = function () {
     var result = [];
@@ -17210,23 +17210,23 @@ var REPLACE_SUPPORTS_NAMED_GROUPS = !fails$5(function () {
 });
 
 // @@replace logic
-fixRegExpWellKnownSymbolLogic('replace', function (_, nativeReplace, maybeCallNative) {
+fixRegExpWellKnownSymbolLogic$1('replace', function (_, nativeReplace, maybeCallNative) {
   var UNSAFE_SUBSTITUTE = REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE ? '$' : '$0';
 
   return [
     // `String.prototype.replace` method
     // https://tc39.es/ecma262/#sec-string.prototype.replace
     function replace(searchValue, replaceValue) {
-      var O = requireObjectCoercible$3(this);
-      var replacer = searchValue == undefined ? undefined : getMethod(searchValue, REPLACE);
+      var O = requireObjectCoercible$4(this);
+      var replacer = searchValue == undefined ? undefined : getMethod$1(searchValue, REPLACE);
       return replacer
-        ? call$1(replacer, searchValue, O, replaceValue)
-        : call$1(nativeReplace, toString$6(O), searchValue, replaceValue);
+        ? call$2(replacer, searchValue, O, replaceValue)
+        : call$2(nativeReplace, toString$6(O), searchValue, replaceValue);
     },
     // `RegExp.prototype[@@replace]` method
     // https://tc39.es/ecma262/#sec-regexp.prototype-@@replace
     function (string, replaceValue) {
-      var rx = anObject$1(this);
+      var rx = anObject$2(this);
       var S = toString$6(string);
 
       if (
@@ -17248,10 +17248,10 @@ fixRegExpWellKnownSymbolLogic('replace', function (_, nativeReplace, maybeCallNa
       }
       var results = [];
       while (true) {
-        var result = regExpExec(rx, S);
+        var result = regExpExec$1(rx, S);
         if (result === null) break;
 
-        push$1(results, result);
+        push(results, result);
         if (!global) break;
 
         var matchStr = toString$6(result[0]);
@@ -17271,11 +17271,11 @@ fixRegExpWellKnownSymbolLogic('replace', function (_, nativeReplace, maybeCallNa
         // but for some reason `nativeSlice.call(result, 1, result.length)` (called in
         // the slice polyfill when slicing native arrays) "doesn't work" in safari 9 and
         // causes a crash (https://pastebin.com/N21QzeQA) when trying to debug it.
-        for (var j = 1; j < result.length; j++) push$1(captures, maybeToString(result[j]));
+        for (var j = 1; j < result.length; j++) push(captures, maybeToString(result[j]));
         var namedCaptures = result.groups;
         if (functionalReplace) {
           var replacerArgs = concat([matched], captures, position, S);
-          if (namedCaptures !== undefined) push$1(replacerArgs, namedCaptures);
+          if (namedCaptures !== undefined) push(replacerArgs, namedCaptures);
           var replacement = toString$6(apply(replaceValue, undefined, replacerArgs));
         } else {
           replacement = getSubstitution(matched, S, position, captures, namedCaptures, replaceValue);
@@ -17310,7 +17310,7 @@ function keyGen() {
   return result;
 }
 
-var _excluded$m = ["avatar", "subtle", "dropdown", "size", "visibleAvatars", "stacked", "avatars", "className"];
+var _excluded$n = ["avatar", "subtle", "dropdown", "size", "visibleAvatars", "stacked", "avatars", "className"];
 var colorSchemes = ["cyan", "green", "orange", "red", "gray", "blue"];
 
 var generateAvatarColorScheme = function generateAvatarColorScheme(avatar, index) {
@@ -17335,7 +17335,7 @@ var Avatar = function Avatar(_ref) {
       stacked = _ref.stacked,
       avatars = _ref.avatars,
       className = _ref.className,
-      props = _objectWithoutProperties(_ref, _excluded$m);
+      props = _objectWithoutProperties(_ref, _excluded$n);
 
   var wrapperClassName = classNames((_classNames2 = {
     "ui-avatars__wrapper": true,
@@ -17402,7 +17402,7 @@ Avatar.defaultProps = {
   avatars: []
 };
 
-var _excluded$l = ["children", "colorScheme", "className", "subtle", "size", "customSize", "smartColor"];
+var _excluded$m = ["children", "colorScheme", "className", "subtle", "size", "customSize", "smartColor"];
 
 var Badge = function Badge(_ref) {
   var _classNames;
@@ -17414,7 +17414,7 @@ var Badge = function Badge(_ref) {
       size = _ref.size,
       customSize = _ref.customSize,
       smartColor = _ref.smartColor;
-      _objectWithoutProperties(_ref, _excluded$l);
+      _objectWithoutProperties(_ref, _excluded$m);
 
   var generatedClassName = classNames((_classNames = {}, _defineProperty$w(_classNames, "color-scheme__".concat(colorScheme), true), _defineProperty$w(_classNames, "subtle", subtle), _defineProperty$w(_classNames, "size__".concat(size), true), _defineProperty$w(_classNames, "ui-badge", true), _defineProperty$w(_classNames, "sizeCustom", customSize), _defineProperty$w(_classNames, "smartColor", smartColor), _classNames), className);
   var cssVars = {
@@ -17445,7 +17445,7 @@ Badge.defaultProps = {
   size: "small"
 };
 
-var _excluded$k = ["colorScheme", "title", "description", "removable", "full", "onRemove", "alignTop", "icon", "iconColor", "noIcon", "smartColor", "className"];
+var _excluded$l = ["colorScheme", "title", "description", "removable", "full", "onRemove", "alignTop", "icon", "iconColor", "noIcon", "smartColor", "className"];
 
 var Banner = function Banner(_ref) {
   var _classNames;
@@ -17462,7 +17462,7 @@ var Banner = function Banner(_ref) {
       noIcon = _ref.noIcon,
       smartColor = _ref.smartColor,
       className = _ref.className,
-      props = _objectWithoutProperties(_ref, _excluded$k);
+      props = _objectWithoutProperties(_ref, _excluded$l);
 
   var _useState = useState(true),
       _useState2 = _slicedToArray$1(_useState, 2),
@@ -17538,14 +17538,14 @@ Banner.propTypes = {
   smartColor: propTypes$1.exports.string
 };
 
-var _excluded$j = ["className", "ringed", "alignToTop", "label"];
+var _excluded$k = ["className", "ringed", "alignToTop", "label"];
 
 var Radio = function Radio(_ref) {
   var className = _ref.className,
       ringed = _ref.ringed,
       alignToTop = _ref.alignToTop,
       label = _ref.label,
-      props = _objectWithoutProperties(_ref, _excluded$j);
+      props = _objectWithoutProperties(_ref, _excluded$k);
 
   var generateRadioClassName = classNames({
     ringed: ringed,
@@ -17571,7 +17571,7 @@ Radio.propTypes = {
   alignToTop: propTypes$1.exports.bool
 };
 
-var _excluded$i = ["label", "alignToTop", "dashed", "disabled", "labelClass", "wrapperClass", "labelComponent", "className"];
+var _excluded$j = ["label", "alignToTop", "dashed", "disabled", "labelClass", "wrapperClass", "labelComponent", "className", "checked", "onChange"];
 
 var Checkbox = function Checkbox(_ref) {
   var _classNames;
@@ -17584,7 +17584,26 @@ var Checkbox = function Checkbox(_ref) {
       wrapperClass = _ref.wrapperClass,
       labelComponent = _ref.labelComponent,
       className = _ref.className,
-      props = _objectWithoutProperties(_ref, _excluded$i);
+      checked = _ref.checked,
+      onChange = _ref.onChange,
+      props = _objectWithoutProperties(_ref, _excluded$j);
+
+  var checkbox = useRef();
+  useEffect(function () {
+    checkbox.current.checked = checked;
+  }, [checked]);
+
+  var handleOnChange = function handleOnChange(e) {
+    if (checked === undefined) {
+      if (onChange && typeof onChange === "function") {
+        onChange(e);
+      }
+    } else {
+      if (onChange && typeof onChange === "function") {
+        onChange(e, !checked);
+      }
+    }
+  };
 
   var checkboxClassName = classNames((_classNames = {
     "ui-checkbox__wrapper": true,
@@ -17603,7 +17622,10 @@ var Checkbox = function Checkbox(_ref) {
     }),
     type: "checkbox",
     disabled: disabled
-  }, props)), label ? label : /*#__PURE__*/React__default.createElement(Text$1, {
+  }, props, {
+    ref: checkbox,
+    onChange: handleOnChange
+  })), label || /*#__PURE__*/React__default.createElement(Text$1, {
     className: classNames(_defineProperty$w({
       "ui-checkbox__label-wrap ui-text heroNew": true
     }, labelClass, labelClass))
@@ -17612,7 +17634,8 @@ var Checkbox = function Checkbox(_ref) {
 Checkbox.defaultProps = {
   alignToTop: false,
   disabled: false,
-  dashed: false
+  dashed: false,
+  checked: undefined
 };
 Checkbox.propTypes = {
   label: propTypes$1.exports.string,
@@ -17621,10 +17644,12 @@ Checkbox.propTypes = {
   disabled: propTypes$1.exports.bool,
   labelClass: propTypes$1.exports.string,
   wrapperClass: propTypes$1.exports.string,
-  labelComponent: propTypes$1.exports.object
+  labelComponent: propTypes$1.exports.object,
+  checked: propTypes$1.exports.bool,
+  onChange: propTypes$1.exports.func
 };
 
-var _excluded$h = ["title", "subtitle", "desc", "children", "radio", "checkbox", "icon", "isSelected", "className", "ringedRadio", "dashedCheckbox", "wrapperClass", "hoverColor", "border", "cardClass", "header", "footer", "onChange"];
+var _excluded$i = ["title", "subtitle", "desc", "children", "radio", "checkbox", "icon", "isSelected", "className", "ringedRadio", "dashedCheckbox", "wrapperClass", "hoverColor", "border", "cardClass", "header", "footer", "onChange"];
 
 var Card = function Card(_ref) {
   var _classNames;
@@ -17647,7 +17672,7 @@ var Card = function Card(_ref) {
       header = _ref.header,
       footer = _ref.footer;
       _ref.onChange;
-      var props = _objectWithoutProperties(_ref, _excluded$h);
+      var props = _objectWithoutProperties(_ref, _excluded$i);
 
   var _useState = useState(isSelected),
       _useState2 = _slicedToArray$1(_useState, 2),
@@ -17722,34 +17747,34 @@ Card.defaultProps = {
 };
 
 var global$2 = global$i;
-var fails$4 = fails$o;
-var uncurryThis$5 = functionUncurryThis;
+var fails$3 = fails$n;
+var uncurryThis$4 = functionUncurryThis;
 var toString$5 = toString$d;
 var trim = stringTrim.trim;
 var whitespaces = whitespaces$4;
 
-var charAt = uncurryThis$5(''.charAt);
+var charAt = uncurryThis$4(''.charAt);
 var n$ParseFloat = global$2.parseFloat;
 var Symbol$2 = global$2.Symbol;
 var ITERATOR$3 = Symbol$2 && Symbol$2.iterator;
-var FORCED$1 = 1 / n$ParseFloat(whitespaces + '-0') !== -Infinity
+var FORCED = 1 / n$ParseFloat(whitespaces + '-0') !== -Infinity
   // MS Edge 18- broken with boxed symbols
-  || (ITERATOR$3 && !fails$4(function () { n$ParseFloat(Object(ITERATOR$3)); }));
+  || (ITERATOR$3 && !fails$3(function () { n$ParseFloat(Object(ITERATOR$3)); }));
 
 // `parseFloat` method
 // https://tc39.es/ecma262/#sec-parsefloat-string
-var numberParseFloat = FORCED$1 ? function parseFloat(string) {
+var numberParseFloat = FORCED ? function parseFloat(string) {
   var trimmedString = trim(toString$5(string));
   var result = n$ParseFloat(trimmedString);
   return result === 0 && charAt(trimmedString, 0) == '-' ? -0 : result;
 } : n$ParseFloat;
 
-var $$6 = _export;
+var $$5 = _export;
 var $parseFloat = numberParseFloat;
 
 // `parseFloat` method
 // https://tc39.es/ecma262/#sec-parsefloat-string
-$$6({ global: true, forced: parseFloat != $parseFloat }, {
+$$5({ global: true, forced: parseFloat != $parseFloat }, {
   parseFloat: $parseFloat
 });
 
@@ -17774,7 +17799,7 @@ var BRAND_ALIAS$1 = {
   NOCARD: -1
 };
 
-var _excluded$g = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "initialCardExp", "initialCardNo", "initialCardCvv", "onChange"];
+var _excluded$h = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "initialCardExp", "initialCardNo", "initialCardCvv", "onChange"];
 
 var CardInputField = function CardInputField(_ref) {
   var label = _ref.label;
@@ -17789,7 +17814,7 @@ var CardInputField = function CardInputField(_ref) {
       initialCardNo = _ref.initialCardNo,
       initialCardCvv = _ref.initialCardCvv,
       onChange = _ref.onChange,
-      props = _objectWithoutProperties(_ref, _excluded$g);
+      props = _objectWithoutProperties(_ref, _excluded$h);
 
   var _useState = useState(-1),
       _useState2 = _slicedToArray$1(_useState, 2),
@@ -18201,7 +18226,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
-var _excluded$f = ["label", "size", "max", "min", "errorMessage", "coloredButtons", "labelClass", "labelFontFace", "inputClass", "disabled", "decimal", "alterMagnitude", "spacing", "value", "onChange", "className"];
+var _excluded$g = ["label", "size", "max", "min", "errorMessage", "coloredButtons", "labelClass", "labelFontFace", "inputClass", "disabled", "decimal", "alterMagnitude", "spacing", "value", "onChange", "className"];
 
 var Counter = function Counter(_ref) {
   var label = _ref.label,
@@ -18220,7 +18245,7 @@ var Counter = function Counter(_ref) {
       value = _ref.value,
       onChange = _ref.onChange,
       className = _ref.className,
-      props = _objectWithoutProperties(_ref, _excluded$f);
+      props = _objectWithoutProperties(_ref, _excluded$g);
 
   var _useState = useState(null),
       _useState2 = _slicedToArray$1(_useState, 2),
@@ -29204,7 +29229,7 @@ function Reference(_ref) {
 
 function ae(e,t){var r=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);t&&(n=n.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),r.push.apply(r,n);}return r}function se(e){for(var t=1;t<arguments.length;t++){var r=null!=arguments[t]?arguments[t]:{};t%2?ae(Object(r),!0).forEach((function(t){de(e,t,r[t]);})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(r)):ae(Object(r)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(r,t));}));}return e}function ie(e){return (ie="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function pe(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function ce(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n);}}function le(e,t,r){return t&&ce(e.prototype,t),r&&ce(e,r),Object.defineProperty(e,"prototype",{writable:!1}),e}function de(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function ue(){return (ue=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(e[n]=r[n]);}return e}).apply(this,arguments)}function he(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");Object.defineProperty(e,"prototype",{value:Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),writable:!1}),t&&fe(e,t);}function me(e){return (me=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function fe(e,t){return (fe=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function ye(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function ve(e,t){if(t&&("object"==typeof t||"function"==typeof t))return t;if(void 0!==t)throw new TypeError("Derived constructors may only return object or undefined");return ye(e)}function De(e){var t=function(){if("undefined"==typeof Reflect||!Reflect.construct)return !1;if(Reflect.construct.sham)return !1;if("function"==typeof Proxy)return !0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return !1}}();return function(){var r,n=me(e);if(t){var o=me(this).constructor;r=Reflect.construct(n,arguments,o);}else r=n.apply(this,arguments);return ve(this,r)}}function we(e){return function(e){if(Array.isArray(e))return ge(e)}(e)||function(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}(e)||function(e,t){if(!e)return;if("string"==typeof e)return ge(e,t);var r=Object.prototype.toString.call(e).slice(8,-1);"Object"===r&&e.constructor&&(r=e.constructor.name);if("Map"===r||"Set"===r)return Array.from(e);if("Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r))return ge(e,t)}(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function ge(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=new Array(t);r<t;r++)n[r]=e[r];return n}function ke(e,t){switch(e){case"P":return t.date({width:"short"});case"PP":return t.date({width:"medium"});case"PPP":return t.date({width:"long"});case"PPPP":default:return t.date({width:"full"})}}function be(e,t){switch(e){case"p":return t.time({width:"short"});case"pp":return t.time({width:"medium"});case"ppp":return t.time({width:"long"});case"pppp":default:return t.time({width:"full"})}}var Ce={p:be,P:function(e,t){var r,n=e.match(/(P+)(p+)?/)||[],o=n[1],a=n[2];if(!a)return ke(e,t);switch(o){case"P":r=t.dateTime({width:"short"});break;case"PP":r=t.dateTime({width:"medium"});break;case"PPP":r=t.dateTime({width:"long"});break;case"PPPP":default:r=t.dateTime({width:"full"});}return r.replace("{{date}}",ke(o,t)).replace("{{time}}",be(a,t))}},Se=/P+p+|P+|p+|''|'(''|[^'])+('|$)|./g;function _e(e){var t=e?"string"==typeof e||e instanceof String?parseISO(e):toDate(e):new Date;return Pe(t)?t:null}function Me(e,t,r,n,o){var a=null,s=Ue(r)||Ue(qe()),i=!0;return Array.isArray(t)?(t.forEach((function(t){var p=parse(e,t,new Date,{locale:s});n&&(i=Pe(p,o)&&e===Ee(p,t,r)),Pe(p,o)&&i&&(a=p);})),a):(a=parse(e,t,new Date,{locale:s}),n?i=Pe(a)&&e===Ee(a,t,r):Pe(a)||(t=t.match(Se).map((function(e){var t=e[0];return "p"===t||"P"===t?s?(0, Ce[t])(e,s.formatLong):t:e})).join(""),e.length>0&&(a=parse(e,t.slice(0,e.length),new Date)),Pe(a)||(a=new Date(e))),Pe(a)&&i?a:null)}function Pe(e,t){return t=t||new Date("1/1/1000"),isValid(e)&&!isBefore(e,t)}function Ee(e,t,r){if("en"===r)return format$1(e,t,{awareOfUnicodeTokens:!0});var n=Ue(r);return r&&!n&&console.warn('A locale object was not found for the provided string ["'.concat(r,'"].')),!n&&qe()&&Ue(qe())&&(n=Ue(qe())),format$1(e,t,{locale:n||null,awareOfUnicodeTokens:!0})}function Ne(e,t){var r=t.dateFormat,n=t.locale;return e&&Ee(e,Array.isArray(r)?r[0]:r,n)||""}function xe(e,t){var r=t.hour,n=void 0===r?0:r,o=t.minute,a=void 0===o?0:o,s=t.second;return setHours(setMinutes(setSeconds(e,void 0===s?0:s),a),n)}function Ye(e,t){var r=t&&Ue(t)||qe()&&Ue(qe());return getISOWeek(e,r?{locale:r}:null)}function Oe(e,t){return Ee(e,"ddd",t)}function Ie(e){return startOfDay(e)}function Te(e,t,r){var n=Ue(t||qe());return startOfWeek(e,{locale:n,weekStartsOn:r})}function Le(e){return startOfMonth(e)}function Re(e){return startOfYear(e)}function Fe(e){return startOfQuarter(e)}function Ae(e,t){return e&&t?isSameYear(e,t):!e&&!t}function Be(e,t){return e&&t?isSameMonth(e,t):!e&&!t}function Ke(e,t){return e&&t?isSameQuarter(e,t):!e&&!t}function We(e,t){return e&&t?isSameDay(e,t):!e&&!t}function je(e,t){return e&&t?isEqual(e,t):!e&&!t}function He(e,t,r){var n,o=startOfDay(t),a=endOfDay(r);try{n=isWithinInterval(e,{start:o,end:a});}catch(e){n=!1;}return n}function qe(){return ("undefined"!=typeof window?window:globalThis).__localeId__}function Ue(e){if("string"==typeof e){var t="undefined"!=typeof window?window:globalThis;return t.__localeData__?t.__localeData__[e]:null}return e}function $e(e,t){return Ee(setMonth(_e(),e),"LLLL",t)}function ze(e,t){return Ee(setMonth(_e(),e),"LLL",t)}function Ge(e,t){return Ee(setQuarter(_e(),e),"QQQ",t)}function Je(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=t.excludeDates,a=t.excludeDateIntervals,s=t.includeDates,i=t.includeDateIntervals,p=t.filterDate;return ot(e,{minDate:r,maxDate:n})||o&&o.some((function(t){return We(e,t)}))||a&&a.some((function(t){var r=t.start,n=t.end;return isWithinInterval(e,{start:r,end:n})}))||s&&!s.some((function(t){return We(e,t)}))||i&&!i.some((function(t){var r=t.start,n=t.end;return isWithinInterval(e,{start:r,end:n})}))||p&&!p(_e(e))||!1}function Xe(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.excludeDates,n=t.excludeDateIntervals;return n&&n.length>0?n.some((function(t){var r=t.start,n=t.end;return isWithinInterval(e,{start:r,end:n})})):r&&r.some((function(t){return We(e,t)}))||!1}function Ze(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=t.excludeDates,a=t.includeDates,s=t.filterDate;return ot(e,{minDate:r,maxDate:n})||o&&o.some((function(t){return Be(e,t)}))||a&&!a.some((function(t){return Be(e,t)}))||s&&!s(_e(e))||!1}function et(e,t,r,n){var o=getYear(e),a=getMonth(e),s=getYear(t),i=getMonth(t),p=getYear(n);return o===s&&o===p?a<=r&&r<=i:o<s?p===o&&a<=r||p===s&&i>=r||p<s&&p>o:void 0}function tt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=t.excludeDates,a=t.includeDates,s=t.filterDate;return ot(e,{minDate:r,maxDate:n})||o&&o.some((function(t){return Ke(e,t)}))||a&&!a.some((function(t){return Ke(e,t)}))||s&&!s(_e(e))||!1}function rt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=new Date(e,0,1);return ot(o,{minDate:r,maxDate:n})||!1}function nt(e,t,r,n){var o=getYear(e),a=getQuarter(e),s=getYear(t),i=getQuarter(t),p=getYear(n);return o===s&&o===p?a<=r&&r<=i:o<s?p===o&&a<=r||p===s&&i>=r||p<s&&p>o:void 0}function ot(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate;return r&&differenceInCalendarDays(e,r)<0||n&&differenceInCalendarDays(e,n)>0}function at(e,t){return t.some((function(t){return getHours(t)===getHours(e)&&getMinutes(t)===getMinutes(e)}))}function st(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.excludeTimes,n=t.includeTimes,o=t.filterTime;return r&&at(e,r)||n&&!at(e,n)||o&&!o(e)||!1}function it(e,t){var r=t.minTime,n=t.maxTime;if(!r||!n)throw new Error("Both minTime and maxTime props required");var o,a=_e(),s=setHours(setMinutes(a,getMinutes(e)),getHours(e)),i=setHours(setMinutes(a,getMinutes(r)),getHours(r)),p=setHours(setMinutes(a,getMinutes(n)),getHours(n));try{o=!isWithinInterval(s,{start:i,end:p});}catch(e){o=!1;}return o}function pt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.includeDates,o=subMonths(e,1);return r&&differenceInCalendarMonths(r,o)>0||n&&n.every((function(e){return differenceInCalendarMonths(e,o)>0}))||!1}function ct(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.maxDate,n=t.includeDates,o=addMonths(e,1);return r&&differenceInCalendarMonths(o,r)>0||n&&n.every((function(e){return differenceInCalendarMonths(o,e)>0}))||!1}function lt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.includeDates,o=subYears(e,1);return r&&differenceInCalendarYears(r,o)>0||n&&n.every((function(e){return differenceInCalendarYears(e,o)>0}))||!1}function dt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.maxDate,n=t.includeDates,o=addYears(e,1);return r&&differenceInCalendarYears(o,r)>0||n&&n.every((function(e){return differenceInCalendarYears(o,e)>0}))||!1}function ut(e){var t=e.minDate,r=e.includeDates;if(r&&t){var n=r.filter((function(e){return differenceInCalendarDays(e,t)>=0}));return min$3(n)}return r?min$3(r):t}function ht(e){var t=e.maxDate,r=e.includeDates;if(r&&t){var n=r.filter((function(e){return differenceInCalendarDays(e,t)<=0}));return max$1(n)}return r?max$1(r):t}function mt(){for(var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:[],t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"react-datepicker__day--highlighted",r=new Map,o=0,a=e.length;o<a;o++){var s=e[o];if(isDate(s)){var i=Ee(s,"MM.dd.yyyy"),p=r.get(i)||[];p.includes(t)||(p.push(t),r.set(i,p));}else if("object"===ie(s)){var c=Object.keys(s),l=c[0],d=s[c[0]];if("string"==typeof l&&d.constructor===Array)for(var u=0,h=d.length;u<h;u++){var m=Ee(d[u],"MM.dd.yyyy"),f=r.get(m)||[];f.includes(l)||(f.push(l),r.set(m,f));}}}return r}function ft(e,t,r,n,o){for(var a=o.length,p=[],c=0;c<a;c++){var l=addMinutes(addHours(e,getHours(o[c])),getMinutes(o[c])),d=addMinutes(e,(r+1)*n);isAfter(l,t)&&isBefore(l,d)&&p.push(o[c]);}return p}function yt(e){return e<10?"0".concat(e):"".concat(e)}function vt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:12,r=Math.ceil(getYear(e)/t)*t,n=r-(t-1);return {startPeriod:n,endPeriod:r}}function Dt(e,t,r,n){for(var o=[],a=0;a<2*t+1;a++){var s=e+t-a,i=!0;r&&(i=getYear(r)<=s),n&&i&&(i=getYear(n)>=s),i&&o.push(s);}return o}var wt=onClickOutsideHOC(function(n){he(a,React__default.Component);var o=De(a);function a(r){var n;pe(this,a),de(ye(n=o.call(this,r)),"renderOptions",(function(){var t=n.props.year,r=n.state.yearsList.map((function(r){return React__default.createElement("div",{className:t===r?"react-datepicker__year-option react-datepicker__year-option--selected_year":"react-datepicker__year-option",key:r,onClick:n.onChange.bind(ye(n),r),"aria-selected":t===r?"true":void 0},t===r?React__default.createElement("span",{className:"react-datepicker__year-option--selected"},"✓"):"",r)})),o=n.props.minDate?getYear(n.props.minDate):null,a=n.props.maxDate?getYear(n.props.maxDate):null;return a&&n.state.yearsList.find((function(e){return e===a}))||r.unshift(React__default.createElement("div",{className:"react-datepicker__year-option",key:"upcoming",onClick:n.incrementYears},React__default.createElement("a",{className:"react-datepicker__navigation react-datepicker__navigation--years react-datepicker__navigation--years-upcoming"}))),o&&n.state.yearsList.find((function(e){return e===o}))||r.push(React__default.createElement("div",{className:"react-datepicker__year-option",key:"previous",onClick:n.decrementYears},React__default.createElement("a",{className:"react-datepicker__navigation react-datepicker__navigation--years react-datepicker__navigation--years-previous"}))),r})),de(ye(n),"onChange",(function(e){n.props.onChange(e);})),de(ye(n),"handleClickOutside",(function(){n.props.onCancel();})),de(ye(n),"shiftYears",(function(e){var t=n.state.yearsList.map((function(t){return t+e}));n.setState({yearsList:t});})),de(ye(n),"incrementYears",(function(){return n.shiftYears(1)})),de(ye(n),"decrementYears",(function(){return n.shiftYears(-1)}));var s=r.yearDropdownItemNumber,i=r.scrollableYearDropdown,p=s||(i?10:5);return n.state={yearsList:Dt(n.props.year,p,n.props.minDate,n.props.maxDate)},n.dropdownRef=createRef(),n}return le(a,[{key:"componentDidMount",value:function(){var e=this.dropdownRef.current;e&&(e.scrollTop=e.scrollHeight/2-e.clientHeight/2);}},{key:"render",value:function(){var t=r({"react-datepicker__year-dropdown":!0,"react-datepicker__year-dropdown--scrollable":this.props.scrollableYearDropdown});return React__default.createElement("div",{className:t,ref:this.dropdownRef},this.renderOptions())}}]),a}()),gt=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{dropdownVisible:!1}),de(ye(t),"renderSelectOptions",(function(){for(var r=t.props.minDate?getYear(t.props.minDate):1900,n=t.props.maxDate?getYear(t.props.maxDate):2100,o=[],a=r;a<=n;a++)o.push(React__default.createElement("option",{key:a,value:a},a));return o})),de(ye(t),"onSelectChange",(function(e){t.onChange(e.target.value);})),de(ye(t),"renderSelectMode",(function(){return React__default.createElement("select",{value:t.props.year,className:"react-datepicker__year-select",onChange:t.onSelectChange},t.renderSelectOptions())})),de(ye(t),"renderReadView",(function(r){return React__default.createElement("div",{key:"read",style:{visibility:r?"visible":"hidden"},className:"react-datepicker__year-read-view",onClick:function(e){return t.toggleDropdown(e)}},React__default.createElement("span",{className:"react-datepicker__year-read-view--down-arrow"}),React__default.createElement("span",{className:"react-datepicker__year-read-view--selected-year"},t.props.year))})),de(ye(t),"renderDropdown",(function(){return React__default.createElement(wt,{key:"dropdown",year:t.props.year,onChange:t.onChange,onCancel:t.toggleDropdown,minDate:t.props.minDate,maxDate:t.props.maxDate,scrollableYearDropdown:t.props.scrollableYearDropdown,yearDropdownItemNumber:t.props.yearDropdownItemNumber})})),de(ye(t),"renderScrollMode",(function(){var e=t.state.dropdownVisible,r=[t.renderReadView(!e)];return e&&r.unshift(t.renderDropdown()),r})),de(ye(t),"onChange",(function(e){t.toggleDropdown(),e!==t.props.year&&t.props.onChange(e);})),de(ye(t),"toggleDropdown",(function(e){t.setState({dropdownVisible:!t.state.dropdownVisible},(function(){t.props.adjustDateOnChange&&t.handleYearChange(t.props.date,e);}));})),de(ye(t),"handleYearChange",(function(e,r){t.onSelect(e,r),t.setOpen();})),de(ye(t),"onSelect",(function(e,r){t.props.onSelect&&t.props.onSelect(e,r);})),de(ye(t),"setOpen",(function(){t.props.setOpen&&t.props.setOpen(!0);})),t}return le(n,[{key:"render",value:function(){var t;switch(this.props.dropdownMode){case"scroll":t=this.renderScrollMode();break;case"select":t=this.renderSelectMode();}return React__default.createElement("div",{className:"react-datepicker__year-dropdown-container react-datepicker__year-dropdown-container--".concat(this.props.dropdownMode)},t)}}]),n}(),kt=onClickOutsideHOC(function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"isSelectedMonth",(function(e){return t.props.month===e})),de(ye(t),"renderOptions",(function(){return t.props.monthNames.map((function(r,n){return React__default.createElement("div",{className:t.isSelectedMonth(n)?"react-datepicker__month-option react-datepicker__month-option--selected_month":"react-datepicker__month-option",key:r,onClick:t.onChange.bind(ye(t),n),"aria-selected":t.isSelectedMonth(n)?"true":void 0},t.isSelectedMonth(n)?React__default.createElement("span",{className:"react-datepicker__month-option--selected"},"✓"):"",r)}))})),de(ye(t),"onChange",(function(e){return t.props.onChange(e)})),de(ye(t),"handleClickOutside",(function(){return t.props.onCancel()})),t}return le(n,[{key:"render",value:function(){return React__default.createElement("div",{className:"react-datepicker__month-dropdown"},this.renderOptions())}}]),n}()),bt=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{dropdownVisible:!1}),de(ye(t),"renderSelectOptions",(function(t){return t.map((function(t,r){return React__default.createElement("option",{key:r,value:r},t)}))})),de(ye(t),"renderSelectMode",(function(r){return React__default.createElement("select",{value:t.props.month,className:"react-datepicker__month-select",onChange:function(e){return t.onChange(e.target.value)}},t.renderSelectOptions(r))})),de(ye(t),"renderReadView",(function(r,n){return React__default.createElement("div",{key:"read",style:{visibility:r?"visible":"hidden"},className:"react-datepicker__month-read-view",onClick:t.toggleDropdown},React__default.createElement("span",{className:"react-datepicker__month-read-view--down-arrow"}),React__default.createElement("span",{className:"react-datepicker__month-read-view--selected-month"},n[t.props.month]))})),de(ye(t),"renderDropdown",(function(r){return React__default.createElement(kt,{key:"dropdown",month:t.props.month,monthNames:r,onChange:t.onChange,onCancel:t.toggleDropdown})})),de(ye(t),"renderScrollMode",(function(e){var r=t.state.dropdownVisible,n=[t.renderReadView(!r,e)];return r&&n.unshift(t.renderDropdown(e)),n})),de(ye(t),"onChange",(function(e){t.toggleDropdown(),e!==t.props.month&&t.props.onChange(e);})),de(ye(t),"toggleDropdown",(function(){return t.setState({dropdownVisible:!t.state.dropdownVisible})})),t}return le(n,[{key:"render",value:function(){var t,r=this,n=[0,1,2,3,4,5,6,7,8,9,10,11].map(this.props.useShortMonthInDropdown?function(e){return ze(e,r.props.locale)}:function(e){return $e(e,r.props.locale)});switch(this.props.dropdownMode){case"scroll":t=this.renderScrollMode(n);break;case"select":t=this.renderSelectMode(n);}return React__default.createElement("div",{className:"react-datepicker__month-dropdown-container react-datepicker__month-dropdown-container--".concat(this.props.dropdownMode)},t)}}]),n}();function Ct(e,t){for(var r=[],n=Le(e),o=Le(t);!isAfter(n,o);)r.push(_e(n)),n=addMonths(n,1);return r}var St=onClickOutsideHOC(function(t){he(o,React__default.Component);var n=De(o);function o(t){var r;return pe(this,o),de(ye(r=n.call(this,t)),"renderOptions",(function(){return r.state.monthYearsList.map((function(t){var n=getTime(t),o=Ae(r.props.date,t)&&Be(r.props.date,t);return React__default.createElement("div",{className:o?"react-datepicker__month-year-option--selected_month-year":"react-datepicker__month-year-option",key:n,onClick:r.onChange.bind(ye(r),n),"aria-selected":o?"true":void 0},o?React__default.createElement("span",{className:"react-datepicker__month-year-option--selected"},"✓"):"",Ee(t,r.props.dateFormat,r.props.locale))}))})),de(ye(r),"onChange",(function(e){return r.props.onChange(e)})),de(ye(r),"handleClickOutside",(function(){r.props.onCancel();})),r.state={monthYearsList:Ct(r.props.minDate,r.props.maxDate)},r}return le(o,[{key:"render",value:function(){var t=r({"react-datepicker__month-year-dropdown":!0,"react-datepicker__month-year-dropdown--scrollable":this.props.scrollableMonthYearDropdown});return React__default.createElement("div",{className:t},this.renderOptions())}}]),o}()),_t=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{dropdownVisible:!1}),de(ye(t),"renderSelectOptions",(function(){for(var r=Le(t.props.minDate),n=Le(t.props.maxDate),o=[];!isAfter(r,n);){var a=getTime(r);o.push(React__default.createElement("option",{key:a,value:a},Ee(r,t.props.dateFormat,t.props.locale))),r=addMonths(r,1);}return o})),de(ye(t),"onSelectChange",(function(e){t.onChange(e.target.value);})),de(ye(t),"renderSelectMode",(function(){return React__default.createElement("select",{value:getTime(Le(t.props.date)),className:"react-datepicker__month-year-select",onChange:t.onSelectChange},t.renderSelectOptions())})),de(ye(t),"renderReadView",(function(r){var n=Ee(t.props.date,t.props.dateFormat,t.props.locale);return React__default.createElement("div",{key:"read",style:{visibility:r?"visible":"hidden"},className:"react-datepicker__month-year-read-view",onClick:function(e){return t.toggleDropdown(e)}},React__default.createElement("span",{className:"react-datepicker__month-year-read-view--down-arrow"}),React__default.createElement("span",{className:"react-datepicker__month-year-read-view--selected-month-year"},n))})),de(ye(t),"renderDropdown",(function(){return React__default.createElement(St,{key:"dropdown",date:t.props.date,dateFormat:t.props.dateFormat,onChange:t.onChange,onCancel:t.toggleDropdown,minDate:t.props.minDate,maxDate:t.props.maxDate,scrollableMonthYearDropdown:t.props.scrollableMonthYearDropdown,locale:t.props.locale})})),de(ye(t),"renderScrollMode",(function(){var e=t.state.dropdownVisible,r=[t.renderReadView(!e)];return e&&r.unshift(t.renderDropdown()),r})),de(ye(t),"onChange",(function(e){t.toggleDropdown();var r=_e(parseInt(e));Ae(t.props.date,r)&&Be(t.props.date,r)||t.props.onChange(r);})),de(ye(t),"toggleDropdown",(function(){return t.setState({dropdownVisible:!t.state.dropdownVisible})})),t}return le(n,[{key:"render",value:function(){var t;switch(this.props.dropdownMode){case"scroll":t=this.renderScrollMode();break;case"select":t=this.renderSelectMode();}return React__default.createElement("div",{className:"react-datepicker__month-year-dropdown-container react-datepicker__month-year-dropdown-container--".concat(this.props.dropdownMode)},t)}}]),n}(),Mt=function(t){he(o,React__default.Component);var n=De(o);function o(){var t;pe(this,o);for(var a=arguments.length,s=new Array(a),i=0;i<a;i++)s[i]=arguments[i];return de(ye(t=n.call.apply(n,[this].concat(s))),"dayEl",React__default.createRef()),de(ye(t),"handleClick",(function(e){!t.isDisabled()&&t.props.onClick&&t.props.onClick(e);})),de(ye(t),"handleMouseEnter",(function(e){!t.isDisabled()&&t.props.onMouseEnter&&t.props.onMouseEnter(e);})),de(ye(t),"handleOnKeyDown",(function(e){" "===e.key&&(e.preventDefault(),e.key="Enter"),t.props.handleOnKeyDown(e);})),de(ye(t),"isSameDay",(function(e){return We(t.props.day,e)})),de(ye(t),"isKeyboardSelected",(function(){return !t.props.disabledKeyboardNavigation&&!t.isSameDay(t.props.selected)&&t.isSameDay(t.props.preSelection)})),de(ye(t),"isDisabled",(function(){return Je(t.props.day,t.props)})),de(ye(t),"isExcluded",(function(){return Xe(t.props.day,t.props)})),de(ye(t),"getHighLightedClass",(function(e){var r=t.props,n=r.day,o=r.highlightDates;if(!o)return !1;var a=Ee(n,"MM.dd.yyyy");return o.get(a)})),de(ye(t),"isInRange",(function(){var e=t.props,r=e.day,n=e.startDate,o=e.endDate;return !(!n||!o)&&He(r,n,o)})),de(ye(t),"isInSelectingRange",(function(){var e,r=t.props,n=r.day,o=r.selectsStart,a=r.selectsEnd,s=r.selectsRange,i=r.selectsDisabledDaysInRange,p=r.startDate,c=r.endDate,l=null!==(e=t.props.selectingDate)&&void 0!==e?e:t.props.preSelection;return !(!(o||a||s)||!l||!i&&t.isDisabled())&&(o&&c&&(isBefore(l,c)||je(l,c))?He(n,l,c):(a&&p&&(isAfter(l,p)||je(l,p))||!(!s||!p||c||!isAfter(l,p)&&!je(l,p)))&&He(n,p,l))})),de(ye(t),"isSelectingRangeStart",(function(){var e;if(!t.isInSelectingRange())return !1;var r=t.props,n=r.day,o=r.startDate,a=r.selectsStart,s=null!==(e=t.props.selectingDate)&&void 0!==e?e:t.props.preSelection;return We(n,a?s:o)})),de(ye(t),"isSelectingRangeEnd",(function(){var e;if(!t.isInSelectingRange())return !1;var r=t.props,n=r.day,o=r.endDate,a=r.selectsEnd,s=null!==(e=t.props.selectingDate)&&void 0!==e?e:t.props.preSelection;return We(n,a?s:o)})),de(ye(t),"isRangeStart",(function(){var e=t.props,r=e.day,n=e.startDate,o=e.endDate;return !(!n||!o)&&We(n,r)})),de(ye(t),"isRangeEnd",(function(){var e=t.props,r=e.day,n=e.startDate,o=e.endDate;return !(!n||!o)&&We(o,r)})),de(ye(t),"isWeekend",(function(){var e=getDay(t.props.day);return 0===e||6===e})),de(ye(t),"isAfterMonth",(function(){return void 0!==t.props.month&&(t.props.month+1)%12===getMonth(t.props.day)})),de(ye(t),"isBeforeMonth",(function(){return void 0!==t.props.month&&(getMonth(t.props.day)+1)%12===t.props.month})),de(ye(t),"isCurrentDay",(function(){return t.isSameDay(_e())})),de(ye(t),"isSelected",(function(){return t.isSameDay(t.props.selected)})),de(ye(t),"getClassNames",(function(e){var n=t.props.dayClassName?t.props.dayClassName(e):void 0;return r("react-datepicker__day",n,"react-datepicker__day--"+Oe(t.props.day),{"react-datepicker__day--disabled":t.isDisabled(),"react-datepicker__day--excluded":t.isExcluded(),"react-datepicker__day--selected":t.isSelected(),"react-datepicker__day--keyboard-selected":t.isKeyboardSelected(),"react-datepicker__day--range-start":t.isRangeStart(),"react-datepicker__day--range-end":t.isRangeEnd(),"react-datepicker__day--in-range":t.isInRange(),"react-datepicker__day--in-selecting-range":t.isInSelectingRange(),"react-datepicker__day--selecting-range-start":t.isSelectingRangeStart(),"react-datepicker__day--selecting-range-end":t.isSelectingRangeEnd(),"react-datepicker__day--today":t.isCurrentDay(),"react-datepicker__day--weekend":t.isWeekend(),"react-datepicker__day--outside-month":t.isAfterMonth()||t.isBeforeMonth()},t.getHighLightedClass("react-datepicker__day--highlighted"))})),de(ye(t),"getAriaLabel",(function(){var e=t.props,r=e.day,n=e.ariaLabelPrefixWhenEnabled,o=void 0===n?"Choose":n,a=e.ariaLabelPrefixWhenDisabled,s=void 0===a?"Not available":a,i=t.isDisabled()||t.isExcluded()?s:o;return "".concat(i," ").concat(Ee(r,"PPPP",t.props.locale))})),de(ye(t),"getTabIndex",(function(e,r){var n=e||t.props.selected,o=r||t.props.preSelection;return t.isKeyboardSelected()||t.isSameDay(n)&&We(o,n)?0:-1})),de(ye(t),"handleFocusDay",(function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},r=!1;0===t.getTabIndex()&&!e.isInputFocused&&t.isSameDay(t.props.preSelection)&&(document.activeElement&&document.activeElement!==document.body||(r=!0),t.props.inline&&!t.props.shouldFocusDayInline&&(r=!1),t.props.containerRef&&t.props.containerRef.current&&t.props.containerRef.current.contains(document.activeElement)&&document.activeElement.classList.contains("react-datepicker__day")&&(r=!0)),r&&t.dayEl.current.focus({preventScroll:!0});})),de(ye(t),"renderDayContents",(function(){return t.props.monthShowsDuplicateDaysEnd&&t.isAfterMonth()||t.props.monthShowsDuplicateDaysStart&&t.isBeforeMonth()?null:t.props.renderDayContents?t.props.renderDayContents(getDate(t.props.day),t.props.day):getDate(t.props.day)})),de(ye(t),"render",(function(){return React__default.createElement("div",{ref:t.dayEl,className:t.getClassNames(t.props.day),onKeyDown:t.handleOnKeyDown,onClick:t.handleClick,onMouseEnter:t.handleMouseEnter,tabIndex:t.getTabIndex(),"aria-label":t.getAriaLabel(),role:"option","aria-disabled":t.isDisabled(),"aria-current":t.isCurrentDay()?"date":void 0,"aria-selected":t.isSelected()},t.renderDayContents())})),t}return le(o,[{key:"componentDidMount",value:function(){this.handleFocusDay();}},{key:"componentDidUpdate",value:function(e){this.handleFocusDay(e);}}]),o}(),Pt=function(t){he(o,React__default.Component);var n=De(o);function o(){var e;pe(this,o);for(var t=arguments.length,r=new Array(t),a=0;a<t;a++)r[a]=arguments[a];return de(ye(e=n.call.apply(n,[this].concat(r))),"handleClick",(function(t){e.props.onClick&&e.props.onClick(t);})),e}return le(o,[{key:"render",value:function(){var t=this.props,n=t.weekNumber,o=t.ariaLabelPrefix,a=void 0===o?"week ":o,s={"react-datepicker__week-number":!0,"react-datepicker__week-number--clickable":!!t.onClick};return React__default.createElement("div",{className:r(s),"aria-label":"".concat(a," ").concat(this.props.weekNumber),onClick:this.handleClick},n)}}]),o}(),Et=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"handleDayClick",(function(e,r){t.props.onDayClick&&t.props.onDayClick(e,r);})),de(ye(t),"handleDayMouseEnter",(function(e){t.props.onDayMouseEnter&&t.props.onDayMouseEnter(e);})),de(ye(t),"handleWeekClick",(function(e,r,n){"function"==typeof t.props.onWeekSelect&&t.props.onWeekSelect(e,r,n),t.props.shouldCloseOnSelect&&t.props.setOpen(!1);})),de(ye(t),"formatWeekNumber",(function(e){return t.props.formatWeekNumber?t.props.formatWeekNumber(e):Ye(e)})),de(ye(t),"renderDays",(function(){var r=Te(t.props.day,t.props.locale,t.props.calendarStartDay),n=[],o=t.formatWeekNumber(r);if(t.props.showWeekNumber){var a=t.props.onWeekSelect?t.handleWeekClick.bind(ye(t),r,o):void 0;n.push(React__default.createElement(Pt,{key:"W",weekNumber:o,onClick:a,ariaLabelPrefix:t.props.ariaLabelPrefix}));}return n.concat([0,1,2,3,4,5,6].map((function(n){var o=addDays(r,n);return React__default.createElement(Mt,{ariaLabelPrefixWhenEnabled:t.props.chooseDayAriaLabelPrefix,ariaLabelPrefixWhenDisabled:t.props.disabledDayAriaLabelPrefix,key:o.valueOf(),day:o,month:t.props.month,onClick:t.handleDayClick.bind(ye(t),o),onMouseEnter:t.handleDayMouseEnter.bind(ye(t),o),minDate:t.props.minDate,maxDate:t.props.maxDate,excludeDates:t.props.excludeDates,excludeDateIntervals:t.props.excludeDateIntervals,includeDates:t.props.includeDates,includeDateIntervals:t.props.includeDateIntervals,highlightDates:t.props.highlightDates,selectingDate:t.props.selectingDate,filterDate:t.props.filterDate,preSelection:t.props.preSelection,selected:t.props.selected,selectsStart:t.props.selectsStart,selectsEnd:t.props.selectsEnd,selectsRange:t.props.selectsRange,selectsDisabledDaysInRange:t.props.selectsDisabledDaysInRange,startDate:t.props.startDate,endDate:t.props.endDate,dayClassName:t.props.dayClassName,renderDayContents:t.props.renderDayContents,disabledKeyboardNavigation:t.props.disabledKeyboardNavigation,handleOnKeyDown:t.props.handleOnKeyDown,isInputFocused:t.props.isInputFocused,containerRef:t.props.containerRef,inline:t.props.inline,shouldFocusDayInline:t.props.shouldFocusDayInline,monthShowsDuplicateDaysEnd:t.props.monthShowsDuplicateDaysEnd,monthShowsDuplicateDaysStart:t.props.monthShowsDuplicateDaysStart,locale:t.props.locale})})))})),t}return le(n,[{key:"render",value:function(){return React__default.createElement("div",{className:"react-datepicker__week"},this.renderDays())}}],[{key:"defaultProps",get:function(){return {shouldCloseOnSelect:!0}}}]),n}(),Nt=function(t){he(o,React__default.Component);var n=De(o);function o(){var t;pe(this,o);for(var a=arguments.length,s=new Array(a),i=0;i<a;i++)s[i]=arguments[i];return de(ye(t=n.call.apply(n,[this].concat(s))),"MONTH_REFS",we(Array(12)).map((function(){return React__default.createRef()}))),de(ye(t),"isDisabled",(function(e){return Je(e,t.props)})),de(ye(t),"isExcluded",(function(e){return Xe(e,t.props)})),de(ye(t),"handleDayClick",(function(e,r){t.props.onDayClick&&t.props.onDayClick(e,r,t.props.orderInDisplay);})),de(ye(t),"handleDayMouseEnter",(function(e){t.props.onDayMouseEnter&&t.props.onDayMouseEnter(e);})),de(ye(t),"handleMouseLeave",(function(){t.props.onMouseLeave&&t.props.onMouseLeave();})),de(ye(t),"isRangeStartMonth",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Be(setMonth(n,e),o)})),de(ye(t),"isRangeStartQuarter",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Ke(setQuarter(n,e),o)})),de(ye(t),"isRangeEndMonth",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Be(setMonth(n,e),a)})),de(ye(t),"isRangeEndQuarter",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Ke(setQuarter(n,e),a)})),de(ye(t),"isWeekInMonth",(function(e){var r=t.props.day,n=addDays(e,6);return Be(e,r)||Be(n,r)})),de(ye(t),"isCurrentMonth",(function(e,t){return getYear(e)===getYear(_e())&&t===getMonth(_e())})),de(ye(t),"isSelectedMonth",(function(e,t,r){return getMonth(e)===t&&getYear(e)===getYear(r)})),de(ye(t),"isSelectedQuarter",(function(e,t,r){return getQuarter(e)===t&&getYear(e)===getYear(r)})),de(ye(t),"renderWeeks",(function(){for(var r=[],n=t.props.fixedHeight,o=0,a=!1,s=Te(Le(t.props.day),t.props.locale,t.props.calendarStartDay);r.push(React__default.createElement(Et,{ariaLabelPrefix:t.props.weekAriaLabelPrefix,chooseDayAriaLabelPrefix:t.props.chooseDayAriaLabelPrefix,disabledDayAriaLabelPrefix:t.props.disabledDayAriaLabelPrefix,key:o,day:s,month:getMonth(t.props.day),onDayClick:t.handleDayClick,onDayMouseEnter:t.handleDayMouseEnter,onWeekSelect:t.props.onWeekSelect,formatWeekNumber:t.props.formatWeekNumber,locale:t.props.locale,minDate:t.props.minDate,maxDate:t.props.maxDate,excludeDates:t.props.excludeDates,excludeDateIntervals:t.props.excludeDateIntervals,includeDates:t.props.includeDates,includeDateIntervals:t.props.includeDateIntervals,inline:t.props.inline,shouldFocusDayInline:t.props.shouldFocusDayInline,highlightDates:t.props.highlightDates,selectingDate:t.props.selectingDate,filterDate:t.props.filterDate,preSelection:t.props.preSelection,selected:t.props.selected,selectsStart:t.props.selectsStart,selectsEnd:t.props.selectsEnd,selectsRange:t.props.selectsRange,selectsDisabledDaysInRange:t.props.selectsDisabledDaysInRange,showWeekNumber:t.props.showWeekNumbers,startDate:t.props.startDate,endDate:t.props.endDate,dayClassName:t.props.dayClassName,setOpen:t.props.setOpen,shouldCloseOnSelect:t.props.shouldCloseOnSelect,disabledKeyboardNavigation:t.props.disabledKeyboardNavigation,renderDayContents:t.props.renderDayContents,handleOnKeyDown:t.props.handleOnKeyDown,isInputFocused:t.props.isInputFocused,containerRef:t.props.containerRef,calendarStartDay:t.props.calendarStartDay,monthShowsDuplicateDaysEnd:t.props.monthShowsDuplicateDaysEnd,monthShowsDuplicateDaysStart:t.props.monthShowsDuplicateDaysStart})),!a;){o++,s=addWeeks(s,1);var i=n&&o>=6,p=!n&&!t.isWeekInMonth(s);if(i||p){if(!t.props.peekNextMonth)break;a=!0;}}return r})),de(ye(t),"onMonthClick",(function(e,r){t.handleDayClick(Le(setMonth(t.props.day,r)),e);})),de(ye(t),"handleMonthNavigation",(function(e,r){t.isDisabled(r)||t.isExcluded(r)||(t.props.setPreSelection(r),t.MONTH_REFS[e].current&&t.MONTH_REFS[e].current.focus());})),de(ye(t),"onMonthKeyDown",(function(e,r){var n=e.key;if(!t.props.disabledKeyboardNavigation)switch(n){case"Enter":t.onMonthClick(e,r),t.props.setPreSelection(t.props.selected);break;case"ArrowRight":t.handleMonthNavigation(11===r?0:r+1,addMonths(t.props.preSelection,1));break;case"ArrowLeft":t.handleMonthNavigation(0===r?11:r-1,subMonths(t.props.preSelection,1));}})),de(ye(t),"onQuarterClick",(function(e,r){t.handleDayClick(Fe(setQuarter(t.props.day,r)),e);})),de(ye(t),"getMonthClassNames",(function(e){var n=t.props,o=n.day,a=n.startDate,s=n.endDate,i=n.selected,p=n.minDate,c=n.maxDate,l=n.preSelection,d=n.monthClassName,u=d?d(o):void 0;return r("react-datepicker__month-text","react-datepicker__month-".concat(e),u,{"react-datepicker__month--disabled":(p||c)&&Ze(setMonth(o,e),t.props),"react-datepicker__month--selected":t.isSelectedMonth(o,e,i),"react-datepicker__month-text--keyboard-selected":getMonth(l)===e,"react-datepicker__month--in-range":et(a,s,e,o),"react-datepicker__month--range-start":t.isRangeStartMonth(e),"react-datepicker__month--range-end":t.isRangeEndMonth(e),"react-datepicker__month-text--today":t.isCurrentMonth(o,e)})})),de(ye(t),"getTabIndex",(function(e){var r=getMonth(t.props.preSelection);return t.props.disabledKeyboardNavigation||e!==r?"-1":"0"})),de(ye(t),"getAriaLabel",(function(e){var r=t.props,n=r.chooseDayAriaLabelPrefix,o=void 0===n?"Choose":n,a=r.disabledDayAriaLabelPrefix,s=void 0===a?"Not available":a,i=r.day,p=setMonth(i,e),c=t.isDisabled(p)||t.isExcluded(p)?s:o;return "".concat(c," ").concat(Ee(p,"MMMM yyyy"))})),de(ye(t),"getQuarterClassNames",(function(e){var n=t.props,o=n.day,a=n.startDate,s=n.endDate,i=n.selected,p=n.minDate,c=n.maxDate;return r("react-datepicker__quarter-text","react-datepicker__quarter-".concat(e),{"react-datepicker__quarter--disabled":(p||c)&&tt(setQuarter(o,e),t.props),"react-datepicker__quarter--selected":t.isSelectedQuarter(o,e,i),"react-datepicker__quarter--in-range":nt(a,s,e,o),"react-datepicker__quarter--range-start":t.isRangeStartQuarter(e),"react-datepicker__quarter--range-end":t.isRangeEndQuarter(e)})})),de(ye(t),"renderMonths",(function(){var r=t.props,n=r.showFullMonthYearPicker,o=r.showTwoColumnMonthYearPicker,a=r.showFourColumnMonthYearPicker,s=r.locale,i=r.day,p=r.selected;return (a?[[0,1,2,3],[4,5,6,7],[8,9,10,11]]:o?[[0,1],[2,3],[4,5],[6,7],[8,9],[10,11]]:[[0,1,2],[3,4,5],[6,7,8],[9,10,11]]).map((function(r,o){return React__default.createElement("div",{className:"react-datepicker__month-wrapper",key:o},r.map((function(r,o){return React__default.createElement("div",{ref:t.MONTH_REFS[r],key:o,onClick:function(e){t.onMonthClick(e,r);},onKeyDown:function(e){t.onMonthKeyDown(e,r);},tabIndex:t.getTabIndex(r),className:t.getMonthClassNames(r),role:"option","aria-label":t.getAriaLabel(r),"aria-current":t.isCurrentMonth(i,r)?"date":void 0,"aria-selected":t.isSelectedMonth(i,r,p)},n?$e(r,s):ze(r,s))})))}))})),de(ye(t),"renderQuarters",(function(){var r=t.props,n=r.day,o=r.selected;return React__default.createElement("div",{className:"react-datepicker__quarter-wrapper"},[1,2,3,4].map((function(r,a){return React__default.createElement("div",{key:a,role:"option",onClick:function(e){t.onQuarterClick(e,r);},className:t.getQuarterClassNames(r),"aria-selected":t.isSelectedQuarter(n,r,o)},Ge(r,t.props.locale))})))})),de(ye(t),"getClassNames",(function(){var e=t.props;e.day;var n=e.selectingDate,o=e.selectsStart,a=e.selectsEnd,s=e.showMonthYearPicker,i=e.showQuarterYearPicker;return r("react-datepicker__month",{"react-datepicker__month--selecting-range":n&&(o||a)},{"react-datepicker__monthPicker":s},{"react-datepicker__quarterPicker":i})})),t}return le(o,[{key:"render",value:function(){var t=this.props,r=t.showMonthYearPicker,n=t.showQuarterYearPicker,o=t.day,a=t.ariaLabelPrefix,s=void 0===a?"month ":a;return React__default.createElement("div",{className:this.getClassNames(),onMouseLeave:this.handleMouseLeave,"aria-label":"".concat(s," ").concat(Ee(o,"yyyy-MM")),role:"listbox"},r?this.renderMonths():n?this.renderQuarters():this.renderWeeks())}}]),o}(),xt=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),i=0;i<o;i++)a[i]=arguments[i];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{height:null}),de(ye(t),"handleClick",(function(e){(t.props.minTime||t.props.maxTime)&&it(e,t.props)||(t.props.excludeTimes||t.props.includeTimes||t.props.filterTime)&&st(e,t.props)||t.props.onChange(e);})),de(ye(t),"isSelectedTime",(function(e,r,n){return t.props.selected&&r===getHours(e)&&n===getMinutes(e)})),de(ye(t),"liClasses",(function(e,r,n){var o=["react-datepicker__time-list-item",t.props.timeClassName?t.props.timeClassName(e,r,n):void 0];return t.isSelectedTime(e,r,n)&&o.push("react-datepicker__time-list-item--selected"),((t.props.minTime||t.props.maxTime)&&it(e,t.props)||(t.props.excludeTimes||t.props.includeTimes||t.props.filterTime)&&st(e,t.props))&&o.push("react-datepicker__time-list-item--disabled"),t.props.injectTimes&&(60*getHours(e)+getMinutes(e))%t.props.intervals!=0&&o.push("react-datepicker__time-list-item--injected"),o.join(" ")})),de(ye(t),"handleOnKeyDown",(function(e,r){" "===e.key&&(e.preventDefault(),e.key="Enter"),"Enter"===e.key&&t.handleClick(r),t.props.handleOnKeyDown(e);})),de(ye(t),"renderTimes",(function(){for(var r=[],n=t.props.format?t.props.format:"p",o=t.props.intervals,a=Ie(_e(t.props.selected)),i=1440/o,p=t.props.injectTimes&&t.props.injectTimes.sort((function(e,t){return e-t})),c=t.props.selected||t.props.openToDate||_e(),l=getHours(c),d=getMinutes(c),u=setHours(setMinutes(a,d),l),h=0;h<i;h++){var m=addMinutes(a,h*o);if(r.push(m),p){var f=ft(a,m,h,o,p);r=r.concat(f);}}return r.map((function(r,o){return React__default.createElement("li",{key:o,onClick:t.handleClick.bind(ye(t),r),className:t.liClasses(r,l,d),ref:function(e){(isBefore(r,u)||je(r,u))&&(t.centerLi=e);},onKeyDown:function(e){t.handleOnKeyDown(e,r);},tabIndex:"0","aria-selected":t.isSelectedTime(r,l,d)?"true":void 0},Ee(r,n,t.props.locale))}))})),t}return le(n,[{key:"componentDidMount",value:function(){this.list.scrollTop=n.calcCenterPosition(this.props.monthRef?this.props.monthRef.clientHeight-this.header.clientHeight:this.list.clientHeight,this.centerLi),this.props.monthRef&&this.header&&this.setState({height:this.props.monthRef.clientHeight-this.header.clientHeight});}},{key:"render",value:function(){var t=this,r=this.state.height;return React__default.createElement("div",{className:"react-datepicker__time-container ".concat(this.props.todayButton?"react-datepicker__time-container--with-today-button":"")},React__default.createElement("div",{className:"react-datepicker__header react-datepicker__header--time ".concat(this.props.showTimeSelectOnly?"react-datepicker__header--time--only":""),ref:function(e){t.header=e;}},React__default.createElement("div",{className:"react-datepicker-time__header"},this.props.timeCaption)),React__default.createElement("div",{className:"react-datepicker__time"},React__default.createElement("div",{className:"react-datepicker__time-box"},React__default.createElement("ul",{className:"react-datepicker__time-list",ref:function(e){t.list=e;},style:r?{height:r}:{},tabIndex:"0"},this.renderTimes()))))}}],[{key:"defaultProps",get:function(){return {intervals:30,onTimeChange:function(){},todayButton:null,timeCaption:"Time"}}}]),n}();de(xt,"calcCenterPosition",(function(e,t){return t.offsetTop-(e/2-t.clientHeight/2)}));var Yt=function(t){he(o,React__default.Component);var n=De(o);function o(t){var a;return pe(this,o),de(ye(a=n.call(this,t)),"YEAR_REFS",we(Array(a.props.yearItemNumber)).map((function(){return React__default.createRef()}))),de(ye(a),"isDisabled",(function(e){return Je(e,a.props)})),de(ye(a),"isExcluded",(function(e){return Xe(e,a.props)})),de(ye(a),"updateFocusOnPaginate",(function(e){var t=function(){this.YEAR_REFS[e].current.focus();}.bind(ye(a));window.requestAnimationFrame(t);})),de(ye(a),"handleYearClick",(function(e,t){a.props.onDayClick&&a.props.onDayClick(e,t);})),de(ye(a),"handleYearNavigation",(function(e,t){var r=a.props,n=r.date,o=r.yearItemNumber,s=vt(n,o).startPeriod;a.isDisabled(t)||a.isExcluded(t)||(a.props.setPreSelection(t),e-s==-1?a.updateFocusOnPaginate(o-1):e-s===o?a.updateFocusOnPaginate(0):a.YEAR_REFS[e-s].current.focus());})),de(ye(a),"isSameDay",(function(e,t){return We(e,t)})),de(ye(a),"isCurrentYear",(function(e){return e===getYear(_e())})),de(ye(a),"isKeyboardSelected",(function(e){var t=Re(setYear(a.props.date,e));return !a.props.disabledKeyboardNavigation&&!a.props.inline&&!We(t,Re(a.props.selected))&&We(t,Re(a.props.preSelection))})),de(ye(a),"onYearClick",(function(e,t){var r=a.props.date;a.handleYearClick(Re(setYear(r,t)),e);})),de(ye(a),"onYearKeyDown",(function(e,t){var r=e.key;if(!a.props.disabledKeyboardNavigation)switch(r){case"Enter":a.onYearClick(e,t),a.props.setPreSelection(a.props.selected);break;case"ArrowRight":a.handleYearNavigation(t+1,addYears(a.props.preSelection,1));break;case"ArrowLeft":a.handleYearNavigation(t-1,subYears(a.props.preSelection,1));}})),de(ye(a),"getYearClassNames",(function(e){var t=a.props,n=t.minDate,o=t.maxDate,s=t.selected;return r("react-datepicker__year-text",{"react-datepicker__year-text--selected":e===getYear(s),"react-datepicker__year-text--disabled":(n||o)&&rt(e,a.props),"react-datepicker__year-text--keyboard-selected":a.isKeyboardSelected(e),"react-datepicker__year-text--today":a.isCurrentYear(e)})})),de(ye(a),"getYearTabIndex",(function(e){return a.props.disabledKeyboardNavigation?"-1":e===getYear(a.props.preSelection)?"0":"-1"})),a}return le(o,[{key:"render",value:function(){for(var t=this,r=[],n=this.props,o=vt(n.date,n.yearItemNumber),a=o.startPeriod,s=o.endPeriod,i=function(n){r.push(React__default.createElement("div",{ref:t.YEAR_REFS[n-a],onClick:function(e){t.onYearClick(e,n);},onKeyDown:function(e){t.onYearKeyDown(e,n);},tabIndex:t.getYearTabIndex(n),className:t.getYearClassNames(n),key:n,"aria-current":t.isCurrentYear(n)?"date":void 0},n));},p=a;p<=s;p++)i(p);return React__default.createElement("div",{className:"react-datepicker__year"},React__default.createElement("div",{className:"react-datepicker__year-wrapper"},r))}}]),o}(),Ot=function(t){he(n,React__default.Component);var r=De(n);function n(t){var o;return pe(this,n),de(ye(o=r.call(this,t)),"onTimeChange",(function(e){o.setState({time:e});var t=new Date;t.setHours(e.split(":")[0]),t.setMinutes(e.split(":")[1]),o.props.onChange(t);})),de(ye(o),"renderTimeInput",(function(){var t=o.state.time,r=o.props,n=r.date,a=r.timeString,s=r.customTimeInput;return s?React__default.cloneElement(s,{date:n,value:t,onChange:o.onTimeChange}):React__default.createElement("input",{type:"time",className:"react-datepicker-time__input",placeholder:"Time",name:"time-input",required:!0,value:t,onChange:function(e){o.onTimeChange(e.target.value||a);}})})),o.state={time:o.props.timeString},o}return le(n,[{key:"render",value:function(){return React__default.createElement("div",{className:"react-datepicker__input-time-container"},React__default.createElement("div",{className:"react-datepicker-time__caption"},this.props.timeInputLabel),React__default.createElement("div",{className:"react-datepicker-time__input-container"},React__default.createElement("div",{className:"react-datepicker-time__input"},this.renderTimeInput())))}}],[{key:"getDerivedStateFromProps",value:function(e,t){return e.timeString!==t.time?{time:e.timeString}:null}}]),n}();function It(t){var r=t.className,n=t.children,o=t.showPopperArrow,a=t.arrowProps,s=void 0===a?{}:a;return React__default.createElement("div",{className:r},o&&React__default.createElement("div",ue({className:"react-datepicker__triangle"},s)),n)}var Tt=["react-datepicker__year-select","react-datepicker__month-select","react-datepicker__month-year-select"],Lt=function(t){he(o,React__default.Component);var n=De(o);function o(t){var a;return pe(this,o),de(ye(a=n.call(this,t)),"handleClickOutside",(function(e){a.props.onClickOutside(e);})),de(ye(a),"setClickOutsideRef",(function(){return a.containerRef.current})),de(ye(a),"handleDropdownFocus",(function(e){(function(){var e=((arguments.length>0&&void 0!==arguments[0]?arguments[0]:{}).className||"").split(/\s+/);return Tt.some((function(t){return e.indexOf(t)>=0}))})(e.target)&&a.props.onDropdownFocus();})),de(ye(a),"getDateInView",(function(){var e=a.props,t=e.preSelection,r=e.selected,n=e.openToDate,o=ut(a.props),s=ht(a.props),i=_e(),p=n||r||t;return p||(o&&isBefore(i,o)?o:s&&isAfter(i,s)?s:i)})),de(ye(a),"increaseMonth",(function(){a.setState((function(e){var t=e.date;return {date:addMonths(t,1)}}),(function(){return a.handleMonthChange(a.state.date)}));})),de(ye(a),"decreaseMonth",(function(){a.setState((function(e){var t=e.date;return {date:subMonths(t,1)}}),(function(){return a.handleMonthChange(a.state.date)}));})),de(ye(a),"handleDayClick",(function(e,t,r){a.props.onSelect(e,t,r),a.props.setPreSelection&&a.props.setPreSelection(e);})),de(ye(a),"handleDayMouseEnter",(function(e){a.setState({selectingDate:e}),a.props.onDayMouseEnter&&a.props.onDayMouseEnter(e);})),de(ye(a),"handleMonthMouseLeave",(function(){a.setState({selectingDate:null}),a.props.onMonthMouseLeave&&a.props.onMonthMouseLeave();})),de(ye(a),"handleYearChange",(function(e){a.props.onYearChange&&a.props.onYearChange(e),a.props.adjustDateOnChange&&(a.props.onSelect&&a.props.onSelect(e),a.props.setOpen&&a.props.setOpen(!0)),a.props.setPreSelection&&a.props.setPreSelection(e);})),de(ye(a),"handleMonthChange",(function(e){a.props.onMonthChange&&a.props.onMonthChange(e),a.props.adjustDateOnChange&&(a.props.onSelect&&a.props.onSelect(e),a.props.setOpen&&a.props.setOpen(!0)),a.props.setPreSelection&&a.props.setPreSelection(e);})),de(ye(a),"handleMonthYearChange",(function(e){a.handleYearChange(e),a.handleMonthChange(e);})),de(ye(a),"changeYear",(function(e){a.setState((function(t){var r=t.date;return {date:setYear(r,e)}}),(function(){return a.handleYearChange(a.state.date)}));})),de(ye(a),"changeMonth",(function(e){a.setState((function(t){var r=t.date;return {date:setMonth(r,e)}}),(function(){return a.handleMonthChange(a.state.date)}));})),de(ye(a),"changeMonthYear",(function(e){a.setState((function(t){var r=t.date;return {date:setYear(setMonth(r,getMonth(e)),getYear(e))}}),(function(){return a.handleMonthYearChange(a.state.date)}));})),de(ye(a),"header",(function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:a.state.date,n=Te(t,a.props.locale,a.props.calendarStartDay),o=[];return a.props.showWeekNumbers&&o.push(React__default.createElement("div",{key:"W",className:"react-datepicker__day-name"},a.props.weekLabel||"#")),o.concat([0,1,2,3,4,5,6].map((function(t){var o=addDays(n,t),s=a.formatWeekday(o,a.props.locale),i=a.props.weekDayClassName?a.props.weekDayClassName(o):void 0;return React__default.createElement("div",{key:t,className:r("react-datepicker__day-name",i)},s)})))})),de(ye(a),"formatWeekday",(function(e,t){return a.props.formatWeekDay?function(e,t,r){return t(Ee(e,"EEEE",r))}(e,a.props.formatWeekDay,t):a.props.useWeekdaysShort?function(e,t){return Ee(e,"EEE",t)}(e,t):function(e,t){return Ee(e,"EEEEEE",t)}(e,t)})),de(ye(a),"decreaseYear",(function(){a.setState((function(e){var t=e.date;return {date:subYears(t,a.props.showYearPicker?a.props.yearItemNumber:1)}}),(function(){return a.handleYearChange(a.state.date)}));})),de(ye(a),"renderPreviousButton",(function(){if(!a.props.renderCustomHeader){var t;switch(!0){case a.props.showMonthYearPicker:t=lt(a.state.date,a.props);break;case a.props.showYearPicker:t=function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.yearItemNumber,o=void 0===n?12:n,a=vt(Re(subYears(e,o)),o).endPeriod,s=r&&getYear(r);return s&&s>a||!1}(a.state.date,a.props);break;default:t=pt(a.state.date,a.props);}if((a.props.forceShowMonthNavigation||a.props.showDisabledMonthNavigation||!t)&&!a.props.showTimeSelectOnly){var r=["react-datepicker__navigation","react-datepicker__navigation--previous"],n=a.decreaseMonth;(a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker)&&(n=a.decreaseYear),t&&a.props.showDisabledMonthNavigation&&(r.push("react-datepicker__navigation--previous--disabled"),n=null);var o=a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker,s=a.props,i=s.previousMonthButtonLabel,p=s.previousYearButtonLabel,c=a.props,l=c.previousMonthAriaLabel,d=void 0===l?"string"==typeof i?i:"Previous Month":l,u=c.previousYearAriaLabel,h=void 0===u?"string"==typeof p?p:"Previous Year":u;return React__default.createElement("button",{type:"button",className:r.join(" "),onClick:n,onKeyDown:a.props.handleOnKeyDown,"aria-label":o?h:d},React__default.createElement("span",{className:["react-datepicker__navigation-icon","react-datepicker__navigation-icon--previous"].join(" ")},o?a.props.previousYearButtonLabel:a.props.previousMonthButtonLabel))}}})),de(ye(a),"increaseYear",(function(){a.setState((function(e){var t=e.date;return {date:addYears(t,a.props.showYearPicker?a.props.yearItemNumber:1)}}),(function(){return a.handleYearChange(a.state.date)}));})),de(ye(a),"renderNextButton",(function(){if(!a.props.renderCustomHeader){var t;switch(!0){case a.props.showMonthYearPicker:t=dt(a.state.date,a.props);break;case a.props.showYearPicker:t=function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.maxDate,n=t.yearItemNumber,o=void 0===n?12:n,a=vt(addYears(e,o),o).startPeriod,s=r&&getYear(r);return s&&s<a||!1}(a.state.date,a.props);break;default:t=ct(a.state.date,a.props);}if((a.props.forceShowMonthNavigation||a.props.showDisabledMonthNavigation||!t)&&!a.props.showTimeSelectOnly){var r=["react-datepicker__navigation","react-datepicker__navigation--next"];a.props.showTimeSelect&&r.push("react-datepicker__navigation--next--with-time"),a.props.todayButton&&r.push("react-datepicker__navigation--next--with-today-button");var n=a.increaseMonth;(a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker)&&(n=a.increaseYear),t&&a.props.showDisabledMonthNavigation&&(r.push("react-datepicker__navigation--next--disabled"),n=null);var o=a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker,s=a.props,i=s.nextMonthButtonLabel,p=s.nextYearButtonLabel,c=a.props,l=c.nextMonthAriaLabel,u=void 0===l?"string"==typeof i?i:"Next Month":l,h=c.nextYearAriaLabel,m=void 0===h?"string"==typeof p?p:"Next Year":h;return React__default.createElement("button",{type:"button",className:r.join(" "),onClick:n,onKeyDown:a.props.handleOnKeyDown,"aria-label":o?m:u},React__default.createElement("span",{className:["react-datepicker__navigation-icon","react-datepicker__navigation-icon--next"].join(" ")},o?a.props.nextYearButtonLabel:a.props.nextMonthButtonLabel))}}})),de(ye(a),"renderCurrentMonth",(function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:a.state.date,r=["react-datepicker__current-month"];return a.props.showYearDropdown&&r.push("react-datepicker__current-month--hasYearDropdown"),a.props.showMonthDropdown&&r.push("react-datepicker__current-month--hasMonthDropdown"),a.props.showMonthYearDropdown&&r.push("react-datepicker__current-month--hasMonthYearDropdown"),React__default.createElement("div",{className:r.join(" ")},Ee(t,a.props.dateFormat,a.props.locale))})),de(ye(a),"renderYearDropdown",(function(){var t=arguments.length>0&&void 0!==arguments[0]&&arguments[0];if(a.props.showYearDropdown&&!t)return React__default.createElement(gt,{adjustDateOnChange:a.props.adjustDateOnChange,date:a.state.date,onSelect:a.props.onSelect,setOpen:a.props.setOpen,dropdownMode:a.props.dropdownMode,onChange:a.changeYear,minDate:a.props.minDate,maxDate:a.props.maxDate,year:getYear(a.state.date),scrollableYearDropdown:a.props.scrollableYearDropdown,yearDropdownItemNumber:a.props.yearDropdownItemNumber})})),de(ye(a),"renderMonthDropdown",(function(){var t=arguments.length>0&&void 0!==arguments[0]&&arguments[0];if(a.props.showMonthDropdown&&!t)return React__default.createElement(bt,{dropdownMode:a.props.dropdownMode,locale:a.props.locale,onChange:a.changeMonth,month:getMonth(a.state.date),useShortMonthInDropdown:a.props.useShortMonthInDropdown})})),de(ye(a),"renderMonthYearDropdown",(function(){var t=arguments.length>0&&void 0!==arguments[0]&&arguments[0];if(a.props.showMonthYearDropdown&&!t)return React__default.createElement(_t,{dropdownMode:a.props.dropdownMode,locale:a.props.locale,dateFormat:a.props.dateFormat,onChange:a.changeMonthYear,minDate:a.props.minDate,maxDate:a.props.maxDate,date:a.state.date,scrollableMonthYearDropdown:a.props.scrollableMonthYearDropdown})})),de(ye(a),"renderTodayButton",(function(){if(a.props.todayButton&&!a.props.showTimeSelectOnly)return React__default.createElement("div",{className:"react-datepicker__today-button",onClick:function(e){return a.props.onSelect(startOfDay(_e()),e)}},a.props.todayButton)})),de(ye(a),"renderDefaultHeader",(function(t){var r=t.monthDate,n=t.i;return React__default.createElement("div",{className:"react-datepicker__header ".concat(a.props.showTimeSelect?"react-datepicker__header--has-time-select":"")},a.renderCurrentMonth(r),React__default.createElement("div",{className:"react-datepicker__header__dropdown react-datepicker__header__dropdown--".concat(a.props.dropdownMode),onFocus:a.handleDropdownFocus},a.renderMonthDropdown(0!==n),a.renderMonthYearDropdown(0!==n),a.renderYearDropdown(0!==n)),React__default.createElement("div",{className:"react-datepicker__day-names"},a.header(r)))})),de(ye(a),"renderCustomHeader",(function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},r=t.monthDate,n=t.i;if(a.props.showTimeSelect&&!a.state.monthContainer||a.props.showTimeSelectOnly)return null;var o=pt(a.state.date,a.props),s=ct(a.state.date,a.props),i=lt(a.state.date,a.props),p=dt(a.state.date,a.props),c=!a.props.showMonthYearPicker&&!a.props.showQuarterYearPicker&&!a.props.showYearPicker;return React__default.createElement("div",{className:"react-datepicker__header react-datepicker__header--custom",onFocus:a.props.onDropdownFocus},a.props.renderCustomHeader(se(se({},a.state),{},{customHeaderCount:n,monthDate:r,changeMonth:a.changeMonth,changeYear:a.changeYear,decreaseMonth:a.decreaseMonth,increaseMonth:a.increaseMonth,decreaseYear:a.decreaseYear,increaseYear:a.increaseYear,prevMonthButtonDisabled:o,nextMonthButtonDisabled:s,prevYearButtonDisabled:i,nextYearButtonDisabled:p})),c&&React__default.createElement("div",{className:"react-datepicker__day-names"},a.header(r)))})),de(ye(a),"renderYearHeader",(function(){var t=a.state.date,r=a.props,n=r.showYearPicker,o=vt(t,r.yearItemNumber),s=o.startPeriod,i=o.endPeriod;return React__default.createElement("div",{className:"react-datepicker__header react-datepicker-year-header"},n?"".concat(s," - ").concat(i):getYear(t))})),de(ye(a),"renderHeader",(function(e){switch(!0){case void 0!==a.props.renderCustomHeader:return a.renderCustomHeader(e);case a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker:return a.renderYearHeader(e);default:return a.renderDefaultHeader(e)}})),de(ye(a),"renderMonths",(function(){if(!a.props.showTimeSelectOnly&&!a.props.showYearPicker){for(var t=[],r=a.props.showPreviousMonths?a.props.monthsShown-1:0,n=subMonths(a.state.date,r),o=0;o<a.props.monthsShown;++o){var s=o-a.props.monthSelectedIn,i=addMonths(n,s),p="month-".concat(o),c=o<a.props.monthsShown-1,d=o>0;t.push(React__default.createElement("div",{key:p,ref:function(e){a.monthContainer=e;},className:"react-datepicker__month-container"},a.renderHeader({monthDate:i,i:o}),React__default.createElement(Nt,{chooseDayAriaLabelPrefix:a.props.chooseDayAriaLabelPrefix,disabledDayAriaLabelPrefix:a.props.disabledDayAriaLabelPrefix,weekAriaLabelPrefix:a.props.weekAriaLabelPrefix,ariaLabelPrefix:a.props.monthAriaLabelPrefix,onChange:a.changeMonthYear,day:i,dayClassName:a.props.dayClassName,calendarStartDay:a.props.calendarStartDay,monthClassName:a.props.monthClassName,onDayClick:a.handleDayClick,handleOnKeyDown:a.props.handleOnDayKeyDown,onDayMouseEnter:a.handleDayMouseEnter,onMouseLeave:a.handleMonthMouseLeave,onWeekSelect:a.props.onWeekSelect,orderInDisplay:o,formatWeekNumber:a.props.formatWeekNumber,locale:a.props.locale,minDate:a.props.minDate,maxDate:a.props.maxDate,excludeDates:a.props.excludeDates,excludeDateIntervals:a.props.excludeDateIntervals,highlightDates:a.props.highlightDates,selectingDate:a.state.selectingDate,includeDates:a.props.includeDates,includeDateIntervals:a.props.includeDateIntervals,inline:a.props.inline,shouldFocusDayInline:a.props.shouldFocusDayInline,fixedHeight:a.props.fixedHeight,filterDate:a.props.filterDate,preSelection:a.props.preSelection,setPreSelection:a.props.setPreSelection,selected:a.props.selected,selectsStart:a.props.selectsStart,selectsEnd:a.props.selectsEnd,selectsRange:a.props.selectsRange,selectsDisabledDaysInRange:a.props.selectsDisabledDaysInRange,showWeekNumbers:a.props.showWeekNumbers,startDate:a.props.startDate,endDate:a.props.endDate,peekNextMonth:a.props.peekNextMonth,setOpen:a.props.setOpen,shouldCloseOnSelect:a.props.shouldCloseOnSelect,renderDayContents:a.props.renderDayContents,disabledKeyboardNavigation:a.props.disabledKeyboardNavigation,showMonthYearPicker:a.props.showMonthYearPicker,showFullMonthYearPicker:a.props.showFullMonthYearPicker,showTwoColumnMonthYearPicker:a.props.showTwoColumnMonthYearPicker,showFourColumnMonthYearPicker:a.props.showFourColumnMonthYearPicker,showYearPicker:a.props.showYearPicker,showQuarterYearPicker:a.props.showQuarterYearPicker,isInputFocused:a.props.isInputFocused,containerRef:a.containerRef,monthShowsDuplicateDaysEnd:c,monthShowsDuplicateDaysStart:d})));}return t}})),de(ye(a),"renderYears",(function(){if(!a.props.showTimeSelectOnly)return a.props.showYearPicker?React__default.createElement("div",{className:"react-datepicker__year--container"},a.renderHeader(),React__default.createElement(Yt,ue({onDayClick:a.handleDayClick,date:a.state.date},a.props))):void 0})),de(ye(a),"renderTimeSection",(function(){if(a.props.showTimeSelect&&(a.state.monthContainer||a.props.showTimeSelectOnly))return React__default.createElement(xt,{selected:a.props.selected,openToDate:a.props.openToDate,onChange:a.props.onTimeChange,timeClassName:a.props.timeClassName,format:a.props.timeFormat,includeTimes:a.props.includeTimes,intervals:a.props.timeIntervals,minTime:a.props.minTime,maxTime:a.props.maxTime,excludeTimes:a.props.excludeTimes,filterTime:a.props.filterTime,timeCaption:a.props.timeCaption,todayButton:a.props.todayButton,showMonthDropdown:a.props.showMonthDropdown,showMonthYearDropdown:a.props.showMonthYearDropdown,showYearDropdown:a.props.showYearDropdown,withPortal:a.props.withPortal,monthRef:a.state.monthContainer,injectTimes:a.props.injectTimes,locale:a.props.locale,handleOnKeyDown:a.props.handleOnKeyDown,showTimeSelectOnly:a.props.showTimeSelectOnly})})),de(ye(a),"renderInputTimeSection",(function(){var t=new Date(a.props.selected),r=Pe(t)&&Boolean(a.props.selected)?"".concat(yt(t.getHours()),":").concat(yt(t.getMinutes())):"";if(a.props.showTimeInput)return React__default.createElement(Ot,{date:t,timeString:r,timeInputLabel:a.props.timeInputLabel,onChange:a.props.onTimeChange,customTimeInput:a.props.customTimeInput})})),a.containerRef=React__default.createRef(),a.state={date:a.getDateInView(),selectingDate:null,monthContainer:null},a}return le(o,[{key:"componentDidMount",value:function(){var e=this;this.props.showTimeSelect&&(this.assignMonthContainer=void e.setState({monthContainer:e.monthContainer}));}},{key:"componentDidUpdate",value:function(e){this.props.preSelection&&!We(this.props.preSelection,e.preSelection)?this.setState({date:this.props.preSelection}):this.props.openToDate&&!We(this.props.openToDate,e.openToDate)&&this.setState({date:this.props.openToDate});}},{key:"render",value:function(){var t=this.props.container||It;return React__default.createElement("div",{ref:this.containerRef},React__default.createElement(t,{className:r("react-datepicker",this.props.className,{"react-datepicker--time-only":this.props.showTimeSelectOnly}),showPopperArrow:this.props.showPopperArrow,arrowProps:this.props.arrowProps},this.renderPreviousButton(),this.renderNextButton(),this.renderMonths(),this.renderYears(),this.renderTodayButton(),this.renderTimeSection(),this.renderInputTimeSection(),this.props.children))}}],[{key:"defaultProps",get:function(){return {onDropdownFocus:function(){},monthsShown:1,monthSelectedIn:0,forceShowMonthNavigation:!1,timeCaption:"Time",previousYearButtonLabel:"Previous Year",nextYearButtonLabel:"Next Year",previousMonthButtonLabel:"Previous Month",nextMonthButtonLabel:"Next Month",customTimeInput:null,yearItemNumber:12}}}]),o}(),Rt=function(t){he(n,React__default.Component);var r=De(n);function n(e){var t;return pe(this,n),(t=r.call(this,e)).el=document.createElement("div"),t}return le(n,[{key:"componentDidMount",value:function(){this.portalRoot=(this.props.portalHost||document).getElementById(this.props.portalId),this.portalRoot||(this.portalRoot=document.createElement("div"),this.portalRoot.setAttribute("id",this.props.portalId),(this.props.portalHost||document.body).appendChild(this.portalRoot)),this.portalRoot.appendChild(this.el);}},{key:"componentWillUnmount",value:function(){this.portalRoot.removeChild(this.el);}},{key:"render",value:function(){return ReactDOM__default.createPortal(this.props.children,this.el)}}]),n}(),Ft=function(e){return !e.disabled&&-1!==e.tabIndex},At=function(t){he(n,React__default.Component);var r=De(n);function n(t){var o;return pe(this,n),de(ye(o=r.call(this,t)),"getTabChildren",(function(){return Array.prototype.slice.call(o.tabLoopRef.current.querySelectorAll("[tabindex], a, button, input, select, textarea"),1,-1).filter(Ft)})),de(ye(o),"handleFocusStart",(function(e){var t=o.getTabChildren();t&&t.length>1&&t[t.length-1].focus();})),de(ye(o),"handleFocusEnd",(function(e){var t=o.getTabChildren();t&&t.length>1&&t[0].focus();})),o.tabLoopRef=React__default.createRef(),o}return le(n,[{key:"render",value:function(){return this.props.enableTabLoop?React__default.createElement("div",{className:"react-datepicker__tab-loop",ref:this.tabLoopRef},React__default.createElement("div",{className:"react-datepicker__tab-loop__start",tabIndex:"0",onFocus:this.handleFocusStart}),this.props.children,React__default.createElement("div",{className:"react-datepicker__tab-loop__end",tabIndex:"0",onFocus:this.handleFocusEnd})):this.props.children}}],[{key:"defaultProps",get:function(){return {enableTabLoop:!0}}}]),n}(),Bt=function(t){he(o,React__default.Component);var n=De(o);function o(){return pe(this,o),n.apply(this,arguments)}return le(o,[{key:"render",value:function(){var t,n=this.props,o=n.className,a=n.wrapperClassName,s=n.hidePopper,i=n.popperComponent,p=n.popperModifiers,c=n.popperPlacement,l=n.popperProps,d=n.targetComponent,u=n.enableTabLoop,h=n.popperOnKeyDown,m=n.portalId,f=n.portalHost;if(!s){var y=r("react-datepicker-popper",o);t=React__default.createElement(Popper,ue({modifiers:p,placement:c},l),(function(t){var r=t.ref,n=t.style,o=t.placement,a=t.arrowProps;return React__default.createElement(At,{enableTabLoop:u},React__default.createElement("div",{ref:r,style:n,className:y,"data-placement":o,onKeyDown:h},React__default.cloneElement(i,{arrowProps:a})))}));}this.props.popperContainer&&(t=React__default.createElement(this.props.popperContainer,{},t)),m&&!s&&(t=React__default.createElement(Rt,{portalId:m,portalHost:f},t));var v=r("react-datepicker-wrapper",a);return React__default.createElement(Manager,{className:"react-datepicker-manager"},React__default.createElement(Reference,null,(function(t){var r=t.ref;return React__default.createElement("div",{ref:r,className:v},d)})),t)}}],[{key:"defaultProps",get:function(){return {hidePopper:!0,popperModifiers:[],popperProps:{},popperPlacement:"bottom-start"}}}]),o}(),Kt=onClickOutsideHOC(Lt);var Wt=function(t){he(a,React__default.Component);var o=De(a);function a(t){var s;return pe(this,a),de(ye(s=o.call(this,t)),"getPreSelection",(function(){return s.props.openToDate?s.props.openToDate:s.props.selectsEnd&&s.props.startDate?s.props.startDate:s.props.selectsStart&&s.props.endDate?s.props.endDate:_e()})),de(ye(s),"calcInitialState",(function(){var e,t=s.getPreSelection(),r=ut(s.props),n=ht(s.props),o=r&&isBefore(t,startOfDay(r))?r:n&&isAfter(t,endOfDay(n))?n:t;return {open:s.props.startOpen||!1,preventFocus:!1,preSelection:null!==(e=s.props.selectsRange?s.props.startDate:s.props.selected)&&void 0!==e?e:o,highlightDates:mt(s.props.highlightDates),focused:!1,shouldFocusDayInline:!1}})),de(ye(s),"clearPreventFocusTimeout",(function(){s.preventFocusTimeout&&clearTimeout(s.preventFocusTimeout);})),de(ye(s),"setFocus",(function(){s.input&&s.input.focus&&s.input.focus({preventScroll:!0});})),de(ye(s),"setBlur",(function(){s.input&&s.input.blur&&s.input.blur(),s.cancelFocusInput();})),de(ye(s),"setOpen",(function(e){var t=arguments.length>1&&void 0!==arguments[1]&&arguments[1];s.setState({open:e,preSelection:e&&s.state.open?s.state.preSelection:s.calcInitialState().preSelection,lastPreSelectChange:Ht},(function(){e||s.setState((function(e){return {focused:!!t&&e.focused}}),(function(){!t&&s.setBlur(),s.setState({inputValue:null});}));}));})),de(ye(s),"inputOk",(function(){return isDate(s.state.preSelection)})),de(ye(s),"isCalendarOpen",(function(){return void 0===s.props.open?s.state.open&&!s.props.disabled&&!s.props.readOnly:s.props.open})),de(ye(s),"handleFocus",(function(e){s.state.preventFocus||(s.props.onFocus(e),s.props.preventOpenOnFocus||s.props.readOnly||s.setOpen(!0)),s.setState({focused:!0});})),de(ye(s),"cancelFocusInput",(function(){clearTimeout(s.inputFocusTimeout),s.inputFocusTimeout=null;})),de(ye(s),"deferFocusInput",(function(){s.cancelFocusInput(),s.inputFocusTimeout=setTimeout((function(){return s.setFocus()}),1);})),de(ye(s),"handleDropdownFocus",(function(){s.cancelFocusInput();})),de(ye(s),"handleBlur",(function(e){(!s.state.open||s.props.withPortal||s.props.showTimeInput)&&s.props.onBlur(e),s.setState({focused:!1});})),de(ye(s),"handleCalendarClickOutside",(function(e){s.props.inline||s.setOpen(!1),s.props.onClickOutside(e),s.props.withPortal&&e.preventDefault();})),de(ye(s),"handleChange",(function(){for(var e=arguments.length,t=new Array(e),r=0;r<e;r++)t[r]=arguments[r];var n=t[0];if(!s.props.onChangeRaw||(s.props.onChangeRaw.apply(ye(s),t),"function"==typeof n.isDefaultPrevented&&!n.isDefaultPrevented())){s.setState({inputValue:n.target.value,lastPreSelectChange:jt});var o=Me(n.target.value,s.props.dateFormat,s.props.locale,s.props.strictParsing,s.props.minDate);!o&&n.target.value||s.setSelected(o,n,!0);}})),de(ye(s),"handleSelect",(function(e,t,r){if(s.setState({preventFocus:!0},(function(){return s.preventFocusTimeout=setTimeout((function(){return s.setState({preventFocus:!1})}),50),s.preventFocusTimeout})),s.props.onChangeRaw&&s.props.onChangeRaw(t),s.setSelected(e,t,!1,r),!s.props.shouldCloseOnSelect||s.props.showTimeSelect)s.setPreSelection(e);else if(!s.props.inline){s.props.selectsRange||s.setOpen(!1);var n=s.props,o=n.startDate,a=n.endDate;!o||a||isBefore(e,o)||s.setOpen(!1);}})),de(ye(s),"setSelected",(function(e,t,r,n){var o=e;if(null===o||!Je(o,s.props)){var a=s.props,i=a.onChange,p=a.selectsRange,c=a.startDate,l=a.endDate;if(!je(s.props.selected,o)||s.props.allowSameDay||p)if(null!==o&&(!s.props.selected||r&&(s.props.showTimeSelect||s.props.showTimeSelectOnly||s.props.showTimeInput)||(o=xe(o,{hour:getHours(s.props.selected),minute:getMinutes(s.props.selected),second:getSeconds(s.props.selected)})),s.props.inline||s.setState({preSelection:o}),s.props.focusSelectedMonth||s.setState({monthSelectedIn:n})),p){var d=c&&!l,u=c&&l;!c&&!l?i([o,null],t):d&&(isBefore(o,c)?i([o,null],t):i([c,o],t)),u&&i([o,null],t);}else i(o,t);r||(s.props.onSelect(o,t),s.setState({inputValue:null}));}})),de(ye(s),"setPreSelection",(function(e){var t=void 0!==s.props.minDate,r=void 0!==s.props.maxDate,n=!0;if(e){var o=startOfDay(e);if(t&&r)n=He(e,s.props.minDate,s.props.maxDate);else if(t){var a=startOfDay(s.props.minDate);n=isAfter(e,a)||je(o,a);}else if(r){var i=endOfDay(s.props.maxDate);n=isBefore(e,i)||je(o,i);}}n&&s.setState({preSelection:e});})),de(ye(s),"handleTimeChange",(function(e){var t=xe(s.props.selected?s.props.selected:s.getPreSelection(),{hour:getHours(e),minute:getMinutes(e)});s.setState({preSelection:t}),s.props.onChange(t),s.props.shouldCloseOnSelect&&s.setOpen(!1),s.props.showTimeInput&&s.setOpen(!0),s.setState({inputValue:null});})),de(ye(s),"onInputClick",(function(){s.props.disabled||s.props.readOnly||s.setOpen(!0),s.props.onInputClick();})),de(ye(s),"onInputKeyDown",(function(e){s.props.onKeyDown(e);var t=e.key;if(s.state.open||s.props.inline||s.props.preventOpenOnFocus){if(s.state.open){if("ArrowDown"===t||"ArrowUp"===t){e.preventDefault();var r=s.calendar.componentNode&&s.calendar.componentNode.querySelector('.react-datepicker__day[tabindex="0"]');return void(r&&r.focus({preventScroll:!0}))}var n=_e(s.state.preSelection);"Enter"===t?(e.preventDefault(),s.inputOk()&&s.state.lastPreSelectChange===Ht?(s.handleSelect(n,e),!s.props.shouldCloseOnSelect&&s.setPreSelection(n)):s.setOpen(!1)):"Escape"===t&&(e.preventDefault(),s.setOpen(!1)),s.inputOk()||s.props.onInputError({code:1,msg:"Date input not valid."});}}else "ArrowDown"!==t&&"ArrowUp"!==t&&"Enter"!==t||s.onInputClick();})),de(ye(s),"onDayKeyDown",(function(e){s.props.onKeyDown(e);var t=e.key,r=_e(s.state.preSelection);if("Enter"===t)e.preventDefault(),s.handleSelect(r,e),!s.props.shouldCloseOnSelect&&s.setPreSelection(r);else if("Escape"===t)e.preventDefault(),s.setOpen(!1),s.inputOk()||s.props.onInputError({code:1,msg:"Date input not valid."});else if(!s.props.disabledKeyboardNavigation){var n;switch(t){case"ArrowLeft":n=subDays(r,1);break;case"ArrowRight":n=addDays(r,1);break;case"ArrowUp":n=subWeeks(r,1);break;case"ArrowDown":n=addWeeks(r,1);break;case"PageUp":n=subMonths(r,1);break;case"PageDown":n=addMonths(r,1);break;case"Home":n=subYears(r,1);break;case"End":n=addYears(r,1);}if(!n)return void(s.props.onInputError&&s.props.onInputError({code:1,msg:"Date input not valid."}));if(e.preventDefault(),s.setState({lastPreSelectChange:Ht}),s.props.adjustDateOnChange&&s.setSelected(n),s.setPreSelection(n),s.props.inline){var o=getMonth(r),a=getMonth(n),i=getYear(r),y=getYear(n);o!==a||i!==y?s.setState({shouldFocusDayInline:!0}):s.setState({shouldFocusDayInline:!1});}}})),de(ye(s),"onPopperKeyDown",(function(e){"Escape"===e.key&&(e.preventDefault(),s.setState({preventFocus:!0},(function(){s.setOpen(!1),setTimeout((function(){s.setFocus(),s.setState({preventFocus:!1});}));})));})),de(ye(s),"onClearClick",(function(e){e&&e.preventDefault&&e.preventDefault(),s.props.selectsRange?s.props.onChange([null,null],e):s.props.onChange(null,e),s.setState({inputValue:null});})),de(ye(s),"clear",(function(){s.onClearClick();})),de(ye(s),"onScroll",(function(e){"boolean"==typeof s.props.closeOnScroll&&s.props.closeOnScroll?e.target!==document&&e.target!==document.documentElement&&e.target!==document.body||s.setOpen(!1):"function"==typeof s.props.closeOnScroll&&s.props.closeOnScroll(e)&&s.setOpen(!1);})),de(ye(s),"renderCalendar",(function(){return s.props.inline||s.isCalendarOpen()?React__default.createElement(Kt,{ref:function(e){s.calendar=e;},locale:s.props.locale,calendarStartDay:s.props.calendarStartDay,chooseDayAriaLabelPrefix:s.props.chooseDayAriaLabelPrefix,disabledDayAriaLabelPrefix:s.props.disabledDayAriaLabelPrefix,weekAriaLabelPrefix:s.props.weekAriaLabelPrefix,monthAriaLabelPrefix:s.props.monthAriaLabelPrefix,adjustDateOnChange:s.props.adjustDateOnChange,setOpen:s.setOpen,shouldCloseOnSelect:s.props.shouldCloseOnSelect,dateFormat:s.props.dateFormatCalendar,useWeekdaysShort:s.props.useWeekdaysShort,formatWeekDay:s.props.formatWeekDay,dropdownMode:s.props.dropdownMode,selected:s.props.selected,preSelection:s.state.preSelection,onSelect:s.handleSelect,onWeekSelect:s.props.onWeekSelect,openToDate:s.props.openToDate,minDate:s.props.minDate,maxDate:s.props.maxDate,selectsStart:s.props.selectsStart,selectsEnd:s.props.selectsEnd,selectsRange:s.props.selectsRange,startDate:s.props.startDate,endDate:s.props.endDate,excludeDates:s.props.excludeDates,excludeDateIntervals:s.props.excludeDateIntervals,filterDate:s.props.filterDate,onClickOutside:s.handleCalendarClickOutside,formatWeekNumber:s.props.formatWeekNumber,highlightDates:s.state.highlightDates,includeDates:s.props.includeDates,includeDateIntervals:s.props.includeDateIntervals,includeTimes:s.props.includeTimes,injectTimes:s.props.injectTimes,inline:s.props.inline,shouldFocusDayInline:s.state.shouldFocusDayInline,peekNextMonth:s.props.peekNextMonth,showMonthDropdown:s.props.showMonthDropdown,showPreviousMonths:s.props.showPreviousMonths,useShortMonthInDropdown:s.props.useShortMonthInDropdown,showMonthYearDropdown:s.props.showMonthYearDropdown,showWeekNumbers:s.props.showWeekNumbers,showYearDropdown:s.props.showYearDropdown,withPortal:s.props.withPortal,forceShowMonthNavigation:s.props.forceShowMonthNavigation,showDisabledMonthNavigation:s.props.showDisabledMonthNavigation,scrollableYearDropdown:s.props.scrollableYearDropdown,scrollableMonthYearDropdown:s.props.scrollableMonthYearDropdown,todayButton:s.props.todayButton,weekLabel:s.props.weekLabel,outsideClickIgnoreClass:"react-datepicker-ignore-onclickoutside",fixedHeight:s.props.fixedHeight,monthsShown:s.props.monthsShown,monthSelectedIn:s.state.monthSelectedIn,onDropdownFocus:s.handleDropdownFocus,onMonthChange:s.props.onMonthChange,onYearChange:s.props.onYearChange,dayClassName:s.props.dayClassName,weekDayClassName:s.props.weekDayClassName,monthClassName:s.props.monthClassName,timeClassName:s.props.timeClassName,showTimeSelect:s.props.showTimeSelect,showTimeSelectOnly:s.props.showTimeSelectOnly,onTimeChange:s.handleTimeChange,timeFormat:s.props.timeFormat,timeIntervals:s.props.timeIntervals,minTime:s.props.minTime,maxTime:s.props.maxTime,excludeTimes:s.props.excludeTimes,filterTime:s.props.filterTime,timeCaption:s.props.timeCaption,className:s.props.calendarClassName,container:s.props.calendarContainer,yearItemNumber:s.props.yearItemNumber,yearDropdownItemNumber:s.props.yearDropdownItemNumber,previousMonthAriaLabel:s.props.previousMonthAriaLabel,previousMonthButtonLabel:s.props.previousMonthButtonLabel,nextMonthAriaLabel:s.props.nextMonthAriaLabel,nextMonthButtonLabel:s.props.nextMonthButtonLabel,previousYearAriaLabel:s.props.previousYearAriaLabel,previousYearButtonLabel:s.props.previousYearButtonLabel,nextYearAriaLabel:s.props.nextYearAriaLabel,nextYearButtonLabel:s.props.nextYearButtonLabel,timeInputLabel:s.props.timeInputLabel,disabledKeyboardNavigation:s.props.disabledKeyboardNavigation,renderCustomHeader:s.props.renderCustomHeader,popperProps:s.props.popperProps,renderDayContents:s.props.renderDayContents,onDayMouseEnter:s.props.onDayMouseEnter,onMonthMouseLeave:s.props.onMonthMouseLeave,selectsDisabledDaysInRange:s.props.selectsDisabledDaysInRange,showTimeInput:s.props.showTimeInput,showMonthYearPicker:s.props.showMonthYearPicker,showFullMonthYearPicker:s.props.showFullMonthYearPicker,showTwoColumnMonthYearPicker:s.props.showTwoColumnMonthYearPicker,showFourColumnMonthYearPicker:s.props.showFourColumnMonthYearPicker,showYearPicker:s.props.showYearPicker,showQuarterYearPicker:s.props.showQuarterYearPicker,showPopperArrow:s.props.showPopperArrow,excludeScrollbar:s.props.excludeScrollbar,handleOnKeyDown:s.props.onKeyDown,handleOnDayKeyDown:s.onDayKeyDown,isInputFocused:s.state.focused,customTimeInput:s.props.customTimeInput,setPreSelection:s.setPreSelection},s.props.children):null})),de(ye(s),"renderDateInput",(function(){var t,n=r(s.props.className,de({},"react-datepicker-ignore-onclickoutside",s.state.open)),o=s.props.customInput||React__default.createElement("input",{type:"text"}),a=s.props.customInputRef||"ref",i="string"==typeof s.props.value?s.props.value:"string"==typeof s.state.inputValue?s.state.inputValue:s.props.selectsRange?function(e,t,r){if(!e)return "";var n=Ne(e,r),o=t?Ne(t,r):"";return "".concat(n," - ").concat(o)}(s.props.startDate,s.props.endDate,s.props):Ne(s.props.selected,s.props);return React__default.cloneElement(o,(de(t={},a,(function(e){s.input=e;})),de(t,"value",i),de(t,"onBlur",s.handleBlur),de(t,"onChange",s.handleChange),de(t,"onClick",s.onInputClick),de(t,"onFocus",s.handleFocus),de(t,"onKeyDown",s.onInputKeyDown),de(t,"id",s.props.id),de(t,"name",s.props.name),de(t,"autoFocus",s.props.autoFocus),de(t,"placeholder",s.props.placeholderText),de(t,"disabled",s.props.disabled),de(t,"autoComplete",s.props.autoComplete),de(t,"className",r(o.props.className,n)),de(t,"title",s.props.title),de(t,"readOnly",s.props.readOnly),de(t,"required",s.props.required),de(t,"tabIndex",s.props.tabIndex),de(t,"aria-describedby",s.props.ariaDescribedBy),de(t,"aria-invalid",s.props.ariaInvalid),de(t,"aria-labelledby",s.props.ariaLabelledBy),de(t,"aria-required",s.props.ariaRequired),t))})),de(ye(s),"renderClearButton",(function(){var t=s.props,r=t.isClearable,n=t.selected,o=t.startDate,a=t.endDate,i=t.clearButtonTitle,p=t.clearButtonClassName,c=void 0===p?"":p,l=t.ariaLabelClose,d=void 0===l?"Close":l;return !r||null==n&&null==o&&null==a?null:React__default.createElement("button",{type:"button",className:"react-datepicker__close-icon ".concat(c).trim(),"aria-label":d,onClick:s.onClearClick,title:i,tabIndex:-1})})),s.state=s.calcInitialState(),s}return le(a,[{key:"componentDidMount",value:function(){window.addEventListener("scroll",this.onScroll,!0);}},{key:"componentDidUpdate",value:function(e,t){var r,n;e.inline&&(r=e.selected,n=this.props.selected,r&&n?getMonth(r)!==getMonth(n)||getYear(r)!==getYear(n):r!==n)&&this.setPreSelection(this.props.selected),void 0!==this.state.monthSelectedIn&&e.monthsShown!==this.props.monthsShown&&this.setState({monthSelectedIn:0}),e.highlightDates!==this.props.highlightDates&&this.setState({highlightDates:mt(this.props.highlightDates)}),t.focused||je(e.selected,this.props.selected)||this.setState({inputValue:null}),t.open!==this.state.open&&(!1===t.open&&!0===this.state.open&&this.props.onCalendarOpen(),!0===t.open&&!1===this.state.open&&this.props.onCalendarClose());}},{key:"componentWillUnmount",value:function(){this.clearPreventFocusTimeout(),window.removeEventListener("scroll",this.onScroll,!0);}},{key:"renderInputContainer",value:function(){return React__default.createElement("div",{className:"react-datepicker__input-container"},this.renderDateInput(),this.renderClearButton())}},{key:"render",value:function(){var t=this.renderCalendar();if(this.props.inline)return t;if(this.props.withPortal){var r=this.state.open?React__default.createElement("div",{className:"react-datepicker__portal"},t):null;return this.state.open&&this.props.portalId&&(r=React__default.createElement(Rt,{portalId:this.props.portalId,portalHost:this.props.portalHost},r)),React__default.createElement("div",null,this.renderInputContainer(),r)}return React__default.createElement(Bt,{className:this.props.popperClassName,wrapperClassName:this.props.wrapperClassName,hidePopper:!this.isCalendarOpen(),portalId:this.props.portalId,portalHost:this.props.portalHost,popperModifiers:this.props.popperModifiers,targetComponent:this.renderInputContainer(),popperContainer:this.props.popperContainer,popperComponent:t,popperPlacement:this.props.popperPlacement,popperProps:this.props.popperProps,popperOnKeyDown:this.onPopperKeyDown,enableTabLoop:this.props.enableTabLoop})}}],[{key:"defaultProps",get:function(){return {allowSameDay:!1,dateFormat:"MM/dd/yyyy",dateFormatCalendar:"LLLL yyyy",onChange:function(){},disabled:!1,disabledKeyboardNavigation:!1,dropdownMode:"scroll",onFocus:function(){},onBlur:function(){},onKeyDown:function(){},onInputClick:function(){},onSelect:function(){},onClickOutside:function(){},onMonthChange:function(){},onCalendarOpen:function(){},onCalendarClose:function(){},preventOpenOnFocus:!1,onYearChange:function(){},onInputError:function(){},monthsShown:1,readOnly:!1,withPortal:!1,selectsDisabledDaysInRange:!1,shouldCloseOnSelect:!0,showTimeSelect:!1,showTimeInput:!1,showPreviousMonths:!1,showMonthYearPicker:!1,showFullMonthYearPicker:!1,showTwoColumnMonthYearPicker:!1,showFourColumnMonthYearPicker:!1,showYearPicker:!1,showQuarterYearPicker:!1,strictParsing:!1,timeIntervals:30,timeCaption:"Time",previousMonthAriaLabel:"Previous Month",previousMonthButtonLabel:"Previous Month",nextMonthAriaLabel:"Next Month",nextMonthButtonLabel:"Next Month",previousYearAriaLabel:"Previous Year",previousYearButtonLabel:"Previous Year",nextYearAriaLabel:"Next Year",nextYearButtonLabel:"Next Year",timeInputLabel:"Time",enableTabLoop:!0,yearItemNumber:12,renderDayContents:function(e){return e},focusSelectedMonth:!1,showPopperArrow:!0,excludeScrollbar:!0,customTimeInput:null,calendarStartDay:void 0}}}]),a}(),jt="input",Ht="navigate";
 
-var _excluded$e = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "dateFormat", "range", "noCalendarIcon", "onChange"];
+var _excluded$f = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "dateFormat", "range", "noCalendarIcon", "onChange"];
 
 var DatePickerField = function DatePickerField(_ref) {
   var label = _ref.label,
@@ -29219,7 +29244,7 @@ var DatePickerField = function DatePickerField(_ref) {
       range = _ref.range,
       noCalendarIcon = _ref.noCalendarIcon,
       onChange = _ref.onChange,
-      props = _objectWithoutProperties(_ref, _excluded$e);
+      props = _objectWithoutProperties(_ref, _excluded$f);
 
   var _useState = useState([null, null]),
       _useState2 = _slicedToArray$1(_useState, 2),
@@ -29420,14 +29445,14 @@ function rfid() {
   return (new DOMParser().parseFromString("<svg width=\"45\" height=\"40\" viewBox=\"0 0 45 40\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<rect x=\"45\" y=\"40\" width=\"44.2975\" height=\"40\" rx=\"9.06992\" transform=\"rotate(-180 45 40)\" fill=\"#EED186\"/>\n<path d=\"M22.686 39.8337L22.686 32.3957M44.8347 32.2304L1.03307 32.2304M22.686 7.93292L22.686 0.164325\" stroke=\"#394C9B\" stroke-width=\"0.431901\"/>\n<path d=\"M44.8347 8.09897L1.03307 8.09896\" stroke=\"#394C9B\" stroke-width=\"0.431901\"/>\n<path d=\"M15.0826 16.0337L1.03306 16.0337\" stroke=\"#394C9B\" stroke-width=\"0.431901\"/>\n<path d=\"M44.8347 16.1987L30.4546 16.1987M44.8347 24.1326L29.7934 24.1326M16.0744 24.1326L1.19836 24.1326\" stroke=\"#394C9B\" stroke-width=\"0.431901\"/>\n<path d=\"M28.3058 32.2316C30.124 30.0828 31.7769 24.9588 27.6447 21.6531C28.4711 20.8267 30.4546 18.6779 30.4546 16.1985C30.4546 12.8927 27.9753 8.26463 22.8513 8.26463C17.7273 8.26463 15.0827 11.4051 15.0827 16.0332C15.0827 19.6696 17.7273 21.6531 17.7273 21.6531C17.7273 21.6531 16.405 22.6448 15.9091 24.1324\" stroke=\"#394C9B\" stroke-width=\"0.431901\"/>\n</svg>\n", 'image/svg+xml')).firstChild;
 }
 
-var _excluded$d = ["logo", "name", "width", "className"];
+var _excluded$e = ["logo", "name", "width", "className"];
 
 var DebitCard = function DebitCard(_ref) {
   var logo = _ref.logo,
       name = _ref.name,
       width = _ref.width,
       className = _ref.className,
-      props = _objectWithoutProperties(_ref, _excluded$d);
+      props = _objectWithoutProperties(_ref, _excluded$e);
 
   var _useDebitCard = useDebitCard(props),
       computedCardNo = _useDebitCard.computedCardNo,
@@ -29504,7 +29529,7 @@ DebitCard.defaultProps = {
   logo: "https://assets.ondeposits.com/img/logo/renapay/svg/logo_all_white.svg"
 };
 
-var _excluded$c = ["logo", "theme", "name", "balance", "className", "width"];
+var _excluded$d = ["logo", "theme", "name", "balance", "className", "width"];
 
 var DebitBalance = function DebitBalance(_ref) {
   _ref.logo;
@@ -29513,7 +29538,7 @@ var DebitBalance = function DebitBalance(_ref) {
       balance = _ref.balance,
       className = _ref.className,
       width = _ref.width,
-      props = _objectWithoutProperties(_ref, _excluded$c);
+      props = _objectWithoutProperties(_ref, _excluded$d);
 
   var computedLogo = props.logo ? props.logo : "https://assets.ondeposits.com/img/logo/renapay/svg/logo_all_".concat(theme === "light" ? "dark" : "white", ".svg");
 
@@ -29636,14 +29661,14 @@ var Portal = function Portal(_ref) {
   return /*#__PURE__*/ReactDOM__default.createPortal(children, container);
 };
 
-var _excluded$b = ["greyContent", "show", "requestClose", "modalWidth"];
+var _excluded$c = ["greyContent", "show", "requestClose", "modalWidth"];
 
 var Modal = function Modal(_ref) {
   var greyContent = _ref.greyContent,
       show = _ref.show,
       requestClose = _ref.requestClose;
       _ref.modalWidth;
-      var props = _objectWithoutProperties(_ref, _excluded$b);
+      var props = _objectWithoutProperties(_ref, _excluded$c);
 
   var generatedClassNames = classNames({
     greyContent: greyContent,
@@ -29710,19 +29735,19 @@ var addToUnscopables$2 = function (key) {
   ArrayPrototype[UNSCOPABLES][key] = true;
 };
 
-var $$5 = _export;
+var $$4 = _export;
 var $includes = arrayIncludes.includes;
-var fails$3 = fails$o;
+var fails$2 = fails$n;
 var addToUnscopables$1 = addToUnscopables$2;
 
 // FF99+ bug
-var BROKEN_ON_SPARSE = fails$3(function () {
+var BROKEN_ON_SPARSE = fails$2(function () {
   return !Array(1).includes();
 });
 
 // `Array.prototype.includes` method
 // https://tc39.es/ecma262/#sec-array.prototype.includes
-$$5({ target: 'Array', proto: true, forced: BROKEN_ON_SPARSE }, {
+$$4({ target: 'Array', proto: true, forced: BROKEN_ON_SPARSE }, {
   includes: function includes(el /* , fromIndex = 0 */) {
     return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
   }
@@ -29733,11 +29758,11 @@ addToUnscopables$1('includes');
 
 var isRegExp = isRegexp;
 
-var $TypeError$2 = TypeError;
+var $TypeError$1 = TypeError;
 
 var notARegexp = function (it) {
   if (isRegExp(it)) {
-    throw $TypeError$2("The method doesn't accept regular expressions");
+    throw $TypeError$1("The method doesn't accept regular expressions");
   } return it;
 };
 
@@ -29757,21 +29782,21 @@ var correctIsRegexpLogic = function (METHOD_NAME) {
   } return false;
 };
 
-var $$4 = _export;
-var uncurryThis$4 = functionUncurryThis;
+var $$3 = _export;
+var uncurryThis$3 = functionUncurryThis;
 var notARegExp$2 = notARegexp;
-var requireObjectCoercible$2 = requireObjectCoercible$9;
+var requireObjectCoercible$3 = requireObjectCoercible$a;
 var toString$4 = toString$d;
 var correctIsRegExpLogic$2 = correctIsRegexpLogic;
 
-var stringIndexOf = uncurryThis$4(''.indexOf);
+var stringIndexOf = uncurryThis$3(''.indexOf);
 
 // `String.prototype.includes` method
 // https://tc39.es/ecma262/#sec-string.prototype.includes
-$$4({ target: 'String', proto: true, forced: !correctIsRegExpLogic$2('includes') }, {
+$$3({ target: 'String', proto: true, forced: !correctIsRegExpLogic$2('includes') }, {
   includes: function includes(searchString /* , position = 0 */) {
     return !!~stringIndexOf(
-      toString$4(requireObjectCoercible$2(this)),
+      toString$4(requireObjectCoercible$3(this)),
       toString$4(notARegExp$2(searchString)),
       arguments.length > 1 ? arguments[1] : undefined
     );
@@ -29867,7 +29892,7 @@ var usePagination = function usePagination(_ref) {
   };
 };
 
-var _excluded$a = ["currentPage", "totalPages", "currentPageSiblings", "onPageChange", "className", "smartColor"];
+var _excluded$b = ["currentPage", "totalPages", "currentPageSiblings", "onPageChange", "className", "smartColor"];
 
 var Pagination = function Pagination(_ref) {
   var _classNames;
@@ -29878,7 +29903,7 @@ var Pagination = function Pagination(_ref) {
       onPageChange = _ref.onPageChange,
       className = _ref.className,
       smartColor = _ref.smartColor,
-      props = _objectWithoutProperties(_ref, _excluded$a);
+      props = _objectWithoutProperties(_ref, _excluded$b);
 
   var _usePagination = usePagination({
     totalPages: totalPages,
@@ -29964,7 +29989,7 @@ Pagination.defaultProps = {
   currentPageSiblings: 3
 };
 
-var _excluded$9 = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "disabled"];
+var _excluded$a = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "disabled"];
 
 var PhoneField = function PhoneField(_ref) {
   var _classNames;
@@ -29978,7 +30003,7 @@ var PhoneField = function PhoneField(_ref) {
       inputClassName = _ref.inputClassName,
       className = _ref.className,
       disabled = _ref.disabled,
-      props = _objectWithoutProperties(_ref, _excluded$9);
+      props = _objectWithoutProperties(_ref, _excluded$a);
 
   var phoneInputRef = useRef();
   useLayoutEffect(function () {
@@ -30065,7 +30090,7 @@ PhoneField.defaultProps = {
   size: "medium"
 };
 
-var _excluded$8 = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "options", "className"];
+var _excluded$9 = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "options", "className"];
 
 var SelectField = function SelectField(_ref) {
   var label = _ref.label,
@@ -30077,7 +30102,7 @@ var SelectField = function SelectField(_ref) {
       inputClassName = _ref.inputClassName,
       options = _ref.options,
       className = _ref.className,
-      props = _objectWithoutProperties(_ref, _excluded$8);
+      props = _objectWithoutProperties(_ref, _excluded$9);
 
   var generateInputFieldClasses = classNames({
     "ui-text-field__input": true,
@@ -30137,7 +30162,7 @@ SelectField.defaultProps = {
   options: ["Item 1", "Item 2", "item 3"]
 };
 
-var _excluded$7 = ["label", "colorScheme", "disabled", "className"];
+var _excluded$8 = ["label", "colorScheme", "disabled", "className"];
 
 var Switch = function Switch(_ref) {
   var _classNames;
@@ -30146,7 +30171,7 @@ var Switch = function Switch(_ref) {
       colorScheme = _ref.colorScheme,
       disabled = _ref.disabled,
       className = _ref.className,
-      props = _objectWithoutProperties(_ref, _excluded$7);
+      props = _objectWithoutProperties(_ref, _excluded$8);
 
   var switchClassName = classNames((_classNames = {
     "ui-switch__wrapper": true
@@ -30178,7 +30203,7 @@ Switch.defaultProps = {
   disabled: false
 };
 
-var _excluded$6 = ["is", "text", "tabs", "horizontal", "spacing"],
+var _excluded$7 = ["is", "text", "tabs", "horizontal", "spacing"],
     _excluded2 = ["text", "is"];
 
 var Tab = function Tab(_ref) {
@@ -30187,7 +30212,7 @@ var Tab = function Tab(_ref) {
       var tabs = _ref.tabs,
       horizontal = _ref.horizontal,
       spacing = _ref.spacing;
-      _objectWithoutProperties(_ref, _excluded$6);
+      _objectWithoutProperties(_ref, _excluded$7);
 
   var wrapperClassNames = classNames({
     "ui-tabs": true,
@@ -30237,326 +30262,52 @@ Tab.propTypes = {
 };
 Tab.defaultProps = {};
 
-var tryToString = tryToString$3;
-
-var $TypeError$1 = TypeError;
-
-var deletePropertyOrThrow$1 = function (O, P) {
-  if (!delete O[P]) throw $TypeError$1('Cannot delete property ' + tryToString(P) + ' of ' + tryToString(O));
+// `SameValue` abstract operation
+// https://tc39.es/ecma262/#sec-samevalue
+// eslint-disable-next-line es-x/no-object-is -- safe
+var sameValue$1 = Object.is || function is(x, y) {
+  // eslint-disable-next-line no-self-compare -- NaN check
+  return x === y ? x !== 0 || 1 / x === 1 / y : x != x && y != y;
 };
 
-var arraySlice = arraySliceSimple;
-
-var floor = Math.floor;
-
-var mergeSort = function (array, comparefn) {
-  var length = array.length;
-  var middle = floor(length / 2);
-  return length < 8 ? insertionSort(array, comparefn) : merge(
-    array,
-    mergeSort(arraySlice(array, 0, middle), comparefn),
-    mergeSort(arraySlice(array, middle), comparefn),
-    comparefn
-  );
-};
-
-var insertionSort = function (array, comparefn) {
-  var length = array.length;
-  var i = 1;
-  var element, j;
-
-  while (i < length) {
-    j = i;
-    element = array[i];
-    while (j && comparefn(array[j - 1], element) > 0) {
-      array[j] = array[--j];
-    }
-    if (j !== i++) array[j] = element;
-  } return array;
-};
-
-var merge = function (array, left, right, comparefn) {
-  var llength = left.length;
-  var rlength = right.length;
-  var lindex = 0;
-  var rindex = 0;
-
-  while (lindex < llength || rindex < rlength) {
-    array[lindex + rindex] = (lindex < llength && rindex < rlength)
-      ? comparefn(left[lindex], right[rindex]) <= 0 ? left[lindex++] : right[rindex++]
-      : lindex < llength ? left[lindex++] : right[rindex++];
-  } return array;
-};
-
-var arraySort = mergeSort;
-
-var userAgent$1 = engineUserAgent;
-
-var firefox = userAgent$1.match(/firefox\/(\d+)/i);
-
-var engineFfVersion = !!firefox && +firefox[1];
-
-var UA = engineUserAgent;
-
-var engineIsIeOrEdge = /MSIE|Trident/.test(UA);
-
-var userAgent = engineUserAgent;
-
-var webkit = userAgent.match(/AppleWebKit\/(\d+)\./);
-
-var engineWebkitVersion = !!webkit && +webkit[1];
-
-var $$3 = _export;
-var uncurryThis$3 = functionUncurryThis;
-var aCallable = aCallable$3;
-var toObject$1 = toObject$6;
-var lengthOfArrayLike = lengthOfArrayLike$4;
-var deletePropertyOrThrow = deletePropertyOrThrow$1;
+var call$1 = functionCall;
+var fixRegExpWellKnownSymbolLogic = fixRegexpWellKnownSymbolLogic;
+var anObject$1 = anObject$b;
+var requireObjectCoercible$2 = requireObjectCoercible$a;
+var sameValue = sameValue$1;
 var toString$3 = toString$d;
-var fails$2 = fails$o;
-var internalSort = arraySort;
-var arrayMethodIsStrict = arrayMethodIsStrict$2;
-var FF = engineFfVersion;
-var IE_OR_EDGE = engineIsIeOrEdge;
-var V8 = engineV8Version;
-var WEBKIT = engineWebkitVersion;
+var getMethod = getMethod$4;
+var regExpExec = regexpExecAbstract;
 
-var test = [];
-var un$Sort = uncurryThis$3(test.sort);
-var push = uncurryThis$3(test.push);
-
-// IE8-
-var FAILS_ON_UNDEFINED = fails$2(function () {
-  test.sort(undefined);
-});
-// V8 bug
-var FAILS_ON_NULL = fails$2(function () {
-  test.sort(null);
-});
-// Old WebKit
-var STRICT_METHOD = arrayMethodIsStrict('sort');
-
-var STABLE_SORT = !fails$2(function () {
-  // feature detection can be too slow, so check engines versions
-  if (V8) return V8 < 70;
-  if (FF && FF > 3) return;
-  if (IE_OR_EDGE) return true;
-  if (WEBKIT) return WEBKIT < 603;
-
-  var result = '';
-  var code, chr, value, index;
-
-  // generate an array with more 512 elements (Chakra and old V8 fails only in this case)
-  for (code = 65; code < 76; code++) {
-    chr = String.fromCharCode(code);
-
-    switch (code) {
-      case 66: case 69: case 70: case 72: value = 3; break;
-      case 68: case 71: value = 4; break;
-      default: value = 2;
-    }
-
-    for (index = 0; index < 47; index++) {
-      test.push({ k: chr + index, v: value });
-    }
-  }
-
-  test.sort(function (a, b) { return b.v - a.v; });
-
-  for (index = 0; index < test.length; index++) {
-    chr = test[index].k.charAt(0);
-    if (result.charAt(result.length - 1) !== chr) result += chr;
-  }
-
-  return result !== 'DGBEFHACIJK';
-});
-
-var FORCED = FAILS_ON_UNDEFINED || !FAILS_ON_NULL || !STRICT_METHOD || !STABLE_SORT;
-
-var getSortCompare = function (comparefn) {
-  return function (x, y) {
-    if (y === undefined) return -1;
-    if (x === undefined) return 1;
-    if (comparefn !== undefined) return +comparefn(x, y) || 0;
-    return toString$3(x) > toString$3(y) ? 1 : -1;
-  };
-};
-
-// `Array.prototype.sort` method
-// https://tc39.es/ecma262/#sec-array.prototype.sort
-$$3({ target: 'Array', proto: true, forced: FORCED }, {
-  sort: function sort(comparefn) {
-    if (comparefn !== undefined) aCallable(comparefn);
-
-    var array = toObject$1(this);
-
-    if (STABLE_SORT) return comparefn === undefined ? un$Sort(array) : un$Sort(array, comparefn);
-
-    var items = [];
-    var arrayLength = lengthOfArrayLike(array);
-    var itemsLength, index;
-
-    for (index = 0; index < arrayLength; index++) {
-      if (index in array) push(items, array[index]);
-    }
-
-    internalSort(items, getSortCompare(comparefn));
-
-    itemsLength = items.length;
-    index = 0;
-
-    while (index < itemsLength) array[index] = items[index++];
-    while (index < arrayLength) deletePropertyOrThrow(array, index++);
-
-    return array;
-  }
-});
-
-var $$2 = _export;
-var uncurryThis$2 = functionUncurryThis;
-var getOwnPropertyDescriptor$1 = objectGetOwnPropertyDescriptor.f;
-var toLength$1 = toLength$5;
-var toString$2 = toString$d;
-var notARegExp$1 = notARegexp;
-var requireObjectCoercible$1 = requireObjectCoercible$9;
-var correctIsRegExpLogic$1 = correctIsRegexpLogic;
-
-// eslint-disable-next-line es-x/no-string-prototype-startswith -- safe
-var un$StartsWith = uncurryThis$2(''.startsWith);
-var stringSlice = uncurryThis$2(''.slice);
-var min$1 = Math.min;
-
-var CORRECT_IS_REGEXP_LOGIC$1 = correctIsRegExpLogic$1('startsWith');
-// https://github.com/zloirock/core-js/pull/702
-var MDN_POLYFILL_BUG$1 = !CORRECT_IS_REGEXP_LOGIC$1 && !!function () {
-  var descriptor = getOwnPropertyDescriptor$1(String.prototype, 'startsWith');
-  return descriptor && !descriptor.writable;
-}();
-
-// `String.prototype.startsWith` method
-// https://tc39.es/ecma262/#sec-string.prototype.startswith
-$$2({ target: 'String', proto: true, forced: !MDN_POLYFILL_BUG$1 && !CORRECT_IS_REGEXP_LOGIC$1 }, {
-  startsWith: function startsWith(searchString /* , position = 0 */) {
-    var that = toString$2(requireObjectCoercible$1(this));
-    notARegExp$1(searchString);
-    var index = toLength$1(min$1(arguments.length > 1 ? arguments[1] : undefined, that.length));
-    var search = toString$2(searchString);
-    return un$StartsWith
-      ? un$StartsWith(that, search, index)
-      : stringSlice(that, index, index + search.length) === search;
-  }
-});
-
-var $$1 = _export;
-var uncurryThis$1 = functionUncurryThis;
-var getOwnPropertyDescriptor = objectGetOwnPropertyDescriptor.f;
-var toLength = toLength$5;
-var toString$1 = toString$d;
-var notARegExp = notARegexp;
-var requireObjectCoercible = requireObjectCoercible$9;
-var correctIsRegExpLogic = correctIsRegexpLogic;
-
-// eslint-disable-next-line es-x/no-string-prototype-endswith -- safe
-var un$EndsWith = uncurryThis$1(''.endsWith);
-var slice = uncurryThis$1(''.slice);
-var min = Math.min;
-
-var CORRECT_IS_REGEXP_LOGIC = correctIsRegExpLogic('endsWith');
-// https://github.com/zloirock/core-js/pull/702
-var MDN_POLYFILL_BUG = !CORRECT_IS_REGEXP_LOGIC && !!function () {
-  var descriptor = getOwnPropertyDescriptor(String.prototype, 'endsWith');
-  return descriptor && !descriptor.writable;
-}();
-
-// `String.prototype.endsWith` method
-// https://tc39.es/ecma262/#sec-string.prototype.endswith
-$$1({ target: 'String', proto: true, forced: !MDN_POLYFILL_BUG && !CORRECT_IS_REGEXP_LOGIC }, {
-  endsWith: function endsWith(searchString /* , endPosition = @length */) {
-    var that = toString$1(requireObjectCoercible(this));
-    notARegExp(searchString);
-    var endPosition = arguments.length > 1 ? arguments[1] : undefined;
-    var len = that.length;
-    var end = endPosition === undefined ? len : min(toLength(endPosition), len);
-    var search = toString$1(searchString);
-    return un$EndsWith
-      ? un$EndsWith(that, search, end)
-      : slice(that, end - search.length, end) === search;
-  }
-});
-
-var TableContent = function TableContent(_ref) {
-  var data = _ref.data,
-      itemsPerPage = _ref.itemsPerPage,
-      siblingCount = _ref.siblingCount,
-      nullify = _ref.nullify,
-      checkbox = _ref.checkbox,
-      paginationSmartColor = _ref.paginationSmartColor;
-  var noOfPages = Math.ceil(data.length / itemsPerPage);
-
-  var _useState = useState(data.slice(0, itemsPerPage)),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      newData = _useState2[0],
-      setNewData = _useState2[1]; // Once data changes (or items per page) from filter or sort fxn , change the total data to the new data and display the first page of the new data
-
-
-  useEffect(function () {
-    setNewData(data.slice(0, itemsPerPage));
-  }, [data, itemsPerPage]); // Once page change is triggered, decide the section of the array to display
-
-  var onPageChange = function onPageChange(page) {
-    var start = (page - 1) * itemsPerPage;
-    setNewData(data.slice(start, start + itemsPerPage));
-  };
-
-  return /*#__PURE__*/React__default.createElement(Box, {
-    is: "div",
-    onClick: function onClick() {
-      return nullify();
+// @@search logic
+fixRegExpWellKnownSymbolLogic('search', function (SEARCH, nativeSearch, maybeCallNative) {
+  return [
+    // `String.prototype.search` method
+    // https://tc39.es/ecma262/#sec-string.prototype.search
+    function search(regexp) {
+      var O = requireObjectCoercible$2(this);
+      var searcher = regexp == undefined ? undefined : getMethod(regexp, SEARCH);
+      return searcher ? call$1(searcher, regexp, O) : new RegExp(regexp)[SEARCH](toString$3(O));
     },
-    className: "ui-table__content"
-  }, newData.map(function (item, itemIdx) {
-    return /*#__PURE__*/React__default.createElement(Box, {
-      key: itemIdx,
-      is: "div",
-      className: "ui-table__content-item-container"
-    }, checkbox && /*#__PURE__*/React__default.createElement(Checkbox, {
-      className: "ui-table__checkbox"
-    }), Object.values(item).map(function (value, valueIdx) {
-      return /*#__PURE__*/React__default.createElement(Box, {
-        key: valueIdx,
-        is: "div",
-        className: "ui-table__content-item"
-      }, typeof value === "string" ? /*#__PURE__*/React__default.createElement(Text$1, {
-        className: "ui-table__content-item__text"
-      }, value) : value.component);
-    }));
-  }), /*#__PURE__*/React__default.createElement(Box, {
-    className: "ui-table__pagination"
-  }, /*#__PURE__*/React__default.createElement(Pagination, {
-    totalPages: noOfPages,
-    currentPageSiblings: siblingCount,
-    onPageChange: onPageChange,
-    smartColor: paginationSmartColor
-  })));
-};
+    // `RegExp.prototype[@@search]` method
+    // https://tc39.es/ecma262/#sec-regexp.prototype-@@search
+    function (string) {
+      var rx = anObject$1(this);
+      var S = toString$3(string);
+      var res = maybeCallNative(nativeSearch, rx, S);
 
-function ascending() {
-  return (new DOMParser().parseFromString("<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M4 6H11\" stroke=\"#8895A7\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M4 12H11\" stroke=\"#8895A7\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M4 18H13\" stroke=\"#8895A7\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M15 9L18 6L21 9\" stroke=\"#8895A7\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M18 6V18\" stroke=\"#8895A7\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>\n", 'image/svg+xml')).firstChild;
-}
+      if (res.done) return res.value;
 
-function descending() {
-  return (new DOMParser().parseFromString("<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M4 6H13\" stroke=\"#8895A7\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M4 12H11\" stroke=\"#8895A7\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M4 18H11\" stroke=\"#8895A7\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M15 15L18 18L21 15\" stroke=\"#8895A7\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M18 6V18\" stroke=\"#8895A7\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>\n", 'image/svg+xml')).firstChild;
-}
+      var previousLastIndex = rx.lastIndex;
+      if (!sameValue(previousLastIndex, 0)) rx.lastIndex = 0;
+      var result = regExpExec(rx, S);
+      if (!sameValue(rx.lastIndex, previousLastIndex)) rx.lastIndex = previousLastIndex;
+      return result === null ? -1 : result.index;
+    }
+  ];
+});
 
-function funnel() {
-  return (new DOMParser().parseFromString("<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M5 3V6.19387C5.00002 6.46603 5.05342 6.73548 5.15697 6.98545C5.26051 7.23542 5.41211 7.46054 5.6023 7.64756L9.59847 11.5744C9.78863 11.7613 9.94025 11.9867 10.0438 12.2365C10.1473 12.4863 10.2007 12.7551 10.2008 13.0271V21L14.7673 19.1097V13.0355C14.7674 12.7623 14.8213 12.4917 14.9257 12.241C15.0301 11.9902 15.1828 11.7644 15.3743 11.5774L19.3939 7.6515C19.5854 7.46444 19.7381 7.23864 19.8423 6.98791C19.9466 6.73718 20.0001 6.46703 20 6.19387V3.00394H8.06146\" stroke=\"#8895A7\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>\n", 'image/svg+xml')).firstChild;
-}
-
-function rightArrow() {
-  return (new DOMParser().parseFromString("<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9.65718 7.11118L14.8872 12.2335C15.0376 12.3807 15.0376 12.6194 14.8872 12.7667L9.65718 17.8888C9.41466 18.1263 9 17.9582 9 17.6223V7.37779C9 7.04189 9.41467 6.87367 9.65718 7.11118Z\" fill=\"#8895A7\"/>\n</svg>\n", 'image/svg+xml')).firstChild;
-}
-
-var _excluded$5 = ["label", "labelComponent", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onLeftIconClick", "onRightIconClick"];
+var _excluded$6 = ["label", "labelComponent", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onLeftIconClick", "onRightIconClick"];
 
 var TextField = function TextField(_ref) {
   var label = _ref.label,
@@ -30572,7 +30323,7 @@ var TextField = function TextField(_ref) {
       _ref.isFormik;
       _ref.onLeftIconClick;
       _ref.onRightIconClick;
-      var props = _objectWithoutProperties(_ref, _excluded$5);
+      var props = _objectWithoutProperties(_ref, _excluded$6);
 
   var generateInputFieldClasses = classNames({
     "ui-text-field__input": true,
@@ -30621,1189 +30372,6 @@ TextField.propTypes = {
 };
 TextField.defaultProps = {
   size: "medium"
-};
-
-var TableHeader = function TableHeader(_ref) {
-  var headings = _ref.headings,
-      sortIndex = _ref.sortIndex,
-      handleSort = _ref.handleSort,
-      sortModalTrigger = _ref.sortModalTrigger,
-      filterIndex = _ref.filterIndex,
-      filterModalTrigger = _ref.filterModalTrigger,
-      setFilterIndex = _ref.setFilterIndex,
-      handleChange = _ref.handleChange,
-      applyFilter = _ref.applyFilter,
-      filterCriteria = _ref.filterCriteria,
-      setFilterCriteria = _ref.setFilterCriteria,
-      filterLabel = _ref.filterLabel,
-      checkbox = _ref.checkbox;
-  return /*#__PURE__*/React__default.createElement(Box, {
-    is: "div",
-    className: "ui-table__header"
-  }, checkbox && /*#__PURE__*/React__default.createElement(Checkbox, {
-    className: "ui-table__checkbox"
-  }), headings.map(function (item, idx) {
-    return /*#__PURE__*/React__default.createElement(Box, {
-      key: item,
-      is: "div",
-      className: "ui-table__header-item "
-    }, /*#__PURE__*/React__default.createElement(Box, {
-      is: "div",
-      className: "ui-table__header-item-inner ".concat(sortIndex === idx && "sorting", " "),
-      onClick: function onClick(e) {
-        return sortModalTrigger(idx, e);
-      }
-    }, item, /*#__PURE__*/React__default.createElement("span", null, /*#__PURE__*/React__default.createElement(Icon, {
-      className: "ui-button__dropdown-icon",
-      icon: ChevronFilledDown
-    }))), sortIndex === idx && /*#__PURE__*/React__default.createElement(Box, {
-      is: "div",
-      className: "ui-table__header-sort_modal"
-    }, /*#__PURE__*/React__default.createElement(Box, {
-      className: "ui-table__header-sort_modal-item",
-      onClick: function onClick() {
-        return handleSort(idx, "asc");
-      }
-    }, /*#__PURE__*/React__default.createElement("img", {
-      alt: "ascending",
-      src: ascending
-    }), " Sort Ascending"), /*#__PURE__*/React__default.createElement(Box, {
-      className: "ui-table__header-sort_modal-item",
-      onClick: function onClick() {
-        return handleSort(idx, "desc");
-      }
-    }, /*#__PURE__*/React__default.createElement("img", {
-      alt: "descending",
-      src: descending
-    }), " Sort Descending"), /*#__PURE__*/React__default.createElement(Box, {
-      className: "ui-table__header-sort_modal-item ".concat(filterIndex === idx && "filter-bg", " "),
-      onClick: function onClick(e) {
-        return filterModalTrigger(idx, e);
-      }
-    }, /*#__PURE__*/React__default.createElement(Box, {
-      className: "ui-table__header-sort_modal-item filter "
-    }, /*#__PURE__*/React__default.createElement("img", {
-      alt: "filter",
-      src: funnel
-    }), " Filter"), " ", /*#__PURE__*/React__default.createElement("img", {
-      alt: "right-arrow",
-      src: rightArrow
-    }))), filterIndex === idx && /*#__PURE__*/React__default.createElement(Box, {
-      is: "div",
-      className: "ui-table__header-filter_modal"
-    }, /*#__PURE__*/React__default.createElement(Box, {
-      is: "div",
-      className: "ui-table__header-filter_modal-actions"
-    }, /*#__PURE__*/React__default.createElement(Box, {
-      is: "div",
-      className: "filter-cancel",
-      onClick: function onClick(e) {
-        return setFilterIndex(function () {
-          return null;
-        });
-      }
-    }, "Cancel"), /*#__PURE__*/React__default.createElement(Box, {
-      is: "div",
-      className: "filter-apply",
-      onClick: function onClick() {
-        //  reset other states and filter
-        applyFilter();
-      }
-    }, "Apply Filter")), filterLabel.map(function (label, ind) {
-      return /*#__PURE__*/React__default.createElement(Box, {
-        key: ind,
-        is: "div",
-        className: ""
-      }, /*#__PURE__*/React__default.createElement(Radio, {
-        label: label,
-        name: "filter-label",
-        onClick: function onClick() {
-          return setFilterCriteria(filterLabel[ind]);
-        }
-      }), filterCriteria === label && /*#__PURE__*/React__default.createElement(TextField, {
-        label: "Value",
-        onChange: function onChange(e) {
-          return handleChange(e);
-        },
-        onKeyDown: function onKeyDown(e) {
-          return e.keyCode === 13 && applyFilter(e);
-        }
-      }));
-    })));
-  }));
-};
-
-var TableTag = function TableTag(_ref) {
-  var filterTag = _ref.filterTag,
-      closeTag = _ref.closeTag,
-      filterLabel = _ref.filterLabel,
-      setFilterCriteria = _ref.setFilterCriteria,
-      handleChange = _ref.handleChange,
-      applyFilter = _ref.applyFilter,
-      setSortIndex = _ref.setSortIndex,
-      filterCriteria = _ref.filterCriteria,
-      headings = _ref.headings;
-
-  var _useState = useState(false),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      showModal = _useState2[0],
-      setShowModal = _useState2[1];
-
-  var _useState3 = useState(false),
-      _useState4 = _slicedToArray$1(_useState3, 2),
-      secondFilter = _useState4[0],
-      setSecondFilter = _useState4[1];
-
-  var _useState5 = useState(null),
-      _useState6 = _slicedToArray$1(_useState5, 2),
-      joinType = _useState6[0],
-      setJoinType = _useState6[1]; // trigger tabletag modal onclick of the table-old tag
-
-
-  var triggerModal = function triggerModal() {
-    showModal && setShowModal(function () {
-      return false;
-    });
-    !showModal && setShowModal(function () {
-      return true;
-    });
-    setSecondFilter(function () {
-      return false;
-    });
-    setSortIndex(filterTag[0]);
-  }; // onclick of the apply filter button, apply the new filter set and close mpdal
-
-
-  var applyFilter2 = function applyFilter2() {
-    !joinType && applyFilter(); // joinType==='and' && applyFilter('second')
-
-    setShowModal(function () {
-      return false;
-    });
-  }; // *** second filter merge function making queries to have effect
-
-
-  var joinFilter = function joinFilter(type) {
-    type === 'and' && setJoinType(function () {
-      return type;
-    });
-    type === 'or' && setJoinType(function () {
-      return type;
-    });
-    applyFilter();
-  };
-
-  return /*#__PURE__*/React__default.createElement(Box, {
-    is: "div",
-    className: "ui-table__filter-tag-container"
-  }, /*#__PURE__*/React__default.createElement(Box, {
-    is: "div",
-    className: "ui-table__filter-tag",
-    onClick: triggerModal
-  }, headings[filterTag[0]], /*#__PURE__*/React__default.createElement(Box, {
-    is: "span"
-  }, " ", filterTag[1], " "), filterTag[2], /*#__PURE__*/React__default.createElement(Box, {
-    is: "span",
-    onClick: closeTag,
-    className: "close"
-  }, /*#__PURE__*/React__default.createElement(Icon, {
-    icon: Close
-  }))), showModal &&
-  /*#__PURE__*/
-  // show table-old tag modal
-  React__default.createElement(Box, {
-    is: "div",
-    className: "ui-table__filter-tag-field  ".concat(!showModal && 'hide', " ")
-  }, /*#__PURE__*/React__default.createElement(Box, {
-    is: "div"
-  }, /*#__PURE__*/React__default.createElement(SelectField, {
-    label: "Filter",
-    size: "small",
-    onChange: function onChange(e) {
-      return setFilterCriteria(function () {
-        return e.target.value;
-      });
-    },
-    value: filterCriteria,
-    options: filterLabel,
-    dropDown: true
-  }), /*#__PURE__*/React__default.createElement(TextField, {
-    label: "Value",
-    size: "small",
-    onChange: function onChange(e) {
-      return handleChange(e);
-    },
-    onKeyDown: function onKeyDown(e) {
-      return e.keyCode === 13 && applyFilter2();
-    }
-  })), secondFilter &&
-  /*#__PURE__*/
-  //  show filter join types, and and or radio options 
-  React__default.createElement(Box, {
-    is: "button",
-    onClick: function onClick() {
-      return setSecondFilter(function () {
-        return true;
-      });
-    },
-    style: {
-      color: 'blue',
-      cursor: 'pointer',
-      margin: ' 10px 0'
-    }
-  }, "+ Add condition"), secondFilter &&
-  /*#__PURE__*/
-  // show second filter form
-  React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement(Box, {
-    is: "form"
-  }, /*#__PURE__*/React__default.createElement(Radio, {
-    label: "And",
-    name: "join-type",
-    onClick: function onClick(e) {
-      return joinFilter('and');
-    }
-  }), /*#__PURE__*/React__default.createElement(Radio, {
-    label: "Or",
-    name: "join-type",
-    onClick: function onClick(e) {
-      return joinFilter('and');
-    }
-  })), /*#__PURE__*/React__default.createElement(Box, {
-    is: "div",
-    className: "extra-filter"
-  }, /*#__PURE__*/React__default.createElement(SelectField, {
-    label: 'Filter',
-    size: 'small',
-    options: filterLabel,
-    dropDown: true
-  }), /*#__PURE__*/React__default.createElement(TextField, {
-    label: "Value",
-    size: "small"
-  }), /*#__PURE__*/React__default.createElement(Icon, {
-    className: "close",
-    icon: Close,
-    onClick: function onClick() {
-      return setSecondFilter(function () {
-        return null;
-      });
-    }
-  }))), /*#__PURE__*/React__default.createElement(Box, {
-    is: "div"
-  }, /*#__PURE__*/React__default.createElement(Button, {
-    children: "Apply Filter",
-    colorScheme: 'primary',
-    onClick: applyFilter2
-  }), /*#__PURE__*/React__default.createElement(Button, {
-    onClick: function onClick() {
-      return setShowModal(function () {
-        return true;
-      });
-    }
-  }, "Cancel"))));
-};
-
-var _excluded$4 = ["data", "headings", "columns", "className", "checkbox", "pagination", "itemsPerPage", "siblingCount", "paginationSmartColor"];
-
-var Table = function Table(_ref) {
-  var _filter;
-
-  var data = _ref.data,
-      headings = _ref.headings;
-      _ref.columns;
-      var className = _ref.className,
-      checkbox = _ref.checkbox;
-      _ref.pagination;
-      var itemsPerPage = _ref.itemsPerPage,
-      siblingCount = _ref.siblingCount,
-      paginationSmartColor = _ref.paginationSmartColor,
-      props = _objectWithoutProperties(_ref, _excluded$4);
-
-  var _useState = useState(null),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      sortIndex = _useState2[0],
-      setSortIndex = _useState2[1];
-
-  var _useState3 = useState(null),
-      _useState4 = _slicedToArray$1(_useState3, 2),
-      filterIndex = _useState4[0],
-      setFilterIndex = _useState4[1];
-
-  var _useState5 = useState(""),
-      _useState6 = _slicedToArray$1(_useState5, 2),
-      filterText = _useState6[0],
-      setFilterText = _useState6[1];
-
-  var _useState7 = useState(data),
-      _useState8 = _slicedToArray$1(_useState7, 2),
-      dataCopy = _useState8[0],
-      setDataCopy = _useState8[1];
-
-  var _useState9 = useState("Is"),
-      _useState10 = _slicedToArray$1(_useState9, 2),
-      filterCriteria = _useState10[0],
-      setFilterCriteria = _useState10[1];
-
-  var _useState11 = useState([]),
-      _useState12 = _slicedToArray$1(_useState11, 2),
-      filterTag = _useState12[0],
-      setFilterTag = _useState12[1];
-
-  var filterLabel = ["Is", "Is not", "Is empty", "Is not empty", "Is equal to", "Is not equal to", "Begins with", "Ends with", "Contains", "Does not contain"];
-  var switchClassName = classNames({
-    "ui-table__wrapper": true // "ui-table__header": true,
-    // "ui-table__content": true,
-
-  }, className); // set Filter text to input value
-
-  var handleChange = function handleChange(e) {
-    return setFilterText(function () {
-      return e.target.value.trim().toLowerCase();
-    });
-  }; // reset all states
-
-
-  var nullify = function nullify() {
-    setFilterIndex(function () {
-      return null;
-    });
-    setSortIndex(function () {
-      return null;
-    });
-    setFilterText(function () {
-      return "";
-    });
-  }; // trigger the sort modal
-
-
-  var sortModalTrigger = function sortModalTrigger(idx, e) {
-    setFilterIndex(function () {
-      return null;
-    });
-    setSortIndex(function () {
-      return idx;
-    });
-    sortIndex !== null && setSortIndex(function () {
-      return null;
-    });
-  }; // trigger the filter modal
-
-
-  var filterModalTrigger = function filterModalTrigger(idx, e) {
-    setFilterIndex(function () {
-      return idx;
-    });
-    filterIndex !== null && setFilterIndex(function () {
-      return null;
-    });
-  }; // get all values of the selected column of array of objects
-
-
-  var getArr = function getArr(data) {
-    var item = Object.values(data)[sortIndex];
-    return item.alt || item;
-  }; // sort column ascending or descending
-
-
-  var handleSort = function handleSort(idx, type) {
-    nullify();
-    setDataCopy(function () {
-      return _toConsumableArray(dataCopy).sort(function (a, b) {
-        var x = Object.values(a)[idx].alt || Object.values(a)[idx];
-        var y = Object.values(b)[idx].alt || Object.values(b)[idx];
-
-        if (type === "asc") {
-          if (x < y) {
-            return -1;
-          }
-
-          if (y < x) {
-            return 1;
-          }
-        }
-
-        if (type === "desc") {
-          if (x > y) {
-            return -1;
-          }
-
-          if (y > x) {
-            return 1;
-          }
-        }
-
-        return 0;
-      });
-    });
-  };
-
-  var applyFilter = function applyFilter(second) {
-    // !second === 'second' &&
-    filter[filterCriteria](data); // second === 'second' && filter[filterCriteria](dataCopy);
-
-    if (filterText && filterText !== "" && filterText !== " ") {
-      setFilterTag(function () {
-        return [sortIndex, filterCriteria, filterText];
-      });
-    }
-
-    nullify();
-  }; // main object of filter functions
-
-
-  var filter = (_filter = {}, _defineProperty$w(_filter, filterLabel[0], function (dataF) {
-    return setDataCopy(function () {
-      return dataF.filter(function (item) {
-        return getArr(item).toLowerCase() === filterText.toLowerCase().trim();
-      });
-    });
-  }), _defineProperty$w(_filter, filterLabel[1], function (dataF) {
-    return setDataCopy(function () {
-      return dataF.filter(function (item) {
-        return getArr(item).toLowerCase() !== filterText.toLowerCase().trim();
-      });
-    });
-  }), _defineProperty$w(_filter, filterLabel[2], function (dataF) {
-    return setDataCopy(function () {
-      return dataF.filter(function (item) {
-        return getArr(item) === "";
-      });
-    });
-  }), _defineProperty$w(_filter, filterLabel[3], function (dataF) {
-    return setDataCopy(function () {
-      return dataF.filter(function (item) {
-        return getArr(item) !== "";
-      });
-    });
-  }), _defineProperty$w(_filter, filterLabel[4], function (dataF) {
-    return setDataCopy(function () {
-      return dataF.filter(function (item) {
-        return getArr(item) === filterText;
-      });
-    });
-  }), _defineProperty$w(_filter, filterLabel[5], function (dataF) {
-    return setDataCopy(function () {
-      return dataF.filter(function (item) {
-        return getArr(item) !== filterText;
-      });
-    });
-  }), _defineProperty$w(_filter, filterLabel[6], function (dataF) {
-    return setDataCopy(function () {
-      return dataF.filter(function (item) {
-        return getArr(item).toLowerCase().startsWith(filterText.toLowerCase().trim());
-      });
-    });
-  }), _defineProperty$w(_filter, filterLabel[7], function (dataF) {
-    return setDataCopy(function () {
-      return dataF.filter(function (item) {
-        return getArr(item).toLowerCase().endsWith(filterText.toLowerCase().trim());
-      });
-    });
-  }), _defineProperty$w(_filter, filterLabel[8], function (dataF) {
-    return setDataCopy(function () {
-      return dataF.filter(function (item) {
-        return getArr(item).toLowerCase().includes(filterText.toLowerCase().trim());
-      });
-    });
-  }), _defineProperty$w(_filter, filterLabel[9], function (dataF) {
-    return setDataCopy(function () {
-      return dataF.filter(function (item) {
-        return !getArr(item).toLowerCase().includes(filterText.toLowerCase().trim());
-      });
-    });
-  }), _filter);
-
-  var closeTag = function closeTag(e) {
-    e.stopPropagation();
-    setFilterTag([]);
-    setDataCopy(function () {
-      return data;
-    });
-    nullify();
-  };
-
-  return /*#__PURE__*/React__default.createElement(Box, {
-    is: "div"
-  }, filterTag.length > 0 && /*#__PURE__*/React__default.createElement(TableTag, {
-    filterTag: filterTag,
-    closeTag: closeTag,
-    nullify: nullify,
-    filterLabel: filterLabel,
-    handleChange: handleChange,
-    applyFilter: applyFilter,
-    setFilterCriteria: setFilterCriteria,
-    setSortIndex: setSortIndex,
-    filterCriteria: filterCriteria,
-    headings: headings
-  }), /*#__PURE__*/React__default.createElement(Box, _extends$1({
-    is: "div",
-    className: switchClassName
-  }, props), /*#__PURE__*/React__default.createElement(TableHeader, {
-    headings: headings,
-    sortIndex: sortIndex,
-    sortModalTrigger: sortModalTrigger,
-    filterModalTrigger: filterModalTrigger,
-    filterIndex: filterIndex,
-    setFilterIndex: setFilterIndex,
-    handleChange: handleChange,
-    applyFilter: applyFilter,
-    handleSort: handleSort,
-    filterCriteria: filterCriteria,
-    setFilterCriteria: setFilterCriteria,
-    filterLabel: filterLabel,
-    checkbox: checkbox
-  }), /*#__PURE__*/React__default.createElement(TableContent, {
-    data: dataCopy,
-    nullify: nullify,
-    checkbox: checkbox,
-    itemsPerPage: itemsPerPage,
-    siblingCount: siblingCount,
-    paginationSmartColor: paginationSmartColor
-  })));
-};
-Table.propTypes = {
-  headings: propTypes$1.exports.array.isRequired,
-  data: propTypes$1.exports.array.isRequired,
-  checkbox: propTypes$1.exports.bool,
-  pagination: propTypes$1.exports.bool,
-  paginationSmartColor: propTypes$1.exports.string
-};
-Table.defaultProps = {
-  checkbox: false
-};
-
-// iterable DOM collections
-// flag - `iterable` interface - 'entries', 'keys', 'values', 'forEach' methods
-var domIterables = {
-  CSSRuleList: 0,
-  CSSStyleDeclaration: 0,
-  CSSValueList: 0,
-  ClientRectList: 0,
-  DOMRectList: 0,
-  DOMStringList: 0,
-  DOMTokenList: 1,
-  DataTransferItemList: 0,
-  FileList: 0,
-  HTMLAllCollection: 0,
-  HTMLCollection: 0,
-  HTMLFormElement: 0,
-  HTMLSelectElement: 0,
-  MediaList: 0,
-  MimeTypeArray: 0,
-  NamedNodeMap: 0,
-  NodeList: 1,
-  PaintRequestList: 0,
-  Plugin: 0,
-  PluginArray: 0,
-  SVGLengthList: 0,
-  SVGNumberList: 0,
-  SVGPathSegList: 0,
-  SVGPointList: 0,
-  SVGStringList: 0,
-  SVGTransformList: 0,
-  SourceBufferList: 0,
-  StyleSheetList: 0,
-  TextTrackCueList: 0,
-  TextTrackList: 0,
-  TouchList: 0
-};
-
-// in old WebKit versions, `element.classList` is not an instance of global `DOMTokenList`
-var documentCreateElement = documentCreateElement$2;
-
-var classList = documentCreateElement('span').classList;
-var DOMTokenListPrototype$1 = classList && classList.constructor && classList.constructor.prototype;
-
-var domTokenListPrototype = DOMTokenListPrototype$1 === Object.prototype ? undefined : DOMTokenListPrototype$1;
-
-var iterators = {};
-
-var fails$1 = fails$o;
-
-var correctPrototypeGetter = !fails$1(function () {
-  function F() { /* empty */ }
-  F.prototype.constructor = null;
-  // eslint-disable-next-line es-x/no-object-getprototypeof -- required for testing
-  return Object.getPrototypeOf(new F()) !== F.prototype;
-});
-
-var hasOwn$1 = hasOwnProperty_1;
-var isCallable$3 = isCallable$k;
-var toObject = toObject$6;
-var sharedKey = sharedKey$3;
-var CORRECT_PROTOTYPE_GETTER = correctPrototypeGetter;
-
-var IE_PROTO = sharedKey('IE_PROTO');
-var $Object = Object;
-var ObjectPrototype = $Object.prototype;
-
-// `Object.getPrototypeOf` method
-// https://tc39.es/ecma262/#sec-object.getprototypeof
-// eslint-disable-next-line es-x/no-object-getprototypeof -- safe
-var objectGetPrototypeOf = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function (O) {
-  var object = toObject(O);
-  if (hasOwn$1(object, IE_PROTO)) return object[IE_PROTO];
-  var constructor = object.constructor;
-  if (isCallable$3(constructor) && object instanceof constructor) {
-    return constructor.prototype;
-  } return object instanceof $Object ? ObjectPrototype : null;
-};
-
-var fails = fails$o;
-var isCallable$2 = isCallable$k;
-var getPrototypeOf$1 = objectGetPrototypeOf;
-var defineBuiltIn$1 = defineBuiltIn$4;
-var wellKnownSymbol$3 = wellKnownSymbol$d;
-
-var ITERATOR$2 = wellKnownSymbol$3('iterator');
-var BUGGY_SAFARI_ITERATORS$1 = false;
-
-// `%IteratorPrototype%` object
-// https://tc39.es/ecma262/#sec-%iteratorprototype%-object
-var IteratorPrototype$2, PrototypeOfArrayIteratorPrototype, arrayIterator;
-
-/* eslint-disable es-x/no-array-prototype-keys -- safe */
-if ([].keys) {
-  arrayIterator = [].keys();
-  // Safari 8 has buggy iterators w/o `next`
-  if (!('next' in arrayIterator)) BUGGY_SAFARI_ITERATORS$1 = true;
-  else {
-    PrototypeOfArrayIteratorPrototype = getPrototypeOf$1(getPrototypeOf$1(arrayIterator));
-    if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype$2 = PrototypeOfArrayIteratorPrototype;
-  }
-}
-
-var NEW_ITERATOR_PROTOTYPE = IteratorPrototype$2 == undefined || fails(function () {
-  var test = {};
-  // FF44- legacy iterators case
-  return IteratorPrototype$2[ITERATOR$2].call(test) !== test;
-});
-
-if (NEW_ITERATOR_PROTOTYPE) IteratorPrototype$2 = {};
-
-// `%IteratorPrototype%[@@iterator]()` method
-// https://tc39.es/ecma262/#sec-%iteratorprototype%-@@iterator
-if (!isCallable$2(IteratorPrototype$2[ITERATOR$2])) {
-  defineBuiltIn$1(IteratorPrototype$2, ITERATOR$2, function () {
-    return this;
-  });
-}
-
-var iteratorsCore = {
-  IteratorPrototype: IteratorPrototype$2,
-  BUGGY_SAFARI_ITERATORS: BUGGY_SAFARI_ITERATORS$1
-};
-
-var defineProperty$2 = objectDefineProperty.f;
-var hasOwn = hasOwnProperty_1;
-var wellKnownSymbol$2 = wellKnownSymbol$d;
-
-var TO_STRING_TAG$1 = wellKnownSymbol$2('toStringTag');
-
-var setToStringTag$2 = function (target, TAG, STATIC) {
-  if (target && !STATIC) target = target.prototype;
-  if (target && !hasOwn(target, TO_STRING_TAG$1)) {
-    defineProperty$2(target, TO_STRING_TAG$1, { configurable: true, value: TAG });
-  }
-};
-
-var IteratorPrototype$1 = iteratorsCore.IteratorPrototype;
-var create = objectCreate$1;
-var createPropertyDescriptor = createPropertyDescriptor$4;
-var setToStringTag$1 = setToStringTag$2;
-var Iterators$2 = iterators;
-
-var returnThis$1 = function () { return this; };
-
-var createIteratorConstructor$1 = function (IteratorConstructor, NAME, next, ENUMERABLE_NEXT) {
-  var TO_STRING_TAG = NAME + ' Iterator';
-  IteratorConstructor.prototype = create(IteratorPrototype$1, { next: createPropertyDescriptor(+!ENUMERABLE_NEXT, next) });
-  setToStringTag$1(IteratorConstructor, TO_STRING_TAG, false);
-  Iterators$2[TO_STRING_TAG] = returnThis$1;
-  return IteratorConstructor;
-};
-
-var isCallable$1 = isCallable$k;
-
-var $String = String;
-var $TypeError = TypeError;
-
-var aPossiblePrototype$1 = function (argument) {
-  if (typeof argument == 'object' || isCallable$1(argument)) return argument;
-  throw $TypeError("Can't set " + $String(argument) + ' as a prototype');
-};
-
-/* eslint-disable no-proto -- safe */
-
-var uncurryThis = functionUncurryThis;
-var anObject = anObject$a;
-var aPossiblePrototype = aPossiblePrototype$1;
-
-// `Object.setPrototypeOf` method
-// https://tc39.es/ecma262/#sec-object.setprototypeof
-// Works with __proto__ only. Old v8 can't work with null proto objects.
-// eslint-disable-next-line es-x/no-object-setprototypeof -- safe
-var objectSetPrototypeOf = Object.setPrototypeOf || ('__proto__' in {} ? function () {
-  var CORRECT_SETTER = false;
-  var test = {};
-  var setter;
-  try {
-    // eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
-    setter = uncurryThis(Object.getOwnPropertyDescriptor(Object.prototype, '__proto__').set);
-    setter(test, []);
-    CORRECT_SETTER = test instanceof Array;
-  } catch (error) { /* empty */ }
-  return function setPrototypeOf(O, proto) {
-    anObject(O);
-    aPossiblePrototype(proto);
-    if (CORRECT_SETTER) setter(O, proto);
-    else O.__proto__ = proto;
-    return O;
-  };
-}() : undefined);
-
-var $ = _export;
-var call = functionCall;
-var FunctionName = functionName;
-var isCallable = isCallable$k;
-var createIteratorConstructor = createIteratorConstructor$1;
-var getPrototypeOf = objectGetPrototypeOf;
-var setPrototypeOf = objectSetPrototypeOf;
-var setToStringTag = setToStringTag$2;
-var createNonEnumerableProperty$1 = createNonEnumerableProperty$5;
-var defineBuiltIn = defineBuiltIn$4;
-var wellKnownSymbol$1 = wellKnownSymbol$d;
-var Iterators$1 = iterators;
-var IteratorsCore = iteratorsCore;
-
-var PROPER_FUNCTION_NAME = FunctionName.PROPER;
-var CONFIGURABLE_FUNCTION_NAME = FunctionName.CONFIGURABLE;
-var IteratorPrototype = IteratorsCore.IteratorPrototype;
-var BUGGY_SAFARI_ITERATORS = IteratorsCore.BUGGY_SAFARI_ITERATORS;
-var ITERATOR$1 = wellKnownSymbol$1('iterator');
-var KEYS = 'keys';
-var VALUES = 'values';
-var ENTRIES = 'entries';
-
-var returnThis = function () { return this; };
-
-var defineIterator$1 = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, IS_SET, FORCED) {
-  createIteratorConstructor(IteratorConstructor, NAME, next);
-
-  var getIterationMethod = function (KIND) {
-    if (KIND === DEFAULT && defaultIterator) return defaultIterator;
-    if (!BUGGY_SAFARI_ITERATORS && KIND in IterablePrototype) return IterablePrototype[KIND];
-    switch (KIND) {
-      case KEYS: return function keys() { return new IteratorConstructor(this, KIND); };
-      case VALUES: return function values() { return new IteratorConstructor(this, KIND); };
-      case ENTRIES: return function entries() { return new IteratorConstructor(this, KIND); };
-    } return function () { return new IteratorConstructor(this); };
-  };
-
-  var TO_STRING_TAG = NAME + ' Iterator';
-  var INCORRECT_VALUES_NAME = false;
-  var IterablePrototype = Iterable.prototype;
-  var nativeIterator = IterablePrototype[ITERATOR$1]
-    || IterablePrototype['@@iterator']
-    || DEFAULT && IterablePrototype[DEFAULT];
-  var defaultIterator = !BUGGY_SAFARI_ITERATORS && nativeIterator || getIterationMethod(DEFAULT);
-  var anyNativeIterator = NAME == 'Array' ? IterablePrototype.entries || nativeIterator : nativeIterator;
-  var CurrentIteratorPrototype, methods, KEY;
-
-  // fix native
-  if (anyNativeIterator) {
-    CurrentIteratorPrototype = getPrototypeOf(anyNativeIterator.call(new Iterable()));
-    if (CurrentIteratorPrototype !== Object.prototype && CurrentIteratorPrototype.next) {
-      if (getPrototypeOf(CurrentIteratorPrototype) !== IteratorPrototype) {
-        if (setPrototypeOf) {
-          setPrototypeOf(CurrentIteratorPrototype, IteratorPrototype);
-        } else if (!isCallable(CurrentIteratorPrototype[ITERATOR$1])) {
-          defineBuiltIn(CurrentIteratorPrototype, ITERATOR$1, returnThis);
-        }
-      }
-      // Set @@toStringTag to native iterators
-      setToStringTag(CurrentIteratorPrototype, TO_STRING_TAG, true);
-    }
-  }
-
-  // fix Array.prototype.{ values, @@iterator }.name in V8 / FF
-  if (PROPER_FUNCTION_NAME && DEFAULT == VALUES && nativeIterator && nativeIterator.name !== VALUES) {
-    if (CONFIGURABLE_FUNCTION_NAME) {
-      createNonEnumerableProperty$1(IterablePrototype, 'name', VALUES);
-    } else {
-      INCORRECT_VALUES_NAME = true;
-      defaultIterator = function values() { return call(nativeIterator, this); };
-    }
-  }
-
-  // export additional methods
-  if (DEFAULT) {
-    methods = {
-      values: getIterationMethod(VALUES),
-      keys: IS_SET ? defaultIterator : getIterationMethod(KEYS),
-      entries: getIterationMethod(ENTRIES)
-    };
-    if (FORCED) for (KEY in methods) {
-      if (BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME || !(KEY in IterablePrototype)) {
-        defineBuiltIn(IterablePrototype, KEY, methods[KEY]);
-      }
-    } else $({ target: NAME, proto: true, forced: BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME }, methods);
-  }
-
-  // define iterator
-  if (IterablePrototype[ITERATOR$1] !== defaultIterator) {
-    defineBuiltIn(IterablePrototype, ITERATOR$1, defaultIterator, { name: DEFAULT });
-  }
-  Iterators$1[NAME] = defaultIterator;
-
-  return methods;
-};
-
-var toIndexedObject = toIndexedObject$5;
-var addToUnscopables = addToUnscopables$2;
-var Iterators = iterators;
-var InternalStateModule = internalState;
-var defineProperty$1 = objectDefineProperty.f;
-var defineIterator = defineIterator$1;
-var DESCRIPTORS = descriptors;
-
-var ARRAY_ITERATOR = 'Array Iterator';
-var setInternalState = InternalStateModule.set;
-var getInternalState = InternalStateModule.getterFor(ARRAY_ITERATOR);
-
-// `Array.prototype.entries` method
-// https://tc39.es/ecma262/#sec-array.prototype.entries
-// `Array.prototype.keys` method
-// https://tc39.es/ecma262/#sec-array.prototype.keys
-// `Array.prototype.values` method
-// https://tc39.es/ecma262/#sec-array.prototype.values
-// `Array.prototype[@@iterator]` method
-// https://tc39.es/ecma262/#sec-array.prototype-@@iterator
-// `CreateArrayIterator` internal method
-// https://tc39.es/ecma262/#sec-createarrayiterator
-var es_array_iterator = defineIterator(Array, 'Array', function (iterated, kind) {
-  setInternalState(this, {
-    type: ARRAY_ITERATOR,
-    target: toIndexedObject(iterated), // target
-    index: 0,                          // next index
-    kind: kind                         // kind
-  });
-// `%ArrayIteratorPrototype%.next` method
-// https://tc39.es/ecma262/#sec-%arrayiteratorprototype%.next
-}, function () {
-  var state = getInternalState(this);
-  var target = state.target;
-  var kind = state.kind;
-  var index = state.index++;
-  if (!target || index >= target.length) {
-    state.target = undefined;
-    return { value: undefined, done: true };
-  }
-  if (kind == 'keys') return { value: index, done: false };
-  if (kind == 'values') return { value: target[index], done: false };
-  return { value: [index, target[index]], done: false };
-}, 'values');
-
-// argumentsList[@@iterator] is %ArrayProto_values%
-// https://tc39.es/ecma262/#sec-createunmappedargumentsobject
-// https://tc39.es/ecma262/#sec-createmappedargumentsobject
-var values = Iterators.Arguments = Iterators.Array;
-
-// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
-addToUnscopables('keys');
-addToUnscopables('values');
-addToUnscopables('entries');
-
-// V8 ~ Chrome 45- bug
-if (DESCRIPTORS && values.name !== 'values') try {
-  defineProperty$1(values, 'name', { value: 'values' });
-} catch (error) { /* empty */ }
-
-var global$1 = global$i;
-var DOMIterables = domIterables;
-var DOMTokenListPrototype = domTokenListPrototype;
-var ArrayIteratorMethods = es_array_iterator;
-var createNonEnumerableProperty = createNonEnumerableProperty$5;
-var wellKnownSymbol = wellKnownSymbol$d;
-
-var ITERATOR = wellKnownSymbol('iterator');
-var TO_STRING_TAG = wellKnownSymbol('toStringTag');
-var ArrayValues = ArrayIteratorMethods.values;
-
-var handlePrototype = function (CollectionPrototype, COLLECTION_NAME) {
-  if (CollectionPrototype) {
-    // some Chrome versions have non-configurable methods on DOMTokenList
-    if (CollectionPrototype[ITERATOR] !== ArrayValues) try {
-      createNonEnumerableProperty(CollectionPrototype, ITERATOR, ArrayValues);
-    } catch (error) {
-      CollectionPrototype[ITERATOR] = ArrayValues;
-    }
-    if (!CollectionPrototype[TO_STRING_TAG]) {
-      createNonEnumerableProperty(CollectionPrototype, TO_STRING_TAG, COLLECTION_NAME);
-    }
-    if (DOMIterables[COLLECTION_NAME]) for (var METHOD_NAME in ArrayIteratorMethods) {
-      // some Chrome versions have non-configurable methods on DOMTokenList
-      if (CollectionPrototype[METHOD_NAME] !== ArrayIteratorMethods[METHOD_NAME]) try {
-        createNonEnumerableProperty(CollectionPrototype, METHOD_NAME, ArrayIteratorMethods[METHOD_NAME]);
-      } catch (error) {
-        CollectionPrototype[METHOD_NAME] = ArrayIteratorMethods[METHOD_NAME];
-      }
-    }
-  }
-};
-
-for (var COLLECTION_NAME in DOMIterables) {
-  handlePrototype(global$1[COLLECTION_NAME] && global$1[COLLECTION_NAME].prototype, COLLECTION_NAME);
-}
-
-handlePrototype(DOMTokenListPrototype, 'DOMTokenList');
-
-var _excluded$3 = ["label", "className", "size", "tagDelimiterKey", "values", "onTagAdded", "onTagDeleted", "inputProps", "tagProps", "tagClassname", "onTextChanged", "onTagChanged"];
-
-var TagInput = function TagInput(_ref) {
-  var label = _ref.label,
-      className = _ref.className,
-      size = _ref.size,
-      tagDelimiterKey = _ref.tagDelimiterKey,
-      values = _ref.values,
-      onTagAdded = _ref.onTagAdded,
-      onTagDeleted = _ref.onTagDeleted,
-      inputProps = _ref.inputProps,
-      _ref$tagProps = _ref.tagProps,
-      tagProps = _ref$tagProps === void 0 ? {} : _ref$tagProps,
-      tagClassname = _ref.tagClassname,
-      onTextChanged = _ref.onTextChanged,
-      onTagChanged = _ref.onTagChanged,
-      props = _objectWithoutProperties(_ref, _excluded$3);
-
-  var _useState = useState(""),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      input = _useState2[0],
-      setInput = _useState2[1];
-
-  var _useState3 = useState(values || []),
-      _useState4 = _slicedToArray$1(_useState3, 2),
-      inputTags = _useState4[0],
-      setInputTags = _useState4[1];
-
-  var _useState5 = useState(false),
-      _useState6 = _slicedToArray$1(_useState5, 2),
-      isKeyReleased = _useState6[0],
-      setIsKeyReleased = _useState6[1];
-
-  var invokeFunction = function invokeFunction(func) {
-    if (typeof func === "function") {
-      for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        args[_key - 1] = arguments[_key];
-      }
-
-      return func.apply(void 0, args);
-    }
-  };
-
-  var _tagDelimiterKey = {
-    space: " ",
-    enter: "Enter",
-    comma: ","
-  };
-  var generatedTagInputClasses = classNames({
-    "ui-tag-input__input": true
-  });
-  var wrapperClasses = classNames(["size__".concat(size), "ui-tag-input__wrapper"], className);
-
-  var handleTextChange = function handleTextChange(event) {
-    setInput(event.target.value);
-    invokeFunction(onTextChanged, event.target.value);
-  };
-
-  var handleKeyDown = function handleKeyDown(event) {
-    var newTag = input.trim();
-    var oldTagArray = inputTags;
-    var key = _tagDelimiterKey[tagDelimiterKey];
-
-    if (event.key === key && newTag.length && !inputTags.includes(newTag)) {
-      event.preventDefault();
-      setInputTags(function (prev) {
-        return [].concat(_toConsumableArray(prev), [newTag]);
-      });
-      setInputTags(function (state) {
-        invokeFunction(onTagAdded, newTag, state);
-        invokeFunction(onTagChanged, oldTagArray, state);
-        return state;
-      });
-      setInput("");
-    }
-
-    if (event.key === "Backspace" && !input.length && inputTags.length && isKeyReleased) {
-      event.preventDefault();
-
-      var tagsArray = _toConsumableArray(inputTags);
-
-      var deletedTag = tagsArray.pop();
-      setInputTags(tagsArray);
-      setInput(deletedTag);
-      setInputTags(function (state) {
-        invokeFunction(onTagDeleted, deletedTag, state);
-        invokeFunction(onTagChanged, oldTagArray, state);
-        return state;
-      });
-    }
-
-    setIsKeyReleased(false);
-  };
-
-  var handleDeleteTag = function handleDeleteTag(index) {
-    var deletedTag = inputTags[index];
-    var oldTagArray = inputTags;
-    setInputTags(function (prev) {
-      return prev.filter(function (tag, i) {
-        return i !== index;
-      });
-    });
-    setInputTags(function (state) {
-      invokeFunction(onTagDeleted, deletedTag, state);
-      invokeFunction(onTagChanged, oldTagArray, state);
-      return state;
-    });
-  };
-
-  return /*#__PURE__*/React__default.createElement(Box, {
-    className: wrapperClasses
-  }, /*#__PURE__*/React__default.createElement(Box, {
-    is: "label"
-  }, /*#__PURE__*/React__default.createElement(Text$1, {
-    className: "ui-tag-input__label",
-    scale: "subhead"
-  }, label)), /*#__PURE__*/React__default.createElement("div", {
-    className: "ui-tag-input__input-wrapper"
-  }, inputTags.map(function (tag, index) {
-    return /*#__PURE__*/React__default.createElement(Box, _extends$1({
-      is: "div",
-      className: "ui-tag-input__input-tag ".concat(tagClassname),
-      key: "ui-tag-input".concat(keyGen())
-    }, tagProps), /*#__PURE__*/React__default.createElement(Text$1, {
-      className: "ui-tag-input__input-tag-text",
-      scale: "subhead",
-      fontFace: "circularSTD"
-    }, tag), /*#__PURE__*/React__default.createElement(Icon, {
-      icon: Close,
-      onClick: function onClick() {
-        return handleDeleteTag(index);
-      },
-      className: "ui-tag-input__close-icon"
-    }));
-  }), /*#__PURE__*/React__default.createElement(Box, _extends$1({
-    className: generatedTagInputClasses,
-    is: "input"
-  }, props, inputProps, {
-    onKeyDown: handleKeyDown,
-    onKeyUp: function onKeyUp() {
-      return setIsKeyReleased(true);
-    },
-    value: input,
-    onChange: handleTextChange,
-    autoFocus: true,
-    onFocus: function onFocus(e) {
-      return e.currentTarget.select();
-    }
-  }))));
-};
-TagInput.propTypes = {
-  label: propTypes$1.exports.string,
-  size: propTypes$1.exports.oneOf(["small", "medium", "large", "xlarge", "huge", "massive"]),
-  values: propTypes$1.exports.array,
-  tagDelimiterKey: propTypes$1.exports.oneOf(["enter", "comma", "space"]),
-  onTagAdded: propTypes$1.exports.func,
-  onTagDeleted: propTypes$1.exports.func,
-  onTextChanged: propTypes$1.exports.func,
-  onTagChanged: propTypes$1.exports.func,
-  inputProps: propTypes$1.exports.object,
-  tagProps: propTypes$1.exports.object,
-  tagClassname: propTypes$1.exports.string
-};
-TagInput.defaultProps = {
-  label: "Form Label",
-  size: "medium",
-  values: [],
-  tagDelimiterKey: "enter",
-  inputProps: {
-    placeholder: "Add tag"
-  },
-  onTagDelete: function onTagDelete(index) {
-    console.log(index);
-  }
-};
-
-var _excluded$2 = ["label", "errorMessage", "textAreaClassName", "className", "isHookForm"];
-
-var TextArea = function TextArea(_ref) {
-  var label = _ref.label,
-      errorMessage = _ref.errorMessage,
-      textAreaClassName = _ref.textAreaClassName,
-      className = _ref.className,
-      isHookForm = _ref.isHookForm,
-      props = _objectWithoutProperties(_ref, _excluded$2);
-
-  var generateTextAreaClasses = classNames({
-    "ui-text-area__textarea": true,
-    "has-error": errorMessage
-  }, textAreaClassName);
-  var wrapperClasses = classNames(["ui-text-area__wrapper"], className);
-  return isHookForm ? /*#__PURE__*/React__default.forwardRef(function (_ref2, ref) {
-    var onChange = _ref2.onChange,
-        onBlur = _ref2.onBlur,
-        name = _ref2.name,
-        label = _ref2.label;
-    return /*#__PURE__*/React__default.createElement(Box, null, /*#__PURE__*/React__default.createElement(Box, {
-      is: "label",
-      className: wrapperClasses
-    }, /*#__PURE__*/React__default.createElement(Text$1, {
-      scale: "subhead",
-      className: "ui-text-area__label"
-    }, label)), /*#__PURE__*/React__default.createElement(Box, _extends$1({
-      className: generateTextAreaClasses,
-      is: "textarea"
-    }, props, {
-      ref: ref,
-      onChange: onChange,
-      onBlur: onBlur,
-      name: name
-    })), errorMessage && /*#__PURE__*/React__default.createElement(Box, {
-      className: "ui-text-area__error"
-    }, /*#__PURE__*/React__default.createElement(Icon, {
-      icon: Error$1,
-      className: "ui-text-area__error-icon"
-    }), /*#__PURE__*/React__default.createElement(Text$1, {
-      className: "ui-text-area__error-text",
-      scale: "footnote",
-      fontFace: "circularSTD"
-    }, errorMessage)));
-  }) : /*#__PURE__*/React__default.createElement(Box, null, /*#__PURE__*/React__default.createElement(Box, {
-    is: "label",
-    className: wrapperClasses
-  }, /*#__PURE__*/React__default.createElement(Text$1, {
-    scale: "subhead",
-    className: "ui-text-area__label"
-  }, label)), /*#__PURE__*/React__default.createElement(Box, _extends$1({
-    className: generateTextAreaClasses,
-    is: "textarea"
-  }, props)), errorMessage && /*#__PURE__*/React__default.createElement(Box, {
-    className: "ui-text-area__error"
-  }, /*#__PURE__*/React__default.createElement(Icon, {
-    icon: Error$1,
-    className: "ui-text-area__error-icon"
-  }), /*#__PURE__*/React__default.createElement(Text$1, {
-    className: "ui-text-area__error-text",
-    scale: "footnote",
-    fontFace: "circularSTD"
-  }, errorMessage)));
-};
-TextArea.propTypes = {
-  label: propTypes$1.exports.string,
-  disabled: propTypes$1.exports.bool
-};
-TextArea.defaultProps = {
-  label: "Form Label",
-  disabled: false
 };
 
 var propTypes = {
@@ -32791,7 +31359,7 @@ function arrayEach(array, iteratee) {
   return array;
 }
 
-var defineProperty = (function() {
+var defineProperty$2 = (function() {
   try {
     var func = getNative(Object, 'defineProperty');
     func({}, '', {});
@@ -32809,8 +31377,8 @@ var defineProperty = (function() {
  * @param {*} value The value to assign.
  */
 function baseAssignValue(object, key, value) {
-  if (key == '__proto__' && defineProperty) {
-    defineProperty(object, key, {
+  if (key == '__proto__' && defineProperty$2) {
+    defineProperty$2(object, key, {
       'configurable': true,
       'enumerable': true,
       'value': value,
@@ -34419,7 +32987,7 @@ function baseToString(value) {
  * _.toString([1, 2, 3]);
  * // => '1,2,3'
  */
-function toString(value) {
+function toString$2(value) {
   return value == null ? '' : baseToString(value);
 }
 
@@ -34444,7 +33012,7 @@ function toPath(value) {
   if (isArray(value)) {
     return arrayMap(value, toKey);
   }
-  return isSymbol(value) ? [value] : copyArray(stringToPath(toString(value)));
+  return isSymbol(value) ? [value] : copyArray(stringToPath(toString$2(value)));
 }
 
 var isProduction = process.env.NODE_ENV === 'production';
@@ -35216,7 +33784,7 @@ FieldArrayInner.defaultProps = {
 _objectSpread2({}, propTypes);
 _objectSpread2({}, defaultProps);
 
-var _excluded$1 = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onChange", "onBlur", "name"];
+var _excluded$5 = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onChange", "onBlur", "name"];
 var HookFormTextField = /*#__PURE__*/React__default.forwardRef(function (_ref, ref) {
   var label = _ref.label,
       leftIcon = _ref.leftIcon,
@@ -35231,7 +33799,7 @@ var HookFormTextField = /*#__PURE__*/React__default.forwardRef(function (_ref, r
       var onChange = _ref.onChange,
       onBlur = _ref.onBlur,
       name = _ref.name,
-      props = _objectWithoutProperties(_ref, _excluded$1);
+      props = _objectWithoutProperties(_ref, _excluded$5);
 
   var generateInputFieldClasses = classNames({
     "ui-text-field__input": true,
@@ -35276,6 +33844,1360 @@ var HookFormTextField = /*#__PURE__*/React__default.forwardRef(function (_ref, r
 });
 HookFormTextField.propTypes = _objectSpread2({}, propTypes);
 HookFormTextField.defaultProps = _objectSpread2({}, defaultProps);
+
+var _excluded$4 = ["column"];
+
+var TableHeadCell = function TableHeadCell(_ref) {
+  var column = _ref.column;
+      _objectWithoutProperties(_ref, _excluded$4);
+
+  return /*#__PURE__*/React__default.createElement(Box, null, /*#__PURE__*/React__default.createElement(Box, {
+    className: "ui-table__heading-cell__content"
+  }, /*#__PURE__*/React__default.createElement(Text$1, {
+    marginY: 0,
+    className: "font-weight-600 ui-table__heading-cell-text"
+  }, column.uppercase ? column.display.toUpperCase() : column.display), column.sortable !== false && /*#__PURE__*/React__default.createElement(Box, {
+    className: "ui-table__heading-cell__icon"
+  }, /*#__PURE__*/React__default.createElement(Icon, {
+    icon: ChevronFilledDown,
+    height: "20px",
+    width: "20px",
+    className: "ui-table__heading-cell__icon"
+  }))));
+};
+TableHeadCell.propTypes = {};
+
+var getColumnWidth = function getColumnWidth(column) {
+  var isCheckbox = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var returnedStyles = {
+    "--column_min_width": "120px"
+  };
+
+  if (!isCheckbox) {
+    if (column.width) {
+      returnedStyles["--column_width"] = column.width;
+    }
+
+    if (column.maxWidth) {
+      returnedStyles["--column_max_width"] = column.maxWidth;
+    }
+
+    if (column.minWidth) {
+      returnedStyles["--column_min_width"] = column.minWidth;
+    }
+  } else {
+    returnedStyles = {
+      "--column_width": "50px",
+      "--column_min_width": "50px",
+      "--column_max_width": "50px"
+    };
+  }
+
+  return returnedStyles;
+};
+
+var build = {};
+
+var exportToCsv = {};
+
+(function (exports) {
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var CsvConfigConsts = (function () {
+	    function CsvConfigConsts() {
+	    }
+	    CsvConfigConsts.EOL = "\r\n";
+	    CsvConfigConsts.BOM = "\ufeff";
+	    CsvConfigConsts.DEFAULT_FIELD_SEPARATOR = ',';
+	    CsvConfigConsts.DEFAULT_DECIMAL_SEPARATOR = '.';
+	    CsvConfigConsts.DEFAULT_QUOTE = '"';
+	    CsvConfigConsts.DEFAULT_SHOW_TITLE = false;
+	    CsvConfigConsts.DEFAULT_TITLE = 'My Generated Report';
+	    CsvConfigConsts.DEFAULT_FILENAME = 'generated';
+	    CsvConfigConsts.DEFAULT_SHOW_LABELS = false;
+	    CsvConfigConsts.DEFAULT_USE_TEXT_FILE = false;
+	    CsvConfigConsts.DEFAULT_USE_BOM = true;
+	    CsvConfigConsts.DEFAULT_HEADER = [];
+	    CsvConfigConsts.DEFAULT_KEYS_AS_HEADERS = false;
+	    return CsvConfigConsts;
+	}());
+	exports.CsvConfigConsts = CsvConfigConsts;
+	exports.ConfigDefaults = {
+	    filename: CsvConfigConsts.DEFAULT_FILENAME,
+	    fieldSeparator: CsvConfigConsts.DEFAULT_FIELD_SEPARATOR,
+	    quoteStrings: CsvConfigConsts.DEFAULT_QUOTE,
+	    decimalSeparator: CsvConfigConsts.DEFAULT_DECIMAL_SEPARATOR,
+	    showLabels: CsvConfigConsts.DEFAULT_SHOW_LABELS,
+	    showTitle: CsvConfigConsts.DEFAULT_SHOW_TITLE,
+	    title: CsvConfigConsts.DEFAULT_TITLE,
+	    useTextFile: CsvConfigConsts.DEFAULT_USE_TEXT_FILE,
+	    useBom: CsvConfigConsts.DEFAULT_USE_BOM,
+	    headers: CsvConfigConsts.DEFAULT_HEADER,
+	    useKeysAsHeaders: CsvConfigConsts.DEFAULT_KEYS_AS_HEADERS,
+	};
+	var ExportToCsv = (function () {
+	    function ExportToCsv(options) {
+	        this._csv = "";
+	        var config = options || {};
+	        this._options = objectAssign({}, exports.ConfigDefaults, config);
+	        if (this._options.useKeysAsHeaders
+	            && this._options.headers
+	            && this._options.headers.length > 0) {
+	            console.warn('Option to use object keys as headers was set, but headers were still passed!');
+	        }
+	    }
+	    Object.defineProperty(ExportToCsv.prototype, "options", {
+	        get: function () {
+	            return this._options;
+	        },
+	        set: function (options) {
+	            this._options = objectAssign({}, exports.ConfigDefaults, options);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    /**
+	     * Generate and Download Csv
+	     */
+	    ExportToCsv.prototype.generateCsv = function (jsonData, shouldReturnCsv) {
+	        if (shouldReturnCsv === void 0) { shouldReturnCsv = false; }
+	        // Make sure to reset csv data on each run
+	        this._csv = '';
+	        this._parseData(jsonData);
+	        if (this._options.useBom) {
+	            this._csv += CsvConfigConsts.BOM;
+	        }
+	        if (this._options.showTitle) {
+	            this._csv += this._options.title + '\r\n\n';
+	        }
+	        this._getHeaders();
+	        this._getBody();
+	        if (this._csv == '') {
+	            console.log("Invalid data");
+	            return;
+	        }
+	        // When the consumer asks for the data, exit the function
+	        // by returning the CSV data built at this point
+	        if (shouldReturnCsv) {
+	            return this._csv;
+	        }
+	        // Create CSV blob to download if requesting in the browser and the
+	        // consumer doesn't set the shouldReturnCsv param
+	        var FileType = this._options.useTextFile ? 'plain' : 'csv';
+	        var fileExtension = this._options.useTextFile ? '.txt' : '.csv';
+	        var blob = new Blob([this._csv], { "type": "text/" + FileType + ";charset=utf8;" });
+	        if (navigator.msSaveBlob) {
+	            var filename = this._options.filename.replace(/ /g, "_") + fileExtension;
+	            navigator.msSaveBlob(blob, filename);
+	        }
+	        else {
+	            var attachmentType = this._options.useTextFile ? 'text' : 'csv';
+	            'data:attachment/' + attachmentType + ';charset=utf-8,' + encodeURI(this._csv);
+	            var link = document.createElement("a");
+	            link.href = URL.createObjectURL(blob);
+	            link.setAttribute('visibility', 'hidden');
+	            link.download = this._options.filename.replace(/ /g, "_") + fileExtension;
+	            document.body.appendChild(link);
+	            link.click();
+	            document.body.removeChild(link);
+	        }
+	    };
+	    /**
+	     * Create Headers
+	     */
+	    ExportToCsv.prototype._getHeaders = function () {
+	        if (!this._options.showLabels && !this._options.useKeysAsHeaders) {
+	            return;
+	        }
+	        var useKeysAsHeaders = this._options.useKeysAsHeaders;
+	        var headers = useKeysAsHeaders ? Object.keys(this._data[0]) : this._options.headers;
+	        if (headers.length > 0) {
+	            var row = "";
+	            for (var keyPos = 0; keyPos < headers.length; keyPos++) {
+	                row += headers[keyPos] + this._options.fieldSeparator;
+	            }
+	            row = row.slice(0, -1);
+	            this._csv += row + CsvConfigConsts.EOL;
+	        }
+	    };
+	    /**
+	     * Create Body
+	     */
+	    ExportToCsv.prototype._getBody = function () {
+	        var keys = Object.keys(this._data[0]);
+	        for (var i = 0; i < this._data.length; i++) {
+	            var row = "";
+	            for (var keyPos = 0; keyPos < keys.length; keyPos++) {
+	                var key = keys[keyPos];
+	                row += this._formatData(this._data[i][key]) + this._options.fieldSeparator;
+	            }
+	            row = row.slice(0, -1);
+	            this._csv += row + CsvConfigConsts.EOL;
+	        }
+	    };
+	    /**
+	     * Format Data
+	     * @param {any} data
+	     */
+	    ExportToCsv.prototype._formatData = function (data) {
+	        if (this._options.decimalSeparator === 'locale' && this._isFloat(data)) {
+	            return data.toLocaleString();
+	        }
+	        if (this._options.decimalSeparator !== '.' && this._isFloat(data)) {
+	            return data.toString().replace('.', this._options.decimalSeparator);
+	        }
+	        if (typeof data === 'string') {
+	            data = data.replace(/"/g, '""');
+	            if (this._options.quoteStrings || data.indexOf(',') > -1 || data.indexOf('\n') > -1 || data.indexOf('\r') > -1) {
+	                data = this._options.quoteStrings + data + this._options.quoteStrings;
+	            }
+	            return data;
+	        }
+	        if (typeof data === 'boolean') {
+	            return data ? 'TRUE' : 'FALSE';
+	        }
+	        return data;
+	    };
+	    /**
+	     * Check if is Float
+	     * @param {any} input
+	     */
+	    ExportToCsv.prototype._isFloat = function (input) {
+	        return +input === input && (!isFinite(input) || Boolean(input % 1));
+	    };
+	    /**
+	     * Parse the collection given to it
+	     *
+	     * @private
+	     * @param {*} jsonData
+	     * @returns {any[]}
+	     * @memberof ExportToCsv
+	     */
+	    ExportToCsv.prototype._parseData = function (jsonData) {
+	        this._data = typeof jsonData != 'object' ? JSON.parse(jsonData) : jsonData;
+	        return this._data;
+	    };
+	    return ExportToCsv;
+	}());
+	exports.ExportToCsv = ExportToCsv;
+	var hasOwnProperty = Object.prototype.hasOwnProperty;
+	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+	/**
+	 * Convet to Object
+	 * @param {any} val
+	 */
+	function toObject(val) {
+	    if (val === null || val === undefined) {
+	        throw new TypeError('Object.assign cannot be called with null or undefined');
+	    }
+	    return Object(val);
+	}
+	/**
+	 * Assign data  to new Object
+	 * @param {any}   target
+	 * @param {any[]} ...source
+	 */
+	function objectAssign(target) {
+	    var from;
+	    var to = toObject(target);
+	    var symbols;
+	    for (var s = 1; s < arguments.length; s++) {
+	        from = Object(arguments[s]);
+	        for (var key in from) {
+	            if (hasOwnProperty.call(from, key)) {
+	                to[key] = from[key];
+	            }
+	        }
+	        if (Object.getOwnPropertySymbols) {
+	            symbols = Object.getOwnPropertySymbols(from);
+	            for (var i = 0; i < symbols.length; i++) {
+	                if (propIsEnumerable.call(from, symbols[i])) {
+	                    to[symbols[i]] = from[symbols[i]];
+	                }
+	            }
+	        }
+	    }
+	    return to;
+	}
+	
+} (exportToCsv));
+
+(function (exports) {
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	Object.defineProperty(exports, "__esModule", { value: true });
+	__export(exportToCsv);
+	
+} (build));
+
+function useExportCsv(data, generatedCsvName) {
+  var options = {
+    fieldSeparator: ",",
+    quoteStrings: '"',
+    decimalSeparator: ".",
+    showLabels: true,
+    showTitle: true,
+    title: generatedCsvName,
+    useTextFile: false,
+    useBom: true,
+    useKeysAsHeaders: true
+  };
+  var csvExporter = new build.ExportToCsv(options);
+
+  var exportCsv = function exportCsv() {
+    return csvExporter.generateCsv(data);
+  };
+
+  return {
+    exportCsv: exportCsv
+  };
+}
+
+var $$2 = _export;
+var uncurryThis$2 = functionUncurryThis;
+var getOwnPropertyDescriptor$1 = objectGetOwnPropertyDescriptor.f;
+var toLength$1 = toLength$5;
+var toString$1 = toString$d;
+var notARegExp$1 = notARegexp;
+var requireObjectCoercible$1 = requireObjectCoercible$a;
+var correctIsRegExpLogic$1 = correctIsRegexpLogic;
+
+// eslint-disable-next-line es-x/no-string-prototype-startswith -- safe
+var un$StartsWith = uncurryThis$2(''.startsWith);
+var stringSlice = uncurryThis$2(''.slice);
+var min$1 = Math.min;
+
+var CORRECT_IS_REGEXP_LOGIC$1 = correctIsRegExpLogic$1('startsWith');
+// https://github.com/zloirock/core-js/pull/702
+var MDN_POLYFILL_BUG$1 = !CORRECT_IS_REGEXP_LOGIC$1 && !!function () {
+  var descriptor = getOwnPropertyDescriptor$1(String.prototype, 'startsWith');
+  return descriptor && !descriptor.writable;
+}();
+
+// `String.prototype.startsWith` method
+// https://tc39.es/ecma262/#sec-string.prototype.startswith
+$$2({ target: 'String', proto: true, forced: !MDN_POLYFILL_BUG$1 && !CORRECT_IS_REGEXP_LOGIC$1 }, {
+  startsWith: function startsWith(searchString /* , position = 0 */) {
+    var that = toString$1(requireObjectCoercible$1(this));
+    notARegExp$1(searchString);
+    var index = toLength$1(min$1(arguments.length > 1 ? arguments[1] : undefined, that.length));
+    var search = toString$1(searchString);
+    return un$StartsWith
+      ? un$StartsWith(that, search, index)
+      : stringSlice(that, index, index + search.length) === search;
+  }
+});
+
+var $$1 = _export;
+var uncurryThis$1 = functionUncurryThis;
+var getOwnPropertyDescriptor = objectGetOwnPropertyDescriptor.f;
+var toLength = toLength$5;
+var toString = toString$d;
+var notARegExp = notARegexp;
+var requireObjectCoercible = requireObjectCoercible$a;
+var correctIsRegExpLogic = correctIsRegexpLogic;
+
+// eslint-disable-next-line es-x/no-string-prototype-endswith -- safe
+var un$EndsWith = uncurryThis$1(''.endsWith);
+var slice = uncurryThis$1(''.slice);
+var min = Math.min;
+
+var CORRECT_IS_REGEXP_LOGIC = correctIsRegExpLogic('endsWith');
+// https://github.com/zloirock/core-js/pull/702
+var MDN_POLYFILL_BUG = !CORRECT_IS_REGEXP_LOGIC && !!function () {
+  var descriptor = getOwnPropertyDescriptor(String.prototype, 'endsWith');
+  return descriptor && !descriptor.writable;
+}();
+
+// `String.prototype.endsWith` method
+// https://tc39.es/ecma262/#sec-string.prototype.endswith
+$$1({ target: 'String', proto: true, forced: !MDN_POLYFILL_BUG && !CORRECT_IS_REGEXP_LOGIC }, {
+  endsWith: function endsWith(searchString /* , endPosition = @length */) {
+    var that = toString(requireObjectCoercible(this));
+    notARegExp(searchString);
+    var endPosition = arguments.length > 1 ? arguments[1] : undefined;
+    var len = that.length;
+    var end = endPosition === undefined ? len : min(toLength(endPosition), len);
+    var search = toString(searchString);
+    return un$EndsWith
+      ? un$EndsWith(that, search, end)
+      : slice(that, end - search.length, end) === search;
+  }
+});
+
+var search = function search(_search, rows, columnHashMap) {
+  var caseSensitiveSearch = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+  return rows.filter(function (row) {
+    for (var _i = 0, _Object$keys = Object.keys(row); _i < _Object$keys.length; _i++) {
+      var key = _Object$keys[_i];
+
+      if (columnHashMap[key].filterable) {
+        var hayStack = caseSensitiveSearch ? row[key] : row[key].toLowerCase();
+        var needle = caseSensitiveSearch ? _search : _search.toLowerCase();
+
+        if (hayStack.includes(needle)) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  });
+};
+
+var uniqueRandomString = (function () {
+  var length = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 20;
+  var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var permittedCharacters;
+  var time = "".concat(new Date().getTime());
+
+  switch (type) {
+    case 1:
+      permittedCharacters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-_";
+      break;
+
+    case 2:
+      permittedCharacters = "0123456789abcdefghijklmnopqrstuvwxyz-_";
+      break;
+
+    case 3:
+      permittedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_";
+      break;
+
+    case 4:
+      permittedCharacters = "0123456789-_";
+      break;
+
+    case 5:
+      permittedCharacters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+      break;
+
+    case 6:
+      permittedCharacters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      break;
+
+    case 7:
+      permittedCharacters = "0123456789abcdefghijklmnopqrstuvwxyz";
+      break;
+
+    case 8:
+      permittedCharacters = "abcdefghijklmnopqrstuvwxyz";
+      break;
+
+    default:
+      permittedCharacters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_";
+      break;
+  }
+
+  var string = "";
+  var randomLength = length - time.length;
+
+  for (var i = 0; i < randomLength; i++) {
+    string += permittedCharacters[Math.floor(Math.random() * permittedCharacters.length)];
+  }
+
+  var index = Math.floor(Math.random() * randomLength) + 1;
+  var end = string.substr(index);
+  var start = string.substr(3, index);
+  var finalString = start + time + end;
+  return finalString;
+});
+
+var _excluded$3 = ["showCheckboxes", "itemsPerPage", "paginate", "paginateRight", "initialCurrentPage", "currentPageSiblings", "asyncPagination", "columns", "data", "search", "enableCsvExport", "enableCustomizeView", "searchPlaceholder", "generatedCsvName", "loading", "checkboxDataSelector", "buttonActionsAlignment", "searchAlignment", "caseSensitiveSearch", "onPageChange", "onRowSelected"];
+
+var Table = function Table(_ref) {
+  var showCheckboxes = _ref.showCheckboxes,
+      itemsPerPage = _ref.itemsPerPage,
+      paginate = _ref.paginate,
+      paginateRight = _ref.paginateRight,
+      initialCurrentPage = _ref.initialCurrentPage,
+      currentPageSiblings = _ref.currentPageSiblings,
+      asyncPagination = _ref.asyncPagination,
+      columns = _ref.columns,
+      data = _ref.data,
+      search$1 = _ref.search,
+      enableCsvExport = _ref.enableCsvExport,
+      enableCustomizeView = _ref.enableCustomizeView;
+      _ref.searchPlaceholder;
+      var generatedCsvName = _ref.generatedCsvName;
+      _ref.loading;
+      var checkboxDataSelector = _ref.checkboxDataSelector,
+      buttonActionsAlignment = _ref.buttonActionsAlignment,
+      searchAlignment = _ref.searchAlignment,
+      caseSensitiveSearch = _ref.caseSensitiveSearch,
+      onPageChange = _ref.onPageChange,
+      onRowSelected = _ref.onRowSelected;
+      _objectWithoutProperties(_ref, _excluded$3);
+
+  var _useState = useState(),
+      _useState2 = _slicedToArray$1(_useState, 2),
+      internalCurrentPage = _useState2[0],
+      setInternalCurrentPage = _useState2[1];
+
+  var _useExportCsv = useExportCsv(data, generatedCsvName),
+      exportCsv = _useExportCsv.exportCsv;
+
+  var _useState3 = useState([]),
+      _useState4 = _slicedToArray$1(_useState3, 2),
+      processedData = _useState4[0],
+      setProcessedData = _useState4[1];
+
+  var _useState5 = useState(""),
+      _useState6 = _slicedToArray$1(_useState5, 2),
+      searchValue = _useState6[0],
+      setSearchValue = _useState6[1];
+
+  var _useState7 = useState([]),
+      _useState8 = _slicedToArray$1(_useState7, 2),
+      columnHashMap = _useState8[0],
+      setColumnHashMap = _useState8[1];
+
+  var _useState9 = useState([]),
+      _useState10 = _slicedToArray$1(_useState9, 2),
+      selectedRows = _useState10[0],
+      setSelectedRows = _useState10[1];
+
+  useEffect(function () {
+    setInternalCurrentPage(initialCurrentPage);
+  }, []);
+  useEffect(function () {
+    var hashMap = {};
+    columns.forEach(function (column) {
+      hashMap[column.dataSelector] = column;
+    });
+    setColumnHashMap(hashMap);
+  }, [columns]);
+  useEffect(function () {
+    var detachedData = _toConsumableArray(data);
+
+    if (searchValue) {
+      detachedData = search(searchValue, detachedData, columnHashMap, caseSensitiveSearch);
+    }
+
+    setProcessedData(detachedData.map(function (item) {
+      return _objectSpread2(_objectSpread2({}, item), {}, {
+        uuuid: uniqueRandomString(30, 8)
+      });
+    }));
+  }, [data, searchValue, columnHashMap]);
+  useEffect(function () {
+    if (onRowSelected && typeof onRowSelected === "function") {
+      onRowSelected(selectedRows);
+    }
+  }, [selectedRows, onRowSelected]);
+  useEffect(function () {
+    if (onPageChange && typeof onPageChange === "function") {
+      onPageChange(internalCurrentPage);
+    }
+  }, [internalCurrentPage, onPageChange]);
+  var filteredColumns = columns.filter(function (column) {
+    return column.visible !== false;
+  });
+  var paginatedData = paginate && !asyncPagination ? _toConsumableArray(processedData).splice((internalCurrentPage - 1) * itemsPerPage, itemsPerPage) : _toConsumableArray(processedData);
+  var mappedHeadCells = filteredColumns.map(function (visibleColumn, index) {
+    return /*#__PURE__*/React__default.createElement(Box, {
+      is: "td",
+      key: "".concat(index, "-heading-cell"),
+      className: "ui-table__heading-cell",
+      style: _objectSpread2({}, getColumnWidth(visibleColumn))
+    }, /*#__PURE__*/React__default.createElement(TableHeadCell, {
+      column: visibleColumn
+    }));
+  });
+
+  var handlePageChange = function handlePageChange(page) {
+    setInternalCurrentPage(page);
+  };
+
+  var totalPages = Math.ceil(data.length / itemsPerPage);
+
+  var toggleSelectedRows = function toggleSelectedRows(uuuid) {
+    var newSelectedRows = _toConsumableArray(selectedRows);
+
+    if (newSelectedRows.includes(uuuid)) {
+      newSelectedRows.splice(newSelectedRows.indexOf(uuuid), 1);
+    } else {
+      newSelectedRows.push(uuuid);
+    }
+
+    setSelectedRows(newSelectedRows);
+  };
+
+  var toggleAllRows = function toggleAllRows() {
+    if (selectedRows.length === paginatedData.length) {
+      setSelectedRows([]);
+    } else {
+      setSelectedRows(paginatedData.map(function (datum) {
+        return datum.uuuid;
+      }));
+    }
+  };
+
+  var mappedRows = paginatedData.map(function (datum, index) {
+    return /*#__PURE__*/React__default.createElement(Box, {
+      is: "tr",
+      className: classNames({
+        "ui-table__body-row": true,
+        checked: selectedRows.includes(datum[checkboxDataSelector])
+      }),
+      key: "".concat(index, "-row")
+    }, showCheckboxes && /*#__PURE__*/React__default.createElement(Box, {
+      is: "td",
+      className: "ui-table__body-cell is-checkbox",
+      style: _objectSpread2({}, getColumnWidth(null, true))
+    }, /*#__PURE__*/React__default.createElement(Checkbox, {
+      value: datum.uuuid,
+      checked: selectedRows.includes(datum.uuuid),
+      onChange: function onChange() {
+        return toggleSelectedRows(datum.uuuid);
+      }
+    })), filteredColumns.map(function (column, jindex) {
+      return /*#__PURE__*/React__default.createElement(Box, {
+        is: "td",
+        key: "".concat(jindex, "-").concat(index, "-cell"),
+        className: "ui-table__body-cell",
+        style: _objectSpread2({}, getColumnWidth(column))
+      }, typeof datum[column.dataSelector] === "string" ? /*#__PURE__*/React__default.createElement(Text$1, {
+        fontFace: "circularSTD",
+        marginY: 0,
+        className: "ui-table__body-cell-text"
+      }, datum[column.dataSelector]) : datum[column.dataSelector]);
+    }));
+  });
+  var buttonActionsEnabled = enableCustomizeView && enableCsvExport;
+  return /*#__PURE__*/React__default.createElement(Box, {
+    className: "ui-table__container"
+  }, /*#__PURE__*/React__default.createElement(Box, {
+    className: "ui-table__header"
+  }, search$1 && /*#__PURE__*/React__default.createElement(Box, {
+    className: classNames(_defineProperty$w({
+      "ui-table__header__search-wrapper": true
+    }, searchAlignment, buttonActionsEnabled ? false : searchAlignment))
+  }, /*#__PURE__*/React__default.createElement(TextField, {
+    leftIcon: Search,
+    placeholder: "Placeholder",
+    size: "large",
+    value: searchValue,
+    onChange: function onChange(e) {
+      return setSearchValue(e.target.value);
+    }
+  })), /*#__PURE__*/React__default.createElement(Box, {
+    className: classNames(_defineProperty$w({
+      "ui-table__header-btns": true
+    }, buttonActionsAlignment, search$1 ? false : buttonActionsAlignment))
+  }, enableCustomizeView && /*#__PURE__*/React__default.createElement(Button, {
+    size: "medium"
+  }, "Customize view"), enableCsvExport && /*#__PURE__*/React__default.createElement(Button, {
+    leftIcon: ExternalLink,
+    size: "medium",
+    onClick: exportCsv
+  }, "Export"))), /*#__PURE__*/React__default.createElement(Box, {
+    className: "ui-table__wrapper"
+  }, /*#__PURE__*/React__default.createElement(Box, {
+    is: "table",
+    className: "ui-table"
+  }, /*#__PURE__*/React__default.createElement(Box, {
+    is: "thead",
+    className: "ui-table__heading"
+  }, /*#__PURE__*/React__default.createElement(Box, {
+    is: "tr",
+    className: "ui-table__heading-row"
+  }, showCheckboxes && /*#__PURE__*/React__default.createElement(Box, {
+    is: "td",
+    className: "ui-table__heading-cell is-checkbox",
+    style: _objectSpread2({}, getColumnWidth(null, true))
+  }, /*#__PURE__*/React__default.createElement(Checkbox, {
+    checked: selectedRows.length === paginatedData.length,
+    onChange: toggleAllRows
+  })), mappedHeadCells)), /*#__PURE__*/React__default.createElement(Box, {
+    is: "tbody",
+    className: "ui-table__body"
+  }, mappedRows))), paginate && /*#__PURE__*/React__default.createElement(Box, {
+    className: classNames({
+      "ui-table__pagination": true,
+      right: paginateRight
+    }),
+    marginTop: "1rem"
+  }, /*#__PURE__*/React__default.createElement(Pagination, {
+    currentPage: internalCurrentPage,
+    currentPageSiblings: currentPageSiblings,
+    totalPages: totalPages,
+    onPageChange: handlePageChange
+  })));
+};
+Table.propTypes = {
+  showCheckboxes: propTypes$1.exports.bool,
+  itemsPerPage: propTypes$1.exports.number,
+  paginate: propTypes$1.exports.bool,
+  paginateRight: propTypes$1.exports.bool,
+  currentPage: propTypes$1.exports.number,
+  currentPageSiblings: propTypes$1.exports.number,
+  asyncPagination: propTypes$1.exports.bool,
+  columns: propTypes$1.exports.array,
+  data: propTypes$1.exports.array,
+  search: propTypes$1.exports.bool,
+  enableCsvExport: propTypes$1.exports.bool,
+  enableCustomizeView: propTypes$1.exports.bool,
+  searchPlaceholder: propTypes$1.exports.string,
+  generatedCsvName: propTypes$1.exports.string,
+  loading: propTypes$1.exports.bool,
+  checkboxDataSelector: propTypes$1.exports.string,
+  buttonActionsAlignment: propTypes$1.exports.oneOf(["left", "right"]),
+  searchAlignment: propTypes$1.exports.oneOf(["left", "right"]),
+  onPageChange: propTypes$1.exports.func,
+  caseSensitiveSearch: propTypes$1.exports.bool,
+  onRowSelected: propTypes$1.exports.func
+};
+Table.defaultProps = {
+  itemsPerPage: 10,
+  showCheckboxes: false,
+  paginate: false,
+  paginateRight: false,
+  currentPage: 1,
+  currentPageSiblings: 3,
+  asyncPagination: false,
+  generatedCsvName: "Exported CSV",
+  searchPlaceholder: "Search",
+  checkboxDataSelector: "uuuid",
+  buttonActionsAlignment: "left",
+  searchAlignment: "left",
+  caseSensitiveSearch: false
+};
+
+// iterable DOM collections
+// flag - `iterable` interface - 'entries', 'keys', 'values', 'forEach' methods
+var domIterables = {
+  CSSRuleList: 0,
+  CSSStyleDeclaration: 0,
+  CSSValueList: 0,
+  ClientRectList: 0,
+  DOMRectList: 0,
+  DOMStringList: 0,
+  DOMTokenList: 1,
+  DataTransferItemList: 0,
+  FileList: 0,
+  HTMLAllCollection: 0,
+  HTMLCollection: 0,
+  HTMLFormElement: 0,
+  HTMLSelectElement: 0,
+  MediaList: 0,
+  MimeTypeArray: 0,
+  NamedNodeMap: 0,
+  NodeList: 1,
+  PaintRequestList: 0,
+  Plugin: 0,
+  PluginArray: 0,
+  SVGLengthList: 0,
+  SVGNumberList: 0,
+  SVGPathSegList: 0,
+  SVGPointList: 0,
+  SVGStringList: 0,
+  SVGTransformList: 0,
+  SourceBufferList: 0,
+  StyleSheetList: 0,
+  TextTrackCueList: 0,
+  TextTrackList: 0,
+  TouchList: 0
+};
+
+// in old WebKit versions, `element.classList` is not an instance of global `DOMTokenList`
+var documentCreateElement = documentCreateElement$2;
+
+var classList = documentCreateElement('span').classList;
+var DOMTokenListPrototype$1 = classList && classList.constructor && classList.constructor.prototype;
+
+var domTokenListPrototype = DOMTokenListPrototype$1 === Object.prototype ? undefined : DOMTokenListPrototype$1;
+
+var iterators = {};
+
+var fails$1 = fails$n;
+
+var correctPrototypeGetter = !fails$1(function () {
+  function F() { /* empty */ }
+  F.prototype.constructor = null;
+  // eslint-disable-next-line es-x/no-object-getprototypeof -- required for testing
+  return Object.getPrototypeOf(new F()) !== F.prototype;
+});
+
+var hasOwn$1 = hasOwnProperty_1;
+var isCallable$3 = isCallable$k;
+var toObject = toObject$5;
+var sharedKey = sharedKey$3;
+var CORRECT_PROTOTYPE_GETTER = correctPrototypeGetter;
+
+var IE_PROTO = sharedKey('IE_PROTO');
+var $Object = Object;
+var ObjectPrototype = $Object.prototype;
+
+// `Object.getPrototypeOf` method
+// https://tc39.es/ecma262/#sec-object.getprototypeof
+// eslint-disable-next-line es-x/no-object-getprototypeof -- safe
+var objectGetPrototypeOf = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function (O) {
+  var object = toObject(O);
+  if (hasOwn$1(object, IE_PROTO)) return object[IE_PROTO];
+  var constructor = object.constructor;
+  if (isCallable$3(constructor) && object instanceof constructor) {
+    return constructor.prototype;
+  } return object instanceof $Object ? ObjectPrototype : null;
+};
+
+var fails = fails$n;
+var isCallable$2 = isCallable$k;
+var getPrototypeOf$1 = objectGetPrototypeOf;
+var defineBuiltIn$1 = defineBuiltIn$4;
+var wellKnownSymbol$3 = wellKnownSymbol$d;
+
+var ITERATOR$2 = wellKnownSymbol$3('iterator');
+var BUGGY_SAFARI_ITERATORS$1 = false;
+
+// `%IteratorPrototype%` object
+// https://tc39.es/ecma262/#sec-%iteratorprototype%-object
+var IteratorPrototype$2, PrototypeOfArrayIteratorPrototype, arrayIterator;
+
+/* eslint-disable es-x/no-array-prototype-keys -- safe */
+if ([].keys) {
+  arrayIterator = [].keys();
+  // Safari 8 has buggy iterators w/o `next`
+  if (!('next' in arrayIterator)) BUGGY_SAFARI_ITERATORS$1 = true;
+  else {
+    PrototypeOfArrayIteratorPrototype = getPrototypeOf$1(getPrototypeOf$1(arrayIterator));
+    if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype$2 = PrototypeOfArrayIteratorPrototype;
+  }
+}
+
+var NEW_ITERATOR_PROTOTYPE = IteratorPrototype$2 == undefined || fails(function () {
+  var test = {};
+  // FF44- legacy iterators case
+  return IteratorPrototype$2[ITERATOR$2].call(test) !== test;
+});
+
+if (NEW_ITERATOR_PROTOTYPE) IteratorPrototype$2 = {};
+
+// `%IteratorPrototype%[@@iterator]()` method
+// https://tc39.es/ecma262/#sec-%iteratorprototype%-@@iterator
+if (!isCallable$2(IteratorPrototype$2[ITERATOR$2])) {
+  defineBuiltIn$1(IteratorPrototype$2, ITERATOR$2, function () {
+    return this;
+  });
+}
+
+var iteratorsCore = {
+  IteratorPrototype: IteratorPrototype$2,
+  BUGGY_SAFARI_ITERATORS: BUGGY_SAFARI_ITERATORS$1
+};
+
+var defineProperty$1 = objectDefineProperty.f;
+var hasOwn = hasOwnProperty_1;
+var wellKnownSymbol$2 = wellKnownSymbol$d;
+
+var TO_STRING_TAG$1 = wellKnownSymbol$2('toStringTag');
+
+var setToStringTag$2 = function (target, TAG, STATIC) {
+  if (target && !STATIC) target = target.prototype;
+  if (target && !hasOwn(target, TO_STRING_TAG$1)) {
+    defineProperty$1(target, TO_STRING_TAG$1, { configurable: true, value: TAG });
+  }
+};
+
+var IteratorPrototype$1 = iteratorsCore.IteratorPrototype;
+var create = objectCreate$1;
+var createPropertyDescriptor = createPropertyDescriptor$4;
+var setToStringTag$1 = setToStringTag$2;
+var Iterators$2 = iterators;
+
+var returnThis$1 = function () { return this; };
+
+var createIteratorConstructor$1 = function (IteratorConstructor, NAME, next, ENUMERABLE_NEXT) {
+  var TO_STRING_TAG = NAME + ' Iterator';
+  IteratorConstructor.prototype = create(IteratorPrototype$1, { next: createPropertyDescriptor(+!ENUMERABLE_NEXT, next) });
+  setToStringTag$1(IteratorConstructor, TO_STRING_TAG, false);
+  Iterators$2[TO_STRING_TAG] = returnThis$1;
+  return IteratorConstructor;
+};
+
+var isCallable$1 = isCallable$k;
+
+var $String = String;
+var $TypeError = TypeError;
+
+var aPossiblePrototype$1 = function (argument) {
+  if (typeof argument == 'object' || isCallable$1(argument)) return argument;
+  throw $TypeError("Can't set " + $String(argument) + ' as a prototype');
+};
+
+/* eslint-disable no-proto -- safe */
+
+var uncurryThis = functionUncurryThis;
+var anObject = anObject$b;
+var aPossiblePrototype = aPossiblePrototype$1;
+
+// `Object.setPrototypeOf` method
+// https://tc39.es/ecma262/#sec-object.setprototypeof
+// Works with __proto__ only. Old v8 can't work with null proto objects.
+// eslint-disable-next-line es-x/no-object-setprototypeof -- safe
+var objectSetPrototypeOf = Object.setPrototypeOf || ('__proto__' in {} ? function () {
+  var CORRECT_SETTER = false;
+  var test = {};
+  var setter;
+  try {
+    // eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
+    setter = uncurryThis(Object.getOwnPropertyDescriptor(Object.prototype, '__proto__').set);
+    setter(test, []);
+    CORRECT_SETTER = test instanceof Array;
+  } catch (error) { /* empty */ }
+  return function setPrototypeOf(O, proto) {
+    anObject(O);
+    aPossiblePrototype(proto);
+    if (CORRECT_SETTER) setter(O, proto);
+    else O.__proto__ = proto;
+    return O;
+  };
+}() : undefined);
+
+var $ = _export;
+var call = functionCall;
+var FunctionName = functionName;
+var isCallable = isCallable$k;
+var createIteratorConstructor = createIteratorConstructor$1;
+var getPrototypeOf = objectGetPrototypeOf;
+var setPrototypeOf = objectSetPrototypeOf;
+var setToStringTag = setToStringTag$2;
+var createNonEnumerableProperty$1 = createNonEnumerableProperty$5;
+var defineBuiltIn = defineBuiltIn$4;
+var wellKnownSymbol$1 = wellKnownSymbol$d;
+var Iterators$1 = iterators;
+var IteratorsCore = iteratorsCore;
+
+var PROPER_FUNCTION_NAME = FunctionName.PROPER;
+var CONFIGURABLE_FUNCTION_NAME = FunctionName.CONFIGURABLE;
+var IteratorPrototype = IteratorsCore.IteratorPrototype;
+var BUGGY_SAFARI_ITERATORS = IteratorsCore.BUGGY_SAFARI_ITERATORS;
+var ITERATOR$1 = wellKnownSymbol$1('iterator');
+var KEYS = 'keys';
+var VALUES = 'values';
+var ENTRIES = 'entries';
+
+var returnThis = function () { return this; };
+
+var defineIterator$1 = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, IS_SET, FORCED) {
+  createIteratorConstructor(IteratorConstructor, NAME, next);
+
+  var getIterationMethod = function (KIND) {
+    if (KIND === DEFAULT && defaultIterator) return defaultIterator;
+    if (!BUGGY_SAFARI_ITERATORS && KIND in IterablePrototype) return IterablePrototype[KIND];
+    switch (KIND) {
+      case KEYS: return function keys() { return new IteratorConstructor(this, KIND); };
+      case VALUES: return function values() { return new IteratorConstructor(this, KIND); };
+      case ENTRIES: return function entries() { return new IteratorConstructor(this, KIND); };
+    } return function () { return new IteratorConstructor(this); };
+  };
+
+  var TO_STRING_TAG = NAME + ' Iterator';
+  var INCORRECT_VALUES_NAME = false;
+  var IterablePrototype = Iterable.prototype;
+  var nativeIterator = IterablePrototype[ITERATOR$1]
+    || IterablePrototype['@@iterator']
+    || DEFAULT && IterablePrototype[DEFAULT];
+  var defaultIterator = !BUGGY_SAFARI_ITERATORS && nativeIterator || getIterationMethod(DEFAULT);
+  var anyNativeIterator = NAME == 'Array' ? IterablePrototype.entries || nativeIterator : nativeIterator;
+  var CurrentIteratorPrototype, methods, KEY;
+
+  // fix native
+  if (anyNativeIterator) {
+    CurrentIteratorPrototype = getPrototypeOf(anyNativeIterator.call(new Iterable()));
+    if (CurrentIteratorPrototype !== Object.prototype && CurrentIteratorPrototype.next) {
+      if (getPrototypeOf(CurrentIteratorPrototype) !== IteratorPrototype) {
+        if (setPrototypeOf) {
+          setPrototypeOf(CurrentIteratorPrototype, IteratorPrototype);
+        } else if (!isCallable(CurrentIteratorPrototype[ITERATOR$1])) {
+          defineBuiltIn(CurrentIteratorPrototype, ITERATOR$1, returnThis);
+        }
+      }
+      // Set @@toStringTag to native iterators
+      setToStringTag(CurrentIteratorPrototype, TO_STRING_TAG, true);
+    }
+  }
+
+  // fix Array.prototype.{ values, @@iterator }.name in V8 / FF
+  if (PROPER_FUNCTION_NAME && DEFAULT == VALUES && nativeIterator && nativeIterator.name !== VALUES) {
+    if (CONFIGURABLE_FUNCTION_NAME) {
+      createNonEnumerableProperty$1(IterablePrototype, 'name', VALUES);
+    } else {
+      INCORRECT_VALUES_NAME = true;
+      defaultIterator = function values() { return call(nativeIterator, this); };
+    }
+  }
+
+  // export additional methods
+  if (DEFAULT) {
+    methods = {
+      values: getIterationMethod(VALUES),
+      keys: IS_SET ? defaultIterator : getIterationMethod(KEYS),
+      entries: getIterationMethod(ENTRIES)
+    };
+    if (FORCED) for (KEY in methods) {
+      if (BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME || !(KEY in IterablePrototype)) {
+        defineBuiltIn(IterablePrototype, KEY, methods[KEY]);
+      }
+    } else $({ target: NAME, proto: true, forced: BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME }, methods);
+  }
+
+  // define iterator
+  if (IterablePrototype[ITERATOR$1] !== defaultIterator) {
+    defineBuiltIn(IterablePrototype, ITERATOR$1, defaultIterator, { name: DEFAULT });
+  }
+  Iterators$1[NAME] = defaultIterator;
+
+  return methods;
+};
+
+var toIndexedObject = toIndexedObject$5;
+var addToUnscopables = addToUnscopables$2;
+var Iterators = iterators;
+var InternalStateModule = internalState;
+var defineProperty = objectDefineProperty.f;
+var defineIterator = defineIterator$1;
+var DESCRIPTORS = descriptors;
+
+var ARRAY_ITERATOR = 'Array Iterator';
+var setInternalState = InternalStateModule.set;
+var getInternalState = InternalStateModule.getterFor(ARRAY_ITERATOR);
+
+// `Array.prototype.entries` method
+// https://tc39.es/ecma262/#sec-array.prototype.entries
+// `Array.prototype.keys` method
+// https://tc39.es/ecma262/#sec-array.prototype.keys
+// `Array.prototype.values` method
+// https://tc39.es/ecma262/#sec-array.prototype.values
+// `Array.prototype[@@iterator]` method
+// https://tc39.es/ecma262/#sec-array.prototype-@@iterator
+// `CreateArrayIterator` internal method
+// https://tc39.es/ecma262/#sec-createarrayiterator
+var es_array_iterator = defineIterator(Array, 'Array', function (iterated, kind) {
+  setInternalState(this, {
+    type: ARRAY_ITERATOR,
+    target: toIndexedObject(iterated), // target
+    index: 0,                          // next index
+    kind: kind                         // kind
+  });
+// `%ArrayIteratorPrototype%.next` method
+// https://tc39.es/ecma262/#sec-%arrayiteratorprototype%.next
+}, function () {
+  var state = getInternalState(this);
+  var target = state.target;
+  var kind = state.kind;
+  var index = state.index++;
+  if (!target || index >= target.length) {
+    state.target = undefined;
+    return { value: undefined, done: true };
+  }
+  if (kind == 'keys') return { value: index, done: false };
+  if (kind == 'values') return { value: target[index], done: false };
+  return { value: [index, target[index]], done: false };
+}, 'values');
+
+// argumentsList[@@iterator] is %ArrayProto_values%
+// https://tc39.es/ecma262/#sec-createunmappedargumentsobject
+// https://tc39.es/ecma262/#sec-createmappedargumentsobject
+var values = Iterators.Arguments = Iterators.Array;
+
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
+addToUnscopables('keys');
+addToUnscopables('values');
+addToUnscopables('entries');
+
+// V8 ~ Chrome 45- bug
+if (DESCRIPTORS && values.name !== 'values') try {
+  defineProperty(values, 'name', { value: 'values' });
+} catch (error) { /* empty */ }
+
+var global$1 = global$i;
+var DOMIterables = domIterables;
+var DOMTokenListPrototype = domTokenListPrototype;
+var ArrayIteratorMethods = es_array_iterator;
+var createNonEnumerableProperty = createNonEnumerableProperty$5;
+var wellKnownSymbol = wellKnownSymbol$d;
+
+var ITERATOR = wellKnownSymbol('iterator');
+var TO_STRING_TAG = wellKnownSymbol('toStringTag');
+var ArrayValues = ArrayIteratorMethods.values;
+
+var handlePrototype = function (CollectionPrototype, COLLECTION_NAME) {
+  if (CollectionPrototype) {
+    // some Chrome versions have non-configurable methods on DOMTokenList
+    if (CollectionPrototype[ITERATOR] !== ArrayValues) try {
+      createNonEnumerableProperty(CollectionPrototype, ITERATOR, ArrayValues);
+    } catch (error) {
+      CollectionPrototype[ITERATOR] = ArrayValues;
+    }
+    if (!CollectionPrototype[TO_STRING_TAG]) {
+      createNonEnumerableProperty(CollectionPrototype, TO_STRING_TAG, COLLECTION_NAME);
+    }
+    if (DOMIterables[COLLECTION_NAME]) for (var METHOD_NAME in ArrayIteratorMethods) {
+      // some Chrome versions have non-configurable methods on DOMTokenList
+      if (CollectionPrototype[METHOD_NAME] !== ArrayIteratorMethods[METHOD_NAME]) try {
+        createNonEnumerableProperty(CollectionPrototype, METHOD_NAME, ArrayIteratorMethods[METHOD_NAME]);
+      } catch (error) {
+        CollectionPrototype[METHOD_NAME] = ArrayIteratorMethods[METHOD_NAME];
+      }
+    }
+  }
+};
+
+for (var COLLECTION_NAME in DOMIterables) {
+  handlePrototype(global$1[COLLECTION_NAME] && global$1[COLLECTION_NAME].prototype, COLLECTION_NAME);
+}
+
+handlePrototype(DOMTokenListPrototype, 'DOMTokenList');
+
+var _excluded$2 = ["label", "className", "size", "tagDelimiterKey", "values", "onTagAdded", "onTagDeleted", "inputProps", "tagProps", "tagClassname", "onTextChanged", "onTagChanged"];
+
+var TagInput = function TagInput(_ref) {
+  var label = _ref.label,
+      className = _ref.className,
+      size = _ref.size,
+      tagDelimiterKey = _ref.tagDelimiterKey,
+      values = _ref.values,
+      onTagAdded = _ref.onTagAdded,
+      onTagDeleted = _ref.onTagDeleted,
+      inputProps = _ref.inputProps,
+      _ref$tagProps = _ref.tagProps,
+      tagProps = _ref$tagProps === void 0 ? {} : _ref$tagProps,
+      tagClassname = _ref.tagClassname,
+      onTextChanged = _ref.onTextChanged,
+      onTagChanged = _ref.onTagChanged,
+      props = _objectWithoutProperties(_ref, _excluded$2);
+
+  var _useState = useState(""),
+      _useState2 = _slicedToArray$1(_useState, 2),
+      input = _useState2[0],
+      setInput = _useState2[1];
+
+  var _useState3 = useState(values || []),
+      _useState4 = _slicedToArray$1(_useState3, 2),
+      inputTags = _useState4[0],
+      setInputTags = _useState4[1];
+
+  var _useState5 = useState(false),
+      _useState6 = _slicedToArray$1(_useState5, 2),
+      isKeyReleased = _useState6[0],
+      setIsKeyReleased = _useState6[1];
+
+  var invokeFunction = function invokeFunction(func) {
+    if (typeof func === "function") {
+      for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        args[_key - 1] = arguments[_key];
+      }
+
+      return func.apply(void 0, args);
+    }
+  };
+
+  var _tagDelimiterKey = {
+    space: " ",
+    enter: "Enter",
+    comma: ","
+  };
+  var generatedTagInputClasses = classNames({
+    "ui-tag-input__input": true
+  });
+  var wrapperClasses = classNames(["size__".concat(size), "ui-tag-input__wrapper"], className);
+
+  var handleTextChange = function handleTextChange(event) {
+    setInput(event.target.value);
+    invokeFunction(onTextChanged, event.target.value);
+  };
+
+  var handleKeyDown = function handleKeyDown(event) {
+    var newTag = input.trim();
+    var oldTagArray = inputTags;
+    var key = _tagDelimiterKey[tagDelimiterKey];
+
+    if (event.key === key && newTag.length && !inputTags.includes(newTag)) {
+      event.preventDefault();
+      setInputTags(function (prev) {
+        return [].concat(_toConsumableArray(prev), [newTag]);
+      });
+      setInputTags(function (state) {
+        invokeFunction(onTagAdded, newTag, state);
+        invokeFunction(onTagChanged, oldTagArray, state);
+        return state;
+      });
+      setInput("");
+    }
+
+    if (event.key === "Backspace" && !input.length && inputTags.length && isKeyReleased) {
+      event.preventDefault();
+
+      var tagsArray = _toConsumableArray(inputTags);
+
+      var deletedTag = tagsArray.pop();
+      setInputTags(tagsArray);
+      setInput(deletedTag);
+      setInputTags(function (state) {
+        invokeFunction(onTagDeleted, deletedTag, state);
+        invokeFunction(onTagChanged, oldTagArray, state);
+        return state;
+      });
+    }
+
+    setIsKeyReleased(false);
+  };
+
+  var handleDeleteTag = function handleDeleteTag(index) {
+    var deletedTag = inputTags[index];
+    var oldTagArray = inputTags;
+    setInputTags(function (prev) {
+      return prev.filter(function (tag, i) {
+        return i !== index;
+      });
+    });
+    setInputTags(function (state) {
+      invokeFunction(onTagDeleted, deletedTag, state);
+      invokeFunction(onTagChanged, oldTagArray, state);
+      return state;
+    });
+  };
+
+  return /*#__PURE__*/React__default.createElement(Box, {
+    className: wrapperClasses
+  }, /*#__PURE__*/React__default.createElement(Box, {
+    is: "label"
+  }, /*#__PURE__*/React__default.createElement(Text$1, {
+    className: "ui-tag-input__label",
+    scale: "subhead"
+  }, label)), /*#__PURE__*/React__default.createElement("div", {
+    className: "ui-tag-input__input-wrapper"
+  }, inputTags.map(function (tag, index) {
+    return /*#__PURE__*/React__default.createElement(Box, _extends$1({
+      is: "div",
+      className: "ui-tag-input__input-tag ".concat(tagClassname),
+      key: "ui-tag-input".concat(keyGen())
+    }, tagProps), /*#__PURE__*/React__default.createElement(Text$1, {
+      className: "ui-tag-input__input-tag-text",
+      scale: "subhead",
+      fontFace: "circularSTD"
+    }, tag), /*#__PURE__*/React__default.createElement(Icon, {
+      icon: Close,
+      onClick: function onClick() {
+        return handleDeleteTag(index);
+      },
+      className: "ui-tag-input__close-icon"
+    }));
+  }), /*#__PURE__*/React__default.createElement(Box, _extends$1({
+    className: generatedTagInputClasses,
+    is: "input"
+  }, props, inputProps, {
+    onKeyDown: handleKeyDown,
+    onKeyUp: function onKeyUp() {
+      return setIsKeyReleased(true);
+    },
+    value: input,
+    onChange: handleTextChange,
+    autoFocus: true,
+    onFocus: function onFocus(e) {
+      return e.currentTarget.select();
+    }
+  }))));
+};
+TagInput.propTypes = {
+  label: propTypes$1.exports.string,
+  size: propTypes$1.exports.oneOf(["small", "medium", "large", "xlarge", "huge", "massive"]),
+  values: propTypes$1.exports.array,
+  tagDelimiterKey: propTypes$1.exports.oneOf(["enter", "comma", "space"]),
+  onTagAdded: propTypes$1.exports.func,
+  onTagDeleted: propTypes$1.exports.func,
+  onTextChanged: propTypes$1.exports.func,
+  onTagChanged: propTypes$1.exports.func,
+  inputProps: propTypes$1.exports.object,
+  tagProps: propTypes$1.exports.object,
+  tagClassname: propTypes$1.exports.string
+};
+TagInput.defaultProps = {
+  label: "Form Label",
+  size: "medium",
+  values: [],
+  tagDelimiterKey: "enter",
+  inputProps: {
+    placeholder: "Add tag"
+  },
+  onTagDelete: function onTagDelete(index) {
+    console.log(index);
+  }
+};
+
+var _excluded$1 = ["label", "errorMessage", "textAreaClassName", "className", "isHookForm"];
+
+var TextArea = function TextArea(_ref) {
+  var label = _ref.label,
+      errorMessage = _ref.errorMessage,
+      textAreaClassName = _ref.textAreaClassName,
+      className = _ref.className,
+      isHookForm = _ref.isHookForm,
+      props = _objectWithoutProperties(_ref, _excluded$1);
+
+  var generateTextAreaClasses = classNames({
+    "ui-text-area__textarea": true,
+    "has-error": errorMessage
+  }, textAreaClassName);
+  var wrapperClasses = classNames(["ui-text-area__wrapper"], className);
+  return isHookForm ? /*#__PURE__*/React__default.forwardRef(function (_ref2, ref) {
+    var onChange = _ref2.onChange,
+        onBlur = _ref2.onBlur,
+        name = _ref2.name,
+        label = _ref2.label;
+    return /*#__PURE__*/React__default.createElement(Box, null, /*#__PURE__*/React__default.createElement(Box, {
+      is: "label",
+      className: wrapperClasses
+    }, /*#__PURE__*/React__default.createElement(Text$1, {
+      scale: "subhead",
+      className: "ui-text-area__label"
+    }, label)), /*#__PURE__*/React__default.createElement(Box, _extends$1({
+      className: generateTextAreaClasses,
+      is: "textarea"
+    }, props, {
+      ref: ref,
+      onChange: onChange,
+      onBlur: onBlur,
+      name: name
+    })), errorMessage && /*#__PURE__*/React__default.createElement(Box, {
+      className: "ui-text-area__error"
+    }, /*#__PURE__*/React__default.createElement(Icon, {
+      icon: Error$1,
+      className: "ui-text-area__error-icon"
+    }), /*#__PURE__*/React__default.createElement(Text$1, {
+      className: "ui-text-area__error-text",
+      scale: "footnote",
+      fontFace: "circularSTD"
+    }, errorMessage)));
+  }) : /*#__PURE__*/React__default.createElement(Box, null, /*#__PURE__*/React__default.createElement(Box, {
+    is: "label",
+    className: wrapperClasses
+  }, /*#__PURE__*/React__default.createElement(Text$1, {
+    scale: "subhead",
+    className: "ui-text-area__label"
+  }, label)), /*#__PURE__*/React__default.createElement(Box, _extends$1({
+    className: generateTextAreaClasses,
+    is: "textarea"
+  }, props)), errorMessage && /*#__PURE__*/React__default.createElement(Box, {
+    className: "ui-text-area__error"
+  }, /*#__PURE__*/React__default.createElement(Icon, {
+    icon: Error$1,
+    className: "ui-text-area__error-icon"
+  }), /*#__PURE__*/React__default.createElement(Text$1, {
+    className: "ui-text-area__error-text",
+    scale: "footnote",
+    fontFace: "circularSTD"
+  }, errorMessage)));
+};
+TextArea.propTypes = {
+  label: propTypes$1.exports.string,
+  disabled: propTypes$1.exports.bool
+};
+TextArea.defaultProps = {
+  label: "Form Label",
+  disabled: false
+};
 
 function useToast(props) {
   var _useState = useState(0),

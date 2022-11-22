@@ -8,26 +8,63 @@ import classNames from "../../utils/classNames";
 import Box from "../box";
 import { Portal } from "../../utils/components/Portal";
 
-const Modal = ({ greyContent, show, requestClose, modalWidth, ...props }) => {
+const Modal = ({
+  show,
+  greyContent,
+  roundedBorders,
+  minModalWidth,
+  greyHeader,
+  overlayBg,
+  alignment,
+  onCloseModal,
+  modalWidth,
+  title,
+  maxModalWidth,
+  heading,
+  contentClass,
+  bodyClass,
+  ...props
+}) => {
   const generatedClassNames = classNames({
     greyContent,
+    roundedBorders,
+    greyHeader,
+    overlayBg,
+    [`modal__${alignment}`]: alignment,
     "ui-modal": true,
     "ui-modal__closerr": true,
   });
   const handleCloseClicks = (e) => {
     if (e.target.classList.contains("ui-modal__closerr")) {
-      requestClose();
+      onCloseModal();
     }
   };
 
   return show ? (
     <Portal>
-      <Box onClick={handleCloseClicks} className={generatedClassNames}>
-        <Box className={"ui-modal__content"}>
+      <Box
+        onClick={handleCloseClicks}
+        className={generatedClassNames}
+        style={{
+          "--overlay-bg": overlayBg,
+        }}
+      >
+        <Box
+          className={classNames({
+            "ui-modal__content": true,
+            "--modal-width": modalWidth,
+            "--min-modal-width": minModalWidth,
+            "--max-modal-width": maxModalWidth,
+          })}
+        >
           <div className={"ui-modal__heading"}>
-            <Heading marginTop={0} marginBottom={0} is={"h5"}>
-              {props.heading}
-            </Heading>
+            {typeof heading === "string" ? (
+              <Heading marginTop={0} marginBottom={0} is={"h5"}>
+                {heading}
+              </Heading>
+            ) : (
+              heading
+            )}
             <Icon
               height={"20px"}
               width={"20px"}
@@ -38,7 +75,14 @@ const Modal = ({ greyContent, show, requestClose, modalWidth, ...props }) => {
               cursor={"pointer"}
             />
           </div>
-          <div className={"ui-modal__body"}>{props.children}</div>
+          <div
+            className={classNames({
+              "ui-modal__body": true,
+              [bodyClass]: bodyClass,
+            })}
+          >
+            {props.children}
+          </div>
         </Box>
       </Box>
     </Portal>
@@ -49,12 +93,23 @@ const Modal = ({ greyContent, show, requestClose, modalWidth, ...props }) => {
 
 export default Modal;
 
-Modal.defaultProps = {};
+Modal.defaultProps = {
+  alignment: "top",
+};
 
 Modal.propTypes = {
   show: PropTypes.bool,
   greyContent: PropTypes.bool,
-  requestClose: PropTypes.func,
+  roundedBorders: PropTypes.bool,
+  minModalWidth: PropTypes.string,
+  maxModalWidth: PropTypes.string,
+  greyHeader: PropTypes.bool,
+  overlayBg: PropTypes.string,
+  alignment: PropTypes.oneOf(["top", "bottom", "center"]),
+  onCloseModal: PropTypes.func,
   modalWidth: PropTypes.string,
   title: PropTypes.string,
+  contentClass: PropTypes.string,
+  heading: PropTypes.string,
+  bodyClass: PropTypes.string,
 };

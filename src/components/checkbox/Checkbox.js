@@ -64,6 +64,7 @@ const Checkbox = ({
             "ui-checkbox__label-wrap ui-text heroNew": true,
             [labelClass]: labelClass,
           })}
+          marginY={0}
         >
           {label}
         </Text>

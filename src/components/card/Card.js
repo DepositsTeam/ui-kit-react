@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Card.scss";
 import Box from "../box";
 import PropTypes from "prop-types";
@@ -7,7 +7,6 @@ import PropType from "prop-types";
 import Icon from "../icon";
 import Radio from "../radio";
 import Checkbox from "../checkbox";
-import CardIcon from "../icons/Card";
 
 const Card = ({
   title,
@@ -28,40 +27,55 @@ const Card = ({
   header,
   footer,
   onChange,
+  checked,
   ...props
 }) => {
   const [selected, setSelected] = useState(isSelected);
 
-  const generatedClassName = classNames(
-    {
-      "ui-card": true,
-      [`state__selected`]: selected,
-      [wrapperClass]: wrapperClass,
-      shouldHover: radio || checkbox || hoverColor,
-      border,
-      hasHeader: header,
-      hasFooter: footer,
-      selected,
-      [cardClass]: true,
-    },
-    className
-  );
+  useEffect(() => {
+    setSelected(checked);
+  }, [checked]);
+
+  const handleChange = (e) => {
+    onChange(e);
+  };
+
   return (
     <Box className={"ui-card__wrapper"}>
       {header}
       <Box
         is={radio || checkbox ? "label" : "div"}
-        className={generatedClassName}
+        className={classNames(
+          {
+            "ui-card": true,
+            state__selected: selected,
+            [wrapperClass]: wrapperClass,
+            shouldHover: radio || checkbox || hoverColor,
+            isForm: radio || checkbox,
+            border,
+            hasHeader: header,
+            hasFooter: footer,
+            selected,
+            [cardClass]: true,
+          },
+          className
+        )}
+        marginLeft="0"
+        marginRight="0"
+        marginX="0"
+        marginY="0"
+        marginTop="0"
+        marginBottom="0"
+        width="100%"
       >
         {(radio && (
           <Radio
             is={"input"}
             className={"ui-radio ui-card__form-selector"}
             type={"radio"}
-            onClick={(e) => {
-              setSelected(() => e.target.checked);
-            }}
+            onChange={handleChange}
             {...props}
+            checked={checked}
           />
         )) ||
           (checkbox && (
@@ -69,10 +83,9 @@ const Card = ({
               is={"input"}
               className={"ui-checkbox ui-card__form-selector"}
               type={"checkbox"}
-              onClick={(e) => {
-                setSelected(() => e.target.checked);
-              }}
+              onChange={handleChange}
               {...props}
+              checked={checked}
             />
           ))}
 
@@ -90,7 +103,7 @@ const Card = ({
           )}
         </div>
 
-        {icon && <Icon className={"ui-card__icon"} icon={CardIcon} />}
+        {icon && <Icon className={"ui-card__icon"} icon={icon} />}
       </Box>
       {footer}
     </Box>
@@ -99,10 +112,12 @@ const Card = ({
 
 Card.propTypes = {
   title: PropTypes.string,
+  icon: PropTypes.object,
+  selected: PropTypes.bool,
   subtitle: PropTypes.string,
-  icon: PropTypes.bool,
   isSelected: PropType.bool,
   radio: PropType.bool,
+  value: PropType.bool,
   checkbox: PropType.bool,
   desc: PropType.string,
   ringedRadio: PropType.bool,
@@ -113,6 +128,7 @@ Card.propTypes = {
   cardClass: PropType.string,
   header: PropType.object,
   footer: PropType.object,
+  checked: PropType.bool,
 };
 
 Card.defaultProps = {
@@ -120,6 +136,7 @@ Card.defaultProps = {
   isSelected: false,
   radio: false,
   checkbox: false,
+  checked: undefined,
   // icon: ChevronFilledDown
 };
 

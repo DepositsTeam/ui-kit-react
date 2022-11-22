@@ -1,4 +1,4 @@
-import uniqueRandomString from "../../utils/uniqueRandomString";
+import uniqueRandomString from "../../../utils/uniqueRandomString";
 
 export default class Column {
   constructor({

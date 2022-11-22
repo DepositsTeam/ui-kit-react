@@ -21,7 +21,7 @@ import Radio from "./components/radio";
 import SelectField from "./components/select-field";
 import Switch from "./components/switch";
 import Tab from "./components/tab";
-import Table from "./components/table-old";
+import Table from "./components/table";
 import TagInput from "./components/tag-input";
 import Text from "./components/text";
 import TextArea from "./components/text-area";
