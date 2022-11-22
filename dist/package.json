@@ -1,6 +1,6 @@
 {
   "name": "@deposits/ui-kit-react",
-  "version": "0.0.15",
+  "version": "0.0.18",
   "description": "A reusable suite of React components to make your development experience stellar. Inspired by the ui at Deposits - the future of Fintech",
   "keywords": [
     "deposits",
@@ -33,8 +33,10 @@
     "ui-box": "^5.1.0"
   },
   "peerDependencies": {
-    "react": ">=17.x",
-    "react-dom": ">=17.x"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -91,15 +93,12 @@
     "@storybook/node-logger": "^6.5.10",
     "@storybook/preset-create-react-app": "^4.1.2",
     "@storybook/react": "^6.5.10",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
     "css-loader": "^6.7.2",
     "formik": "^2.2.9",
     "prettier": "^2.5.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1",
     "rollup": "^2.77.2",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",

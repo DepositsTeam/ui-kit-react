@@ -25,10 +25,7 @@ import Table from "./components/table-old";
 import TagInput from "./components/tag-input";
 import Text from "./components/text";
 import TextArea from "./components/text-area";
-import TextField, {
-  FormikTextField,
-  HookFormTextField,
-} from "./components/text-field";
+import TextField from "./components/text-field";
 import Toast from "./components/toast";
 // import icons from "./components/icons";
 import { getTextColor, hexToRgbA } from "./utils/colorManager";
@@ -455,8 +452,8 @@ export {
   DebitCard,
   DebitCardBalance,
   Heading,
-  FormikTextField,
-  HookFormTextField,
+  // FormikTextField,
+  // HookFormTextField,
   // icons,
   Icon,
   Modal,
@@ -473,5 +470,5 @@ export {
   TextField,
   Toast,
   getTextColor,
-  hexToRgbA
+  hexToRgbA,
 };

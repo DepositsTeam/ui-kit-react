@@ -1,3 +1,4 @@
+import React from "react";
 import PropTypes from "prop-types";
 import "./DebitCardBalance.scss";
 import { useDebitCard } from "../../utils/hooks/debitCard.hook";

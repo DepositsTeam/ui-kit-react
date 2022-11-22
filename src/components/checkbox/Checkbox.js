@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import "./Checkbox.scss";
 import Text from "../text";
 import Box from "../box";
@@ -14,8 +14,28 @@ const Checkbox = ({
   wrapperClass,
   labelComponent,
   className,
+  checked,
+  onChange,
   ...props
 }) => {
+  const checkbox = useRef();
+
+  useEffect(() => {
+    checkbox.current.checked = checked;
+  }, [checked]);
+
+  const handleOnChange = (e) => {
+    if (checked === undefined) {
+      if (onChange && typeof onChange === "function") {
+        onChange(e);
+      }
+    } else {
+      if (onChange && typeof onChange === "function") {
+        onChange(e, !checked);
+      }
+    }
+  };
+
   const checkboxClassName = classNames({
     "ui-checkbox__wrapper": true,
     alignToTop,
@@ -35,10 +55,10 @@ const Checkbox = ({
         type={"checkbox"}
         disabled={disabled}
         {...props}
+        ref={checkbox}
+        onChange={handleOnChange}
       />
-      {label ? (
-        label
-      ) : (
+      {label || (
         <Text
           className={classNames({
             "ui-checkbox__label-wrap ui-text heroNew": true,
@@ -58,6 +78,7 @@ Checkbox.defaultProps = {
   alignToTop: false,
   disabled: false,
   dashed: false,
+  checked: undefined,
 };
 
 Checkbox.propTypes = {
@@ -68,4 +89,6 @@ Checkbox.propTypes = {
   labelClass: PropTypes.string,
   wrapperClass: PropTypes.string,
   labelComponent: PropTypes.object,
+  checked: PropTypes.bool,
+  onChange: PropTypes.func,
 };

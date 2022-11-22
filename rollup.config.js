@@ -5,8 +5,8 @@ import svg from "rollup-plugin-svg-import";
 import resolve from "@rollup/plugin-node-resolve";
 import external from "rollup-plugin-peer-deps-external";
 import { terser } from "rollup-plugin-terser";
-
 import packageJSON from "./package.json";
+
 const input = "./src/index.js";
 
 export default [
@@ -17,9 +17,11 @@ export default [
       file: packageJSON.main,
       format: "cjs",
     },
+    external: ["react", "react-dom"],
     plugins: [
       babel({
         exclude: "node_modules/**",
+        presets: ["@babel/env", "@babel/preset-react"],
       }),
       commonjs(),
       babel({
@@ -29,7 +31,7 @@ export default [
       resolve(),
       scss(),
       svg(),
-      terser(),
+      // terser(),
     ],
   },
   //UMD
@@ -44,9 +46,11 @@ export default [
         "react-dom": "ReactDOM",
       },
     },
+    external: ["react", "react-dom"],
     plugins: [
       babel({
         exclude: "node_modules/**",
+        presets: ["@babel/env", "@babel/preset-react"],
       }),
       commonjs(),
       babel({
@@ -56,7 +60,7 @@ export default [
       resolve(),
       scss(),
       svg(),
-      terser(),
+      // terser(),
     ],
   },
   // ES
@@ -67,9 +71,11 @@ export default [
       format: "es",
       exports: "named",
     },
+    external: ["react", "react-dom"],
     plugins: [
       babel({
         exclude: "node_modules/**",
+        presets: ["@babel/env", "@babel/preset-react"],
       }),
       commonjs(),
       babel({
@@ -79,7 +85,7 @@ export default [
       resolve(),
       scss(),
       svg(),
-      terser(),
+      // terser(),
     ],
   },
 ];

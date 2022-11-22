@@ -1,3 +1,4 @@
+import React from "react";
 import classNames from "../../utils/classNames";
 import "../../scss/textfield.css";
 import "./Counter.scss";
