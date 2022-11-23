@@ -1,6 +1,6 @@
 {
   "name": "@deposits/ui-kit-react",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "A reusable suite of React components to make your development experience stellar. Inspired by the ui at Deposits - the future of Fintech",
   "keywords": [
     "deposits",
@@ -29,6 +29,7 @@
     "export-to-csv": "^0.2.1",
     "libphonenumber-js": "^1.10.14",
     "prop-types": "^15.8.1",
+    "react-beautiful-dnd": "^13.1.1",
     "react-datepicker": "^4.8.0",
     "react-transition-group": "^4.4.2",
     "rollup-plugin-postcss": "^4.0.2",

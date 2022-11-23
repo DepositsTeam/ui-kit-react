@@ -121,7 +121,7 @@ const Table = ({
       hashMap[column.dataSelector] = column;
     });
     setColumnHashMap(hashMap);
-  }, [columns]);
+  }, [columns, internalColumns]);
 
   useEffect(() => {
     let detachedData = [...data];
