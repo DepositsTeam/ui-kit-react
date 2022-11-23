@@ -6,7 +6,6 @@ export const search = (
 ) => {
   return rows.filter((row) => {
     for (let key of Object.keys(row)) {
-      console.log(columnHashMap);
       if (columnHashMap[key].filterable) {
         let hayStack = caseSensitiveSearch ? row[key] : row[key].toLowerCase();
         let needle = caseSensitiveSearch ? search : search.toLowerCase();
