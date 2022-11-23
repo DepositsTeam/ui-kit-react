@@ -37,7 +37,7 @@ const TableFilterDropdown = forwardRef(({ column, onClose, ...props }, ref) => {
   };
 
   const applyFilter = () => {
-    setFilter({ ...localFilter });
+    setFilter({ ...localFilter, column });
     onClose();
   };
 

@@ -53,7 +53,7 @@ const Radio = ({
       <input
         className={classNames({
           "ui-radio": true,
-          hasLabel: label,
+          hasLabel: label || children,
         })}
         type={"radio"}
         {...props}

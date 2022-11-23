@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext, useRef } from "react";
 import PropTypes from "prop-types";
 import Box from "../box";
 import Text from "../text";
@@ -20,6 +20,9 @@ import CustomizeViewModal from "./components/CustomizeViewModal";
 import Icon from "../icon";
 import Sort2 from "../icons/Sort2";
 import Close from "../icons/Close";
+import Funnel from "../icons/Funnel";
+import TableActiveFiltersDropdown from "./components/TableActiveFiltersDropdown";
+import { computePosition, flip, offset, shift } from "@floating-ui/dom";
 
 export const TableContext = createContext({});
 
@@ -55,6 +58,8 @@ const Table = ({
   const [selectedRows, setSelectedRows] = useState([]);
   const [showCustomizeView, setShowCustomizeView] = useState(false);
   const [internalColumns, setInternalColumns] = useState([]);
+  const [showActiveFiltersDropdown, setShowActiveFiltersDropdown] =
+    useState(false);
   const [filter, setFilter] = useState({
     column: null,
     selectedFilter: null,
@@ -64,6 +69,19 @@ const Table = ({
     selectedFilterValue2: null,
   });
   const [sortConfiguration, setSortConfiguration] = useState(null);
+
+  const target = useRef();
+  const trigger = useRef();
+
+  const toggleActiveFilters = (e) => {
+    if (
+      e !== false &&
+      e &&
+      e.target.classList.contains("activeFiltersTrigger")
+    ) {
+      setShowActiveFiltersDropdown(!showActiveFiltersDropdown);
+    }
+  };
 
   const initialContextState = {
     filter,
@@ -116,6 +134,10 @@ const Table = ({
       );
     }
 
+    if (filter && filter.column) {
+      detachedData = filterItems(filter, detachedData);
+    }
+
     if (sortConfiguration) {
       sort(sortConfiguration, detachedData);
     }
@@ -126,7 +148,7 @@ const Table = ({
         uuuid: uniqueRandomString(30, 8),
       }))
     );
-  }, [data, searchValue, columnHashMap, sortConfiguration]);
+  }, [data, searchValue, columnHashMap, filter, sortConfiguration]);
 
   useEffect(() => {
     if (onRowSelected && typeof onRowSelected === "function") {
@@ -139,6 +161,20 @@ const Table = ({
       onPageChange(internalCurrentPage);
     }
   }, [internalCurrentPage, onPageChange]);
+
+  useEffect(() => {
+    if (showActiveFiltersDropdown) {
+      computePosition(trigger.current, target.current, {
+        placement: "bottom-start",
+        middleware: [offset(6), flip(), shift()],
+      }).then(({ x, y }) => {
+        Object.assign(target.current.style, {
+          left: `${x}px`,
+          top: `${y}px`,
+        });
+      });
+    }
+  }, [showActiveFiltersDropdown]);
 
   const filteredColumns = internalColumns.filter(
     (column) => column.visible !== false
@@ -287,7 +323,7 @@ const Table = ({
             )}
           </Box>
         </Box>
-        <Box className={"ui-table__active-filters"}>
+        <Box ref={trigger} className={"ui-table__active-filters"}>
           {sortConfiguration && (
             <Box
               className={classNames({
@@ -312,6 +348,62 @@ const Table = ({
               </Text>
               <Icon icon={Close} onClick={() => setSortConfiguration(null)} />
             </Box>
+          )}
+          {filter.column && (
+            <Box
+              className={classNames({
+                "ui-table__active-filter-group activeFiltersTrigger activeFiltersBox": true,
+                active: showActiveFiltersDropdown,
+              })}
+              onClick={toggleActiveFilters}
+            >
+              <Icon
+                icon={Funnel}
+                className={"activeFiltersTrigger activeFiltersBox"}
+              />
+              <Text
+                className={"activeFiltersTrigger activeFiltersBox"}
+                marginX={8}
+                marginY={0}
+                fontFace={"circularSTD"}
+                scale={"p-16"}
+              >
+                {filter.column.display + " "}
+                <Box color={"#64748B"} is={"span"}>
+                  {filter.selectedFilter.toLowerCase() + " "}
+                </Box>
+                {filter.selectedFilterValue + " "}
+                {filter.join && (
+                  <Box is={"span"}>
+                    {filter.join}{" "}
+                    <Box color={"#64748B"} is={"span"}>
+                      {filter.selectedFilter2.toLowerCase()}{" "}
+                    </Box>
+                  </Box>
+                )}
+                {filter.selectedFilterValue2}
+              </Text>
+              <Icon
+                onClick={() =>
+                  setFilter({
+                    column: null,
+                    selectedFilter: null,
+                    selectedFilterValue: null,
+                    join: null,
+                    selectedFilter2: null,
+                    selectedFilterValue2: null,
+                  })
+                }
+                icon={Close}
+                className={"activeFiltersBox"}
+              />
+            </Box>
+          )}
+          {showActiveFiltersDropdown && (
+            <TableActiveFiltersDropdown
+              onClose={() => setShowActiveFiltersDropdown(false)}
+              ref={target}
+            />
           )}
         </Box>
         <Box className={"ui-table__wrapper"}>

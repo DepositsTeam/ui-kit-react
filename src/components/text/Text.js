@@ -51,6 +51,7 @@ Text.propTypes = {
     "body",
     "subhead",
     "p-18",
+    "p-16",
     "overline",
     "footnote",
     "overline",
