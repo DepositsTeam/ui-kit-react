@@ -1,7 +1,29 @@
 .ui-radio__wrapper {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  width: max-content;
+  cursor: pointer;
+
+  &.alignRight {
+    flex-direction: row-reverse;
+    > {
+      input {
+        &.hasLabel {
+          margin-right: 0;
+          margin-left: 8px;
+        }
+      }
+    }
+  }
+
+  .ui-radio__label-text.ui-text {
+    &.dark_mode {
+      color: #cbd5e1;
+    }
+  }
+
+  .ui-radio {
+    pointer-events: none;
+  }
 
   &.alignToTop {
     align-items: flex-start;
@@ -14,7 +36,9 @@
     }
 
     input {
-      margin-right: 8px;
+      &.hasLabel {
+        margin-right: 8px;
+      }
       position: relative;
       height: 15px;
       width: 15px;
@@ -24,6 +48,10 @@
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
+      &.dark_mode {
+        background: #202b3c;
+        border: 1px solid #384860;
+      }
     }
   }
 
@@ -32,27 +60,38 @@
       height: 16px;
       width: 16px;
       border: 1px solid #ced6de;
+    }
 
-      &:checked {
-        height: 16px;
-        width: 16px;
-        border: 5px solid #0db9e9;
-        outline: none;
-        background: white;
+    > input:checked {
+      height: 16px;
+      width: 16px;
+      border: 5px solid var(--light-primary-action-color);
+      outline: none;
+      background: white;
+      &.dark_mode {
+        background: #202b3c;
+        border-color: var(--dark-primary-action-color);
       }
     }
 
     &:hover > input {
-      border-color: #0c9ccc;
+      border-color: var(--light-primary-action-color);
+      &.dark_mode {
+        border-color: var(--dark-primary-action-color);
+      }
     }
   }
 
   > input:checked {
-    background: #0d7fe9;
+    background: var(--light-primary-action-color);
     width: 12px;
     height: 12px;
-    outline: 2px solid #0d7fe9;
+    outline: 2px solid var(--light-primary-action-color);
     outline-offset: 1px;
     border-color: transparent;
+    &.dark_mode {
+      background: var(--dark-primary-action-color);
+      outline: 2px solid var(--dark-primary-action-color);
+    }
   }
 }

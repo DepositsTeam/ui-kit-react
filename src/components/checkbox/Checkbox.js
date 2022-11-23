@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import classNames from "../../utils/classNames";
 
 const Checkbox = ({
+  children,
   label,
   alignToTop,
   dashed,
@@ -58,10 +59,12 @@ const Checkbox = ({
         ref={checkbox}
         onChange={handleOnChange}
       />
-      {label || (
+      {children ? (
+        <Box className={"ui-checkbox__label-wrap"}>{children}</Box>
+      ) : (
         <Text
           className={classNames({
-            "ui-checkbox__label-wrap ui-text heroNew": true,
+            "ui-checkbox__label-text": true,
             [labelClass]: labelClass,
           })}
           marginY={0}

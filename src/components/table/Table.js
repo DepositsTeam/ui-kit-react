@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import PropTypes from "prop-types";
 import Box from "../box";
 import Text from "../text";
@@ -14,9 +14,14 @@ import classNames from "../../utils/classNames";
 import { getColumnWidth } from "./utils/getColumnWidth";
 import useExportCsv from "./hooks/useExportCsv";
 import { search as searchItems, filter as filterItems } from "./utils/filter";
+import { sort } from "./utils/sort";
 import uniqueRandomString from "../../utils/uniqueRandomString";
 import CustomizeViewModal from "./components/CustomizeViewModal";
-import Column from "./utils/Column";
+import Icon from "../icon";
+import Sort2 from "../icons/Sort2";
+import Close from "../icons/Close";
+
+export const TableContext = createContext({});
 
 const Table = ({
   showCheckboxes,
@@ -50,6 +55,22 @@ const Table = ({
   const [selectedRows, setSelectedRows] = useState([]);
   const [showCustomizeView, setShowCustomizeView] = useState(false);
   const [internalColumns, setInternalColumns] = useState([]);
+  const [filter, setFilter] = useState({
+    column: null,
+    selectedFilter: null,
+    selectedFilterValue: null,
+    join: null,
+    selectedFilter2: null,
+    selectedFilterValue2: null,
+  });
+  const [sortConfiguration, setSortConfiguration] = useState(null);
+
+  const initialContextState = {
+    filter,
+    setFilter,
+    sortConfiguration,
+    setSortConfiguration,
+  };
 
   const updateInternalColumns = (columns) => {
     setInternalColumns(
@@ -95,13 +116,17 @@ const Table = ({
       );
     }
 
+    if (sortConfiguration) {
+      sort(sortConfiguration, detachedData);
+    }
+
     setProcessedData(
       detachedData.map((item) => ({
         ...item,
         uuuid: uniqueRandomString(30, 8),
       }))
     );
-  }, [data, searchValue, columnHashMap]);
+  }, [data, searchValue, columnHashMap, sortConfiguration]);
 
   useEffect(() => {
     if (onRowSelected && typeof onRowSelected === "function") {
@@ -216,91 +241,129 @@ const Table = ({
   const buttonActionsEnabled = enableCustomizeView && enableCsvExport;
 
   return (
-    <Box className={"ui-table__container"}>
-      <Box className={"ui-table__header"}>
-        {search && (
+    <TableContext.Provider value={initialContextState}>
+      <Box className={"ui-table__container"}>
+        <Box className={"ui-table__header"}>
+          {search && (
+            <Box
+              className={classNames({
+                "ui-table__header__search-wrapper": true,
+                [searchAlignment]: buttonActionsEnabled
+                  ? false
+                  : searchAlignment,
+              })}
+            >
+              <TextField
+                leftIcon={Search}
+                placeholder={"Placeholder"}
+                size={"large"}
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+              />
+            </Box>
+          )}
           <Box
             className={classNames({
-              "ui-table__header__search-wrapper": true,
-              [searchAlignment]: buttonActionsEnabled ? false : searchAlignment,
+              "ui-table__header-btns": true,
+              [buttonActionsAlignment]: search ? false : buttonActionsAlignment,
             })}
           >
-            <TextField
-              leftIcon={Search}
-              placeholder={"Placeholder"}
-              size={"large"}
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
+            {enableCustomizeView && (
+              <Button
+                onClick={() => setShowCustomizeView(true)}
+                size={"medium"}
+              >
+                Customize view
+              </Button>
+            )}
+            {enableCsvExport && (
+              <Button
+                leftIcon={ExternalLink}
+                size={"medium"}
+                onClick={exportCsv}
+              >
+                Export
+              </Button>
+            )}
+          </Box>
+        </Box>
+        <Box className={"ui-table__active-filters"}>
+          {sortConfiguration && (
+            <Box
+              className={classNames({
+                "ui-table__active-filter-group activeFiltersBox": true,
+              })}
+            >
+              <Icon icon={Sort2} className={"activeFiltersBox"} />
+              <Text
+                marginX={8}
+                marginY={0}
+                fontFace={"circularSTD"}
+                scale={"p-16"}
+                className={"activeFiltersBox"}
+              >
+                {sortConfiguration.column.display + " "}
+                <Box color={"#8895A7"} is={"span"}>
+                  is
+                </Box>
+                {sortConfiguration.direction === "asc"
+                  ? " Ascending"
+                  : " Descending"}
+              </Text>
+              <Icon icon={Close} onClick={() => setSortConfiguration(null)} />
+            </Box>
+          )}
+        </Box>
+        <Box className={"ui-table__wrapper"}>
+          <Box is={"table"} className={"ui-table"}>
+            <Box is={"thead"} className={"ui-table__heading"}>
+              <Box is={"tr"} className={"ui-table__heading-row"}>
+                {showCheckboxes && (
+                  <Box
+                    is={"td"}
+                    className={"ui-table__heading-cell is-checkbox"}
+                    style={{
+                      ...getColumnWidth(null, true),
+                    }}
+                  >
+                    <Checkbox
+                      checked={selectedRows.length === paginatedData.length}
+                      onChange={toggleAllRows}
+                    />
+                  </Box>
+                )}
+                {mappedHeadCells}
+              </Box>
+            </Box>
+            <Box is={"tbody"} className={"ui-table__body"}>
+              {mappedRows}
+            </Box>
+          </Box>
+        </Box>
+        {paginate && (
+          <Box
+            className={classNames({
+              "ui-table__pagination": true,
+              right: paginateRight,
+            })}
+            marginTop={"1rem"}
+          >
+            <Pagination
+              currentPage={internalCurrentPage}
+              currentPageSiblings={currentPageSiblings}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
             />
           </Box>
         )}
-        <Box
-          className={classNames({
-            "ui-table__header-btns": true,
-            [buttonActionsAlignment]: search ? false : buttonActionsAlignment,
-          })}
-        >
-          {enableCustomizeView && (
-            <Button onClick={() => setShowCustomizeView(true)} size={"medium"}>
-              Customize view
-            </Button>
-          )}
-          {enableCsvExport && (
-            <Button leftIcon={ExternalLink} size={"medium"} onClick={exportCsv}>
-              Export
-            </Button>
-          )}
-        </Box>
+        <CustomizeViewModal
+          show={showCustomizeView}
+          onCloseModal={() => setShowCustomizeView(false)}
+          columns={internalColumns}
+          onColumnsOrderChanged={updateInternalColumns}
+        />
       </Box>
-      <Box className={"ui-table__wrapper"}>
-        <Box is={"table"} className={"ui-table"}>
-          <Box is={"thead"} className={"ui-table__heading"}>
-            <Box is={"tr"} className={"ui-table__heading-row"}>
-              {showCheckboxes && (
-                <Box
-                  is={"td"}
-                  className={"ui-table__heading-cell is-checkbox"}
-                  style={{
-                    ...getColumnWidth(null, true),
-                  }}
-                >
-                  <Checkbox
-                    checked={selectedRows.length === paginatedData.length}
-                    onChange={toggleAllRows}
-                  />
-                </Box>
-              )}
-              {mappedHeadCells}
-            </Box>
-          </Box>
-          <Box is={"tbody"} className={"ui-table__body"}>
-            {mappedRows}
-          </Box>
-        </Box>
-      </Box>
-      {paginate && (
-        <Box
-          className={classNames({
-            "ui-table__pagination": true,
-            right: paginateRight,
-          })}
-          marginTop={"1rem"}
-        >
-          <Pagination
-            currentPage={internalCurrentPage}
-            currentPageSiblings={currentPageSiblings}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
-        </Box>
-      )}
-      <CustomizeViewModal
-        show={showCustomizeView}
-        onCloseModal={() => setShowCustomizeView(false)}
-        columns={internalColumns}
-        onColumnsOrderChanged={updateInternalColumns}
-      />
-    </Box>
+    </TableContext.Provider>
   );
 };
 
