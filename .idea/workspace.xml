@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/utils/inputPropTypes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/utils/filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table/utils/filter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/card-input-field/CardInput.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card-input-field/CardInput.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/card-input-field/CardInputField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card-input-field/CardInputField.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -332,7 +334,8 @@
       <workItem from="1669141670564" duration="9914000" />
       <workItem from="1669187254080" duration="712000" />
       <workItem from="1669188009588" duration="14812000" />
-      <workItem from="1669229164112" duration="6760000" />
+      <workItem from="1669229164112" duration="9645000" />
+      <workItem from="1669283543369" duration="8052000" />
     </task>
     <servers />
   </component>

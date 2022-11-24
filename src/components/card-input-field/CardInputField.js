@@ -9,6 +9,8 @@ import ScanCardIcon from "../icons/ScanCard";
 import Error from "../icons/Error";
 import classNames from "../../utils/classNames";
 import CardBrands, { BRAND_ALIAS } from "./card-brands";
+import inputPropTypes, { defaultProps } from "../../utils/inputPropTypes";
+import cardValidator from "card-validator";
 
 const CardInputField = ({
   label,
@@ -23,6 +25,7 @@ const CardInputField = ({
   initialCardNo,
   initialCardCvv,
   onChange,
+  allowExpiredCardDateInExp,
   ...props
 }) => {
   const [selectedCard, setSelectedCard] = useState(-1);
@@ -32,6 +35,10 @@ const CardInputField = ({
   const [cardExp, setCardExp] = useState("");
   const [cardCVV, setCardCVV] = useState("");
   const [targetPosition, setTargetPosition] = useState(null);
+  const [cardNoError, setCardNoError] = useState(null);
+  const [cardExpError, setCardExpError] = useState(null);
+  const [cardCvvError, setCardCvvError] = useState(null);
+  const [computedErrorMessage, setComputedErrorMessage] = useState(null);
 
   const pseudoInput = useRef();
   const cardNoInput = useRef();
@@ -48,7 +55,21 @@ const CardInputField = ({
     if (initialCardCvv) {
       handleCardCvvInput(initialCardCvv);
     }
-  }, []);
+  }, [initialCardNo, initialCardExp, initialCardCvv]);
+
+  useEffect(() => {
+    if (cardNoError) {
+      setComputedErrorMessage(cardNoError);
+    } else if (cardExpError) {
+      setComputedErrorMessage(cardExpError);
+    } else if (cardCvvError) {
+      setComputedErrorMessage(cardCvvError);
+    } else if (errorMessage) {
+      setComputedErrorMessage(errorMessage);
+    } else {
+      setComputedErrorMessage(null);
+    }
+  }, [cardNoError, cardExpError, cardCvvError, errorMessage]);
 
   useEffect(() => {
     onChange({
@@ -56,12 +77,48 @@ const CardInputField = ({
       cardExp,
       cardCVV,
     });
-  }, [cardNo, cardExp, cardCVV]);
+  }, [cardNo, cardExp, cardCVV, onChange]);
+
+  useEffect(() => {
+    if (cardExp.length === 5 && !cardExpError) {
+      cardCVCInput.current.focus();
+    }
+  }, [cardExpError, cardExp]);
+
+  const validateCardNo = (cardNo) => {
+    setCardNoError(null);
+    const validatedCardNo = cardValidator.number(cardNo.replaceAll(" ", ""));
+    if (validatedCardNo && validatedCardNo.card) {
+      cardNoInput.current.setAttribute(
+        "maxlength",
+        validatedCardNo.card.lengths[validatedCardNo.card.lengths.length - 1] +
+          validatedCardNo.card.gaps.length
+      );
+      cardCVCInput.current.setAttribute(
+        "maxlength",
+        validatedCardNo.card.code.size
+      );
+    }
+
+    if (!validatedCardNo.isPotentiallyValid) {
+      setCardNoError(
+        `Please enter a valid ${validatedCardNo.card.niceType} card number`
+      );
+    } else {
+      setCardNoError(null);
+    }
+  };
 
   const handleCardNoFocus = () => {
-    pseudoInput.current.classList.add("focus");
-    // setCardNoIsFocused(true);
-    setCardNoDisplay(cardNo);
+    if (cardExpError) {
+      cardExpInput.current.focus();
+    } else if (cardCvvError) {
+      cardCvvError.current.focus();
+    } else {
+      pseudoInput.current.classList.add("focus");
+      // setCardNoIsFocused(true);
+      setCardNoDisplay(cardNo);
+    }
   };
 
   const allowOnlyNumbers = (e) => {
@@ -90,7 +147,13 @@ const CardInputField = ({
   };
 
   const handleExpFocus = () => {
-    pseudoInput.current.classList.add("focus");
+    if (cardNoError) {
+      cardNoInput.current.focus();
+    } else if (cardCvvError) {
+      cardCVCInput.current.focus();
+    } else {
+      pseudoInput.current.classList.add("focus");
+    }
   };
 
   const handleExpBlur = () => {
@@ -98,7 +161,13 @@ const CardInputField = ({
   };
 
   const handleCVVFocus = () => {
-    pseudoInput.current.classList.add("focus");
+    if (cardNoError) {
+      cardNoInput.current.focus();
+    } else if (cardExpError) {
+      cardExpInput.current.focus();
+    } else {
+      pseudoInput.current.classList.add("focus");
+    }
   };
 
   const handleCVVBlur = () => {
@@ -134,7 +203,6 @@ const CardInputField = ({
   const handleCardNoKeyPress = (e) => {
     allowOnlyNumbers(e);
     const strippedCardNo = cardNo.replace(/\s/g, "");
-    console.log(e.key);
 
     if (
       e.key !== "Backspace" &&
@@ -165,11 +233,6 @@ const CardInputField = ({
   const handleCardCvvInput = (e) => {
     const value = typeof e === "object" ? e.target.value : e;
     setCardCVV(value);
-    onChange({
-      cardNo,
-      cardExp,
-      cardCVV,
-    });
   };
 
   const handleCardNoInput = (e) => {
@@ -210,6 +273,7 @@ const CardInputField = ({
         setSelectedCard(BRAND_ALIAS.MASTERCARD);
         setCardNo(parse(BRAND_ALIAS.MASTERCARD));
         setCardNoDisplay(parse(BRAND_ALIAS.MASTERCARD));
+        validateCardNo(value);
 
         break;
       case "3":
@@ -224,69 +288,81 @@ const CardInputField = ({
         }
         setCardNo(parse(BRAND_ALIAS.AMEX));
         setCardNoDisplay(parse(BRAND_ALIAS.AMEX));
-
+        validateCardNo(value);
         break;
       case "6":
         setSelectedCard(BRAND_ALIAS.DISCOVER);
         setCardNo(parse(BRAND_ALIAS.DISCOVER));
         setCardNoDisplay(parse(BRAND_ALIAS.DISCOVER));
-
+        validateCardNo(value);
         break;
       case "4":
         setSelectedCard(BRAND_ALIAS.VISACARD);
         setCardNo(parse(BRAND_ALIAS.VISACARD));
         setCardNoDisplay(parse(BRAND_ALIAS.VISACARD));
-
+        validateCardNo(value);
         break;
       default:
         setSelectedCard(BRAND_ALIAS.NOCARD);
         setCardNo(parse(null));
         setCardNoDisplay(parse(null));
     }
-    onChange({
-      cardNo,
-      cardExp,
-      cardCVV,
-    });
   };
 
   const handleCardExpInput = (e) => {
-    const value = typeof e === "object" ? e.target.value : e;
-    setCardExp(value);
-    if (value.length === 2) {
-      if (value > 12 || !isFinite(value)) {
-        if (typeof e === "object") {
-          e.preventDefault();
-        }
-        return;
-      } else {
-        setCardExp(`${value}/`);
-        return;
-      }
-    }
-    if (value.length === 3) {
-      if (value.charAt(2) !== "/" || value.substring(0, 2) > 12) {
-        if (typeof e === "object") {
-          e.preventDefault();
-        }
-        setCardExp(e.target.value.substring(0, 2));
-        return;
-      }
-    }
-    if (value.length === 1 && value === "/") setCardExp("");
-    if (value.length === 5) {
-      if (typeof e === "object") {
-        e.preventDefault();
-      }
+    setCardExpError(null);
+    let value = e.target.value;
+    if (cardNoError) {
+      cardNoInput.current.focus();
+    } else if (cardCvvError) {
       cardCVCInput.current.focus();
-      return;
+    } else {
+      if (e.type.toLowerCase() === "paste") {
+        e.preventDefault();
+        value = (e.clipboardData || window.clipboardData).getData("text");
+      }
+
+      setCardExp(value);
+
+      const validateCompleteExp = (value) => {
+        const month = value.substring(0, 2);
+        const year = value.substring(3);
+        const currentYear = new Date().getFullYear().toString().substring(2);
+        const currentMonth = new Date().getMonth() + 1;
+
+        if (month > 12 || month < 1) {
+          setCardExpError(
+            "Please enter a valid month in the card expiry field"
+          );
+          setCardExp(isFinite(month) ? month : "");
+        } else if (month.length === 2 && /^\d+$/.test(month)) {
+          if (value.charAt(2) !== "/") {
+            setCardExp(month + "/");
+          } else if (!allowExpiredCardDateInExp && year < currentYear) {
+            setCardExpError("You've entered an expired card");
+          } else if (
+            month < currentMonth &&
+            year === currentYear &&
+            !allowExpiredCardDateInExp
+          ) {
+            setCardExpError("You've entered an expired card");
+          }
+        } else if (month.length === 2 && !/^\d+$/.test(month)) {
+          setCardExp(month);
+          setCardExpError(
+            "Please enter a valid month in the card expiry field"
+          );
+        }
+      };
+
+      validateCompleteExp(value);
     }
   };
 
   const generateInputFieldClasses = classNames(
     {
       "ui-card-input-field__card-no": true,
-      "has-error": errorMessage,
+      "has-error": computedErrorMessage,
       "has-left-icon": true,
       "has-right-icon": true,
     },
@@ -376,15 +452,15 @@ const CardInputField = ({
       </Box>
       {/*<p>Card No: {cardNo}</p>*/}
       {/*<p>Card Display No: {cardNoDisplay}</p>*/}
-      {errorMessage && (
-        <Box className={"ui-card-input-field__error"}>
-          <Icon icon={Error} className={"ui-card-input-field__error-icon"} />
+      {computedErrorMessage && (
+        <Box className={"ui-text-field__error"}>
+          <Icon icon={Error} className={"ui-text-field__error-icon"} />
           <Text
             className={"ui-card-input-field__error-text"}
             scale={"subhead"}
             fontFace={"circularSTD"}
           >
-            {errorMessage}
+            {computedErrorMessage}
           </Text>
         </Box>
       )}
@@ -395,19 +471,16 @@ const CardInputField = ({
 export default CardInputField;
 
 CardInputField.propTypes = {
-  label: PropTypes.string,
-  dropDown: PropTypes.bool,
-  size: PropTypes.oneOf([
-    "small",
-    "medium",
-    "large",
-    "xlarge",
-    "huge",
-    "massive",
-  ]),
-  errorMessage: PropTypes.string,
+  ...inputPropTypes,
+  initialCardExp: PropTypes.string,
+  initialCardNo: PropTypes.string,
+  initialCardCvv: PropTypes.string,
+  variant: PropTypes.oneOf(["variant-1", "variant-2"]),
+  allowExpiredCardDateInExp: PropTypes.bool,
 };
 
 CardInputField.defaultProps = {
-  size: "medium",
+  ...defaultProps,
+  variant: "variant-1",
+  allowExpiredCardDateInExp: false,
 };
