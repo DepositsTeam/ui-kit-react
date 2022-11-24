@@ -51,7 +51,7 @@ const Checkbox = ({
         is={"input"}
         className={classNames({
           "ui-checkbox": true,
-          hasLabel: label || labelComponent,
+          hasLabel: label || labelComponent || children,
         })}
         type={"checkbox"}
         disabled={disabled}

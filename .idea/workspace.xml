@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utils/inputPropTypes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/tag-dropdown/TagDropdown.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/tag-dropdown/TagDropdown.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/tag-dropdown/TagDropdown.stories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/tag-dropdown/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/card-input-field/CardInput.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card-input-field/CardInput.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/card-input-field/CardInputField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card-input-field/CardInputField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/checkbox/Checkbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/checkbox/Checkbox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/checkbox/Checkbox.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/checkbox/Checkbox.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text-field/TextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -335,7 +339,8 @@
       <workItem from="1669187254080" duration="712000" />
       <workItem from="1669188009588" duration="14812000" />
       <workItem from="1669229164112" duration="9645000" />
-      <workItem from="1669283543369" duration="8052000" />
+      <workItem from="1669283543369" duration="15748000" />
+      <workItem from="1669312421811" duration="4971000" />
     </task>
     <servers />
   </component>
