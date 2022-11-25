@@ -3,7 +3,7 @@ import SelectField from "./index";
 import Search from "../icons/Search";
 
 export default {
-    title: "Select Field",
+    title: "Forms/Select Field",
     component: SelectField,
 };
 

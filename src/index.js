@@ -12,6 +12,7 @@ import Counter from "./components/counter/Counter";
 import DatePicker from "./components/date-picker";
 import DebitCard from "./components/debit-card";
 import DebitCardBalance from "./components/debit-card-balance";
+import Dropdown from "./components/dropdown";
 import Heading from "./components/heading";
 import Icon from "./components/icon";
 import Modal from "./components/modal";
@@ -22,6 +23,7 @@ import SelectField from "./components/select-field";
 import Switch from "./components/switch";
 import Tab from "./components/tab";
 import Table from "./components/table";
+import TagDropdown from "./components/tag-dropdown";
 import TagInput from "./components/tag-input";
 import Text from "./components/text";
 import TextArea from "./components/text-area";
@@ -451,6 +453,7 @@ export {
   DatePicker,
   DebitCard,
   DebitCardBalance,
+  Dropdown,
   Heading,
   // FormikTextField,
   // HookFormTextField,
@@ -464,6 +467,7 @@ export {
   Switch,
   Tab,
   Table,
+  TagDropdown,
   TagInput,
   Text,
   TextArea,

@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/tag-dropdown/TagDropdown.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/tag-dropdown/TagDropdown.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/tag-dropdown/TagDropdown.stories.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/tag-dropdown/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dropdown/Dropdown.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dropdown/Dropdown.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dropdown/Dropdown.stories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dropdown/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/checkbox/Checkbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/checkbox/Checkbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/checkbox/Checkbox.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/checkbox/Checkbox.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/phone-field/PhoneField.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/phone-field/PhoneField.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/radio/Radio.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/radio/Radio.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/select-field/SelectField.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select-field/SelectField.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/switch/Switch.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/switch/Switch.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text-area/TextArea.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-area/TextArea.stories.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/text-field/TextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +32,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="SCSS File" />
         <option value="JavaScript File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -340,7 +346,8 @@
       <workItem from="1669188009588" duration="14812000" />
       <workItem from="1669229164112" duration="9645000" />
       <workItem from="1669283543369" duration="15748000" />
-      <workItem from="1669312421811" duration="4971000" />
+      <workItem from="1669312421811" duration="11280000" />
+      <workItem from="1669340525049" duration="984000" />
     </task>
     <servers />
   </component>

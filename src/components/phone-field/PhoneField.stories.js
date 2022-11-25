@@ -2,7 +2,7 @@ import React from "react"
 import PhoneField from "./PhoneField"
 
 export default {
-    title: "Phone Field",
+    title: "Forms/Phone Field",
     component: PhoneField
 }
 

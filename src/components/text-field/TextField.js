@@ -29,6 +29,8 @@ const TextField = forwardRef(
       disabled,
       inputClass,
       oneCharWide,
+      leftIconComponent,
+      rightIconComponent,
       labelClass,
       ...props
     },
@@ -74,16 +76,18 @@ const TextField = forwardRef(
           ))}
 
         <Box className={"ui-text-field__input-wrapper"}>
-          {leftIcon && (
+          {leftIcon && !leftIconComponent && (
             <Icon icon={leftIcon} className={"ui-text-field__left-icon"} />
           )}
+          {leftIconComponent}
           <Box className={generateInputFieldClasses} is={"input"} {...props} />
-          {(dropDown || rightIcon) && (
+          {(dropDown || rightIcon) && !rightIconComponent && (
             <Icon
               icon={dropDown ? ChevronFilledDown : rightIcon}
               className={"ui-text-field__right-icon"}
             />
           )}
+          {rightIconComponent}
         </Box>
         {errorMessage && (
           <Box className={"ui-text-field__error"}>
@@ -107,8 +111,8 @@ export default TextField;
 TextField.propTypes = {
   ...inputPropTypes,
   dropDown: PropTypes.bool,
-  rightIcon: PropTypes.node,
-  leftIcon: PropTypes.node,
+  rightIcon: PropTypes.element,
+  leftIcon: PropTypes.element,
   currency: PropTypes.bool,
   emitOnlyCurrencyValue: PropTypes.bool,
   oneCharWide: PropTypes.bool,
@@ -124,6 +128,8 @@ TextField.propTypes = {
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   onKeyup: PropTypes.func,
+  leftIconComponent: PropTypes.node,
+  rightIconComponent: PropTypes.node,
 };
 
 TextField.defaultProps = {

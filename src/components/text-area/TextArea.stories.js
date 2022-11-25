@@ -1,7 +1,7 @@
 import TextArea from "./TextArea";
 
 export default {
-    title: "Text Area",
+    title: "Forms/Text Area",
     component: TextArea,
 }
 
