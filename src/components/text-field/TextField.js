@@ -62,7 +62,7 @@ const TextField = forwardRef(
           (typeof label === "string" ? (
             <Box is={"label"}>
               <Text
-                className={className({
+                className={classNames({
                   "ui-text-field__label": true,
                   [labelClass]: labelClass,
                 })}
