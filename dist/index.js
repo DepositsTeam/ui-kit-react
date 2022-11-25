@@ -20166,7 +20166,7 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
   }, label && !invisible && (typeof label === "string" ? /*#__PURE__*/React__default.createElement(Box, {
     is: "label"
   }, /*#__PURE__*/React__default.createElement(Text$1, {
-    className: className(_defineProperty$x({
+    className: classNames(_defineProperty$x({
       "ui-text-field__label": true
     }, labelClass, labelClass)),
     scale: "subhead"
