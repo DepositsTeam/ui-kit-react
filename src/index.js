@@ -9,6 +9,7 @@ import Card from "./components/card";
 import CardInputField from "./components/card-input-field";
 import Checkbox from "./components/checkbox";
 import Counter from "./components/counter/Counter";
+import CountryDropdown from "./components/country-dropdown";
 import DatePicker from "./components/date-picker";
 import DebitCard from "./components/debit-card";
 import DebitCardBalance from "./components/debit-card-balance";
@@ -450,6 +451,7 @@ export {
   CardInputField,
   Checkbox,
   Counter,
+  CountryDropdown,
   DatePicker,
   DebitCard,
   DebitCardBalance,

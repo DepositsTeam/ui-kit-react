@@ -1,5 +1,5 @@
 import * as React from 'react';
-import React__default, { useState, useEffect, useRef, createElement as createElement$1, Component as Component$1, createRef, forwardRef, createContext, useContext, Children, useLayoutEffect, useMemo as useMemo$1, useReducer } from 'react';
+import React__default, { useState, useEffect, useRef, forwardRef, createContext, createElement as createElement$1, useContext, Children, Component as Component$1, createRef, useLayoutEffect, useMemo as useMemo$1, useReducer } from 'react';
 import * as ReactDOM from 'react-dom';
 import ReactDOM__default, { findDOMNode, unstable_batchedUpdates } from 'react-dom';
 
@@ -8033,14 +8033,14 @@ var uniqueRandomString = (function () {
   return finalString;
 });
 
-var _excluded$G = ["fontFace", "id", "className", "children", "style"];
+var _excluded$H = ["fontFace", "id", "className", "children", "style"];
 var Box = /*#__PURE__*/React__default.forwardRef(function (_ref, ref) {
   var fontFace = _ref.fontFace,
       id = _ref.id,
       className = _ref.className,
       children = _ref.children,
       style = _ref.style,
-      props = _objectWithoutProperties(_ref, _excluded$G);
+      props = _objectWithoutProperties(_ref, _excluded$H);
 
   var _useState = useState("auto_generated_" + uniqueRandomString(20)),
       _useState2 = _slicedToArray$1(_useState, 2),
@@ -8183,14 +8183,14 @@ function classNames(obj, className) {
   return (generatedClass + (className ? " ".concat(className) : "")).trim();
 }
 
-var _excluded$F = ["className", "icon", "children", "smartColor"];
+var _excluded$G = ["className", "icon", "children", "smartColor"];
 
 var Icon = function Icon(_ref) {
   var className = _ref.className,
       icon = _ref.icon;
       _ref.children;
       var smartColor = _ref.smartColor,
-      props = _objectWithoutProperties(_ref, _excluded$F);
+      props = _objectWithoutProperties(_ref, _excluded$G);
 
   var defaultViewBox = "0 0 24 24";
   var IconComponent = icon.component;
@@ -8217,7 +8217,7 @@ Icon.propTypes = {
   height: propTypes$1.exports.string
 };
 
-var _excluded$E = ["className", "scale", "uppercase", "equalLineHeight", "fontWeight", "fontSize", "lineHeight"];
+var _excluded$F = ["className", "scale", "uppercase", "equalLineHeight", "fontWeight", "fontSize", "lineHeight"];
 
 var Text$1 = function Text(_ref) {
   var _props$is, _classNames;
@@ -8229,7 +8229,7 @@ var Text$1 = function Text(_ref) {
       fontWeight = _ref.fontWeight,
       fontSize = _ref.fontSize,
       lineHeight = _ref.lineHeight,
-      props = _objectWithoutProperties(_ref, _excluded$E);
+      props = _objectWithoutProperties(_ref, _excluded$F);
 
   var is = (_props$is = props.is) !== null && _props$is !== void 0 ? _props$is : "p";
   var generatedClass = classNames((_classNames = {}, _defineProperty$x(_classNames, scale, scale), _defineProperty$x(_classNames, "uppercase", uppercase), _defineProperty$x(_classNames, "equal-line-height", equalLineHeight), _defineProperty$x(_classNames, "ui-text", true), _defineProperty$x(_classNames, "customFontWeight", fontWeight), _defineProperty$x(_classNames, "customFontSize", fontSize), _defineProperty$x(_classNames, "customLineHeight", lineHeight), _classNames), className);
@@ -9708,7 +9708,7 @@ CameraComponent.defaultProps = {
   strokeLineJoin: "round"
 };
 
-var _excluded$D = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
+var _excluded$E = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
 
 var CardComponent = function CardComponent(_ref) {
   var fill = _ref.fill,
@@ -9717,7 +9717,7 @@ var CardComponent = function CardComponent(_ref) {
       strokeWidth = _ref.strokeWidth,
       strokeLineCap = _ref.strokeLineCap,
       strokeLineJoin = _ref.strokeLineJoin;
-      _objectWithoutProperties(_ref, _excluded$D);
+      _objectWithoutProperties(_ref, _excluded$E);
 
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M21 12.7707V15.9881C21 16.5216 20.7893 17.0333 20.4143 17.4106C20.0392 17.7879 19.5306 18 19.0001 18H4.99995C4.46951 18 3.96087 17.7879 3.5858 17.4106C3.21073 17.0333 3.00006 16.5216 3.00006 15.9881V7.01176C3.00006 6.47819 3.21073 5.96653 3.5858 5.58924C3.96087 5.21195 4.46951 5.00003 4.99995 5.00003H19.0001C19.5306 5.00003 20.0392 5.21195 20.4143 5.58924C20.7893 5.96653 21 6.47819 21 7.01176V9.84096",
@@ -12847,7 +12847,7 @@ GitlabComponent.defaultProps = {
   clipRule: "evenodd"
 };
 
-var _excluded$C = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin", "fillRule", "clipRule"];
+var _excluded$D = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin", "fillRule", "clipRule"];
 
 var GlobeComponent = function GlobeComponent(_ref) {
   var fill = _ref.fill;
@@ -12858,7 +12858,7 @@ var GlobeComponent = function GlobeComponent(_ref) {
       _ref.strokeLineJoin;
       var fillRule = _ref.fillRule,
       clipRule = _ref.clipRule;
-      _objectWithoutProperties(_ref, _excluded$C);
+      _objectWithoutProperties(_ref, _excluded$D);
 
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     fillRule: fillRule,
@@ -15865,7 +15865,7 @@ ShieldComponent$1.defaultProps = {
   strokeLineJoin: "round"
 };
 
-var _excluded$B = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
+var _excluded$C = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
 
 var ShieldComponent = function ShieldComponent(_ref) {
   _ref.fill;
@@ -15874,7 +15874,7 @@ var ShieldComponent = function ShieldComponent(_ref) {
       strokeWidth = _ref.strokeWidth,
       strokeLineCap = _ref.strokeLineCap,
       strokeLineJoin = _ref.strokeLineJoin;
-      _objectWithoutProperties(_ref, _excluded$B);
+      _objectWithoutProperties(_ref, _excluded$C);
 
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M15.4601 9.38818L11.3591 13.4892L9.09308 11.4232M9.45518 4.021L12.13 3L19.2601 5.72021V11.2783C19.2598 13.4293 18.566 15.5226 17.2816 17.248C15.9972 18.9735 14.1905 20.2386 12.13 20.856C10.0695 20.2386 8.26294 18.9725 6.97852 17.2471C5.6941 15.5217 5.00028 13.4284 5 11.2774V5.71926L6.97412 4.96633",
@@ -17281,7 +17281,7 @@ WithdrawComponent.defaultProps = {
   strokeLineJoin: "round"
 };
 
-var _excluded$A = ["title", "leftIconActive", "leftIconInactive", "rightIcon", "children", "className"];
+var _excluded$B = ["title", "leftIconActive", "leftIconInactive", "rightIcon", "children", "className"];
 
 var Accordion = function Accordion(_ref) {
   var title = _ref.title,
@@ -17290,7 +17290,7 @@ var Accordion = function Accordion(_ref) {
       rightIcon = _ref.rightIcon,
       children = _ref.children,
       className = _ref.className;
-      _objectWithoutProperties(_ref, _excluded$A);
+      _objectWithoutProperties(_ref, _excluded$B);
 
   var _useState = useState(false),
       _useState2 = _slicedToArray$1(_useState, 2),
@@ -17406,7 +17406,7 @@ if (DESCRIPTORS$1 && isCallable$6(NativeSymbol) && (!('description' in SymbolPro
   });
 }
 
-var _excluded$z = ["is", "leftIcon", "rightIcon", "dropDown", "disabled", "size", "className", "colorScheme", "responsive", "text", "loading", "loadingText", "pill", "smartColor", "smartHoverColor"];
+var _excluded$A = ["is", "leftIcon", "rightIcon", "dropDown", "disabled", "size", "className", "colorScheme", "responsive", "text", "loading", "loadingText", "pill", "smartColor", "smartHoverColor"];
 
 var Button = function Button(_ref) {
   var _classNames;
@@ -17426,7 +17426,7 @@ var Button = function Button(_ref) {
       pill = _ref.pill,
       smartColor = _ref.smartColor,
       smartHoverColor = _ref.smartHoverColor,
-      props = _objectWithoutProperties(_ref, _excluded$z);
+      props = _objectWithoutProperties(_ref, _excluded$A);
 
   var generatedClassName = classNames((_classNames = {
     "ui-button": true
@@ -17491,7 +17491,7 @@ Button.defaultProps = {
   loadingText: "Loading"
 };
 
-var _excluded$y = ["className", "equalLineHeight", "scale", "uppercase"];
+var _excluded$z = ["className", "equalLineHeight", "scale", "uppercase"];
 
 var Heading = function Heading(_ref) {
   var _props$is, _classNames;
@@ -17500,7 +17500,7 @@ var Heading = function Heading(_ref) {
       equalLineHeight = _ref.equalLineHeight,
       scale = _ref.scale,
       uppercase = _ref.uppercase,
-      props = _objectWithoutProperties(_ref, _excluded$y);
+      props = _objectWithoutProperties(_ref, _excluded$z);
 
   var is = (_props$is = props.is) !== null && _props$is !== void 0 ? _props$is : "h2";
   var generatedClass = classNames((_classNames = {}, _defineProperty$x(_classNames, scale, scale), _defineProperty$x(_classNames, is, is), _defineProperty$x(_classNames, "uppercase", uppercase), _defineProperty$x(_classNames, "ui-heading", true), _defineProperty$x(_classNames, "equal-line-height", equalLineHeight), _classNames), className);
@@ -17525,7 +17525,7 @@ Heading.defaultProps = {
   equalLineHeight: false
 };
 
-var _excluded$x = ["message", "description", "colorScheme", "theme", "button", "buttonAction", "onAction", "className", "closable", "bordered", "smartColor", "iconColor", "icon"];
+var _excluded$y = ["message", "description", "colorScheme", "theme", "button", "buttonAction", "onAction", "className", "closable", "bordered", "smartColor", "iconColor", "icon"];
 
 var Alert = function Alert(_ref) {
   var _classNames;
@@ -17543,7 +17543,7 @@ var Alert = function Alert(_ref) {
       var smartColor = _ref.smartColor,
       iconColor = _ref.iconColor,
       icon = _ref.icon,
-      props = _objectWithoutProperties(_ref, _excluded$x);
+      props = _objectWithoutProperties(_ref, _excluded$y);
 
   var _useState = useState(true),
       _useState2 = _slicedToArray$1(_useState, 2),
@@ -17818,7 +17818,7 @@ function keyGen() {
   return result;
 }
 
-var _excluded$w = ["avatar", "subtle", "dropdown", "size", "visibleAvatars", "stacked", "avatars", "className"];
+var _excluded$x = ["avatar", "subtle", "dropdown", "size", "visibleAvatars", "stacked", "avatars", "className"];
 var colorSchemes = ["cyan", "green", "orange", "red", "gray", "blue"];
 
 var generateAvatarColorScheme = function generateAvatarColorScheme(avatar, index) {
@@ -17843,7 +17843,7 @@ var Avatar = function Avatar(_ref) {
       stacked = _ref.stacked,
       avatars = _ref.avatars,
       className = _ref.className,
-      props = _objectWithoutProperties(_ref, _excluded$w);
+      props = _objectWithoutProperties(_ref, _excluded$x);
 
   var wrapperClassName = classNames((_classNames2 = {
     "ui-avatars__wrapper": true,
@@ -17910,7 +17910,7 @@ Avatar.defaultProps = {
   avatars: []
 };
 
-var _excluded$v = ["children", "colorScheme", "className", "subtle", "size", "customSize", "smartColor"];
+var _excluded$w = ["children", "colorScheme", "className", "subtle", "size", "customSize", "smartColor"];
 
 var Badge = function Badge(_ref) {
   var _classNames;
@@ -17922,7 +17922,7 @@ var Badge = function Badge(_ref) {
       size = _ref.size,
       customSize = _ref.customSize,
       smartColor = _ref.smartColor;
-      _objectWithoutProperties(_ref, _excluded$v);
+      _objectWithoutProperties(_ref, _excluded$w);
 
   var generatedClassName = classNames((_classNames = {}, _defineProperty$x(_classNames, "color-scheme__".concat(colorScheme), true), _defineProperty$x(_classNames, "subtle", subtle), _defineProperty$x(_classNames, "size__".concat(size), true), _defineProperty$x(_classNames, "ui-badge", true), _defineProperty$x(_classNames, "sizeCustom", customSize), _defineProperty$x(_classNames, "smartColor", smartColor), _classNames), className);
   var cssVars = {
@@ -17953,7 +17953,7 @@ Badge.defaultProps = {
   size: "small"
 };
 
-var _excluded$u = ["colorScheme", "title", "description", "removable", "full", "onRemove", "alignTop", "icon", "iconColor", "noIcon", "smartColor", "className"];
+var _excluded$v = ["colorScheme", "title", "description", "removable", "full", "onRemove", "alignTop", "icon", "iconColor", "noIcon", "smartColor", "className"];
 
 var Banner = function Banner(_ref) {
   var _classNames;
@@ -17970,7 +17970,7 @@ var Banner = function Banner(_ref) {
       noIcon = _ref.noIcon,
       smartColor = _ref.smartColor,
       className = _ref.className,
-      props = _objectWithoutProperties(_ref, _excluded$u);
+      props = _objectWithoutProperties(_ref, _excluded$v);
 
   var _useState = useState(true),
       _useState2 = _slicedToArray$1(_useState, 2),
@@ -18046,7 +18046,7 @@ Banner.propTypes = {
   smartColor: propTypes$1.exports.string
 };
 
-var _excluded$t = ["className", "children", "ringed", "alignToTop", "label", "value", "disabled", "labelClass", "alignRight", "checked", "onChange"];
+var _excluded$u = ["className", "children", "ringed", "alignToTop", "label", "value", "disabled", "labelClass", "alignRight", "checked", "onChange"];
 
 var Radio = function Radio(_ref) {
   var className = _ref.className,
@@ -18060,7 +18060,7 @@ var Radio = function Radio(_ref) {
       alignRight = _ref.alignRight,
       checked = _ref.checked,
       onChange = _ref.onChange,
-      props = _objectWithoutProperties(_ref, _excluded$t);
+      props = _objectWithoutProperties(_ref, _excluded$u);
 
   var radio = useRef();
   useEffect(function () {
@@ -18125,7 +18125,7 @@ Radio.propTypes = {
   onChange: propTypes$1.exports.func
 };
 
-var _excluded$s = ["children", "label", "alignToTop", "dashed", "disabled", "labelClass", "wrapperClass", "labelComponent", "className", "checked", "onChange"];
+var _excluded$t = ["children", "label", "alignToTop", "dashed", "disabled", "labelClass", "wrapperClass", "labelComponent", "className", "checked", "onChange"];
 
 var Checkbox = function Checkbox(_ref) {
   var _classNames;
@@ -18141,7 +18141,7 @@ var Checkbox = function Checkbox(_ref) {
       className = _ref.className,
       checked = _ref.checked,
       onChange = _ref.onChange,
-      props = _objectWithoutProperties(_ref, _excluded$s);
+      props = _objectWithoutProperties(_ref, _excluded$t);
 
   var checkbox = useRef();
   useEffect(function () {
@@ -18207,7 +18207,7 @@ Checkbox.propTypes = {
   onChange: propTypes$1.exports.func
 };
 
-var _excluded$r = ["title", "subtitle", "desc", "children", "radio", "checkbox", "icon", "isSelected", "className", "ringedRadio", "dashedCheckbox", "wrapperClass", "hoverColor", "border", "cardClass", "header", "footer", "onChange", "checked"];
+var _excluded$s = ["title", "subtitle", "desc", "children", "radio", "checkbox", "icon", "isSelected", "className", "ringedRadio", "dashedCheckbox", "wrapperClass", "hoverColor", "border", "cardClass", "header", "footer", "onChange", "checked"];
 
 var Card = function Card(_ref) {
   var _classNames;
@@ -18231,7 +18231,7 @@ var Card = function Card(_ref) {
       footer = _ref.footer,
       onChange = _ref.onChange,
       checked = _ref.checked,
-      props = _objectWithoutProperties(_ref, _excluded$r);
+      props = _objectWithoutProperties(_ref, _excluded$s);
 
   var _useState = useState(isSelected),
       _useState2 = _slicedToArray$1(_useState, 2),
@@ -19410,7 +19410,7 @@ var cardValidator = {
 };
 var dist = cardValidator;
 
-var _excluded$q = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "initialCardExp", "initialCardNo", "initialCardCvv", "onChange", "allowExpiredCardDateInExp"];
+var _excluded$r = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "initialCardExp", "initialCardNo", "initialCardCvv", "onChange", "allowExpiredCardDateInExp"];
 
 var CardInputField = function CardInputField(_ref) {
   var label = _ref.label;
@@ -19426,7 +19426,7 @@ var CardInputField = function CardInputField(_ref) {
       initialCardCvv = _ref.initialCardCvv,
       onChange = _ref.onChange,
       allowExpiredCardDateInExp = _ref.allowExpiredCardDateInExp,
-      props = _objectWithoutProperties(_ref, _excluded$q);
+      props = _objectWithoutProperties(_ref, _excluded$r);
 
   var _useState = useState(-1),
       _useState2 = _slicedToArray$1(_useState, 2),
@@ -19907,7 +19907,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
-var _excluded$p = ["label", "size", "max", "min", "errorMessage", "coloredButtons", "labelClass", "labelFontFace", "inputClass", "disabled", "decimal", "alterMagnitude", "spacing", "value", "onChange", "className"];
+var _excluded$q = ["label", "size", "max", "min", "errorMessage", "coloredButtons", "labelClass", "labelFontFace", "inputClass", "disabled", "decimal", "alterMagnitude", "spacing", "value", "onChange", "className"];
 
 var Counter = function Counter(_ref) {
   var label = _ref.label,
@@ -19926,7 +19926,7 @@ var Counter = function Counter(_ref) {
       value = _ref.value,
       onChange = _ref.onChange,
       className = _ref.className,
-      props = _objectWithoutProperties(_ref, _excluded$p);
+      props = _objectWithoutProperties(_ref, _excluded$q);
 
   var _useState = useState(null),
       _useState2 = _slicedToArray$1(_useState, 2),
@@ -20035,6 +20035,31548 @@ Counter.defaultProps = {
   spacing: "16px",
   alterMagnitude: 1,
   value: 0
+};
+
+var wellKnownSymbol$5 = wellKnownSymbol$e;
+var create$2 = objectCreate$1;
+var defineProperty$4 = objectDefineProperty.f;
+
+var UNSCOPABLES = wellKnownSymbol$5('unscopables');
+var ArrayPrototype = Array.prototype;
+
+// Array.prototype[@@unscopables]
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
+if (ArrayPrototype[UNSCOPABLES] == undefined) {
+  defineProperty$4(ArrayPrototype, UNSCOPABLES, {
+    configurable: true,
+    value: create$2(null)
+  });
+}
+
+// add a key to Array.prototype[@@unscopables]
+var addToUnscopables$2 = function (key) {
+  ArrayPrototype[UNSCOPABLES][key] = true;
+};
+
+var $$5 = _export;
+var $includes = arrayIncludes.includes;
+var fails$3 = fails$p;
+var addToUnscopables$1 = addToUnscopables$2;
+
+// FF99+ bug
+var BROKEN_ON_SPARSE = fails$3(function () {
+  return !Array(1).includes();
+});
+
+// `Array.prototype.includes` method
+// https://tc39.es/ecma262/#sec-array.prototype.includes
+$$5({ target: 'Array', proto: true, forced: BROKEN_ON_SPARSE }, {
+  includes: function includes(el /* , fromIndex = 0 */) {
+    return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
+addToUnscopables$1('includes');
+
+var isRegExp = isRegexp;
+
+var $TypeError$2 = TypeError;
+
+var notARegexp = function (it) {
+  if (isRegExp(it)) {
+    throw $TypeError$2("The method doesn't accept regular expressions");
+  } return it;
+};
+
+var wellKnownSymbol$4 = wellKnownSymbol$e;
+
+var MATCH = wellKnownSymbol$4('match');
+
+var correctIsRegexpLogic = function (METHOD_NAME) {
+  var regexp = /./;
+  try {
+    '/./'[METHOD_NAME](regexp);
+  } catch (error1) {
+    try {
+      regexp[MATCH] = false;
+      return '/./'[METHOD_NAME](regexp);
+    } catch (error2) { /* empty */ }
+  } return false;
+};
+
+var $$4 = _export;
+var uncurryThis$4 = functionUncurryThis;
+var notARegExp$2 = notARegexp;
+var requireObjectCoercible$3 = requireObjectCoercible$b;
+var toString$5 = toString$f;
+var correctIsRegExpLogic$2 = correctIsRegexpLogic;
+
+var stringIndexOf = uncurryThis$4(''.indexOf);
+
+// `String.prototype.includes` method
+// https://tc39.es/ecma262/#sec-string.prototype.includes
+$$4({ target: 'String', proto: true, forced: !correctIsRegExpLogic$2('includes') }, {
+  includes: function includes(searchString /* , position = 0 */) {
+    return !!~stringIndexOf(
+      toString$5(requireObjectCoercible$3(this)),
+      toString$5(notARegExp$2(searchString)),
+      arguments.length > 1 ? arguments[1] : undefined
+    );
+  }
+});
+
+var _excluded$p = ["label", "labelComponent", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onLeftIconClick", "onRightIconClick", "invisible", "disabled", "inputClass", "oneCharWide", "leftIconComponent", "rightIconComponent", "labelClass"];
+var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
+  var label = _ref.label;
+      _ref.labelComponent;
+      var leftIcon = _ref.leftIcon,
+      size = _ref.size,
+      dropDown = _ref.dropDown,
+      rightIcon = _ref.rightIcon,
+      errorMessage = _ref.errorMessage,
+      inputClassName = _ref.inputClassName,
+      className = _ref.className;
+      _ref.isHookForm;
+      _ref.isFormik;
+      _ref.onLeftIconClick;
+      _ref.onRightIconClick;
+      var invisible = _ref.invisible,
+      disabled = _ref.disabled,
+      inputClass = _ref.inputClass,
+      oneCharWide = _ref.oneCharWide,
+      leftIconComponent = _ref.leftIconComponent,
+      rightIconComponent = _ref.rightIconComponent,
+      labelClass = _ref.labelClass,
+      props = _objectWithoutProperties(_ref, _excluded$p);
+
+  var generateInputFieldClasses = classNames(_defineProperty$x({
+    "ui-text-field__input": true,
+    "has-error": errorMessage,
+    "has-left-icon": leftIcon || leftIconComponent,
+    "has-right-icon": dropDown || rightIcon || rightIconComponent,
+    invisible: invisible,
+    disabled: disabled,
+    oneCharWide: oneCharWide
+  }, inputClass, inputClass), inputClassName);
+  var wrapperClasses = classNames(["size__".concat(size), "ui-text-field__wrapper"], className);
+  return /*#__PURE__*/React__default.createElement(Box, {
+    className: wrapperClasses,
+    ref: ref
+  }, label && !invisible && (typeof label === "string" ? /*#__PURE__*/React__default.createElement(Box, {
+    is: "label"
+  }, /*#__PURE__*/React__default.createElement(Text$1, {
+    className: className(_defineProperty$x({
+      "ui-text-field__label": true
+    }, labelClass, labelClass)),
+    scale: "subhead"
+  }, label)) : label), /*#__PURE__*/React__default.createElement(Box, {
+    className: "ui-text-field__input-wrapper"
+  }, leftIcon && !leftIconComponent && /*#__PURE__*/React__default.createElement(Icon, {
+    icon: leftIcon,
+    className: "ui-text-field__left-icon"
+  }), leftIconComponent && /*#__PURE__*/React__default.createElement(Box, {
+    className: "ui-text-field__left-icon"
+  }, leftIconComponent), /*#__PURE__*/React__default.createElement(Box, _extends$2({
+    className: generateInputFieldClasses,
+    is: "input"
+  }, props)), (dropDown || rightIcon) && !rightIconComponent && /*#__PURE__*/React__default.createElement(Icon, {
+    icon: dropDown ? ChevronFilledDown : rightIcon,
+    className: "ui-text-field__right-icon"
+  }), rightIconComponent), errorMessage && /*#__PURE__*/React__default.createElement(Box, {
+    className: "ui-text-field__error"
+  }, /*#__PURE__*/React__default.createElement(Icon, {
+    icon: Error$1,
+    className: "ui-text-field__error-icon"
+  }), /*#__PURE__*/React__default.createElement(Text$1, {
+    className: "ui-text-field__error-text",
+    scale: "subhead",
+    fontFace: "circularSTD"
+  }, errorMessage)));
+});
+TextField.propTypes = _objectSpread2$1(_objectSpread2$1({}, inputPropTypes), {}, {
+  dropDown: propTypes$1.exports.bool,
+  rightIcon: propTypes$1.exports.element,
+  leftIcon: propTypes$1.exports.element,
+  currency: propTypes$1.exports.bool,
+  emitOnlyCurrencyValue: propTypes$1.exports.bool,
+  oneCharWide: propTypes$1.exports.bool,
+  isPassword: propTypes$1.exports.bool,
+  ssn: propTypes$1.exports.bool,
+  maxlength: propTypes$1.exports.oneOfType([propTypes$1.exports.string, propTypes$1.exports.number]),
+  type: propTypes$1.exports.string,
+  inputClass: propTypes$1.exports.string,
+  onChange: propTypes$1.exports.func,
+  onInput: propTypes$1.exports.func,
+  onKeypress: propTypes$1.exports.func,
+  onKeydown: propTypes$1.exports.func,
+  onFocus: propTypes$1.exports.func,
+  onBlur: propTypes$1.exports.func,
+  onKeyup: propTypes$1.exports.func,
+  leftIconComponent: propTypes$1.exports.node,
+  rightIconComponent: propTypes$1.exports.node
+});
+TextField.defaultProps = _objectSpread2$1(_objectSpread2$1({}, defaultProps$2), {}, {
+  type: "text"
+});
+
+var propTypes = {
+  label: propTypes$1.exports.string,
+  dropDown: propTypes$1.exports.bool,
+  size: propTypes$1.exports.oneOf(["small", "medium", "large", "xlarge", "huge", "massive"]),
+  errorMessage: propTypes$1.exports.string
+};
+var defaultProps$1 = {
+  size: "medium"
+};
+
+var isArray$1 = Array.isArray;
+var keyList = Object.keys;
+var hasProp = Object.prototype.hasOwnProperty;
+var hasElementType$1 = typeof Element !== 'undefined';
+
+function equal$1(a, b) {
+  // fast-deep-equal index.js 2.0.1
+  if (a === b) return true;
+
+  if (a && b && typeof a == 'object' && typeof b == 'object') {
+    var arrA = isArray$1(a)
+      , arrB = isArray$1(b)
+      , i
+      , length
+      , key;
+
+    if (arrA && arrB) {
+      length = a.length;
+      if (length != b.length) return false;
+      for (i = length; i-- !== 0;)
+        if (!equal$1(a[i], b[i])) return false;
+      return true;
+    }
+
+    if (arrA != arrB) return false;
+
+    var dateA = a instanceof Date
+      , dateB = b instanceof Date;
+    if (dateA != dateB) return false;
+    if (dateA && dateB) return a.getTime() == b.getTime();
+
+    var regexpA = a instanceof RegExp
+      , regexpB = b instanceof RegExp;
+    if (regexpA != regexpB) return false;
+    if (regexpA && regexpB) return a.toString() == b.toString();
+
+    var keys = keyList(a);
+    length = keys.length;
+
+    if (length !== keyList(b).length)
+      return false;
+
+    for (i = length; i-- !== 0;)
+      if (!hasProp.call(b, keys[i])) return false;
+    // end fast-deep-equal
+
+    // start react-fast-compare
+    // custom handling for DOM elements
+    if (hasElementType$1 && a instanceof Element && b instanceof Element)
+      return a === b;
+
+    // custom handling for React
+    for (i = length; i-- !== 0;) {
+      key = keys[i];
+      if (key === '_owner' && a.$$typeof) {
+        // React-specific: avoid traversing React elements' _owner.
+        //  _owner contains circular references
+        // and is not needed when comparing the actual elements (and not their owners)
+        // .$$typeof and ._store on just reasonable markers of a react element
+        continue;
+      } else {
+        // all other properties should be traversed as usual
+        if (!equal$1(a[key], b[key])) return false;
+      }
+    }
+    // end react-fast-compare
+
+    // fast-deep-equal index.js 2.0.1
+    return true;
+  }
+
+  return a !== a && b !== b;
+}
+// end fast-deep-equal
+
+var reactFastCompare$1 = function exportedEqual(a, b) {
+  try {
+    return equal$1(a, b);
+  } catch (error) {
+    if ((error.message && error.message.match(/stack|recursion/i)) || (error.number === -2146828260)) {
+      // warn on circular references, don't crash
+      // browsers give this different errors name and messages:
+      // chrome/safari: "RangeError", "Maximum call stack size exceeded"
+      // firefox: "InternalError", too much recursion"
+      // edge: "Error", "Out of stack space"
+      console.warn('Warning: react-fast-compare does not handle circular references.', error.name, error.message);
+      return false;
+    }
+    // some other error. we should definitely know about these
+    throw error;
+  }
+};
+
+/** Detect free variable `global` from Node.js. */
+var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+
+/** Detect free variable `self`. */
+var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root = freeGlobal || freeSelf || Function('return this')();
+
+/** Built-in value references. */
+var Symbol$1 = root.Symbol;
+
+/** Used for built-in method references. */
+var objectProto$c = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty$9 = objectProto$c.hasOwnProperty;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString$1 = objectProto$c.toString;
+
+/** Built-in value references. */
+var symToStringTag$1 = Symbol$1 ? Symbol$1.toStringTag : undefined;
+
+/**
+ * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the raw `toStringTag`.
+ */
+function getRawTag(value) {
+  var isOwn = hasOwnProperty$9.call(value, symToStringTag$1),
+      tag = value[symToStringTag$1];
+
+  try {
+    value[symToStringTag$1] = undefined;
+    var unmasked = true;
+  } catch (e) {}
+
+  var result = nativeObjectToString$1.call(value);
+  if (unmasked) {
+    if (isOwn) {
+      value[symToStringTag$1] = tag;
+    } else {
+      delete value[symToStringTag$1];
+    }
+  }
+  return result;
+}
+
+/** Used for built-in method references. */
+var objectProto$b = Object.prototype;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString = objectProto$b.toString;
+
+/**
+ * Converts `value` to a string using `Object.prototype.toString`.
+ *
+ * @private
+ * @param {*} value The value to convert.
+ * @returns {string} Returns the converted string.
+ */
+function objectToString(value) {
+  return nativeObjectToString.call(value);
+}
+
+/** `Object#toString` result references. */
+var nullTag = '[object Null]',
+    undefinedTag = '[object Undefined]';
+
+/** Built-in value references. */
+var symToStringTag = Symbol$1 ? Symbol$1.toStringTag : undefined;
+
+/**
+ * The base implementation of `getTag` without fallbacks for buggy environments.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the `toStringTag`.
+ */
+function baseGetTag(value) {
+  if (value == null) {
+    return value === undefined ? undefinedTag : nullTag;
+  }
+  return (symToStringTag && symToStringTag in Object(value))
+    ? getRawTag(value)
+    : objectToString(value);
+}
+
+/**
+ * Creates a unary function that invokes `func` with its argument transformed.
+ *
+ * @private
+ * @param {Function} func The function to wrap.
+ * @param {Function} transform The argument transform.
+ * @returns {Function} Returns the new function.
+ */
+function overArg(func, transform) {
+  return function(arg) {
+    return func(transform(arg));
+  };
+}
+
+/** Built-in value references. */
+var getPrototype = overArg(Object.getPrototypeOf, Object);
+
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return value != null && typeof value == 'object';
+}
+
+/** Used for built-in method references. */
+var funcProto$2 = Function.prototype;
+
+/** Used to resolve the decompiled source of functions. */
+var funcToString$2 = funcProto$2.toString;
+
+/** Used to infer the `Object` constructor. */
+funcToString$2.call(Object);
+
+/**
+ * Removes all key-value entries from the list cache.
+ *
+ * @private
+ * @name clear
+ * @memberOf ListCache
+ */
+function listCacheClear() {
+  this.__data__ = [];
+  this.size = 0;
+}
+
+/**
+ * Performs a
+ * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+ * comparison between two values to determine if they are equivalent.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to compare.
+ * @param {*} other The other value to compare.
+ * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+ * @example
+ *
+ * var object = { 'a': 1 };
+ * var other = { 'a': 1 };
+ *
+ * _.eq(object, object);
+ * // => true
+ *
+ * _.eq(object, other);
+ * // => false
+ *
+ * _.eq('a', 'a');
+ * // => true
+ *
+ * _.eq('a', Object('a'));
+ * // => false
+ *
+ * _.eq(NaN, NaN);
+ * // => true
+ */
+function eq(value, other) {
+  return value === other || (value !== value && other !== other);
+}
+
+/**
+ * Gets the index at which the `key` is found in `array` of key-value pairs.
+ *
+ * @private
+ * @param {Array} array The array to inspect.
+ * @param {*} key The key to search for.
+ * @returns {number} Returns the index of the matched value, else `-1`.
+ */
+function assocIndexOf(array, key) {
+  var length = array.length;
+  while (length--) {
+    if (eq(array[length][0], key)) {
+      return length;
+    }
+  }
+  return -1;
+}
+
+/** Used for built-in method references. */
+var arrayProto = Array.prototype;
+
+/** Built-in value references. */
+var splice = arrayProto.splice;
+
+/**
+ * Removes `key` and its value from the list cache.
+ *
+ * @private
+ * @name delete
+ * @memberOf ListCache
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function listCacheDelete(key) {
+  var data = this.__data__,
+      index = assocIndexOf(data, key);
+
+  if (index < 0) {
+    return false;
+  }
+  var lastIndex = data.length - 1;
+  if (index == lastIndex) {
+    data.pop();
+  } else {
+    splice.call(data, index, 1);
+  }
+  --this.size;
+  return true;
+}
+
+/**
+ * Gets the list cache value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf ListCache
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function listCacheGet(key) {
+  var data = this.__data__,
+      index = assocIndexOf(data, key);
+
+  return index < 0 ? undefined : data[index][1];
+}
+
+/**
+ * Checks if a list cache value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf ListCache
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function listCacheHas(key) {
+  return assocIndexOf(this.__data__, key) > -1;
+}
+
+/**
+ * Sets the list cache `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf ListCache
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the list cache instance.
+ */
+function listCacheSet(key, value) {
+  var data = this.__data__,
+      index = assocIndexOf(data, key);
+
+  if (index < 0) {
+    ++this.size;
+    data.push([key, value]);
+  } else {
+    data[index][1] = value;
+  }
+  return this;
+}
+
+/**
+ * Creates an list cache object.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function ListCache(entries) {
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
+
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
+}
+
+// Add methods to `ListCache`.
+ListCache.prototype.clear = listCacheClear;
+ListCache.prototype['delete'] = listCacheDelete;
+ListCache.prototype.get = listCacheGet;
+ListCache.prototype.has = listCacheHas;
+ListCache.prototype.set = listCacheSet;
+
+/**
+ * Removes all key-value entries from the stack.
+ *
+ * @private
+ * @name clear
+ * @memberOf Stack
+ */
+function stackClear() {
+  this.__data__ = new ListCache;
+  this.size = 0;
+}
+
+/**
+ * Removes `key` and its value from the stack.
+ *
+ * @private
+ * @name delete
+ * @memberOf Stack
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function stackDelete(key) {
+  var data = this.__data__,
+      result = data['delete'](key);
+
+  this.size = data.size;
+  return result;
+}
+
+/**
+ * Gets the stack value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf Stack
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function stackGet(key) {
+  return this.__data__.get(key);
+}
+
+/**
+ * Checks if a stack value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf Stack
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function stackHas(key) {
+  return this.__data__.has(key);
+}
+
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject$1(value) {
+  var type = typeof value;
+  return value != null && (type == 'object' || type == 'function');
+}
+
+/** `Object#toString` result references. */
+var asyncTag = '[object AsyncFunction]',
+    funcTag$2 = '[object Function]',
+    genTag$1 = '[object GeneratorFunction]',
+    proxyTag = '[object Proxy]';
+
+/**
+ * Checks if `value` is classified as a `Function` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a function, else `false`.
+ * @example
+ *
+ * _.isFunction(_);
+ * // => true
+ *
+ * _.isFunction(/abc/);
+ * // => false
+ */
+function isFunction$1(value) {
+  if (!isObject$1(value)) {
+    return false;
+  }
+  // The use of `Object#toString` avoids issues with the `typeof` operator
+  // in Safari 9 which returns 'object' for typed arrays and other constructors.
+  var tag = baseGetTag(value);
+  return tag == funcTag$2 || tag == genTag$1 || tag == asyncTag || tag == proxyTag;
+}
+
+/** Used to detect overreaching core-js shims. */
+var coreJsData = root['__core-js_shared__'];
+
+/** Used to detect methods masquerading as native. */
+var maskSrcKey = (function() {
+  var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
+  return uid ? ('Symbol(src)_1.' + uid) : '';
+}());
+
+/**
+ * Checks if `func` has its source masked.
+ *
+ * @private
+ * @param {Function} func The function to check.
+ * @returns {boolean} Returns `true` if `func` is masked, else `false`.
+ */
+function isMasked(func) {
+  return !!maskSrcKey && (maskSrcKey in func);
+}
+
+/** Used for built-in method references. */
+var funcProto$1 = Function.prototype;
+
+/** Used to resolve the decompiled source of functions. */
+var funcToString$1 = funcProto$1.toString;
+
+/**
+ * Converts `func` to its source code.
+ *
+ * @private
+ * @param {Function} func The function to convert.
+ * @returns {string} Returns the source code.
+ */
+function toSource(func) {
+  if (func != null) {
+    try {
+      return funcToString$1.call(func);
+    } catch (e) {}
+    try {
+      return (func + '');
+    } catch (e) {}
+  }
+  return '';
+}
+
+/**
+ * Used to match `RegExp`
+ * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
+ */
+var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
+
+/** Used to detect host constructors (Safari). */
+var reIsHostCtor = /^\[object .+?Constructor\]$/;
+
+/** Used for built-in method references. */
+var funcProto = Function.prototype,
+    objectProto$a = Object.prototype;
+
+/** Used to resolve the decompiled source of functions. */
+var funcToString = funcProto.toString;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty$8 = objectProto$a.hasOwnProperty;
+
+/** Used to detect if a method is native. */
+var reIsNative = RegExp('^' +
+  funcToString.call(hasOwnProperty$8).replace(reRegExpChar, '\\$&')
+  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
+);
+
+/**
+ * The base implementation of `_.isNative` without bad shim checks.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a native function,
+ *  else `false`.
+ */
+function baseIsNative(value) {
+  if (!isObject$1(value) || isMasked(value)) {
+    return false;
+  }
+  var pattern = isFunction$1(value) ? reIsNative : reIsHostCtor;
+  return pattern.test(toSource(value));
+}
+
+/**
+ * Gets the value at `key` of `object`.
+ *
+ * @private
+ * @param {Object} [object] The object to query.
+ * @param {string} key The key of the property to get.
+ * @returns {*} Returns the property value.
+ */
+function getValue$1(object, key) {
+  return object == null ? undefined : object[key];
+}
+
+/**
+ * Gets the native function at `key` of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {string} key The key of the method to get.
+ * @returns {*} Returns the function if it's native, else `undefined`.
+ */
+function getNative(object, key) {
+  var value = getValue$1(object, key);
+  return baseIsNative(value) ? value : undefined;
+}
+
+/* Built-in method references that are verified to be native. */
+var Map$1 = getNative(root, 'Map');
+
+/* Built-in method references that are verified to be native. */
+var nativeCreate = getNative(Object, 'create');
+
+/**
+ * Removes all key-value entries from the hash.
+ *
+ * @private
+ * @name clear
+ * @memberOf Hash
+ */
+function hashClear() {
+  this.__data__ = nativeCreate ? nativeCreate(null) : {};
+  this.size = 0;
+}
+
+/**
+ * Removes `key` and its value from the hash.
+ *
+ * @private
+ * @name delete
+ * @memberOf Hash
+ * @param {Object} hash The hash to modify.
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function hashDelete(key) {
+  var result = this.has(key) && delete this.__data__[key];
+  this.size -= result ? 1 : 0;
+  return result;
+}
+
+/** Used to stand-in for `undefined` hash values. */
+var HASH_UNDEFINED$1 = '__lodash_hash_undefined__';
+
+/** Used for built-in method references. */
+var objectProto$9 = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty$7 = objectProto$9.hasOwnProperty;
+
+/**
+ * Gets the hash value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf Hash
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function hashGet(key) {
+  var data = this.__data__;
+  if (nativeCreate) {
+    var result = data[key];
+    return result === HASH_UNDEFINED$1 ? undefined : result;
+  }
+  return hasOwnProperty$7.call(data, key) ? data[key] : undefined;
+}
+
+/** Used for built-in method references. */
+var objectProto$8 = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty$6 = objectProto$8.hasOwnProperty;
+
+/**
+ * Checks if a hash value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf Hash
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function hashHas(key) {
+  var data = this.__data__;
+  return nativeCreate ? (data[key] !== undefined) : hasOwnProperty$6.call(data, key);
+}
+
+/** Used to stand-in for `undefined` hash values. */
+var HASH_UNDEFINED = '__lodash_hash_undefined__';
+
+/**
+ * Sets the hash `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf Hash
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the hash instance.
+ */
+function hashSet(key, value) {
+  var data = this.__data__;
+  this.size += this.has(key) ? 0 : 1;
+  data[key] = (nativeCreate && value === undefined) ? HASH_UNDEFINED : value;
+  return this;
+}
+
+/**
+ * Creates a hash object.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function Hash(entries) {
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
+
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
+}
+
+// Add methods to `Hash`.
+Hash.prototype.clear = hashClear;
+Hash.prototype['delete'] = hashDelete;
+Hash.prototype.get = hashGet;
+Hash.prototype.has = hashHas;
+Hash.prototype.set = hashSet;
+
+/**
+ * Removes all key-value entries from the map.
+ *
+ * @private
+ * @name clear
+ * @memberOf MapCache
+ */
+function mapCacheClear() {
+  this.size = 0;
+  this.__data__ = {
+    'hash': new Hash,
+    'map': new (Map$1 || ListCache),
+    'string': new Hash
+  };
+}
+
+/**
+ * Checks if `value` is suitable for use as unique object key.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
+ */
+function isKeyable(value) {
+  var type = typeof value;
+  return (type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean')
+    ? (value !== '__proto__')
+    : (value === null);
+}
+
+/**
+ * Gets the data for `map`.
+ *
+ * @private
+ * @param {Object} map The map to query.
+ * @param {string} key The reference key.
+ * @returns {*} Returns the map data.
+ */
+function getMapData(map, key) {
+  var data = map.__data__;
+  return isKeyable(key)
+    ? data[typeof key == 'string' ? 'string' : 'hash']
+    : data.map;
+}
+
+/**
+ * Removes `key` and its value from the map.
+ *
+ * @private
+ * @name delete
+ * @memberOf MapCache
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function mapCacheDelete(key) {
+  var result = getMapData(this, key)['delete'](key);
+  this.size -= result ? 1 : 0;
+  return result;
+}
+
+/**
+ * Gets the map value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf MapCache
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function mapCacheGet(key) {
+  return getMapData(this, key).get(key);
+}
+
+/**
+ * Checks if a map value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf MapCache
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function mapCacheHas(key) {
+  return getMapData(this, key).has(key);
+}
+
+/**
+ * Sets the map `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf MapCache
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the map cache instance.
+ */
+function mapCacheSet(key, value) {
+  var data = getMapData(this, key),
+      size = data.size;
+
+  data.set(key, value);
+  this.size += data.size == size ? 0 : 1;
+  return this;
+}
+
+/**
+ * Creates a map cache object to store key-value pairs.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function MapCache(entries) {
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
+
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
+}
+
+// Add methods to `MapCache`.
+MapCache.prototype.clear = mapCacheClear;
+MapCache.prototype['delete'] = mapCacheDelete;
+MapCache.prototype.get = mapCacheGet;
+MapCache.prototype.has = mapCacheHas;
+MapCache.prototype.set = mapCacheSet;
+
+/** Used as the size to enable large array optimizations. */
+var LARGE_ARRAY_SIZE = 200;
+
+/**
+ * Sets the stack `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf Stack
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the stack cache instance.
+ */
+function stackSet(key, value) {
+  var data = this.__data__;
+  if (data instanceof ListCache) {
+    var pairs = data.__data__;
+    if (!Map$1 || (pairs.length < LARGE_ARRAY_SIZE - 1)) {
+      pairs.push([key, value]);
+      this.size = ++data.size;
+      return this;
+    }
+    data = this.__data__ = new MapCache(pairs);
+  }
+  data.set(key, value);
+  this.size = data.size;
+  return this;
+}
+
+/**
+ * Creates a stack cache object to store key-value pairs.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function Stack(entries) {
+  var data = this.__data__ = new ListCache(entries);
+  this.size = data.size;
+}
+
+// Add methods to `Stack`.
+Stack.prototype.clear = stackClear;
+Stack.prototype['delete'] = stackDelete;
+Stack.prototype.get = stackGet;
+Stack.prototype.has = stackHas;
+Stack.prototype.set = stackSet;
+
+/**
+ * A specialized version of `_.forEach` for arrays without support for
+ * iteratee shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns `array`.
+ */
+function arrayEach(array, iteratee) {
+  var index = -1,
+      length = array == null ? 0 : array.length;
+
+  while (++index < length) {
+    if (iteratee(array[index], index, array) === false) {
+      break;
+    }
+  }
+  return array;
+}
+
+var defineProperty$3 = (function() {
+  try {
+    var func = getNative(Object, 'defineProperty');
+    func({}, '', {});
+    return func;
+  } catch (e) {}
+}());
+
+/**
+ * The base implementation of `assignValue` and `assignMergeValue` without
+ * value checks.
+ *
+ * @private
+ * @param {Object} object The object to modify.
+ * @param {string} key The key of the property to assign.
+ * @param {*} value The value to assign.
+ */
+function baseAssignValue(object, key, value) {
+  if (key == '__proto__' && defineProperty$3) {
+    defineProperty$3(object, key, {
+      'configurable': true,
+      'enumerable': true,
+      'value': value,
+      'writable': true
+    });
+  } else {
+    object[key] = value;
+  }
+}
+
+/** Used for built-in method references. */
+var objectProto$7 = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty$5 = objectProto$7.hasOwnProperty;
+
+/**
+ * Assigns `value` to `key` of `object` if the existing value is not equivalent
+ * using [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+ * for equality comparisons.
+ *
+ * @private
+ * @param {Object} object The object to modify.
+ * @param {string} key The key of the property to assign.
+ * @param {*} value The value to assign.
+ */
+function assignValue(object, key, value) {
+  var objValue = object[key];
+  if (!(hasOwnProperty$5.call(object, key) && eq(objValue, value)) ||
+      (value === undefined && !(key in object))) {
+    baseAssignValue(object, key, value);
+  }
+}
+
+/**
+ * Copies properties of `source` to `object`.
+ *
+ * @private
+ * @param {Object} source The object to copy properties from.
+ * @param {Array} props The property identifiers to copy.
+ * @param {Object} [object={}] The object to copy properties to.
+ * @param {Function} [customizer] The function to customize copied values.
+ * @returns {Object} Returns `object`.
+ */
+function copyObject(source, props, object, customizer) {
+  var isNew = !object;
+  object || (object = {});
+
+  var index = -1,
+      length = props.length;
+
+  while (++index < length) {
+    var key = props[index];
+
+    var newValue = customizer
+      ? customizer(object[key], source[key], key, object, source)
+      : undefined;
+
+    if (newValue === undefined) {
+      newValue = source[key];
+    }
+    if (isNew) {
+      baseAssignValue(object, key, newValue);
+    } else {
+      assignValue(object, key, newValue);
+    }
+  }
+  return object;
+}
+
+/**
+ * The base implementation of `_.times` without support for iteratee shorthands
+ * or max array length checks.
+ *
+ * @private
+ * @param {number} n The number of times to invoke `iteratee`.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the array of results.
+ */
+function baseTimes(n, iteratee) {
+  var index = -1,
+      result = Array(n);
+
+  while (++index < n) {
+    result[index] = iteratee(index);
+  }
+  return result;
+}
+
+/** `Object#toString` result references. */
+var argsTag$2 = '[object Arguments]';
+
+/**
+ * The base implementation of `_.isArguments`.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+ */
+function baseIsArguments(value) {
+  return isObjectLike(value) && baseGetTag(value) == argsTag$2;
+}
+
+/** Used for built-in method references. */
+var objectProto$6 = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty$4 = objectProto$6.hasOwnProperty;
+
+/** Built-in value references. */
+var propertyIsEnumerable$1 = objectProto$6.propertyIsEnumerable;
+
+/**
+ * Checks if `value` is likely an `arguments` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+ *  else `false`.
+ * @example
+ *
+ * _.isArguments(function() { return arguments; }());
+ * // => true
+ *
+ * _.isArguments([1, 2, 3]);
+ * // => false
+ */
+var isArguments = baseIsArguments(function() { return arguments; }()) ? baseIsArguments : function(value) {
+  return isObjectLike(value) && hasOwnProperty$4.call(value, 'callee') &&
+    !propertyIsEnumerable$1.call(value, 'callee');
+};
+
+/**
+ * Checks if `value` is classified as an `Array` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+ * @example
+ *
+ * _.isArray([1, 2, 3]);
+ * // => true
+ *
+ * _.isArray(document.body.children);
+ * // => false
+ *
+ * _.isArray('abc');
+ * // => false
+ *
+ * _.isArray(_.noop);
+ * // => false
+ */
+var isArray = Array.isArray;
+
+/**
+ * This method returns `false`.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.13.0
+ * @category Util
+ * @returns {boolean} Returns `false`.
+ * @example
+ *
+ * _.times(2, _.stubFalse);
+ * // => [false, false]
+ */
+function stubFalse() {
+  return false;
+}
+
+/** Detect free variable `exports`. */
+var freeExports$2 = typeof exports == 'object' && exports && !exports.nodeType && exports;
+
+/** Detect free variable `module`. */
+var freeModule$2 = freeExports$2 && typeof module == 'object' && module && !module.nodeType && module;
+
+/** Detect the popular CommonJS extension `module.exports`. */
+var moduleExports$2 = freeModule$2 && freeModule$2.exports === freeExports$2;
+
+/** Built-in value references. */
+var Buffer$1 = moduleExports$2 ? root.Buffer : undefined;
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeIsBuffer = Buffer$1 ? Buffer$1.isBuffer : undefined;
+
+/**
+ * Checks if `value` is a buffer.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.3.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
+ * @example
+ *
+ * _.isBuffer(new Buffer(2));
+ * // => true
+ *
+ * _.isBuffer(new Uint8Array(2));
+ * // => false
+ */
+var isBuffer = nativeIsBuffer || stubFalse;
+
+/** Used as references for various `Number` constants. */
+var MAX_SAFE_INTEGER$1 = 9007199254740991;
+
+/** Used to detect unsigned integer values. */
+var reIsUint = /^(?:0|[1-9]\d*)$/;
+
+/**
+ * Checks if `value` is a valid array-like index.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
+ * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+ */
+function isIndex(value, length) {
+  var type = typeof value;
+  length = length == null ? MAX_SAFE_INTEGER$1 : length;
+
+  return !!length &&
+    (type == 'number' ||
+      (type != 'symbol' && reIsUint.test(value))) &&
+        (value > -1 && value % 1 == 0 && value < length);
+}
+
+/** Used as references for various `Number` constants. */
+var MAX_SAFE_INTEGER = 9007199254740991;
+
+/**
+ * Checks if `value` is a valid array-like length.
+ *
+ * **Note:** This method is loosely based on
+ * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+ * @example
+ *
+ * _.isLength(3);
+ * // => true
+ *
+ * _.isLength(Number.MIN_VALUE);
+ * // => false
+ *
+ * _.isLength(Infinity);
+ * // => false
+ *
+ * _.isLength('3');
+ * // => false
+ */
+function isLength(value) {
+  return typeof value == 'number' &&
+    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+}
+
+/** `Object#toString` result references. */
+var argsTag$1 = '[object Arguments]',
+    arrayTag$1 = '[object Array]',
+    boolTag$2 = '[object Boolean]',
+    dateTag$2 = '[object Date]',
+    errorTag$1 = '[object Error]',
+    funcTag$1 = '[object Function]',
+    mapTag$4 = '[object Map]',
+    numberTag$2 = '[object Number]',
+    objectTag$2 = '[object Object]',
+    regexpTag$2 = '[object RegExp]',
+    setTag$4 = '[object Set]',
+    stringTag$2 = '[object String]',
+    weakMapTag$2 = '[object WeakMap]';
+
+var arrayBufferTag$2 = '[object ArrayBuffer]',
+    dataViewTag$3 = '[object DataView]',
+    float32Tag$2 = '[object Float32Array]',
+    float64Tag$2 = '[object Float64Array]',
+    int8Tag$2 = '[object Int8Array]',
+    int16Tag$2 = '[object Int16Array]',
+    int32Tag$2 = '[object Int32Array]',
+    uint8Tag$2 = '[object Uint8Array]',
+    uint8ClampedTag$2 = '[object Uint8ClampedArray]',
+    uint16Tag$2 = '[object Uint16Array]',
+    uint32Tag$2 = '[object Uint32Array]';
+
+/** Used to identify `toStringTag` values of typed arrays. */
+var typedArrayTags = {};
+typedArrayTags[float32Tag$2] = typedArrayTags[float64Tag$2] =
+typedArrayTags[int8Tag$2] = typedArrayTags[int16Tag$2] =
+typedArrayTags[int32Tag$2] = typedArrayTags[uint8Tag$2] =
+typedArrayTags[uint8ClampedTag$2] = typedArrayTags[uint16Tag$2] =
+typedArrayTags[uint32Tag$2] = true;
+typedArrayTags[argsTag$1] = typedArrayTags[arrayTag$1] =
+typedArrayTags[arrayBufferTag$2] = typedArrayTags[boolTag$2] =
+typedArrayTags[dataViewTag$3] = typedArrayTags[dateTag$2] =
+typedArrayTags[errorTag$1] = typedArrayTags[funcTag$1] =
+typedArrayTags[mapTag$4] = typedArrayTags[numberTag$2] =
+typedArrayTags[objectTag$2] = typedArrayTags[regexpTag$2] =
+typedArrayTags[setTag$4] = typedArrayTags[stringTag$2] =
+typedArrayTags[weakMapTag$2] = false;
+
+/**
+ * The base implementation of `_.isTypedArray` without Node.js optimizations.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
+ */
+function baseIsTypedArray(value) {
+  return isObjectLike(value) &&
+    isLength(value.length) && !!typedArrayTags[baseGetTag(value)];
+}
+
+/**
+ * The base implementation of `_.unary` without support for storing metadata.
+ *
+ * @private
+ * @param {Function} func The function to cap arguments for.
+ * @returns {Function} Returns the new capped function.
+ */
+function baseUnary(func) {
+  return function(value) {
+    return func(value);
+  };
+}
+
+/** Detect free variable `exports`. */
+var freeExports$1 = typeof exports == 'object' && exports && !exports.nodeType && exports;
+
+/** Detect free variable `module`. */
+var freeModule$1 = freeExports$1 && typeof module == 'object' && module && !module.nodeType && module;
+
+/** Detect the popular CommonJS extension `module.exports`. */
+var moduleExports$1 = freeModule$1 && freeModule$1.exports === freeExports$1;
+
+/** Detect free variable `process` from Node.js. */
+var freeProcess = moduleExports$1 && freeGlobal.process;
+
+/** Used to access faster Node.js helpers. */
+var nodeUtil = (function() {
+  try {
+    // Use `util.types` for Node.js 10+.
+    var types = freeModule$1 && freeModule$1.require && freeModule$1.require('util').types;
+
+    if (types) {
+      return types;
+    }
+
+    // Legacy `process.binding('util')` for Node.js < 10.
+    return freeProcess && freeProcess.binding && freeProcess.binding('util');
+  } catch (e) {}
+}());
+
+/* Node.js helper references. */
+var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
+
+/**
+ * Checks if `value` is classified as a typed array.
+ *
+ * @static
+ * @memberOf _
+ * @since 3.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
+ * @example
+ *
+ * _.isTypedArray(new Uint8Array);
+ * // => true
+ *
+ * _.isTypedArray([]);
+ * // => false
+ */
+var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedArray;
+
+/** Used for built-in method references. */
+var objectProto$5 = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty$3 = objectProto$5.hasOwnProperty;
+
+/**
+ * Creates an array of the enumerable property names of the array-like `value`.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @param {boolean} inherited Specify returning inherited property names.
+ * @returns {Array} Returns the array of property names.
+ */
+function arrayLikeKeys(value, inherited) {
+  var isArr = isArray(value),
+      isArg = !isArr && isArguments(value),
+      isBuff = !isArr && !isArg && isBuffer(value),
+      isType = !isArr && !isArg && !isBuff && isTypedArray(value),
+      skipIndexes = isArr || isArg || isBuff || isType,
+      result = skipIndexes ? baseTimes(value.length, String) : [],
+      length = result.length;
+
+  for (var key in value) {
+    if ((inherited || hasOwnProperty$3.call(value, key)) &&
+        !(skipIndexes && (
+           // Safari 9 has enumerable `arguments.length` in strict mode.
+           key == 'length' ||
+           // Node.js 0.10 has enumerable non-index properties on buffers.
+           (isBuff && (key == 'offset' || key == 'parent')) ||
+           // PhantomJS 2 has enumerable non-index properties on typed arrays.
+           (isType && (key == 'buffer' || key == 'byteLength' || key == 'byteOffset')) ||
+           // Skip index properties.
+           isIndex(key, length)
+        ))) {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+/** Used for built-in method references. */
+var objectProto$4 = Object.prototype;
+
+/**
+ * Checks if `value` is likely a prototype object.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
+ */
+function isPrototype(value) {
+  var Ctor = value && value.constructor,
+      proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto$4;
+
+  return value === proto;
+}
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeKeys = overArg(Object.keys, Object);
+
+/** Used for built-in method references. */
+var objectProto$3 = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty$2 = objectProto$3.hasOwnProperty;
+
+/**
+ * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ */
+function baseKeys(object) {
+  if (!isPrototype(object)) {
+    return nativeKeys(object);
+  }
+  var result = [];
+  for (var key in Object(object)) {
+    if (hasOwnProperty$2.call(object, key) && key != 'constructor') {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+/**
+ * Checks if `value` is array-like. A value is considered array-like if it's
+ * not a function and has a `value.length` that's an integer greater than or
+ * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+ * @example
+ *
+ * _.isArrayLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isArrayLike(document.body.children);
+ * // => true
+ *
+ * _.isArrayLike('abc');
+ * // => true
+ *
+ * _.isArrayLike(_.noop);
+ * // => false
+ */
+function isArrayLike(value) {
+  return value != null && isLength(value.length) && !isFunction$1(value);
+}
+
+/**
+ * Creates an array of the own enumerable property names of `object`.
+ *
+ * **Note:** Non-object values are coerced to objects. See the
+ * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+ * for more details.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Object
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ *   this.b = 2;
+ * }
+ *
+ * Foo.prototype.c = 3;
+ *
+ * _.keys(new Foo);
+ * // => ['a', 'b'] (iteration order is not guaranteed)
+ *
+ * _.keys('hi');
+ * // => ['0', '1']
+ */
+function keys(object) {
+  return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);
+}
+
+/**
+ * The base implementation of `_.assign` without support for multiple sources
+ * or `customizer` functions.
+ *
+ * @private
+ * @param {Object} object The destination object.
+ * @param {Object} source The source object.
+ * @returns {Object} Returns `object`.
+ */
+function baseAssign(object, source) {
+  return object && copyObject(source, keys(source), object);
+}
+
+/**
+ * This function is like
+ * [`Object.keys`](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+ * except that it includes inherited enumerable properties.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ */
+function nativeKeysIn(object) {
+  var result = [];
+  if (object != null) {
+    for (var key in Object(object)) {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+/** Used for built-in method references. */
+var objectProto$2 = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty$1 = objectProto$2.hasOwnProperty;
+
+/**
+ * The base implementation of `_.keysIn` which doesn't treat sparse arrays as dense.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ */
+function baseKeysIn(object) {
+  if (!isObject$1(object)) {
+    return nativeKeysIn(object);
+  }
+  var isProto = isPrototype(object),
+      result = [];
+
+  for (var key in object) {
+    if (!(key == 'constructor' && (isProto || !hasOwnProperty$1.call(object, key)))) {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+/**
+ * Creates an array of the own and inherited enumerable property names of `object`.
+ *
+ * **Note:** Non-object values are coerced to objects.
+ *
+ * @static
+ * @memberOf _
+ * @since 3.0.0
+ * @category Object
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ *   this.b = 2;
+ * }
+ *
+ * Foo.prototype.c = 3;
+ *
+ * _.keysIn(new Foo);
+ * // => ['a', 'b', 'c'] (iteration order is not guaranteed)
+ */
+function keysIn(object) {
+  return isArrayLike(object) ? arrayLikeKeys(object, true) : baseKeysIn(object);
+}
+
+/**
+ * The base implementation of `_.assignIn` without support for multiple sources
+ * or `customizer` functions.
+ *
+ * @private
+ * @param {Object} object The destination object.
+ * @param {Object} source The source object.
+ * @returns {Object} Returns `object`.
+ */
+function baseAssignIn(object, source) {
+  return object && copyObject(source, keysIn(source), object);
+}
+
+/** Detect free variable `exports`. */
+var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
+
+/** Detect free variable `module`. */
+var freeModule = freeExports && typeof module == 'object' && module && !module.nodeType && module;
+
+/** Detect the popular CommonJS extension `module.exports`. */
+var moduleExports = freeModule && freeModule.exports === freeExports;
+
+/** Built-in value references. */
+var Buffer = moduleExports ? root.Buffer : undefined,
+    allocUnsafe = Buffer ? Buffer.allocUnsafe : undefined;
+
+/**
+ * Creates a clone of  `buffer`.
+ *
+ * @private
+ * @param {Buffer} buffer The buffer to clone.
+ * @param {boolean} [isDeep] Specify a deep clone.
+ * @returns {Buffer} Returns the cloned buffer.
+ */
+function cloneBuffer(buffer, isDeep) {
+  if (isDeep) {
+    return buffer.slice();
+  }
+  var length = buffer.length,
+      result = allocUnsafe ? allocUnsafe(length) : new buffer.constructor(length);
+
+  buffer.copy(result);
+  return result;
+}
+
+/**
+ * Copies the values of `source` to `array`.
+ *
+ * @private
+ * @param {Array} source The array to copy values from.
+ * @param {Array} [array=[]] The array to copy values to.
+ * @returns {Array} Returns `array`.
+ */
+function copyArray(source, array) {
+  var index = -1,
+      length = source.length;
+
+  array || (array = Array(length));
+  while (++index < length) {
+    array[index] = source[index];
+  }
+  return array;
+}
+
+/**
+ * A specialized version of `_.filter` for arrays without support for
+ * iteratee shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} predicate The function invoked per iteration.
+ * @returns {Array} Returns the new filtered array.
+ */
+function arrayFilter(array, predicate) {
+  var index = -1,
+      length = array == null ? 0 : array.length,
+      resIndex = 0,
+      result = [];
+
+  while (++index < length) {
+    var value = array[index];
+    if (predicate(value, index, array)) {
+      result[resIndex++] = value;
+    }
+  }
+  return result;
+}
+
+/**
+ * This method returns a new empty array.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.13.0
+ * @category Util
+ * @returns {Array} Returns the new empty array.
+ * @example
+ *
+ * var arrays = _.times(2, _.stubArray);
+ *
+ * console.log(arrays);
+ * // => [[], []]
+ *
+ * console.log(arrays[0] === arrays[1]);
+ * // => false
+ */
+function stubArray() {
+  return [];
+}
+
+/** Used for built-in method references. */
+var objectProto$1 = Object.prototype;
+
+/** Built-in value references. */
+var propertyIsEnumerable = objectProto$1.propertyIsEnumerable;
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeGetSymbols$1 = Object.getOwnPropertySymbols;
+
+/**
+ * Creates an array of the own enumerable symbols of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of symbols.
+ */
+var getSymbols = !nativeGetSymbols$1 ? stubArray : function(object) {
+  if (object == null) {
+    return [];
+  }
+  object = Object(object);
+  return arrayFilter(nativeGetSymbols$1(object), function(symbol) {
+    return propertyIsEnumerable.call(object, symbol);
+  });
+};
+
+/**
+ * Copies own symbols of `source` to `object`.
+ *
+ * @private
+ * @param {Object} source The object to copy symbols from.
+ * @param {Object} [object={}] The object to copy symbols to.
+ * @returns {Object} Returns `object`.
+ */
+function copySymbols(source, object) {
+  return copyObject(source, getSymbols(source), object);
+}
+
+/**
+ * Appends the elements of `values` to `array`.
+ *
+ * @private
+ * @param {Array} array The array to modify.
+ * @param {Array} values The values to append.
+ * @returns {Array} Returns `array`.
+ */
+function arrayPush(array, values) {
+  var index = -1,
+      length = values.length,
+      offset = array.length;
+
+  while (++index < length) {
+    array[offset + index] = values[index];
+  }
+  return array;
+}
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeGetSymbols = Object.getOwnPropertySymbols;
+
+/**
+ * Creates an array of the own and inherited enumerable symbols of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of symbols.
+ */
+var getSymbolsIn = !nativeGetSymbols ? stubArray : function(object) {
+  var result = [];
+  while (object) {
+    arrayPush(result, getSymbols(object));
+    object = getPrototype(object);
+  }
+  return result;
+};
+
+/**
+ * Copies own and inherited symbols of `source` to `object`.
+ *
+ * @private
+ * @param {Object} source The object to copy symbols from.
+ * @param {Object} [object={}] The object to copy symbols to.
+ * @returns {Object} Returns `object`.
+ */
+function copySymbolsIn(source, object) {
+  return copyObject(source, getSymbolsIn(source), object);
+}
+
+/**
+ * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
+ * `keysFunc` and `symbolsFunc` to get the enumerable property names and
+ * symbols of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {Function} keysFunc The function to get the keys of `object`.
+ * @param {Function} symbolsFunc The function to get the symbols of `object`.
+ * @returns {Array} Returns the array of property names and symbols.
+ */
+function baseGetAllKeys(object, keysFunc, symbolsFunc) {
+  var result = keysFunc(object);
+  return isArray(object) ? result : arrayPush(result, symbolsFunc(object));
+}
+
+/**
+ * Creates an array of own enumerable property names and symbols of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names and symbols.
+ */
+function getAllKeys(object) {
+  return baseGetAllKeys(object, keys, getSymbols);
+}
+
+/**
+ * Creates an array of own and inherited enumerable property names and
+ * symbols of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names and symbols.
+ */
+function getAllKeysIn(object) {
+  return baseGetAllKeys(object, keysIn, getSymbolsIn);
+}
+
+/* Built-in method references that are verified to be native. */
+var DataView = getNative(root, 'DataView');
+
+/* Built-in method references that are verified to be native. */
+var Promise$1 = getNative(root, 'Promise');
+
+/* Built-in method references that are verified to be native. */
+var Set$1 = getNative(root, 'Set');
+
+/* Built-in method references that are verified to be native. */
+var WeakMap = getNative(root, 'WeakMap');
+
+/** `Object#toString` result references. */
+var mapTag$3 = '[object Map]',
+    objectTag$1 = '[object Object]',
+    promiseTag = '[object Promise]',
+    setTag$3 = '[object Set]',
+    weakMapTag$1 = '[object WeakMap]';
+
+var dataViewTag$2 = '[object DataView]';
+
+/** Used to detect maps, sets, and weakmaps. */
+var dataViewCtorString = toSource(DataView),
+    mapCtorString = toSource(Map$1),
+    promiseCtorString = toSource(Promise$1),
+    setCtorString = toSource(Set$1),
+    weakMapCtorString = toSource(WeakMap);
+
+/**
+ * Gets the `toStringTag` of `value`.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the `toStringTag`.
+ */
+var getTag = baseGetTag;
+
+// Fallback for data views, maps, sets, and weak maps in IE 11 and promises in Node.js < 6.
+if ((DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag$2) ||
+    (Map$1 && getTag(new Map$1) != mapTag$3) ||
+    (Promise$1 && getTag(Promise$1.resolve()) != promiseTag) ||
+    (Set$1 && getTag(new Set$1) != setTag$3) ||
+    (WeakMap && getTag(new WeakMap) != weakMapTag$1)) {
+  getTag = function(value) {
+    var result = baseGetTag(value),
+        Ctor = result == objectTag$1 ? value.constructor : undefined,
+        ctorString = Ctor ? toSource(Ctor) : '';
+
+    if (ctorString) {
+      switch (ctorString) {
+        case dataViewCtorString: return dataViewTag$2;
+        case mapCtorString: return mapTag$3;
+        case promiseCtorString: return promiseTag;
+        case setCtorString: return setTag$3;
+        case weakMapCtorString: return weakMapTag$1;
+      }
+    }
+    return result;
+  };
+}
+
+var getTag$1 = getTag;
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Initializes an array clone.
+ *
+ * @private
+ * @param {Array} array The array to clone.
+ * @returns {Array} Returns the initialized clone.
+ */
+function initCloneArray(array) {
+  var length = array.length,
+      result = new array.constructor(length);
+
+  // Add properties assigned by `RegExp#exec`.
+  if (length && typeof array[0] == 'string' && hasOwnProperty.call(array, 'index')) {
+    result.index = array.index;
+    result.input = array.input;
+  }
+  return result;
+}
+
+/** Built-in value references. */
+var Uint8Array = root.Uint8Array;
+
+/**
+ * Creates a clone of `arrayBuffer`.
+ *
+ * @private
+ * @param {ArrayBuffer} arrayBuffer The array buffer to clone.
+ * @returns {ArrayBuffer} Returns the cloned array buffer.
+ */
+function cloneArrayBuffer(arrayBuffer) {
+  var result = new arrayBuffer.constructor(arrayBuffer.byteLength);
+  new Uint8Array(result).set(new Uint8Array(arrayBuffer));
+  return result;
+}
+
+/**
+ * Creates a clone of `dataView`.
+ *
+ * @private
+ * @param {Object} dataView The data view to clone.
+ * @param {boolean} [isDeep] Specify a deep clone.
+ * @returns {Object} Returns the cloned data view.
+ */
+function cloneDataView(dataView, isDeep) {
+  var buffer = isDeep ? cloneArrayBuffer(dataView.buffer) : dataView.buffer;
+  return new dataView.constructor(buffer, dataView.byteOffset, dataView.byteLength);
+}
+
+/** Used to match `RegExp` flags from their coerced string values. */
+var reFlags = /\w*$/;
+
+/**
+ * Creates a clone of `regexp`.
+ *
+ * @private
+ * @param {Object} regexp The regexp to clone.
+ * @returns {Object} Returns the cloned regexp.
+ */
+function cloneRegExp(regexp) {
+  var result = new regexp.constructor(regexp.source, reFlags.exec(regexp));
+  result.lastIndex = regexp.lastIndex;
+  return result;
+}
+
+/** Used to convert symbols to primitives and strings. */
+var symbolProto$1 = Symbol$1 ? Symbol$1.prototype : undefined,
+    symbolValueOf = symbolProto$1 ? symbolProto$1.valueOf : undefined;
+
+/**
+ * Creates a clone of the `symbol` object.
+ *
+ * @private
+ * @param {Object} symbol The symbol object to clone.
+ * @returns {Object} Returns the cloned symbol object.
+ */
+function cloneSymbol(symbol) {
+  return symbolValueOf ? Object(symbolValueOf.call(symbol)) : {};
+}
+
+/**
+ * Creates a clone of `typedArray`.
+ *
+ * @private
+ * @param {Object} typedArray The typed array to clone.
+ * @param {boolean} [isDeep] Specify a deep clone.
+ * @returns {Object} Returns the cloned typed array.
+ */
+function cloneTypedArray(typedArray, isDeep) {
+  var buffer = isDeep ? cloneArrayBuffer(typedArray.buffer) : typedArray.buffer;
+  return new typedArray.constructor(buffer, typedArray.byteOffset, typedArray.length);
+}
+
+/** `Object#toString` result references. */
+var boolTag$1 = '[object Boolean]',
+    dateTag$1 = '[object Date]',
+    mapTag$2 = '[object Map]',
+    numberTag$1 = '[object Number]',
+    regexpTag$1 = '[object RegExp]',
+    setTag$2 = '[object Set]',
+    stringTag$1 = '[object String]',
+    symbolTag$2 = '[object Symbol]';
+
+var arrayBufferTag$1 = '[object ArrayBuffer]',
+    dataViewTag$1 = '[object DataView]',
+    float32Tag$1 = '[object Float32Array]',
+    float64Tag$1 = '[object Float64Array]',
+    int8Tag$1 = '[object Int8Array]',
+    int16Tag$1 = '[object Int16Array]',
+    int32Tag$1 = '[object Int32Array]',
+    uint8Tag$1 = '[object Uint8Array]',
+    uint8ClampedTag$1 = '[object Uint8ClampedArray]',
+    uint16Tag$1 = '[object Uint16Array]',
+    uint32Tag$1 = '[object Uint32Array]';
+
+/**
+ * Initializes an object clone based on its `toStringTag`.
+ *
+ * **Note:** This function only supports cloning values with tags of
+ * `Boolean`, `Date`, `Error`, `Map`, `Number`, `RegExp`, `Set`, or `String`.
+ *
+ * @private
+ * @param {Object} object The object to clone.
+ * @param {string} tag The `toStringTag` of the object to clone.
+ * @param {boolean} [isDeep] Specify a deep clone.
+ * @returns {Object} Returns the initialized clone.
+ */
+function initCloneByTag(object, tag, isDeep) {
+  var Ctor = object.constructor;
+  switch (tag) {
+    case arrayBufferTag$1:
+      return cloneArrayBuffer(object);
+
+    case boolTag$1:
+    case dateTag$1:
+      return new Ctor(+object);
+
+    case dataViewTag$1:
+      return cloneDataView(object, isDeep);
+
+    case float32Tag$1: case float64Tag$1:
+    case int8Tag$1: case int16Tag$1: case int32Tag$1:
+    case uint8Tag$1: case uint8ClampedTag$1: case uint16Tag$1: case uint32Tag$1:
+      return cloneTypedArray(object, isDeep);
+
+    case mapTag$2:
+      return new Ctor;
+
+    case numberTag$1:
+    case stringTag$1:
+      return new Ctor(object);
+
+    case regexpTag$1:
+      return cloneRegExp(object);
+
+    case setTag$2:
+      return new Ctor;
+
+    case symbolTag$2:
+      return cloneSymbol(object);
+  }
+}
+
+/** Built-in value references. */
+var objectCreate = Object.create;
+
+/**
+ * The base implementation of `_.create` without support for assigning
+ * properties to the created object.
+ *
+ * @private
+ * @param {Object} proto The object to inherit from.
+ * @returns {Object} Returns the new object.
+ */
+var baseCreate = (function() {
+  function object() {}
+  return function(proto) {
+    if (!isObject$1(proto)) {
+      return {};
+    }
+    if (objectCreate) {
+      return objectCreate(proto);
+    }
+    object.prototype = proto;
+    var result = new object;
+    object.prototype = undefined;
+    return result;
+  };
+}());
+
+/**
+ * Initializes an object clone.
+ *
+ * @private
+ * @param {Object} object The object to clone.
+ * @returns {Object} Returns the initialized clone.
+ */
+function initCloneObject(object) {
+  return (typeof object.constructor == 'function' && !isPrototype(object))
+    ? baseCreate(getPrototype(object))
+    : {};
+}
+
+/** `Object#toString` result references. */
+var mapTag$1 = '[object Map]';
+
+/**
+ * The base implementation of `_.isMap` without Node.js optimizations.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a map, else `false`.
+ */
+function baseIsMap(value) {
+  return isObjectLike(value) && getTag$1(value) == mapTag$1;
+}
+
+/* Node.js helper references. */
+var nodeIsMap = nodeUtil && nodeUtil.isMap;
+
+/**
+ * Checks if `value` is classified as a `Map` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.3.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a map, else `false`.
+ * @example
+ *
+ * _.isMap(new Map);
+ * // => true
+ *
+ * _.isMap(new WeakMap);
+ * // => false
+ */
+var isMap = nodeIsMap ? baseUnary(nodeIsMap) : baseIsMap;
+
+/** `Object#toString` result references. */
+var setTag$1 = '[object Set]';
+
+/**
+ * The base implementation of `_.isSet` without Node.js optimizations.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a set, else `false`.
+ */
+function baseIsSet(value) {
+  return isObjectLike(value) && getTag$1(value) == setTag$1;
+}
+
+/* Node.js helper references. */
+var nodeIsSet = nodeUtil && nodeUtil.isSet;
+
+/**
+ * Checks if `value` is classified as a `Set` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.3.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a set, else `false`.
+ * @example
+ *
+ * _.isSet(new Set);
+ * // => true
+ *
+ * _.isSet(new WeakSet);
+ * // => false
+ */
+var isSet = nodeIsSet ? baseUnary(nodeIsSet) : baseIsSet;
+
+/** Used to compose bitmasks for cloning. */
+var CLONE_DEEP_FLAG$1 = 1,
+    CLONE_FLAT_FLAG = 2,
+    CLONE_SYMBOLS_FLAG$2 = 4;
+
+/** `Object#toString` result references. */
+var argsTag = '[object Arguments]',
+    arrayTag = '[object Array]',
+    boolTag = '[object Boolean]',
+    dateTag = '[object Date]',
+    errorTag = '[object Error]',
+    funcTag = '[object Function]',
+    genTag = '[object GeneratorFunction]',
+    mapTag = '[object Map]',
+    numberTag = '[object Number]',
+    objectTag = '[object Object]',
+    regexpTag = '[object RegExp]',
+    setTag = '[object Set]',
+    stringTag = '[object String]',
+    symbolTag$1 = '[object Symbol]',
+    weakMapTag = '[object WeakMap]';
+
+var arrayBufferTag = '[object ArrayBuffer]',
+    dataViewTag = '[object DataView]',
+    float32Tag = '[object Float32Array]',
+    float64Tag = '[object Float64Array]',
+    int8Tag = '[object Int8Array]',
+    int16Tag = '[object Int16Array]',
+    int32Tag = '[object Int32Array]',
+    uint8Tag = '[object Uint8Array]',
+    uint8ClampedTag = '[object Uint8ClampedArray]',
+    uint16Tag = '[object Uint16Array]',
+    uint32Tag = '[object Uint32Array]';
+
+/** Used to identify `toStringTag` values supported by `_.clone`. */
+var cloneableTags = {};
+cloneableTags[argsTag] = cloneableTags[arrayTag] =
+cloneableTags[arrayBufferTag] = cloneableTags[dataViewTag] =
+cloneableTags[boolTag] = cloneableTags[dateTag] =
+cloneableTags[float32Tag] = cloneableTags[float64Tag] =
+cloneableTags[int8Tag] = cloneableTags[int16Tag] =
+cloneableTags[int32Tag] = cloneableTags[mapTag] =
+cloneableTags[numberTag] = cloneableTags[objectTag] =
+cloneableTags[regexpTag] = cloneableTags[setTag] =
+cloneableTags[stringTag] = cloneableTags[symbolTag$1] =
+cloneableTags[uint8Tag] = cloneableTags[uint8ClampedTag] =
+cloneableTags[uint16Tag] = cloneableTags[uint32Tag] = true;
+cloneableTags[errorTag] = cloneableTags[funcTag] =
+cloneableTags[weakMapTag] = false;
+
+/**
+ * The base implementation of `_.clone` and `_.cloneDeep` which tracks
+ * traversed objects.
+ *
+ * @private
+ * @param {*} value The value to clone.
+ * @param {boolean} bitmask The bitmask flags.
+ *  1 - Deep clone
+ *  2 - Flatten inherited properties
+ *  4 - Clone symbols
+ * @param {Function} [customizer] The function to customize cloning.
+ * @param {string} [key] The key of `value`.
+ * @param {Object} [object] The parent object of `value`.
+ * @param {Object} [stack] Tracks traversed objects and their clone counterparts.
+ * @returns {*} Returns the cloned value.
+ */
+function baseClone(value, bitmask, customizer, key, object, stack) {
+  var result,
+      isDeep = bitmask & CLONE_DEEP_FLAG$1,
+      isFlat = bitmask & CLONE_FLAT_FLAG,
+      isFull = bitmask & CLONE_SYMBOLS_FLAG$2;
+
+  if (customizer) {
+    result = object ? customizer(value, key, object, stack) : customizer(value);
+  }
+  if (result !== undefined) {
+    return result;
+  }
+  if (!isObject$1(value)) {
+    return value;
+  }
+  var isArr = isArray(value);
+  if (isArr) {
+    result = initCloneArray(value);
+    if (!isDeep) {
+      return copyArray(value, result);
+    }
+  } else {
+    var tag = getTag$1(value),
+        isFunc = tag == funcTag || tag == genTag;
+
+    if (isBuffer(value)) {
+      return cloneBuffer(value, isDeep);
+    }
+    if (tag == objectTag || tag == argsTag || (isFunc && !object)) {
+      result = (isFlat || isFunc) ? {} : initCloneObject(value);
+      if (!isDeep) {
+        return isFlat
+          ? copySymbolsIn(value, baseAssignIn(result, value))
+          : copySymbols(value, baseAssign(result, value));
+      }
+    } else {
+      if (!cloneableTags[tag]) {
+        return object ? value : {};
+      }
+      result = initCloneByTag(value, tag, isDeep);
+    }
+  }
+  // Check for circular references and return its corresponding clone.
+  stack || (stack = new Stack);
+  var stacked = stack.get(value);
+  if (stacked) {
+    return stacked;
+  }
+  stack.set(value, result);
+
+  if (isSet(value)) {
+    value.forEach(function(subValue) {
+      result.add(baseClone(subValue, bitmask, customizer, subValue, value, stack));
+    });
+  } else if (isMap(value)) {
+    value.forEach(function(subValue, key) {
+      result.set(key, baseClone(subValue, bitmask, customizer, key, value, stack));
+    });
+  }
+
+  var keysFunc = isFull
+    ? (isFlat ? getAllKeysIn : getAllKeys)
+    : (isFlat ? keysIn : keys);
+
+  var props = isArr ? undefined : keysFunc(value);
+  arrayEach(props || value, function(subValue, key) {
+    if (props) {
+      key = subValue;
+      subValue = value[key];
+    }
+    // Recursively populate clone (susceptible to call stack limits).
+    assignValue(result, key, baseClone(subValue, bitmask, customizer, key, value, stack));
+  });
+  return result;
+}
+
+/** Used to compose bitmasks for cloning. */
+var CLONE_SYMBOLS_FLAG$1 = 4;
+
+/**
+ * Creates a shallow clone of `value`.
+ *
+ * **Note:** This method is loosely based on the
+ * [structured clone algorithm](https://mdn.io/Structured_clone_algorithm)
+ * and supports cloning arrays, array buffers, booleans, date objects, maps,
+ * numbers, `Object` objects, regexes, sets, strings, symbols, and typed
+ * arrays. The own enumerable properties of `arguments` objects are cloned
+ * as plain objects. An empty object is returned for uncloneable values such
+ * as error objects, functions, DOM nodes, and WeakMaps.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to clone.
+ * @returns {*} Returns the cloned value.
+ * @see _.cloneDeep
+ * @example
+ *
+ * var objects = [{ 'a': 1 }, { 'b': 2 }];
+ *
+ * var shallow = _.clone(objects);
+ * console.log(shallow[0] === objects[0]);
+ * // => true
+ */
+function clone(value) {
+  return baseClone(value, CLONE_SYMBOLS_FLAG$1);
+}
+
+/**
+ * A specialized version of `_.map` for arrays without support for iteratee
+ * shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ */
+function arrayMap(array, iteratee) {
+  var index = -1,
+      length = array == null ? 0 : array.length,
+      result = Array(length);
+
+  while (++index < length) {
+    result[index] = iteratee(array[index], index, array);
+  }
+  return result;
+}
+
+/** `Object#toString` result references. */
+var symbolTag = '[object Symbol]';
+
+/**
+ * Checks if `value` is classified as a `Symbol` primitive or object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+ * @example
+ *
+ * _.isSymbol(Symbol.iterator);
+ * // => true
+ *
+ * _.isSymbol('abc');
+ * // => false
+ */
+function isSymbol(value) {
+  return typeof value == 'symbol' ||
+    (isObjectLike(value) && baseGetTag(value) == symbolTag);
+}
+
+/** Error message constants. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/**
+ * Creates a function that memoizes the result of `func`. If `resolver` is
+ * provided, it determines the cache key for storing the result based on the
+ * arguments provided to the memoized function. By default, the first argument
+ * provided to the memoized function is used as the map cache key. The `func`
+ * is invoked with the `this` binding of the memoized function.
+ *
+ * **Note:** The cache is exposed as the `cache` property on the memoized
+ * function. Its creation may be customized by replacing the `_.memoize.Cache`
+ * constructor with one whose instances implement the
+ * [`Map`](http://ecma-international.org/ecma-262/7.0/#sec-properties-of-the-map-prototype-object)
+ * method interface of `clear`, `delete`, `get`, `has`, and `set`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to have its output memoized.
+ * @param {Function} [resolver] The function to resolve the cache key.
+ * @returns {Function} Returns the new memoized function.
+ * @example
+ *
+ * var object = { 'a': 1, 'b': 2 };
+ * var other = { 'c': 3, 'd': 4 };
+ *
+ * var values = _.memoize(_.values);
+ * values(object);
+ * // => [1, 2]
+ *
+ * values(other);
+ * // => [3, 4]
+ *
+ * object.a = 2;
+ * values(object);
+ * // => [1, 2]
+ *
+ * // Modify the result cache.
+ * values.cache.set(object, ['a', 'b']);
+ * values(object);
+ * // => ['a', 'b']
+ *
+ * // Replace `_.memoize.Cache`.
+ * _.memoize.Cache = WeakMap;
+ */
+function memoize(func, resolver) {
+  if (typeof func != 'function' || (resolver != null && typeof resolver != 'function')) {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  var memoized = function() {
+    var args = arguments,
+        key = resolver ? resolver.apply(this, args) : args[0],
+        cache = memoized.cache;
+
+    if (cache.has(key)) {
+      return cache.get(key);
+    }
+    var result = func.apply(this, args);
+    memoized.cache = cache.set(key, result) || cache;
+    return result;
+  };
+  memoized.cache = new (memoize.Cache || MapCache);
+  return memoized;
+}
+
+// Expose `MapCache`.
+memoize.Cache = MapCache;
+
+/** Used as the maximum memoize cache size. */
+var MAX_MEMOIZE_SIZE = 500;
+
+/**
+ * A specialized version of `_.memoize` which clears the memoized function's
+ * cache when it exceeds `MAX_MEMOIZE_SIZE`.
+ *
+ * @private
+ * @param {Function} func The function to have its output memoized.
+ * @returns {Function} Returns the new memoized function.
+ */
+function memoizeCapped(func) {
+  var result = memoize(func, function(key) {
+    if (cache.size === MAX_MEMOIZE_SIZE) {
+      cache.clear();
+    }
+    return key;
+  });
+
+  var cache = result.cache;
+  return result;
+}
+
+/** Used to match property names within property paths. */
+var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
+
+/** Used to match backslashes in property paths. */
+var reEscapeChar = /\\(\\)?/g;
+
+/**
+ * Converts `string` to a property path array.
+ *
+ * @private
+ * @param {string} string The string to convert.
+ * @returns {Array} Returns the property path array.
+ */
+var stringToPath = memoizeCapped(function(string) {
+  var result = [];
+  if (string.charCodeAt(0) === 46 /* . */) {
+    result.push('');
+  }
+  string.replace(rePropName, function(match, number, quote, subString) {
+    result.push(quote ? subString.replace(reEscapeChar, '$1') : (number || match));
+  });
+  return result;
+});
+
+/** Used as references for various `Number` constants. */
+var INFINITY$1 = 1 / 0;
+
+/**
+ * Converts `value` to a string key if it's not a string or symbol.
+ *
+ * @private
+ * @param {*} value The value to inspect.
+ * @returns {string|symbol} Returns the key.
+ */
+function toKey(value) {
+  if (typeof value == 'string' || isSymbol(value)) {
+    return value;
+  }
+  var result = (value + '');
+  return (result == '0' && (1 / value) == -INFINITY$1) ? '-0' : result;
+}
+
+/** Used as references for various `Number` constants. */
+var INFINITY = 1 / 0;
+
+/** Used to convert symbols to primitives and strings. */
+var symbolProto = Symbol$1 ? Symbol$1.prototype : undefined,
+    symbolToString = symbolProto ? symbolProto.toString : undefined;
+
+/**
+ * The base implementation of `_.toString` which doesn't convert nullish
+ * values to empty strings.
+ *
+ * @private
+ * @param {*} value The value to process.
+ * @returns {string} Returns the string.
+ */
+function baseToString(value) {
+  // Exit early for strings to avoid a performance hit in some environments.
+  if (typeof value == 'string') {
+    return value;
+  }
+  if (isArray(value)) {
+    // Recursively convert values (susceptible to call stack limits).
+    return arrayMap(value, baseToString) + '';
+  }
+  if (isSymbol(value)) {
+    return symbolToString ? symbolToString.call(value) : '';
+  }
+  var result = (value + '');
+  return (result == '0' && (1 / value) == -INFINITY) ? '-0' : result;
+}
+
+/**
+ * Converts `value` to a string. An empty string is returned for `null`
+ * and `undefined` values. The sign of `-0` is preserved.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {string} Returns the converted string.
+ * @example
+ *
+ * _.toString(null);
+ * // => ''
+ *
+ * _.toString(-0);
+ * // => '-0'
+ *
+ * _.toString([1, 2, 3]);
+ * // => '1,2,3'
+ */
+function toString$4(value) {
+  return value == null ? '' : baseToString(value);
+}
+
+/**
+ * Converts `value` to a property path array.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Util
+ * @param {*} value The value to convert.
+ * @returns {Array} Returns the new property path array.
+ * @example
+ *
+ * _.toPath('a.b.c');
+ * // => ['a', 'b', 'c']
+ *
+ * _.toPath('a[0].b.c');
+ * // => ['a', '0', 'b', 'c']
+ */
+function toPath(value) {
+  if (isArray(value)) {
+    return arrayMap(value, toKey);
+  }
+  return isSymbol(value) ? [value] : copyArray(stringToPath(toString$4(value)));
+}
+
+var isProduction$3 = process.env.NODE_ENV === 'production';
+function warning$4(condition, message) {
+  if (!isProduction$3) {
+    if (condition) {
+      return;
+    }
+
+    var text = "Warning: " + message;
+
+    if (typeof console !== 'undefined') {
+      console.warn(text);
+    }
+
+    try {
+      throw Error(text);
+    } catch (x) {}
+  }
+}
+
+var reactIs$2 = {exports: {}};
+
+var reactIs_production_min$1 = {};
+
+/** @license React v16.13.1
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var hasRequiredReactIs_production_min$1;
+
+function requireReactIs_production_min$1 () {
+	if (hasRequiredReactIs_production_min$1) return reactIs_production_min$1;
+	hasRequiredReactIs_production_min$1 = 1;
+var b="function"===typeof Symbol&&Symbol.for,c=b?Symbol.for("react.element"):60103,d=b?Symbol.for("react.portal"):60106,e=b?Symbol.for("react.fragment"):60107,f=b?Symbol.for("react.strict_mode"):60108,g=b?Symbol.for("react.profiler"):60114,h=b?Symbol.for("react.provider"):60109,k=b?Symbol.for("react.context"):60110,l=b?Symbol.for("react.async_mode"):60111,m=b?Symbol.for("react.concurrent_mode"):60111,n=b?Symbol.for("react.forward_ref"):60112,p=b?Symbol.for("react.suspense"):60113,q=b?
+	Symbol.for("react.suspense_list"):60120,r=b?Symbol.for("react.memo"):60115,t=b?Symbol.for("react.lazy"):60116,v=b?Symbol.for("react.block"):60121,w=b?Symbol.for("react.fundamental"):60117,x=b?Symbol.for("react.responder"):60118,y=b?Symbol.for("react.scope"):60119;
+	function z(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c:switch(a=a.type,a){case l:case m:case e:case g:case f:case p:return a;default:switch(a=a&&a.$$typeof,a){case k:case n:case t:case r:case h:return a;default:return u}}case d:return u}}}function A(a){return z(a)===m}reactIs_production_min$1.AsyncMode=l;reactIs_production_min$1.ConcurrentMode=m;reactIs_production_min$1.ContextConsumer=k;reactIs_production_min$1.ContextProvider=h;reactIs_production_min$1.Element=c;reactIs_production_min$1.ForwardRef=n;reactIs_production_min$1.Fragment=e;reactIs_production_min$1.Lazy=t;reactIs_production_min$1.Memo=r;reactIs_production_min$1.Portal=d;
+	reactIs_production_min$1.Profiler=g;reactIs_production_min$1.StrictMode=f;reactIs_production_min$1.Suspense=p;reactIs_production_min$1.isAsyncMode=function(a){return A(a)||z(a)===l};reactIs_production_min$1.isConcurrentMode=A;reactIs_production_min$1.isContextConsumer=function(a){return z(a)===k};reactIs_production_min$1.isContextProvider=function(a){return z(a)===h};reactIs_production_min$1.isElement=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c};reactIs_production_min$1.isForwardRef=function(a){return z(a)===n};reactIs_production_min$1.isFragment=function(a){return z(a)===e};reactIs_production_min$1.isLazy=function(a){return z(a)===t};
+	reactIs_production_min$1.isMemo=function(a){return z(a)===r};reactIs_production_min$1.isPortal=function(a){return z(a)===d};reactIs_production_min$1.isProfiler=function(a){return z(a)===g};reactIs_production_min$1.isStrictMode=function(a){return z(a)===f};reactIs_production_min$1.isSuspense=function(a){return z(a)===p};
+	reactIs_production_min$1.isValidElementType=function(a){return "string"===typeof a||"function"===typeof a||a===e||a===m||a===g||a===f||a===p||a===q||"object"===typeof a&&null!==a&&(a.$$typeof===t||a.$$typeof===r||a.$$typeof===h||a.$$typeof===k||a.$$typeof===n||a.$$typeof===w||a.$$typeof===x||a.$$typeof===y||a.$$typeof===v)};reactIs_production_min$1.typeOf=z;
+	return reactIs_production_min$1;
+}
+
+var reactIs_development$1 = {};
+
+/** @license React v16.13.1
+ * react-is.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var hasRequiredReactIs_development$1;
+
+function requireReactIs_development$1 () {
+	if (hasRequiredReactIs_development$1) return reactIs_development$1;
+	hasRequiredReactIs_development$1 = 1;
+
+
+
+	if (process.env.NODE_ENV !== "production") {
+	  (function() {
+
+	// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+	// nor polyfill, then a plain number is used for performance.
+	var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+	var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+	var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+	var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+	var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+	var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+	var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+	var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+	// (unstable) APIs that have been removed. Can we remove the symbols?
+
+	var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+	var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+	var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+	var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+	var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
+	var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+	var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+	var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
+	var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
+	var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
+	var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
+
+	function isValidElementType(type) {
+	  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+	  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
+	}
+
+	function typeOf(object) {
+	  if (typeof object === 'object' && object !== null) {
+	    var $$typeof = object.$$typeof;
+
+	    switch ($$typeof) {
+	      case REACT_ELEMENT_TYPE:
+	        var type = object.type;
+
+	        switch (type) {
+	          case REACT_ASYNC_MODE_TYPE:
+	          case REACT_CONCURRENT_MODE_TYPE:
+	          case REACT_FRAGMENT_TYPE:
+	          case REACT_PROFILER_TYPE:
+	          case REACT_STRICT_MODE_TYPE:
+	          case REACT_SUSPENSE_TYPE:
+	            return type;
+
+	          default:
+	            var $$typeofType = type && type.$$typeof;
+
+	            switch ($$typeofType) {
+	              case REACT_CONTEXT_TYPE:
+	              case REACT_FORWARD_REF_TYPE:
+	              case REACT_LAZY_TYPE:
+	              case REACT_MEMO_TYPE:
+	              case REACT_PROVIDER_TYPE:
+	                return $$typeofType;
+
+	              default:
+	                return $$typeof;
+	            }
+
+	        }
+
+	      case REACT_PORTAL_TYPE:
+	        return $$typeof;
+	    }
+	  }
+
+	  return undefined;
+	} // AsyncMode is deprecated along with isAsyncMode
+
+	var AsyncMode = REACT_ASYNC_MODE_TYPE;
+	var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+	var ContextConsumer = REACT_CONTEXT_TYPE;
+	var ContextProvider = REACT_PROVIDER_TYPE;
+	var Element = REACT_ELEMENT_TYPE;
+	var ForwardRef = REACT_FORWARD_REF_TYPE;
+	var Fragment = REACT_FRAGMENT_TYPE;
+	var Lazy = REACT_LAZY_TYPE;
+	var Memo = REACT_MEMO_TYPE;
+	var Portal = REACT_PORTAL_TYPE;
+	var Profiler = REACT_PROFILER_TYPE;
+	var StrictMode = REACT_STRICT_MODE_TYPE;
+	var Suspense = REACT_SUSPENSE_TYPE;
+	var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+
+	function isAsyncMode(object) {
+	  {
+	    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+	      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+	      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+	    }
+	  }
+
+	  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+	}
+	function isConcurrentMode(object) {
+	  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+	}
+	function isContextConsumer(object) {
+	  return typeOf(object) === REACT_CONTEXT_TYPE;
+	}
+	function isContextProvider(object) {
+	  return typeOf(object) === REACT_PROVIDER_TYPE;
+	}
+	function isElement(object) {
+	  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+	}
+	function isForwardRef(object) {
+	  return typeOf(object) === REACT_FORWARD_REF_TYPE;
+	}
+	function isFragment(object) {
+	  return typeOf(object) === REACT_FRAGMENT_TYPE;
+	}
+	function isLazy(object) {
+	  return typeOf(object) === REACT_LAZY_TYPE;
+	}
+	function isMemo(object) {
+	  return typeOf(object) === REACT_MEMO_TYPE;
+	}
+	function isPortal(object) {
+	  return typeOf(object) === REACT_PORTAL_TYPE;
+	}
+	function isProfiler(object) {
+	  return typeOf(object) === REACT_PROFILER_TYPE;
+	}
+	function isStrictMode(object) {
+	  return typeOf(object) === REACT_STRICT_MODE_TYPE;
+	}
+	function isSuspense(object) {
+	  return typeOf(object) === REACT_SUSPENSE_TYPE;
+	}
+
+	reactIs_development$1.AsyncMode = AsyncMode;
+	reactIs_development$1.ConcurrentMode = ConcurrentMode;
+	reactIs_development$1.ContextConsumer = ContextConsumer;
+	reactIs_development$1.ContextProvider = ContextProvider;
+	reactIs_development$1.Element = Element;
+	reactIs_development$1.ForwardRef = ForwardRef;
+	reactIs_development$1.Fragment = Fragment;
+	reactIs_development$1.Lazy = Lazy;
+	reactIs_development$1.Memo = Memo;
+	reactIs_development$1.Portal = Portal;
+	reactIs_development$1.Profiler = Profiler;
+	reactIs_development$1.StrictMode = StrictMode;
+	reactIs_development$1.Suspense = Suspense;
+	reactIs_development$1.isAsyncMode = isAsyncMode;
+	reactIs_development$1.isConcurrentMode = isConcurrentMode;
+	reactIs_development$1.isContextConsumer = isContextConsumer;
+	reactIs_development$1.isContextProvider = isContextProvider;
+	reactIs_development$1.isElement = isElement;
+	reactIs_development$1.isForwardRef = isForwardRef;
+	reactIs_development$1.isFragment = isFragment;
+	reactIs_development$1.isLazy = isLazy;
+	reactIs_development$1.isMemo = isMemo;
+	reactIs_development$1.isPortal = isPortal;
+	reactIs_development$1.isProfiler = isProfiler;
+	reactIs_development$1.isStrictMode = isStrictMode;
+	reactIs_development$1.isSuspense = isSuspense;
+	reactIs_development$1.isValidElementType = isValidElementType;
+	reactIs_development$1.typeOf = typeOf;
+	  })();
+	}
+	return reactIs_development$1;
+}
+
+(function (module) {
+
+	if (process.env.NODE_ENV === 'production') {
+	  module.exports = requireReactIs_production_min$1();
+	} else {
+	  module.exports = requireReactIs_development$1();
+	}
+} (reactIs$2));
+
+var reactIs$1 = reactIs$2.exports;
+
+/**
+ * Copyright 2015, Yahoo! Inc.
+ * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
+ */
+var REACT_STATICS = {
+  childContextTypes: true,
+  contextType: true,
+  contextTypes: true,
+  defaultProps: true,
+  displayName: true,
+  getDefaultProps: true,
+  getDerivedStateFromError: true,
+  getDerivedStateFromProps: true,
+  mixins: true,
+  propTypes: true,
+  type: true
+};
+var KNOWN_STATICS = {
+  name: true,
+  length: true,
+  prototype: true,
+  caller: true,
+  callee: true,
+  arguments: true,
+  arity: true
+};
+var FORWARD_REF_STATICS = {
+  '$$typeof': true,
+  render: true,
+  defaultProps: true,
+  displayName: true,
+  propTypes: true
+};
+var MEMO_STATICS = {
+  '$$typeof': true,
+  compare: true,
+  defaultProps: true,
+  displayName: true,
+  propTypes: true,
+  type: true
+};
+var TYPE_STATICS = {};
+TYPE_STATICS[reactIs$1.ForwardRef] = FORWARD_REF_STATICS;
+TYPE_STATICS[reactIs$1.Memo] = MEMO_STATICS;
+
+function getStatics(component) {
+  // React v16.11 and below
+  if (reactIs$1.isMemo(component)) {
+    return MEMO_STATICS;
+  } // React v16.12 and above
+
+
+  return TYPE_STATICS[component['$$typeof']] || REACT_STATICS;
+}
+
+var defineProperty$2 = Object.defineProperty;
+var getOwnPropertyNames = Object.getOwnPropertyNames;
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var getOwnPropertyDescriptor$2 = Object.getOwnPropertyDescriptor;
+var getPrototypeOf$2 = Object.getPrototypeOf;
+var objectPrototype = Object.prototype;
+function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
+  if (typeof sourceComponent !== 'string') {
+    // don't hoist over string (html) components
+    if (objectPrototype) {
+      var inheritedComponent = getPrototypeOf$2(sourceComponent);
+
+      if (inheritedComponent && inheritedComponent !== objectPrototype) {
+        hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
+      }
+    }
+
+    var keys = getOwnPropertyNames(sourceComponent);
+
+    if (getOwnPropertySymbols) {
+      keys = keys.concat(getOwnPropertySymbols(sourceComponent));
+    }
+
+    var targetStatics = getStatics(targetComponent);
+    var sourceStatics = getStatics(sourceComponent);
+
+    for (var i = 0; i < keys.length; ++i) {
+      var key = keys[i];
+
+      if (!KNOWN_STATICS[key] && !(blacklist && blacklist[key]) && !(sourceStatics && sourceStatics[key]) && !(targetStatics && targetStatics[key])) {
+        var descriptor = getOwnPropertyDescriptor$2(sourceComponent, key);
+
+        try {
+          // Avoid failures from read-only properties
+          defineProperty$2(targetComponent, key, descriptor);
+        } catch (e) {}
+      }
+    }
+  }
+
+  return targetComponent;
+}
+
+var hoistNonReactStatics_cjs = hoistNonReactStatics;
+
+/** Used to compose bitmasks for cloning. */
+var CLONE_DEEP_FLAG = 1,
+    CLONE_SYMBOLS_FLAG = 4;
+
+/**
+ * This method is like `_.clone` except that it recursively clones `value`.
+ *
+ * @static
+ * @memberOf _
+ * @since 1.0.0
+ * @category Lang
+ * @param {*} value The value to recursively clone.
+ * @returns {*} Returns the deep cloned value.
+ * @see _.clone
+ * @example
+ *
+ * var objects = [{ 'a': 1 }, { 'b': 2 }];
+ *
+ * var deep = _.cloneDeep(objects);
+ * console.log(deep[0] === objects[0]);
+ * // => false
+ */
+function cloneDeep(value) {
+  return baseClone(value, CLONE_DEEP_FLAG | CLONE_SYMBOLS_FLAG);
+}
+
+function _extends$1() {
+  _extends$1 = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends$1.apply(this, arguments);
+}
+
+function _inheritsLoose$2(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
+function _objectWithoutPropertiesLoose$2(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _assertThisInitialized$x(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+/** @private is the value an empty array? */
+
+var isEmptyArray = function isEmptyArray(value) {
+  return Array.isArray(value) && value.length === 0;
+};
+/** @private is the given object a Function? */
+
+var isFunction = function isFunction(obj) {
+  return typeof obj === 'function';
+};
+/** @private is the given object an Object? */
+
+var isObject = function isObject(obj) {
+  return obj !== null && typeof obj === 'object';
+};
+/** @private is the given object an integer? */
+
+var isInteger$1 = function isInteger(obj) {
+  return String(Math.floor(Number(obj))) === obj;
+};
+/** @private Does a React component have exactly 0 children? */
+
+var isEmptyChildren = function isEmptyChildren(children) {
+  return Children.count(children) === 0;
+};
+/**
+ * Deeply get a value from an object via its path.
+ */
+
+function getIn(obj, key, def, p) {
+  if (p === void 0) {
+    p = 0;
+  }
+
+  var path = toPath(key);
+
+  while (obj && p < path.length) {
+    obj = obj[path[p++]];
+  }
+
+  return obj === undefined ? def : obj;
+}
+/**
+ * Deeply set a value from in object via it's path. If the value at `path`
+ * has changed, return a shallow copy of obj with `value` set at `path`.
+ * If `value` has not changed, return the original `obj`.
+ *
+ * Existing objects / arrays along `path` are also shallow copied. Sibling
+ * objects along path retain the same internal js reference. Since new
+ * objects / arrays are only created along `path`, we can test if anything
+ * changed in a nested structure by comparing the object's reference in
+ * the old and new object, similar to how russian doll cache invalidation
+ * works.
+ *
+ * In earlier versions of this function, which used cloneDeep, there were
+ * issues whereby settings a nested value would mutate the parent
+ * instead of creating a new object. `clone` avoids that bug making a
+ * shallow copy of the objects along the update path
+ * so no object is mutated in place.
+ *
+ * Before changing this function, please read through the following
+ * discussions.
+ *
+ * @see https://github.com/developit/linkstate
+ * @see https://github.com/jaredpalmer/formik/pull/123
+ */
+
+function setIn(obj, path, value) {
+  var res = clone(obj); // this keeps inheritance when obj is a class
+
+  var resVal = res;
+  var i = 0;
+  var pathArray = toPath(path);
+
+  for (; i < pathArray.length - 1; i++) {
+    var currentPath = pathArray[i];
+    var currentObj = getIn(obj, pathArray.slice(0, i + 1));
+
+    if (currentObj && (isObject(currentObj) || Array.isArray(currentObj))) {
+      resVal = resVal[currentPath] = clone(currentObj);
+    } else {
+      var nextPath = pathArray[i + 1];
+      resVal = resVal[currentPath] = isInteger$1(nextPath) && Number(nextPath) >= 0 ? [] : {};
+    }
+  } // Return original object if new value is the same as current
+
+
+  if ((i === 0 ? obj : resVal)[pathArray[i]] === value) {
+    return obj;
+  }
+
+  if (value === undefined) {
+    delete resVal[pathArray[i]];
+  } else {
+    resVal[pathArray[i]] = value;
+  } // If the path array has a single element, the loop did not run.
+  // Deleting on `resVal` had no effect in this scenario, so we delete on the result instead.
+
+
+  if (i === 0 && value === undefined) {
+    delete res[pathArray[i]];
+  }
+
+  return res;
+}
+
+var FormikContext = /*#__PURE__*/createContext(undefined);
+FormikContext.displayName = 'FormikContext';
+FormikContext.Provider;
+FormikContext.Consumer;
+function useFormikContext() {
+  var formik = useContext(FormikContext);
+  !!!formik ? process.env.NODE_ENV !== "production" ? warning$4(false, "Formik context is undefined, please verify you are calling useFormikContext() as child of a <Formik> component.") : warning$4(false) : void 0;
+  return formik;
+}
+
+var Form = /*#__PURE__*/forwardRef(function (props, ref) {
+  // iOS needs an "action" attribute for nice input: https://stackoverflow.com/a/39485162/406725
+  // We default the action to "#" in case the preventDefault fails (just updates the URL hash)
+  var action = props.action,
+      rest = _objectWithoutPropertiesLoose$2(props, ["action"]);
+
+  var _action = action != null ? action : '#';
+
+  var _useFormikContext = useFormikContext(),
+      handleReset = _useFormikContext.handleReset,
+      handleSubmit = _useFormikContext.handleSubmit;
+
+  return createElement$1("form", Object.assign({
+    onSubmit: handleSubmit,
+    ref: ref,
+    onReset: handleReset,
+    action: _action
+  }, rest));
+});
+Form.displayName = 'Form';
+
+/**
+ * Some array helpers!
+ */
+
+var move$1 = function move(array, from, to) {
+  var copy = copyArrayLike(array);
+  var value = copy[from];
+  copy.splice(from, 1);
+  copy.splice(to, 0, value);
+  return copy;
+};
+var swap = function swap(arrayLike, indexA, indexB) {
+  var copy = copyArrayLike(arrayLike);
+  var a = copy[indexA];
+  copy[indexA] = copy[indexB];
+  copy[indexB] = a;
+  return copy;
+};
+var insert = function insert(arrayLike, index, value) {
+  var copy = copyArrayLike(arrayLike);
+  copy.splice(index, 0, value);
+  return copy;
+};
+var replace = function replace(arrayLike, index, value) {
+  var copy = copyArrayLike(arrayLike);
+  copy[index] = value;
+  return copy;
+};
+
+var copyArrayLike = function copyArrayLike(arrayLike) {
+  if (!arrayLike) {
+    return [];
+  } else if (Array.isArray(arrayLike)) {
+    return [].concat(arrayLike);
+  } else {
+    var maxIndex = Object.keys(arrayLike).map(function (key) {
+      return parseInt(key);
+    }).reduce(function (max, el) {
+      return el > max ? el : max;
+    }, 0);
+    return Array.from(_extends$1({}, arrayLike, {
+      length: maxIndex + 1
+    }));
+  }
+};
+
+var FieldArrayInner = /*#__PURE__*/function (_React$Component) {
+  _inheritsLoose$2(FieldArrayInner, _React$Component);
+
+  function FieldArrayInner(props) {
+    var _this;
+
+    _this = _React$Component.call(this, props) || this;
+
+    _this.updateArrayField = function (fn, alterTouched, alterErrors) {
+      var _this$props = _this.props,
+          name = _this$props.name,
+          setFormikState = _this$props.formik.setFormikState;
+      setFormikState(function (prevState) {
+        var updateErrors = typeof alterErrors === 'function' ? alterErrors : fn;
+        var updateTouched = typeof alterTouched === 'function' ? alterTouched : fn; // values fn should be executed before updateErrors and updateTouched,
+        // otherwise it causes an error with unshift.
+
+        var values = setIn(prevState.values, name, fn(getIn(prevState.values, name)));
+        var fieldError = alterErrors ? updateErrors(getIn(prevState.errors, name)) : undefined;
+        var fieldTouched = alterTouched ? updateTouched(getIn(prevState.touched, name)) : undefined;
+
+        if (isEmptyArray(fieldError)) {
+          fieldError = undefined;
+        }
+
+        if (isEmptyArray(fieldTouched)) {
+          fieldTouched = undefined;
+        }
+
+        return _extends$1({}, prevState, {
+          values: values,
+          errors: alterErrors ? setIn(prevState.errors, name, fieldError) : prevState.errors,
+          touched: alterTouched ? setIn(prevState.touched, name, fieldTouched) : prevState.touched
+        });
+      });
+    };
+
+    _this.push = function (value) {
+      return _this.updateArrayField(function (arrayLike) {
+        return [].concat(copyArrayLike(arrayLike), [cloneDeep(value)]);
+      }, false, false);
+    };
+
+    _this.handlePush = function (value) {
+      return function () {
+        return _this.push(value);
+      };
+    };
+
+    _this.swap = function (indexA, indexB) {
+      return _this.updateArrayField(function (array) {
+        return swap(array, indexA, indexB);
+      }, true, true);
+    };
+
+    _this.handleSwap = function (indexA, indexB) {
+      return function () {
+        return _this.swap(indexA, indexB);
+      };
+    };
+
+    _this.move = function (from, to) {
+      return _this.updateArrayField(function (array) {
+        return move$1(array, from, to);
+      }, true, true);
+    };
+
+    _this.handleMove = function (from, to) {
+      return function () {
+        return _this.move(from, to);
+      };
+    };
+
+    _this.insert = function (index, value) {
+      return _this.updateArrayField(function (array) {
+        return insert(array, index, value);
+      }, function (array) {
+        return insert(array, index, null);
+      }, function (array) {
+        return insert(array, index, null);
+      });
+    };
+
+    _this.handleInsert = function (index, value) {
+      return function () {
+        return _this.insert(index, value);
+      };
+    };
+
+    _this.replace = function (index, value) {
+      return _this.updateArrayField(function (array) {
+        return replace(array, index, value);
+      }, false, false);
+    };
+
+    _this.handleReplace = function (index, value) {
+      return function () {
+        return _this.replace(index, value);
+      };
+    };
+
+    _this.unshift = function (value) {
+      var length = -1;
+
+      _this.updateArrayField(function (array) {
+        var arr = array ? [value].concat(array) : [value];
+
+        if (length < 0) {
+          length = arr.length;
+        }
+
+        return arr;
+      }, function (array) {
+        var arr = array ? [null].concat(array) : [null];
+
+        if (length < 0) {
+          length = arr.length;
+        }
+
+        return arr;
+      }, function (array) {
+        var arr = array ? [null].concat(array) : [null];
+
+        if (length < 0) {
+          length = arr.length;
+        }
+
+        return arr;
+      });
+
+      return length;
+    };
+
+    _this.handleUnshift = function (value) {
+      return function () {
+        return _this.unshift(value);
+      };
+    };
+
+    _this.handleRemove = function (index) {
+      return function () {
+        return _this.remove(index);
+      };
+    };
+
+    _this.handlePop = function () {
+      return function () {
+        return _this.pop();
+      };
+    }; // We need TypeScript generics on these, so we'll bind them in the constructor
+    // @todo Fix TS 3.2.1
+
+
+    _this.remove = _this.remove.bind(_assertThisInitialized$x(_this));
+    _this.pop = _this.pop.bind(_assertThisInitialized$x(_this));
+    return _this;
+  }
+
+  var _proto = FieldArrayInner.prototype;
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.props.validateOnChange && this.props.formik.validateOnChange && !reactFastCompare$1(getIn(prevProps.formik.values, prevProps.name), getIn(this.props.formik.values, this.props.name))) {
+      this.props.formik.validateForm(this.props.formik.values);
+    }
+  };
+
+  _proto.remove = function remove(index) {
+    // We need to make sure we also remove relevant pieces of `touched` and `errors`
+    var result;
+    this.updateArrayField( // so this gets call 3 times
+    function (array) {
+      var copy = array ? copyArrayLike(array) : [];
+
+      if (!result) {
+        result = copy[index];
+      }
+
+      if (isFunction(copy.splice)) {
+        copy.splice(index, 1);
+      }
+
+      return copy;
+    }, true, true);
+    return result;
+  };
+
+  _proto.pop = function pop() {
+    // Remove relevant pieces of `touched` and `errors` too!
+    var result;
+    this.updateArrayField( // so this gets call 3 times
+    function (array) {
+      var tmp = array;
+
+      if (!result) {
+        result = tmp && tmp.pop && tmp.pop();
+      }
+
+      return tmp;
+    }, true, true);
+    return result;
+  };
+
+  _proto.render = function render() {
+    var arrayHelpers = {
+      push: this.push,
+      pop: this.pop,
+      swap: this.swap,
+      move: this.move,
+      insert: this.insert,
+      replace: this.replace,
+      unshift: this.unshift,
+      remove: this.remove,
+      handlePush: this.handlePush,
+      handlePop: this.handlePop,
+      handleSwap: this.handleSwap,
+      handleMove: this.handleMove,
+      handleInsert: this.handleInsert,
+      handleReplace: this.handleReplace,
+      handleUnshift: this.handleUnshift,
+      handleRemove: this.handleRemove
+    };
+
+    var _this$props2 = this.props,
+        component = _this$props2.component,
+        render = _this$props2.render,
+        children = _this$props2.children,
+        name = _this$props2.name,
+        _this$props2$formik = _this$props2.formik,
+        restOfFormik = _objectWithoutPropertiesLoose$2(_this$props2$formik, ["validate", "validationSchema"]);
+
+    var props = _extends$1({}, arrayHelpers, {
+      form: restOfFormik,
+      name: name
+    });
+
+    return component ? createElement$1(component, props) : render ? render(props) : children // children come last, always called
+    ? typeof children === 'function' ? children(props) : !isEmptyChildren(children) ? Children.only(children) : null : null;
+  };
+
+  return FieldArrayInner;
+}(Component$1);
+
+FieldArrayInner.defaultProps = {
+  validateOnChange: true
+};
+
+_objectSpread2$1({}, propTypes);
+_objectSpread2$1({}, defaultProps$1);
+
+var _excluded$o = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onChange", "onBlur", "name"];
+var HookFormTextField = /*#__PURE__*/React__default.forwardRef(function (_ref, ref) {
+  var label = _ref.label,
+      leftIcon = _ref.leftIcon,
+      size = _ref.size,
+      dropDown = _ref.dropDown,
+      rightIcon = _ref.rightIcon,
+      errorMessage = _ref.errorMessage,
+      inputClassName = _ref.inputClassName,
+      className = _ref.className;
+      _ref.isHookForm;
+      _ref.isFormik;
+      var onChange = _ref.onChange,
+      onBlur = _ref.onBlur,
+      name = _ref.name,
+      props = _objectWithoutProperties(_ref, _excluded$o);
+
+  var generateInputFieldClasses = classNames({
+    "ui-text-field__input": true,
+    "has-error": errorMessage,
+    "has-left-icon": leftIcon,
+    "has-right-icon": dropDown || rightIcon
+  }, inputClassName);
+  var wrapperClasses = classNames(["size__".concat(size), "ui-text-field__wrapper"], className);
+  return /*#__PURE__*/React__default.createElement(Box, {
+    className: wrapperClasses
+  }, /*#__PURE__*/React__default.createElement(Box, {
+    is: "label"
+  }, /*#__PURE__*/React__default.createElement(Text$1, {
+    className: "ui-text-field__label",
+    scale: "subhead"
+  }, label)), /*#__PURE__*/React__default.createElement(Box, {
+    className: "ui-text-field__input-wrapper"
+  }, leftIcon && /*#__PURE__*/React__default.createElement(Icon, {
+    icon: leftIcon,
+    className: "ui-text-field__left-icon"
+  }), /*#__PURE__*/React__default.createElement(Box, _extends$2({
+    className: generateInputFieldClasses,
+    is: "input"
+  }, props, {
+    ref: ref,
+    onChange: onChange,
+    onBlur: onBlur,
+    name: name
+  })), (dropDown || rightIcon) && /*#__PURE__*/React__default.createElement(Icon, {
+    icon: dropDown ? ChevronFilledDown : rightIcon,
+    className: "ui-text-field__right-icon"
+  })), errorMessage && /*#__PURE__*/React__default.createElement(Box, {
+    className: "ui-text-field__error"
+  }, /*#__PURE__*/React__default.createElement(Icon, {
+    icon: Error$1,
+    className: "ui-text-field__error-icon"
+  }), /*#__PURE__*/React__default.createElement(Text$1, {
+    className: "ui-text-field__error-text",
+    scale: "subhead",
+    fontFace: "circularSTD"
+  }, errorMessage)));
+});
+HookFormTextField.propTypes = _objectSpread2$1({}, propTypes);
+HookFormTextField.defaultProps = _objectSpread2$1({}, defaultProps$1);
+
+var _excluded$n = ["options", "onChange", "returnObjModel"];
+
+var Dropdown = function Dropdown(_ref) {
+  var options = _ref.options,
+      onChange = _ref.onChange,
+      returnObjModel = _ref.returnObjModel,
+      props = _objectWithoutProperties(_ref, _excluded$n);
+
+  var _useState = useState(""),
+      _useState2 = _slicedToArray$1(_useState, 2),
+      inputValue = _useState2[0],
+      setInputValue = _useState2[1];
+
+  var _useState3 = useState(false),
+      _useState4 = _slicedToArray$1(_useState3, 2),
+      showOptions = _useState4[0],
+      setShowOptions = _useState4[1];
+
+  var _useState5 = useState([]),
+      _useState6 = _slicedToArray$1(_useState5, 2),
+      computedOptions = _useState6[0],
+      setComputedOptions = _useState6[1];
+
+  var _useState7 = useState(-1),
+      _useState8 = _slicedToArray$1(_useState7, 2),
+      selectedIndex = _useState8[0],
+      setSelectedIndex = _useState8[1];
+
+  var _useState9 = useState(null),
+      _useState10 = _slicedToArray$1(_useState9, 2),
+      selectedOption = _useState10[0],
+      setSelectedOption = _useState10[1];
+
+  var _useState11 = useState(true),
+      _useState12 = _slicedToArray$1(_useState11, 2),
+      isBlur = _useState12[0],
+      setIsBlur = _useState12[1];
+
+  var returnOptionText = function returnOptionText(option) {
+    return _typeof$B(option) === "object" ? option.text : option;
+  };
+
+  useEffect(function () {
+    if (!isBlur) {
+      setShowOptions(true);
+    }
+
+    if (selectedOption) {
+      if (inputValue !== returnOptionText(selectedOption)) {
+        setSelectedOption(null);
+      }
+    } else {
+      if (inputValue) {
+        setComputedOptions(_toConsumableArray(options).filter(function (option) {
+          if (typeof option === "string") {
+            return option.toLowerCase().includes(inputValue.toLowerCase());
+          } else {
+            return option.text.toLowerCase().includes(inputValue.toLowerCase());
+          }
+        }));
+      } else {
+        setComputedOptions(_toConsumableArray(options));
+      }
+    }
+  }, [options, inputValue, selectedOption, isBlur]);
+  useEffect(function () {
+    if (onChange && typeof onChange === "function") {
+      onChange(returnObjModel ? selectedOption : selectedOption === null || selectedOption === void 0 ? void 0 : selectedOption.value);
+    }
+  }, [selectedOption]);
+  useEffect(function () {
+    if (isBlur && !selectedOption) {
+      var exactMatch = false;
+
+      var _iterator = _createForOfIteratorHelper$1(computedOptions),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var option = _step.value;
+
+          if (typeof option === "string") {
+            if (option.toLowerCase() === inputValue.toLowerCase()) {
+              exactMatch = true;
+              setInputValue(option);
+              setSelectedOption(option);
+              break;
+            }
+          } else {
+            if (option.text.toLowerCase() === inputValue.toLowerCase()) {
+              exactMatch = true;
+              setInputValue(option.text);
+              setSelectedOption(option);
+              break;
+            }
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      if (!exactMatch) {
+        setInputValue("");
+        setSelectedOption(null);
+      }
+    }
+  }, [isBlur]);
+
+  var handleFocus = function handleFocus() {
+    setIsBlur(false);
+    setShowOptions(true);
+  };
+
+  var handleBlur = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              setIsBlur(true);
+              setTimeout(function () {
+                setShowOptions(false);
+              }, 300);
+
+            case 2:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function handleBlur() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  var handleClickedOption = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(option) {
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              if (option) {
+                if (typeof option === "string") {
+                  setInputValue(option);
+                } else {
+                  setInputValue(option.text);
+                }
+
+                setSelectedOption(option);
+                setTimeout(function () {
+                  setShowOptions(false);
+                }, 300);
+              }
+
+            case 1:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function handleClickedOption(_x) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  var handleLeave = function handleLeave(e) {
+    if (!e.target.closest(".ui-dropdown")) {
+      handleBlur();
+    }
+  };
+
+  var handleKeyDown = function handleKeyDown(e) {
+    switch (e.key) {
+      case "ArrowDown":
+        if (selectedIndex + 1 <= computedOptions.length - 1) setSelectedIndex(selectedIndex + 1);else setSelectedIndex(0);
+        break;
+
+      case "ArrowUp":
+        if (selectedIndex - 1 >= 0) setSelectedIndex(selectedIndex - 1);else setSelectedIndex(computedOptions.length - 1);
+        break;
+
+      case "Enter":
+        handleClickedOption(computedOptions[selectedIndex]);
+        break;
+
+      case "Escape":
+        handleBlur();
+        e.target.blur();
+        break;
+    }
+  };
+
+  useEffect(function () {
+    window.addEventListener("click", handleLeave);
+    return function () {
+      window.removeEventListener("click", handleLeave);
+    };
+  }, []);
+  var mappedComputedOptions = computedOptions.map(function (option, index) {
+    return /*#__PURE__*/React__default.createElement(Box, {
+      className: classNames({
+        "ui-dropdown__option": true,
+        active: selectedIndex === index
+      }),
+      onMouseEnter: function onMouseEnter() {
+        return setSelectedIndex(index);
+      },
+      onClick: function onClick() {
+        return handleClickedOption(option);
+      },
+      key: "option-".concat(index)
+    }, _typeof$B(option) === "object" && option.icon && /*#__PURE__*/React__default.createElement(Box, {
+      className: "ui-dropdown__icon"
+    }, option.icon), /*#__PURE__*/React__default.createElement(Text$1, {
+      marginY: 0,
+      scale: "subhead",
+      fontFace: "circularSTD"
+    }, typeof option === "string" ? option : option.text));
+  });
+  return /*#__PURE__*/React__default.createElement(Box, {
+    className: "ui-dropdown"
+  }, /*#__PURE__*/React__default.createElement(TextField, _extends$2({
+    dropDown: true
+  }, props, {
+    value: inputValue,
+    onKeyDown: handleKeyDown,
+    onFocus: handleFocus,
+    onBlur: handleBlur,
+    onChange: function onChange(e) {
+      return setInputValue(e.target.value);
+    },
+    onRightIconClick: function onRightIconClick() {
+      return setShowOptions(!showOptions);
+    },
+    leftIconComponent: selectedOption === null || selectedOption === void 0 ? void 0 : selectedOption.icon
+  })), showOptions && /*#__PURE__*/React__default.createElement(Box, {
+    className: "ui-dropdown__options"
+  }, mappedComputedOptions));
+};
+Dropdown.defaultProps = _objectSpread2$1({}, defaultProps$2);
+Dropdown.propTypes = _objectSpread2$1(_objectSpread2$1({}, inputPropTypes), {}, {
+  options: propTypes$1.exports.array,
+  returnObjModel: propTypes$1.exports.bool,
+  onChange: propTypes$1.exports.func
+});
+
+var countries = [
+	{
+		name: "United States",
+		iso3: "USA",
+		iso2: "US",
+		numeric_code: "840",
+		phone_code: "1",
+		emoji: "🇺🇸",
+		emojiU: "U+1F1FA U+1F1F8",
+		states: [
+			{
+				id: 1456,
+				name: "Alabama",
+				state_code: "AL"
+			},
+			{
+				id: 1400,
+				name: "Alaska",
+				state_code: "AK"
+			},
+			{
+				id: 1424,
+				name: "American Samoa",
+				state_code: "AS"
+			},
+			{
+				id: 1434,
+				name: "Arizona",
+				state_code: "AZ"
+			},
+			{
+				id: 1444,
+				name: "Arkansas",
+				state_code: "AR"
+			},
+			{
+				id: 1402,
+				name: "Baker Island",
+				state_code: "UM-81"
+			},
+			{
+				id: 1416,
+				name: "California",
+				state_code: "CA"
+			},
+			{
+				id: 1450,
+				name: "Colorado",
+				state_code: "CO"
+			},
+			{
+				id: 1435,
+				name: "Connecticut",
+				state_code: "CT"
+			},
+			{
+				id: 1399,
+				name: "Delaware",
+				state_code: "DE"
+			},
+			{
+				id: 1437,
+				name: "District of Columbia",
+				state_code: "DC"
+			},
+			{
+				id: 1436,
+				name: "Florida",
+				state_code: "FL"
+			},
+			{
+				id: 1455,
+				name: "Georgia",
+				state_code: "GA"
+			},
+			{
+				id: 1412,
+				name: "Guam",
+				state_code: "GU"
+			},
+			{
+				id: 1411,
+				name: "Hawaii",
+				state_code: "HI"
+			},
+			{
+				id: 1398,
+				name: "Howland Island",
+				state_code: "UM-84"
+			},
+			{
+				id: 1460,
+				name: "Idaho",
+				state_code: "ID"
+			},
+			{
+				id: 1425,
+				name: "Illinois",
+				state_code: "IL"
+			},
+			{
+				id: 1440,
+				name: "Indiana",
+				state_code: "IN"
+			},
+			{
+				id: 1459,
+				name: "Iowa",
+				state_code: "IA"
+			},
+			{
+				id: 1410,
+				name: "Jarvis Island",
+				state_code: "UM-86"
+			},
+			{
+				id: 1428,
+				name: "Johnston Atoll",
+				state_code: "UM-67"
+			},
+			{
+				id: 1406,
+				name: "Kansas",
+				state_code: "KS"
+			},
+			{
+				id: 1419,
+				name: "Kentucky",
+				state_code: "KY"
+			},
+			{
+				id: 1403,
+				name: "Kingman Reef",
+				state_code: "UM-89"
+			},
+			{
+				id: 1457,
+				name: "Louisiana",
+				state_code: "LA"
+			},
+			{
+				id: 1453,
+				name: "Maine",
+				state_code: "ME"
+			},
+			{
+				id: 1401,
+				name: "Maryland",
+				state_code: "MD"
+			},
+			{
+				id: 1433,
+				name: "Massachusetts",
+				state_code: "MA"
+			},
+			{
+				id: 1426,
+				name: "Michigan",
+				state_code: "MI"
+			},
+			{
+				id: 1438,
+				name: "Midway Atoll",
+				state_code: "UM-71"
+			},
+			{
+				id: 1420,
+				name: "Minnesota",
+				state_code: "MN"
+			},
+			{
+				id: 1430,
+				name: "Mississippi",
+				state_code: "MS"
+			},
+			{
+				id: 1451,
+				name: "Missouri",
+				state_code: "MO"
+			},
+			{
+				id: 1446,
+				name: "Montana",
+				state_code: "MT"
+			},
+			{
+				id: 1439,
+				name: "Navassa Island",
+				state_code: "UM-76"
+			},
+			{
+				id: 1408,
+				name: "Nebraska",
+				state_code: "NE"
+			},
+			{
+				id: 1458,
+				name: "Nevada",
+				state_code: "NV"
+			},
+			{
+				id: 1404,
+				name: "New Hampshire",
+				state_code: "NH"
+			},
+			{
+				id: 1417,
+				name: "New Jersey",
+				state_code: "NJ"
+			},
+			{
+				id: 1423,
+				name: "New Mexico",
+				state_code: "NM"
+			},
+			{
+				id: 1452,
+				name: "New York",
+				state_code: "NY"
+			},
+			{
+				id: 1447,
+				name: "North Carolina",
+				state_code: "NC"
+			},
+			{
+				id: 1418,
+				name: "North Dakota",
+				state_code: "ND"
+			},
+			{
+				id: 1431,
+				name: "Northern Mariana Islands",
+				state_code: "MP"
+			},
+			{
+				id: 4851,
+				name: "Ohio",
+				state_code: "OH"
+			},
+			{
+				id: 1421,
+				name: "Oklahoma",
+				state_code: "OK"
+			},
+			{
+				id: 1415,
+				name: "Oregon",
+				state_code: "OR"
+			},
+			{
+				id: 1448,
+				name: "Palmyra Atoll",
+				state_code: "UM-95"
+			},
+			{
+				id: 1422,
+				name: "Pennsylvania",
+				state_code: "PA"
+			},
+			{
+				id: 1449,
+				name: "Puerto Rico",
+				state_code: "PR"
+			},
+			{
+				id: 1461,
+				name: "Rhode Island",
+				state_code: "RI"
+			},
+			{
+				id: 1443,
+				name: "South Carolina",
+				state_code: "SC"
+			},
+			{
+				id: 1445,
+				name: "South Dakota",
+				state_code: "SD"
+			},
+			{
+				id: 1454,
+				name: "Tennessee",
+				state_code: "TN"
+			},
+			{
+				id: 1407,
+				name: "Texas",
+				state_code: "TX"
+			},
+			{
+				id: 1432,
+				name: "United States Minor Outlying Islands",
+				state_code: "UM"
+			},
+			{
+				id: 1413,
+				name: "United States Virgin Islands",
+				state_code: "VI"
+			},
+			{
+				id: 1414,
+				name: "Utah",
+				state_code: "UT"
+			},
+			{
+				id: 1409,
+				name: "Vermont",
+				state_code: "VT"
+			},
+			{
+				id: 1427,
+				name: "Virginia",
+				state_code: "VA"
+			},
+			{
+				id: 1405,
+				name: "Wake Island",
+				state_code: "UM-79"
+			},
+			{
+				id: 1462,
+				name: "Washington",
+				state_code: "WA"
+			},
+			{
+				id: 1429,
+				name: "West Virginia",
+				state_code: "WV"
+			},
+			{
+				id: 1441,
+				name: "Wisconsin",
+				state_code: "WI"
+			},
+			{
+				id: 1442,
+				name: "Wyoming",
+				state_code: "WY"
+			}
+		]
+	},
+	{
+		name: "Afghanistan",
+		iso3: "AFG",
+		iso2: "AF",
+		numeric_code: "004",
+		phone_code: "93",
+		emoji: "🇦🇫",
+		emojiU: "U+1F1E6 U+1F1EB",
+		states: [
+			{
+				id: 3901,
+				name: "Badakhshan",
+				state_code: "BDS"
+			},
+			{
+				id: 3871,
+				name: "Badghis",
+				state_code: "BDG"
+			},
+			{
+				id: 3875,
+				name: "Baghlan",
+				state_code: "BGL"
+			},
+			{
+				id: 3884,
+				name: "Balkh",
+				state_code: "BAL"
+			},
+			{
+				id: 3872,
+				name: "Bamyan",
+				state_code: "BAM"
+			},
+			{
+				id: 3892,
+				name: "Daykundi",
+				state_code: "DAY"
+			},
+			{
+				id: 3899,
+				name: "Farah",
+				state_code: "FRA"
+			},
+			{
+				id: 3889,
+				name: "Faryab",
+				state_code: "FYB"
+			},
+			{
+				id: 3870,
+				name: "Ghazni",
+				state_code: "GHA"
+			},
+			{
+				id: 3888,
+				name: "Ghōr",
+				state_code: "GHO"
+			},
+			{
+				id: 3873,
+				name: "Helmand",
+				state_code: "HEL"
+			},
+			{
+				id: 3887,
+				name: "Herat",
+				state_code: "HER"
+			},
+			{
+				id: 3886,
+				name: "Jowzjan",
+				state_code: "JOW"
+			},
+			{
+				id: 3902,
+				name: "Kabul",
+				state_code: "KAB"
+			},
+			{
+				id: 3890,
+				name: "Kandahar",
+				state_code: "KAN"
+			},
+			{
+				id: 3879,
+				name: "Kapisa",
+				state_code: "KAP"
+			},
+			{
+				id: 3878,
+				name: "Khost",
+				state_code: "KHO"
+			},
+			{
+				id: 3876,
+				name: "Kunar",
+				state_code: "KNR"
+			},
+			{
+				id: 3900,
+				name: "Kunduz Province",
+				state_code: "KDZ"
+			},
+			{
+				id: 3891,
+				name: "Laghman",
+				state_code: "LAG"
+			},
+			{
+				id: 3897,
+				name: "Logar",
+				state_code: "LOG"
+			},
+			{
+				id: 3882,
+				name: "Nangarhar",
+				state_code: "NAN"
+			},
+			{
+				id: 3896,
+				name: "Nimruz",
+				state_code: "NIM"
+			},
+			{
+				id: 3880,
+				name: "Nuristan",
+				state_code: "NUR"
+			},
+			{
+				id: 3894,
+				name: "Paktia",
+				state_code: "PIA"
+			},
+			{
+				id: 3877,
+				name: "Paktika",
+				state_code: "PKA"
+			},
+			{
+				id: 3881,
+				name: "Panjshir",
+				state_code: "PAN"
+			},
+			{
+				id: 3895,
+				name: "Parwan",
+				state_code: "PAR"
+			},
+			{
+				id: 3883,
+				name: "Samangan",
+				state_code: "SAM"
+			},
+			{
+				id: 3885,
+				name: "Sar-e Pol",
+				state_code: "SAR"
+			},
+			{
+				id: 3893,
+				name: "Takhar",
+				state_code: "TAK"
+			},
+			{
+				id: 3898,
+				name: "Urozgan",
+				state_code: "URU"
+			},
+			{
+				id: 3874,
+				name: "Zabul",
+				state_code: "ZAB"
+			}
+		]
+	},
+	{
+		name: "Aland Islands",
+		iso3: "ALA",
+		iso2: "AX",
+		numeric_code: "248",
+		phone_code: "+358-18",
+		emoji: "🇦🇽",
+		emojiU: "U+1F1E6 U+1F1FD",
+		states: [
+		]
+	},
+	{
+		name: "Albania",
+		iso3: "ALB",
+		iso2: "AL",
+		numeric_code: "008",
+		phone_code: "355",
+		emoji: "🇦🇱",
+		emojiU: "U+1F1E6 U+1F1F1",
+		states: [
+			{
+				id: 603,
+				name: "Berat County",
+				state_code: "01"
+			},
+			{
+				id: 629,
+				name: "Berat District",
+				state_code: "BR"
+			},
+			{
+				id: 607,
+				name: "Bulqizë District",
+				state_code: "BU"
+			},
+			{
+				id: 618,
+				name: "Delvinë District",
+				state_code: "DL"
+			},
+			{
+				id: 608,
+				name: "Devoll District",
+				state_code: "DV"
+			},
+			{
+				id: 610,
+				name: "Dibër County",
+				state_code: "09"
+			},
+			{
+				id: 605,
+				name: "Dibër District",
+				state_code: "DI"
+			},
+			{
+				id: 632,
+				name: "Durrës County",
+				state_code: "02"
+			},
+			{
+				id: 639,
+				name: "Durrës District",
+				state_code: "DR"
+			},
+			{
+				id: 598,
+				name: "Elbasan County",
+				state_code: "03"
+			},
+			{
+				id: 631,
+				name: "Fier County",
+				state_code: "04"
+			},
+			{
+				id: 627,
+				name: "Fier District",
+				state_code: "FR"
+			},
+			{
+				id: 604,
+				name: "Gjirokastër County",
+				state_code: "05"
+			},
+			{
+				id: 621,
+				name: "Gjirokastër District",
+				state_code: "GJ"
+			},
+			{
+				id: 617,
+				name: "Gramsh District",
+				state_code: "GR"
+			},
+			{
+				id: 600,
+				name: "Has District",
+				state_code: "HA"
+			},
+			{
+				id: 594,
+				name: "Kavajë District",
+				state_code: "KA"
+			},
+			{
+				id: 628,
+				name: "Kolonjë District",
+				state_code: "ER"
+			},
+			{
+				id: 630,
+				name: "Korçë County",
+				state_code: "06"
+			},
+			{
+				id: 597,
+				name: "Korçë District",
+				state_code: "KO"
+			},
+			{
+				id: 614,
+				name: "Krujë District",
+				state_code: "KR"
+			},
+			{
+				id: 612,
+				name: "Kuçovë District",
+				state_code: "KC"
+			},
+			{
+				id: 601,
+				name: "Kukës County",
+				state_code: "07"
+			},
+			{
+				id: 623,
+				name: "Kukës District",
+				state_code: "KU"
+			},
+			{
+				id: 622,
+				name: "Kurbin District",
+				state_code: "KB"
+			},
+			{
+				id: 609,
+				name: "Lezhë County",
+				state_code: "08"
+			},
+			{
+				id: 595,
+				name: "Lezhë District",
+				state_code: "LE"
+			},
+			{
+				id: 596,
+				name: "Librazhd District",
+				state_code: "LB"
+			},
+			{
+				id: 599,
+				name: "Lushnjë District",
+				state_code: "LU"
+			},
+			{
+				id: 602,
+				name: "Malësi e Madhe District",
+				state_code: "MM"
+			},
+			{
+				id: 637,
+				name: "Mallakastër District",
+				state_code: "MK"
+			},
+			{
+				id: 635,
+				name: "Mat District",
+				state_code: "MT"
+			},
+			{
+				id: 638,
+				name: "Mirditë District",
+				state_code: "MR"
+			},
+			{
+				id: 619,
+				name: "Peqin District",
+				state_code: "PQ"
+			},
+			{
+				id: 625,
+				name: "Përmet District",
+				state_code: "PR"
+			},
+			{
+				id: 606,
+				name: "Pogradec District",
+				state_code: "PG"
+			},
+			{
+				id: 620,
+				name: "Pukë District",
+				state_code: "PU"
+			},
+			{
+				id: 624,
+				name: "Sarandë District",
+				state_code: "SR"
+			},
+			{
+				id: 611,
+				name: "Shkodër County",
+				state_code: "10"
+			},
+			{
+				id: 626,
+				name: "Shkodër District",
+				state_code: "SH"
+			},
+			{
+				id: 593,
+				name: "Skrapar District",
+				state_code: "SK"
+			},
+			{
+				id: 616,
+				name: "Tepelenë District",
+				state_code: "TE"
+			},
+			{
+				id: 615,
+				name: "Tirana County",
+				state_code: "11"
+			},
+			{
+				id: 633,
+				name: "Tirana District",
+				state_code: "TR"
+			},
+			{
+				id: 636,
+				name: "Tropojë District",
+				state_code: "TP"
+			},
+			{
+				id: 634,
+				name: "Vlorë County",
+				state_code: "12"
+			},
+			{
+				id: 613,
+				name: "Vlorë District",
+				state_code: "VL"
+			}
+		]
+	},
+	{
+		name: "Algeria",
+		iso3: "DZA",
+		iso2: "DZ",
+		numeric_code: "012",
+		phone_code: "213",
+		emoji: "🇩🇿",
+		emojiU: "U+1F1E9 U+1F1FF",
+		states: [
+			{
+				id: 1118,
+				name: "Adrar",
+				state_code: "01"
+			},
+			{
+				id: 1119,
+				name: "Aïn Defla",
+				state_code: "44"
+			},
+			{
+				id: 1122,
+				name: "Aïn Témouchent",
+				state_code: "46"
+			},
+			{
+				id: 1144,
+				name: "Algiers",
+				state_code: "16"
+			},
+			{
+				id: 1103,
+				name: "Annaba",
+				state_code: "23"
+			},
+			{
+				id: 1142,
+				name: "Batna",
+				state_code: "05"
+			},
+			{
+				id: 1108,
+				name: "Béchar",
+				state_code: "08"
+			},
+			{
+				id: 1128,
+				name: "Béjaïa",
+				state_code: "06"
+			},
+			{
+				id: 4909,
+				name: "Béni Abbès",
+				state_code: "53"
+			},
+			{
+				id: 1114,
+				name: "Biskra",
+				state_code: "07"
+			},
+			{
+				id: 1111,
+				name: "Blida",
+				state_code: "09"
+			},
+			{
+				id: 4908,
+				name: "Bordj Baji Mokhtar",
+				state_code: "52"
+			},
+			{
+				id: 1116,
+				name: "Bordj Bou Arréridj",
+				state_code: "34"
+			},
+			{
+				id: 1104,
+				name: "Bouïra",
+				state_code: "10"
+			},
+			{
+				id: 1125,
+				name: "Boumerdès",
+				state_code: "35"
+			},
+			{
+				id: 1105,
+				name: "Chlef",
+				state_code: "02"
+			},
+			{
+				id: 1121,
+				name: "Constantine",
+				state_code: "25"
+			},
+			{
+				id: 4912,
+				name: "Djanet",
+				state_code: "56"
+			},
+			{
+				id: 1098,
+				name: "Djelfa",
+				state_code: "17"
+			},
+			{
+				id: 1129,
+				name: "El Bayadh",
+				state_code: "32"
+			},
+			{
+				id: 4905,
+				name: "El M'ghair",
+				state_code: "49"
+			},
+			{
+				id: 4906,
+				name: "El Menia",
+				state_code: "50"
+			},
+			{
+				id: 1099,
+				name: "El Oued",
+				state_code: "39"
+			},
+			{
+				id: 1100,
+				name: "El Tarf",
+				state_code: "36"
+			},
+			{
+				id: 1127,
+				name: "Ghardaïa",
+				state_code: "47"
+			},
+			{
+				id: 1137,
+				name: "Guelma",
+				state_code: "24"
+			},
+			{
+				id: 1112,
+				name: "Illizi",
+				state_code: "33"
+			},
+			{
+				id: 4914,
+				name: "In Guezzam",
+				state_code: "58"
+			},
+			{
+				id: 4913,
+				name: "In Salah",
+				state_code: "57"
+			},
+			{
+				id: 1113,
+				name: "Jijel",
+				state_code: "18"
+			},
+			{
+				id: 1126,
+				name: "Khenchela",
+				state_code: "40"
+			},
+			{
+				id: 1138,
+				name: "Laghouat",
+				state_code: "03"
+			},
+			{
+				id: 1134,
+				name: "M'Sila",
+				state_code: "28"
+			},
+			{
+				id: 1124,
+				name: "Mascara",
+				state_code: "29"
+			},
+			{
+				id: 1109,
+				name: "Médéa",
+				state_code: "26"
+			},
+			{
+				id: 1132,
+				name: "Mila",
+				state_code: "43"
+			},
+			{
+				id: 1140,
+				name: "Mostaganem",
+				state_code: "27"
+			},
+			{
+				id: 1102,
+				name: "Naama",
+				state_code: "45"
+			},
+			{
+				id: 1101,
+				name: "Oran",
+				state_code: "31"
+			},
+			{
+				id: 1139,
+				name: "Ouargla",
+				state_code: "30"
+			},
+			{
+				id: 4907,
+				name: "Ouled Djellal",
+				state_code: "51"
+			},
+			{
+				id: 1136,
+				name: "Oum El Bouaghi",
+				state_code: "04"
+			},
+			{
+				id: 1130,
+				name: "Relizane",
+				state_code: "48"
+			},
+			{
+				id: 1123,
+				name: "Saïda",
+				state_code: "20"
+			},
+			{
+				id: 1141,
+				name: "Sétif",
+				state_code: "19"
+			},
+			{
+				id: 4902,
+				name: "Sidi Bel Abbès",
+				state_code: "22"
+			},
+			{
+				id: 1110,
+				name: "Skikda",
+				state_code: "21"
+			},
+			{
+				id: 1143,
+				name: "Souk Ahras",
+				state_code: "41"
+			},
+			{
+				id: 1135,
+				name: "Tamanghasset",
+				state_code: "11"
+			},
+			{
+				id: 1117,
+				name: "Tébessa",
+				state_code: "12"
+			},
+			{
+				id: 1106,
+				name: "Tiaret",
+				state_code: "14"
+			},
+			{
+				id: 4910,
+				name: "Timimoun",
+				state_code: "54"
+			},
+			{
+				id: 1120,
+				name: "Tindouf",
+				state_code: "37"
+			},
+			{
+				id: 1115,
+				name: "Tipasa",
+				state_code: "42"
+			},
+			{
+				id: 1133,
+				name: "Tissemsilt",
+				state_code: "38"
+			},
+			{
+				id: 1131,
+				name: "Tizi Ouzou",
+				state_code: "15"
+			},
+			{
+				id: 1107,
+				name: "Tlemcen",
+				state_code: "13"
+			},
+			{
+				id: 4911,
+				name: "Touggourt",
+				state_code: "55"
+			}
+		]
+	},
+	{
+		name: "American Samoa",
+		iso3: "ASM",
+		iso2: "AS",
+		numeric_code: "016",
+		phone_code: "+1-684",
+		emoji: "🇦🇸",
+		emojiU: "U+1F1E6 U+1F1F8",
+		states: [
+		]
+	},
+	{
+		name: "Andorra",
+		iso3: "AND",
+		iso2: "AD",
+		numeric_code: "020",
+		phone_code: "376",
+		emoji: "🇦🇩",
+		emojiU: "U+1F1E6 U+1F1E9",
+		states: [
+			{
+				id: 488,
+				name: "Andorra la Vella",
+				state_code: "07"
+			},
+			{
+				id: 489,
+				name: "Canillo",
+				state_code: "02"
+			},
+			{
+				id: 487,
+				name: "Encamp",
+				state_code: "03"
+			},
+			{
+				id: 492,
+				name: "Escaldes-Engordany",
+				state_code: "08"
+			},
+			{
+				id: 493,
+				name: "La Massana",
+				state_code: "04"
+			},
+			{
+				id: 491,
+				name: "Ordino",
+				state_code: "05"
+			},
+			{
+				id: 490,
+				name: "Sant Julià de Lòria",
+				state_code: "06"
+			}
+		]
+	},
+	{
+		name: "Angola",
+		iso3: "AGO",
+		iso2: "AO",
+		numeric_code: "024",
+		phone_code: "244",
+		emoji: "🇦🇴",
+		emojiU: "U+1F1E6 U+1F1F4",
+		states: [
+			{
+				id: 221,
+				name: "Bengo Province",
+				state_code: "BGO"
+			},
+			{
+				id: 218,
+				name: "Benguela Province",
+				state_code: "BGU"
+			},
+			{
+				id: 212,
+				name: "Bié Province",
+				state_code: "BIE"
+			},
+			{
+				id: 228,
+				name: "Cabinda Province",
+				state_code: "CAB"
+			},
+			{
+				id: 226,
+				name: "Cuando Cubango Province",
+				state_code: "CCU"
+			},
+			{
+				id: 217,
+				name: "Cuanza Norte Province",
+				state_code: "CNO"
+			},
+			{
+				id: 216,
+				name: "Cuanza Sul",
+				state_code: "CUS"
+			},
+			{
+				id: 215,
+				name: "Cunene Province",
+				state_code: "CNN"
+			},
+			{
+				id: 213,
+				name: "Huambo Province",
+				state_code: "HUA"
+			},
+			{
+				id: 225,
+				name: "Huíla Province",
+				state_code: "HUI"
+			},
+			{
+				id: 222,
+				name: "Luanda Province",
+				state_code: "LUA"
+			},
+			{
+				id: 223,
+				name: "Lunda Norte Province",
+				state_code: "LNO"
+			},
+			{
+				id: 220,
+				name: "Lunda Sul Province",
+				state_code: "LSU"
+			},
+			{
+				id: 227,
+				name: "Malanje Province",
+				state_code: "MAL"
+			},
+			{
+				id: 219,
+				name: "Moxico Province",
+				state_code: "MOX"
+			},
+			{
+				id: 224,
+				name: "Uíge Province",
+				state_code: "UIG"
+			},
+			{
+				id: 214,
+				name: "Zaire Province",
+				state_code: "ZAI"
+			}
+		]
+	},
+	{
+		name: "Anguilla",
+		iso3: "AIA",
+		iso2: "AI",
+		numeric_code: "660",
+		phone_code: "+1-264",
+		emoji: "🇦🇮",
+		emojiU: "U+1F1E6 U+1F1EE",
+		states: [
+		]
+	},
+	{
+		name: "Antarctica",
+		iso3: "ATA",
+		iso2: "AQ",
+		numeric_code: "010",
+		phone_code: "672",
+		emoji: "🇦🇶",
+		emojiU: "U+1F1E6 U+1F1F6",
+		states: [
+		]
+	},
+	{
+		name: "Antigua And Barbuda",
+		iso3: "ATG",
+		iso2: "AG",
+		numeric_code: "028",
+		phone_code: "+1-268",
+		emoji: "🇦🇬",
+		emojiU: "U+1F1E6 U+1F1EC",
+		states: [
+			{
+				id: 3708,
+				name: "Barbuda",
+				state_code: "10"
+			},
+			{
+				id: 3703,
+				name: "Redonda",
+				state_code: "11"
+			},
+			{
+				id: 3709,
+				name: "Saint George Parish",
+				state_code: "03"
+			},
+			{
+				id: 3706,
+				name: "Saint John Parish",
+				state_code: "04"
+			},
+			{
+				id: 3707,
+				name: "Saint Mary Parish",
+				state_code: "05"
+			},
+			{
+				id: 3705,
+				name: "Saint Paul Parish",
+				state_code: "06"
+			},
+			{
+				id: 3704,
+				name: "Saint Peter Parish",
+				state_code: "07"
+			},
+			{
+				id: 3710,
+				name: "Saint Philip Parish",
+				state_code: "08"
+			}
+		]
+	},
+	{
+		name: "Argentina",
+		iso3: "ARG",
+		iso2: "AR",
+		numeric_code: "032",
+		phone_code: "54",
+		emoji: "🇦🇷",
+		emojiU: "U+1F1E6 U+1F1F7",
+		states: [
+			{
+				id: 3656,
+				name: "Buenos Aires",
+				state_code: "B"
+			},
+			{
+				id: 3647,
+				name: "Catamarca",
+				state_code: "K"
+			},
+			{
+				id: 3640,
+				name: "Chaco",
+				state_code: "H"
+			},
+			{
+				id: 3651,
+				name: "Chubut",
+				state_code: "U"
+			},
+			{
+				id: 4880,
+				name: "Ciudad Autónoma de Buenos Aires",
+				state_code: "C"
+			},
+			{
+				id: 3642,
+				name: "Córdoba",
+				state_code: "X"
+			},
+			{
+				id: 3638,
+				name: "Corrientes",
+				state_code: "W"
+			},
+			{
+				id: 3654,
+				name: "Entre Ríos",
+				state_code: "E"
+			},
+			{
+				id: 3652,
+				name: "Formosa",
+				state_code: "P"
+			},
+			{
+				id: 3645,
+				name: "Jujuy",
+				state_code: "Y"
+			},
+			{
+				id: 3655,
+				name: "La Pampa",
+				state_code: "L"
+			},
+			{
+				id: 3653,
+				name: "La Rioja",
+				state_code: "F"
+			},
+			{
+				id: 3646,
+				name: "Mendoza",
+				state_code: "M"
+			},
+			{
+				id: 3644,
+				name: "Misiones",
+				state_code: "N"
+			},
+			{
+				id: 3648,
+				name: "Neuquén",
+				state_code: "Q"
+			},
+			{
+				id: 3639,
+				name: "Río Negro",
+				state_code: "R"
+			},
+			{
+				id: 3643,
+				name: "Salta",
+				state_code: "A"
+			},
+			{
+				id: 3634,
+				name: "San Juan",
+				state_code: "J"
+			},
+			{
+				id: 3636,
+				name: "San Luis\t",
+				state_code: "D"
+			},
+			{
+				id: 3649,
+				name: "Santa Cruz",
+				state_code: "Z"
+			},
+			{
+				id: 3641,
+				name: "Santa Fe",
+				state_code: "S"
+			},
+			{
+				id: 3635,
+				name: "Santiago del Estero",
+				state_code: "G"
+			},
+			{
+				id: 3650,
+				name: "Tierra del Fuego",
+				state_code: "V"
+			},
+			{
+				id: 3637,
+				name: "Tucumán",
+				state_code: "T"
+			}
+		]
+	},
+	{
+		name: "Armenia",
+		iso3: "ARM",
+		iso2: "AM",
+		numeric_code: "051",
+		phone_code: "374",
+		emoji: "🇦🇲",
+		emojiU: "U+1F1E6 U+1F1F2",
+		states: [
+			{
+				id: 2023,
+				name: "Aragatsotn Region",
+				state_code: "AG"
+			},
+			{
+				id: 2024,
+				name: "Ararat Province",
+				state_code: "AR"
+			},
+			{
+				id: 2026,
+				name: "Armavir Region",
+				state_code: "AV"
+			},
+			{
+				id: 2028,
+				name: "Gegharkunik Province",
+				state_code: "GR"
+			},
+			{
+				id: 2033,
+				name: "Kotayk Region",
+				state_code: "KT"
+			},
+			{
+				id: 2029,
+				name: "Lori Region",
+				state_code: "LO"
+			},
+			{
+				id: 2031,
+				name: "Shirak Region",
+				state_code: "SH"
+			},
+			{
+				id: 2027,
+				name: "Syunik Province",
+				state_code: "SU"
+			},
+			{
+				id: 2032,
+				name: "Tavush Region",
+				state_code: "TV"
+			},
+			{
+				id: 2025,
+				name: "Vayots Dzor Region",
+				state_code: "VD"
+			},
+			{
+				id: 2030,
+				name: "Yerevan",
+				state_code: "ER"
+			}
+		]
+	},
+	{
+		name: "Aruba",
+		iso3: "ABW",
+		iso2: "AW",
+		numeric_code: "533",
+		phone_code: "297",
+		emoji: "🇦🇼",
+		emojiU: "U+1F1E6 U+1F1FC",
+		states: [
+		]
+	},
+	{
+		name: "Australia",
+		iso3: "AUS",
+		iso2: "AU",
+		numeric_code: "036",
+		phone_code: "61",
+		emoji: "🇦🇺",
+		emojiU: "U+1F1E6 U+1F1FA",
+		states: [
+			{
+				id: 3907,
+				name: "Australian Capital Territory",
+				state_code: "ACT"
+			},
+			{
+				id: 3909,
+				name: "New South Wales",
+				state_code: "NSW"
+			},
+			{
+				id: 3910,
+				name: "Northern Territory",
+				state_code: "NT"
+			},
+			{
+				id: 3905,
+				name: "Queensland",
+				state_code: "QLD"
+			},
+			{
+				id: 3904,
+				name: "South Australia",
+				state_code: "SA"
+			},
+			{
+				id: 3908,
+				name: "Tasmania",
+				state_code: "TAS"
+			},
+			{
+				id: 3903,
+				name: "Victoria",
+				state_code: "VIC"
+			},
+			{
+				id: 3906,
+				name: "Western Australia",
+				state_code: "WA"
+			}
+		]
+	},
+	{
+		name: "Austria",
+		iso3: "AUT",
+		iso2: "AT",
+		numeric_code: "040",
+		phone_code: "43",
+		emoji: "🇦🇹",
+		emojiU: "U+1F1E6 U+1F1F9",
+		states: [
+			{
+				id: 2062,
+				name: "Burgenland",
+				state_code: "1"
+			},
+			{
+				id: 2057,
+				name: "Carinthia",
+				state_code: "2"
+			},
+			{
+				id: 2065,
+				name: "Lower Austria",
+				state_code: "3"
+			},
+			{
+				id: 2061,
+				name: "Salzburg",
+				state_code: "5"
+			},
+			{
+				id: 2059,
+				name: "Styria",
+				state_code: "6"
+			},
+			{
+				id: 2064,
+				name: "Tyrol",
+				state_code: "7"
+			},
+			{
+				id: 2058,
+				name: "Upper Austria",
+				state_code: "4"
+			},
+			{
+				id: 2060,
+				name: "Vienna",
+				state_code: "9"
+			},
+			{
+				id: 2063,
+				name: "Vorarlberg",
+				state_code: "8"
+			}
+		]
+	},
+	{
+		name: "Azerbaijan",
+		iso3: "AZE",
+		iso2: "AZ",
+		numeric_code: "031",
+		phone_code: "994",
+		emoji: "🇦🇿",
+		emojiU: "U+1F1E6 U+1F1FF",
+		states: [
+			{
+				id: 540,
+				name: "Absheron District",
+				state_code: "ABS"
+			},
+			{
+				id: 559,
+				name: "Agdam District",
+				state_code: "AGM"
+			},
+			{
+				id: 553,
+				name: "Agdash District",
+				state_code: "AGS"
+			},
+			{
+				id: 577,
+				name: "Aghjabadi District",
+				state_code: "AGC"
+			},
+			{
+				id: 543,
+				name: "Agstafa District",
+				state_code: "AGA"
+			},
+			{
+				id: 547,
+				name: "Agsu District",
+				state_code: "AGU"
+			},
+			{
+				id: 528,
+				name: "Astara District",
+				state_code: "AST"
+			},
+			{
+				id: 575,
+				name: "Babek District",
+				state_code: "BAB"
+			},
+			{
+				id: 552,
+				name: "Baku",
+				state_code: "BA"
+			},
+			{
+				id: 560,
+				name: "Balakan District",
+				state_code: "BAL"
+			},
+			{
+				id: 569,
+				name: "Barda District",
+				state_code: "BAR"
+			},
+			{
+				id: 554,
+				name: "Beylagan District",
+				state_code: "BEY"
+			},
+			{
+				id: 532,
+				name: "Bilasuvar District",
+				state_code: "BIL"
+			},
+			{
+				id: 561,
+				name: "Dashkasan District",
+				state_code: "DAS"
+			},
+			{
+				id: 527,
+				name: "Fizuli District",
+				state_code: "FUZ"
+			},
+			{
+				id: 585,
+				name: "Ganja",
+				state_code: "GA"
+			},
+			{
+				id: 589,
+				name: "Gədəbəy",
+				state_code: "GAD"
+			},
+			{
+				id: 573,
+				name: "Gobustan District",
+				state_code: "QOB"
+			},
+			{
+				id: 551,
+				name: "Goranboy District",
+				state_code: "GOR"
+			},
+			{
+				id: 531,
+				name: "Goychay",
+				state_code: "GOY"
+			},
+			{
+				id: 574,
+				name: "Goygol District",
+				state_code: "GYG"
+			},
+			{
+				id: 571,
+				name: "Hajigabul District",
+				state_code: "HAC"
+			},
+			{
+				id: 544,
+				name: "Imishli District",
+				state_code: "IMI"
+			},
+			{
+				id: 564,
+				name: "Ismailli District",
+				state_code: "ISM"
+			},
+			{
+				id: 570,
+				name: "Jabrayil District",
+				state_code: "CAB"
+			},
+			{
+				id: 578,
+				name: "Jalilabad District",
+				state_code: "CAL"
+			},
+			{
+				id: 572,
+				name: "Julfa District",
+				state_code: "CUL"
+			},
+			{
+				id: 525,
+				name: "Kalbajar District",
+				state_code: "KAL"
+			},
+			{
+				id: 567,
+				name: "Kangarli District",
+				state_code: "KAN"
+			},
+			{
+				id: 590,
+				name: "Khachmaz District",
+				state_code: "XAC"
+			},
+			{
+				id: 537,
+				name: "Khizi District",
+				state_code: "XIZ"
+			},
+			{
+				id: 524,
+				name: "Khojali District",
+				state_code: "XCI"
+			},
+			{
+				id: 549,
+				name: "Kurdamir District",
+				state_code: "KUR"
+			},
+			{
+				id: 541,
+				name: "Lachin District",
+				state_code: "LAC"
+			},
+			{
+				id: 587,
+				name: "Lankaran",
+				state_code: "LAN"
+			},
+			{
+				id: 558,
+				name: "Lankaran District",
+				state_code: "LA"
+			},
+			{
+				id: 546,
+				name: "Lerik District",
+				state_code: "LER"
+			},
+			{
+				id: 568,
+				name: "Martuni",
+				state_code: "XVD"
+			},
+			{
+				id: 555,
+				name: "Masally District",
+				state_code: "MAS"
+			},
+			{
+				id: 580,
+				name: "Mingachevir",
+				state_code: "MI"
+			},
+			{
+				id: 562,
+				name: "Nakhchivan Autonomous Republic",
+				state_code: "NX"
+			},
+			{
+				id: 530,
+				name: "Neftchala District",
+				state_code: "NEF"
+			},
+			{
+				id: 556,
+				name: "Oghuz District",
+				state_code: "OGU"
+			},
+			{
+				id: 534,
+				name: "Ordubad District",
+				state_code: "ORD"
+			},
+			{
+				id: 542,
+				name: "Qabala District",
+				state_code: "QAB"
+			},
+			{
+				id: 526,
+				name: "Qakh District",
+				state_code: "QAX"
+			},
+			{
+				id: 521,
+				name: "Qazakh District",
+				state_code: "QAZ"
+			},
+			{
+				id: 563,
+				name: "Quba District",
+				state_code: "QBA"
+			},
+			{
+				id: 548,
+				name: "Qubadli District",
+				state_code: "QBI"
+			},
+			{
+				id: 588,
+				name: "Qusar District",
+				state_code: "QUS"
+			},
+			{
+				id: 557,
+				name: "Saatly District",
+				state_code: "SAT"
+			},
+			{
+				id: 565,
+				name: "Sabirabad District",
+				state_code: "SAB"
+			},
+			{
+				id: 522,
+				name: "Sadarak District",
+				state_code: "SAD"
+			},
+			{
+				id: 545,
+				name: "Salyan District",
+				state_code: "SAL"
+			},
+			{
+				id: 536,
+				name: "Samukh District",
+				state_code: "SMX"
+			},
+			{
+				id: 591,
+				name: "Shabran District",
+				state_code: "SBN"
+			},
+			{
+				id: 579,
+				name: "Shahbuz District",
+				state_code: "SAH"
+			},
+			{
+				id: 518,
+				name: "Shaki",
+				state_code: "SA"
+			},
+			{
+				id: 586,
+				name: "Shaki District",
+				state_code: "SAK"
+			},
+			{
+				id: 529,
+				name: "Shamakhi District",
+				state_code: "SMI"
+			},
+			{
+				id: 583,
+				name: "Shamkir District",
+				state_code: "SKR"
+			},
+			{
+				id: 535,
+				name: "Sharur District",
+				state_code: "SAR"
+			},
+			{
+				id: 520,
+				name: "Shirvan",
+				state_code: "SR"
+			},
+			{
+				id: 592,
+				name: "Shusha District",
+				state_code: "SUS"
+			},
+			{
+				id: 584,
+				name: "Siazan District",
+				state_code: "SIY"
+			},
+			{
+				id: 582,
+				name: "Sumqayit",
+				state_code: "SM"
+			},
+			{
+				id: 519,
+				name: "Tartar District",
+				state_code: "TAR"
+			},
+			{
+				id: 533,
+				name: "Tovuz District",
+				state_code: "TOV"
+			},
+			{
+				id: 539,
+				name: "Ujar District",
+				state_code: "UCA"
+			},
+			{
+				id: 550,
+				name: "Yardymli District",
+				state_code: "YAR"
+			},
+			{
+				id: 538,
+				name: "Yevlakh",
+				state_code: "YE"
+			},
+			{
+				id: 523,
+				name: "Yevlakh District",
+				state_code: "YEV"
+			},
+			{
+				id: 581,
+				name: "Zangilan District",
+				state_code: "ZAN"
+			},
+			{
+				id: 566,
+				name: "Zaqatala District",
+				state_code: "ZAQ"
+			},
+			{
+				id: 576,
+				name: "Zardab District",
+				state_code: "ZAR"
+			}
+		]
+	},
+	{
+		name: "Bahamas The",
+		iso3: "BHS",
+		iso2: "BS",
+		numeric_code: "044",
+		phone_code: "+1-242",
+		emoji: "🇧🇸",
+		emojiU: "U+1F1E7 U+1F1F8",
+		states: [
+			{
+				id: 3601,
+				name: "Acklins",
+				state_code: "AK"
+			},
+			{
+				id: 3628,
+				name: "Acklins and Crooked Islands",
+				state_code: "AC"
+			},
+			{
+				id: 3593,
+				name: "Berry Islands",
+				state_code: "BY"
+			},
+			{
+				id: 3629,
+				name: "Bimini",
+				state_code: "BI"
+			},
+			{
+				id: 3605,
+				name: "Black Point",
+				state_code: "BP"
+			},
+			{
+				id: 3611,
+				name: "Cat Island",
+				state_code: "CI"
+			},
+			{
+				id: 3603,
+				name: "Central Abaco",
+				state_code: "CO"
+			},
+			{
+				id: 3631,
+				name: "Central Andros",
+				state_code: "CS"
+			},
+			{
+				id: 3596,
+				name: "Central Eleuthera",
+				state_code: "CE"
+			},
+			{
+				id: 3621,
+				name: "Crooked Island",
+				state_code: "CK"
+			},
+			{
+				id: 3614,
+				name: "East Grand Bahama",
+				state_code: "EG"
+			},
+			{
+				id: 3612,
+				name: "Exuma",
+				state_code: "EX"
+			},
+			{
+				id: 3626,
+				name: "Freeport",
+				state_code: "FP"
+			},
+			{
+				id: 3619,
+				name: "Fresh Creek",
+				state_code: "FC"
+			},
+			{
+				id: 3597,
+				name: "Governor's Harbour",
+				state_code: "GH"
+			},
+			{
+				id: 3632,
+				name: "Grand Cay",
+				state_code: "GC"
+			},
+			{
+				id: 3595,
+				name: "Green Turtle Cay",
+				state_code: "GT"
+			},
+			{
+				id: 3613,
+				name: "Harbour Island",
+				state_code: "HI"
+			},
+			{
+				id: 3598,
+				name: "High Rock",
+				state_code: "HR"
+			},
+			{
+				id: 3624,
+				name: "Hope Town",
+				state_code: "HT"
+			},
+			{
+				id: 3609,
+				name: "Inagua",
+				state_code: "IN"
+			},
+			{
+				id: 3618,
+				name: "Kemps Bay",
+				state_code: "KB"
+			},
+			{
+				id: 3610,
+				name: "Long Island",
+				state_code: "LI"
+			},
+			{
+				id: 3625,
+				name: "Mangrove Cay",
+				state_code: "MC"
+			},
+			{
+				id: 3604,
+				name: "Marsh Harbour",
+				state_code: "MH"
+			},
+			{
+				id: 3633,
+				name: "Mayaguana District",
+				state_code: "MG"
+			},
+			{
+				id: 4881,
+				name: "New Providence",
+				state_code: "NP"
+			},
+			{
+				id: 3594,
+				name: "Nichollstown and Berry Islands",
+				state_code: "NB"
+			},
+			{
+				id: 3616,
+				name: "North Abaco",
+				state_code: "NO"
+			},
+			{
+				id: 3617,
+				name: "North Andros",
+				state_code: "NS"
+			},
+			{
+				id: 3602,
+				name: "North Eleuthera",
+				state_code: "NE"
+			},
+			{
+				id: 3615,
+				name: "Ragged Island",
+				state_code: "RI"
+			},
+			{
+				id: 3623,
+				name: "Rock Sound",
+				state_code: "RS"
+			},
+			{
+				id: 3600,
+				name: "Rum Cay District",
+				state_code: "RC"
+			},
+			{
+				id: 3620,
+				name: "San Salvador and Rum Cay",
+				state_code: "SR"
+			},
+			{
+				id: 3627,
+				name: "San Salvador Island",
+				state_code: "SS"
+			},
+			{
+				id: 3606,
+				name: "Sandy Point",
+				state_code: "SP"
+			},
+			{
+				id: 3608,
+				name: "South Abaco",
+				state_code: "SO"
+			},
+			{
+				id: 3622,
+				name: "South Andros",
+				state_code: "SA"
+			},
+			{
+				id: 3607,
+				name: "South Eleuthera",
+				state_code: "SE"
+			},
+			{
+				id: 3630,
+				name: "Spanish Wells",
+				state_code: "SW"
+			},
+			{
+				id: 3599,
+				name: "West Grand Bahama",
+				state_code: "WG"
+			}
+		]
+	},
+	{
+		name: "Bahrain",
+		iso3: "BHR",
+		iso2: "BH",
+		numeric_code: "048",
+		phone_code: "973",
+		emoji: "🇧🇭",
+		emojiU: "U+1F1E7 U+1F1ED",
+		states: [
+			{
+				id: 1992,
+				name: "Capital Governorate",
+				state_code: "13"
+			},
+			{
+				id: 1996,
+				name: "Central Governorate",
+				state_code: "16"
+			},
+			{
+				id: 1995,
+				name: "Muharraq Governorate",
+				state_code: "15"
+			},
+			{
+				id: 1994,
+				name: "Northern Governorate",
+				state_code: "17"
+			},
+			{
+				id: 1993,
+				name: "Southern Governorate",
+				state_code: "14"
+			}
+		]
+	},
+	{
+		name: "Bangladesh",
+		iso3: "BGD",
+		iso2: "BD",
+		numeric_code: "050",
+		phone_code: "880",
+		emoji: "🇧🇩",
+		emojiU: "U+1F1E7 U+1F1E9",
+		states: [
+			{
+				id: 796,
+				name: "Bagerhat District",
+				state_code: "05"
+			},
+			{
+				id: 802,
+				name: "Bahadia",
+				state_code: "33"
+			},
+			{
+				id: 752,
+				name: "Bandarban District",
+				state_code: "01"
+			},
+			{
+				id: 784,
+				name: "Barguna District",
+				state_code: "02"
+			},
+			{
+				id: 818,
+				name: "Barisal District",
+				state_code: "06"
+			},
+			{
+				id: 807,
+				name: "Barisal Division",
+				state_code: "A"
+			},
+			{
+				id: 756,
+				name: "Bhola District",
+				state_code: "07"
+			},
+			{
+				id: 797,
+				name: "Bogra District",
+				state_code: "03"
+			},
+			{
+				id: 810,
+				name: "Brahmanbaria District",
+				state_code: "04"
+			},
+			{
+				id: 768,
+				name: "Chandpur District",
+				state_code: "09"
+			},
+			{
+				id: 761,
+				name: "Chapai Nawabganj District",
+				state_code: "45"
+			},
+			{
+				id: 785,
+				name: "Chittagong District",
+				state_code: "10"
+			},
+			{
+				id: 803,
+				name: "Chittagong Division",
+				state_code: "B"
+			},
+			{
+				id: 788,
+				name: "Chuadanga District",
+				state_code: "12"
+			},
+			{
+				id: 763,
+				name: "Comilla District",
+				state_code: "08"
+			},
+			{
+				id: 751,
+				name: "Cox's Bazar District",
+				state_code: "11"
+			},
+			{
+				id: 771,
+				name: "Dhaka District",
+				state_code: "13"
+			},
+			{
+				id: 760,
+				name: "Dhaka Division",
+				state_code: "C"
+			},
+			{
+				id: 783,
+				name: "Dinajpur District",
+				state_code: "14"
+			},
+			{
+				id: 762,
+				name: "Faridpur District",
+				state_code: "15"
+			},
+			{
+				id: 816,
+				name: "Feni District",
+				state_code: "16"
+			},
+			{
+				id: 795,
+				name: "Gaibandha District",
+				state_code: "19"
+			},
+			{
+				id: 798,
+				name: "Gazipur District",
+				state_code: "18"
+			},
+			{
+				id: 792,
+				name: "Gopalganj District",
+				state_code: "17"
+			},
+			{
+				id: 805,
+				name: "Habiganj District",
+				state_code: "20"
+			},
+			{
+				id: 808,
+				name: "Jamalpur District",
+				state_code: "21"
+			},
+			{
+				id: 757,
+				name: "Jessore District",
+				state_code: "22"
+			},
+			{
+				id: 778,
+				name: "Jhalokati District",
+				state_code: "25"
+			},
+			{
+				id: 789,
+				name: "Jhenaidah District",
+				state_code: "23"
+			},
+			{
+				id: 806,
+				name: "Joypurhat District",
+				state_code: "24"
+			},
+			{
+				id: 786,
+				name: "Khagrachari District",
+				state_code: "29"
+			},
+			{
+				id: 811,
+				name: "Khulna District",
+				state_code: "27"
+			},
+			{
+				id: 775,
+				name: "Khulna Division",
+				state_code: "D"
+			},
+			{
+				id: 779,
+				name: "Kishoreganj District",
+				state_code: "26"
+			},
+			{
+				id: 793,
+				name: "Kurigram District",
+				state_code: "28"
+			},
+			{
+				id: 774,
+				name: "Kushtia District",
+				state_code: "30"
+			},
+			{
+				id: 819,
+				name: "Lakshmipur District",
+				state_code: "31"
+			},
+			{
+				id: 780,
+				name: "Lalmonirhat District",
+				state_code: "32"
+			},
+			{
+				id: 817,
+				name: "Madaripur District",
+				state_code: "36"
+			},
+			{
+				id: 776,
+				name: "Meherpur District",
+				state_code: "39"
+			},
+			{
+				id: 794,
+				name: "Moulvibazar District",
+				state_code: "38"
+			},
+			{
+				id: 790,
+				name: "Munshiganj District",
+				state_code: "35"
+			},
+			{
+				id: 766,
+				name: "Mymensingh District",
+				state_code: "34"
+			},
+			{
+				id: 758,
+				name: "Mymensingh Division",
+				state_code: "H"
+			},
+			{
+				id: 814,
+				name: "Naogaon District",
+				state_code: "48"
+			},
+			{
+				id: 769,
+				name: "Narail District",
+				state_code: "43"
+			},
+			{
+				id: 770,
+				name: "Narayanganj District",
+				state_code: "40"
+			},
+			{
+				id: 787,
+				name: "Natore District",
+				state_code: "44"
+			},
+			{
+				id: 764,
+				name: "Netrokona District",
+				state_code: "41"
+			},
+			{
+				id: 772,
+				name: "Nilphamari District",
+				state_code: "46"
+			},
+			{
+				id: 815,
+				name: "Noakhali District",
+				state_code: "47"
+			},
+			{
+				id: 754,
+				name: "Pabna District",
+				state_code: "49"
+			},
+			{
+				id: 800,
+				name: "Panchagarh District",
+				state_code: "52"
+			},
+			{
+				id: 777,
+				name: "Patuakhali District",
+				state_code: "51"
+			},
+			{
+				id: 791,
+				name: "Pirojpur District",
+				state_code: "50"
+			},
+			{
+				id: 773,
+				name: "Rajbari District",
+				state_code: "53"
+			},
+			{
+				id: 813,
+				name: "Rajshahi District",
+				state_code: "54"
+			},
+			{
+				id: 753,
+				name: "Rajshahi Division",
+				state_code: "E"
+			},
+			{
+				id: 809,
+				name: "Rangamati Hill District",
+				state_code: "56"
+			},
+			{
+				id: 759,
+				name: "Rangpur District",
+				state_code: "55"
+			},
+			{
+				id: 750,
+				name: "Rangpur Division",
+				state_code: "F"
+			},
+			{
+				id: 799,
+				name: "Satkhira District",
+				state_code: "58"
+			},
+			{
+				id: 801,
+				name: "Shariatpur District",
+				state_code: "62"
+			},
+			{
+				id: 755,
+				name: "Sherpur District",
+				state_code: "57"
+			},
+			{
+				id: 781,
+				name: "Sirajganj District",
+				state_code: "59"
+			},
+			{
+				id: 812,
+				name: "Sunamganj District",
+				state_code: "61"
+			},
+			{
+				id: 767,
+				name: "Sylhet District",
+				state_code: "60"
+			},
+			{
+				id: 765,
+				name: "Sylhet Division",
+				state_code: "G"
+			},
+			{
+				id: 782,
+				name: "Tangail District",
+				state_code: "63"
+			},
+			{
+				id: 804,
+				name: "Thakurgaon District",
+				state_code: "64"
+			}
+		]
+	},
+	{
+		name: "Barbados",
+		iso3: "BRB",
+		iso2: "BB",
+		numeric_code: "052",
+		phone_code: "+1-246",
+		emoji: "🇧🇧",
+		emojiU: "U+1F1E7 U+1F1E7",
+		states: [
+			{
+				id: 1228,
+				name: "Christ Church",
+				state_code: "01"
+			},
+			{
+				id: 1229,
+				name: "Saint Andrew",
+				state_code: "02"
+			},
+			{
+				id: 1226,
+				name: "Saint George",
+				state_code: "03"
+			},
+			{
+				id: 1224,
+				name: "Saint James",
+				state_code: "04"
+			},
+			{
+				id: 1227,
+				name: "Saint John",
+				state_code: "05"
+			},
+			{
+				id: 1223,
+				name: "Saint Joseph",
+				state_code: "06"
+			},
+			{
+				id: 1221,
+				name: "Saint Lucy",
+				state_code: "07"
+			},
+			{
+				id: 1230,
+				name: "Saint Michael",
+				state_code: "08"
+			},
+			{
+				id: 1222,
+				name: "Saint Peter",
+				state_code: "09"
+			},
+			{
+				id: 1220,
+				name: "Saint Philip",
+				state_code: "10"
+			},
+			{
+				id: 1225,
+				name: "Saint Thomas",
+				state_code: "11"
+			}
+		]
+	},
+	{
+		name: "Belarus",
+		iso3: "BLR",
+		iso2: "BY",
+		numeric_code: "112",
+		phone_code: "375",
+		emoji: "🇧🇾",
+		emojiU: "U+1F1E7 U+1F1FE",
+		states: [
+			{
+				id: 2959,
+				name: "Brest Region",
+				state_code: "BR"
+			},
+			{
+				id: 2955,
+				name: "Gomel Region",
+				state_code: "HO"
+			},
+			{
+				id: 2956,
+				name: "Grodno Region",
+				state_code: "HR"
+			},
+			{
+				id: 2958,
+				name: "Minsk",
+				state_code: "HM"
+			},
+			{
+				id: 2957,
+				name: "Minsk Region",
+				state_code: "MI"
+			},
+			{
+				id: 2954,
+				name: "Mogilev Region",
+				state_code: "MA"
+			},
+			{
+				id: 2960,
+				name: "Vitebsk Region",
+				state_code: "VI"
+			}
+		]
+	},
+	{
+		name: "Belgium",
+		iso3: "BEL",
+		iso2: "BE",
+		numeric_code: "056",
+		phone_code: "32",
+		emoji: "🇧🇪",
+		emojiU: "U+1F1E7 U+1F1EA",
+		states: [
+			{
+				id: 1381,
+				name: "Antwerp",
+				state_code: "VAN"
+			},
+			{
+				id: 1376,
+				name: "Brussels-Capital Region",
+				state_code: "BRU"
+			},
+			{
+				id: 1377,
+				name: "East Flanders",
+				state_code: "VOV"
+			},
+			{
+				id: 1373,
+				name: "Flanders",
+				state_code: "VLG"
+			},
+			{
+				id: 1374,
+				name: "Flemish Brabant",
+				state_code: "VBR"
+			},
+			{
+				id: 1375,
+				name: "Hainaut",
+				state_code: "WHT"
+			},
+			{
+				id: 1384,
+				name: "Liège",
+				state_code: "WLG"
+			},
+			{
+				id: 1372,
+				name: "Limburg",
+				state_code: "VLI"
+			},
+			{
+				id: 1379,
+				name: "Luxembourg",
+				state_code: "WLX"
+			},
+			{
+				id: 1378,
+				name: "Namur",
+				state_code: "WNA"
+			},
+			{
+				id: 1380,
+				name: "Wallonia",
+				state_code: "WAL"
+			},
+			{
+				id: 1382,
+				name: "Walloon Brabant",
+				state_code: "WBR"
+			},
+			{
+				id: 1383,
+				name: "West Flanders",
+				state_code: "VWV"
+			}
+		]
+	},
+	{
+		name: "Belize",
+		iso3: "BLZ",
+		iso2: "BZ",
+		numeric_code: "084",
+		phone_code: "501",
+		emoji: "🇧🇿",
+		emojiU: "U+1F1E7 U+1F1FF",
+		states: [
+			{
+				id: 264,
+				name: "Belize District",
+				state_code: "BZ"
+			},
+			{
+				id: 269,
+				name: "Cayo District",
+				state_code: "CY"
+			},
+			{
+				id: 266,
+				name: "Corozal District",
+				state_code: "CZL"
+			},
+			{
+				id: 268,
+				name: "Orange Walk District",
+				state_code: "OW"
+			},
+			{
+				id: 265,
+				name: "Stann Creek District",
+				state_code: "SC"
+			},
+			{
+				id: 267,
+				name: "Toledo District",
+				state_code: "TOL"
+			}
+		]
+	},
+	{
+		name: "Benin",
+		iso3: "BEN",
+		iso2: "BJ",
+		numeric_code: "204",
+		phone_code: "229",
+		emoji: "🇧🇯",
+		emojiU: "U+1F1E7 U+1F1EF",
+		states: [
+			{
+				id: 3077,
+				name: "Alibori Department",
+				state_code: "AL"
+			},
+			{
+				id: 3076,
+				name: "Atakora Department",
+				state_code: "AK"
+			},
+			{
+				id: 3079,
+				name: "Atlantique Department",
+				state_code: "AQ"
+			},
+			{
+				id: 3078,
+				name: "Borgou Department",
+				state_code: "BO"
+			},
+			{
+				id: 3070,
+				name: "Collines Department",
+				state_code: "CO"
+			},
+			{
+				id: 3072,
+				name: "Donga Department",
+				state_code: "DO"
+			},
+			{
+				id: 3071,
+				name: "Kouffo Department",
+				state_code: "KO"
+			},
+			{
+				id: 3081,
+				name: "Littoral Department",
+				state_code: "LI"
+			},
+			{
+				id: 3075,
+				name: "Mono Department",
+				state_code: "MO"
+			},
+			{
+				id: 3080,
+				name: "Ouémé Department",
+				state_code: "OU"
+			},
+			{
+				id: 3074,
+				name: "Plateau Department",
+				state_code: "PL"
+			},
+			{
+				id: 3073,
+				name: "Zou Department",
+				state_code: "ZO"
+			}
+		]
+	},
+	{
+		name: "Bermuda",
+		iso3: "BMU",
+		iso2: "BM",
+		numeric_code: "060",
+		phone_code: "+1-441",
+		emoji: "🇧🇲",
+		emojiU: "U+1F1E7 U+1F1F2",
+		states: [
+			{
+				id: 4860,
+				name: "Devonshire Parish",
+				state_code: "DEV"
+			},
+			{
+				id: 4862,
+				name: "Hamilton Municipality",
+				state_code: "HAM"
+			},
+			{
+				id: 4861,
+				name: "Hamilton Parish",
+				state_code: "HA"
+			},
+			{
+				id: 4863,
+				name: "Paget Parish",
+				state_code: "PAG"
+			},
+			{
+				id: 4864,
+				name: "Pembroke Parish",
+				state_code: "PEM"
+			},
+			{
+				id: 4865,
+				name: "Saint George's Municipality",
+				state_code: "SG"
+			},
+			{
+				id: 4866,
+				name: "Saint George's Parish",
+				state_code: "SGE"
+			},
+			{
+				id: 4867,
+				name: "Sandys Parish",
+				state_code: "SAN"
+			},
+			{
+				id: 4868,
+				name: "Smith's Parish,",
+				state_code: "SMI"
+			},
+			{
+				id: 4869,
+				name: "Southampton Parish",
+				state_code: "SOU"
+			},
+			{
+				id: 4870,
+				name: "Warwick Parish",
+				state_code: "WAR"
+			}
+		]
+	},
+	{
+		name: "Bhutan",
+		iso3: "BTN",
+		iso2: "BT",
+		numeric_code: "064",
+		phone_code: "975",
+		emoji: "🇧🇹",
+		emojiU: "U+1F1E7 U+1F1F9",
+		states: [
+			{
+				id: 240,
+				name: "Bumthang District",
+				state_code: "33"
+			},
+			{
+				id: 239,
+				name: "Chukha District",
+				state_code: "12"
+			},
+			{
+				id: 238,
+				name: "Dagana District",
+				state_code: "22"
+			},
+			{
+				id: 229,
+				name: "Gasa District",
+				state_code: "GA"
+			},
+			{
+				id: 232,
+				name: "Haa District",
+				state_code: "13"
+			},
+			{
+				id: 234,
+				name: "Lhuntse District",
+				state_code: "44"
+			},
+			{
+				id: 242,
+				name: "Mongar District",
+				state_code: "42"
+			},
+			{
+				id: 237,
+				name: "Paro District",
+				state_code: "11"
+			},
+			{
+				id: 244,
+				name: "Pemagatshel District",
+				state_code: "43"
+			},
+			{
+				id: 235,
+				name: "Punakha District",
+				state_code: "23"
+			},
+			{
+				id: 243,
+				name: "Samdrup Jongkhar District",
+				state_code: "45"
+			},
+			{
+				id: 246,
+				name: "Samtse District",
+				state_code: "14"
+			},
+			{
+				id: 247,
+				name: "Sarpang District",
+				state_code: "31"
+			},
+			{
+				id: 241,
+				name: "Thimphu District",
+				state_code: "15"
+			},
+			{
+				id: 236,
+				name: "Trashigang District",
+				state_code: "41"
+			},
+			{
+				id: 245,
+				name: "Trongsa District",
+				state_code: "32"
+			},
+			{
+				id: 230,
+				name: "Tsirang District",
+				state_code: "21"
+			},
+			{
+				id: 231,
+				name: "Wangdue Phodrang District",
+				state_code: "24"
+			},
+			{
+				id: 233,
+				name: "Zhemgang District",
+				state_code: "34"
+			}
+		]
+	},
+	{
+		name: "Bolivia",
+		iso3: "BOL",
+		iso2: "BO",
+		numeric_code: "068",
+		phone_code: "591",
+		emoji: "🇧🇴",
+		emojiU: "U+1F1E7 U+1F1F4",
+		states: [
+			{
+				id: 3375,
+				name: "Beni Department",
+				state_code: "B"
+			},
+			{
+				id: 3382,
+				name: "Chuquisaca Department",
+				state_code: "H"
+			},
+			{
+				id: 3381,
+				name: "Cochabamba Department",
+				state_code: "C"
+			},
+			{
+				id: 3380,
+				name: "La Paz Department",
+				state_code: "L"
+			},
+			{
+				id: 3376,
+				name: "Oruro Department",
+				state_code: "O"
+			},
+			{
+				id: 3379,
+				name: "Pando Department",
+				state_code: "N"
+			},
+			{
+				id: 3383,
+				name: "Potosí Department",
+				state_code: "P"
+			},
+			{
+				id: 3377,
+				name: "Santa Cruz Department",
+				state_code: "S"
+			},
+			{
+				id: 3378,
+				name: "Tarija Department",
+				state_code: "T"
+			}
+		]
+	},
+	{
+		name: "Bonaire, Sint Eustatius and Saba",
+		iso3: "BES",
+		iso2: "BQ",
+		numeric_code: "535",
+		phone_code: "599",
+		emoji: "🇧🇶",
+		emojiU: "U+1F1E7 U+1F1F6",
+		states: [
+		]
+	},
+	{
+		name: "Bosnia and Herzegovina",
+		iso3: "BIH",
+		iso2: "BA",
+		numeric_code: "070",
+		phone_code: "387",
+		emoji: "🇧🇦",
+		emojiU: "U+1F1E7 U+1F1E6",
+		states: [
+			{
+				id: 472,
+				name: "Bosnian Podrinje Canton",
+				state_code: "05"
+			},
+			{
+				id: 460,
+				name: "Brčko District",
+				state_code: "BRC"
+			},
+			{
+				id: 471,
+				name: "Canton 10",
+				state_code: "10"
+			},
+			{
+				id: 462,
+				name: "Central Bosnia Canton",
+				state_code: "06"
+			},
+			{
+				id: 467,
+				name: "Federation of Bosnia and Herzegovina",
+				state_code: "BIH"
+			},
+			{
+				id: 463,
+				name: "Herzegovina-Neretva Canton",
+				state_code: "07"
+			},
+			{
+				id: 464,
+				name: "Posavina Canton",
+				state_code: "02"
+			},
+			{
+				id: 470,
+				name: "Republika Srpska",
+				state_code: "SRP"
+			},
+			{
+				id: 466,
+				name: "Sarajevo Canton",
+				state_code: "09"
+			},
+			{
+				id: 461,
+				name: "Tuzla Canton",
+				state_code: "03"
+			},
+			{
+				id: 465,
+				name: "Una-Sana Canton",
+				state_code: "01"
+			},
+			{
+				id: 469,
+				name: "West Herzegovina Canton",
+				state_code: "08"
+			},
+			{
+				id: 468,
+				name: "Zenica-Doboj Canton",
+				state_code: "04"
+			}
+		]
+	},
+	{
+		name: "Botswana",
+		iso3: "BWA",
+		iso2: "BW",
+		numeric_code: "072",
+		phone_code: "267",
+		emoji: "🇧🇼",
+		emojiU: "U+1F1E7 U+1F1FC",
+		states: [
+			{
+				id: 3067,
+				name: "Central District",
+				state_code: "CE"
+			},
+			{
+				id: 3061,
+				name: "Ghanzi District",
+				state_code: "GH"
+			},
+			{
+				id: 3066,
+				name: "Kgalagadi District",
+				state_code: "KG"
+			},
+			{
+				id: 3062,
+				name: "Kgatleng District",
+				state_code: "KL"
+			},
+			{
+				id: 3069,
+				name: "Kweneng District",
+				state_code: "KW"
+			},
+			{
+				id: 3060,
+				name: "Ngamiland",
+				state_code: "NG"
+			},
+			{
+				id: 3068,
+				name: "North-East District",
+				state_code: "NE"
+			},
+			{
+				id: 3065,
+				name: "North-West District",
+				state_code: "NW"
+			},
+			{
+				id: 3064,
+				name: "South-East District",
+				state_code: "SE"
+			},
+			{
+				id: 3063,
+				name: "Southern District",
+				state_code: "SO"
+			}
+		]
+	},
+	{
+		name: "Bouvet Island",
+		iso3: "BVT",
+		iso2: "BV",
+		numeric_code: "074",
+		phone_code: "0055",
+		emoji: "🇧🇻",
+		emojiU: "U+1F1E7 U+1F1FB",
+		states: [
+		]
+	},
+	{
+		name: "Brazil",
+		iso3: "BRA",
+		iso2: "BR",
+		numeric_code: "076",
+		phone_code: "55",
+		emoji: "🇧🇷",
+		emojiU: "U+1F1E7 U+1F1F7",
+		states: [
+			{
+				id: 2012,
+				name: "Acre",
+				state_code: "AC"
+			},
+			{
+				id: 2007,
+				name: "Alagoas",
+				state_code: "AL"
+			},
+			{
+				id: 1999,
+				name: "Amapá",
+				state_code: "AP"
+			},
+			{
+				id: 2004,
+				name: "Amazonas",
+				state_code: "AM"
+			},
+			{
+				id: 2002,
+				name: "Bahia",
+				state_code: "BA"
+			},
+			{
+				id: 2016,
+				name: "Ceará",
+				state_code: "CE"
+			},
+			{
+				id: 2017,
+				name: "Distrito Federal",
+				state_code: "DF"
+			},
+			{
+				id: 2018,
+				name: "Espírito Santo",
+				state_code: "ES"
+			},
+			{
+				id: 2000,
+				name: "Goiás",
+				state_code: "GO"
+			},
+			{
+				id: 2015,
+				name: "Maranhão",
+				state_code: "MA"
+			},
+			{
+				id: 2011,
+				name: "Mato Grosso",
+				state_code: "MT"
+			},
+			{
+				id: 2010,
+				name: "Mato Grosso do Sul",
+				state_code: "MS"
+			},
+			{
+				id: 1998,
+				name: "Minas Gerais",
+				state_code: "MG"
+			},
+			{
+				id: 2009,
+				name: "Pará",
+				state_code: "PA"
+			},
+			{
+				id: 2005,
+				name: "Paraíba",
+				state_code: "PB"
+			},
+			{
+				id: 2022,
+				name: "Paraná",
+				state_code: "PR"
+			},
+			{
+				id: 2006,
+				name: "Pernambuco",
+				state_code: "PE"
+			},
+			{
+				id: 2008,
+				name: "Piauí",
+				state_code: "PI"
+			},
+			{
+				id: 1997,
+				name: "Rio de Janeiro",
+				state_code: "RJ"
+			},
+			{
+				id: 2019,
+				name: "Rio Grande do Norte",
+				state_code: "RN"
+			},
+			{
+				id: 2001,
+				name: "Rio Grande do Sul",
+				state_code: "RS"
+			},
+			{
+				id: 2013,
+				name: "Rondônia",
+				state_code: "RO"
+			},
+			{
+				id: 4858,
+				name: "Roraima",
+				state_code: "RR"
+			},
+			{
+				id: 2014,
+				name: "Santa Catarina",
+				state_code: "SC"
+			},
+			{
+				id: 2021,
+				name: "São Paulo",
+				state_code: "SP"
+			},
+			{
+				id: 2003,
+				name: "Sergipe",
+				state_code: "SE"
+			},
+			{
+				id: 2020,
+				name: "Tocantins",
+				state_code: "TO"
+			}
+		]
+	},
+	{
+		name: "British Indian Ocean Territory",
+		iso3: "IOT",
+		iso2: "IO",
+		numeric_code: "086",
+		phone_code: "246",
+		emoji: "🇮🇴",
+		emojiU: "U+1F1EE U+1F1F4",
+		states: [
+		]
+	},
+	{
+		name: "Brunei",
+		iso3: "BRN",
+		iso2: "BN",
+		numeric_code: "096",
+		phone_code: "673",
+		emoji: "🇧🇳",
+		emojiU: "U+1F1E7 U+1F1F3",
+		states: [
+			{
+				id: 1217,
+				name: "Belait District",
+				state_code: "BE"
+			},
+			{
+				id: 1216,
+				name: "Brunei-Muara District",
+				state_code: "BM"
+			},
+			{
+				id: 1218,
+				name: "Temburong District",
+				state_code: "TE"
+			},
+			{
+				id: 1219,
+				name: "Tutong District",
+				state_code: "TU"
+			}
+		]
+	},
+	{
+		name: "Bulgaria",
+		iso3: "BGR",
+		iso2: "BG",
+		numeric_code: "100",
+		phone_code: "359",
+		emoji: "🇧🇬",
+		emojiU: "U+1F1E7 U+1F1EC",
+		states: [
+			{
+				id: 4699,
+				name: "Blagoevgrad Province",
+				state_code: "01"
+			},
+			{
+				id: 4715,
+				name: "Burgas Province",
+				state_code: "02"
+			},
+			{
+				id: 4718,
+				name: "Dobrich Province",
+				state_code: "08"
+			},
+			{
+				id: 4693,
+				name: "Gabrovo Province",
+				state_code: "07"
+			},
+			{
+				id: 4704,
+				name: "Haskovo Province",
+				state_code: "26"
+			},
+			{
+				id: 4702,
+				name: "Kardzhali Province",
+				state_code: "09"
+			},
+			{
+				id: 4703,
+				name: "Kyustendil Province",
+				state_code: "10"
+			},
+			{
+				id: 4710,
+				name: "Lovech Province",
+				state_code: "11"
+			},
+			{
+				id: 4696,
+				name: "Montana Province",
+				state_code: "12"
+			},
+			{
+				id: 4712,
+				name: "Pazardzhik Province",
+				state_code: "13"
+			},
+			{
+				id: 4695,
+				name: "Pernik Province",
+				state_code: "14"
+			},
+			{
+				id: 4706,
+				name: "Pleven Province",
+				state_code: "15"
+			},
+			{
+				id: 4701,
+				name: "Plovdiv Province",
+				state_code: "16"
+			},
+			{
+				id: 4698,
+				name: "Razgrad Province",
+				state_code: "17"
+			},
+			{
+				id: 4713,
+				name: "Ruse Province",
+				state_code: "18"
+			},
+			{
+				id: 4882,
+				name: "Shumen",
+				state_code: "27"
+			},
+			{
+				id: 4708,
+				name: "Silistra Province",
+				state_code: "19"
+			},
+			{
+				id: 4700,
+				name: "Sliven Province",
+				state_code: "20"
+			},
+			{
+				id: 4694,
+				name: "Smolyan Province",
+				state_code: "21"
+			},
+			{
+				id: 4705,
+				name: "Sofia City Province",
+				state_code: "22"
+			},
+			{
+				id: 4719,
+				name: "Sofia Province",
+				state_code: "23"
+			},
+			{
+				id: 4707,
+				name: "Stara Zagora Province",
+				state_code: "24"
+			},
+			{
+				id: 4714,
+				name: "Targovishte Province",
+				state_code: "25"
+			},
+			{
+				id: 4717,
+				name: "Varna Province",
+				state_code: "03"
+			},
+			{
+				id: 4709,
+				name: "Veliko Tarnovo Province",
+				state_code: "04"
+			},
+			{
+				id: 4697,
+				name: "Vidin Province",
+				state_code: "05"
+			},
+			{
+				id: 4711,
+				name: "Vratsa Province",
+				state_code: "06"
+			},
+			{
+				id: 4716,
+				name: "Yambol Province",
+				state_code: "28"
+			}
+		]
+	},
+	{
+		name: "Burkina Faso",
+		iso3: "BFA",
+		iso2: "BF",
+		numeric_code: "854",
+		phone_code: "226",
+		emoji: "🇧🇫",
+		emojiU: "U+1F1E7 U+1F1EB",
+		states: [
+			{
+				id: 3160,
+				name: "Balé Province",
+				state_code: "BAL"
+			},
+			{
+				id: 3155,
+				name: "Bam Province",
+				state_code: "BAM"
+			},
+			{
+				id: 3120,
+				name: "Banwa Province",
+				state_code: "BAN"
+			},
+			{
+				id: 3152,
+				name: "Bazèga Province",
+				state_code: "BAZ"
+			},
+			{
+				id: 3138,
+				name: "Boucle du Mouhoun Region",
+				state_code: "01"
+			},
+			{
+				id: 3121,
+				name: "Bougouriba Province",
+				state_code: "BGR"
+			},
+			{
+				id: 3131,
+				name: "Boulgou",
+				state_code: "BLG"
+			},
+			{
+				id: 3153,
+				name: "Cascades Region",
+				state_code: "02"
+			},
+			{
+				id: 3136,
+				name: "Centre",
+				state_code: "03"
+			},
+			{
+				id: 3162,
+				name: "Centre-Est Region",
+				state_code: "04"
+			},
+			{
+				id: 3127,
+				name: "Centre-Nord Region",
+				state_code: "05"
+			},
+			{
+				id: 3115,
+				name: "Centre-Ouest Region",
+				state_code: "06"
+			},
+			{
+				id: 3149,
+				name: "Centre-Sud Region",
+				state_code: "07"
+			},
+			{
+				id: 3167,
+				name: "Comoé Province",
+				state_code: "COM"
+			},
+			{
+				id: 3158,
+				name: "Est Region",
+				state_code: "08"
+			},
+			{
+				id: 3148,
+				name: "Ganzourgou Province",
+				state_code: "GAN"
+			},
+			{
+				id: 3122,
+				name: "Gnagna Province",
+				state_code: "GNA"
+			},
+			{
+				id: 3143,
+				name: "Gourma Province",
+				state_code: "GOU"
+			},
+			{
+				id: 3165,
+				name: "Hauts-Bassins Region",
+				state_code: "09"
+			},
+			{
+				id: 3129,
+				name: "Houet Province",
+				state_code: "HOU"
+			},
+			{
+				id: 3135,
+				name: "Ioba Province",
+				state_code: "IOB"
+			},
+			{
+				id: 3168,
+				name: "Kadiogo Province",
+				state_code: "KAD"
+			},
+			{
+				id: 3112,
+				name: "Kénédougou Province",
+				state_code: "KEN"
+			},
+			{
+				id: 3132,
+				name: "Komondjari Province",
+				state_code: "KMD"
+			},
+			{
+				id: 3157,
+				name: "Kompienga Province",
+				state_code: "KMP"
+			},
+			{
+				id: 3146,
+				name: "Kossi Province",
+				state_code: "KOS"
+			},
+			{
+				id: 3133,
+				name: "Koulpélogo Province",
+				state_code: "KOP"
+			},
+			{
+				id: 3161,
+				name: "Kouritenga Province",
+				state_code: "KOT"
+			},
+			{
+				id: 3147,
+				name: "Kourwéogo Province",
+				state_code: "KOW"
+			},
+			{
+				id: 3159,
+				name: "Léraba Province",
+				state_code: "LER"
+			},
+			{
+				id: 3151,
+				name: "Loroum Province",
+				state_code: "LOR"
+			},
+			{
+				id: 3123,
+				name: "Mouhoun",
+				state_code: "MOU"
+			},
+			{
+				id: 3116,
+				name: "Nahouri Province",
+				state_code: "NAO"
+			},
+			{
+				id: 3113,
+				name: "Namentenga Province",
+				state_code: "NAM"
+			},
+			{
+				id: 3142,
+				name: "Nayala Province",
+				state_code: "NAY"
+			},
+			{
+				id: 3164,
+				name: "Nord Region, Burkina Faso",
+				state_code: "10"
+			},
+			{
+				id: 3156,
+				name: "Noumbiel Province",
+				state_code: "NOU"
+			},
+			{
+				id: 3141,
+				name: "Oubritenga Province",
+				state_code: "OUB"
+			},
+			{
+				id: 3144,
+				name: "Oudalan Province",
+				state_code: "OUD"
+			},
+			{
+				id: 3117,
+				name: "Passoré Province",
+				state_code: "PAS"
+			},
+			{
+				id: 3125,
+				name: "Plateau-Central Region",
+				state_code: "11"
+			},
+			{
+				id: 3163,
+				name: "Poni Province",
+				state_code: "PON"
+			},
+			{
+				id: 3114,
+				name: "Sahel Region",
+				state_code: "12"
+			},
+			{
+				id: 3154,
+				name: "Sanguié Province",
+				state_code: "SNG"
+			},
+			{
+				id: 3126,
+				name: "Sanmatenga Province",
+				state_code: "SMT"
+			},
+			{
+				id: 3139,
+				name: "Séno Province",
+				state_code: "SEN"
+			},
+			{
+				id: 3119,
+				name: "Sissili Province",
+				state_code: "SIS"
+			},
+			{
+				id: 3166,
+				name: "Soum Province",
+				state_code: "SOM"
+			},
+			{
+				id: 3137,
+				name: "Sourou Province",
+				state_code: "SOR"
+			},
+			{
+				id: 3140,
+				name: "Sud-Ouest Region",
+				state_code: "13"
+			},
+			{
+				id: 3128,
+				name: "Tapoa Province",
+				state_code: "TAP"
+			},
+			{
+				id: 3134,
+				name: "Tuy Province",
+				state_code: "TUI"
+			},
+			{
+				id: 3124,
+				name: "Yagha Province",
+				state_code: "YAG"
+			},
+			{
+				id: 3150,
+				name: "Yatenga Province",
+				state_code: "YAT"
+			},
+			{
+				id: 3145,
+				name: "Ziro Province",
+				state_code: "ZIR"
+			},
+			{
+				id: 3130,
+				name: "Zondoma Province",
+				state_code: "ZON"
+			},
+			{
+				id: 3118,
+				name: "Zoundwéogo Province",
+				state_code: "ZOU"
+			}
+		]
+	},
+	{
+		name: "Burundi",
+		iso3: "BDI",
+		iso2: "BI",
+		numeric_code: "108",
+		phone_code: "257",
+		emoji: "🇧🇮",
+		emojiU: "U+1F1E7 U+1F1EE",
+		states: [
+			{
+				id: 3196,
+				name: "Bubanza Province",
+				state_code: "BB"
+			},
+			{
+				id: 3198,
+				name: "Bujumbura Mairie Province",
+				state_code: "BM"
+			},
+			{
+				id: 3200,
+				name: "Bujumbura Rural Province",
+				state_code: "BL"
+			},
+			{
+				id: 3202,
+				name: "Bururi Province",
+				state_code: "BR"
+			},
+			{
+				id: 3201,
+				name: "Cankuzo Province",
+				state_code: "CA"
+			},
+			{
+				id: 3190,
+				name: "Cibitoke Province",
+				state_code: "CI"
+			},
+			{
+				id: 3197,
+				name: "Gitega Province",
+				state_code: "GI"
+			},
+			{
+				id: 3194,
+				name: "Karuzi Province",
+				state_code: "KR"
+			},
+			{
+				id: 3192,
+				name: "Kayanza Province",
+				state_code: "KY"
+			},
+			{
+				id: 3195,
+				name: "Kirundo Province",
+				state_code: "KI"
+			},
+			{
+				id: 3188,
+				name: "Makamba Province",
+				state_code: "MA"
+			},
+			{
+				id: 3193,
+				name: "Muramvya Province",
+				state_code: "MU"
+			},
+			{
+				id: 3186,
+				name: "Muyinga Province",
+				state_code: "MY"
+			},
+			{
+				id: 3187,
+				name: "Mwaro Province",
+				state_code: "MW"
+			},
+			{
+				id: 3199,
+				name: "Ngozi Province",
+				state_code: "NG"
+			},
+			{
+				id: 3185,
+				name: "Rumonge Province",
+				state_code: "RM"
+			},
+			{
+				id: 3189,
+				name: "Rutana Province",
+				state_code: "RT"
+			},
+			{
+				id: 3191,
+				name: "Ruyigi Province",
+				state_code: "RY"
+			}
+		]
+	},
+	{
+		name: "Cambodia",
+		iso3: "KHM",
+		iso2: "KH",
+		numeric_code: "116",
+		phone_code: "855",
+		emoji: "🇰🇭",
+		emojiU: "U+1F1F0 U+1F1ED",
+		states: [
+			{
+				id: 3984,
+				name: "Banteay Meanchey Province",
+				state_code: "1"
+			},
+			{
+				id: 3976,
+				name: "Battambang Province",
+				state_code: "2"
+			},
+			{
+				id: 3991,
+				name: "Kampong Cham Province",
+				state_code: "3"
+			},
+			{
+				id: 3979,
+				name: "Kampong Chhnang Province",
+				state_code: "4"
+			},
+			{
+				id: 3988,
+				name: "Kampong Speu Province",
+				state_code: "5"
+			},
+			{
+				id: 3981,
+				name: "Kampot Province",
+				state_code: "7"
+			},
+			{
+				id: 3983,
+				name: "Kandal Province",
+				state_code: "8"
+			},
+			{
+				id: 3978,
+				name: "Kep Province",
+				state_code: "23"
+			},
+			{
+				id: 3982,
+				name: "Koh Kong Province",
+				state_code: "9"
+			},
+			{
+				id: 3986,
+				name: "Kratié Province",
+				state_code: "10"
+			},
+			{
+				id: 3985,
+				name: "Mondulkiri Province",
+				state_code: "11"
+			},
+			{
+				id: 3987,
+				name: "Oddar Meanchey Province",
+				state_code: "22"
+			},
+			{
+				id: 3980,
+				name: "Pailin Province",
+				state_code: "24"
+			},
+			{
+				id: 3994,
+				name: "Phnom Penh",
+				state_code: "12"
+			},
+			{
+				id: 3973,
+				name: "Preah Vihear Province",
+				state_code: "13"
+			},
+			{
+				id: 3974,
+				name: "Prey Veng Province",
+				state_code: "14"
+			},
+			{
+				id: 3977,
+				name: "Pursat Province",
+				state_code: "15"
+			},
+			{
+				id: 3990,
+				name: "Ratanakiri Province",
+				state_code: "16"
+			},
+			{
+				id: 3992,
+				name: "Siem Reap Province",
+				state_code: "17"
+			},
+			{
+				id: 3989,
+				name: "Sihanoukville Province",
+				state_code: "18"
+			},
+			{
+				id: 3993,
+				name: "Stung Treng Province",
+				state_code: "19"
+			},
+			{
+				id: 3972,
+				name: "Svay Rieng Province",
+				state_code: "20"
+			},
+			{
+				id: 3975,
+				name: "Takéo Province",
+				state_code: "21"
+			}
+		]
+	},
+	{
+		name: "Cameroon",
+		iso3: "CMR",
+		iso2: "CM",
+		numeric_code: "120",
+		phone_code: "237",
+		emoji: "🇨🇲",
+		emojiU: "U+1F1E8 U+1F1F2",
+		states: [
+			{
+				id: 2663,
+				name: "Adamawa",
+				state_code: "AD"
+			},
+			{
+				id: 2660,
+				name: "Centre",
+				state_code: "CE"
+			},
+			{
+				id: 2661,
+				name: "East",
+				state_code: "ES"
+			},
+			{
+				id: 2656,
+				name: "Far North",
+				state_code: "EN"
+			},
+			{
+				id: 2662,
+				name: "Littoral",
+				state_code: "LT"
+			},
+			{
+				id: 2665,
+				name: "North",
+				state_code: "NO"
+			},
+			{
+				id: 2657,
+				name: "Northwest",
+				state_code: "NW"
+			},
+			{
+				id: 2659,
+				name: "South",
+				state_code: "SU"
+			},
+			{
+				id: 2658,
+				name: "Southwest",
+				state_code: "SW"
+			},
+			{
+				id: 2664,
+				name: "West",
+				state_code: "OU"
+			}
+		]
+	},
+	{
+		name: "Canada",
+		iso3: "CAN",
+		iso2: "CA",
+		numeric_code: "124",
+		phone_code: "1",
+		emoji: "🇨🇦",
+		emojiU: "U+1F1E8 U+1F1E6",
+		states: [
+			{
+				id: 872,
+				name: "Alberta",
+				state_code: "AB"
+			},
+			{
+				id: 875,
+				name: "British Columbia",
+				state_code: "BC"
+			},
+			{
+				id: 867,
+				name: "Manitoba",
+				state_code: "MB"
+			},
+			{
+				id: 868,
+				name: "New Brunswick",
+				state_code: "NB"
+			},
+			{
+				id: 877,
+				name: "Newfoundland and Labrador",
+				state_code: "NL"
+			},
+			{
+				id: 878,
+				name: "Northwest Territories",
+				state_code: "NT"
+			},
+			{
+				id: 874,
+				name: "Nova Scotia",
+				state_code: "NS"
+			},
+			{
+				id: 876,
+				name: "Nunavut",
+				state_code: "NU"
+			},
+			{
+				id: 866,
+				name: "Ontario",
+				state_code: "ON"
+			},
+			{
+				id: 871,
+				name: "Prince Edward Island",
+				state_code: "PE"
+			},
+			{
+				id: 873,
+				name: "Quebec",
+				state_code: "QC"
+			},
+			{
+				id: 870,
+				name: "Saskatchewan",
+				state_code: "SK"
+			},
+			{
+				id: 869,
+				name: "Yukon",
+				state_code: "YT"
+			}
+		]
+	},
+	{
+		name: "Cape Verde",
+		iso3: "CPV",
+		iso2: "CV",
+		numeric_code: "132",
+		phone_code: "238",
+		emoji: "🇨🇻",
+		emojiU: "U+1F1E8 U+1F1FB",
+		states: [
+			{
+				id: 2994,
+				name: "Barlavento Islands",
+				state_code: "B"
+			},
+			{
+				id: 2999,
+				name: "Boa Vista",
+				state_code: "BV"
+			},
+			{
+				id: 2996,
+				name: "Brava",
+				state_code: "BR"
+			},
+			{
+				id: 2991,
+				name: "Maio Municipality",
+				state_code: "MA"
+			},
+			{
+				id: 2987,
+				name: "Mosteiros",
+				state_code: "MO"
+			},
+			{
+				id: 2997,
+				name: "Paul",
+				state_code: "PA"
+			},
+			{
+				id: 2989,
+				name: "Porto Novo",
+				state_code: "PN"
+			},
+			{
+				id: 2988,
+				name: "Praia",
+				state_code: "PR"
+			},
+			{
+				id: 2982,
+				name: "Ribeira Brava Municipality",
+				state_code: "RB"
+			},
+			{
+				id: 3002,
+				name: "Ribeira Grande",
+				state_code: "RG"
+			},
+			{
+				id: 2984,
+				name: "Ribeira Grande de Santiago",
+				state_code: "RS"
+			},
+			{
+				id: 2998,
+				name: "Sal",
+				state_code: "SL"
+			},
+			{
+				id: 2985,
+				name: "Santa Catarina",
+				state_code: "CA"
+			},
+			{
+				id: 2995,
+				name: "Santa Catarina do Fogo",
+				state_code: "CF"
+			},
+			{
+				id: 3004,
+				name: "Santa Cruz",
+				state_code: "CR"
+			},
+			{
+				id: 2986,
+				name: "São Domingos",
+				state_code: "SD"
+			},
+			{
+				id: 3000,
+				name: "São Filipe",
+				state_code: "SF"
+			},
+			{
+				id: 2993,
+				name: "São Lourenço dos Órgãos",
+				state_code: "SO"
+			},
+			{
+				id: 2990,
+				name: "São Miguel",
+				state_code: "SM"
+			},
+			{
+				id: 3001,
+				name: "São Vicente",
+				state_code: "SV"
+			},
+			{
+				id: 2992,
+				name: "Sotavento Islands",
+				state_code: "S"
+			},
+			{
+				id: 2983,
+				name: "Tarrafal",
+				state_code: "TA"
+			},
+			{
+				id: 3003,
+				name: "Tarrafal de São Nicolau",
+				state_code: "TS"
+			}
+		]
+	},
+	{
+		name: "Cayman Islands",
+		iso3: "CYM",
+		iso2: "KY",
+		numeric_code: "136",
+		phone_code: "+1-345",
+		emoji: "🇰🇾",
+		emojiU: "U+1F1F0 U+1F1FE",
+		states: [
+		]
+	},
+	{
+		name: "Central African Republic",
+		iso3: "CAF",
+		iso2: "CF",
+		numeric_code: "140",
+		phone_code: "236",
+		emoji: "🇨🇫",
+		emojiU: "U+1F1E8 U+1F1EB",
+		states: [
+			{
+				id: 1259,
+				name: "Bamingui-Bangoran Prefecture",
+				state_code: "BB"
+			},
+			{
+				id: 1262,
+				name: "Bangui",
+				state_code: "BGF"
+			},
+			{
+				id: 1264,
+				name: "Basse-Kotto Prefecture",
+				state_code: "BK"
+			},
+			{
+				id: 1258,
+				name: "Haut-Mbomou Prefecture",
+				state_code: "HM"
+			},
+			{
+				id: 1268,
+				name: "Haute-Kotto Prefecture",
+				state_code: "HK"
+			},
+			{
+				id: 1263,
+				name: "Kémo Prefecture",
+				state_code: "KG"
+			},
+			{
+				id: 1256,
+				name: "Lobaye Prefecture",
+				state_code: "LB"
+			},
+			{
+				id: 1257,
+				name: "Mambéré-Kadéï",
+				state_code: "HS"
+			},
+			{
+				id: 1266,
+				name: "Mbomou Prefecture",
+				state_code: "MB"
+			},
+			{
+				id: 1253,
+				name: "Nana-Grébizi Economic Prefecture",
+				state_code: "KB"
+			},
+			{
+				id: 1260,
+				name: "Nana-Mambéré Prefecture",
+				state_code: "NM"
+			},
+			{
+				id: 1255,
+				name: "Ombella-M'Poko Prefecture",
+				state_code: "MP"
+			},
+			{
+				id: 1265,
+				name: "Ouaka Prefecture",
+				state_code: "UK"
+			},
+			{
+				id: 1254,
+				name: "Ouham Prefecture",
+				state_code: "AC"
+			},
+			{
+				id: 1267,
+				name: "Ouham-Pendé Prefecture",
+				state_code: "OP"
+			},
+			{
+				id: 1252,
+				name: "Sangha-Mbaéré",
+				state_code: "SE"
+			},
+			{
+				id: 1261,
+				name: "Vakaga Prefecture",
+				state_code: "VK"
+			}
+		]
+	},
+	{
+		name: "Chad",
+		iso3: "TCD",
+		iso2: "TD",
+		numeric_code: "148",
+		phone_code: "235",
+		emoji: "🇹🇩",
+		emojiU: "U+1F1F9 U+1F1E9",
+		states: [
+			{
+				id: 3583,
+				name: "Bahr el Gazel",
+				state_code: "BG"
+			},
+			{
+				id: 3590,
+				name: "Batha Region",
+				state_code: "BA"
+			},
+			{
+				id: 3574,
+				name: "Borkou",
+				state_code: "BO"
+			},
+			{
+				id: 3578,
+				name: "Ennedi Region",
+				state_code: "EN"
+			},
+			{
+				id: 3575,
+				name: "Ennedi-Est",
+				state_code: "EE"
+			},
+			{
+				id: 3584,
+				name: "Ennedi-Ouest",
+				state_code: "EO"
+			},
+			{
+				id: 3576,
+				name: "Guéra Region",
+				state_code: "GR"
+			},
+			{
+				id: 3573,
+				name: "Hadjer-Lamis",
+				state_code: "HL"
+			},
+			{
+				id: 3588,
+				name: "Kanem Region",
+				state_code: "KA"
+			},
+			{
+				id: 3577,
+				name: "Lac Region",
+				state_code: "LC"
+			},
+			{
+				id: 3585,
+				name: "Logone Occidental Region",
+				state_code: "LO"
+			},
+			{
+				id: 3591,
+				name: "Logone Oriental Region",
+				state_code: "LR"
+			},
+			{
+				id: 3589,
+				name: "Mandoul Region",
+				state_code: "MA"
+			},
+			{
+				id: 3580,
+				name: "Mayo-Kebbi Est Region",
+				state_code: "ME"
+			},
+			{
+				id: 3571,
+				name: "Mayo-Kebbi Ouest Region",
+				state_code: "MO"
+			},
+			{
+				id: 3570,
+				name: "Moyen-Chari Region",
+				state_code: "MC"
+			},
+			{
+				id: 3586,
+				name: "N'Djamena",
+				state_code: "ND"
+			},
+			{
+				id: 3582,
+				name: "Ouaddaï Region",
+				state_code: "OD"
+			},
+			{
+				id: 3592,
+				name: "Salamat Region",
+				state_code: "SA"
+			},
+			{
+				id: 3572,
+				name: "Sila Region",
+				state_code: "SI"
+			},
+			{
+				id: 3579,
+				name: "Tandjilé Region",
+				state_code: "TA"
+			},
+			{
+				id: 3587,
+				name: "Tibesti Region",
+				state_code: "TI"
+			},
+			{
+				id: 3581,
+				name: "Wadi Fira Region",
+				state_code: "WF"
+			}
+		]
+	},
+	{
+		name: "Chile",
+		iso3: "CHL",
+		iso2: "CL",
+		numeric_code: "152",
+		phone_code: "56",
+		emoji: "🇨🇱",
+		emojiU: "U+1F1E8 U+1F1F1",
+		states: [
+			{
+				id: 2828,
+				name: "Aisén del General Carlos Ibañez del Campo",
+				state_code: "AI"
+			},
+			{
+				id: 2832,
+				name: "Antofagasta",
+				state_code: "AN"
+			},
+			{
+				id: 2829,
+				name: "Arica y Parinacota",
+				state_code: "AP"
+			},
+			{
+				id: 2823,
+				name: "Atacama",
+				state_code: "AT"
+			},
+			{
+				id: 2827,
+				name: "Biobío",
+				state_code: "BI"
+			},
+			{
+				id: 2825,
+				name: "Coquimbo",
+				state_code: "CO"
+			},
+			{
+				id: 2826,
+				name: "La Araucanía",
+				state_code: "AR"
+			},
+			{
+				id: 2838,
+				name: "Libertador General Bernardo O'Higgins",
+				state_code: "LI"
+			},
+			{
+				id: 2835,
+				name: "Los Lagos",
+				state_code: "LL"
+			},
+			{
+				id: 2834,
+				name: "Los Ríos",
+				state_code: "LR"
+			},
+			{
+				id: 2836,
+				name: "Magallanes y de la Antártica Chilena",
+				state_code: "MA"
+			},
+			{
+				id: 2833,
+				name: "Maule",
+				state_code: "ML"
+			},
+			{
+				id: 2831,
+				name: "Ñuble",
+				state_code: "NB"
+			},
+			{
+				id: 2824,
+				name: "Región Metropolitana de Santiago",
+				state_code: "RM"
+			},
+			{
+				id: 2837,
+				name: "Tarapacá",
+				state_code: "TA"
+			},
+			{
+				id: 2830,
+				name: "Valparaíso",
+				state_code: "VS"
+			}
+		]
+	},
+	{
+		name: "China",
+		iso3: "CHN",
+		iso2: "CN",
+		numeric_code: "156",
+		phone_code: "86",
+		emoji: "🇨🇳",
+		emojiU: "U+1F1E8 U+1F1F3",
+		states: [
+			{
+				id: 2251,
+				name: "Anhui",
+				state_code: "AH"
+			},
+			{
+				id: 2257,
+				name: "Beijing",
+				state_code: "BJ"
+			},
+			{
+				id: 2271,
+				name: "Chongqing",
+				state_code: "CQ"
+			},
+			{
+				id: 2248,
+				name: "Fujian",
+				state_code: "FJ"
+			},
+			{
+				id: 2275,
+				name: "Gansu",
+				state_code: "GS"
+			},
+			{
+				id: 2279,
+				name: "Guangdong",
+				state_code: "GD"
+			},
+			{
+				id: 2278,
+				name: "Guangxi Zhuang",
+				state_code: "GX"
+			},
+			{
+				id: 2261,
+				name: "Guizhou",
+				state_code: "GZ"
+			},
+			{
+				id: 2273,
+				name: "Hainan",
+				state_code: "HI"
+			},
+			{
+				id: 2280,
+				name: "Hebei",
+				state_code: "HE"
+			},
+			{
+				id: 2265,
+				name: "Heilongjiang",
+				state_code: "HL"
+			},
+			{
+				id: 2259,
+				name: "Henan",
+				state_code: "HA"
+			},
+			{
+				id: 2267,
+				name: "Hong Kong SAR",
+				state_code: "HK"
+			},
+			{
+				id: 2274,
+				name: "Hubei",
+				state_code: "HB"
+			},
+			{
+				id: 2258,
+				name: "Hunan",
+				state_code: "HN"
+			},
+			{
+				id: 2269,
+				name: "Inner Mongolia",
+				state_code: "NM"
+			},
+			{
+				id: 2250,
+				name: "Jiangsu",
+				state_code: "JS"
+			},
+			{
+				id: 2256,
+				name: "Jiangxi",
+				state_code: "JX"
+			},
+			{
+				id: 2253,
+				name: "Jilin",
+				state_code: "JL"
+			},
+			{
+				id: 2268,
+				name: "Liaoning",
+				state_code: "LN"
+			},
+			{
+				id: 2266,
+				name: "Macau SAR",
+				state_code: "MO"
+			},
+			{
+				id: 2262,
+				name: "Ningxia Huizu",
+				state_code: "NX"
+			},
+			{
+				id: 2270,
+				name: "Qinghai",
+				state_code: "QH"
+			},
+			{
+				id: 2272,
+				name: "Shaanxi",
+				state_code: "SN"
+			},
+			{
+				id: 2252,
+				name: "Shandong",
+				state_code: "SD"
+			},
+			{
+				id: 2249,
+				name: "Shanghai",
+				state_code: "SH"
+			},
+			{
+				id: 2254,
+				name: "Shanxi",
+				state_code: "SX"
+			},
+			{
+				id: 2277,
+				name: "Sichuan",
+				state_code: "SC"
+			},
+			{
+				id: 2255,
+				name: "Taiwan",
+				state_code: "TW"
+			},
+			{
+				id: 2276,
+				name: "Tianjin",
+				state_code: "TJ"
+			},
+			{
+				id: 2263,
+				name: "Xinjiang",
+				state_code: "XJ"
+			},
+			{
+				id: 2264,
+				name: "Xizang",
+				state_code: "XZ"
+			},
+			{
+				id: 2260,
+				name: "Yunnan",
+				state_code: "YN"
+			},
+			{
+				id: 2247,
+				name: "Zhejiang",
+				state_code: "ZJ"
+			}
+		]
+	},
+	{
+		name: "Christmas Island",
+		iso3: "CXR",
+		iso2: "CX",
+		numeric_code: "162",
+		phone_code: "61",
+		emoji: "🇨🇽",
+		emojiU: "U+1F1E8 U+1F1FD",
+		states: [
+		]
+	},
+	{
+		name: "Cocos (Keeling) Islands",
+		iso3: "CCK",
+		iso2: "CC",
+		numeric_code: "166",
+		phone_code: "61",
+		emoji: "🇨🇨",
+		emojiU: "U+1F1E8 U+1F1E8",
+		states: [
+		]
+	},
+	{
+		name: "Colombia",
+		iso3: "COL",
+		iso2: "CO",
+		numeric_code: "170",
+		phone_code: "57",
+		emoji: "🇨🇴",
+		emojiU: "U+1F1E8 U+1F1F4",
+		states: [
+			{
+				id: 2895,
+				name: "Amazonas",
+				state_code: "AMA"
+			},
+			{
+				id: 2890,
+				name: "Antioquia",
+				state_code: "ANT"
+			},
+			{
+				id: 2881,
+				name: "Arauca",
+				state_code: "ARA"
+			},
+			{
+				id: 2880,
+				name: "Atlántico",
+				state_code: "ATL"
+			},
+			{
+				id: 4921,
+				name: "Bogotá D.C.",
+				state_code: "DC"
+			},
+			{
+				id: 2893,
+				name: "Bolívar",
+				state_code: "BOL"
+			},
+			{
+				id: 2903,
+				name: "Boyacá",
+				state_code: "BOY"
+			},
+			{
+				id: 2887,
+				name: "Caldas",
+				state_code: "CAL"
+			},
+			{
+				id: 2891,
+				name: "Caquetá",
+				state_code: "CAQ"
+			},
+			{
+				id: 2892,
+				name: "Casanare",
+				state_code: "CAS"
+			},
+			{
+				id: 2884,
+				name: "Cauca",
+				state_code: "CAU"
+			},
+			{
+				id: 2899,
+				name: "Cesar",
+				state_code: "CES"
+			},
+			{
+				id: 2876,
+				name: "Chocó",
+				state_code: "CHO"
+			},
+			{
+				id: 2898,
+				name: "Córdoba",
+				state_code: "COR"
+			},
+			{
+				id: 2875,
+				name: "Cundinamarca",
+				state_code: "CUN"
+			},
+			{
+				id: 2882,
+				name: "Guainía",
+				state_code: "GUA"
+			},
+			{
+				id: 2888,
+				name: "Guaviare",
+				state_code: "GUV"
+			},
+			{
+				id: 4871,
+				name: "Huila",
+				state_code: "HUI"
+			},
+			{
+				id: 2889,
+				name: "La Guajira",
+				state_code: "LAG"
+			},
+			{
+				id: 2886,
+				name: "Magdalena",
+				state_code: "MAG"
+			},
+			{
+				id: 2878,
+				name: "Meta",
+				state_code: "MET"
+			},
+			{
+				id: 2897,
+				name: "Nariño",
+				state_code: "NAR"
+			},
+			{
+				id: 2877,
+				name: "Norte de Santander",
+				state_code: "NSA"
+			},
+			{
+				id: 2896,
+				name: "Putumayo",
+				state_code: "PUT"
+			},
+			{
+				id: 2874,
+				name: "Quindío",
+				state_code: "QUI"
+			},
+			{
+				id: 2879,
+				name: "Risaralda",
+				state_code: "RIS"
+			},
+			{
+				id: 2900,
+				name: "San Andrés, Providencia y Santa Catalina",
+				state_code: "SAP"
+			},
+			{
+				id: 2901,
+				name: "Santander",
+				state_code: "SAN"
+			},
+			{
+				id: 2902,
+				name: "Sucre",
+				state_code: "SUC"
+			},
+			{
+				id: 2883,
+				name: "Tolima",
+				state_code: "TOL"
+			},
+			{
+				id: 2904,
+				name: "Valle del Cauca",
+				state_code: "VAC"
+			},
+			{
+				id: 2885,
+				name: "Vaupés",
+				state_code: "VAU"
+			},
+			{
+				id: 2894,
+				name: "Vichada",
+				state_code: "VID"
+			}
+		]
+	},
+	{
+		name: "Comoros",
+		iso3: "COM",
+		iso2: "KM",
+		numeric_code: "174",
+		phone_code: "269",
+		emoji: "🇰🇲",
+		emojiU: "U+1F1F0 U+1F1F2",
+		states: [
+			{
+				id: 2821,
+				name: "Anjouan",
+				state_code: "A"
+			},
+			{
+				id: 2822,
+				name: "Grande Comore",
+				state_code: "G"
+			},
+			{
+				id: 2820,
+				name: "Mohéli",
+				state_code: "M"
+			}
+		]
+	},
+	{
+		name: "Congo",
+		iso3: "COG",
+		iso2: "CG",
+		numeric_code: "178",
+		phone_code: "242",
+		emoji: "🇨🇬",
+		emojiU: "U+1F1E8 U+1F1EC",
+		states: [
+			{
+				id: 2866,
+				name: "Bouenza Department",
+				state_code: "11"
+			},
+			{
+				id: 2870,
+				name: "Brazzaville",
+				state_code: "BZV"
+			},
+			{
+				id: 2864,
+				name: "Cuvette Department",
+				state_code: "8"
+			},
+			{
+				id: 2869,
+				name: "Cuvette-Ouest Department",
+				state_code: "15"
+			},
+			{
+				id: 2867,
+				name: "Kouilou Department",
+				state_code: "5"
+			},
+			{
+				id: 2868,
+				name: "Lékoumou Department",
+				state_code: "2"
+			},
+			{
+				id: 2865,
+				name: "Likouala Department",
+				state_code: "7"
+			},
+			{
+				id: 2872,
+				name: "Niari Department",
+				state_code: "9"
+			},
+			{
+				id: 2862,
+				name: "Plateaux Department",
+				state_code: "14"
+			},
+			{
+				id: 2863,
+				name: "Pointe-Noire",
+				state_code: "16"
+			},
+			{
+				id: 2873,
+				name: "Pool Department",
+				state_code: "12"
+			},
+			{
+				id: 2871,
+				name: "Sangha Department",
+				state_code: "13"
+			}
+		]
+	},
+	{
+		name: "Cook Islands",
+		iso3: "COK",
+		iso2: "CK",
+		numeric_code: "184",
+		phone_code: "682",
+		emoji: "🇨🇰",
+		emojiU: "U+1F1E8 U+1F1F0",
+		states: [
+		]
+	},
+	{
+		name: "Costa Rica",
+		iso3: "CRI",
+		iso2: "CR",
+		numeric_code: "188",
+		phone_code: "506",
+		emoji: "🇨🇷",
+		emojiU: "U+1F1E8 U+1F1F7",
+		states: [
+			{
+				id: 1215,
+				name: "Alajuela Province",
+				state_code: "A"
+			},
+			{
+				id: 1209,
+				name: "Guanacaste Province",
+				state_code: "G"
+			},
+			{
+				id: 1212,
+				name: "Heredia Province",
+				state_code: "H"
+			},
+			{
+				id: 1213,
+				name: "Limón Province",
+				state_code: "L"
+			},
+			{
+				id: 1211,
+				name: "Provincia de Cartago",
+				state_code: "C"
+			},
+			{
+				id: 1210,
+				name: "Puntarenas Province",
+				state_code: "P"
+			},
+			{
+				id: 1214,
+				name: "San José Province",
+				state_code: "SJ"
+			}
+		]
+	},
+	{
+		name: "Cote D'Ivoire (Ivory Coast)",
+		iso3: "CIV",
+		iso2: "CI",
+		numeric_code: "384",
+		phone_code: "225",
+		emoji: "🇨🇮",
+		emojiU: "U+1F1E8 U+1F1EE",
+		states: [
+			{
+				id: 2634,
+				name: "Abidjan",
+				state_code: "AB"
+			},
+			{
+				id: 2626,
+				name: "Agnéby",
+				state_code: "16"
+			},
+			{
+				id: 2636,
+				name: "Bafing Region",
+				state_code: "17"
+			},
+			{
+				id: 2643,
+				name: "Bas-Sassandra District",
+				state_code: "BS"
+			},
+			{
+				id: 2635,
+				name: "Bas-Sassandra Region",
+				state_code: "09"
+			},
+			{
+				id: 2654,
+				name: "Comoé District",
+				state_code: "CM"
+			},
+			{
+				id: 2644,
+				name: "Denguélé District",
+				state_code: "DN"
+			},
+			{
+				id: 2642,
+				name: "Denguélé Region",
+				state_code: "10"
+			},
+			{
+				id: 2645,
+				name: "Dix-Huit Montagnes",
+				state_code: "06"
+			},
+			{
+				id: 2633,
+				name: "Fromager",
+				state_code: "18"
+			},
+			{
+				id: 2651,
+				name: "Gôh-Djiboua District",
+				state_code: "GD"
+			},
+			{
+				id: 2638,
+				name: "Haut-Sassandra",
+				state_code: "02"
+			},
+			{
+				id: 2632,
+				name: "Lacs District",
+				state_code: "LC"
+			},
+			{
+				id: 2640,
+				name: "Lacs Region",
+				state_code: "07"
+			},
+			{
+				id: 2627,
+				name: "Lagunes District",
+				state_code: "LG"
+			},
+			{
+				id: 2639,
+				name: "Lagunes region",
+				state_code: "01"
+			},
+			{
+				id: 2631,
+				name: "Marahoué Region",
+				state_code: "12"
+			},
+			{
+				id: 2629,
+				name: "Montagnes District",
+				state_code: "MG"
+			},
+			{
+				id: 2646,
+				name: "Moyen-Cavally",
+				state_code: "19"
+			},
+			{
+				id: 2630,
+				name: "Moyen-Comoé",
+				state_code: "05"
+			},
+			{
+				id: 2655,
+				name: "N'zi-Comoé",
+				state_code: "11"
+			},
+			{
+				id: 2648,
+				name: "Sassandra-Marahoué District",
+				state_code: "SM"
+			},
+			{
+				id: 2625,
+				name: "Savanes Region",
+				state_code: "03"
+			},
+			{
+				id: 2628,
+				name: "Sud-Bandama",
+				state_code: "15"
+			},
+			{
+				id: 2652,
+				name: "Sud-Comoé",
+				state_code: "13"
+			},
+			{
+				id: 2637,
+				name: "Vallée du Bandama District",
+				state_code: "VB"
+			},
+			{
+				id: 2647,
+				name: "Vallée du Bandama Region",
+				state_code: "04"
+			},
+			{
+				id: 2650,
+				name: "Woroba District",
+				state_code: "WR"
+			},
+			{
+				id: 2649,
+				name: "Worodougou",
+				state_code: "14"
+			},
+			{
+				id: 2653,
+				name: "Yamoussoukro",
+				state_code: "YM"
+			},
+			{
+				id: 2641,
+				name: "Zanzan Region",
+				state_code: "ZZ"
+			}
+		]
+	},
+	{
+		name: "Croatia",
+		iso3: "HRV",
+		iso2: "HR",
+		numeric_code: "191",
+		phone_code: "385",
+		emoji: "🇭🇷",
+		emojiU: "U+1F1ED U+1F1F7",
+		states: [
+			{
+				id: 734,
+				name: "Bjelovar-Bilogora County",
+				state_code: "07"
+			},
+			{
+				id: 737,
+				name: "Brod-Posavina County",
+				state_code: "12"
+			},
+			{
+				id: 728,
+				name: "Dubrovnik-Neretva County",
+				state_code: "19"
+			},
+			{
+				id: 743,
+				name: "Istria County",
+				state_code: "18"
+			},
+			{
+				id: 742,
+				name: "Koprivnica-Križevci County",
+				state_code: "06"
+			},
+			{
+				id: 729,
+				name: "Krapina-Zagorje County",
+				state_code: "02"
+			},
+			{
+				id: 731,
+				name: "Lika-Senj County",
+				state_code: "09"
+			},
+			{
+				id: 726,
+				name: "Međimurje County",
+				state_code: "20"
+			},
+			{
+				id: 740,
+				name: "Osijek-Baranja County",
+				state_code: "14"
+			},
+			{
+				id: 724,
+				name: "Požega-Slavonia County",
+				state_code: "11"
+			},
+			{
+				id: 735,
+				name: "Primorje-Gorski Kotar County",
+				state_code: "08"
+			},
+			{
+				id: 730,
+				name: "Šibenik-Knin County",
+				state_code: "15"
+			},
+			{
+				id: 733,
+				name: "Sisak-Moslavina County",
+				state_code: "03"
+			},
+			{
+				id: 725,
+				name: "Split-Dalmatia County",
+				state_code: "17"
+			},
+			{
+				id: 739,
+				name: "Varaždin County",
+				state_code: "05"
+			},
+			{
+				id: 732,
+				name: "Virovitica-Podravina County",
+				state_code: "10"
+			},
+			{
+				id: 741,
+				name: "Vukovar-Syrmia County",
+				state_code: "16"
+			},
+			{
+				id: 727,
+				name: "Zadar County",
+				state_code: "13"
+			},
+			{
+				id: 738,
+				name: "Zagreb",
+				state_code: "21"
+			},
+			{
+				id: 736,
+				name: "Zagreb County",
+				state_code: "01"
+			}
+		]
+	},
+	{
+		name: "Cuba",
+		iso3: "CUB",
+		iso2: "CU",
+		numeric_code: "192",
+		phone_code: "53",
+		emoji: "🇨🇺",
+		emojiU: "U+1F1E8 U+1F1FA",
+		states: [
+			{
+				id: 283,
+				name: "Artemisa Province",
+				state_code: "15"
+			},
+			{
+				id: 286,
+				name: "Camagüey Province",
+				state_code: "09"
+			},
+			{
+				id: 282,
+				name: "Ciego de Ávila Province",
+				state_code: "08"
+			},
+			{
+				id: 287,
+				name: "Cienfuegos Province",
+				state_code: "06"
+			},
+			{
+				id: 275,
+				name: "Granma Province",
+				state_code: "12"
+			},
+			{
+				id: 285,
+				name: "Guantánamo Province",
+				state_code: "14"
+			},
+			{
+				id: 272,
+				name: "Havana Province",
+				state_code: "03"
+			},
+			{
+				id: 279,
+				name: "Holguín Province",
+				state_code: "11"
+			},
+			{
+				id: 278,
+				name: "Isla de la Juventud",
+				state_code: "99"
+			},
+			{
+				id: 281,
+				name: "Las Tunas Province",
+				state_code: "10"
+			},
+			{
+				id: 284,
+				name: "Matanzas Province",
+				state_code: "04"
+			},
+			{
+				id: 276,
+				name: "Mayabeque Province",
+				state_code: "16"
+			},
+			{
+				id: 277,
+				name: "Pinar del Río Province",
+				state_code: "01"
+			},
+			{
+				id: 274,
+				name: "Sancti Spíritus Province",
+				state_code: "07"
+			},
+			{
+				id: 273,
+				name: "Santiago de Cuba Province",
+				state_code: "13"
+			},
+			{
+				id: 280,
+				name: "Villa Clara Province",
+				state_code: "05"
+			}
+		]
+	},
+	{
+		name: "Curaçao",
+		iso3: "CUW",
+		iso2: "CW",
+		numeric_code: "531",
+		phone_code: "599",
+		emoji: "🇨🇼",
+		emojiU: "U+1F1E8 U+1F1FC",
+		states: [
+		]
+	},
+	{
+		name: "Cyprus",
+		iso3: "CYP",
+		iso2: "CY",
+		numeric_code: "196",
+		phone_code: "357",
+		emoji: "🇨🇾",
+		emojiU: "U+1F1E8 U+1F1FE",
+		states: [
+			{
+				id: 749,
+				name: "Famagusta District (Mağusa)",
+				state_code: "04"
+			},
+			{
+				id: 744,
+				name: "Kyrenia District (Keryneia)",
+				state_code: "06"
+			},
+			{
+				id: 747,
+				name: "Larnaca District (Larnaka)",
+				state_code: "03"
+			},
+			{
+				id: 748,
+				name: "Limassol District (Leymasun)",
+				state_code: "02"
+			},
+			{
+				id: 745,
+				name: "Nicosia District (Lefkoşa)",
+				state_code: "01"
+			},
+			{
+				id: 746,
+				name: "Paphos District (Pafos)",
+				state_code: "05"
+			}
+		]
+	},
+	{
+		name: "Czech Republic",
+		iso3: "CZE",
+		iso2: "CZ",
+		numeric_code: "203",
+		phone_code: "420",
+		emoji: "🇨🇿",
+		emojiU: "U+1F1E8 U+1F1FF",
+		states: [
+			{
+				id: 4627,
+				name: "Benešov",
+				state_code: "201"
+			},
+			{
+				id: 4620,
+				name: "Beroun",
+				state_code: "202"
+			},
+			{
+				id: 4615,
+				name: "Blansko",
+				state_code: "641"
+			},
+			{
+				id: 4542,
+				name: "Břeclav",
+				state_code: "644"
+			},
+			{
+				id: 4568,
+				name: "Brno-město",
+				state_code: "642"
+			},
+			{
+				id: 4545,
+				name: "Brno-venkov",
+				state_code: "643"
+			},
+			{
+				id: 4644,
+				name: "Bruntál",
+				state_code: "801"
+			},
+			{
+				id: 4633,
+				name: "Česká Lípa",
+				state_code: "511"
+			},
+			{
+				id: 4556,
+				name: "České Budějovice",
+				state_code: "311"
+			},
+			{
+				id: 4543,
+				name: "Český Krumlov",
+				state_code: "312"
+			},
+			{
+				id: 4573,
+				name: "Cheb",
+				state_code: "411"
+			},
+			{
+				id: 4553,
+				name: "Chomutov",
+				state_code: "422"
+			},
+			{
+				id: 4634,
+				name: "Chrudim",
+				state_code: "531"
+			},
+			{
+				id: 4609,
+				name: "Děčín",
+				state_code: "421"
+			},
+			{
+				id: 4641,
+				name: "Domažlice",
+				state_code: "321"
+			},
+			{
+				id: 4559,
+				name: "Frýdek-Místek",
+				state_code: "802"
+			},
+			{
+				id: 4611,
+				name: "Havlíčkův Brod",
+				state_code: "631"
+			},
+			{
+				id: 4561,
+				name: "Hodonín",
+				state_code: "645"
+			},
+			{
+				id: 4580,
+				name: "Hradec Králové",
+				state_code: "521"
+			},
+			{
+				id: 4612,
+				name: "Jablonec nad Nisou",
+				state_code: "512"
+			},
+			{
+				id: 4625,
+				name: "Jeseník",
+				state_code: "711"
+			},
+			{
+				id: 4640,
+				name: "Jičín",
+				state_code: "522"
+			},
+			{
+				id: 4613,
+				name: "Jihlava",
+				state_code: "632"
+			},
+			{
+				id: 4639,
+				name: "Jihočeský kraj",
+				state_code: "31"
+			},
+			{
+				id: 4602,
+				name: "Jihomoravský kraj",
+				state_code: "64"
+			},
+			{
+				id: 4624,
+				name: "Jindřichův Hradec",
+				state_code: "313"
+			},
+			{
+				id: 4581,
+				name: "Karlovarský kraj",
+				state_code: "41"
+			},
+			{
+				id: 4604,
+				name: "Karlovy Vary",
+				state_code: "412"
+			},
+			{
+				id: 4586,
+				name: "Karviná",
+				state_code: "803"
+			},
+			{
+				id: 4631,
+				name: "Kladno",
+				state_code: "203"
+			},
+			{
+				id: 4591,
+				name: "Klatovy",
+				state_code: "322"
+			},
+			{
+				id: 4618,
+				name: "Kolín",
+				state_code: "204"
+			},
+			{
+				id: 4575,
+				name: "Kraj Vysočina",
+				state_code: "63"
+			},
+			{
+				id: 4614,
+				name: "Královéhradecký kraj",
+				state_code: "52"
+			},
+			{
+				id: 4593,
+				name: "Kroměříž",
+				state_code: "721"
+			},
+			{
+				id: 4923,
+				name: "Kutná Hora",
+				state_code: "205"
+			},
+			{
+				id: 4590,
+				name: "Liberec",
+				state_code: "513"
+			},
+			{
+				id: 4601,
+				name: "Liberecký kraj",
+				state_code: "51"
+			},
+			{
+				id: 4605,
+				name: "Litoměřice",
+				state_code: "423"
+			},
+			{
+				id: 4617,
+				name: "Louny",
+				state_code: "424"
+			},
+			{
+				id: 4638,
+				name: "Mělník",
+				state_code: "206"
+			},
+			{
+				id: 4643,
+				name: "Mladá Boleslav",
+				state_code: "207"
+			},
+			{
+				id: 4600,
+				name: "Moravskoslezský kraj",
+				state_code: "80"
+			},
+			{
+				id: 4629,
+				name: "Most",
+				state_code: "425"
+			},
+			{
+				id: 4550,
+				name: "Náchod",
+				state_code: "523"
+			},
+			{
+				id: 4548,
+				name: "Nový Jičín",
+				state_code: "804"
+			},
+			{
+				id: 4582,
+				name: "Nymburk",
+				state_code: "208"
+			},
+			{
+				id: 4574,
+				name: "Olomouc",
+				state_code: "712"
+			},
+			{
+				id: 4589,
+				name: "Olomoucký kraj",
+				state_code: "71"
+			},
+			{
+				id: 4623,
+				name: "Opava",
+				state_code: "805"
+			},
+			{
+				id: 4584,
+				name: "Ostrava-město",
+				state_code: "806"
+			},
+			{
+				id: 4547,
+				name: "Pardubice",
+				state_code: "532"
+			},
+			{
+				id: 4588,
+				name: "Pardubický kraj",
+				state_code: "53"
+			},
+			{
+				id: 4645,
+				name: "Pelhřimov",
+				state_code: "633"
+			},
+			{
+				id: 4560,
+				name: "Písek",
+				state_code: "314"
+			},
+			{
+				id: 4608,
+				name: "Plzeň-jih",
+				state_code: "324"
+			},
+			{
+				id: 4544,
+				name: "Plzeň-město",
+				state_code: "323"
+			},
+			{
+				id: 4564,
+				name: "Plzeň-sever",
+				state_code: "325"
+			},
+			{
+				id: 4607,
+				name: "Plzeňský kraj",
+				state_code: "32"
+			},
+			{
+				id: 4578,
+				name: "Prachatice",
+				state_code: "315"
+			},
+			{
+				id: 4606,
+				name: "Praha-východ",
+				state_code: "209"
+			},
+			{
+				id: 4619,
+				name: "Praha-západ",
+				state_code: "20A"
+			},
+			{
+				id: 4598,
+				name: "Praha, Hlavní město",
+				state_code: "10"
+			},
+			{
+				id: 4626,
+				name: "Přerov",
+				state_code: "714"
+			},
+			{
+				id: 4546,
+				name: "Příbram",
+				state_code: "20B"
+			},
+			{
+				id: 4551,
+				name: "Prostějov",
+				state_code: "713"
+			},
+			{
+				id: 4558,
+				name: "Rakovník",
+				state_code: "20C"
+			},
+			{
+				id: 4583,
+				name: "Rokycany",
+				state_code: "326"
+			},
+			{
+				id: 4636,
+				name: "Rychnov nad Kněžnou",
+				state_code: "524"
+			},
+			{
+				id: 4596,
+				name: "Semily",
+				state_code: "514"
+			},
+			{
+				id: 4595,
+				name: "Sokolov",
+				state_code: "413"
+			},
+			{
+				id: 4628,
+				name: "Strakonice",
+				state_code: "316"
+			},
+			{
+				id: 4554,
+				name: "Středočeský kraj",
+				state_code: "20"
+			},
+			{
+				id: 4642,
+				name: "Šumperk",
+				state_code: "715"
+			},
+			{
+				id: 4571,
+				name: "Svitavy",
+				state_code: "533"
+			},
+			{
+				id: 4565,
+				name: "Tábor",
+				state_code: "317"
+			},
+			{
+				id: 4646,
+				name: "Tachov",
+				state_code: "327"
+			},
+			{
+				id: 4621,
+				name: "Teplice",
+				state_code: "426"
+			},
+			{
+				id: 4597,
+				name: "Třebíč",
+				state_code: "634"
+			},
+			{
+				id: 4579,
+				name: "Trutnov",
+				state_code: "525"
+			},
+			{
+				id: 4592,
+				name: "Uherské Hradiště",
+				state_code: "722"
+			},
+			{
+				id: 4576,
+				name: "Ústecký kraj",
+				state_code: "42"
+			},
+			{
+				id: 4599,
+				name: "Ústí nad Labem",
+				state_code: "427"
+			},
+			{
+				id: 4647,
+				name: "Ústí nad Orlicí",
+				state_code: "534"
+			},
+			{
+				id: 4572,
+				name: "Vsetín",
+				state_code: "723"
+			},
+			{
+				id: 4622,
+				name: "Vyškov",
+				state_code: "646"
+			},
+			{
+				id: 4648,
+				name: "Žďár nad Sázavou",
+				state_code: "635"
+			},
+			{
+				id: 4563,
+				name: "Zlín",
+				state_code: "724"
+			},
+			{
+				id: 4552,
+				name: "Zlínský kraj",
+				state_code: "72"
+			},
+			{
+				id: 4630,
+				name: "Znojmo",
+				state_code: "647"
+			}
+		]
+	},
+	{
+		name: "Democratic Republic of the Congo",
+		iso3: "COD",
+		iso2: "CD",
+		numeric_code: "180",
+		phone_code: "243",
+		emoji: "🇨🇩",
+		emojiU: "U+1F1E8 U+1F1E9",
+		states: [
+			{
+				id: 2753,
+				name: "Bas-Uélé",
+				state_code: "BU"
+			},
+			{
+				id: 2744,
+				name: "Équateur",
+				state_code: "EQ"
+			},
+			{
+				id: 2750,
+				name: "Haut-Katanga",
+				state_code: "HK"
+			},
+			{
+				id: 2758,
+				name: "Haut-Lomami",
+				state_code: "HL"
+			},
+			{
+				id: 2734,
+				name: "Haut-Uélé",
+				state_code: "HU"
+			},
+			{
+				id: 2751,
+				name: "Ituri",
+				state_code: "IT"
+			},
+			{
+				id: 2757,
+				name: "Kasaï",
+				state_code: "KS"
+			},
+			{
+				id: 2742,
+				name: "Kasaï Central",
+				state_code: "KC"
+			},
+			{
+				id: 2735,
+				name: "Kasaï Oriental",
+				state_code: "KE"
+			},
+			{
+				id: 2741,
+				name: "Kinshasa",
+				state_code: "KN"
+			},
+			{
+				id: 2746,
+				name: "Kongo Central",
+				state_code: "BC"
+			},
+			{
+				id: 2740,
+				name: "Kwango",
+				state_code: "KG"
+			},
+			{
+				id: 2759,
+				name: "Kwilu",
+				state_code: "KL"
+			},
+			{
+				id: 2747,
+				name: "Lomami",
+				state_code: "LO"
+			},
+			{
+				id: 4953,
+				name: "Lualaba",
+				state_code: "LU"
+			},
+			{
+				id: 2755,
+				name: "Mai-Ndombe",
+				state_code: "MN"
+			},
+			{
+				id: 2745,
+				name: "Maniema",
+				state_code: "MA"
+			},
+			{
+				id: 2752,
+				name: "Mongala",
+				state_code: "MO"
+			},
+			{
+				id: 2749,
+				name: "Nord-Kivu",
+				state_code: "NK"
+			},
+			{
+				id: 2739,
+				name: "Nord-Ubangi",
+				state_code: "NU"
+			},
+			{
+				id: 2743,
+				name: "Sankuru",
+				state_code: "SA"
+			},
+			{
+				id: 2738,
+				name: "Sud-Kivu",
+				state_code: "SK"
+			},
+			{
+				id: 2748,
+				name: "Sud-Ubangi",
+				state_code: "SU"
+			},
+			{
+				id: 2733,
+				name: "Tanganyika",
+				state_code: "TA"
+			},
+			{
+				id: 2756,
+				name: "Tshopo",
+				state_code: "TO"
+			},
+			{
+				id: 2732,
+				name: "Tshuapa",
+				state_code: "TU"
+			}
+		]
+	},
+	{
+		name: "Denmark",
+		iso3: "DNK",
+		iso2: "DK",
+		numeric_code: "208",
+		phone_code: "45",
+		emoji: "🇩🇰",
+		emojiU: "U+1F1E9 U+1F1F0",
+		states: [
+			{
+				id: 1530,
+				name: "Capital Region of Denmark",
+				state_code: "84"
+			},
+			{
+				id: 1531,
+				name: "Central Denmark Region",
+				state_code: "82"
+			},
+			{
+				id: 1532,
+				name: "North Denmark Region",
+				state_code: "81"
+			},
+			{
+				id: 1529,
+				name: "Region of Southern Denmark",
+				state_code: "83"
+			},
+			{
+				id: 1528,
+				name: "Region Zealand",
+				state_code: "85"
+			}
+		]
+	},
+	{
+		name: "Djibouti",
+		iso3: "DJI",
+		iso2: "DJ",
+		numeric_code: "262",
+		phone_code: "253",
+		emoji: "🇩🇯",
+		emojiU: "U+1F1E9 U+1F1EF",
+		states: [
+			{
+				id: 2933,
+				name: "Ali Sabieh Region",
+				state_code: "AS"
+			},
+			{
+				id: 2932,
+				name: "Arta Region",
+				state_code: "AR"
+			},
+			{
+				id: 2930,
+				name: "Dikhil Region",
+				state_code: "DI"
+			},
+			{
+				id: 2929,
+				name: "Djibouti",
+				state_code: "DJ"
+			},
+			{
+				id: 2928,
+				name: "Obock Region",
+				state_code: "OB"
+			},
+			{
+				id: 2931,
+				name: "Tadjourah Region",
+				state_code: "TA"
+			}
+		]
+	},
+	{
+		name: "Dominica",
+		iso3: "DMA",
+		iso2: "DM",
+		numeric_code: "212",
+		phone_code: "+1-767",
+		emoji: "🇩🇲",
+		emojiU: "U+1F1E9 U+1F1F2",
+		states: [
+			{
+				id: 4082,
+				name: "Saint Andrew Parish",
+				state_code: "02"
+			},
+			{
+				id: 4078,
+				name: "Saint David Parish",
+				state_code: "03"
+			},
+			{
+				id: 4079,
+				name: "Saint George Parish",
+				state_code: "04"
+			},
+			{
+				id: 4076,
+				name: "Saint John Parish",
+				state_code: "05"
+			},
+			{
+				id: 4085,
+				name: "Saint Joseph Parish",
+				state_code: "06"
+			},
+			{
+				id: 4083,
+				name: "Saint Luke Parish",
+				state_code: "07"
+			},
+			{
+				id: 4077,
+				name: "Saint Mark Parish",
+				state_code: "08"
+			},
+			{
+				id: 4080,
+				name: "Saint Patrick Parish",
+				state_code: "09"
+			},
+			{
+				id: 4084,
+				name: "Saint Paul Parish",
+				state_code: "10"
+			},
+			{
+				id: 4081,
+				name: "Saint Peter Parish",
+				state_code: "11"
+			}
+		]
+	},
+	{
+		name: "Dominican Republic",
+		iso3: "DOM",
+		iso2: "DO",
+		numeric_code: "214",
+		phone_code: "+1-809 and 1-829",
+		emoji: "🇩🇴",
+		emojiU: "U+1F1E9 U+1F1F4",
+		states: [
+			{
+				id: 4114,
+				name: "Azua Province",
+				state_code: "02"
+			},
+			{
+				id: 4105,
+				name: "Baoruco Province",
+				state_code: "03"
+			},
+			{
+				id: 4090,
+				name: "Barahona Province",
+				state_code: "04"
+			},
+			{
+				id: 4107,
+				name: "Dajabón Province",
+				state_code: "05"
+			},
+			{
+				id: 4095,
+				name: "Distrito Nacional",
+				state_code: "01"
+			},
+			{
+				id: 4113,
+				name: "Duarte Province",
+				state_code: "06"
+			},
+			{
+				id: 4086,
+				name: "El Seibo Province",
+				state_code: "08"
+			},
+			{
+				id: 4102,
+				name: "Espaillat Province",
+				state_code: "09"
+			},
+			{
+				id: 4106,
+				name: "Hato Mayor Province",
+				state_code: "30"
+			},
+			{
+				id: 4089,
+				name: "Hermanas Mirabal Province",
+				state_code: "19"
+			},
+			{
+				id: 4097,
+				name: "Independencia",
+				state_code: "10"
+			},
+			{
+				id: 4109,
+				name: "La Altagracia Province",
+				state_code: "11"
+			},
+			{
+				id: 4087,
+				name: "La Romana Province",
+				state_code: "12"
+			},
+			{
+				id: 4116,
+				name: "La Vega Province",
+				state_code: "13"
+			},
+			{
+				id: 4094,
+				name: "María Trinidad Sánchez Province",
+				state_code: "14"
+			},
+			{
+				id: 4099,
+				name: "Monseñor Nouel Province",
+				state_code: "28"
+			},
+			{
+				id: 4115,
+				name: "Monte Cristi Province",
+				state_code: "15"
+			},
+			{
+				id: 4111,
+				name: "Monte Plata Province",
+				state_code: "29"
+			},
+			{
+				id: 4101,
+				name: "Pedernales Province",
+				state_code: "16"
+			},
+			{
+				id: 4096,
+				name: "Peravia Province",
+				state_code: "17"
+			},
+			{
+				id: 4092,
+				name: "Puerto Plata Province",
+				state_code: "18"
+			},
+			{
+				id: 4103,
+				name: "Samaná Province",
+				state_code: "20"
+			},
+			{
+				id: 4091,
+				name: "San Cristóbal Province",
+				state_code: "21"
+			},
+			{
+				id: 4112,
+				name: "San José de Ocoa Province",
+				state_code: "31"
+			},
+			{
+				id: 4098,
+				name: "San Juan Province",
+				state_code: "22"
+			},
+			{
+				id: 4110,
+				name: "San Pedro de Macorís",
+				state_code: "23"
+			},
+			{
+				id: 4088,
+				name: "Sánchez Ramírez Province",
+				state_code: "24"
+			},
+			{
+				id: 4108,
+				name: "Santiago Province",
+				state_code: "25"
+			},
+			{
+				id: 4100,
+				name: "Santiago Rodríguez Province",
+				state_code: "26"
+			},
+			{
+				id: 4093,
+				name: "Santo Domingo Province",
+				state_code: "32"
+			},
+			{
+				id: 4104,
+				name: "Valverde Province",
+				state_code: "27"
+			}
+		]
+	},
+	{
+		name: "East Timor",
+		iso3: "TLS",
+		iso2: "TL",
+		numeric_code: "626",
+		phone_code: "670",
+		emoji: "🇹🇱",
+		emojiU: "U+1F1F9 U+1F1F1",
+		states: [
+			{
+				id: 4520,
+				name: "Aileu municipality",
+				state_code: "AL"
+			},
+			{
+				id: 4518,
+				name: "Ainaro Municipality",
+				state_code: "AN"
+			},
+			{
+				id: 4521,
+				name: "Baucau Municipality",
+				state_code: "BA"
+			},
+			{
+				id: 4525,
+				name: "Bobonaro Municipality",
+				state_code: "BO"
+			},
+			{
+				id: 4522,
+				name: "Cova Lima Municipality",
+				state_code: "CO"
+			},
+			{
+				id: 4524,
+				name: "Dili municipality",
+				state_code: "DI"
+			},
+			{
+				id: 4516,
+				name: "Ermera District",
+				state_code: "ER"
+			},
+			{
+				id: 4523,
+				name: "Lautém Municipality",
+				state_code: "LA"
+			},
+			{
+				id: 4515,
+				name: "Liquiçá Municipality",
+				state_code: "LI"
+			},
+			{
+				id: 4517,
+				name: "Manatuto District",
+				state_code: "MT"
+			},
+			{
+				id: 4519,
+				name: "Manufahi Municipality",
+				state_code: "MF"
+			},
+			{
+				id: 4514,
+				name: "Viqueque Municipality",
+				state_code: "VI"
+			}
+		]
+	},
+	{
+		name: "Ecuador",
+		iso3: "ECU",
+		iso2: "EC",
+		numeric_code: "218",
+		phone_code: "593",
+		emoji: "🇪🇨",
+		emojiU: "U+1F1EA U+1F1E8",
+		states: [
+			{
+				id: 2923,
+				name: "Azuay",
+				state_code: "A"
+			},
+			{
+				id: 2920,
+				name: "Bolívar",
+				state_code: "B"
+			},
+			{
+				id: 2917,
+				name: "Cañar",
+				state_code: "F"
+			},
+			{
+				id: 2915,
+				name: "Carchi",
+				state_code: "C"
+			},
+			{
+				id: 2925,
+				name: "Chimborazo",
+				state_code: "H"
+			},
+			{
+				id: 2921,
+				name: "Cotopaxi",
+				state_code: "X"
+			},
+			{
+				id: 2924,
+				name: "El Oro",
+				state_code: "O"
+			},
+			{
+				id: 2922,
+				name: "Esmeraldas",
+				state_code: "E"
+			},
+			{
+				id: 2905,
+				name: "Galápagos",
+				state_code: "W"
+			},
+			{
+				id: 2914,
+				name: "Guayas",
+				state_code: "G"
+			},
+			{
+				id: 2911,
+				name: "Imbabura",
+				state_code: "I"
+			},
+			{
+				id: 5068,
+				name: "Loja",
+				state_code: "L"
+			},
+			{
+				id: 2910,
+				name: "Los Ríos",
+				state_code: "R"
+			},
+			{
+				id: 2913,
+				name: "Manabí",
+				state_code: "M"
+			},
+			{
+				id: 2918,
+				name: "Morona-Santiago",
+				state_code: "S"
+			},
+			{
+				id: 2916,
+				name: "Napo",
+				state_code: "N"
+			},
+			{
+				id: 2926,
+				name: "Orellana",
+				state_code: "D"
+			},
+			{
+				id: 2907,
+				name: "Pastaza",
+				state_code: "Y"
+			},
+			{
+				id: 2927,
+				name: "Pichincha",
+				state_code: "P"
+			},
+			{
+				id: 2912,
+				name: "Santa Elena",
+				state_code: "SE"
+			},
+			{
+				id: 2919,
+				name: "Santo Domingo de los Tsáchilas",
+				state_code: "SD"
+			},
+			{
+				id: 2906,
+				name: "Sucumbíos",
+				state_code: "U"
+			},
+			{
+				id: 2908,
+				name: "Tungurahua",
+				state_code: "T"
+			},
+			{
+				id: 2909,
+				name: "Zamora Chinchipe",
+				state_code: "Z"
+			}
+		]
+	},
+	{
+		name: "Egypt",
+		iso3: "EGY",
+		iso2: "EG",
+		numeric_code: "818",
+		phone_code: "20",
+		emoji: "🇪🇬",
+		emojiU: "U+1F1EA U+1F1EC",
+		states: [
+			{
+				id: 3235,
+				name: "Alexandria",
+				state_code: "ALX"
+			},
+			{
+				id: 3225,
+				name: "Aswan",
+				state_code: "ASN"
+			},
+			{
+				id: 3236,
+				name: "Asyut",
+				state_code: "AST"
+			},
+			{
+				id: 3241,
+				name: "Beheira",
+				state_code: "BH"
+			},
+			{
+				id: 3230,
+				name: "Beni Suef",
+				state_code: "BNS"
+			},
+			{
+				id: 3223,
+				name: "Cairo",
+				state_code: "C"
+			},
+			{
+				id: 3245,
+				name: "Dakahlia",
+				state_code: "DK"
+			},
+			{
+				id: 3224,
+				name: "Damietta",
+				state_code: "DT"
+			},
+			{
+				id: 3238,
+				name: "Faiyum",
+				state_code: "FYM"
+			},
+			{
+				id: 3234,
+				name: "Gharbia",
+				state_code: "GH"
+			},
+			{
+				id: 3239,
+				name: "Giza",
+				state_code: "GZ"
+			},
+			{
+				id: 3244,
+				name: "Ismailia",
+				state_code: "IS"
+			},
+			{
+				id: 3222,
+				name: "Kafr el-Sheikh",
+				state_code: "KFS"
+			},
+			{
+				id: 3242,
+				name: "Luxor",
+				state_code: "LX"
+			},
+			{
+				id: 3231,
+				name: "Matrouh",
+				state_code: "MT"
+			},
+			{
+				id: 3243,
+				name: "Minya",
+				state_code: "MN"
+			},
+			{
+				id: 3228,
+				name: "Monufia",
+				state_code: "MNF"
+			},
+			{
+				id: 3246,
+				name: "New Valley",
+				state_code: "WAD"
+			},
+			{
+				id: 3227,
+				name: "North Sinai",
+				state_code: "SIN"
+			},
+			{
+				id: 3229,
+				name: "Port Said",
+				state_code: "PTS"
+			},
+			{
+				id: 3232,
+				name: "Qalyubia",
+				state_code: "KB"
+			},
+			{
+				id: 3247,
+				name: "Qena",
+				state_code: "KN"
+			},
+			{
+				id: 3240,
+				name: "Red Sea",
+				state_code: "BA"
+			},
+			{
+				id: 5067,
+				name: "Sharqia",
+				state_code: "SHR"
+			},
+			{
+				id: 3226,
+				name: "Sohag",
+				state_code: "SHG"
+			},
+			{
+				id: 3237,
+				name: "South Sinai",
+				state_code: "JS"
+			},
+			{
+				id: 3233,
+				name: "Suez",
+				state_code: "SUZ"
+			}
+		]
+	},
+	{
+		name: "El Salvador",
+		iso3: "SLV",
+		iso2: "SV",
+		numeric_code: "222",
+		phone_code: "503",
+		emoji: "🇸🇻",
+		emojiU: "U+1F1F8 U+1F1FB",
+		states: [
+			{
+				id: 4139,
+				name: "Ahuachapán Department",
+				state_code: "AH"
+			},
+			{
+				id: 4132,
+				name: "Cabañas Department",
+				state_code: "CA"
+			},
+			{
+				id: 4131,
+				name: "Chalatenango Department",
+				state_code: "CH"
+			},
+			{
+				id: 4137,
+				name: "Cuscatlán Department",
+				state_code: "CU"
+			},
+			{
+				id: 4134,
+				name: "La Libertad Department",
+				state_code: "LI"
+			},
+			{
+				id: 4136,
+				name: "La Paz Department",
+				state_code: "PA"
+			},
+			{
+				id: 4138,
+				name: "La Unión Department",
+				state_code: "UN"
+			},
+			{
+				id: 4130,
+				name: "Morazán Department",
+				state_code: "MO"
+			},
+			{
+				id: 4135,
+				name: "San Miguel Department",
+				state_code: "SM"
+			},
+			{
+				id: 4133,
+				name: "San Salvador Department",
+				state_code: "SS"
+			},
+			{
+				id: 4127,
+				name: "San Vicente Department",
+				state_code: "SV"
+			},
+			{
+				id: 4128,
+				name: "Santa Ana Department",
+				state_code: "SA"
+			},
+			{
+				id: 4140,
+				name: "Sonsonate Department",
+				state_code: "SO"
+			},
+			{
+				id: 4129,
+				name: "Usulután Department",
+				state_code: "US"
+			}
+		]
+	},
+	{
+		name: "Equatorial Guinea",
+		iso3: "GNQ",
+		iso2: "GQ",
+		numeric_code: "226",
+		phone_code: "240",
+		emoji: "🇬🇶",
+		emojiU: "U+1F1EC U+1F1F6",
+		states: [
+			{
+				id: 3444,
+				name: "Annobón Province",
+				state_code: "AN"
+			},
+			{
+				id: 3446,
+				name: "Bioko Norte Province",
+				state_code: "BN"
+			},
+			{
+				id: 3443,
+				name: "Bioko Sur Province",
+				state_code: "BS"
+			},
+			{
+				id: 3445,
+				name: "Centro Sur Province",
+				state_code: "CS"
+			},
+			{
+				id: 3442,
+				name: "Insular Region",
+				state_code: "I"
+			},
+			{
+				id: 3439,
+				name: "Kié-Ntem Province",
+				state_code: "KN"
+			},
+			{
+				id: 3441,
+				name: "Litoral Province",
+				state_code: "LI"
+			},
+			{
+				id: 3438,
+				name: "Río Muni",
+				state_code: "C"
+			},
+			{
+				id: 3440,
+				name: "Wele-Nzas Province",
+				state_code: "WN"
+			}
+		]
+	},
+	{
+		name: "Eritrea",
+		iso3: "ERI",
+		iso2: "ER",
+		numeric_code: "232",
+		phone_code: "291",
+		emoji: "🇪🇷",
+		emojiU: "U+1F1EA U+1F1F7",
+		states: [
+			{
+				id: 3425,
+				name: "Anseba Region",
+				state_code: "AN"
+			},
+			{
+				id: 3427,
+				name: "Debub Region",
+				state_code: "DU"
+			},
+			{
+				id: 3428,
+				name: "Gash-Barka Region",
+				state_code: "GB"
+			},
+			{
+				id: 3426,
+				name: "Maekel Region",
+				state_code: "MA"
+			},
+			{
+				id: 3424,
+				name: "Northern Red Sea Region",
+				state_code: "SK"
+			},
+			{
+				id: 3429,
+				name: "Southern Red Sea Region",
+				state_code: "DK"
+			}
+		]
+	},
+	{
+		name: "Estonia",
+		iso3: "EST",
+		iso2: "EE",
+		numeric_code: "233",
+		phone_code: "372",
+		emoji: "🇪🇪",
+		emojiU: "U+1F1EA U+1F1EA",
+		states: [
+			{
+				id: 3567,
+				name: "Harju County",
+				state_code: "37"
+			},
+			{
+				id: 3555,
+				name: "Hiiu County",
+				state_code: "39"
+			},
+			{
+				id: 3569,
+				name: "Ida-Viru County",
+				state_code: "44"
+			},
+			{
+				id: 3566,
+				name: "Järva County",
+				state_code: "51"
+			},
+			{
+				id: 3565,
+				name: "Jõgeva County",
+				state_code: "49"
+			},
+			{
+				id: 3568,
+				name: "Lääne County",
+				state_code: "57"
+			},
+			{
+				id: 3564,
+				name: "Lääne-Viru County",
+				state_code: "59"
+			},
+			{
+				id: 3562,
+				name: "Pärnu County",
+				state_code: "67"
+			},
+			{
+				id: 3563,
+				name: "Põlva County",
+				state_code: "65"
+			},
+			{
+				id: 3559,
+				name: "Rapla County",
+				state_code: "70"
+			},
+			{
+				id: 3561,
+				name: "Saare County",
+				state_code: "74"
+			},
+			{
+				id: 3557,
+				name: "Tartu County",
+				state_code: "78"
+			},
+			{
+				id: 3558,
+				name: "Valga County",
+				state_code: "82"
+			},
+			{
+				id: 3556,
+				name: "Viljandi County",
+				state_code: "84"
+			},
+			{
+				id: 3560,
+				name: "Võru County",
+				state_code: "86"
+			}
+		]
+	},
+	{
+		name: "Ethiopia",
+		iso3: "ETH",
+		iso2: "ET",
+		numeric_code: "231",
+		phone_code: "251",
+		emoji: "🇪🇹",
+		emojiU: "U+1F1EA U+1F1F9",
+		states: [
+			{
+				id: 11,
+				name: "Addis Ababa",
+				state_code: "AA"
+			},
+			{
+				id: 6,
+				name: "Afar Region",
+				state_code: "AF"
+			},
+			{
+				id: 3,
+				name: "Amhara Region",
+				state_code: "AM"
+			},
+			{
+				id: 9,
+				name: "Benishangul-Gumuz Region",
+				state_code: "BE"
+			},
+			{
+				id: 8,
+				name: "Dire Dawa",
+				state_code: "DD"
+			},
+			{
+				id: 10,
+				name: "Gambela Region",
+				state_code: "GA"
+			},
+			{
+				id: 7,
+				name: "Harari Region",
+				state_code: "HA"
+			},
+			{
+				id: 5,
+				name: "Oromia Region",
+				state_code: "OR"
+			},
+			{
+				id: 2,
+				name: "Somali Region",
+				state_code: "SO"
+			},
+			{
+				id: 1,
+				name: "Southern Nations, Nationalities, and Peoples' Region",
+				state_code: "SN"
+			},
+			{
+				id: 4,
+				name: "Tigray Region",
+				state_code: "TI"
+			}
+		]
+	},
+	{
+		name: "Falkland Islands",
+		iso3: "FLK",
+		iso2: "FK",
+		numeric_code: "238",
+		phone_code: "500",
+		emoji: "🇫🇰",
+		emojiU: "U+1F1EB U+1F1F0",
+		states: [
+		]
+	},
+	{
+		name: "Faroe Islands",
+		iso3: "FRO",
+		iso2: "FO",
+		numeric_code: "234",
+		phone_code: "298",
+		emoji: "🇫🇴",
+		emojiU: "U+1F1EB U+1F1F4",
+		states: [
+		]
+	},
+	{
+		name: "Fiji Islands",
+		iso3: "FJI",
+		iso2: "FJ",
+		numeric_code: "242",
+		phone_code: "679",
+		emoji: "🇫🇯",
+		emojiU: "U+1F1EB U+1F1EF",
+		states: [
+			{
+				id: 1917,
+				name: "Ba",
+				state_code: "01"
+			},
+			{
+				id: 1930,
+				name: "Bua",
+				state_code: "02"
+			},
+			{
+				id: 1924,
+				name: "Cakaudrove",
+				state_code: "03"
+			},
+			{
+				id: 1929,
+				name: "Central Division",
+				state_code: "C"
+			},
+			{
+				id: 1932,
+				name: "Eastern Division",
+				state_code: "E"
+			},
+			{
+				id: 1934,
+				name: "Kadavu",
+				state_code: "04"
+			},
+			{
+				id: 1933,
+				name: "Lau",
+				state_code: "05"
+			},
+			{
+				id: 1916,
+				name: "Lomaiviti",
+				state_code: "06"
+			},
+			{
+				id: 1922,
+				name: "Macuata",
+				state_code: "07"
+			},
+			{
+				id: 1919,
+				name: "Nadroga-Navosa",
+				state_code: "08"
+			},
+			{
+				id: 1927,
+				name: "Naitasiri",
+				state_code: "09"
+			},
+			{
+				id: 1928,
+				name: "Namosi",
+				state_code: "10"
+			},
+			{
+				id: 1921,
+				name: "Northern Division",
+				state_code: "N"
+			},
+			{
+				id: 1926,
+				name: "Ra",
+				state_code: "11"
+			},
+			{
+				id: 1920,
+				name: "Rewa",
+				state_code: "12"
+			},
+			{
+				id: 1931,
+				name: "Rotuma",
+				state_code: "R"
+			},
+			{
+				id: 1925,
+				name: "Serua",
+				state_code: "13"
+			},
+			{
+				id: 1918,
+				name: "Tailevu",
+				state_code: "14"
+			},
+			{
+				id: 1923,
+				name: "Western Division",
+				state_code: "W"
+			}
+		]
+	},
+	{
+		name: "Finland",
+		iso3: "FIN",
+		iso2: "FI",
+		numeric_code: "246",
+		phone_code: "358",
+		emoji: "🇫🇮",
+		emojiU: "U+1F1EB U+1F1EE",
+		states: [
+			{
+				id: 1509,
+				name: "Åland Islands",
+				state_code: "01"
+			},
+			{
+				id: 1511,
+				name: "Central Finland",
+				state_code: "08"
+			},
+			{
+				id: 1494,
+				name: "Central Ostrobothnia",
+				state_code: "07"
+			},
+			{
+				id: 1492,
+				name: "Eastern Finland Province",
+				state_code: "IS"
+			},
+			{
+				id: 1507,
+				name: "Finland Proper",
+				state_code: "19"
+			},
+			{
+				id: 1496,
+				name: "Kainuu",
+				state_code: "05"
+			},
+			{
+				id: 1512,
+				name: "Kymenlaakso",
+				state_code: "09"
+			},
+			{
+				id: 1500,
+				name: "Lapland",
+				state_code: "LL"
+			},
+			{
+				id: 1504,
+				name: "North Karelia",
+				state_code: "13"
+			},
+			{
+				id: 1505,
+				name: "Northern Ostrobothnia",
+				state_code: "14"
+			},
+			{
+				id: 1503,
+				name: "Northern Savonia",
+				state_code: "15"
+			},
+			{
+				id: 1508,
+				name: "Ostrobothnia",
+				state_code: "12"
+			},
+			{
+				id: 1499,
+				name: "Oulu Province",
+				state_code: "OL"
+			},
+			{
+				id: 1502,
+				name: "Päijänne Tavastia",
+				state_code: "16"
+			},
+			{
+				id: 1506,
+				name: "Pirkanmaa",
+				state_code: "11"
+			},
+			{
+				id: 1501,
+				name: "Satakunta",
+				state_code: "17"
+			},
+			{
+				id: 1497,
+				name: "South Karelia",
+				state_code: "02"
+			},
+			{
+				id: 1498,
+				name: "Southern Ostrobothnia",
+				state_code: "03"
+			},
+			{
+				id: 1495,
+				name: "Southern Savonia",
+				state_code: "04"
+			},
+			{
+				id: 1493,
+				name: "Tavastia Proper",
+				state_code: "06"
+			},
+			{
+				id: 1510,
+				name: "Uusimaa",
+				state_code: "18"
+			}
+		]
+	},
+	{
+		name: "France",
+		iso3: "FRA",
+		iso2: "FR",
+		numeric_code: "250",
+		phone_code: "33",
+		emoji: "🇫🇷",
+		emojiU: "U+1F1EB U+1F1F7",
+		states: [
+			{
+				id: 4967,
+				name: "Ain",
+				state_code: "01"
+			},
+			{
+				id: 4968,
+				name: "Aisne",
+				state_code: "02"
+			},
+			{
+				id: 4969,
+				name: "Allier",
+				state_code: "03"
+			},
+			{
+				id: 4970,
+				name: "Alpes-de-Haute-Provence",
+				state_code: "04"
+			},
+			{
+				id: 4972,
+				name: "Alpes-Maritimes",
+				state_code: "06"
+			},
+			{
+				id: 4811,
+				name: "Alsace",
+				state_code: "6AE"
+			},
+			{
+				id: 4973,
+				name: "Ardèche",
+				state_code: "07"
+			},
+			{
+				id: 4974,
+				name: "Ardennes",
+				state_code: "08"
+			},
+			{
+				id: 4975,
+				name: "Ariège",
+				state_code: "09"
+			},
+			{
+				id: 4976,
+				name: "Aube",
+				state_code: "10"
+			},
+			{
+				id: 4977,
+				name: "Aude",
+				state_code: "11"
+			},
+			{
+				id: 4798,
+				name: "Auvergne-Rhône-Alpes",
+				state_code: "ARA"
+			},
+			{
+				id: 4978,
+				name: "Aveyron",
+				state_code: "12"
+			},
+			{
+				id: 5035,
+				name: "Bas-Rhin\t",
+				state_code: "67"
+			},
+			{
+				id: 4979,
+				name: "Bouches-du-Rhône",
+				state_code: "13"
+			},
+			{
+				id: 4825,
+				name: "Bourgogne-Franche-Comté",
+				state_code: "BFC"
+			},
+			{
+				id: 4807,
+				name: "Bretagne",
+				state_code: "BRE"
+			},
+			{
+				id: 4981,
+				name: "Calvados",
+				state_code: "14"
+			},
+			{
+				id: 4982,
+				name: "Cantal",
+				state_code: "15"
+			},
+			{
+				id: 4818,
+				name: "Centre-Val de Loire",
+				state_code: "CVL"
+			},
+			{
+				id: 4983,
+				name: "Charente",
+				state_code: "16"
+			},
+			{
+				id: 4984,
+				name: "Charente-Maritime",
+				state_code: "17"
+			},
+			{
+				id: 4985,
+				name: "Cher",
+				state_code: "18"
+			},
+			{
+				id: 5064,
+				name: "Clipperton",
+				state_code: "CP"
+			},
+			{
+				id: 4986,
+				name: "Corrèze",
+				state_code: "19"
+			},
+			{
+				id: 4806,
+				name: "Corse",
+				state_code: "20R"
+			},
+			{
+				id: 4996,
+				name: "Corse-du-Sud",
+				state_code: "2A"
+			},
+			{
+				id: 4987,
+				name: "Côte-d'Or",
+				state_code: "21"
+			},
+			{
+				id: 4988,
+				name: "Côtes-d'Armor",
+				state_code: "22"
+			},
+			{
+				id: 4989,
+				name: "Creuse",
+				state_code: "23"
+			},
+			{
+				id: 5047,
+				name: "Deux-Sèvres",
+				state_code: "79"
+			},
+			{
+				id: 4990,
+				name: "Dordogne",
+				state_code: "24"
+			},
+			{
+				id: 4991,
+				name: "Doubs",
+				state_code: "25"
+			},
+			{
+				id: 4992,
+				name: "Drôme",
+				state_code: "26"
+			},
+			{
+				id: 5059,
+				name: "Essonne",
+				state_code: "91"
+			},
+			{
+				id: 4993,
+				name: "Eure",
+				state_code: "27"
+			},
+			{
+				id: 4994,
+				name: "Eure-et-Loir",
+				state_code: "28"
+			},
+			{
+				id: 4995,
+				name: "Finistère",
+				state_code: "29"
+			},
+			{
+				id: 4822,
+				name: "French Guiana",
+				state_code: "973"
+			},
+			{
+				id: 4824,
+				name: "French Polynesia",
+				state_code: "PF"
+			},
+			{
+				id: 5065,
+				name: "French Southern and Antarctic Lands",
+				state_code: "TF"
+			},
+			{
+				id: 4998,
+				name: "Gard",
+				state_code: "30"
+			},
+			{
+				id: 5000,
+				name: "Gers",
+				state_code: "32"
+			},
+			{
+				id: 5001,
+				name: "Gironde",
+				state_code: "33"
+			},
+			{
+				id: 4820,
+				name: "Grand-Est",
+				state_code: "GES"
+			},
+			{
+				id: 4829,
+				name: "Guadeloupe",
+				state_code: "971"
+			},
+			{
+				id: 5036,
+				name: "Haut-Rhin",
+				state_code: "68"
+			},
+			{
+				id: 4997,
+				name: "Haute-Corse",
+				state_code: "2B"
+			},
+			{
+				id: 4999,
+				name: "Haute-Garonne",
+				state_code: "31"
+			},
+			{
+				id: 5011,
+				name: "Haute-Loire",
+				state_code: "43"
+			},
+			{
+				id: 5020,
+				name: "Haute-Marne",
+				state_code: "52"
+			},
+			{
+				id: 5039,
+				name: "Haute-Saône",
+				state_code: "70"
+			},
+			{
+				id: 5043,
+				name: "Haute-Savoie",
+				state_code: "74"
+			},
+			{
+				id: 5055,
+				name: "Haute-Vienne\t",
+				state_code: "87"
+			},
+			{
+				id: 4971,
+				name: "Hautes-Alpes\t",
+				state_code: "05"
+			},
+			{
+				id: 5033,
+				name: "Hautes-Pyrénées",
+				state_code: "65"
+			},
+			{
+				id: 4828,
+				name: "Hauts-de-France",
+				state_code: "HDF"
+			},
+			{
+				id: 5060,
+				name: "Hauts-de-Seine",
+				state_code: "92"
+			},
+			{
+				id: 5002,
+				name: "Hérault",
+				state_code: "34"
+			},
+			{
+				id: 4796,
+				name: "Île-de-France",
+				state_code: "IDF"
+			},
+			{
+				id: 5003,
+				name: "Ille-et-Vilaine",
+				state_code: "35"
+			},
+			{
+				id: 5004,
+				name: "Indre",
+				state_code: "36"
+			},
+			{
+				id: 5005,
+				name: "Indre-et-Loire",
+				state_code: "37"
+			},
+			{
+				id: 5006,
+				name: "Isère",
+				state_code: "38"
+			},
+			{
+				id: 5007,
+				name: "Jura",
+				state_code: "39"
+			},
+			{
+				id: 4823,
+				name: "La Réunion",
+				state_code: "974"
+			},
+			{
+				id: 5008,
+				name: "Landes",
+				state_code: "40"
+			},
+			{
+				id: 5009,
+				name: "Loir-et-Cher",
+				state_code: "41"
+			},
+			{
+				id: 5010,
+				name: "Loire",
+				state_code: "42"
+			},
+			{
+				id: 5012,
+				name: "Loire-Atlantique",
+				state_code: "44"
+			},
+			{
+				id: 5013,
+				name: "Loiret",
+				state_code: "45"
+			},
+			{
+				id: 5014,
+				name: "Lot",
+				state_code: "46"
+			},
+			{
+				id: 5015,
+				name: "Lot-et-Garonne",
+				state_code: "47"
+			},
+			{
+				id: 5016,
+				name: "Lozère",
+				state_code: "48"
+			},
+			{
+				id: 5017,
+				name: "Maine-et-Loire",
+				state_code: "49"
+			},
+			{
+				id: 5018,
+				name: "Manche",
+				state_code: "50"
+			},
+			{
+				id: 5019,
+				name: "Marne",
+				state_code: "51"
+			},
+			{
+				id: 4827,
+				name: "Martinique",
+				state_code: "972"
+			},
+			{
+				id: 5021,
+				name: "Mayenne",
+				state_code: "53"
+			},
+			{
+				id: 4797,
+				name: "Mayotte",
+				state_code: "976"
+			},
+			{
+				id: 5038,
+				name: "Métropole de Lyon",
+				state_code: "69M"
+			},
+			{
+				id: 5022,
+				name: "Meurthe-et-Moselle",
+				state_code: "54"
+			},
+			{
+				id: 5023,
+				name: "Meuse",
+				state_code: "55"
+			},
+			{
+				id: 5024,
+				name: "Morbihan",
+				state_code: "56"
+			},
+			{
+				id: 5025,
+				name: "Moselle",
+				state_code: "57"
+			},
+			{
+				id: 5026,
+				name: "Nièvre",
+				state_code: "58"
+			},
+			{
+				id: 5027,
+				name: "Nord",
+				state_code: "59"
+			},
+			{
+				id: 4804,
+				name: "Normandie",
+				state_code: "NOR"
+			},
+			{
+				id: 4795,
+				name: "Nouvelle-Aquitaine",
+				state_code: "NAQ"
+			},
+			{
+				id: 4799,
+				name: "Occitanie",
+				state_code: "OCC"
+			},
+			{
+				id: 5028,
+				name: "Oise",
+				state_code: "60"
+			},
+			{
+				id: 5029,
+				name: "Orne",
+				state_code: "61"
+			},
+			{
+				id: 4816,
+				name: "Paris",
+				state_code: "75C"
+			},
+			{
+				id: 5030,
+				name: "Pas-de-Calais",
+				state_code: "62"
+			},
+			{
+				id: 4802,
+				name: "Pays-de-la-Loire",
+				state_code: "PDL"
+			},
+			{
+				id: 4812,
+				name: "Provence-Alpes-Côte-d’Azur",
+				state_code: "PAC"
+			},
+			{
+				id: 5031,
+				name: "Puy-de-Dôme",
+				state_code: "63"
+			},
+			{
+				id: 5032,
+				name: "Pyrénées-Atlantiques",
+				state_code: "64"
+			},
+			{
+				id: 5034,
+				name: "Pyrénées-Orientales",
+				state_code: "66"
+			},
+			{
+				id: 5037,
+				name: "Rhône",
+				state_code: "69"
+			},
+			{
+				id: 4821,
+				name: "Saint Pierre and Miquelon",
+				state_code: "PM"
+			},
+			{
+				id: 4794,
+				name: "Saint-Barthélemy",
+				state_code: "BL"
+			},
+			{
+				id: 4809,
+				name: "Saint-Martin",
+				state_code: "MF"
+			},
+			{
+				id: 5040,
+				name: "Saône-et-Loire",
+				state_code: "71"
+			},
+			{
+				id: 5041,
+				name: "Sarthe",
+				state_code: "72"
+			},
+			{
+				id: 5042,
+				name: "Savoie",
+				state_code: "73"
+			},
+			{
+				id: 5045,
+				name: "Seine-et-Marne",
+				state_code: "77"
+			},
+			{
+				id: 5044,
+				name: "Seine-Maritime",
+				state_code: "76"
+			},
+			{
+				id: 5061,
+				name: "Seine-Saint-Denis",
+				state_code: "93"
+			},
+			{
+				id: 5048,
+				name: "Somme",
+				state_code: "80"
+			},
+			{
+				id: 5049,
+				name: "Tarn",
+				state_code: "81"
+			},
+			{
+				id: 5050,
+				name: "Tarn-et-Garonne",
+				state_code: "82"
+			},
+			{
+				id: 5058,
+				name: "Territoire de Belfort",
+				state_code: "90"
+			},
+			{
+				id: 5063,
+				name: "Val-d'Oise",
+				state_code: "95"
+			},
+			{
+				id: 5062,
+				name: "Val-de-Marne\t",
+				state_code: "94"
+			},
+			{
+				id: 5051,
+				name: "Var",
+				state_code: "83"
+			},
+			{
+				id: 5052,
+				name: "Vaucluse",
+				state_code: "84"
+			},
+			{
+				id: 5053,
+				name: "Vendée",
+				state_code: "85"
+			},
+			{
+				id: 5054,
+				name: "Vienne",
+				state_code: "86"
+			},
+			{
+				id: 5056,
+				name: "Vosges",
+				state_code: "88"
+			},
+			{
+				id: 4810,
+				name: "Wallis and Futuna",
+				state_code: "WF"
+			},
+			{
+				id: 5057,
+				name: "Yonne",
+				state_code: "89"
+			},
+			{
+				id: 5046,
+				name: "Yvelines",
+				state_code: "78"
+			}
+		]
+	},
+	{
+		name: "French Guiana",
+		iso3: "GUF",
+		iso2: "GF",
+		numeric_code: "254",
+		phone_code: "594",
+		emoji: "🇬🇫",
+		emojiU: "U+1F1EC U+1F1EB",
+		states: [
+		]
+	},
+	{
+		name: "French Polynesia",
+		iso3: "PYF",
+		iso2: "PF",
+		numeric_code: "258",
+		phone_code: "689",
+		emoji: "🇵🇫",
+		emojiU: "U+1F1F5 U+1F1EB",
+		states: [
+		]
+	},
+	{
+		name: "French Southern Territories",
+		iso3: "ATF",
+		iso2: "TF",
+		numeric_code: "260",
+		phone_code: "262",
+		emoji: "🇹🇫",
+		emojiU: "U+1F1F9 U+1F1EB",
+		states: [
+		]
+	},
+	{
+		name: "Gabon",
+		iso3: "GAB",
+		iso2: "GA",
+		numeric_code: "266",
+		phone_code: "241",
+		emoji: "🇬🇦",
+		emojiU: "U+1F1EC U+1F1E6",
+		states: [
+			{
+				id: 2727,
+				name: "Estuaire Province",
+				state_code: "1"
+			},
+			{
+				id: 2726,
+				name: "Haut-Ogooué Province",
+				state_code: "2"
+			},
+			{
+				id: 2730,
+				name: "Moyen-Ogooué Province",
+				state_code: "3"
+			},
+			{
+				id: 2731,
+				name: "Ngounié Province",
+				state_code: "4"
+			},
+			{
+				id: 2725,
+				name: "Nyanga Province",
+				state_code: "5"
+			},
+			{
+				id: 2724,
+				name: "Ogooué-Ivindo Province",
+				state_code: "6"
+			},
+			{
+				id: 2729,
+				name: "Ogooué-Lolo Province",
+				state_code: "7"
+			},
+			{
+				id: 2728,
+				name: "Ogooué-Maritime Province",
+				state_code: "8"
+			},
+			{
+				id: 2723,
+				name: "Woleu-Ntem Province",
+				state_code: "9"
+			}
+		]
+	},
+	{
+		name: "Gambia The",
+		iso3: "GMB",
+		iso2: "GM",
+		numeric_code: "270",
+		phone_code: "220",
+		emoji: "🇬🇲",
+		emojiU: "U+1F1EC U+1F1F2",
+		states: [
+			{
+				id: 2666,
+				name: "Banjul",
+				state_code: "B"
+			},
+			{
+				id: 2669,
+				name: "Central River Division",
+				state_code: "M"
+			},
+			{
+				id: 2670,
+				name: "Lower River Division",
+				state_code: "L"
+			},
+			{
+				id: 2671,
+				name: "North Bank Division",
+				state_code: "N"
+			},
+			{
+				id: 2668,
+				name: "Upper River Division",
+				state_code: "U"
+			},
+			{
+				id: 2667,
+				name: "West Coast Division",
+				state_code: "W"
+			}
+		]
+	},
+	{
+		name: "Georgia",
+		iso3: "GEO",
+		iso2: "GE",
+		numeric_code: "268",
+		phone_code: "995",
+		emoji: "🇬🇪",
+		emojiU: "U+1F1EC U+1F1EA",
+		states: [
+			{
+				id: 900,
+				name: "Adjara",
+				state_code: "AJ"
+			},
+			{
+				id: 901,
+				name: "Autonomous Republic of Abkhazia",
+				state_code: "AB"
+			},
+			{
+				id: 907,
+				name: "Guria",
+				state_code: "GU"
+			},
+			{
+				id: 905,
+				name: "Imereti",
+				state_code: "IM"
+			},
+			{
+				id: 910,
+				name: "Kakheti",
+				state_code: "KA"
+			},
+			{
+				id: 897,
+				name: "Khelvachauri Municipality",
+				state_code: "29"
+			},
+			{
+				id: 904,
+				name: "Kvemo Kartli",
+				state_code: "KK"
+			},
+			{
+				id: 902,
+				name: "Mtskheta-Mtianeti",
+				state_code: "MM"
+			},
+			{
+				id: 909,
+				name: "Racha-Lechkhumi and Kvemo Svaneti",
+				state_code: "RL"
+			},
+			{
+				id: 908,
+				name: "Samegrelo-Zemo Svaneti",
+				state_code: "SZ"
+			},
+			{
+				id: 906,
+				name: "Samtskhe-Javakheti",
+				state_code: "SJ"
+			},
+			{
+				id: 898,
+				name: "Senaki Municipality",
+				state_code: "50"
+			},
+			{
+				id: 903,
+				name: "Shida Kartli",
+				state_code: "SK"
+			},
+			{
+				id: 899,
+				name: "Tbilisi",
+				state_code: "TB"
+			}
+		]
+	},
+	{
+		name: "Germany",
+		iso3: "DEU",
+		iso2: "DE",
+		numeric_code: "276",
+		phone_code: "49",
+		emoji: "🇩🇪",
+		emojiU: "U+1F1E9 U+1F1EA",
+		states: [
+			{
+				id: 3006,
+				name: "Baden-Württemberg",
+				state_code: "BW"
+			},
+			{
+				id: 3009,
+				name: "Bavaria",
+				state_code: "BY"
+			},
+			{
+				id: 3010,
+				name: "Berlin",
+				state_code: "BE"
+			},
+			{
+				id: 3013,
+				name: "Brandenburg",
+				state_code: "BB"
+			},
+			{
+				id: 3014,
+				name: "Bremen",
+				state_code: "HB"
+			},
+			{
+				id: 3016,
+				name: "Hamburg",
+				state_code: "HH"
+			},
+			{
+				id: 3018,
+				name: "Hesse",
+				state_code: "HE"
+			},
+			{
+				id: 3008,
+				name: "Lower Saxony",
+				state_code: "NI"
+			},
+			{
+				id: 3007,
+				name: "Mecklenburg-Vorpommern",
+				state_code: "MV"
+			},
+			{
+				id: 3017,
+				name: "North Rhine-Westphalia",
+				state_code: "NW"
+			},
+			{
+				id: 3019,
+				name: "Rhineland-Palatinate",
+				state_code: "RP"
+			},
+			{
+				id: 3020,
+				name: "Saarland",
+				state_code: "SL"
+			},
+			{
+				id: 3021,
+				name: "Saxony",
+				state_code: "SN"
+			},
+			{
+				id: 3011,
+				name: "Saxony-Anhalt",
+				state_code: "ST"
+			},
+			{
+				id: 3005,
+				name: "Schleswig-Holstein",
+				state_code: "SH"
+			},
+			{
+				id: 3015,
+				name: "Thuringia",
+				state_code: "TH"
+			}
+		]
+	},
+	{
+		name: "Ghana",
+		iso3: "GHA",
+		iso2: "GH",
+		numeric_code: "288",
+		phone_code: "233",
+		emoji: "🇬🇭",
+		emojiU: "U+1F1EC U+1F1ED",
+		states: [
+			{
+				id: 53,
+				name: "Ahafo",
+				state_code: "AF"
+			},
+			{
+				id: 48,
+				name: "Ashanti",
+				state_code: "AH"
+			},
+			{
+				id: 4959,
+				name: "Bono",
+				state_code: "BO"
+			},
+			{
+				id: 4958,
+				name: "Bono East",
+				state_code: "BE"
+			},
+			{
+				id: 52,
+				name: "Central",
+				state_code: "CP"
+			},
+			{
+				id: 50,
+				name: "Eastern",
+				state_code: "EP"
+			},
+			{
+				id: 54,
+				name: "Greater Accra",
+				state_code: "AA"
+			},
+			{
+				id: 4960,
+				name: "North East",
+				state_code: "NE"
+			},
+			{
+				id: 51,
+				name: "Northern",
+				state_code: "NP"
+			},
+			{
+				id: 4961,
+				name: "Oti",
+				state_code: "OT"
+			},
+			{
+				id: 4962,
+				name: "Savannah",
+				state_code: "SV"
+			},
+			{
+				id: 55,
+				name: "Upper East",
+				state_code: "UE"
+			},
+			{
+				id: 57,
+				name: "Upper West",
+				state_code: "UW"
+			},
+			{
+				id: 56,
+				name: "Volta",
+				state_code: "TV"
+			},
+			{
+				id: 49,
+				name: "Western",
+				state_code: "WP"
+			},
+			{
+				id: 4963,
+				name: "Western North",
+				state_code: "WN"
+			}
+		]
+	},
+	{
+		name: "Gibraltar",
+		iso3: "GIB",
+		iso2: "GI",
+		numeric_code: "292",
+		phone_code: "350",
+		emoji: "🇬🇮",
+		emojiU: "U+1F1EC U+1F1EE",
+		states: [
+		]
+	},
+	{
+		name: "Greece",
+		iso3: "GRC",
+		iso2: "GR",
+		numeric_code: "300",
+		phone_code: "30",
+		emoji: "🇬🇷",
+		emojiU: "U+1F1EC U+1F1F7",
+		states: [
+			{
+				id: 2116,
+				name: "Achaea Regional Unit",
+				state_code: "13"
+			},
+			{
+				id: 2123,
+				name: "Aetolia-Acarnania Regional Unit",
+				state_code: "01"
+			},
+			{
+				id: 2098,
+				name: "Arcadia Prefecture",
+				state_code: "12"
+			},
+			{
+				id: 2105,
+				name: "Argolis Regional Unit",
+				state_code: "11"
+			},
+			{
+				id: 2122,
+				name: "Attica Region",
+				state_code: "I"
+			},
+			{
+				id: 2126,
+				name: "Boeotia Regional Unit",
+				state_code: "03"
+			},
+			{
+				id: 2128,
+				name: "Central Greece Region",
+				state_code: "H"
+			},
+			{
+				id: 2125,
+				name: "Central Macedonia",
+				state_code: "B"
+			},
+			{
+				id: 2115,
+				name: "Chania Regional Unit",
+				state_code: "94"
+			},
+			{
+				id: 2124,
+				name: "Corfu Prefecture",
+				state_code: "22"
+			},
+			{
+				id: 2129,
+				name: "Corinthia Regional Unit",
+				state_code: "15"
+			},
+			{
+				id: 2109,
+				name: "Crete Region",
+				state_code: "M"
+			},
+			{
+				id: 2130,
+				name: "Drama Regional Unit",
+				state_code: "52"
+			},
+			{
+				id: 2120,
+				name: "East Attica Regional Unit",
+				state_code: "A2"
+			},
+			{
+				id: 2117,
+				name: "East Macedonia and Thrace",
+				state_code: "A"
+			},
+			{
+				id: 2110,
+				name: "Epirus Region",
+				state_code: "D"
+			},
+			{
+				id: 2101,
+				name: "Euboea",
+				state_code: "04"
+			},
+			{
+				id: 2102,
+				name: "Grevena Prefecture",
+				state_code: "51"
+			},
+			{
+				id: 2099,
+				name: "Imathia Regional Unit",
+				state_code: "53"
+			},
+			{
+				id: 2113,
+				name: "Ioannina Regional Unit",
+				state_code: "33"
+			},
+			{
+				id: 2131,
+				name: "Ionian Islands Region",
+				state_code: "F"
+			},
+			{
+				id: 2095,
+				name: "Karditsa Regional Unit",
+				state_code: "41"
+			},
+			{
+				id: 2100,
+				name: "Kastoria Regional Unit",
+				state_code: "56"
+			},
+			{
+				id: 2127,
+				name: "Kefalonia Prefecture",
+				state_code: "23"
+			},
+			{
+				id: 2111,
+				name: "Kilkis Regional Unit",
+				state_code: "57"
+			},
+			{
+				id: 2112,
+				name: "Kozani Prefecture",
+				state_code: "58"
+			},
+			{
+				id: 2106,
+				name: "Laconia",
+				state_code: "16"
+			},
+			{
+				id: 2132,
+				name: "Larissa Prefecture",
+				state_code: "42"
+			},
+			{
+				id: 2104,
+				name: "Lefkada Regional Unit",
+				state_code: "24"
+			},
+			{
+				id: 2107,
+				name: "Pella Regional Unit",
+				state_code: "59"
+			},
+			{
+				id: 2119,
+				name: "Peloponnese Region",
+				state_code: "J"
+			},
+			{
+				id: 2114,
+				name: "Phthiotis Prefecture",
+				state_code: "06"
+			},
+			{
+				id: 2103,
+				name: "Preveza Prefecture",
+				state_code: "34"
+			},
+			{
+				id: 2121,
+				name: "Serres Prefecture",
+				state_code: "62"
+			},
+			{
+				id: 2118,
+				name: "South Aegean",
+				state_code: "L"
+			},
+			{
+				id: 2097,
+				name: "Thessaloniki Regional Unit",
+				state_code: "54"
+			},
+			{
+				id: 2096,
+				name: "West Greece Region",
+				state_code: "G"
+			},
+			{
+				id: 2108,
+				name: "West Macedonia Region",
+				state_code: "C"
+			}
+		]
+	},
+	{
+		name: "Greenland",
+		iso3: "GRL",
+		iso2: "GL",
+		numeric_code: "304",
+		phone_code: "299",
+		emoji: "🇬🇱",
+		emojiU: "U+1F1EC U+1F1F1",
+		states: [
+		]
+	},
+	{
+		name: "Grenada",
+		iso3: "GRD",
+		iso2: "GD",
+		numeric_code: "308",
+		phone_code: "+1-473",
+		emoji: "🇬🇩",
+		emojiU: "U+1F1EC U+1F1E9",
+		states: [
+			{
+				id: 3867,
+				name: "Carriacou and Petite Martinique",
+				state_code: "10"
+			},
+			{
+				id: 3865,
+				name: "Saint Andrew Parish",
+				state_code: "01"
+			},
+			{
+				id: 3869,
+				name: "Saint David Parish",
+				state_code: "02"
+			},
+			{
+				id: 3864,
+				name: "Saint George Parish",
+				state_code: "03"
+			},
+			{
+				id: 3868,
+				name: "Saint John Parish",
+				state_code: "04"
+			},
+			{
+				id: 3866,
+				name: "Saint Mark Parish",
+				state_code: "05"
+			},
+			{
+				id: 3863,
+				name: "Saint Patrick Parish",
+				state_code: "06"
+			}
+		]
+	},
+	{
+		name: "Guadeloupe",
+		iso3: "GLP",
+		iso2: "GP",
+		numeric_code: "312",
+		phone_code: "590",
+		emoji: "🇬🇵",
+		emojiU: "U+1F1EC U+1F1F5",
+		states: [
+		]
+	},
+	{
+		name: "Guam",
+		iso3: "GUM",
+		iso2: "GU",
+		numeric_code: "316",
+		phone_code: "+1-671",
+		emoji: "🇬🇺",
+		emojiU: "U+1F1EC U+1F1FA",
+		states: [
+		]
+	},
+	{
+		name: "Guatemala",
+		iso3: "GTM",
+		iso2: "GT",
+		numeric_code: "320",
+		phone_code: "502",
+		emoji: "🇬🇹",
+		emojiU: "U+1F1EC U+1F1F9",
+		states: [
+			{
+				id: 3671,
+				name: "Alta Verapaz Department",
+				state_code: "AV"
+			},
+			{
+				id: 3674,
+				name: "Baja Verapaz Department",
+				state_code: "BV"
+			},
+			{
+				id: 3675,
+				name: "Chimaltenango Department",
+				state_code: "CM"
+			},
+			{
+				id: 3666,
+				name: "Chiquimula Department",
+				state_code: "CQ"
+			},
+			{
+				id: 3662,
+				name: "El Progreso Department",
+				state_code: "PR"
+			},
+			{
+				id: 3677,
+				name: "Escuintla Department",
+				state_code: "ES"
+			},
+			{
+				id: 3672,
+				name: "Guatemala Department",
+				state_code: "GU"
+			},
+			{
+				id: 3670,
+				name: "Huehuetenango Department",
+				state_code: "HU"
+			},
+			{
+				id: 3659,
+				name: "Izabal Department",
+				state_code: "IZ"
+			},
+			{
+				id: 3658,
+				name: "Jalapa Department",
+				state_code: "JA"
+			},
+			{
+				id: 3673,
+				name: "Jutiapa Department",
+				state_code: "JU"
+			},
+			{
+				id: 3669,
+				name: "Petén Department",
+				state_code: "PE"
+			},
+			{
+				id: 3668,
+				name: "Quetzaltenango Department",
+				state_code: "QZ"
+			},
+			{
+				id: 3657,
+				name: "Quiché Department",
+				state_code: "QC"
+			},
+			{
+				id: 3664,
+				name: "Retalhuleu Department",
+				state_code: "RE"
+			},
+			{
+				id: 3676,
+				name: "Sacatepéquez Department",
+				state_code: "SA"
+			},
+			{
+				id: 3667,
+				name: "San Marcos Department",
+				state_code: "SM"
+			},
+			{
+				id: 3665,
+				name: "Santa Rosa Department",
+				state_code: "SR"
+			},
+			{
+				id: 3661,
+				name: "Sololá Department",
+				state_code: "SO"
+			},
+			{
+				id: 3660,
+				name: "Suchitepéquez Department",
+				state_code: "SU"
+			},
+			{
+				id: 3663,
+				name: "Totonicapán Department",
+				state_code: "TO"
+			}
+		]
+	},
+	{
+		name: "Guernsey and Alderney",
+		iso3: "GGY",
+		iso2: "GG",
+		numeric_code: "831",
+		phone_code: "+44-1481",
+		emoji: "🇬🇬",
+		emojiU: "U+1F1EC U+1F1EC",
+		states: [
+		]
+	},
+	{
+		name: "Guinea",
+		iso3: "GIN",
+		iso2: "GN",
+		numeric_code: "324",
+		phone_code: "224",
+		emoji: "🇬🇳",
+		emojiU: "U+1F1EC U+1F1F3",
+		states: [
+			{
+				id: 2672,
+				name: "Beyla Prefecture",
+				state_code: "BE"
+			},
+			{
+				id: 2699,
+				name: "Boffa Prefecture",
+				state_code: "BF"
+			},
+			{
+				id: 2709,
+				name: "Boké Prefecture",
+				state_code: "BK"
+			},
+			{
+				id: 2676,
+				name: "Boké Region",
+				state_code: "B"
+			},
+			{
+				id: 2686,
+				name: "Conakry",
+				state_code: "C"
+			},
+			{
+				id: 2705,
+				name: "Coyah Prefecture",
+				state_code: "CO"
+			},
+			{
+				id: 2679,
+				name: "Dabola Prefecture",
+				state_code: "DB"
+			},
+			{
+				id: 2706,
+				name: "Dalaba Prefecture",
+				state_code: "DL"
+			},
+			{
+				id: 2688,
+				name: "Dinguiraye Prefecture",
+				state_code: "DI"
+			},
+			{
+				id: 2681,
+				name: "Dubréka Prefecture",
+				state_code: "DU"
+			},
+			{
+				id: 2682,
+				name: "Faranah Prefecture",
+				state_code: "FA"
+			},
+			{
+				id: 2683,
+				name: "Forécariah Prefecture",
+				state_code: "FO"
+			},
+			{
+				id: 2675,
+				name: "Fria Prefecture",
+				state_code: "FR"
+			},
+			{
+				id: 2685,
+				name: "Gaoual Prefecture",
+				state_code: "GA"
+			},
+			{
+				id: 2711,
+				name: "Guéckédou Prefecture",
+				state_code: "GU"
+			},
+			{
+				id: 2704,
+				name: "Kankan Prefecture",
+				state_code: "KA"
+			},
+			{
+				id: 2697,
+				name: "Kankan Region",
+				state_code: "K"
+			},
+			{
+				id: 2710,
+				name: "Kérouané Prefecture",
+				state_code: "KE"
+			},
+			{
+				id: 2693,
+				name: "Kindia Prefecture",
+				state_code: "KD"
+			},
+			{
+				id: 2701,
+				name: "Kindia Region",
+				state_code: "D"
+			},
+			{
+				id: 2691,
+				name: "Kissidougou Prefecture",
+				state_code: "KS"
+			},
+			{
+				id: 2692,
+				name: "Koubia Prefecture",
+				state_code: "KB"
+			},
+			{
+				id: 2703,
+				name: "Koundara Prefecture",
+				state_code: "KN"
+			},
+			{
+				id: 2695,
+				name: "Kouroussa Prefecture",
+				state_code: "KO"
+			},
+			{
+				id: 2680,
+				name: "Labé Prefecture",
+				state_code: "LA"
+			},
+			{
+				id: 2677,
+				name: "Labé Region",
+				state_code: "L"
+			},
+			{
+				id: 2690,
+				name: "Lélouma Prefecture",
+				state_code: "LE"
+			},
+			{
+				id: 2708,
+				name: "Lola Prefecture",
+				state_code: "LO"
+			},
+			{
+				id: 2702,
+				name: "Macenta Prefecture",
+				state_code: "MC"
+			},
+			{
+				id: 2700,
+				name: "Mali Prefecture",
+				state_code: "ML"
+			},
+			{
+				id: 2689,
+				name: "Mamou Prefecture",
+				state_code: "MM"
+			},
+			{
+				id: 2698,
+				name: "Mamou Region",
+				state_code: "M"
+			},
+			{
+				id: 2673,
+				name: "Mandiana Prefecture",
+				state_code: "MD"
+			},
+			{
+				id: 2678,
+				name: "Nzérékoré Prefecture",
+				state_code: "NZ"
+			},
+			{
+				id: 2684,
+				name: "Nzérékoré Region",
+				state_code: "N"
+			},
+			{
+				id: 2694,
+				name: "Pita Prefecture",
+				state_code: "PI"
+			},
+			{
+				id: 2707,
+				name: "Siguiri Prefecture",
+				state_code: "SI"
+			},
+			{
+				id: 2687,
+				name: "Télimélé Prefecture",
+				state_code: "TE"
+			},
+			{
+				id: 2696,
+				name: "Tougué Prefecture",
+				state_code: "TO"
+			},
+			{
+				id: 2674,
+				name: "Yomou Prefecture",
+				state_code: "YO"
+			}
+		]
+	},
+	{
+		name: "Guinea-Bissau",
+		iso3: "GNB",
+		iso2: "GW",
+		numeric_code: "624",
+		phone_code: "245",
+		emoji: "🇬🇼",
+		emojiU: "U+1F1EC U+1F1FC",
+		states: [
+			{
+				id: 2720,
+				name: "Bafatá",
+				state_code: "BA"
+			},
+			{
+				id: 2714,
+				name: "Biombo Region",
+				state_code: "BM"
+			},
+			{
+				id: 2722,
+				name: "Bolama Region",
+				state_code: "BL"
+			},
+			{
+				id: 2713,
+				name: "Cacheu Region",
+				state_code: "CA"
+			},
+			{
+				id: 2719,
+				name: "Gabú Region",
+				state_code: "GA"
+			},
+			{
+				id: 2721,
+				name: "Leste Province",
+				state_code: "L"
+			},
+			{
+				id: 2717,
+				name: "Norte Province",
+				state_code: "N"
+			},
+			{
+				id: 2718,
+				name: "Oio Region",
+				state_code: "OI"
+			},
+			{
+				id: 2715,
+				name: "Quinara Region",
+				state_code: "QU"
+			},
+			{
+				id: 2716,
+				name: "Sul Province",
+				state_code: "S"
+			},
+			{
+				id: 2712,
+				name: "Tombali Region",
+				state_code: "TO"
+			}
+		]
+	},
+	{
+		name: "Guyana",
+		iso3: "GUY",
+		iso2: "GY",
+		numeric_code: "328",
+		phone_code: "592",
+		emoji: "🇬🇾",
+		emojiU: "U+1F1EC U+1F1FE",
+		states: [
+			{
+				id: 2764,
+				name: "Barima-Waini",
+				state_code: "BA"
+			},
+			{
+				id: 2760,
+				name: "Cuyuni-Mazaruni",
+				state_code: "CU"
+			},
+			{
+				id: 2767,
+				name: "Demerara-Mahaica",
+				state_code: "DE"
+			},
+			{
+				id: 2766,
+				name: "East Berbice-Corentyne",
+				state_code: "EB"
+			},
+			{
+				id: 2768,
+				name: "Essequibo Islands-West Demerara",
+				state_code: "ES"
+			},
+			{
+				id: 2762,
+				name: "Mahaica-Berbice",
+				state_code: "MA"
+			},
+			{
+				id: 2765,
+				name: "Pomeroon-Supenaam",
+				state_code: "PM"
+			},
+			{
+				id: 2761,
+				name: "Potaro-Siparuni",
+				state_code: "PT"
+			},
+			{
+				id: 2763,
+				name: "Upper Demerara-Berbice",
+				state_code: "UD"
+			},
+			{
+				id: 2769,
+				name: "Upper Takutu-Upper Essequibo",
+				state_code: "UT"
+			}
+		]
+	},
+	{
+		name: "Haiti",
+		iso3: "HTI",
+		iso2: "HT",
+		numeric_code: "332",
+		phone_code: "509",
+		emoji: "🇭🇹",
+		emojiU: "U+1F1ED U+1F1F9",
+		states: [
+			{
+				id: 4123,
+				name: "Artibonite",
+				state_code: "AR"
+			},
+			{
+				id: 4125,
+				name: "Centre",
+				state_code: "CE"
+			},
+			{
+				id: 4119,
+				name: "Grand'Anse",
+				state_code: "GA"
+			},
+			{
+				id: 4118,
+				name: "Nippes",
+				state_code: "NI"
+			},
+			{
+				id: 4117,
+				name: "Nord",
+				state_code: "ND"
+			},
+			{
+				id: 4121,
+				name: "Nord-Est",
+				state_code: "NE"
+			},
+			{
+				id: 4126,
+				name: "Nord-Ouest",
+				state_code: "NO"
+			},
+			{
+				id: 4120,
+				name: "Ouest",
+				state_code: "OU"
+			},
+			{
+				id: 4122,
+				name: "Sud",
+				state_code: "SD"
+			},
+			{
+				id: 4124,
+				name: "Sud-Est",
+				state_code: "SE"
+			}
+		]
+	},
+	{
+		name: "Heard Island and McDonald Islands",
+		iso3: "HMD",
+		iso2: "HM",
+		numeric_code: "334",
+		phone_code: "672",
+		emoji: "🇭🇲",
+		emojiU: "U+1F1ED U+1F1F2",
+		states: [
+		]
+	},
+	{
+		name: "Honduras",
+		iso3: "HND",
+		iso2: "HN",
+		numeric_code: "340",
+		phone_code: "504",
+		emoji: "🇭🇳",
+		emojiU: "U+1F1ED U+1F1F3",
+		states: [
+			{
+				id: 4047,
+				name: "Atlántida Department",
+				state_code: "AT"
+			},
+			{
+				id: 4045,
+				name: "Bay Islands Department",
+				state_code: "IB"
+			},
+			{
+				id: 4041,
+				name: "Choluteca Department",
+				state_code: "CH"
+			},
+			{
+				id: 4051,
+				name: "Colón Department",
+				state_code: "CL"
+			},
+			{
+				id: 4042,
+				name: "Comayagua Department",
+				state_code: "CM"
+			},
+			{
+				id: 4049,
+				name: "Copán Department",
+				state_code: "CP"
+			},
+			{
+				id: 4046,
+				name: "Cortés Department",
+				state_code: "CR"
+			},
+			{
+				id: 4043,
+				name: "El Paraíso Department",
+				state_code: "EP"
+			},
+			{
+				id: 4052,
+				name: "Francisco Morazán Department",
+				state_code: "FM"
+			},
+			{
+				id: 4048,
+				name: "Gracias a Dios Department",
+				state_code: "GD"
+			},
+			{
+				id: 4044,
+				name: "Intibucá Department",
+				state_code: "IN"
+			},
+			{
+				id: 4058,
+				name: "La Paz Department",
+				state_code: "LP"
+			},
+			{
+				id: 4054,
+				name: "Lempira Department",
+				state_code: "LE"
+			},
+			{
+				id: 4056,
+				name: "Ocotepeque Department",
+				state_code: "OC"
+			},
+			{
+				id: 4050,
+				name: "Olancho Department",
+				state_code: "OL"
+			},
+			{
+				id: 4053,
+				name: "Santa Bárbara Department",
+				state_code: "SB"
+			},
+			{
+				id: 4055,
+				name: "Valle Department",
+				state_code: "VA"
+			},
+			{
+				id: 4057,
+				name: "Yoro Department",
+				state_code: "YO"
+			}
+		]
+	},
+	{
+		name: "Hong Kong S.A.R.",
+		iso3: "HKG",
+		iso2: "HK",
+		numeric_code: "344",
+		phone_code: "852",
+		emoji: "🇭🇰",
+		emojiU: "U+1F1ED U+1F1F0",
+		states: [
+			{
+				id: 4889,
+				name: "Central and Western District",
+				state_code: "HCW"
+			},
+			{
+				id: 4891,
+				name: "Eastern",
+				state_code: "HEA"
+			},
+			{
+				id: 4888,
+				name: "Islands District",
+				state_code: "NIS"
+			},
+			{
+				id: 4895,
+				name: "Kowloon City",
+				state_code: "KKC"
+			},
+			{
+				id: 4898,
+				name: "Kwai Tsing",
+				state_code: "NKT"
+			},
+			{
+				id: 4897,
+				name: "Kwun Tong",
+				state_code: "KKT"
+			},
+			{
+				id: 4900,
+				name: "North",
+				state_code: "NNO"
+			},
+			{
+				id: 4887,
+				name: "Sai Kung District",
+				state_code: "NSK"
+			},
+			{
+				id: 4901,
+				name: "Sha Tin",
+				state_code: "NST"
+			},
+			{
+				id: 4894,
+				name: "Sham Shui Po",
+				state_code: "KSS"
+			},
+			{
+				id: 4892,
+				name: "Southern",
+				state_code: "HSO"
+			},
+			{
+				id: 4885,
+				name: "Tai Po District",
+				state_code: "NTP"
+			},
+			{
+				id: 4884,
+				name: "Tsuen Wan District",
+				state_code: "NTW"
+			},
+			{
+				id: 4899,
+				name: "Tuen Mun",
+				state_code: "NTM"
+			},
+			{
+				id: 4890,
+				name: "Wan Chai",
+				state_code: "HWC"
+			},
+			{
+				id: 4896,
+				name: "Wong Tai Sin",
+				state_code: "KWT"
+			},
+			{
+				id: 4893,
+				name: "Yau Tsim Mong",
+				state_code: "KYT"
+			},
+			{
+				id: 4883,
+				name: "Yuen Long District",
+				state_code: "NYL"
+			}
+		]
+	},
+	{
+		name: "Hungary",
+		iso3: "HUN",
+		iso2: "HU",
+		numeric_code: "348",
+		phone_code: "36",
+		emoji: "🇭🇺",
+		emojiU: "U+1F1ED U+1F1FA",
+		states: [
+			{
+				id: 1048,
+				name: "Bács-Kiskun County",
+				state_code: "BK"
+			},
+			{
+				id: 1055,
+				name: "Baranya County",
+				state_code: "BA"
+			},
+			{
+				id: 1060,
+				name: "Békés County",
+				state_code: "BE"
+			},
+			{
+				id: 1036,
+				name: "Békéscsaba",
+				state_code: "BC"
+			},
+			{
+				id: 1058,
+				name: "Borsod-Abaúj-Zemplén County",
+				state_code: "BZ"
+			},
+			{
+				id: 1064,
+				name: "Budapest",
+				state_code: "BU"
+			},
+			{
+				id: 1031,
+				name: "Csongrád County",
+				state_code: "CS"
+			},
+			{
+				id: 1032,
+				name: "Debrecen",
+				state_code: "DE"
+			},
+			{
+				id: 1049,
+				name: "Dunaújváros",
+				state_code: "DU"
+			},
+			{
+				id: 1037,
+				name: "Eger",
+				state_code: "EG"
+			},
+			{
+				id: 1028,
+				name: "Érd",
+				state_code: "ER"
+			},
+			{
+				id: 1044,
+				name: "Fejér County",
+				state_code: "FE"
+			},
+			{
+				id: 1041,
+				name: "Győr",
+				state_code: "GY"
+			},
+			{
+				id: 1042,
+				name: "Győr-Moson-Sopron County",
+				state_code: "GS"
+			},
+			{
+				id: 1063,
+				name: "Hajdú-Bihar County",
+				state_code: "HB"
+			},
+			{
+				id: 1040,
+				name: "Heves County",
+				state_code: "HE"
+			},
+			{
+				id: 1027,
+				name: "Hódmezővásárhely",
+				state_code: "HV"
+			},
+			{
+				id: 1043,
+				name: "Jász-Nagykun-Szolnok County",
+				state_code: "JN"
+			},
+			{
+				id: 1067,
+				name: "Kaposvár",
+				state_code: "KV"
+			},
+			{
+				id: 1056,
+				name: "Kecskemét",
+				state_code: "KM"
+			},
+			{
+				id: 1065,
+				name: "Miskolc",
+				state_code: "MI"
+			},
+			{
+				id: 1030,
+				name: "Nagykanizsa",
+				state_code: "NK"
+			},
+			{
+				id: 1051,
+				name: "Nógrád County",
+				state_code: "NO"
+			},
+			{
+				id: 1034,
+				name: "Nyíregyháza",
+				state_code: "NY"
+			},
+			{
+				id: 1053,
+				name: "Pécs",
+				state_code: "PS"
+			},
+			{
+				id: 1059,
+				name: "Pest County",
+				state_code: "PE"
+			},
+			{
+				id: 1068,
+				name: "Salgótarján",
+				state_code: "ST"
+			},
+			{
+				id: 1035,
+				name: "Somogy County",
+				state_code: "SO"
+			},
+			{
+				id: 1057,
+				name: "Sopron",
+				state_code: "SN"
+			},
+			{
+				id: 1045,
+				name: "Szabolcs-Szatmár-Bereg County",
+				state_code: "SZ"
+			},
+			{
+				id: 1029,
+				name: "Szeged",
+				state_code: "SD"
+			},
+			{
+				id: 1033,
+				name: "Székesfehérvár",
+				state_code: "SF"
+			},
+			{
+				id: 1061,
+				name: "Szekszárd",
+				state_code: "SS"
+			},
+			{
+				id: 1047,
+				name: "Szolnok",
+				state_code: "SK"
+			},
+			{
+				id: 1052,
+				name: "Szombathely",
+				state_code: "SH"
+			},
+			{
+				id: 1066,
+				name: "Tatabánya",
+				state_code: "TB"
+			},
+			{
+				id: 1038,
+				name: "Tolna County",
+				state_code: "TO"
+			},
+			{
+				id: 1039,
+				name: "Vas County",
+				state_code: "VA"
+			},
+			{
+				id: 1062,
+				name: "Veszprém",
+				state_code: "VM"
+			},
+			{
+				id: 1054,
+				name: "Veszprém County",
+				state_code: "VE"
+			},
+			{
+				id: 1046,
+				name: "Zala County",
+				state_code: "ZA"
+			},
+			{
+				id: 1050,
+				name: "Zalaegerszeg",
+				state_code: "ZE"
+			}
+		]
+	},
+	{
+		name: "Iceland",
+		iso3: "ISL",
+		iso2: "IS",
+		numeric_code: "352",
+		phone_code: "354",
+		emoji: "🇮🇸",
+		emojiU: "U+1F1EE U+1F1F8",
+		states: [
+			{
+				id: 3431,
+				name: "Capital Region",
+				state_code: "1"
+			},
+			{
+				id: 3433,
+				name: "Eastern Region",
+				state_code: "7"
+			},
+			{
+				id: 3437,
+				name: "Northeastern Region",
+				state_code: "6"
+			},
+			{
+				id: 3435,
+				name: "Northwestern Region",
+				state_code: "5"
+			},
+			{
+				id: 3430,
+				name: "Southern Peninsula Region",
+				state_code: "2"
+			},
+			{
+				id: 3434,
+				name: "Southern Region",
+				state_code: "8"
+			},
+			{
+				id: 3436,
+				name: "Western Region",
+				state_code: "3"
+			},
+			{
+				id: 3432,
+				name: "Westfjords",
+				state_code: "4"
+			}
+		]
+	},
+	{
+		name: "India",
+		iso3: "IND",
+		iso2: "IN",
+		numeric_code: "356",
+		phone_code: "91",
+		emoji: "🇮🇳",
+		emojiU: "U+1F1EE U+1F1F3",
+		states: [
+			{
+				id: 4023,
+				name: "Andaman and Nicobar Islands",
+				state_code: "AN"
+			},
+			{
+				id: 4017,
+				name: "Andhra Pradesh",
+				state_code: "AP"
+			},
+			{
+				id: 4024,
+				name: "Arunachal Pradesh",
+				state_code: "AR"
+			},
+			{
+				id: 4027,
+				name: "Assam",
+				state_code: "AS"
+			},
+			{
+				id: 4037,
+				name: "Bihar",
+				state_code: "BR"
+			},
+			{
+				id: 4031,
+				name: "Chandigarh",
+				state_code: "CH"
+			},
+			{
+				id: 4040,
+				name: "Chhattisgarh",
+				state_code: "CT"
+			},
+			{
+				id: 4033,
+				name: "Dadra and Nagar Haveli and Daman and Diu",
+				state_code: "DH"
+			},
+			{
+				id: 4021,
+				name: "Delhi",
+				state_code: "DL"
+			},
+			{
+				id: 4009,
+				name: "Goa",
+				state_code: "GA"
+			},
+			{
+				id: 4030,
+				name: "Gujarat",
+				state_code: "GJ"
+			},
+			{
+				id: 4007,
+				name: "Haryana",
+				state_code: "HR"
+			},
+			{
+				id: 4020,
+				name: "Himachal Pradesh",
+				state_code: "HP"
+			},
+			{
+				id: 4029,
+				name: "Jammu and Kashmir",
+				state_code: "JK"
+			},
+			{
+				id: 4025,
+				name: "Jharkhand",
+				state_code: "JH"
+			},
+			{
+				id: 4026,
+				name: "Karnataka",
+				state_code: "KA"
+			},
+			{
+				id: 4028,
+				name: "Kerala",
+				state_code: "KL"
+			},
+			{
+				id: 4852,
+				name: "Ladakh",
+				state_code: "LA"
+			},
+			{
+				id: 4019,
+				name: "Lakshadweep",
+				state_code: "LD"
+			},
+			{
+				id: 4039,
+				name: "Madhya Pradesh",
+				state_code: "MP"
+			},
+			{
+				id: 4008,
+				name: "Maharashtra",
+				state_code: "MH"
+			},
+			{
+				id: 4010,
+				name: "Manipur",
+				state_code: "MN"
+			},
+			{
+				id: 4006,
+				name: "Meghalaya",
+				state_code: "ML"
+			},
+			{
+				id: 4036,
+				name: "Mizoram",
+				state_code: "MZ"
+			},
+			{
+				id: 4018,
+				name: "Nagaland",
+				state_code: "NL"
+			},
+			{
+				id: 4013,
+				name: "Odisha",
+				state_code: "OR"
+			},
+			{
+				id: 4011,
+				name: "Puducherry",
+				state_code: "PY"
+			},
+			{
+				id: 4015,
+				name: "Punjab",
+				state_code: "PB"
+			},
+			{
+				id: 4014,
+				name: "Rajasthan",
+				state_code: "RJ"
+			},
+			{
+				id: 4034,
+				name: "Sikkim",
+				state_code: "SK"
+			},
+			{
+				id: 4035,
+				name: "Tamil Nadu",
+				state_code: "TN"
+			},
+			{
+				id: 4012,
+				name: "Telangana",
+				state_code: "TG"
+			},
+			{
+				id: 4038,
+				name: "Tripura",
+				state_code: "TR"
+			},
+			{
+				id: 4022,
+				name: "Uttar Pradesh",
+				state_code: "UP"
+			},
+			{
+				id: 4016,
+				name: "Uttarakhand",
+				state_code: "UT"
+			},
+			{
+				id: 4853,
+				name: "West Bengal",
+				state_code: "WB"
+			}
+		]
+	},
+	{
+		name: "Indonesia",
+		iso3: "IDN",
+		iso2: "ID",
+		numeric_code: "360",
+		phone_code: "62",
+		emoji: "🇮🇩",
+		emojiU: "U+1F1EE U+1F1E9",
+		states: [
+			{
+				id: 1822,
+				name: "Aceh",
+				state_code: "AC"
+			},
+			{
+				id: 1826,
+				name: "Bali",
+				state_code: "BA"
+			},
+			{
+				id: 1810,
+				name: "Banten",
+				state_code: "BT"
+			},
+			{
+				id: 1793,
+				name: "Bengkulu",
+				state_code: "BE"
+			},
+			{
+				id: 1829,
+				name: "DI Yogyakarta",
+				state_code: "YO"
+			},
+			{
+				id: 1805,
+				name: "DKI Jakarta",
+				state_code: "JK"
+			},
+			{
+				id: 1812,
+				name: "Gorontalo",
+				state_code: "GO"
+			},
+			{
+				id: 1815,
+				name: "Jambi",
+				state_code: "JA"
+			},
+			{
+				id: 1825,
+				name: "Jawa Barat",
+				state_code: "JB"
+			},
+			{
+				id: 1802,
+				name: "Jawa Tengah",
+				state_code: "JT"
+			},
+			{
+				id: 1827,
+				name: "Jawa Timur",
+				state_code: "JI"
+			},
+			{
+				id: 1806,
+				name: "Kalimantan Barat",
+				state_code: "KA"
+			},
+			{
+				id: 1819,
+				name: "Kalimantan Selatan",
+				state_code: "KS"
+			},
+			{
+				id: 1794,
+				name: "Kalimantan Tengah",
+				state_code: "KT"
+			},
+			{
+				id: 1804,
+				name: "Kalimantan Timur",
+				state_code: "KI"
+			},
+			{
+				id: 1824,
+				name: "Kalimantan Utara",
+				state_code: "KU"
+			},
+			{
+				id: 1820,
+				name: "Kepulauan Bangka Belitung",
+				state_code: "BB"
+			},
+			{
+				id: 1807,
+				name: "Kepulauan Riau",
+				state_code: "KR"
+			},
+			{
+				id: 1811,
+				name: "Lampung",
+				state_code: "LA"
+			},
+			{
+				id: 1800,
+				name: "Maluku",
+				state_code: "MA"
+			},
+			{
+				id: 1801,
+				name: "Maluku Utara",
+				state_code: "MU"
+			},
+			{
+				id: 1814,
+				name: "Nusa Tenggara Barat",
+				state_code: "NB"
+			},
+			{
+				id: 1818,
+				name: "Nusa Tenggara Timur",
+				state_code: "NT"
+			},
+			{
+				id: 1798,
+				name: "Papua",
+				state_code: "PA"
+			},
+			{
+				id: 1799,
+				name: "Papua Barat",
+				state_code: "PB"
+			},
+			{
+				id: 1809,
+				name: "Riau",
+				state_code: "RI"
+			},
+			{
+				id: 1817,
+				name: "Sulawesi Barat",
+				state_code: "SR"
+			},
+			{
+				id: 1795,
+				name: "Sulawesi Selatan",
+				state_code: "SN"
+			},
+			{
+				id: 1813,
+				name: "Sulawesi Tengah",
+				state_code: "ST"
+			},
+			{
+				id: 1796,
+				name: "Sulawesi Tenggara",
+				state_code: "SG"
+			},
+			{
+				id: 1808,
+				name: "Sulawesi Utara",
+				state_code: "SA"
+			},
+			{
+				id: 1828,
+				name: "Sumatera Barat",
+				state_code: "SB"
+			},
+			{
+				id: 1816,
+				name: "Sumatera Selatan",
+				state_code: "SS"
+			},
+			{
+				id: 1792,
+				name: "Sumatera Utara",
+				state_code: "SU"
+			}
+		]
+	},
+	{
+		name: "Iran",
+		iso3: "IRN",
+		iso2: "IR",
+		numeric_code: "364",
+		phone_code: "98",
+		emoji: "🇮🇷",
+		emojiU: "U+1F1EE U+1F1F7",
+		states: [
+			{
+				id: 3929,
+				name: "Alborz Province",
+				state_code: "30"
+			},
+			{
+				id: 3934,
+				name: "Ardabil Province",
+				state_code: "24"
+			},
+			{
+				id: 3932,
+				name: "Bushehr Province",
+				state_code: "18"
+			},
+			{
+				id: 3921,
+				name: "Chaharmahal and Bakhtiari Province",
+				state_code: "14"
+			},
+			{
+				id: 3944,
+				name: "East Azerbaijan Province",
+				state_code: "03"
+			},
+			{
+				id: 3939,
+				name: "Fars Province",
+				state_code: "07"
+			},
+			{
+				id: 3920,
+				name: "Gilan Province",
+				state_code: "01"
+			},
+			{
+				id: 3933,
+				name: "Golestan Province",
+				state_code: "27"
+			},
+			{
+				id: 4920,
+				name: "Hamadan Province",
+				state_code: "13"
+			},
+			{
+				id: 3937,
+				name: "Hormozgan Province",
+				state_code: "22"
+			},
+			{
+				id: 3918,
+				name: "Ilam Province",
+				state_code: "16"
+			},
+			{
+				id: 3923,
+				name: "Isfahan Province",
+				state_code: "10"
+			},
+			{
+				id: 3943,
+				name: "Kerman Province",
+				state_code: "08"
+			},
+			{
+				id: 3919,
+				name: "Kermanshah Province",
+				state_code: "05"
+			},
+			{
+				id: 3917,
+				name: "Khuzestan Province",
+				state_code: "06"
+			},
+			{
+				id: 3926,
+				name: "Kohgiluyeh and Boyer-Ahmad Province",
+				state_code: "17"
+			},
+			{
+				id: 3935,
+				name: "Kurdistan Province",
+				state_code: "12"
+			},
+			{
+				id: 3928,
+				name: "Lorestan Province",
+				state_code: "15"
+			},
+			{
+				id: 3916,
+				name: "Markazi Province",
+				state_code: "00"
+			},
+			{
+				id: 3938,
+				name: "Mazandaran Province",
+				state_code: "02"
+			},
+			{
+				id: 3942,
+				name: "North Khorasan Province",
+				state_code: "28"
+			},
+			{
+				id: 3941,
+				name: "Qazvin Province",
+				state_code: "26"
+			},
+			{
+				id: 3922,
+				name: "Qom Province",
+				state_code: "25"
+			},
+			{
+				id: 3927,
+				name: "Razavi Khorasan Province",
+				state_code: "09"
+			},
+			{
+				id: 3940,
+				name: "Semnan Province",
+				state_code: "20"
+			},
+			{
+				id: 3931,
+				name: "Sistan and Baluchestan",
+				state_code: "11"
+			},
+			{
+				id: 3930,
+				name: "South Khorasan Province",
+				state_code: "29"
+			},
+			{
+				id: 3945,
+				name: "Tehran Province",
+				state_code: "23"
+			},
+			{
+				id: 3924,
+				name: "West Azarbaijan Province",
+				state_code: "04"
+			},
+			{
+				id: 3936,
+				name: "Yazd Province",
+				state_code: "21"
+			},
+			{
+				id: 3925,
+				name: "Zanjan Province",
+				state_code: "19"
+			}
+		]
+	},
+	{
+		name: "Iraq",
+		iso3: "IRQ",
+		iso2: "IQ",
+		numeric_code: "368",
+		phone_code: "964",
+		emoji: "🇮🇶",
+		emojiU: "U+1F1EE U+1F1F6",
+		states: [
+			{
+				id: 3964,
+				name: "Al Anbar Governorate",
+				state_code: "AN"
+			},
+			{
+				id: 3958,
+				name: "Al Muthanna Governorate",
+				state_code: "MU"
+			},
+			{
+				id: 3956,
+				name: "Al-Qādisiyyah Governorate",
+				state_code: "QA"
+			},
+			{
+				id: 3955,
+				name: "Babylon Governorate",
+				state_code: "BB"
+			},
+			{
+				id: 3959,
+				name: "Baghdad Governorate",
+				state_code: "BG"
+			},
+			{
+				id: 3960,
+				name: "Basra Governorate",
+				state_code: "BA"
+			},
+			{
+				id: 3954,
+				name: "Dhi Qar Governorate",
+				state_code: "DQ"
+			},
+			{
+				id: 3965,
+				name: "Diyala Governorate",
+				state_code: "DI"
+			},
+			{
+				id: 3967,
+				name: "Dohuk Governorate",
+				state_code: "DA"
+			},
+			{
+				id: 3968,
+				name: "Erbil Governorate",
+				state_code: "AR"
+			},
+			{
+				id: 3957,
+				name: "Karbala Governorate",
+				state_code: "KA"
+			},
+			{
+				id: 3971,
+				name: "Kirkuk Governorate",
+				state_code: "KI"
+			},
+			{
+				id: 3966,
+				name: "Maysan Governorate",
+				state_code: "MA"
+			},
+			{
+				id: 3962,
+				name: "Najaf Governorate",
+				state_code: "NA"
+			},
+			{
+				id: 3963,
+				name: "Nineveh Governorate",
+				state_code: "NI"
+			},
+			{
+				id: 3961,
+				name: "Saladin Governorate",
+				state_code: "SD"
+			},
+			{
+				id: 3969,
+				name: "Sulaymaniyah Governorate",
+				state_code: "SU"
+			},
+			{
+				id: 3970,
+				name: "Wasit Governorate",
+				state_code: "WA"
+			}
+		]
+	},
+	{
+		name: "Ireland",
+		iso3: "IRL",
+		iso2: "IE",
+		numeric_code: "372",
+		phone_code: "353",
+		emoji: "🇮🇪",
+		emojiU: "U+1F1EE U+1F1EA",
+		states: [
+			{
+				id: 1087,
+				name: "Connacht",
+				state_code: "C"
+			},
+			{
+				id: 1095,
+				name: "County Carlow",
+				state_code: "CW"
+			},
+			{
+				id: 1088,
+				name: "County Cavan",
+				state_code: "CN"
+			},
+			{
+				id: 1091,
+				name: "County Clare",
+				state_code: "CE"
+			},
+			{
+				id: 1074,
+				name: "County Cork",
+				state_code: "CO"
+			},
+			{
+				id: 1071,
+				name: "County Donegal",
+				state_code: "DL"
+			},
+			{
+				id: 1072,
+				name: "County Dublin",
+				state_code: "D"
+			},
+			{
+				id: 1079,
+				name: "County Galway",
+				state_code: "G"
+			},
+			{
+				id: 1077,
+				name: "County Kerry",
+				state_code: "KY"
+			},
+			{
+				id: 1082,
+				name: "County Kildare",
+				state_code: "KE"
+			},
+			{
+				id: 1090,
+				name: "County Kilkenny",
+				state_code: "KK"
+			},
+			{
+				id: 1096,
+				name: "County Laois",
+				state_code: "LS"
+			},
+			{
+				id: 1094,
+				name: "County Limerick",
+				state_code: "LK"
+			},
+			{
+				id: 1076,
+				name: "County Longford",
+				state_code: "LD"
+			},
+			{
+				id: 1083,
+				name: "County Louth",
+				state_code: "LH"
+			},
+			{
+				id: 1084,
+				name: "County Mayo",
+				state_code: "MO"
+			},
+			{
+				id: 1092,
+				name: "County Meath",
+				state_code: "MH"
+			},
+			{
+				id: 1075,
+				name: "County Monaghan",
+				state_code: "MN"
+			},
+			{
+				id: 1078,
+				name: "County Offaly",
+				state_code: "OY"
+			},
+			{
+				id: 1081,
+				name: "County Roscommon",
+				state_code: "RN"
+			},
+			{
+				id: 1070,
+				name: "County Sligo",
+				state_code: "SO"
+			},
+			{
+				id: 1069,
+				name: "County Tipperary",
+				state_code: "TA"
+			},
+			{
+				id: 1089,
+				name: "County Waterford",
+				state_code: "WD"
+			},
+			{
+				id: 1097,
+				name: "County Westmeath",
+				state_code: "WH"
+			},
+			{
+				id: 1093,
+				name: "County Wexford",
+				state_code: "WX"
+			},
+			{
+				id: 1085,
+				name: "County Wicklow",
+				state_code: "WW"
+			},
+			{
+				id: 1073,
+				name: "Leinster",
+				state_code: "L"
+			},
+			{
+				id: 1080,
+				name: "Munster",
+				state_code: "M"
+			},
+			{
+				id: 1086,
+				name: "Ulster",
+				state_code: "U"
+			}
+		]
+	},
+	{
+		name: "Israel",
+		iso3: "ISR",
+		iso2: "IL",
+		numeric_code: "376",
+		phone_code: "972",
+		emoji: "🇮🇱",
+		emojiU: "U+1F1EE U+1F1F1",
+		states: [
+			{
+				id: 1367,
+				name: "Central District",
+				state_code: "M"
+			},
+			{
+				id: 1369,
+				name: "Haifa District",
+				state_code: "HA"
+			},
+			{
+				id: 1370,
+				name: "Jerusalem District",
+				state_code: "JM"
+			},
+			{
+				id: 1366,
+				name: "Northern District",
+				state_code: "Z"
+			},
+			{
+				id: 1368,
+				name: "Southern District",
+				state_code: "D"
+			},
+			{
+				id: 1371,
+				name: "Tel Aviv District",
+				state_code: "TA"
+			}
+		]
+	},
+	{
+		name: "Italy",
+		iso3: "ITA",
+		iso2: "IT",
+		numeric_code: "380",
+		phone_code: "39",
+		emoji: "🇮🇹",
+		emojiU: "U+1F1EE U+1F1F9",
+		states: [
+			{
+				id: 1679,
+				name: "Abruzzo",
+				state_code: "65"
+			},
+			{
+				id: 1716,
+				name: "Aosta Valley",
+				state_code: "23"
+			},
+			{
+				id: 1688,
+				name: "Apulia",
+				state_code: "75"
+			},
+			{
+				id: 1706,
+				name: "Basilicata",
+				state_code: "77"
+			},
+			{
+				id: 1701,
+				name: "Benevento Province",
+				state_code: "BN"
+			},
+			{
+				id: 1703,
+				name: "Calabria",
+				state_code: "78"
+			},
+			{
+				id: 1669,
+				name: "Campania",
+				state_code: "72"
+			},
+			{
+				id: 1773,
+				name: "Emilia-Romagna",
+				state_code: "45"
+			},
+			{
+				id: 1756,
+				name: "Friuli–Venezia Giulia",
+				state_code: "36"
+			},
+			{
+				id: 1678,
+				name: "Lazio",
+				state_code: "62"
+			},
+			{
+				id: 1727,
+				name: "Libero consorzio comunale di Agrigento",
+				state_code: "AG"
+			},
+			{
+				id: 1718,
+				name: "Libero consorzio comunale di Caltanissetta",
+				state_code: "CL"
+			},
+			{
+				id: 1723,
+				name: "Libero consorzio comunale di Enna",
+				state_code: "EN"
+			},
+			{
+				id: 1729,
+				name: "Libero consorzio comunale di Ragusa",
+				state_code: "RG"
+			},
+			{
+				id: 1667,
+				name: "Libero consorzio comunale di Siracusa",
+				state_code: "SR"
+			},
+			{
+				id: 1733,
+				name: "Libero consorzio comunale di Trapani",
+				state_code: "TP"
+			},
+			{
+				id: 1768,
+				name: "Liguria",
+				state_code: "42"
+			},
+			{
+				id: 1705,
+				name: "Lombardy",
+				state_code: "25"
+			},
+			{
+				id: 1670,
+				name: "Marche",
+				state_code: "57"
+			},
+			{
+				id: 1772,
+				name: "Metropolitan City of Bari",
+				state_code: "BA"
+			},
+			{
+				id: 1684,
+				name: "Metropolitan City of Bologna",
+				state_code: "BO"
+			},
+			{
+				id: 1682,
+				name: "Metropolitan City of Cagliari",
+				state_code: "CA"
+			},
+			{
+				id: 1766,
+				name: "Metropolitan City of Catania",
+				state_code: "CT"
+			},
+			{
+				id: 1680,
+				name: "Metropolitan City of Florence",
+				state_code: "FI"
+			},
+			{
+				id: 1699,
+				name: "Metropolitan City of Genoa",
+				state_code: "GE"
+			},
+			{
+				id: 1770,
+				name: "Metropolitan City of Messina",
+				state_code: "ME"
+			},
+			{
+				id: 1698,
+				name: "Metropolitan City of Milan",
+				state_code: "MI"
+			},
+			{
+				id: 1724,
+				name: "Metropolitan City of Naples",
+				state_code: "NA"
+			},
+			{
+				id: 1668,
+				name: "Metropolitan City of Palermo",
+				state_code: "PA"
+			},
+			{
+				id: 1671,
+				name: "Metropolitan City of Reggio Calabria",
+				state_code: "RC"
+			},
+			{
+				id: 1711,
+				name: "Metropolitan City of Rome",
+				state_code: "RM"
+			},
+			{
+				id: 1710,
+				name: "Metropolitan City of Turin",
+				state_code: "TO"
+			},
+			{
+				id: 1673,
+				name: "Metropolitan City of Venice",
+				state_code: "VE"
+			},
+			{
+				id: 1695,
+				name: "Molise",
+				state_code: "67"
+			},
+			{
+				id: 1693,
+				name: "Pesaro and Urbino Province",
+				state_code: "PU"
+			},
+			{
+				id: 1702,
+				name: "Piedmont",
+				state_code: "21"
+			},
+			{
+				id: 1783,
+				name: "Province of Alessandria",
+				state_code: "AL"
+			},
+			{
+				id: 1672,
+				name: "Province of Ancona",
+				state_code: "AN"
+			},
+			{
+				id: 1681,
+				name: "Province of Ascoli Piceno",
+				state_code: "AP"
+			},
+			{
+				id: 1780,
+				name: "Province of Asti",
+				state_code: "AT"
+			},
+			{
+				id: 1692,
+				name: "Province of Avellino",
+				state_code: "AV"
+			},
+			{
+				id: 1686,
+				name: "Province of Barletta-Andria-Trani",
+				state_code: "BT"
+			},
+			{
+				id: 1689,
+				name: "Province of Belluno",
+				state_code: "BL"
+			},
+			{
+				id: 1704,
+				name: "Province of Bergamo",
+				state_code: "BG"
+			},
+			{
+				id: 1778,
+				name: "Province of Biella",
+				state_code: "BI"
+			},
+			{
+				id: 1717,
+				name: "Province of Brescia",
+				state_code: "BS"
+			},
+			{
+				id: 1714,
+				name: "Province of Brindisi",
+				state_code: "BR"
+			},
+			{
+				id: 1721,
+				name: "Province of Campobasso",
+				state_code: "CB"
+			},
+			{
+				id: 1730,
+				name: "Province of Carbonia-Iglesias",
+				state_code: "CI"
+			},
+			{
+				id: 1731,
+				name: "Province of Caserta",
+				state_code: "CE"
+			},
+			{
+				id: 1728,
+				name: "Province of Catanzaro",
+				state_code: "CZ"
+			},
+			{
+				id: 1739,
+				name: "Province of Chieti",
+				state_code: "CH"
+			},
+			{
+				id: 1740,
+				name: "Province of Como",
+				state_code: "CO"
+			},
+			{
+				id: 1742,
+				name: "Province of Cosenza",
+				state_code: "CS"
+			},
+			{
+				id: 1751,
+				name: "Province of Cremona",
+				state_code: "CR"
+			},
+			{
+				id: 1754,
+				name: "Province of Crotone",
+				state_code: "KR"
+			},
+			{
+				id: 1775,
+				name: "Province of Cuneo",
+				state_code: "CN"
+			},
+			{
+				id: 1744,
+				name: "Province of Fermo",
+				state_code: "FM"
+			},
+			{
+				id: 1746,
+				name: "Province of Ferrara",
+				state_code: "FE"
+			},
+			{
+				id: 1771,
+				name: "Province of Foggia",
+				state_code: "FG"
+			},
+			{
+				id: 1779,
+				name: "Province of Forlì-Cesena",
+				state_code: "FC"
+			},
+			{
+				id: 1776,
+				name: "Province of Frosinone",
+				state_code: "FR"
+			},
+			{
+				id: 1777,
+				name: "Province of Gorizia",
+				state_code: "GO"
+			},
+			{
+				id: 1787,
+				name: "Province of Grosseto",
+				state_code: "GR"
+			},
+			{
+				id: 1788,
+				name: "Province of Imperia",
+				state_code: "IM"
+			},
+			{
+				id: 1789,
+				name: "Province of Isernia",
+				state_code: "IS"
+			},
+			{
+				id: 1781,
+				name: "Province of L'Aquila",
+				state_code: "AQ"
+			},
+			{
+				id: 1791,
+				name: "Province of La Spezia",
+				state_code: "SP"
+			},
+			{
+				id: 1674,
+				name: "Province of Latina",
+				state_code: "LT"
+			},
+			{
+				id: 1675,
+				name: "Province of Lecce",
+				state_code: "LE"
+			},
+			{
+				id: 1677,
+				name: "Province of Lecco",
+				state_code: "LC"
+			},
+			{
+				id: 1745,
+				name: "Province of Livorno",
+				state_code: "LI"
+			},
+			{
+				id: 1747,
+				name: "Province of Lodi",
+				state_code: "LO"
+			},
+			{
+				id: 1749,
+				name: "Province of Lucca",
+				state_code: "LU"
+			},
+			{
+				id: 1750,
+				name: "Province of Macerata",
+				state_code: "MC"
+			},
+			{
+				id: 1758,
+				name: "Province of Mantua",
+				state_code: "MN"
+			},
+			{
+				id: 1759,
+				name: "Province of Massa and Carrara",
+				state_code: "MS"
+			},
+			{
+				id: 1760,
+				name: "Province of Matera",
+				state_code: "MT"
+			},
+			{
+				id: 1761,
+				name: "Province of Medio Campidano",
+				state_code: "VS"
+			},
+			{
+				id: 1757,
+				name: "Province of Modena",
+				state_code: "MO"
+			},
+			{
+				id: 1769,
+				name: "Province of Monza and Brianza",
+				state_code: "MB"
+			},
+			{
+				id: 1774,
+				name: "Province of Novara",
+				state_code: "NO"
+			},
+			{
+				id: 1790,
+				name: "Province of Nuoro",
+				state_code: "NU"
+			},
+			{
+				id: 1782,
+				name: "Province of Ogliastra",
+				state_code: "OG"
+			},
+			{
+				id: 1784,
+				name: "Province of Olbia-Tempio",
+				state_code: "OT"
+			},
+			{
+				id: 1786,
+				name: "Province of Oristano",
+				state_code: "OR"
+			},
+			{
+				id: 1665,
+				name: "Province of Padua",
+				state_code: "PD"
+			},
+			{
+				id: 1666,
+				name: "Province of Parma",
+				state_code: "PR"
+			},
+			{
+				id: 1676,
+				name: "Province of Pavia",
+				state_code: "PV"
+			},
+			{
+				id: 1691,
+				name: "Province of Perugia",
+				state_code: "PG"
+			},
+			{
+				id: 1694,
+				name: "Province of Pescara",
+				state_code: "PE"
+			},
+			{
+				id: 1696,
+				name: "Province of Piacenza",
+				state_code: "PC"
+			},
+			{
+				id: 1685,
+				name: "Province of Pisa",
+				state_code: "PI"
+			},
+			{
+				id: 1687,
+				name: "Province of Pistoia",
+				state_code: "PT"
+			},
+			{
+				id: 1690,
+				name: "Province of Pordenone",
+				state_code: "PN"
+			},
+			{
+				id: 1697,
+				name: "Province of Potenza",
+				state_code: "PZ"
+			},
+			{
+				id: 1700,
+				name: "Province of Prato",
+				state_code: "PO"
+			},
+			{
+				id: 1707,
+				name: "Province of Ravenna",
+				state_code: "RA"
+			},
+			{
+				id: 1708,
+				name: "Province of Reggio Emilia",
+				state_code: "RE"
+			},
+			{
+				id: 1712,
+				name: "Province of Rieti",
+				state_code: "RI"
+			},
+			{
+				id: 1713,
+				name: "Province of Rimini",
+				state_code: "RN"
+			},
+			{
+				id: 1719,
+				name: "Province of Rovigo",
+				state_code: "RO"
+			},
+			{
+				id: 1720,
+				name: "Province of Salerno",
+				state_code: "SA"
+			},
+			{
+				id: 1722,
+				name: "Province of Sassari",
+				state_code: "SS"
+			},
+			{
+				id: 1732,
+				name: "Province of Savona",
+				state_code: "SV"
+			},
+			{
+				id: 1734,
+				name: "Province of Siena",
+				state_code: "SI"
+			},
+			{
+				id: 1741,
+				name: "Province of Sondrio",
+				state_code: "SO"
+			},
+			{
+				id: 1743,
+				name: "Province of Taranto",
+				state_code: "TA"
+			},
+			{
+				id: 1752,
+				name: "Province of Teramo",
+				state_code: "TE"
+			},
+			{
+				id: 1755,
+				name: "Province of Terni",
+				state_code: "TR"
+			},
+			{
+				id: 1762,
+				name: "Province of Treviso",
+				state_code: "TV"
+			},
+			{
+				id: 1763,
+				name: "Province of Trieste",
+				state_code: "TS"
+			},
+			{
+				id: 1764,
+				name: "Province of Udine",
+				state_code: "UD"
+			},
+			{
+				id: 1765,
+				name: "Province of Varese",
+				state_code: "VA"
+			},
+			{
+				id: 1726,
+				name: "Province of Verbano-Cusio-Ossola",
+				state_code: "VB"
+			},
+			{
+				id: 1785,
+				name: "Province of Vercelli",
+				state_code: "VC"
+			},
+			{
+				id: 1736,
+				name: "Province of Verona",
+				state_code: "VR"
+			},
+			{
+				id: 1737,
+				name: "Province of Vibo Valentia",
+				state_code: "VV"
+			},
+			{
+				id: 1738,
+				name: "Province of Vicenza",
+				state_code: "VI"
+			},
+			{
+				id: 1735,
+				name: "Province of Viterbo",
+				state_code: "VT"
+			},
+			{
+				id: 1715,
+				name: "Sardinia",
+				state_code: "88"
+			},
+			{
+				id: 1709,
+				name: "Sicily",
+				state_code: "82"
+			},
+			{
+				id: 1767,
+				name: "South Tyrol",
+				state_code: "BZ"
+			},
+			{
+				id: 1748,
+				name: "Trentino",
+				state_code: "TN"
+			},
+			{
+				id: 1725,
+				name: "Trentino-South Tyrol",
+				state_code: "32"
+			},
+			{
+				id: 1664,
+				name: "Tuscany",
+				state_code: "52"
+			},
+			{
+				id: 1683,
+				name: "Umbria",
+				state_code: "55"
+			},
+			{
+				id: 1753,
+				name: "Veneto",
+				state_code: "34"
+			}
+		]
+	},
+	{
+		name: "Jamaica",
+		iso3: "JAM",
+		iso2: "JM",
+		numeric_code: "388",
+		phone_code: "+1-876",
+		emoji: "🇯🇲",
+		emojiU: "U+1F1EF U+1F1F2",
+		states: [
+			{
+				id: 3753,
+				name: "Clarendon Parish",
+				state_code: "13"
+			},
+			{
+				id: 3749,
+				name: "Hanover Parish",
+				state_code: "09"
+			},
+			{
+				id: 3748,
+				name: "Kingston Parish",
+				state_code: "01"
+			},
+			{
+				id: 3754,
+				name: "Manchester Parish",
+				state_code: "12"
+			},
+			{
+				id: 3752,
+				name: "Portland Parish",
+				state_code: "04"
+			},
+			{
+				id: 3751,
+				name: "Saint Andrew",
+				state_code: "02"
+			},
+			{
+				id: 3744,
+				name: "Saint Ann Parish",
+				state_code: "06"
+			},
+			{
+				id: 3746,
+				name: "Saint Catherine Parish",
+				state_code: "14"
+			},
+			{
+				id: 3743,
+				name: "Saint Elizabeth Parish",
+				state_code: "11"
+			},
+			{
+				id: 3745,
+				name: "Saint James Parish",
+				state_code: "08"
+			},
+			{
+				id: 3747,
+				name: "Saint Mary Parish",
+				state_code: "05"
+			},
+			{
+				id: 3750,
+				name: "Saint Thomas Parish",
+				state_code: "03"
+			},
+			{
+				id: 3755,
+				name: "Trelawny Parish",
+				state_code: "07"
+			},
+			{
+				id: 3742,
+				name: "Westmoreland Parish",
+				state_code: "10"
+			}
+		]
+	},
+	{
+		name: "Japan",
+		iso3: "JPN",
+		iso2: "JP",
+		numeric_code: "392",
+		phone_code: "81",
+		emoji: "🇯🇵",
+		emojiU: "U+1F1EF U+1F1F5",
+		states: [
+			{
+				id: 827,
+				name: "Aichi Prefecture",
+				state_code: "23"
+			},
+			{
+				id: 829,
+				name: "Akita Prefecture",
+				state_code: "05"
+			},
+			{
+				id: 839,
+				name: "Aomori Prefecture",
+				state_code: "02"
+			},
+			{
+				id: 821,
+				name: "Chiba Prefecture",
+				state_code: "12"
+			},
+			{
+				id: 865,
+				name: "Ehime Prefecture",
+				state_code: "38"
+			},
+			{
+				id: 848,
+				name: "Fukui Prefecture",
+				state_code: "18"
+			},
+			{
+				id: 861,
+				name: "Fukuoka Prefecture",
+				state_code: "40"
+			},
+			{
+				id: 847,
+				name: "Fukushima Prefecture",
+				state_code: "07"
+			},
+			{
+				id: 858,
+				name: "Gifu Prefecture",
+				state_code: "21"
+			},
+			{
+				id: 862,
+				name: "Gunma Prefecture",
+				state_code: "10"
+			},
+			{
+				id: 828,
+				name: "Hiroshima Prefecture",
+				state_code: "34"
+			},
+			{
+				id: 832,
+				name: "Hokkaidō Prefecture",
+				state_code: "01"
+			},
+			{
+				id: 831,
+				name: "Hyōgo Prefecture",
+				state_code: "28"
+			},
+			{
+				id: 851,
+				name: "Ibaraki Prefecture",
+				state_code: "08"
+			},
+			{
+				id: 830,
+				name: "Ishikawa Prefecture",
+				state_code: "17"
+			},
+			{
+				id: 856,
+				name: "Iwate Prefecture",
+				state_code: "03"
+			},
+			{
+				id: 864,
+				name: "Kagawa Prefecture",
+				state_code: "37"
+			},
+			{
+				id: 840,
+				name: "Kagoshima Prefecture",
+				state_code: "46"
+			},
+			{
+				id: 842,
+				name: "Kanagawa Prefecture",
+				state_code: "14"
+			},
+			{
+				id: 4924,
+				name: "Kōchi Prefecture",
+				state_code: "39"
+			},
+			{
+				id: 846,
+				name: "Kumamoto Prefecture",
+				state_code: "43"
+			},
+			{
+				id: 834,
+				name: "Kyōto Prefecture",
+				state_code: "26"
+			},
+			{
+				id: 833,
+				name: "Mie Prefecture",
+				state_code: "24"
+			},
+			{
+				id: 857,
+				name: "Miyagi Prefecture",
+				state_code: "04"
+			},
+			{
+				id: 855,
+				name: "Miyazaki Prefecture",
+				state_code: "45"
+			},
+			{
+				id: 843,
+				name: "Nagano Prefecture",
+				state_code: "20"
+			},
+			{
+				id: 849,
+				name: "Nagasaki Prefecture",
+				state_code: "42"
+			},
+			{
+				id: 824,
+				name: "Nara Prefecture",
+				state_code: "29"
+			},
+			{
+				id: 841,
+				name: "Niigata Prefecture",
+				state_code: "15"
+			},
+			{
+				id: 822,
+				name: "Ōita Prefecture",
+				state_code: "44"
+			},
+			{
+				id: 820,
+				name: "Okayama Prefecture",
+				state_code: "33"
+			},
+			{
+				id: 853,
+				name: "Okinawa Prefecture",
+				state_code: "47"
+			},
+			{
+				id: 859,
+				name: "Ōsaka Prefecture",
+				state_code: "27"
+			},
+			{
+				id: 863,
+				name: "Saga Prefecture",
+				state_code: "41"
+			},
+			{
+				id: 860,
+				name: "Saitama Prefecture",
+				state_code: "11"
+			},
+			{
+				id: 845,
+				name: "Shiga Prefecture",
+				state_code: "25"
+			},
+			{
+				id: 826,
+				name: "Shimane Prefecture",
+				state_code: "32"
+			},
+			{
+				id: 825,
+				name: "Shizuoka Prefecture",
+				state_code: "22"
+			},
+			{
+				id: 854,
+				name: "Tochigi Prefecture",
+				state_code: "09"
+			},
+			{
+				id: 836,
+				name: "Tokushima Prefecture",
+				state_code: "36"
+			},
+			{
+				id: 823,
+				name: "Tokyo",
+				state_code: "13"
+			},
+			{
+				id: 850,
+				name: "Tottori Prefecture",
+				state_code: "31"
+			},
+			{
+				id: 838,
+				name: "Toyama Prefecture",
+				state_code: "16"
+			},
+			{
+				id: 844,
+				name: "Wakayama Prefecture",
+				state_code: "30"
+			},
+			{
+				id: 837,
+				name: "Yamagata Prefecture",
+				state_code: "06"
+			},
+			{
+				id: 835,
+				name: "Yamaguchi Prefecture",
+				state_code: "35"
+			},
+			{
+				id: 852,
+				name: "Yamanashi Prefecture",
+				state_code: "19"
+			}
+		]
+	},
+	{
+		name: "Jersey",
+		iso3: "JEY",
+		iso2: "JE",
+		numeric_code: "832",
+		phone_code: "+44-1534",
+		emoji: "🇯🇪",
+		emojiU: "U+1F1EF U+1F1EA",
+		states: [
+		]
+	},
+	{
+		name: "Jordan",
+		iso3: "JOR",
+		iso2: "JO",
+		numeric_code: "400",
+		phone_code: "962",
+		emoji: "🇯🇴",
+		emojiU: "U+1F1EF U+1F1F4",
+		states: [
+			{
+				id: 963,
+				name: "Ajloun Governorate",
+				state_code: "AJ"
+			},
+			{
+				id: 965,
+				name: "Amman Governorate",
+				state_code: "AM"
+			},
+			{
+				id: 959,
+				name: "Aqaba Governorate",
+				state_code: "AQ"
+			},
+			{
+				id: 961,
+				name: "Balqa Governorate",
+				state_code: "BA"
+			},
+			{
+				id: 960,
+				name: "Irbid Governorate",
+				state_code: "IR"
+			},
+			{
+				id: 966,
+				name: "Jerash Governorate",
+				state_code: "JA"
+			},
+			{
+				id: 956,
+				name: "Karak Governorate",
+				state_code: "KA"
+			},
+			{
+				id: 964,
+				name: "Ma'an Governorate",
+				state_code: "MN"
+			},
+			{
+				id: 958,
+				name: "Madaba Governorate",
+				state_code: "MD"
+			},
+			{
+				id: 962,
+				name: "Mafraq Governorate",
+				state_code: "MA"
+			},
+			{
+				id: 957,
+				name: "Tafilah Governorate",
+				state_code: "AT"
+			},
+			{
+				id: 967,
+				name: "Zarqa Governorate",
+				state_code: "AZ"
+			}
+		]
+	},
+	{
+		name: "Kazakhstan",
+		iso3: "KAZ",
+		iso2: "KZ",
+		numeric_code: "398",
+		phone_code: "7",
+		emoji: "🇰🇿",
+		emojiU: "U+1F1F0 U+1F1FF",
+		states: [
+			{
+				id: 145,
+				name: "Akmola Region",
+				state_code: "AKM"
+			},
+			{
+				id: 151,
+				name: "Aktobe Region",
+				state_code: "AKT"
+			},
+			{
+				id: 152,
+				name: "Almaty",
+				state_code: "ALA"
+			},
+			{
+				id: 143,
+				name: "Almaty Region",
+				state_code: "ALM"
+			},
+			{
+				id: 153,
+				name: "Atyrau Region",
+				state_code: "ATY"
+			},
+			{
+				id: 155,
+				name: "Baikonur",
+				state_code: "BAY"
+			},
+			{
+				id: 154,
+				name: "East Kazakhstan Region",
+				state_code: "VOS"
+			},
+			{
+				id: 147,
+				name: "Jambyl Region",
+				state_code: "ZHA"
+			},
+			{
+				id: 150,
+				name: "Karaganda Region",
+				state_code: "KAR"
+			},
+			{
+				id: 157,
+				name: "Kostanay Region",
+				state_code: "KUS"
+			},
+			{
+				id: 142,
+				name: "Kyzylorda Region",
+				state_code: "KZY"
+			},
+			{
+				id: 141,
+				name: "Mangystau Region",
+				state_code: "MAN"
+			},
+			{
+				id: 144,
+				name: "North Kazakhstan Region",
+				state_code: "SEV"
+			},
+			{
+				id: 156,
+				name: "Nur-Sultan",
+				state_code: "AST"
+			},
+			{
+				id: 146,
+				name: "Pavlodar Region",
+				state_code: "PAV"
+			},
+			{
+				id: 149,
+				name: "Turkestan Region",
+				state_code: "YUZ"
+			},
+			{
+				id: 148,
+				name: "West Kazakhstan Province",
+				state_code: "ZAP"
+			}
+		]
+	},
+	{
+		name: "Kenya",
+		iso3: "KEN",
+		iso2: "KE",
+		numeric_code: "404",
+		phone_code: "254",
+		emoji: "🇰🇪",
+		emojiU: "U+1F1F0 U+1F1EA",
+		states: [
+			{
+				id: 181,
+				name: "Baringo",
+				state_code: "01"
+			},
+			{
+				id: 210,
+				name: "Bomet",
+				state_code: "02"
+			},
+			{
+				id: 168,
+				name: "Bungoma",
+				state_code: "03"
+			},
+			{
+				id: 161,
+				name: "Busia",
+				state_code: "04"
+			},
+			{
+				id: 201,
+				name: "Elgeyo-Marakwet",
+				state_code: "05"
+			},
+			{
+				id: 163,
+				name: "Embu",
+				state_code: "06"
+			},
+			{
+				id: 196,
+				name: "Garissa",
+				state_code: "07"
+			},
+			{
+				id: 195,
+				name: "Homa Bay",
+				state_code: "08"
+			},
+			{
+				id: 170,
+				name: "Isiolo",
+				state_code: "09"
+			},
+			{
+				id: 197,
+				name: "Kajiado",
+				state_code: "10"
+			},
+			{
+				id: 158,
+				name: "Kakamega",
+				state_code: "11"
+			},
+			{
+				id: 193,
+				name: "Kericho",
+				state_code: "12"
+			},
+			{
+				id: 199,
+				name: "Kiambu",
+				state_code: "13"
+			},
+			{
+				id: 174,
+				name: "Kilifi",
+				state_code: "14"
+			},
+			{
+				id: 167,
+				name: "Kirinyaga",
+				state_code: "15"
+			},
+			{
+				id: 159,
+				name: "Kisii",
+				state_code: "16"
+			},
+			{
+				id: 171,
+				name: "Kisumu",
+				state_code: "17"
+			},
+			{
+				id: 211,
+				name: "Kitui",
+				state_code: "18"
+			},
+			{
+				id: 173,
+				name: "Kwale",
+				state_code: "19"
+			},
+			{
+				id: 164,
+				name: "Laikipia",
+				state_code: "20"
+			},
+			{
+				id: 166,
+				name: "Lamu",
+				state_code: "21"
+			},
+			{
+				id: 184,
+				name: "Machakos",
+				state_code: "22"
+			},
+			{
+				id: 188,
+				name: "Makueni",
+				state_code: "23"
+			},
+			{
+				id: 187,
+				name: "Mandera",
+				state_code: "24"
+			},
+			{
+				id: 194,
+				name: "Marsabit",
+				state_code: "25"
+			},
+			{
+				id: 198,
+				name: "Meru",
+				state_code: "26"
+			},
+			{
+				id: 190,
+				name: "Migori",
+				state_code: "27"
+			},
+			{
+				id: 200,
+				name: "Mombasa",
+				state_code: "28"
+			},
+			{
+				id: 178,
+				name: "Murang'a",
+				state_code: "29"
+			},
+			{
+				id: 191,
+				name: "Nairobi City",
+				state_code: "30"
+			},
+			{
+				id: 203,
+				name: "Nakuru",
+				state_code: "31"
+			},
+			{
+				id: 165,
+				name: "Nandi",
+				state_code: "32"
+			},
+			{
+				id: 175,
+				name: "Narok",
+				state_code: "33"
+			},
+			{
+				id: 209,
+				name: "Nyamira",
+				state_code: "34"
+			},
+			{
+				id: 192,
+				name: "Nyandarua",
+				state_code: "35"
+			},
+			{
+				id: 180,
+				name: "Nyeri",
+				state_code: "36"
+			},
+			{
+				id: 207,
+				name: "Samburu",
+				state_code: "37"
+			},
+			{
+				id: 186,
+				name: "Siaya",
+				state_code: "38"
+			},
+			{
+				id: 176,
+				name: "Taita–Taveta",
+				state_code: "39"
+			},
+			{
+				id: 205,
+				name: "Tana River",
+				state_code: "40"
+			},
+			{
+				id: 185,
+				name: "Tharaka-Nithi",
+				state_code: "41"
+			},
+			{
+				id: 183,
+				name: "Trans Nzoia",
+				state_code: "42"
+			},
+			{
+				id: 206,
+				name: "Turkana",
+				state_code: "43"
+			},
+			{
+				id: 169,
+				name: "Uasin Gishu",
+				state_code: "44"
+			},
+			{
+				id: 202,
+				name: "Vihiga",
+				state_code: "45"
+			},
+			{
+				id: 182,
+				name: "Wajir",
+				state_code: "46"
+			},
+			{
+				id: 208,
+				name: "West Pokot",
+				state_code: "47"
+			}
+		]
+	},
+	{
+		name: "Kiribati",
+		iso3: "KIR",
+		iso2: "KI",
+		numeric_code: "296",
+		phone_code: "686",
+		emoji: "🇰🇮",
+		emojiU: "U+1F1F0 U+1F1EE",
+		states: [
+			{
+				id: 1831,
+				name: "Gilbert Islands",
+				state_code: "G"
+			},
+			{
+				id: 1832,
+				name: "Line Islands",
+				state_code: "L"
+			},
+			{
+				id: 1830,
+				name: "Phoenix Islands",
+				state_code: "P"
+			}
+		]
+	},
+	{
+		name: "Kuwait",
+		iso3: "KWT",
+		iso2: "KW",
+		numeric_code: "414",
+		phone_code: "965",
+		emoji: "🇰🇼",
+		emojiU: "U+1F1F0 U+1F1FC",
+		states: [
+			{
+				id: 977,
+				name: "Al Ahmadi Governorate",
+				state_code: "AH"
+			},
+			{
+				id: 975,
+				name: "Al Farwaniyah Governorate",
+				state_code: "FA"
+			},
+			{
+				id: 972,
+				name: "Al Jahra Governorate",
+				state_code: "JA"
+			},
+			{
+				id: 976,
+				name: "Capital Governorate",
+				state_code: "KU"
+			},
+			{
+				id: 973,
+				name: "Hawalli Governorate",
+				state_code: "HA"
+			},
+			{
+				id: 974,
+				name: "Mubarak Al-Kabeer Governorate",
+				state_code: "MU"
+			}
+		]
+	},
+	{
+		name: "Kyrgyzstan",
+		iso3: "KGZ",
+		iso2: "KG",
+		numeric_code: "417",
+		phone_code: "996",
+		emoji: "🇰🇬",
+		emojiU: "U+1F1F0 U+1F1EC",
+		states: [
+			{
+				id: 998,
+				name: "Batken Region",
+				state_code: "B"
+			},
+			{
+				id: 1001,
+				name: "Bishkek",
+				state_code: "GB"
+			},
+			{
+				id: 1004,
+				name: "Chuy Region",
+				state_code: "C"
+			},
+			{
+				id: 1002,
+				name: "Issyk-Kul Region",
+				state_code: "Y"
+			},
+			{
+				id: 1000,
+				name: "Jalal-Abad Region",
+				state_code: "J"
+			},
+			{
+				id: 999,
+				name: "Naryn Region",
+				state_code: "N"
+			},
+			{
+				id: 1003,
+				name: "Osh",
+				state_code: "GO"
+			},
+			{
+				id: 1005,
+				name: "Osh Region",
+				state_code: "O"
+			},
+			{
+				id: 997,
+				name: "Talas Region",
+				state_code: "T"
+			}
+		]
+	},
+	{
+		name: "Laos",
+		iso3: "LAO",
+		iso2: "LA",
+		numeric_code: "418",
+		phone_code: "856",
+		emoji: "🇱🇦",
+		emojiU: "U+1F1F1 U+1F1E6",
+		states: [
+			{
+				id: 982,
+				name: "Attapeu Province",
+				state_code: "AT"
+			},
+			{
+				id: 991,
+				name: "Bokeo Province",
+				state_code: "BK"
+			},
+			{
+				id: 985,
+				name: "Bolikhamsai Province",
+				state_code: "BL"
+			},
+			{
+				id: 996,
+				name: "Champasak Province",
+				state_code: "CH"
+			},
+			{
+				id: 989,
+				name: "Houaphanh Province",
+				state_code: "HO"
+			},
+			{
+				id: 986,
+				name: "Khammouane Province",
+				state_code: "KH"
+			},
+			{
+				id: 992,
+				name: "Luang Namtha Province",
+				state_code: "LM"
+			},
+			{
+				id: 978,
+				name: "Luang Prabang Province",
+				state_code: "LP"
+			},
+			{
+				id: 988,
+				name: "Oudomxay Province",
+				state_code: "OU"
+			},
+			{
+				id: 987,
+				name: "Phongsaly Province",
+				state_code: "PH"
+			},
+			{
+				id: 993,
+				name: "Sainyabuli Province",
+				state_code: "XA"
+			},
+			{
+				id: 981,
+				name: "Salavan Province",
+				state_code: "SL"
+			},
+			{
+				id: 990,
+				name: "Savannakhet Province",
+				state_code: "SV"
+			},
+			{
+				id: 984,
+				name: "Sekong Province",
+				state_code: "XE"
+			},
+			{
+				id: 979,
+				name: "Vientiane Prefecture",
+				state_code: "VT"
+			},
+			{
+				id: 980,
+				name: "Vientiane Province",
+				state_code: "VI"
+			},
+			{
+				id: 994,
+				name: "Xaisomboun",
+				state_code: "XN"
+			},
+			{
+				id: 983,
+				name: "Xaisomboun Province",
+				state_code: "XS"
+			},
+			{
+				id: 995,
+				name: "Xiangkhouang Province",
+				state_code: "XI"
+			}
+		]
+	},
+	{
+		name: "Latvia",
+		iso3: "LVA",
+		iso2: "LV",
+		numeric_code: "428",
+		phone_code: "371",
+		emoji: "🇱🇻",
+		emojiU: "U+1F1F1 U+1F1FB",
+		states: [
+			{
+				id: 4445,
+				name: "Aglona Municipality",
+				state_code: "001"
+			},
+			{
+				id: 4472,
+				name: "Aizkraukle Municipality",
+				state_code: "002"
+			},
+			{
+				id: 4496,
+				name: "Aizpute Municipality",
+				state_code: "003"
+			},
+			{
+				id: 4499,
+				name: "Aknīste Municipality",
+				state_code: "004"
+			},
+			{
+				id: 4484,
+				name: "Aloja Municipality",
+				state_code: "005"
+			},
+			{
+				id: 4485,
+				name: "Alsunga Municipality",
+				state_code: "006"
+			},
+			{
+				id: 4487,
+				name: "Alūksne Municipality",
+				state_code: "007"
+			},
+			{
+				id: 4497,
+				name: "Amata Municipality",
+				state_code: "008"
+			},
+			{
+				id: 4457,
+				name: "Ape Municipality",
+				state_code: "009"
+			},
+			{
+				id: 4481,
+				name: "Auce Municipality",
+				state_code: "010"
+			},
+			{
+				id: 4427,
+				name: "Babīte Municipality",
+				state_code: "012"
+			},
+			{
+				id: 4482,
+				name: "Baldone Municipality",
+				state_code: "013"
+			},
+			{
+				id: 4498,
+				name: "Baltinava Municipality",
+				state_code: "014"
+			},
+			{
+				id: 4505,
+				name: "Balvi Municipality",
+				state_code: "015"
+			},
+			{
+				id: 4465,
+				name: "Bauska Municipality",
+				state_code: "016"
+			},
+			{
+				id: 4471,
+				name: "Beverīna Municipality",
+				state_code: "017"
+			},
+			{
+				id: 4468,
+				name: "Brocēni Municipality",
+				state_code: "018"
+			},
+			{
+				id: 4411,
+				name: "Burtnieki Municipality",
+				state_code: "019"
+			},
+			{
+				id: 4454,
+				name: "Carnikava Municipality",
+				state_code: "020"
+			},
+			{
+				id: 4469,
+				name: "Cēsis Municipality",
+				state_code: "022"
+			},
+			{
+				id: 4414,
+				name: "Cesvaine Municipality",
+				state_code: "021"
+			},
+			{
+				id: 4410,
+				name: "Cibla Municipality",
+				state_code: "023"
+			},
+			{
+				id: 4504,
+				name: "Dagda Municipality",
+				state_code: "024"
+			},
+			{
+				id: 4463,
+				name: "Daugavpils",
+				state_code: "DGV"
+			},
+			{
+				id: 4492,
+				name: "Daugavpils Municipality",
+				state_code: "025"
+			},
+			{
+				id: 4437,
+				name: "Dobele Municipality",
+				state_code: "026"
+			},
+			{
+				id: 4428,
+				name: "Dundaga Municipality",
+				state_code: "027"
+			},
+			{
+				id: 4458,
+				name: "Durbe Municipality",
+				state_code: "028"
+			},
+			{
+				id: 4448,
+				name: "Engure Municipality",
+				state_code: "029"
+			},
+			{
+				id: 4444,
+				name: "Ērgļi Municipality",
+				state_code: "030"
+			},
+			{
+				id: 4510,
+				name: "Garkalne Municipality",
+				state_code: "031"
+			},
+			{
+				id: 4470,
+				name: "Grobiņa Municipality",
+				state_code: "032"
+			},
+			{
+				id: 4400,
+				name: "Gulbene Municipality",
+				state_code: "033"
+			},
+			{
+				id: 4441,
+				name: "Iecava Municipality",
+				state_code: "034"
+			},
+			{
+				id: 4511,
+				name: "Ikšķile Municipality",
+				state_code: "035"
+			},
+			{
+				id: 4399,
+				name: "Ilūkste Municipality",
+				state_code: "036"
+			},
+			{
+				id: 4449,
+				name: "Inčukalns Municipality",
+				state_code: "037"
+			},
+			{
+				id: 4475,
+				name: "Jaunjelgava Municipality",
+				state_code: "038"
+			},
+			{
+				id: 4407,
+				name: "Jaunpiebalga Municipality",
+				state_code: "039"
+			},
+			{
+				id: 4489,
+				name: "Jaunpils Municipality",
+				state_code: "040"
+			},
+			{
+				id: 4464,
+				name: "Jēkabpils",
+				state_code: "JKB"
+			},
+			{
+				id: 4438,
+				name: "Jēkabpils Municipality",
+				state_code: "042"
+			},
+			{
+				id: 4500,
+				name: "Jelgava",
+				state_code: "JEL"
+			},
+			{
+				id: 4424,
+				name: "Jelgava Municipality",
+				state_code: "041"
+			},
+			{
+				id: 4446,
+				name: "Jūrmala",
+				state_code: "JUR"
+			},
+			{
+				id: 4420,
+				name: "Kandava Municipality",
+				state_code: "043"
+			},
+			{
+				id: 4453,
+				name: "Kārsava Municipality",
+				state_code: "044"
+			},
+			{
+				id: 4412,
+				name: "Ķegums Municipality",
+				state_code: "051"
+			},
+			{
+				id: 4435,
+				name: "Ķekava Municipality",
+				state_code: "052"
+			},
+			{
+				id: 4495,
+				name: "Kocēni Municipality",
+				state_code: "045"
+			},
+			{
+				id: 4452,
+				name: "Koknese Municipality",
+				state_code: "046"
+			},
+			{
+				id: 4474,
+				name: "Krāslava Municipality",
+				state_code: "047"
+			},
+			{
+				id: 4422,
+				name: "Krimulda Municipality",
+				state_code: "048"
+			},
+			{
+				id: 4413,
+				name: "Krustpils Municipality",
+				state_code: "049"
+			},
+			{
+				id: 4490,
+				name: "Kuldīga Municipality",
+				state_code: "050"
+			},
+			{
+				id: 4512,
+				name: "Lielvārde Municipality",
+				state_code: "053"
+			},
+			{
+				id: 4460,
+				name: "Liepāja",
+				state_code: "LPX"
+			},
+			{
+				id: 4488,
+				name: "Līgatne Municipality",
+				state_code: "055"
+			},
+			{
+				id: 4418,
+				name: "Limbaži Municipality",
+				state_code: "054"
+			},
+			{
+				id: 4401,
+				name: "Līvāni Municipality",
+				state_code: "056"
+			},
+			{
+				id: 4419,
+				name: "Lubāna Municipality",
+				state_code: "057"
+			},
+			{
+				id: 4501,
+				name: "Ludza Municipality",
+				state_code: "058"
+			},
+			{
+				id: 4433,
+				name: "Madona Municipality",
+				state_code: "059"
+			},
+			{
+				id: 4461,
+				name: "Mālpils Municipality",
+				state_code: "061"
+			},
+			{
+				id: 4450,
+				name: "Mārupe Municipality",
+				state_code: "062"
+			},
+			{
+				id: 4513,
+				name: "Mazsalaca Municipality",
+				state_code: "060"
+			},
+			{
+				id: 4451,
+				name: "Mērsrags Municipality",
+				state_code: "063"
+			},
+			{
+				id: 4398,
+				name: "Naukšēni Municipality",
+				state_code: "064"
+			},
+			{
+				id: 4432,
+				name: "Nereta Municipality",
+				state_code: "065"
+			},
+			{
+				id: 4436,
+				name: "Nīca Municipality",
+				state_code: "066"
+			},
+			{
+				id: 4416,
+				name: "Ogre Municipality",
+				state_code: "067"
+			},
+			{
+				id: 4417,
+				name: "Olaine Municipality",
+				state_code: "068"
+			},
+			{
+				id: 4442,
+				name: "Ozolnieki Municipality",
+				state_code: "069"
+			},
+			{
+				id: 4507,
+				name: "Pārgauja Municipality",
+				state_code: "070"
+			},
+			{
+				id: 4467,
+				name: "Pāvilosta Municipality",
+				state_code: "071"
+			},
+			{
+				id: 4405,
+				name: "Pļaviņas Municipality",
+				state_code: "072"
+			},
+			{
+				id: 4483,
+				name: "Preiļi Municipality",
+				state_code: "073"
+			},
+			{
+				id: 4429,
+				name: "Priekule Municipality",
+				state_code: "074"
+			},
+			{
+				id: 4506,
+				name: "Priekuļi Municipality",
+				state_code: "075"
+			},
+			{
+				id: 4479,
+				name: "Rauna Municipality",
+				state_code: "076"
+			},
+			{
+				id: 4509,
+				name: "Rēzekne",
+				state_code: "REZ"
+			},
+			{
+				id: 4455,
+				name: "Rēzekne Municipality",
+				state_code: "077"
+			},
+			{
+				id: 4502,
+				name: "Riebiņi Municipality",
+				state_code: "078"
+			},
+			{
+				id: 4491,
+				name: "Riga",
+				state_code: "RIX"
+			},
+			{
+				id: 4440,
+				name: "Roja Municipality",
+				state_code: "079"
+			},
+			{
+				id: 4493,
+				name: "Ropaži Municipality",
+				state_code: "080"
+			},
+			{
+				id: 4503,
+				name: "Rucava Municipality",
+				state_code: "081"
+			},
+			{
+				id: 4423,
+				name: "Rugāji Municipality",
+				state_code: "082"
+			},
+			{
+				id: 4426,
+				name: "Rūjiena Municipality",
+				state_code: "084"
+			},
+			{
+				id: 4404,
+				name: "Rundāle Municipality",
+				state_code: "083"
+			},
+			{
+				id: 4434,
+				name: "Sala Municipality",
+				state_code: "085"
+			},
+			{
+				id: 4396,
+				name: "Salacgrīva Municipality",
+				state_code: "086"
+			},
+			{
+				id: 4402,
+				name: "Salaspils Municipality",
+				state_code: "087"
+			},
+			{
+				id: 4439,
+				name: "Saldus Municipality",
+				state_code: "088"
+			},
+			{
+				id: 4443,
+				name: "Saulkrasti Municipality",
+				state_code: "089"
+			},
+			{
+				id: 4408,
+				name: "Sēja Municipality",
+				state_code: "090"
+			},
+			{
+				id: 4476,
+				name: "Sigulda Municipality",
+				state_code: "091"
+			},
+			{
+				id: 4415,
+				name: "Skrīveri Municipality",
+				state_code: "092"
+			},
+			{
+				id: 4447,
+				name: "Skrunda Municipality",
+				state_code: "093"
+			},
+			{
+				id: 4462,
+				name: "Smiltene Municipality",
+				state_code: "094"
+			},
+			{
+				id: 4478,
+				name: "Stopiņi Municipality",
+				state_code: "095"
+			},
+			{
+				id: 4494,
+				name: "Strenči Municipality",
+				state_code: "096"
+			},
+			{
+				id: 4459,
+				name: "Talsi Municipality",
+				state_code: "097"
+			},
+			{
+				id: 4480,
+				name: "Tērvete Municipality",
+				state_code: "098"
+			},
+			{
+				id: 4409,
+				name: "Tukums Municipality",
+				state_code: "099"
+			},
+			{
+				id: 4508,
+				name: "Vaiņode Municipality",
+				state_code: "100"
+			},
+			{
+				id: 4425,
+				name: "Valka Municipality",
+				state_code: "101"
+			},
+			{
+				id: 4473,
+				name: "Valmiera",
+				state_code: "VMR"
+			},
+			{
+				id: 4431,
+				name: "Varakļāni Municipality",
+				state_code: "102"
+			},
+			{
+				id: 4406,
+				name: "Vārkava Municipality",
+				state_code: "103"
+			},
+			{
+				id: 4466,
+				name: "Vecpiebalga Municipality",
+				state_code: "104"
+			},
+			{
+				id: 4397,
+				name: "Vecumnieki Municipality",
+				state_code: "105"
+			},
+			{
+				id: 4421,
+				name: "Ventspils",
+				state_code: "VEN"
+			},
+			{
+				id: 4403,
+				name: "Ventspils Municipality",
+				state_code: "106"
+			},
+			{
+				id: 4456,
+				name: "Viesīte Municipality",
+				state_code: "107"
+			},
+			{
+				id: 4477,
+				name: "Viļaka Municipality",
+				state_code: "108"
+			},
+			{
+				id: 4486,
+				name: "Viļāni Municipality",
+				state_code: "109"
+			},
+			{
+				id: 4430,
+				name: "Zilupe Municipality",
+				state_code: "110"
+			}
+		]
+	},
+	{
+		name: "Lebanon",
+		iso3: "LBN",
+		iso2: "LB",
+		numeric_code: "422",
+		phone_code: "961",
+		emoji: "🇱🇧",
+		emojiU: "U+1F1F1 U+1F1E7",
+		states: [
+			{
+				id: 2285,
+				name: "Akkar Governorate",
+				state_code: "AK"
+			},
+			{
+				id: 2283,
+				name: "Baalbek-Hermel Governorate",
+				state_code: "BH"
+			},
+			{
+				id: 2286,
+				name: "Beirut Governorate",
+				state_code: "BA"
+			},
+			{
+				id: 2287,
+				name: "Beqaa Governorate",
+				state_code: "BI"
+			},
+			{
+				id: 2282,
+				name: "Mount Lebanon Governorate",
+				state_code: "JL"
+			},
+			{
+				id: 2288,
+				name: "Nabatieh Governorate",
+				state_code: "NA"
+			},
+			{
+				id: 2284,
+				name: "North Governorate",
+				state_code: "AS"
+			},
+			{
+				id: 2281,
+				name: "South Governorate",
+				state_code: "JA"
+			}
+		]
+	},
+	{
+		name: "Lesotho",
+		iso3: "LSO",
+		iso2: "LS",
+		numeric_code: "426",
+		phone_code: "266",
+		emoji: "🇱🇸",
+		emojiU: "U+1F1F1 U+1F1F8",
+		states: [
+			{
+				id: 3030,
+				name: "Berea District",
+				state_code: "D"
+			},
+			{
+				id: 3029,
+				name: "Butha-Buthe District",
+				state_code: "B"
+			},
+			{
+				id: 3026,
+				name: "Leribe District",
+				state_code: "C"
+			},
+			{
+				id: 3022,
+				name: "Mafeteng District",
+				state_code: "E"
+			},
+			{
+				id: 3028,
+				name: "Maseru District",
+				state_code: "A"
+			},
+			{
+				id: 3023,
+				name: "Mohale's Hoek District",
+				state_code: "F"
+			},
+			{
+				id: 3024,
+				name: "Mokhotlong District",
+				state_code: "J"
+			},
+			{
+				id: 3025,
+				name: "Qacha's Nek District",
+				state_code: "H"
+			},
+			{
+				id: 3027,
+				name: "Quthing District",
+				state_code: "G"
+			},
+			{
+				id: 3031,
+				name: "Thaba-Tseka District",
+				state_code: "K"
+			}
+		]
+	},
+	{
+		name: "Liberia",
+		iso3: "LBR",
+		iso2: "LR",
+		numeric_code: "430",
+		phone_code: "231",
+		emoji: "🇱🇷",
+		emojiU: "U+1F1F1 U+1F1F7",
+		states: [
+			{
+				id: 3041,
+				name: "Bomi County",
+				state_code: "BM"
+			},
+			{
+				id: 3034,
+				name: "Bong County",
+				state_code: "BG"
+			},
+			{
+				id: 3044,
+				name: "Gbarpolu County",
+				state_code: "GP"
+			},
+			{
+				id: 3040,
+				name: "Grand Bassa County",
+				state_code: "GB"
+			},
+			{
+				id: 3036,
+				name: "Grand Cape Mount County",
+				state_code: "CM"
+			},
+			{
+				id: 3039,
+				name: "Grand Gedeh County",
+				state_code: "GG"
+			},
+			{
+				id: 3045,
+				name: "Grand Kru County",
+				state_code: "GK"
+			},
+			{
+				id: 3037,
+				name: "Lofa County",
+				state_code: "LO"
+			},
+			{
+				id: 3043,
+				name: "Margibi County",
+				state_code: "MG"
+			},
+			{
+				id: 3042,
+				name: "Maryland County",
+				state_code: "MY"
+			},
+			{
+				id: 3032,
+				name: "Montserrado County",
+				state_code: "MO"
+			},
+			{
+				id: 3046,
+				name: "Nimba",
+				state_code: "NI"
+			},
+			{
+				id: 3033,
+				name: "River Cess County",
+				state_code: "RI"
+			},
+			{
+				id: 3038,
+				name: "River Gee County",
+				state_code: "RG"
+			},
+			{
+				id: 3035,
+				name: "Sinoe County",
+				state_code: "SI"
+			}
+		]
+	},
+	{
+		name: "Libya",
+		iso3: "LBY",
+		iso2: "LY",
+		numeric_code: "434",
+		phone_code: "218",
+		emoji: "🇱🇾",
+		emojiU: "U+1F1F1 U+1F1FE",
+		states: [
+			{
+				id: 2964,
+				name: "Al Wahat District",
+				state_code: "WA"
+			},
+			{
+				id: 2981,
+				name: "Benghazi",
+				state_code: "BA"
+			},
+			{
+				id: 2966,
+				name: "Derna District",
+				state_code: "DR"
+			},
+			{
+				id: 2969,
+				name: "Ghat District",
+				state_code: "GT"
+			},
+			{
+				id: 2980,
+				name: "Jabal al Akhdar",
+				state_code: "JA"
+			},
+			{
+				id: 2974,
+				name: "Jabal al Gharbi District",
+				state_code: "JG"
+			},
+			{
+				id: 2979,
+				name: "Jafara",
+				state_code: "JI"
+			},
+			{
+				id: 2970,
+				name: "Jufra",
+				state_code: "JU"
+			},
+			{
+				id: 2972,
+				name: "Kufra District",
+				state_code: "KF"
+			},
+			{
+				id: 2968,
+				name: "Marj District",
+				state_code: "MJ"
+			},
+			{
+				id: 2978,
+				name: "Misrata District",
+				state_code: "MI"
+			},
+			{
+				id: 2961,
+				name: "Murqub",
+				state_code: "MB"
+			},
+			{
+				id: 2967,
+				name: "Murzuq District",
+				state_code: "MQ"
+			},
+			{
+				id: 2976,
+				name: "Nalut District",
+				state_code: "NL"
+			},
+			{
+				id: 2962,
+				name: "Nuqat al Khams",
+				state_code: "NQ"
+			},
+			{
+				id: 2965,
+				name: "Sabha District",
+				state_code: "SB"
+			},
+			{
+				id: 2977,
+				name: "Sirte District",
+				state_code: "SR"
+			},
+			{
+				id: 2971,
+				name: "Tripoli District",
+				state_code: "TB"
+			},
+			{
+				id: 2973,
+				name: "Wadi al Hayaa District",
+				state_code: "WD"
+			},
+			{
+				id: 2975,
+				name: "Wadi al Shatii District",
+				state_code: "WS"
+			},
+			{
+				id: 2963,
+				name: "Zawiya District",
+				state_code: "ZA"
+			}
+		]
+	},
+	{
+		name: "Liechtenstein",
+		iso3: "LIE",
+		iso2: "LI",
+		numeric_code: "438",
+		phone_code: "423",
+		emoji: "🇱🇮",
+		emojiU: "U+1F1F1 U+1F1EE",
+		states: [
+			{
+				id: 458,
+				name: "Balzers",
+				state_code: "01"
+			},
+			{
+				id: 451,
+				name: "Eschen",
+				state_code: "02"
+			},
+			{
+				id: 457,
+				name: "Gamprin",
+				state_code: "03"
+			},
+			{
+				id: 455,
+				name: "Mauren",
+				state_code: "04"
+			},
+			{
+				id: 454,
+				name: "Planken",
+				state_code: "05"
+			},
+			{
+				id: 453,
+				name: "Ruggell",
+				state_code: "06"
+			},
+			{
+				id: 450,
+				name: "Schaan",
+				state_code: "07"
+			},
+			{
+				id: 449,
+				name: "Schellenberg",
+				state_code: "08"
+			},
+			{
+				id: 459,
+				name: "Triesen",
+				state_code: "09"
+			},
+			{
+				id: 456,
+				name: "Triesenberg",
+				state_code: "10"
+			},
+			{
+				id: 452,
+				name: "Vaduz",
+				state_code: "11"
+			}
+		]
+	},
+	{
+		name: "Lithuania",
+		iso3: "LTU",
+		iso2: "LT",
+		numeric_code: "440",
+		phone_code: "370",
+		emoji: "🇱🇹",
+		emojiU: "U+1F1F1 U+1F1F9",
+		states: [
+			{
+				id: 1561,
+				name: "Akmenė District Municipality",
+				state_code: "01"
+			},
+			{
+				id: 1605,
+				name: "Alytus City Municipality",
+				state_code: "02"
+			},
+			{
+				id: 1574,
+				name: "Alytus County",
+				state_code: "AL"
+			},
+			{
+				id: 1599,
+				name: "Alytus District Municipality",
+				state_code: "03"
+			},
+			{
+				id: 1603,
+				name: "Birštonas Municipality",
+				state_code: "05"
+			},
+			{
+				id: 1566,
+				name: "Biržai District Municipality",
+				state_code: "06"
+			},
+			{
+				id: 1579,
+				name: "Druskininkai municipality",
+				state_code: "07"
+			},
+			{
+				id: 1559,
+				name: "Elektrėnai municipality",
+				state_code: "08"
+			},
+			{
+				id: 1562,
+				name: "Ignalina District Municipality",
+				state_code: "09"
+			},
+			{
+				id: 1567,
+				name: "Jonava District Municipality",
+				state_code: "10"
+			},
+			{
+				id: 1581,
+				name: "Joniškis District Municipality",
+				state_code: "11"
+			},
+			{
+				id: 1555,
+				name: "Jurbarkas District Municipality",
+				state_code: "12"
+			},
+			{
+				id: 1583,
+				name: "Kaišiadorys District Municipality",
+				state_code: "13"
+			},
+			{
+				id: 1591,
+				name: "Kalvarija municipality",
+				state_code: "14"
+			},
+			{
+				id: 1580,
+				name: "Kaunas City Municipality",
+				state_code: "15"
+			},
+			{
+				id: 1556,
+				name: "Kaunas County",
+				state_code: "KU"
+			},
+			{
+				id: 1565,
+				name: "Kaunas District Municipality",
+				state_code: "16"
+			},
+			{
+				id: 1575,
+				name: "Kazlų Rūda municipality",
+				state_code: "17"
+			},
+			{
+				id: 1584,
+				name: "Kėdainiai District Municipality",
+				state_code: "18"
+			},
+			{
+				id: 1618,
+				name: "Kelmė District Municipality",
+				state_code: "19"
+			},
+			{
+				id: 1597,
+				name: "Klaipeda City Municipality",
+				state_code: "20"
+			},
+			{
+				id: 1600,
+				name: "Klaipėda County",
+				state_code: "KL"
+			},
+			{
+				id: 1604,
+				name: "Klaipėda District Municipality",
+				state_code: "21"
+			},
+			{
+				id: 1571,
+				name: "Kretinga District Municipality",
+				state_code: "22"
+			},
+			{
+				id: 1585,
+				name: "Kupiškis District Municipality",
+				state_code: "23"
+			},
+			{
+				id: 1611,
+				name: "Lazdijai District Municipality",
+				state_code: "24"
+			},
+			{
+				id: 1570,
+				name: "Marijampolė County",
+				state_code: "MR"
+			},
+			{
+				id: 1610,
+				name: "Marijampolė Municipality",
+				state_code: "25"
+			},
+			{
+				id: 1557,
+				name: "Mažeikiai District Municipality",
+				state_code: "26"
+			},
+			{
+				id: 1582,
+				name: "Molėtai District Municipality",
+				state_code: "27"
+			},
+			{
+				id: 1563,
+				name: "Neringa Municipality",
+				state_code: "28"
+			},
+			{
+				id: 1612,
+				name: "Pagėgiai municipality",
+				state_code: "29"
+			},
+			{
+				id: 1595,
+				name: "Pakruojis District Municipality",
+				state_code: "30"
+			},
+			{
+				id: 1588,
+				name: "Palanga City Municipality",
+				state_code: "31"
+			},
+			{
+				id: 1589,
+				name: "Panevėžys City Municipality",
+				state_code: "32"
+			},
+			{
+				id: 1558,
+				name: "Panevėžys County",
+				state_code: "PN"
+			},
+			{
+				id: 1614,
+				name: "Panevėžys District Municipality",
+				state_code: "33"
+			},
+			{
+				id: 1616,
+				name: "Pasvalys District Municipality",
+				state_code: "34"
+			},
+			{
+				id: 1553,
+				name: "Plungė District Municipality",
+				state_code: "35"
+			},
+			{
+				id: 1578,
+				name: "Prienai District Municipality",
+				state_code: "36"
+			},
+			{
+				id: 1568,
+				name: "Radviliškis District Municipality",
+				state_code: "37"
+			},
+			{
+				id: 1587,
+				name: "Raseiniai District Municipality",
+				state_code: "38"
+			},
+			{
+				id: 1590,
+				name: "Rietavas municipality",
+				state_code: "39"
+			},
+			{
+				id: 1615,
+				name: "Rokiškis District Municipality",
+				state_code: "40"
+			},
+			{
+				id: 1576,
+				name: "Šakiai District Municipality",
+				state_code: "41"
+			},
+			{
+				id: 1577,
+				name: "Šalčininkai District Municipality",
+				state_code: "42"
+			},
+			{
+				id: 1609,
+				name: "Šiauliai City Municipality",
+				state_code: "43"
+			},
+			{
+				id: 1586,
+				name: "Šiauliai County",
+				state_code: "SA"
+			},
+			{
+				id: 1554,
+				name: "Šiauliai District Municipality",
+				state_code: "44"
+			},
+			{
+				id: 1613,
+				name: "Šilalė District Municipality",
+				state_code: "45"
+			},
+			{
+				id: 1607,
+				name: "Šilutė District Municipality",
+				state_code: "46"
+			},
+			{
+				id: 1594,
+				name: "Širvintos District Municipality",
+				state_code: "47"
+			},
+			{
+				id: 1617,
+				name: "Skuodas District Municipality",
+				state_code: "48"
+			},
+			{
+				id: 1560,
+				name: "Švenčionys District Municipality",
+				state_code: "49"
+			},
+			{
+				id: 1573,
+				name: "Tauragė County",
+				state_code: "TA"
+			},
+			{
+				id: 1572,
+				name: "Tauragė District Municipality",
+				state_code: "50"
+			},
+			{
+				id: 1569,
+				name: "Telšiai County",
+				state_code: "TE"
+			},
+			{
+				id: 1608,
+				name: "Telšiai District Municipality",
+				state_code: "51"
+			},
+			{
+				id: 1593,
+				name: "Trakai District Municipality",
+				state_code: "52"
+			},
+			{
+				id: 1596,
+				name: "Ukmergė District Municipality",
+				state_code: "53"
+			},
+			{
+				id: 1621,
+				name: "Utena County",
+				state_code: "UT"
+			},
+			{
+				id: 1598,
+				name: "Utena District Municipality",
+				state_code: "54"
+			},
+			{
+				id: 1602,
+				name: "Varėna District Municipality",
+				state_code: "55"
+			},
+			{
+				id: 1620,
+				name: "Vilkaviškis District Municipality",
+				state_code: "56"
+			},
+			{
+				id: 1606,
+				name: "Vilnius City Municipality",
+				state_code: "57"
+			},
+			{
+				id: 1601,
+				name: "Vilnius County",
+				state_code: "VL"
+			},
+			{
+				id: 1592,
+				name: "Vilnius District Municipality",
+				state_code: "58"
+			},
+			{
+				id: 1564,
+				name: "Visaginas Municipality",
+				state_code: "59"
+			},
+			{
+				id: 1619,
+				name: "Zarasai District Municipality",
+				state_code: "60"
+			}
+		]
+	},
+	{
+		name: "Luxembourg",
+		iso3: "LUX",
+		iso2: "LU",
+		numeric_code: "442",
+		phone_code: "352",
+		emoji: "🇱🇺",
+		emojiU: "U+1F1F1 U+1F1FA",
+		states: [
+			{
+				id: 1518,
+				name: "Canton of Capellen",
+				state_code: "CA"
+			},
+			{
+				id: 1521,
+				name: "Canton of Clervaux",
+				state_code: "CL"
+			},
+			{
+				id: 1513,
+				name: "Canton of Diekirch",
+				state_code: "DI"
+			},
+			{
+				id: 1515,
+				name: "Canton of Echternach",
+				state_code: "EC"
+			},
+			{
+				id: 1517,
+				name: "Canton of Esch-sur-Alzette",
+				state_code: "ES"
+			},
+			{
+				id: 1525,
+				name: "Canton of Grevenmacher",
+				state_code: "GR"
+			},
+			{
+				id: 1527,
+				name: "Canton of Luxembourg",
+				state_code: "LU"
+			},
+			{
+				id: 1522,
+				name: "Canton of Mersch",
+				state_code: "ME"
+			},
+			{
+				id: 1516,
+				name: "Canton of Redange",
+				state_code: "RD"
+			},
+			{
+				id: 1519,
+				name: "Canton of Remich",
+				state_code: "RM"
+			},
+			{
+				id: 1523,
+				name: "Canton of Vianden",
+				state_code: "VD"
+			},
+			{
+				id: 1526,
+				name: "Canton of Wiltz",
+				state_code: "WI"
+			},
+			{
+				id: 1524,
+				name: "Diekirch District",
+				state_code: "D"
+			},
+			{
+				id: 1520,
+				name: "Grevenmacher District",
+				state_code: "G"
+			},
+			{
+				id: 1514,
+				name: "Luxembourg District",
+				state_code: "L"
+			}
+		]
+	},
+	{
+		name: "Macau S.A.R.",
+		iso3: "MAC",
+		iso2: "MO",
+		numeric_code: "446",
+		phone_code: "853",
+		emoji: "🇲🇴",
+		emojiU: "U+1F1F2 U+1F1F4",
+		states: [
+		]
+	},
+	{
+		name: "Macedonia",
+		iso3: "MKD",
+		iso2: "MK",
+		numeric_code: "807",
+		phone_code: "389",
+		emoji: "🇲🇰",
+		emojiU: "U+1F1F2 U+1F1F0",
+		states: [
+			{
+				id: 703,
+				name: "Aerodrom Municipality",
+				state_code: "01"
+			},
+			{
+				id: 656,
+				name: "Aračinovo Municipality",
+				state_code: "02"
+			},
+			{
+				id: 716,
+				name: "Berovo Municipality",
+				state_code: "03"
+			},
+			{
+				id: 679,
+				name: "Bitola Municipality",
+				state_code: "04"
+			},
+			{
+				id: 649,
+				name: "Bogdanci Municipality",
+				state_code: "05"
+			},
+			{
+				id: 721,
+				name: "Bogovinje Municipality",
+				state_code: "06"
+			},
+			{
+				id: 652,
+				name: "Bosilovo Municipality",
+				state_code: "07"
+			},
+			{
+				id: 660,
+				name: "Brvenica Municipality",
+				state_code: "08"
+			},
+			{
+				id: 694,
+				name: "Butel Municipality",
+				state_code: "09"
+			},
+			{
+				id: 704,
+				name: "Čair Municipality",
+				state_code: "79"
+			},
+			{
+				id: 676,
+				name: "Čaška Municipality",
+				state_code: "80"
+			},
+			{
+				id: 702,
+				name: "Centar Municipality",
+				state_code: "77"
+			},
+			{
+				id: 720,
+				name: "Centar Župa Municipality",
+				state_code: "78"
+			},
+			{
+				id: 644,
+				name: "Češinovo-Obleševo Municipality",
+				state_code: "81"
+			},
+			{
+				id: 715,
+				name: "Čučer-Sandevo Municipality",
+				state_code: "82"
+			},
+			{
+				id: 645,
+				name: "Debarca Municipality",
+				state_code: "22"
+			},
+			{
+				id: 695,
+				name: "Delčevo Municipality",
+				state_code: "23"
+			},
+			{
+				id: 687,
+				name: "Demir Hisar Municipality",
+				state_code: "25"
+			},
+			{
+				id: 655,
+				name: "Demir Kapija Municipality",
+				state_code: "24"
+			},
+			{
+				id: 697,
+				name: "Dojran Municipality",
+				state_code: "26"
+			},
+			{
+				id: 675,
+				name: "Dolneni Municipality",
+				state_code: "27"
+			},
+			{
+				id: 657,
+				name: "Drugovo Municipality",
+				state_code: "28"
+			},
+			{
+				id: 707,
+				name: "Gazi Baba Municipality",
+				state_code: "17"
+			},
+			{
+				id: 648,
+				name: "Gevgelija Municipality",
+				state_code: "18"
+			},
+			{
+				id: 722,
+				name: "Gjorče Petrov Municipality",
+				state_code: "29"
+			},
+			{
+				id: 693,
+				name: "Gostivar Municipality",
+				state_code: "19"
+			},
+			{
+				id: 708,
+				name: "Gradsko Municipality",
+				state_code: "20"
+			},
+			{
+				id: 684,
+				name: "Greater Skopje",
+				state_code: "85"
+			},
+			{
+				id: 690,
+				name: "Ilinden Municipality",
+				state_code: "34"
+			},
+			{
+				id: 678,
+				name: "Jegunovce Municipality",
+				state_code: "35"
+			},
+			{
+				id: 674,
+				name: "Karbinci",
+				state_code: "37"
+			},
+			{
+				id: 681,
+				name: "Karpoš Municipality",
+				state_code: "38"
+			},
+			{
+				id: 713,
+				name: "Kavadarci Municipality",
+				state_code: "36"
+			},
+			{
+				id: 688,
+				name: "Kičevo Municipality",
+				state_code: "40"
+			},
+			{
+				id: 686,
+				name: "Kisela Voda Municipality",
+				state_code: "39"
+			},
+			{
+				id: 723,
+				name: "Kočani Municipality",
+				state_code: "42"
+			},
+			{
+				id: 665,
+				name: "Konče Municipality",
+				state_code: "41"
+			},
+			{
+				id: 641,
+				name: "Kratovo Municipality",
+				state_code: "43"
+			},
+			{
+				id: 677,
+				name: "Kriva Palanka Municipality",
+				state_code: "44"
+			},
+			{
+				id: 647,
+				name: "Krivogaštani Municipality",
+				state_code: "45"
+			},
+			{
+				id: 714,
+				name: "Kruševo Municipality",
+				state_code: "46"
+			},
+			{
+				id: 683,
+				name: "Kumanovo Municipality",
+				state_code: "47"
+			},
+			{
+				id: 659,
+				name: "Lipkovo Municipality",
+				state_code: "48"
+			},
+			{
+				id: 705,
+				name: "Lozovo Municipality",
+				state_code: "49"
+			},
+			{
+				id: 701,
+				name: "Makedonska Kamenica Municipality",
+				state_code: "51"
+			},
+			{
+				id: 692,
+				name: "Makedonski Brod Municipality",
+				state_code: "52"
+			},
+			{
+				id: 669,
+				name: "Mavrovo and Rostuša Municipality",
+				state_code: "50"
+			},
+			{
+				id: 653,
+				name: "Mogila Municipality",
+				state_code: "53"
+			},
+			{
+				id: 664,
+				name: "Negotino Municipality",
+				state_code: "54"
+			},
+			{
+				id: 696,
+				name: "Novaci Municipality",
+				state_code: "55"
+			},
+			{
+				id: 718,
+				name: "Novo Selo Municipality",
+				state_code: "56"
+			},
+			{
+				id: 699,
+				name: "Ohrid Municipality",
+				state_code: "58"
+			},
+			{
+				id: 682,
+				name: "Oslomej Municipality",
+				state_code: "57"
+			},
+			{
+				id: 685,
+				name: "Pehčevo Municipality",
+				state_code: "60"
+			},
+			{
+				id: 698,
+				name: "Petrovec Municipality",
+				state_code: "59"
+			},
+			{
+				id: 670,
+				name: "Plasnica Municipality",
+				state_code: "61"
+			},
+			{
+				id: 666,
+				name: "Prilep Municipality",
+				state_code: "62"
+			},
+			{
+				id: 646,
+				name: "Probištip Municipality",
+				state_code: "63"
+			},
+			{
+				id: 709,
+				name: "Radoviš Municipality",
+				state_code: "64"
+			},
+			{
+				id: 717,
+				name: "Rankovce Municipality",
+				state_code: "65"
+			},
+			{
+				id: 712,
+				name: "Resen Municipality",
+				state_code: "66"
+			},
+			{
+				id: 691,
+				name: "Rosoman Municipality",
+				state_code: "67"
+			},
+			{
+				id: 667,
+				name: "Saraj Municipality",
+				state_code: "68"
+			},
+			{
+				id: 719,
+				name: "Sopište Municipality",
+				state_code: "70"
+			},
+			{
+				id: 643,
+				name: "Staro Nagoričane Municipality",
+				state_code: "71"
+			},
+			{
+				id: 661,
+				name: "Štip Municipality",
+				state_code: "83"
+			},
+			{
+				id: 700,
+				name: "Struga Municipality",
+				state_code: "72"
+			},
+			{
+				id: 710,
+				name: "Strumica Municipality",
+				state_code: "73"
+			},
+			{
+				id: 711,
+				name: "Studeničani Municipality",
+				state_code: "74"
+			},
+			{
+				id: 680,
+				name: "Šuto Orizari Municipality",
+				state_code: "84"
+			},
+			{
+				id: 640,
+				name: "Sveti Nikole Municipality",
+				state_code: "69"
+			},
+			{
+				id: 654,
+				name: "Tearce Municipality",
+				state_code: "75"
+			},
+			{
+				id: 663,
+				name: "Tetovo Municipality",
+				state_code: "76"
+			},
+			{
+				id: 671,
+				name: "Valandovo Municipality",
+				state_code: "10"
+			},
+			{
+				id: 658,
+				name: "Vasilevo Municipality",
+				state_code: "11"
+			},
+			{
+				id: 651,
+				name: "Veles Municipality",
+				state_code: "13"
+			},
+			{
+				id: 662,
+				name: "Vevčani Municipality",
+				state_code: "12"
+			},
+			{
+				id: 672,
+				name: "Vinica Municipality",
+				state_code: "14"
+			},
+			{
+				id: 650,
+				name: "Vraneštica Municipality",
+				state_code: "15"
+			},
+			{
+				id: 689,
+				name: "Vrapčište Municipality",
+				state_code: "16"
+			},
+			{
+				id: 642,
+				name: "Zajas Municipality",
+				state_code: "31"
+			},
+			{
+				id: 706,
+				name: "Zelenikovo Municipality",
+				state_code: "32"
+			},
+			{
+				id: 668,
+				name: "Želino Municipality",
+				state_code: "30"
+			},
+			{
+				id: 673,
+				name: "Zrnovci Municipality",
+				state_code: "33"
+			}
+		]
+	},
+	{
+		name: "Madagascar",
+		iso3: "MDG",
+		iso2: "MG",
+		numeric_code: "450",
+		phone_code: "261",
+		emoji: "🇲🇬",
+		emojiU: "U+1F1F2 U+1F1EC",
+		states: [
+			{
+				id: 2951,
+				name: "Antananarivo Province",
+				state_code: "T"
+			},
+			{
+				id: 2950,
+				name: "Antsiranana Province",
+				state_code: "D"
+			},
+			{
+				id: 2948,
+				name: "Fianarantsoa Province",
+				state_code: "F"
+			},
+			{
+				id: 2953,
+				name: "Mahajanga Province",
+				state_code: "M"
+			},
+			{
+				id: 2952,
+				name: "Toamasina Province",
+				state_code: "A"
+			},
+			{
+				id: 2949,
+				name: "Toliara Province",
+				state_code: "U"
+			}
+		]
+	},
+	{
+		name: "Malawi",
+		iso3: "MWI",
+		iso2: "MW",
+		numeric_code: "454",
+		phone_code: "265",
+		emoji: "🇲🇼",
+		emojiU: "U+1F1F2 U+1F1FC",
+		states: [
+			{
+				id: 3096,
+				name: "Balaka District",
+				state_code: "BA"
+			},
+			{
+				id: 3102,
+				name: "Blantyre District",
+				state_code: "BL"
+			},
+			{
+				id: 3092,
+				name: "Central Region",
+				state_code: "C"
+			},
+			{
+				id: 3107,
+				name: "Chikwawa District",
+				state_code: "CK"
+			},
+			{
+				id: 3109,
+				name: "Chiradzulu District",
+				state_code: "CR"
+			},
+			{
+				id: 3087,
+				name: "Chitipa district",
+				state_code: "CT"
+			},
+			{
+				id: 3097,
+				name: "Dedza District",
+				state_code: "DE"
+			},
+			{
+				id: 3090,
+				name: "Dowa District",
+				state_code: "DO"
+			},
+			{
+				id: 3091,
+				name: "Karonga District",
+				state_code: "KR"
+			},
+			{
+				id: 3094,
+				name: "Kasungu District",
+				state_code: "KS"
+			},
+			{
+				id: 3093,
+				name: "Likoma District",
+				state_code: "LK"
+			},
+			{
+				id: 3101,
+				name: "Lilongwe District",
+				state_code: "LI"
+			},
+			{
+				id: 3082,
+				name: "Machinga District",
+				state_code: "MH"
+			},
+			{
+				id: 3110,
+				name: "Mangochi District",
+				state_code: "MG"
+			},
+			{
+				id: 3099,
+				name: "Mchinji District",
+				state_code: "MC"
+			},
+			{
+				id: 3103,
+				name: "Mulanje District",
+				state_code: "MU"
+			},
+			{
+				id: 3084,
+				name: "Mwanza District",
+				state_code: "MW"
+			},
+			{
+				id: 3104,
+				name: "Mzimba District",
+				state_code: "MZ"
+			},
+			{
+				id: 3095,
+				name: "Nkhata Bay District",
+				state_code: "NB"
+			},
+			{
+				id: 3100,
+				name: "Nkhotakota District",
+				state_code: "NK"
+			},
+			{
+				id: 3105,
+				name: "Northern Region",
+				state_code: "N"
+			},
+			{
+				id: 3085,
+				name: "Nsanje District",
+				state_code: "NS"
+			},
+			{
+				id: 3088,
+				name: "Ntcheu District",
+				state_code: "NU"
+			},
+			{
+				id: 3111,
+				name: "Ntchisi District",
+				state_code: "NI"
+			},
+			{
+				id: 3108,
+				name: "Phalombe District",
+				state_code: "PH"
+			},
+			{
+				id: 3089,
+				name: "Rumphi District",
+				state_code: "RU"
+			},
+			{
+				id: 3086,
+				name: "Salima District",
+				state_code: "SA"
+			},
+			{
+				id: 3106,
+				name: "Southern Region",
+				state_code: "S"
+			},
+			{
+				id: 3098,
+				name: "Thyolo District",
+				state_code: "TH"
+			},
+			{
+				id: 3083,
+				name: "Zomba District",
+				state_code: "ZO"
+			}
+		]
+	},
+	{
+		name: "Malaysia",
+		iso3: "MYS",
+		iso2: "MY",
+		numeric_code: "458",
+		phone_code: "60",
+		emoji: "🇲🇾",
+		emojiU: "U+1F1F2 U+1F1FE",
+		states: [
+			{
+				id: 1950,
+				name: "Johor",
+				state_code: "01"
+			},
+			{
+				id: 1947,
+				name: "Kedah",
+				state_code: "02"
+			},
+			{
+				id: 1946,
+				name: "Kelantan",
+				state_code: "03"
+			},
+			{
+				id: 1949,
+				name: "Kuala Lumpur",
+				state_code: "14"
+			},
+			{
+				id: 1935,
+				name: "Labuan",
+				state_code: "15"
+			},
+			{
+				id: 1941,
+				name: "Malacca",
+				state_code: "04"
+			},
+			{
+				id: 1948,
+				name: "Negeri Sembilan",
+				state_code: "05"
+			},
+			{
+				id: 1940,
+				name: "Pahang",
+				state_code: "06"
+			},
+			{
+				id: 1939,
+				name: "Penang",
+				state_code: "07"
+			},
+			{
+				id: 1943,
+				name: "Perak",
+				state_code: "08"
+			},
+			{
+				id: 1938,
+				name: "Perlis",
+				state_code: "09"
+			},
+			{
+				id: 1945,
+				name: "Putrajaya",
+				state_code: "16"
+			},
+			{
+				id: 1936,
+				name: "Sabah",
+				state_code: "12"
+			},
+			{
+				id: 1937,
+				name: "Sarawak",
+				state_code: "13"
+			},
+			{
+				id: 1944,
+				name: "Selangor",
+				state_code: "10"
+			},
+			{
+				id: 1942,
+				name: "Terengganu",
+				state_code: "11"
+			}
+		]
+	},
+	{
+		name: "Maldives",
+		iso3: "MDV",
+		iso2: "MV",
+		numeric_code: "462",
+		phone_code: "960",
+		emoji: "🇲🇻",
+		emojiU: "U+1F1F2 U+1F1FB",
+		states: [
+			{
+				id: 2594,
+				name: "Addu Atoll",
+				state_code: "01"
+			},
+			{
+				id: 2587,
+				name: "Alif Alif Atoll",
+				state_code: "02"
+			},
+			{
+				id: 2600,
+				name: "Alif Dhaal Atoll",
+				state_code: "00"
+			},
+			{
+				id: 2604,
+				name: "Central Province",
+				state_code: "CE"
+			},
+			{
+				id: 2590,
+				name: "Dhaalu Atoll",
+				state_code: "17"
+			},
+			{
+				id: 2599,
+				name: "Faafu Atoll",
+				state_code: "14"
+			},
+			{
+				id: 2598,
+				name: "Gaafu Alif Atoll",
+				state_code: "27"
+			},
+			{
+				id: 2603,
+				name: "Gaafu Dhaalu Atoll",
+				state_code: "28"
+			},
+			{
+				id: 2595,
+				name: "Gnaviyani Atoll",
+				state_code: "29"
+			},
+			{
+				id: 2586,
+				name: "Haa Alif Atoll",
+				state_code: "07"
+			},
+			{
+				id: 2597,
+				name: "Haa Dhaalu Atoll",
+				state_code: "23"
+			},
+			{
+				id: 2596,
+				name: "Kaafu Atoll",
+				state_code: "26"
+			},
+			{
+				id: 2601,
+				name: "Laamu Atoll",
+				state_code: "05"
+			},
+			{
+				id: 2607,
+				name: "Lhaviyani Atoll",
+				state_code: "03"
+			},
+			{
+				id: 2609,
+				name: "Malé",
+				state_code: "MLE"
+			},
+			{
+				id: 2608,
+				name: "Meemu Atoll",
+				state_code: "12"
+			},
+			{
+				id: 2592,
+				name: "Noonu Atoll",
+				state_code: "25"
+			},
+			{
+				id: 2589,
+				name: "North Central Province",
+				state_code: "NC"
+			},
+			{
+				id: 2588,
+				name: "North Province",
+				state_code: "NO"
+			},
+			{
+				id: 2602,
+				name: "Raa Atoll",
+				state_code: "13"
+			},
+			{
+				id: 2585,
+				name: "Shaviyani Atoll",
+				state_code: "24"
+			},
+			{
+				id: 2606,
+				name: "South Central Province",
+				state_code: "SC"
+			},
+			{
+				id: 2605,
+				name: "South Province",
+				state_code: "SU"
+			},
+			{
+				id: 2591,
+				name: "Thaa Atoll",
+				state_code: "08"
+			},
+			{
+				id: 2593,
+				name: "Upper South Province",
+				state_code: "US"
+			},
+			{
+				id: 2584,
+				name: "Vaavu Atoll",
+				state_code: "04"
+			}
+		]
+	},
+	{
+		name: "Mali",
+		iso3: "MLI",
+		iso2: "ML",
+		numeric_code: "466",
+		phone_code: "223",
+		emoji: "🇲🇱",
+		emojiU: "U+1F1F2 U+1F1F1",
+		states: [
+			{
+				id: 253,
+				name: "Bamako",
+				state_code: "BKO"
+			},
+			{
+				id: 258,
+				name: "Gao Region",
+				state_code: "7"
+			},
+			{
+				id: 252,
+				name: "Kayes Region",
+				state_code: "1"
+			},
+			{
+				id: 257,
+				name: "Kidal Region",
+				state_code: "8"
+			},
+			{
+				id: 250,
+				name: "Koulikoro Region",
+				state_code: "2"
+			},
+			{
+				id: 251,
+				name: "Ménaka Region",
+				state_code: "9"
+			},
+			{
+				id: 255,
+				name: "Mopti Region",
+				state_code: "5"
+			},
+			{
+				id: 249,
+				name: "Ségou Region",
+				state_code: "4"
+			},
+			{
+				id: 254,
+				name: "Sikasso Region",
+				state_code: "3"
+			},
+			{
+				id: 256,
+				name: "Taoudénit Region",
+				state_code: "10"
+			},
+			{
+				id: 248,
+				name: "Tombouctou Region",
+				state_code: "6"
+			}
+		]
+	},
+	{
+		name: "Malta",
+		iso3: "MLT",
+		iso2: "MT",
+		numeric_code: "470",
+		phone_code: "356",
+		emoji: "🇲🇹",
+		emojiU: "U+1F1F2 U+1F1F9",
+		states: [
+			{
+				id: 110,
+				name: "Attard",
+				state_code: "01"
+			},
+			{
+				id: 108,
+				name: "Balzan",
+				state_code: "02"
+			},
+			{
+				id: 107,
+				name: "Birgu",
+				state_code: "03"
+			},
+			{
+				id: 97,
+				name: "Birkirkara",
+				state_code: "04"
+			},
+			{
+				id: 88,
+				name: "Birżebbuġa",
+				state_code: "05"
+			},
+			{
+				id: 138,
+				name: "Cospicua",
+				state_code: "06"
+			},
+			{
+				id: 117,
+				name: "Dingli",
+				state_code: "07"
+			},
+			{
+				id: 129,
+				name: "Fgura",
+				state_code: "08"
+			},
+			{
+				id: 84,
+				name: "Floriana",
+				state_code: "09"
+			},
+			{
+				id: 134,
+				name: "Fontana",
+				state_code: "10"
+			},
+			{
+				id: 130,
+				name: "Għajnsielem",
+				state_code: "13"
+			},
+			{
+				id: 92,
+				name: "Għarb",
+				state_code: "14"
+			},
+			{
+				id: 120,
+				name: "Għargħur",
+				state_code: "15"
+			},
+			{
+				id: 106,
+				name: "Għasri",
+				state_code: "16"
+			},
+			{
+				id: 124,
+				name: "Għaxaq",
+				state_code: "17"
+			},
+			{
+				id: 118,
+				name: "Gudja",
+				state_code: "11"
+			},
+			{
+				id: 113,
+				name: "Gżira",
+				state_code: "12"
+			},
+			{
+				id: 105,
+				name: "Ħamrun",
+				state_code: "18"
+			},
+			{
+				id: 93,
+				name: "Iklin",
+				state_code: "19"
+			},
+			{
+				id: 99,
+				name: "Kalkara",
+				state_code: "21"
+			},
+			{
+				id: 91,
+				name: "Kerċem",
+				state_code: "22"
+			},
+			{
+				id: 82,
+				name: "Kirkop",
+				state_code: "23"
+			},
+			{
+				id: 126,
+				name: "Lija",
+				state_code: "24"
+			},
+			{
+				id: 77,
+				name: "Luqa",
+				state_code: "25"
+			},
+			{
+				id: 128,
+				name: "Marsa",
+				state_code: "26"
+			},
+			{
+				id: 137,
+				name: "Marsaskala",
+				state_code: "27"
+			},
+			{
+				id: 78,
+				name: "Marsaxlokk",
+				state_code: "28"
+			},
+			{
+				id: 89,
+				name: "Mdina",
+				state_code: "29"
+			},
+			{
+				id: 102,
+				name: "Mellieħa",
+				state_code: "30"
+			},
+			{
+				id: 109,
+				name: "Mġarr",
+				state_code: "31"
+			},
+			{
+				id: 140,
+				name: "Mosta",
+				state_code: "32"
+			},
+			{
+				id: 74,
+				name: "Mqabba",
+				state_code: "33"
+			},
+			{
+				id: 96,
+				name: "Msida",
+				state_code: "34"
+			},
+			{
+				id: 131,
+				name: "Mtarfa",
+				state_code: "35"
+			},
+			{
+				id: 132,
+				name: "Munxar",
+				state_code: "36"
+			},
+			{
+				id: 133,
+				name: "Nadur",
+				state_code: "37"
+			},
+			{
+				id: 112,
+				name: "Naxxar",
+				state_code: "38"
+			},
+			{
+				id: 115,
+				name: "Paola",
+				state_code: "39"
+			},
+			{
+				id: 125,
+				name: "Pembroke",
+				state_code: "40"
+			},
+			{
+				id: 127,
+				name: "Pietà",
+				state_code: "41"
+			},
+			{
+				id: 79,
+				name: "Qala",
+				state_code: "42"
+			},
+			{
+				id: 119,
+				name: "Qormi",
+				state_code: "43"
+			},
+			{
+				id: 111,
+				name: "Qrendi",
+				state_code: "44"
+			},
+			{
+				id: 83,
+				name: "Rabat",
+				state_code: "46"
+			},
+			{
+				id: 87,
+				name: "Saint Lawrence",
+				state_code: "50"
+			},
+			{
+				id: 75,
+				name: "San Ġwann",
+				state_code: "49"
+			},
+			{
+				id: 116,
+				name: "Sannat",
+				state_code: "52"
+			},
+			{
+				id: 94,
+				name: "Santa Luċija",
+				state_code: "53"
+			},
+			{
+				id: 90,
+				name: "Santa Venera",
+				state_code: "54"
+			},
+			{
+				id: 136,
+				name: "Senglea",
+				state_code: "20"
+			},
+			{
+				id: 98,
+				name: "Siġġiewi",
+				state_code: "55"
+			},
+			{
+				id: 104,
+				name: "Sliema",
+				state_code: "56"
+			},
+			{
+				id: 100,
+				name: "St. Julian's",
+				state_code: "48"
+			},
+			{
+				id: 139,
+				name: "St. Paul's Bay",
+				state_code: "51"
+			},
+			{
+				id: 86,
+				name: "Swieqi",
+				state_code: "57"
+			},
+			{
+				id: 122,
+				name: "Ta' Xbiex",
+				state_code: "58"
+			},
+			{
+				id: 103,
+				name: "Tarxien",
+				state_code: "59"
+			},
+			{
+				id: 95,
+				name: "Valletta",
+				state_code: "60"
+			},
+			{
+				id: 101,
+				name: "Victoria",
+				state_code: "45"
+			},
+			{
+				id: 114,
+				name: "Xagħra",
+				state_code: "61"
+			},
+			{
+				id: 121,
+				name: "Xewkija",
+				state_code: "62"
+			},
+			{
+				id: 81,
+				name: "Xgħajra",
+				state_code: "63"
+			},
+			{
+				id: 123,
+				name: "Żabbar",
+				state_code: "64"
+			},
+			{
+				id: 85,
+				name: "Żebbuġ Gozo",
+				state_code: "65"
+			},
+			{
+				id: 80,
+				name: "Żebbuġ Malta",
+				state_code: "66"
+			},
+			{
+				id: 135,
+				name: "Żejtun",
+				state_code: "67"
+			},
+			{
+				id: 76,
+				name: "Żurrieq",
+				state_code: "68"
+			}
+		]
+	},
+	{
+		name: "Man (Isle of)",
+		iso3: "IMN",
+		iso2: "IM",
+		numeric_code: "833",
+		phone_code: "+44-1624",
+		emoji: "🇮🇲",
+		emojiU: "U+1F1EE U+1F1F2",
+		states: [
+		]
+	},
+	{
+		name: "Marshall Islands",
+		iso3: "MHL",
+		iso2: "MH",
+		numeric_code: "584",
+		phone_code: "692",
+		emoji: "🇲🇭",
+		emojiU: "U+1F1F2 U+1F1ED",
+		states: [
+			{
+				id: 2574,
+				name: "Ralik Chain",
+				state_code: "L"
+			},
+			{
+				id: 2573,
+				name: "Ratak Chain",
+				state_code: "T"
+			}
+		]
+	},
+	{
+		name: "Martinique",
+		iso3: "MTQ",
+		iso2: "MQ",
+		numeric_code: "474",
+		phone_code: "596",
+		emoji: "🇲🇶",
+		emojiU: "U+1F1F2 U+1F1F6",
+		states: [
+		]
+	},
+	{
+		name: "Mauritania",
+		iso3: "MRT",
+		iso2: "MR",
+		numeric_code: "478",
+		phone_code: "222",
+		emoji: "🇲🇷",
+		emojiU: "U+1F1F2 U+1F1F7",
+		states: [
+			{
+				id: 3344,
+				name: "Adrar Region",
+				state_code: "07"
+			},
+			{
+				id: 3349,
+				name: "Assaba Region",
+				state_code: "03"
+			},
+			{
+				id: 3339,
+				name: "Brakna Region",
+				state_code: "05"
+			},
+			{
+				id: 3346,
+				name: "Dakhlet Nouadhibou",
+				state_code: "08"
+			},
+			{
+				id: 3341,
+				name: "Gorgol Region",
+				state_code: "04"
+			},
+			{
+				id: 3350,
+				name: "Guidimaka Region",
+				state_code: "10"
+			},
+			{
+				id: 3338,
+				name: "Hodh Ech Chargui Region",
+				state_code: "01"
+			},
+			{
+				id: 3351,
+				name: "Hodh El Gharbi Region",
+				state_code: "02"
+			},
+			{
+				id: 3342,
+				name: "Inchiri Region",
+				state_code: "12"
+			},
+			{
+				id: 3343,
+				name: "Nouakchott-Nord Region",
+				state_code: "14"
+			},
+			{
+				id: 3352,
+				name: "Nouakchott-Ouest Region",
+				state_code: "13"
+			},
+			{
+				id: 3347,
+				name: "Nouakchott-Sud Region",
+				state_code: "15"
+			},
+			{
+				id: 3345,
+				name: "Tagant Region",
+				state_code: "09"
+			},
+			{
+				id: 3340,
+				name: "Tiris Zemmour Region",
+				state_code: "11"
+			},
+			{
+				id: 3348,
+				name: "Trarza Region",
+				state_code: "06"
+			}
+		]
+	},
+	{
+		name: "Mauritius",
+		iso3: "MUS",
+		iso2: "MU",
+		numeric_code: "480",
+		phone_code: "230",
+		emoji: "🇲🇺",
+		emojiU: "U+1F1F2 U+1F1FA",
+		states: [
+			{
+				id: 3248,
+				name: "Agaléga",
+				state_code: "AG"
+			},
+			{
+				id: 3262,
+				name: "Beau Bassin-Rose Hill",
+				state_code: "BR"
+			},
+			{
+				id: 3251,
+				name: "Cargados Carajos",
+				state_code: "CC"
+			},
+			{
+				id: 3255,
+				name: "Curepipe",
+				state_code: "CU"
+			},
+			{
+				id: 3254,
+				name: "Flacq District",
+				state_code: "FL"
+			},
+			{
+				id: 3264,
+				name: "Grand Port District",
+				state_code: "GP"
+			},
+			{
+				id: 3253,
+				name: "Moka District",
+				state_code: "MO"
+			},
+			{
+				id: 3250,
+				name: "Pamplemousses District",
+				state_code: "PA"
+			},
+			{
+				id: 3263,
+				name: "Plaines Wilhems District",
+				state_code: "PW"
+			},
+			{
+				id: 3256,
+				name: "Port Louis",
+				state_code: "PU"
+			},
+			{
+				id: 3260,
+				name: "Port Louis District",
+				state_code: "PL"
+			},
+			{
+				id: 3258,
+				name: "Quatre Bornes",
+				state_code: "QB"
+			},
+			{
+				id: 3261,
+				name: "Rivière du Rempart District",
+				state_code: "RR"
+			},
+			{
+				id: 3259,
+				name: "Rivière Noire District",
+				state_code: "BL"
+			},
+			{
+				id: 3249,
+				name: "Rodrigues",
+				state_code: "RO"
+			},
+			{
+				id: 3257,
+				name: "Savanne District",
+				state_code: "SA"
+			},
+			{
+				id: 3252,
+				name: "Vacoas-Phoenix",
+				state_code: "VP"
+			}
+		]
+	},
+	{
+		name: "Mayotte",
+		iso3: "MYT",
+		iso2: "YT",
+		numeric_code: "175",
+		phone_code: "262",
+		emoji: "🇾🇹",
+		emojiU: "U+1F1FE U+1F1F9",
+		states: [
+		]
+	},
+	{
+		name: "Mexico",
+		iso3: "MEX",
+		iso2: "MX",
+		numeric_code: "484",
+		phone_code: "52",
+		emoji: "🇲🇽",
+		emojiU: "U+1F1F2 U+1F1FD",
+		states: [
+			{
+				id: 3456,
+				name: "Aguascalientes",
+				state_code: "AGU"
+			},
+			{
+				id: 3457,
+				name: "Baja California",
+				state_code: "BCN"
+			},
+			{
+				id: 3460,
+				name: "Baja California Sur",
+				state_code: "BCS"
+			},
+			{
+				id: 3475,
+				name: "Campeche",
+				state_code: "CAM"
+			},
+			{
+				id: 3451,
+				name: "Chiapas",
+				state_code: "CHP"
+			},
+			{
+				id: 3447,
+				name: "Chihuahua",
+				state_code: "CHH"
+			},
+			{
+				id: 3471,
+				name: "Coahuila",
+				state_code: "COA"
+			},
+			{
+				id: 3472,
+				name: "Colima",
+				state_code: "COL"
+			},
+			{
+				id: 3453,
+				name: "Durango",
+				state_code: "DUR"
+			},
+			{
+				id: 3469,
+				name: "Guanajuato",
+				state_code: "GUA"
+			},
+			{
+				id: 3459,
+				name: "Guerrero",
+				state_code: "GRO"
+			},
+			{
+				id: 3470,
+				name: "Hidalgo",
+				state_code: "HID"
+			},
+			{
+				id: 4857,
+				name: "Jalisco",
+				state_code: "JAL"
+			},
+			{
+				id: 3450,
+				name: "México",
+				state_code: "MEX"
+			},
+			{
+				id: 3473,
+				name: "Mexico City",
+				state_code: "CMX"
+			},
+			{
+				id: 3474,
+				name: "Michoacán",
+				state_code: "MIC"
+			},
+			{
+				id: 3465,
+				name: "Morelos",
+				state_code: "MOR"
+			},
+			{
+				id: 3477,
+				name: "Nayarit",
+				state_code: "NAY"
+			},
+			{
+				id: 3452,
+				name: "Nuevo León",
+				state_code: "NLE"
+			},
+			{
+				id: 3448,
+				name: "Oaxaca",
+				state_code: "OAX"
+			},
+			{
+				id: 3476,
+				name: "Puebla",
+				state_code: "PUE"
+			},
+			{
+				id: 3455,
+				name: "Querétaro",
+				state_code: "QUE"
+			},
+			{
+				id: 3467,
+				name: "Quintana Roo",
+				state_code: "ROO"
+			},
+			{
+				id: 3461,
+				name: "San Luis Potosí",
+				state_code: "SLP"
+			},
+			{
+				id: 3449,
+				name: "Sinaloa",
+				state_code: "SIN"
+			},
+			{
+				id: 3468,
+				name: "Sonora",
+				state_code: "SON"
+			},
+			{
+				id: 3454,
+				name: "Tabasco",
+				state_code: "TAB"
+			},
+			{
+				id: 3463,
+				name: "Tamaulipas",
+				state_code: "TAM"
+			},
+			{
+				id: 3458,
+				name: "Tlaxcala",
+				state_code: "TLA"
+			},
+			{
+				id: 3464,
+				name: "Veracruz",
+				state_code: "VER"
+			},
+			{
+				id: 3466,
+				name: "Yucatán",
+				state_code: "YUC"
+			},
+			{
+				id: 3462,
+				name: "Zacatecas",
+				state_code: "ZAC"
+			}
+		]
+	},
+	{
+		name: "Micronesia",
+		iso3: "FSM",
+		iso2: "FM",
+		numeric_code: "583",
+		phone_code: "691",
+		emoji: "🇫🇲",
+		emojiU: "U+1F1EB U+1F1F2",
+		states: [
+			{
+				id: 2580,
+				name: "Chuuk State",
+				state_code: "TRK"
+			},
+			{
+				id: 2583,
+				name: "Kosrae State",
+				state_code: "KSA"
+			},
+			{
+				id: 2581,
+				name: "Pohnpei State",
+				state_code: "PNI"
+			},
+			{
+				id: 2582,
+				name: "Yap State",
+				state_code: "YAP"
+			}
+		]
+	},
+	{
+		name: "Moldova",
+		iso3: "MDA",
+		iso2: "MD",
+		numeric_code: "498",
+		phone_code: "373",
+		emoji: "🇲🇩",
+		emojiU: "U+1F1F2 U+1F1E9",
+		states: [
+			{
+				id: 4368,
+				name: "Anenii Noi District",
+				state_code: "AN"
+			},
+			{
+				id: 4393,
+				name: "Bălți Municipality",
+				state_code: "BA"
+			},
+			{
+				id: 4379,
+				name: "Basarabeasca District",
+				state_code: "BS"
+			},
+			{
+				id: 4362,
+				name: "Bender Municipality",
+				state_code: "BD"
+			},
+			{
+				id: 4375,
+				name: "Briceni District",
+				state_code: "BR"
+			},
+			{
+				id: 4391,
+				name: "Cahul District",
+				state_code: "CA"
+			},
+			{
+				id: 4366,
+				name: "Călărași District",
+				state_code: "CL"
+			},
+			{
+				id: 4380,
+				name: "Cantemir District",
+				state_code: "CT"
+			},
+			{
+				id: 4365,
+				name: "Căușeni District",
+				state_code: "CS"
+			},
+			{
+				id: 4373,
+				name: "Chișinău Municipality",
+				state_code: "CU"
+			},
+			{
+				id: 4360,
+				name: "Cimișlia District",
+				state_code: "CM"
+			},
+			{
+				id: 4390,
+				name: "Criuleni District",
+				state_code: "CR"
+			},
+			{
+				id: 4384,
+				name: "Dondușeni District",
+				state_code: "DO"
+			},
+			{
+				id: 4392,
+				name: "Drochia District",
+				state_code: "DR"
+			},
+			{
+				id: 4383,
+				name: "Dubăsari District",
+				state_code: "DU"
+			},
+			{
+				id: 4387,
+				name: "Edineț District",
+				state_code: "ED"
+			},
+			{
+				id: 4381,
+				name: "Fălești District",
+				state_code: "FA"
+			},
+			{
+				id: 4370,
+				name: "Florești District",
+				state_code: "FL"
+			},
+			{
+				id: 4385,
+				name: "Gagauzia",
+				state_code: "GA"
+			},
+			{
+				id: 4367,
+				name: "Glodeni District",
+				state_code: "GL"
+			},
+			{
+				id: 4382,
+				name: "Hîncești District",
+				state_code: "HI"
+			},
+			{
+				id: 4369,
+				name: "Ialoveni District",
+				state_code: "IA"
+			},
+			{
+				id: 4363,
+				name: "Nisporeni District",
+				state_code: "NI"
+			},
+			{
+				id: 4389,
+				name: "Ocnița District",
+				state_code: "OC"
+			},
+			{
+				id: 4361,
+				name: "Orhei District",
+				state_code: "OR"
+			},
+			{
+				id: 4394,
+				name: "Rezina District",
+				state_code: "RE"
+			},
+			{
+				id: 4376,
+				name: "Rîșcani District",
+				state_code: "RI"
+			},
+			{
+				id: 4364,
+				name: "Sîngerei District",
+				state_code: "SI"
+			},
+			{
+				id: 4388,
+				name: "Șoldănești District",
+				state_code: "SD"
+			},
+			{
+				id: 4374,
+				name: "Soroca District",
+				state_code: "SO"
+			},
+			{
+				id: 4378,
+				name: "Ștefan Vodă District",
+				state_code: "SV"
+			},
+			{
+				id: 4377,
+				name: "Strășeni District",
+				state_code: "ST"
+			},
+			{
+				id: 4372,
+				name: "Taraclia District",
+				state_code: "TA"
+			},
+			{
+				id: 4371,
+				name: "Telenești District",
+				state_code: "TE"
+			},
+			{
+				id: 4395,
+				name: "Transnistria autonomous territorial unit",
+				state_code: "SN"
+			},
+			{
+				id: 4386,
+				name: "Ungheni District",
+				state_code: "UN"
+			}
+		]
+	},
+	{
+		name: "Monaco",
+		iso3: "MCO",
+		iso2: "MC",
+		numeric_code: "492",
+		phone_code: "377",
+		emoji: "🇲🇨",
+		emojiU: "U+1F1F2 U+1F1E8",
+		states: [
+			{
+				id: 4917,
+				name: "La Colle",
+				state_code: "CL"
+			},
+			{
+				id: 4918,
+				name: "La Condamine",
+				state_code: "CO"
+			},
+			{
+				id: 4919,
+				name: "Moneghetti",
+				state_code: "MG"
+			}
+		]
+	},
+	{
+		name: "Mongolia",
+		iso3: "MNG",
+		iso2: "MN",
+		numeric_code: "496",
+		phone_code: "976",
+		emoji: "🇲🇳",
+		emojiU: "U+1F1F2 U+1F1F3",
+		states: [
+			{
+				id: 1973,
+				name: "Arkhangai Province",
+				state_code: "073"
+			},
+			{
+				id: 1969,
+				name: "Bayan-Ölgii Province",
+				state_code: "071"
+			},
+			{
+				id: 1976,
+				name: "Bayankhongor Province",
+				state_code: "069"
+			},
+			{
+				id: 1961,
+				name: "Bulgan Province",
+				state_code: "067"
+			},
+			{
+				id: 1962,
+				name: "Darkhan-Uul Province",
+				state_code: "037"
+			},
+			{
+				id: 1963,
+				name: "Dornod Province",
+				state_code: "061"
+			},
+			{
+				id: 1981,
+				name: "Dornogovi Province",
+				state_code: "063"
+			},
+			{
+				id: 1970,
+				name: "Dundgovi Province",
+				state_code: "059"
+			},
+			{
+				id: 1972,
+				name: "Govi-Altai Province",
+				state_code: "065"
+			},
+			{
+				id: 1978,
+				name: "Govisümber Province",
+				state_code: "064"
+			},
+			{
+				id: 1974,
+				name: "Khentii Province",
+				state_code: "039"
+			},
+			{
+				id: 1964,
+				name: "Khovd Province",
+				state_code: "043"
+			},
+			{
+				id: 1975,
+				name: "Khövsgöl Province",
+				state_code: "041"
+			},
+			{
+				id: 1967,
+				name: "Ömnögovi Province",
+				state_code: "053"
+			},
+			{
+				id: 1966,
+				name: "Orkhon Province",
+				state_code: "035"
+			},
+			{
+				id: 1965,
+				name: "Övörkhangai Province",
+				state_code: "055"
+			},
+			{
+				id: 1980,
+				name: "Selenge Province",
+				state_code: "049"
+			},
+			{
+				id: 1977,
+				name: "Sükhbaatar Province",
+				state_code: "051"
+			},
+			{
+				id: 1968,
+				name: "Töv Province",
+				state_code: "047"
+			},
+			{
+				id: 1971,
+				name: "Uvs Province",
+				state_code: "046"
+			},
+			{
+				id: 1979,
+				name: "Zavkhan Province",
+				state_code: "057"
+			}
+		]
+	},
+	{
+		name: "Montenegro",
+		iso3: "MNE",
+		iso2: "ME",
+		numeric_code: "499",
+		phone_code: "382",
+		emoji: "🇲🇪",
+		emojiU: "U+1F1F2 U+1F1EA",
+		states: [
+			{
+				id: 23,
+				name: "Andrijevica Municipality",
+				state_code: "01"
+			},
+			{
+				id: 13,
+				name: "Bar Municipality",
+				state_code: "02"
+			},
+			{
+				id: 21,
+				name: "Berane Municipality",
+				state_code: "03"
+			},
+			{
+				id: 25,
+				name: "Bijelo Polje Municipality",
+				state_code: "04"
+			},
+			{
+				id: 30,
+				name: "Budva Municipality",
+				state_code: "05"
+			},
+			{
+				id: 14,
+				name: "Danilovgrad Municipality",
+				state_code: "07"
+			},
+			{
+				id: 24,
+				name: "Gusinje Municipality",
+				state_code: "22"
+			},
+			{
+				id: 31,
+				name: "Kolašin Municipality",
+				state_code: "09"
+			},
+			{
+				id: 26,
+				name: "Kotor Municipality",
+				state_code: "10"
+			},
+			{
+				id: 22,
+				name: "Mojkovac Municipality",
+				state_code: "11"
+			},
+			{
+				id: 17,
+				name: "Nikšić Municipality",
+				state_code: "12"
+			},
+			{
+				id: 28,
+				name: "Old Royal Capital Cetinje",
+				state_code: "06"
+			},
+			{
+				id: 12,
+				name: "Petnjica Municipality",
+				state_code: "23"
+			},
+			{
+				id: 19,
+				name: "Plav Municipality",
+				state_code: "13"
+			},
+			{
+				id: 20,
+				name: "Pljevlja Municipality",
+				state_code: "14"
+			},
+			{
+				id: 16,
+				name: "Plužine Municipality",
+				state_code: "15"
+			},
+			{
+				id: 27,
+				name: "Podgorica Municipality",
+				state_code: "16"
+			},
+			{
+				id: 15,
+				name: "Rožaje Municipality",
+				state_code: "17"
+			},
+			{
+				id: 18,
+				name: "Šavnik Municipality",
+				state_code: "18"
+			},
+			{
+				id: 29,
+				name: "Tivat Municipality",
+				state_code: "19"
+			},
+			{
+				id: 33,
+				name: "Ulcinj Municipality",
+				state_code: "20"
+			},
+			{
+				id: 32,
+				name: "Žabljak Municipality",
+				state_code: "21"
+			}
+		]
+	},
+	{
+		name: "Montserrat",
+		iso3: "MSR",
+		iso2: "MS",
+		numeric_code: "500",
+		phone_code: "+1-664",
+		emoji: "🇲🇸",
+		emojiU: "U+1F1F2 U+1F1F8",
+		states: [
+		]
+	},
+	{
+		name: "Morocco",
+		iso3: "MAR",
+		iso2: "MA",
+		numeric_code: "504",
+		phone_code: "212",
+		emoji: "🇲🇦",
+		emojiU: "U+1F1F2 U+1F1E6",
+		states: [
+			{
+				id: 4928,
+				name: "Agadir-Ida-Ou-Tanane",
+				state_code: "AGD"
+			},
+			{
+				id: 3320,
+				name: "Al Haouz",
+				state_code: "HAO"
+			},
+			{
+				id: 3267,
+				name: "Al Hoceïma",
+				state_code: "HOC"
+			},
+			{
+				id: 3266,
+				name: "Aousserd (EH)",
+				state_code: "AOU"
+			},
+			{
+				id: 3297,
+				name: "Assa-Zag (EH-partial)",
+				state_code: "ASZ"
+			},
+			{
+				id: 3321,
+				name: "Azilal",
+				state_code: "AZI"
+			},
+			{
+				id: 3272,
+				name: "Béni Mellal",
+				state_code: "BEM"
+			},
+			{
+				id: 3278,
+				name: "Béni Mellal-Khénifra",
+				state_code: "05"
+			},
+			{
+				id: 3304,
+				name: "Benslimane",
+				state_code: "BES"
+			},
+			{
+				id: 3285,
+				name: "Berkane",
+				state_code: "BER"
+			},
+			{
+				id: 4929,
+				name: "Berrechid",
+				state_code: "BRR"
+			},
+			{
+				id: 3275,
+				name: "Boujdour (EH)",
+				state_code: "BOD"
+			},
+			{
+				id: 3270,
+				name: "Boulemane",
+				state_code: "BOM"
+			},
+			{
+				id: 4930,
+				name: "Casablanca",
+				state_code: "CAS"
+			},
+			{
+				id: 3303,
+				name: "Casablanca-Settat",
+				state_code: "06"
+			},
+			{
+				id: 3310,
+				name: "Chefchaouen",
+				state_code: "CHE"
+			},
+			{
+				id: 3274,
+				name: "Chichaoua",
+				state_code: "CHI"
+			},
+			{
+				id: 3302,
+				name: "Chtouka-Ait Baha",
+				state_code: "CHT"
+			},
+			{
+				id: 3306,
+				name: "Dakhla-Oued Ed-Dahab (EH)",
+				state_code: "12"
+			},
+			{
+				id: 3290,
+				name: "Drâa-Tafilalet",
+				state_code: "08"
+			},
+			{
+				id: 4931,
+				name: "Driouch",
+				state_code: "DRI"
+			},
+			{
+				id: 3291,
+				name: "El Hajeb",
+				state_code: "HAJ"
+			},
+			{
+				id: 3280,
+				name: "El Jadida",
+				state_code: "JDI"
+			},
+			{
+				id: 3309,
+				name: "El Kelâa des Sraghna",
+				state_code: "KES"
+			},
+			{
+				id: 3299,
+				name: "Errachidia",
+				state_code: "ERR"
+			},
+			{
+				id: 3292,
+				name: "Es-Semara (EH-partial)",
+				state_code: "ESM"
+			},
+			{
+				id: 3316,
+				name: "Essaouira",
+				state_code: "ESI"
+			},
+			{
+				id: 3300,
+				name: "Fahs-Anjra",
+				state_code: "FAH"
+			},
+			{
+				id: 4932,
+				name: "Fès",
+				state_code: "FES"
+			},
+			{
+				id: 3313,
+				name: "Fès-Meknès",
+				state_code: "03"
+			},
+			{
+				id: 3301,
+				name: "Figuig",
+				state_code: "FIG"
+			},
+			{
+				id: 4933,
+				name: "Fquih Ben Salah",
+				state_code: "FQH"
+			},
+			{
+				id: 3265,
+				name: "Guelmim",
+				state_code: "GUE"
+			},
+			{
+				id: 3305,
+				name: "Guelmim-Oued Noun (EH-partial)",
+				state_code: "10"
+			},
+			{
+				id: 4934,
+				name: "Guercif",
+				state_code: "GUF"
+			},
+			{
+				id: 3325,
+				name: "Ifrane",
+				state_code: "IFR"
+			},
+			{
+				id: 3294,
+				name: "Inezgane-Ait Melloul",
+				state_code: "INE"
+			},
+			{
+				id: 3307,
+				name: "Jerada",
+				state_code: "JRA"
+			},
+			{
+				id: 3308,
+				name: "Kénitra",
+				state_code: "KEN"
+			},
+			{
+				id: 3276,
+				name: "Khémisset",
+				state_code: "KHE"
+			},
+			{
+				id: 3317,
+				name: "Khénifra",
+				state_code: "KHN"
+			},
+			{
+				id: 3326,
+				name: "Khouribga",
+				state_code: "KHO"
+			},
+			{
+				id: 3271,
+				name: "L'Oriental",
+				state_code: "02"
+			},
+			{
+				id: 3293,
+				name: "Laâyoune (EH)",
+				state_code: "LAA"
+			},
+			{
+				id: 3298,
+				name: "Laâyoune-Sakia El Hamra (EH-partial)",
+				state_code: "11"
+			},
+			{
+				id: 3268,
+				name: "Larache",
+				state_code: "LAR"
+			},
+			{
+				id: 4936,
+				name: "M’diq-Fnideq",
+				state_code: "MDF"
+			},
+			{
+				id: 4935,
+				name: "Marrakech",
+				state_code: "MAR"
+			},
+			{
+				id: 3288,
+				name: "Marrakesh-Safi",
+				state_code: "07"
+			},
+			{
+				id: 3284,
+				name: "Médiouna",
+				state_code: "MED"
+			},
+			{
+				id: 4937,
+				name: "Meknès",
+				state_code: "MEK"
+			},
+			{
+				id: 4938,
+				name: "Midelt",
+				state_code: "MID"
+			},
+			{
+				id: 4939,
+				name: "Mohammadia",
+				state_code: "MOH"
+			},
+			{
+				id: 3315,
+				name: "Moulay Yacoub",
+				state_code: "MOU"
+			},
+			{
+				id: 3281,
+				name: "Nador",
+				state_code: "NAD"
+			},
+			{
+				id: 3287,
+				name: "Nouaceur",
+				state_code: "NOU"
+			},
+			{
+				id: 3269,
+				name: "Ouarzazate",
+				state_code: "OUA"
+			},
+			{
+				id: 3319,
+				name: "Oued Ed-Dahab (EH)",
+				state_code: "OUD"
+			},
+			{
+				id: 4941,
+				name: "Ouezzane",
+				state_code: "OUZ"
+			},
+			{
+				id: 4940,
+				name: "Oujda-Angad",
+				state_code: "OUJ"
+			},
+			{
+				id: 4942,
+				name: "Rabat",
+				state_code: "RAB"
+			},
+			{
+				id: 4927,
+				name: "Rabat-Salé-Kénitra",
+				state_code: "04"
+			},
+			{
+				id: 4943,
+				name: "Rehamna",
+				state_code: "REH"
+			},
+			{
+				id: 3311,
+				name: "Safi",
+				state_code: "SAF"
+			},
+			{
+				id: 4944,
+				name: "Salé",
+				state_code: "SAL"
+			},
+			{
+				id: 3289,
+				name: "Sefrou",
+				state_code: "SEF"
+			},
+			{
+				id: 3282,
+				name: "Settat",
+				state_code: "SET"
+			},
+			{
+				id: 4945,
+				name: "Sidi Bennour",
+				state_code: "SIB"
+			},
+			{
+				id: 4946,
+				name: "Sidi Ifni",
+				state_code: "SIF"
+			},
+			{
+				id: 3279,
+				name: "Sidi Kacem",
+				state_code: "SIK"
+			},
+			{
+				id: 4952,
+				name: "Sidi Slimane",
+				state_code: "SIL"
+			},
+			{
+				id: 4947,
+				name: "Skhirate-Témara",
+				state_code: "SKH"
+			},
+			{
+				id: 3295,
+				name: "Souss-Massa",
+				state_code: "09"
+			},
+			{
+				id: 3286,
+				name: "Tan-Tan (EH-partial)",
+				state_code: "TNT"
+			},
+			{
+				id: 4950,
+				name: "Tanger-Assilah",
+				state_code: "TNG"
+			},
+			{
+				id: 3324,
+				name: "Tanger-Tétouan-Al Hoceïma",
+				state_code: "01"
+			},
+			{
+				id: 3323,
+				name: "Taounate",
+				state_code: "TAO"
+			},
+			{
+				id: 3322,
+				name: "Taourirt",
+				state_code: "TAI"
+			},
+			{
+				id: 4948,
+				name: "Tarfaya (EH-partial)",
+				state_code: "TAF"
+			},
+			{
+				id: 3314,
+				name: "Taroudannt",
+				state_code: "TAR"
+			},
+			{
+				id: 3312,
+				name: "Tata",
+				state_code: "TAT"
+			},
+			{
+				id: 3296,
+				name: "Taza",
+				state_code: "TAZ"
+			},
+			{
+				id: 3318,
+				name: "Tétouan",
+				state_code: "TET"
+			},
+			{
+				id: 4949,
+				name: "Tinghir",
+				state_code: "TIN"
+			},
+			{
+				id: 3277,
+				name: "Tiznit",
+				state_code: "TIZ"
+			},
+			{
+				id: 4951,
+				name: "Youssoufia",
+				state_code: "YUS"
+			},
+			{
+				id: 3283,
+				name: "Zagora",
+				state_code: "ZAG"
+			}
+		]
+	},
+	{
+		name: "Mozambique",
+		iso3: "MOZ",
+		iso2: "MZ",
+		numeric_code: "508",
+		phone_code: "258",
+		emoji: "🇲🇿",
+		emojiU: "U+1F1F2 U+1F1FF",
+		states: [
+			{
+				id: 3327,
+				name: "Cabo Delgado Province",
+				state_code: "P"
+			},
+			{
+				id: 3329,
+				name: "Gaza Province",
+				state_code: "G"
+			},
+			{
+				id: 3330,
+				name: "Inhambane Province",
+				state_code: "I"
+			},
+			{
+				id: 3337,
+				name: "Manica Province",
+				state_code: "B"
+			},
+			{
+				id: 3335,
+				name: "Maputo",
+				state_code: "MPM"
+			},
+			{
+				id: 3332,
+				name: "Maputo Province",
+				state_code: "L"
+			},
+			{
+				id: 3336,
+				name: "Nampula Province",
+				state_code: "N"
+			},
+			{
+				id: 3333,
+				name: "Niassa Province",
+				state_code: "A"
+			},
+			{
+				id: 3331,
+				name: "Sofala Province",
+				state_code: "S"
+			},
+			{
+				id: 3334,
+				name: "Tete Province",
+				state_code: "T"
+			},
+			{
+				id: 3328,
+				name: "Zambezia Province",
+				state_code: "Q"
+			}
+		]
+	},
+	{
+		name: "Myanmar",
+		iso3: "MMR",
+		iso2: "MM",
+		numeric_code: "104",
+		phone_code: "95",
+		emoji: "🇲🇲",
+		emojiU: "U+1F1F2 U+1F1F2",
+		states: [
+			{
+				id: 2142,
+				name: "Ayeyarwady Region",
+				state_code: "07"
+			},
+			{
+				id: 2141,
+				name: "Bago",
+				state_code: "02"
+			},
+			{
+				id: 2137,
+				name: "Chin State",
+				state_code: "14"
+			},
+			{
+				id: 2143,
+				name: "Kachin State",
+				state_code: "11"
+			},
+			{
+				id: 2144,
+				name: "Kayah State",
+				state_code: "12"
+			},
+			{
+				id: 2133,
+				name: "Kayin State",
+				state_code: "13"
+			},
+			{
+				id: 2136,
+				name: "Magway Region",
+				state_code: "03"
+			},
+			{
+				id: 2134,
+				name: "Mandalay Region",
+				state_code: "04"
+			},
+			{
+				id: 2147,
+				name: "Mon State",
+				state_code: "15"
+			},
+			{
+				id: 2146,
+				name: "Naypyidaw Union Territory",
+				state_code: "18"
+			},
+			{
+				id: 2138,
+				name: "Rakhine State",
+				state_code: "16"
+			},
+			{
+				id: 2145,
+				name: "Sagaing Region",
+				state_code: "01"
+			},
+			{
+				id: 2139,
+				name: "Shan State",
+				state_code: "17"
+			},
+			{
+				id: 2140,
+				name: "Tanintharyi Region",
+				state_code: "05"
+			},
+			{
+				id: 2135,
+				name: "Yangon Region",
+				state_code: "06"
+			}
+		]
+	},
+	{
+		name: "Namibia",
+		iso3: "NAM",
+		iso2: "NA",
+		numeric_code: "516",
+		phone_code: "264",
+		emoji: "🇳🇦",
+		emojiU: "U+1F1F3 U+1F1E6",
+		states: [
+			{
+				id: 43,
+				name: "Erongo Region",
+				state_code: "ER"
+			},
+			{
+				id: 38,
+				name: "Hardap Region",
+				state_code: "HA"
+			},
+			{
+				id: 45,
+				name: "Karas Region",
+				state_code: "KA"
+			},
+			{
+				id: 36,
+				name: "Kavango East Region",
+				state_code: "KE"
+			},
+			{
+				id: 35,
+				name: "Kavango West Region",
+				state_code: "KW"
+			},
+			{
+				id: 44,
+				name: "Khomas Region",
+				state_code: "KH"
+			},
+			{
+				id: 34,
+				name: "Kunene Region",
+				state_code: "KU"
+			},
+			{
+				id: 40,
+				name: "Ohangwena Region",
+				state_code: "OW"
+			},
+			{
+				id: 41,
+				name: "Omaheke Region",
+				state_code: "OH"
+			},
+			{
+				id: 39,
+				name: "Omusati Region",
+				state_code: "OS"
+			},
+			{
+				id: 37,
+				name: "Oshana Region",
+				state_code: "ON"
+			},
+			{
+				id: 42,
+				name: "Oshikoto Region",
+				state_code: "OT"
+			},
+			{
+				id: 46,
+				name: "Otjozondjupa Region",
+				state_code: "OD"
+			},
+			{
+				id: 47,
+				name: "Zambezi Region",
+				state_code: "CA"
+			}
+		]
+	},
+	{
+		name: "Nauru",
+		iso3: "NRU",
+		iso2: "NR",
+		numeric_code: "520",
+		phone_code: "674",
+		emoji: "🇳🇷",
+		emojiU: "U+1F1F3 U+1F1F7",
+		states: [
+			{
+				id: 4656,
+				name: "Aiwo District",
+				state_code: "01"
+			},
+			{
+				id: 4658,
+				name: "Anabar District",
+				state_code: "02"
+			},
+			{
+				id: 4667,
+				name: "Anetan District",
+				state_code: "03"
+			},
+			{
+				id: 4663,
+				name: "Anibare District",
+				state_code: "04"
+			},
+			{
+				id: 4660,
+				name: "Baiti District",
+				state_code: "05"
+			},
+			{
+				id: 4665,
+				name: "Boe District",
+				state_code: "06"
+			},
+			{
+				id: 4662,
+				name: "Buada District",
+				state_code: "07"
+			},
+			{
+				id: 4666,
+				name: "Denigomodu District",
+				state_code: "08"
+			},
+			{
+				id: 4654,
+				name: "Ewa District",
+				state_code: "09"
+			},
+			{
+				id: 4661,
+				name: "Ijuw District",
+				state_code: "10"
+			},
+			{
+				id: 4657,
+				name: "Meneng District",
+				state_code: "11"
+			},
+			{
+				id: 4659,
+				name: "Nibok District",
+				state_code: "12"
+			},
+			{
+				id: 4655,
+				name: "Uaboe District",
+				state_code: "13"
+			},
+			{
+				id: 4664,
+				name: "Yaren District",
+				state_code: "14"
+			}
+		]
+	},
+	{
+		name: "Nepal",
+		iso3: "NPL",
+		iso2: "NP",
+		numeric_code: "524",
+		phone_code: "977",
+		emoji: "🇳🇵",
+		emojiU: "U+1F1F3 U+1F1F5",
+		states: [
+			{
+				id: 2082,
+				name: "Bagmati Zone",
+				state_code: "BA"
+			},
+			{
+				id: 2071,
+				name: "Bheri Zone",
+				state_code: "BH"
+			},
+			{
+				id: 2073,
+				name: "Central Region",
+				state_code: "1"
+			},
+			{
+				id: 2080,
+				name: "Dhaulagiri Zone",
+				state_code: "DH"
+			},
+			{
+				id: 2069,
+				name: "Eastern Development Region",
+				state_code: "4"
+			},
+			{
+				id: 2068,
+				name: "Far-Western Development Region",
+				state_code: "5"
+			},
+			{
+				id: 2081,
+				name: "Gandaki Zone",
+				state_code: "GA"
+			},
+			{
+				id: 2076,
+				name: "Janakpur Zone",
+				state_code: "JA"
+			},
+			{
+				id: 2079,
+				name: "Karnali Zone",
+				state_code: "KA"
+			},
+			{
+				id: 2072,
+				name: "Kosi Zone",
+				state_code: "KO"
+			},
+			{
+				id: 2074,
+				name: "Lumbini Zone",
+				state_code: "LU"
+			},
+			{
+				id: 2083,
+				name: "Mahakali Zone",
+				state_code: "MA"
+			},
+			{
+				id: 2070,
+				name: "Mechi Zone",
+				state_code: "ME"
+			},
+			{
+				id: 2066,
+				name: "Mid-Western Region",
+				state_code: "2"
+			},
+			{
+				id: 2075,
+				name: "Narayani Zone",
+				state_code: "NA"
+			},
+			{
+				id: 2077,
+				name: "Rapti Zone",
+				state_code: "RA"
+			},
+			{
+				id: 2084,
+				name: "Sagarmatha Zone",
+				state_code: "SA"
+			},
+			{
+				id: 2078,
+				name: "Seti Zone",
+				state_code: "SE"
+			},
+			{
+				id: 2067,
+				name: "Western Region",
+				state_code: "3"
+			}
+		]
+	},
+	{
+		name: "Netherlands",
+		iso3: "NLD",
+		iso2: "NL",
+		numeric_code: "528",
+		phone_code: "31",
+		emoji: "🇳🇱",
+		emojiU: "U+1F1F3 U+1F1F1",
+		states: [
+			{
+				id: 2624,
+				name: "Bonaire",
+				state_code: "BQ1"
+			},
+			{
+				id: 2613,
+				name: "Drenthe",
+				state_code: "DR"
+			},
+			{
+				id: 2619,
+				name: "Flevoland",
+				state_code: "FL"
+			},
+			{
+				id: 2622,
+				name: "Friesland",
+				state_code: "FR"
+			},
+			{
+				id: 2611,
+				name: "Gelderland",
+				state_code: "GE"
+			},
+			{
+				id: 2617,
+				name: "Groningen",
+				state_code: "GR"
+			},
+			{
+				id: 2615,
+				name: "Limburg",
+				state_code: "LI"
+			},
+			{
+				id: 2623,
+				name: "North Brabant",
+				state_code: "NB"
+			},
+			{
+				id: 2612,
+				name: "North Holland",
+				state_code: "NH"
+			},
+			{
+				id: 2618,
+				name: "Overijssel",
+				state_code: "OV"
+			},
+			{
+				id: 2621,
+				name: "Saba",
+				state_code: "BQ2"
+			},
+			{
+				id: 2616,
+				name: "Sint Eustatius",
+				state_code: "BQ3"
+			},
+			{
+				id: 2614,
+				name: "South Holland",
+				state_code: "ZH"
+			},
+			{
+				id: 2610,
+				name: "Utrecht",
+				state_code: "UT"
+			},
+			{
+				id: 2620,
+				name: "Zeeland",
+				state_code: "ZE"
+			}
+		]
+	},
+	{
+		name: "New Caledonia",
+		iso3: "NCL",
+		iso2: "NC",
+		numeric_code: "540",
+		phone_code: "687",
+		emoji: "🇳🇨",
+		emojiU: "U+1F1F3 U+1F1E8",
+		states: [
+		]
+	},
+	{
+		name: "New Zealand",
+		iso3: "NZL",
+		iso2: "NZ",
+		numeric_code: "554",
+		phone_code: "64",
+		emoji: "🇳🇿",
+		emojiU: "U+1F1F3 U+1F1FF",
+		states: [
+			{
+				id: 4072,
+				name: "Auckland Region",
+				state_code: "AUK"
+			},
+			{
+				id: 4074,
+				name: "Bay of Plenty Region",
+				state_code: "BOP"
+			},
+			{
+				id: 4066,
+				name: "Canterbury Region",
+				state_code: "CAN"
+			},
+			{
+				id: 4067,
+				name: "Chatham Islands",
+				state_code: "CIT"
+			},
+			{
+				id: 4068,
+				name: "Gisborne District",
+				state_code: "GIS"
+			},
+			{
+				id: 4075,
+				name: "Hawke's Bay Region",
+				state_code: "HKB"
+			},
+			{
+				id: 4060,
+				name: "Manawatu-Wanganui Region",
+				state_code: "MWT"
+			},
+			{
+				id: 4063,
+				name: "Marlborough Region",
+				state_code: "MBH"
+			},
+			{
+				id: 4070,
+				name: "Nelson Region",
+				state_code: "NSN"
+			},
+			{
+				id: 4059,
+				name: "Northland Region",
+				state_code: "NTL"
+			},
+			{
+				id: 4062,
+				name: "Otago Region",
+				state_code: "OTA"
+			},
+			{
+				id: 4071,
+				name: "Southland Region",
+				state_code: "STL"
+			},
+			{
+				id: 4069,
+				name: "Taranaki Region",
+				state_code: "TKI"
+			},
+			{
+				id: 4073,
+				name: "Tasman District",
+				state_code: "TAS"
+			},
+			{
+				id: 4061,
+				name: "Waikato Region",
+				state_code: "WKO"
+			},
+			{
+				id: 4065,
+				name: "Wellington Region",
+				state_code: "WGN"
+			},
+			{
+				id: 4064,
+				name: "West Coast Region",
+				state_code: "WTC"
+			}
+		]
+	},
+	{
+		name: "Nicaragua",
+		iso3: "NIC",
+		iso2: "NI",
+		numeric_code: "558",
+		phone_code: "505",
+		emoji: "🇳🇮",
+		emojiU: "U+1F1F3 U+1F1EE",
+		states: [
+			{
+				id: 946,
+				name: "Boaco",
+				state_code: "BO"
+			},
+			{
+				id: 950,
+				name: "Carazo",
+				state_code: "CA"
+			},
+			{
+				id: 954,
+				name: "Chinandega",
+				state_code: "CI"
+			},
+			{
+				id: 940,
+				name: "Chontales",
+				state_code: "CO"
+			},
+			{
+				id: 945,
+				name: "Estelí",
+				state_code: "ES"
+			},
+			{
+				id: 943,
+				name: "Granada",
+				state_code: "GR"
+			},
+			{
+				id: 955,
+				name: "Jinotega",
+				state_code: "JI"
+			},
+			{
+				id: 944,
+				name: "León",
+				state_code: "LE"
+			},
+			{
+				id: 948,
+				name: "Madriz",
+				state_code: "MD"
+			},
+			{
+				id: 941,
+				name: "Managua",
+				state_code: "MN"
+			},
+			{
+				id: 953,
+				name: "Masaya",
+				state_code: "MS"
+			},
+			{
+				id: 947,
+				name: "Matagalpa",
+				state_code: "MT"
+			},
+			{
+				id: 951,
+				name: "North Caribbean Coast",
+				state_code: "AN"
+			},
+			{
+				id: 4964,
+				name: "Nueva Segovia\t",
+				state_code: "NS"
+			},
+			{
+				id: 949,
+				name: "Río San Juan",
+				state_code: "SJ"
+			},
+			{
+				id: 942,
+				name: "Rivas",
+				state_code: "RI"
+			},
+			{
+				id: 952,
+				name: "South Caribbean Coast",
+				state_code: "AS"
+			}
+		]
+	},
+	{
+		name: "Niger",
+		iso3: "NER",
+		iso2: "NE",
+		numeric_code: "562",
+		phone_code: "227",
+		emoji: "🇳🇪",
+		emojiU: "U+1F1F3 U+1F1EA",
+		states: [
+			{
+				id: 71,
+				name: "Agadez Region",
+				state_code: "1"
+			},
+			{
+				id: 72,
+				name: "Diffa Region",
+				state_code: "2"
+			},
+			{
+				id: 68,
+				name: "Dosso Region",
+				state_code: "3"
+			},
+			{
+				id: 70,
+				name: "Maradi Region",
+				state_code: "4"
+			},
+			{
+				id: 73,
+				name: "Tahoua Region",
+				state_code: "5"
+			},
+			{
+				id: 67,
+				name: "Tillabéri Region",
+				state_code: "6"
+			},
+			{
+				id: 69,
+				name: "Zinder Region",
+				state_code: "7"
+			}
+		]
+	},
+	{
+		name: "Nigeria",
+		iso3: "NGA",
+		iso2: "NG",
+		numeric_code: "566",
+		phone_code: "234",
+		emoji: "🇳🇬",
+		emojiU: "U+1F1F3 U+1F1EC",
+		states: [
+			{
+				id: 303,
+				name: "Abia",
+				state_code: "AB"
+			},
+			{
+				id: 293,
+				name: "Abuja Federal Capital Territory",
+				state_code: "FC"
+			},
+			{
+				id: 320,
+				name: "Adamawa",
+				state_code: "AD"
+			},
+			{
+				id: 304,
+				name: "Akwa Ibom",
+				state_code: "AK"
+			},
+			{
+				id: 315,
+				name: "Anambra",
+				state_code: "AN"
+			},
+			{
+				id: 312,
+				name: "Bauchi",
+				state_code: "BA"
+			},
+			{
+				id: 305,
+				name: "Bayelsa",
+				state_code: "BY"
+			},
+			{
+				id: 291,
+				name: "Benue",
+				state_code: "BE"
+			},
+			{
+				id: 307,
+				name: "Borno",
+				state_code: "BO"
+			},
+			{
+				id: 314,
+				name: "Cross River",
+				state_code: "CR"
+			},
+			{
+				id: 316,
+				name: "Delta",
+				state_code: "DE"
+			},
+			{
+				id: 311,
+				name: "Ebonyi",
+				state_code: "EB"
+			},
+			{
+				id: 318,
+				name: "Edo",
+				state_code: "ED"
+			},
+			{
+				id: 309,
+				name: "Ekiti",
+				state_code: "EK"
+			},
+			{
+				id: 289,
+				name: "Enugu",
+				state_code: "EN"
+			},
+			{
+				id: 310,
+				name: "Gombe",
+				state_code: "GO"
+			},
+			{
+				id: 308,
+				name: "Imo",
+				state_code: "IM"
+			},
+			{
+				id: 288,
+				name: "Jigawa",
+				state_code: "JI"
+			},
+			{
+				id: 294,
+				name: "Kaduna",
+				state_code: "KD"
+			},
+			{
+				id: 300,
+				name: "Kano",
+				state_code: "KN"
+			},
+			{
+				id: 313,
+				name: "Katsina",
+				state_code: "KT"
+			},
+			{
+				id: 290,
+				name: "Kebbi",
+				state_code: "KE"
+			},
+			{
+				id: 298,
+				name: "Kogi",
+				state_code: "KO"
+			},
+			{
+				id: 295,
+				name: "Kwara",
+				state_code: "KW"
+			},
+			{
+				id: 306,
+				name: "Lagos",
+				state_code: "LA"
+			},
+			{
+				id: 301,
+				name: "Nasarawa",
+				state_code: "NA"
+			},
+			{
+				id: 317,
+				name: "Niger",
+				state_code: "NI"
+			},
+			{
+				id: 323,
+				name: "Ogun",
+				state_code: "OG"
+			},
+			{
+				id: 321,
+				name: "Ondo",
+				state_code: "ON"
+			},
+			{
+				id: 322,
+				name: "Osun",
+				state_code: "OS"
+			},
+			{
+				id: 296,
+				name: "Oyo",
+				state_code: "OY"
+			},
+			{
+				id: 302,
+				name: "Plateau",
+				state_code: "PL"
+			},
+			{
+				id: 4926,
+				name: "Rivers",
+				state_code: "RI"
+			},
+			{
+				id: 292,
+				name: "Sokoto",
+				state_code: "SO"
+			},
+			{
+				id: 319,
+				name: "Taraba",
+				state_code: "TA"
+			},
+			{
+				id: 297,
+				name: "Yobe",
+				state_code: "YO"
+			},
+			{
+				id: 299,
+				name: "Zamfara",
+				state_code: "ZA"
+			}
+		]
+	},
+	{
+		name: "Niue",
+		iso3: "NIU",
+		iso2: "NU",
+		numeric_code: "570",
+		phone_code: "683",
+		emoji: "🇳🇺",
+		emojiU: "U+1F1F3 U+1F1FA",
+		states: [
+		]
+	},
+	{
+		name: "Norfolk Island",
+		iso3: "NFK",
+		iso2: "NF",
+		numeric_code: "574",
+		phone_code: "672",
+		emoji: "🇳🇫",
+		emojiU: "U+1F1F3 U+1F1EB",
+		states: [
+		]
+	},
+	{
+		name: "North Korea",
+		iso3: "PRK",
+		iso2: "KP",
+		numeric_code: "408",
+		phone_code: "850",
+		emoji: "🇰🇵",
+		emojiU: "U+1F1F0 U+1F1F5",
+		states: [
+			{
+				id: 3998,
+				name: "Chagang Province",
+				state_code: "04"
+			},
+			{
+				id: 3999,
+				name: "Kangwon Province",
+				state_code: "07"
+			},
+			{
+				id: 3995,
+				name: "North Hamgyong Province",
+				state_code: "09"
+			},
+			{
+				id: 4004,
+				name: "North Hwanghae Province",
+				state_code: "06"
+			},
+			{
+				id: 4002,
+				name: "North Pyongan Province",
+				state_code: "03"
+			},
+			{
+				id: 4005,
+				name: "Pyongyang",
+				state_code: "01"
+			},
+			{
+				id: 4001,
+				name: "Rason",
+				state_code: "13"
+			},
+			{
+				id: 3996,
+				name: "Ryanggang Province",
+				state_code: "10"
+			},
+			{
+				id: 4000,
+				name: "South Hamgyong Province",
+				state_code: "08"
+			},
+			{
+				id: 4003,
+				name: "South Hwanghae Province",
+				state_code: "05"
+			},
+			{
+				id: 3997,
+				name: "South Pyongan Province",
+				state_code: "02"
+			}
+		]
+	},
+	{
+		name: "Northern Mariana Islands",
+		iso3: "MNP",
+		iso2: "MP",
+		numeric_code: "580",
+		phone_code: "+1-670",
+		emoji: "🇲🇵",
+		emojiU: "U+1F1F2 U+1F1F5",
+		states: [
+		]
+	},
+	{
+		name: "Norway",
+		iso3: "NOR",
+		iso2: "NO",
+		numeric_code: "578",
+		phone_code: "47",
+		emoji: "🇳🇴",
+		emojiU: "U+1F1F3 U+1F1F4",
+		states: [
+			{
+				id: 1017,
+				name: "Akershus",
+				state_code: "02"
+			},
+			{
+				id: 1011,
+				name: "Buskerud",
+				state_code: "06"
+			},
+			{
+				id: 1016,
+				name: "Finnmark",
+				state_code: "20"
+			},
+			{
+				id: 1019,
+				name: "Hedmark",
+				state_code: "04"
+			},
+			{
+				id: 1023,
+				name: "Hordaland",
+				state_code: "12"
+			},
+			{
+				id: 1026,
+				name: "Jan Mayen",
+				state_code: "22"
+			},
+			{
+				id: 1020,
+				name: "Møre og Romsdal",
+				state_code: "15"
+			},
+			{
+				id: 1012,
+				name: "Nord-Trøndelag",
+				state_code: "17"
+			},
+			{
+				id: 1025,
+				name: "Nordland",
+				state_code: "18"
+			},
+			{
+				id: 1009,
+				name: "Oppland",
+				state_code: "05"
+			},
+			{
+				id: 1007,
+				name: "Oslo",
+				state_code: "03"
+			},
+			{
+				id: 1022,
+				name: "Østfold",
+				state_code: "01"
+			},
+			{
+				id: 1021,
+				name: "Rogaland",
+				state_code: "11"
+			},
+			{
+				id: 1018,
+				name: "Sogn og Fjordane",
+				state_code: "14"
+			},
+			{
+				id: 1010,
+				name: "Sør-Trøndelag",
+				state_code: "16"
+			},
+			{
+				id: 1013,
+				name: "Svalbard",
+				state_code: "21"
+			},
+			{
+				id: 1024,
+				name: "Telemark",
+				state_code: "08"
+			},
+			{
+				id: 1015,
+				name: "Troms",
+				state_code: "19"
+			},
+			{
+				id: 1006,
+				name: "Trøndelag",
+				state_code: "50"
+			},
+			{
+				id: 1014,
+				name: "Vest-Agder",
+				state_code: "10"
+			},
+			{
+				id: 1008,
+				name: "Vestfold",
+				state_code: "07"
+			}
+		]
+	},
+	{
+		name: "Oman",
+		iso3: "OMN",
+		iso2: "OM",
+		numeric_code: "512",
+		phone_code: "968",
+		emoji: "🇴🇲",
+		emojiU: "U+1F1F4 U+1F1F2",
+		states: [
+			{
+				id: 3058,
+				name: "Ad Dakhiliyah Governorate",
+				state_code: "DA"
+			},
+			{
+				id: 3047,
+				name: "Ad Dhahirah Governorate",
+				state_code: "ZA"
+			},
+			{
+				id: 3048,
+				name: "Al Batinah North Governorate",
+				state_code: "BS"
+			},
+			{
+				id: 3050,
+				name: "Al Batinah Region",
+				state_code: "BA"
+			},
+			{
+				id: 3049,
+				name: "Al Batinah South Governorate",
+				state_code: "BJ"
+			},
+			{
+				id: 3059,
+				name: "Al Buraimi Governorate",
+				state_code: "BU"
+			},
+			{
+				id: 3056,
+				name: "Al Wusta Governorate",
+				state_code: "WU"
+			},
+			{
+				id: 3053,
+				name: "Ash Sharqiyah North Governorate",
+				state_code: "SS"
+			},
+			{
+				id: 3051,
+				name: "Ash Sharqiyah Region",
+				state_code: "SH"
+			},
+			{
+				id: 3054,
+				name: "Ash Sharqiyah South Governorate",
+				state_code: "SJ"
+			},
+			{
+				id: 3057,
+				name: "Dhofar Governorate",
+				state_code: "ZU"
+			},
+			{
+				id: 3052,
+				name: "Musandam Governorate",
+				state_code: "MU"
+			},
+			{
+				id: 3055,
+				name: "Muscat Governorate",
+				state_code: "MA"
+			}
+		]
+	},
+	{
+		name: "Pakistan",
+		iso3: "PAK",
+		iso2: "PK",
+		numeric_code: "586",
+		phone_code: "92",
+		emoji: "🇵🇰",
+		emojiU: "U+1F1F5 U+1F1F0",
+		states: [
+			{
+				id: 3172,
+				name: "Azad Kashmir",
+				state_code: "JK"
+			},
+			{
+				id: 3174,
+				name: "Balochistan",
+				state_code: "BA"
+			},
+			{
+				id: 3173,
+				name: "Federally Administered Tribal Areas",
+				state_code: "TA"
+			},
+			{
+				id: 3170,
+				name: "Gilgit-Baltistan",
+				state_code: "GB"
+			},
+			{
+				id: 3169,
+				name: "Islamabad Capital Territory",
+				state_code: "IS"
+			},
+			{
+				id: 3171,
+				name: "Khyber Pakhtunkhwa",
+				state_code: "KP"
+			},
+			{
+				id: 3176,
+				name: "Punjab",
+				state_code: "PB"
+			},
+			{
+				id: 3175,
+				name: "Sindh",
+				state_code: "SD"
+			}
+		]
+	},
+	{
+		name: "Palau",
+		iso3: "PLW",
+		iso2: "PW",
+		numeric_code: "585",
+		phone_code: "680",
+		emoji: "🇵🇼",
+		emojiU: "U+1F1F5 U+1F1FC",
+		states: [
+			{
+				id: 4540,
+				name: "Aimeliik",
+				state_code: "002"
+			},
+			{
+				id: 4528,
+				name: "Airai",
+				state_code: "004"
+			},
+			{
+				id: 4538,
+				name: "Angaur",
+				state_code: "010"
+			},
+			{
+				id: 4529,
+				name: "Hatohobei",
+				state_code: "050"
+			},
+			{
+				id: 4539,
+				name: "Kayangel",
+				state_code: "100"
+			},
+			{
+				id: 4532,
+				name: "Koror",
+				state_code: "150"
+			},
+			{
+				id: 4530,
+				name: "Melekeok",
+				state_code: "212"
+			},
+			{
+				id: 4537,
+				name: "Ngaraard",
+				state_code: "214"
+			},
+			{
+				id: 4533,
+				name: "Ngarchelong",
+				state_code: "218"
+			},
+			{
+				id: 4527,
+				name: "Ngardmau",
+				state_code: "222"
+			},
+			{
+				id: 4531,
+				name: "Ngatpang",
+				state_code: "224"
+			},
+			{
+				id: 4536,
+				name: "Ngchesar",
+				state_code: "226"
+			},
+			{
+				id: 4541,
+				name: "Ngeremlengui",
+				state_code: "227"
+			},
+			{
+				id: 4534,
+				name: "Ngiwal",
+				state_code: "228"
+			},
+			{
+				id: 4526,
+				name: "Peleliu",
+				state_code: "350"
+			},
+			{
+				id: 4535,
+				name: "Sonsorol",
+				state_code: "370"
+			}
+		]
+	},
+	{
+		name: "Palestinian Territory Occupied",
+		iso3: "PSE",
+		iso2: "PS",
+		numeric_code: "275",
+		phone_code: "970",
+		emoji: "🇵🇸",
+		emojiU: "U+1F1F5 U+1F1F8",
+		states: [
+		]
+	},
+	{
+		name: "Panama",
+		iso3: "PAN",
+		iso2: "PA",
+		numeric_code: "591",
+		phone_code: "507",
+		emoji: "🇵🇦",
+		emojiU: "U+1F1F5 U+1F1E6",
+		states: [
+			{
+				id: 1393,
+				name: "Bocas del Toro Province",
+				state_code: "1"
+			},
+			{
+				id: 1397,
+				name: "Chiriquí Province",
+				state_code: "4"
+			},
+			{
+				id: 1387,
+				name: "Coclé Province",
+				state_code: "2"
+			},
+			{
+				id: 1386,
+				name: "Colón Province",
+				state_code: "3"
+			},
+			{
+				id: 1385,
+				name: "Darién Province",
+				state_code: "5"
+			},
+			{
+				id: 1396,
+				name: "Emberá-Wounaan Comarca",
+				state_code: "EM"
+			},
+			{
+				id: 1388,
+				name: "Guna Yala",
+				state_code: "KY"
+			},
+			{
+				id: 1389,
+				name: "Herrera Province",
+				state_code: "6"
+			},
+			{
+				id: 1390,
+				name: "Los Santos Province",
+				state_code: "7"
+			},
+			{
+				id: 1391,
+				name: "Ngöbe-Buglé Comarca",
+				state_code: "NB"
+			},
+			{
+				id: 1394,
+				name: "Panamá Oeste Province",
+				state_code: "10"
+			},
+			{
+				id: 1395,
+				name: "Panamá Province",
+				state_code: "8"
+			},
+			{
+				id: 1392,
+				name: "Veraguas Province",
+				state_code: "9"
+			}
+		]
+	},
+	{
+		name: "Papua new Guinea",
+		iso3: "PNG",
+		iso2: "PG",
+		numeric_code: "598",
+		phone_code: "675",
+		emoji: "🇵🇬",
+		emojiU: "U+1F1F5 U+1F1EC",
+		states: [
+			{
+				id: 4831,
+				name: "Bougainville",
+				state_code: "NSB"
+			},
+			{
+				id: 4847,
+				name: "Central Province",
+				state_code: "CPM"
+			},
+			{
+				id: 4846,
+				name: "Chimbu Province",
+				state_code: "CPK"
+			},
+			{
+				id: 4834,
+				name: "East New Britain",
+				state_code: "EBR"
+			},
+			{
+				id: 4845,
+				name: "Eastern Highlands Province",
+				state_code: "EHG"
+			},
+			{
+				id: 4848,
+				name: "Enga Province",
+				state_code: "EPW"
+			},
+			{
+				id: 4839,
+				name: "Gulf",
+				state_code: "GPK"
+			},
+			{
+				id: 4833,
+				name: "Hela",
+				state_code: "HLA"
+			},
+			{
+				id: 4832,
+				name: "Jiwaka Province",
+				state_code: "JWK"
+			},
+			{
+				id: 4843,
+				name: "Madang Province",
+				state_code: "MPM"
+			},
+			{
+				id: 4842,
+				name: "Manus Province",
+				state_code: "MRL"
+			},
+			{
+				id: 4849,
+				name: "Milne Bay Province",
+				state_code: "MBA"
+			},
+			{
+				id: 4835,
+				name: "Morobe Province",
+				state_code: "MPL"
+			},
+			{
+				id: 4841,
+				name: "New Ireland Province",
+				state_code: "NIK"
+			},
+			{
+				id: 4838,
+				name: "Oro Province",
+				state_code: "NPP"
+			},
+			{
+				id: 4837,
+				name: "Port Moresby",
+				state_code: "NCD"
+			},
+			{
+				id: 4836,
+				name: "Sandaun Province",
+				state_code: "SAN"
+			},
+			{
+				id: 4844,
+				name: "Southern Highlands Province",
+				state_code: "SHM"
+			},
+			{
+				id: 4830,
+				name: "West New Britain Province",
+				state_code: "WBK"
+			},
+			{
+				id: 4840,
+				name: "Western Highlands Province",
+				state_code: "WHM"
+			},
+			{
+				id: 4850,
+				name: "Western Province",
+				state_code: "WPD"
+			}
+		]
+	},
+	{
+		name: "Paraguay",
+		iso3: "PRY",
+		iso2: "PY",
+		numeric_code: "600",
+		phone_code: "595",
+		emoji: "🇵🇾",
+		emojiU: "U+1F1F5 U+1F1FE",
+		states: [
+			{
+				id: 2785,
+				name: "Alto Paraguay Department",
+				state_code: "16"
+			},
+			{
+				id: 2784,
+				name: "Alto Paraná Department",
+				state_code: "10"
+			},
+			{
+				id: 2782,
+				name: "Amambay Department",
+				state_code: "13"
+			},
+			{
+				id: 2780,
+				name: "Boquerón Department",
+				state_code: "19"
+			},
+			{
+				id: 2773,
+				name: "Caaguazú",
+				state_code: "5"
+			},
+			{
+				id: 2775,
+				name: "Caazapá",
+				state_code: "6"
+			},
+			{
+				id: 2771,
+				name: "Canindeyú",
+				state_code: "14"
+			},
+			{
+				id: 2777,
+				name: "Central Department",
+				state_code: "11"
+			},
+			{
+				id: 2779,
+				name: "Concepción Department",
+				state_code: "1"
+			},
+			{
+				id: 2783,
+				name: "Cordillera Department",
+				state_code: "3"
+			},
+			{
+				id: 2772,
+				name: "Guairá Department",
+				state_code: "4"
+			},
+			{
+				id: 2778,
+				name: "Itapúa",
+				state_code: "7"
+			},
+			{
+				id: 2786,
+				name: "Misiones Department",
+				state_code: "8"
+			},
+			{
+				id: 2781,
+				name: "Ñeembucú Department",
+				state_code: "12"
+			},
+			{
+				id: 2774,
+				name: "Paraguarí Department",
+				state_code: "9"
+			},
+			{
+				id: 2770,
+				name: "Presidente Hayes Department",
+				state_code: "15"
+			},
+			{
+				id: 2776,
+				name: "San Pedro Department",
+				state_code: "2"
+			}
+		]
+	},
+	{
+		name: "Peru",
+		iso3: "PER",
+		iso2: "PE",
+		numeric_code: "604",
+		phone_code: "51",
+		emoji: "🇵🇪",
+		emojiU: "U+1F1F5 U+1F1EA",
+		states: [
+			{
+				id: 3685,
+				name: "Amazonas",
+				state_code: "AMA"
+			},
+			{
+				id: 3680,
+				name: "Áncash",
+				state_code: "ANC"
+			},
+			{
+				id: 3699,
+				name: "Apurímac",
+				state_code: "APU"
+			},
+			{
+				id: 3681,
+				name: "Arequipa",
+				state_code: "ARE"
+			},
+			{
+				id: 3692,
+				name: "Ayacucho",
+				state_code: "AYA"
+			},
+			{
+				id: 3688,
+				name: "Cajamarca",
+				state_code: "CAJ"
+			},
+			{
+				id: 3701,
+				name: "Callao",
+				state_code: "CAL"
+			},
+			{
+				id: 3691,
+				name: "Cusco",
+				state_code: "CUS"
+			},
+			{
+				id: 3679,
+				name: "Huancavelica",
+				state_code: "HUV"
+			},
+			{
+				id: 3687,
+				name: "Huanuco",
+				state_code: "HUC"
+			},
+			{
+				id: 3700,
+				name: "Ica",
+				state_code: "ICA"
+			},
+			{
+				id: 3693,
+				name: "Junín",
+				state_code: "JUN"
+			},
+			{
+				id: 3683,
+				name: "La Libertad",
+				state_code: "LAL"
+			},
+			{
+				id: 3702,
+				name: "Lambayeque",
+				state_code: "LAM"
+			},
+			{
+				id: 3695,
+				name: "Lima",
+				state_code: "LIM"
+			},
+			{
+				id: 4922,
+				name: "Loreto",
+				state_code: "LOR"
+			},
+			{
+				id: 3678,
+				name: "Madre de Dios",
+				state_code: "MDD"
+			},
+			{
+				id: 3698,
+				name: "Moquegua",
+				state_code: "MOQ"
+			},
+			{
+				id: 3686,
+				name: "Pasco",
+				state_code: "PAS"
+			},
+			{
+				id: 3697,
+				name: "Piura",
+				state_code: "PIU"
+			},
+			{
+				id: 3682,
+				name: "Puno",
+				state_code: "PUN"
+			},
+			{
+				id: 3694,
+				name: "San Martín",
+				state_code: "SAM"
+			},
+			{
+				id: 3696,
+				name: "Tacna",
+				state_code: "TAC"
+			},
+			{
+				id: 3689,
+				name: "Tumbes",
+				state_code: "TUM"
+			},
+			{
+				id: 3684,
+				name: "Ucayali",
+				state_code: "UCA"
+			}
+		]
+	},
+	{
+		name: "Philippines",
+		iso3: "PHL",
+		iso2: "PH",
+		numeric_code: "608",
+		phone_code: "63",
+		emoji: "🇵🇭",
+		emojiU: "U+1F1F5 U+1F1ED",
+		states: [
+			{
+				id: 1324,
+				name: "Abra",
+				state_code: "ABR"
+			},
+			{
+				id: 1323,
+				name: "Agusan del Norte",
+				state_code: "AGN"
+			},
+			{
+				id: 1326,
+				name: "Agusan del Sur",
+				state_code: "AGS"
+			},
+			{
+				id: 1331,
+				name: "Aklan",
+				state_code: "AKL"
+			},
+			{
+				id: 1337,
+				name: "Albay",
+				state_code: "ALB"
+			},
+			{
+				id: 1336,
+				name: "Antique",
+				state_code: "ANT"
+			},
+			{
+				id: 1334,
+				name: "Apayao",
+				state_code: "APA"
+			},
+			{
+				id: 1341,
+				name: "Aurora",
+				state_code: "AUR"
+			},
+			{
+				id: 1316,
+				name: "Autonomous Region in Muslim Mindanao",
+				state_code: "14"
+			},
+			{
+				id: 1346,
+				name: "Basilan",
+				state_code: "BAS"
+			},
+			{
+				id: 1344,
+				name: "Bataan",
+				state_code: "BAN"
+			},
+			{
+				id: 1352,
+				name: "Batanes",
+				state_code: "BTN"
+			},
+			{
+				id: 1359,
+				name: "Batangas",
+				state_code: "BTG"
+			},
+			{
+				id: 1363,
+				name: "Benguet",
+				state_code: "BEN"
+			},
+			{
+				id: 1304,
+				name: "Bicol Region",
+				state_code: "05"
+			},
+			{
+				id: 1274,
+				name: "Biliran",
+				state_code: "BIL"
+			},
+			{
+				id: 1272,
+				name: "Bohol",
+				state_code: "BOH"
+			},
+			{
+				id: 1270,
+				name: "Bukidnon",
+				state_code: "BUK"
+			},
+			{
+				id: 1278,
+				name: "Bulacan",
+				state_code: "BUL"
+			},
+			{
+				id: 1279,
+				name: "Cagayan",
+				state_code: "CAG"
+			},
+			{
+				id: 1342,
+				name: "Cagayan Valley",
+				state_code: "02"
+			},
+			{
+				id: 1294,
+				name: "Calabarzon",
+				state_code: "40"
+			},
+			{
+				id: 1283,
+				name: "Camarines Norte",
+				state_code: "CAN"
+			},
+			{
+				id: 1287,
+				name: "Camarines Sur",
+				state_code: "CAS"
+			},
+			{
+				id: 1285,
+				name: "Camiguin",
+				state_code: "CAM"
+			},
+			{
+				id: 1292,
+				name: "Capiz",
+				state_code: "CAP"
+			},
+			{
+				id: 1314,
+				name: "Caraga",
+				state_code: "13"
+			},
+			{
+				id: 1301,
+				name: "Catanduanes",
+				state_code: "CAT"
+			},
+			{
+				id: 1307,
+				name: "Cavite",
+				state_code: "CAV"
+			},
+			{
+				id: 1306,
+				name: "Cebu",
+				state_code: "CEB"
+			},
+			{
+				id: 1345,
+				name: "Central Luzon",
+				state_code: "03"
+			},
+			{
+				id: 1308,
+				name: "Central Visayas",
+				state_code: "07"
+			},
+			{
+				id: 1311,
+				name: "Compostela Valley",
+				state_code: "COM"
+			},
+			{
+				id: 1335,
+				name: "Cordillera Administrative Region",
+				state_code: "15"
+			},
+			{
+				id: 1320,
+				name: "Cotabato",
+				state_code: "NCO"
+			},
+			{
+				id: 1319,
+				name: "Davao del Norte",
+				state_code: "DAV"
+			},
+			{
+				id: 1318,
+				name: "Davao del Sur",
+				state_code: "DAS"
+			},
+			{
+				id: 1309,
+				name: "Davao Occidental",
+				state_code: "DVO"
+			},
+			{
+				id: 1289,
+				name: "Davao Oriental",
+				state_code: "DAO"
+			},
+			{
+				id: 1340,
+				name: "Davao Region",
+				state_code: "11"
+			},
+			{
+				id: 1291,
+				name: "Dinagat Islands",
+				state_code: "DIN"
+			},
+			{
+				id: 1290,
+				name: "Eastern Samar",
+				state_code: "EAS"
+			},
+			{
+				id: 1322,
+				name: "Eastern Visayas",
+				state_code: "08"
+			},
+			{
+				id: 1303,
+				name: "Guimaras",
+				state_code: "GUI"
+			},
+			{
+				id: 1300,
+				name: "Ifugao",
+				state_code: "IFU"
+			},
+			{
+				id: 1298,
+				name: "Ilocos Norte",
+				state_code: "ILN"
+			},
+			{
+				id: 1355,
+				name: "Ilocos Region",
+				state_code: "01"
+			},
+			{
+				id: 1321,
+				name: "Ilocos Sur",
+				state_code: "ILS"
+			},
+			{
+				id: 1315,
+				name: "Iloilo",
+				state_code: "ILI"
+			},
+			{
+				id: 1313,
+				name: "Isabela",
+				state_code: "ISA"
+			},
+			{
+				id: 1312,
+				name: "Kalinga",
+				state_code: "KAL"
+			},
+			{
+				id: 1317,
+				name: "La Union",
+				state_code: "LUN"
+			},
+			{
+				id: 1328,
+				name: "Laguna",
+				state_code: "LAG"
+			},
+			{
+				id: 1327,
+				name: "Lanao del Norte",
+				state_code: "LAN"
+			},
+			{
+				id: 1333,
+				name: "Lanao del Sur",
+				state_code: "LAS"
+			},
+			{
+				id: 1332,
+				name: "Leyte",
+				state_code: "LEY"
+			},
+			{
+				id: 1330,
+				name: "Maguindanao",
+				state_code: "MAG"
+			},
+			{
+				id: 1329,
+				name: "Marinduque",
+				state_code: "MAD"
+			},
+			{
+				id: 1338,
+				name: "Masbate",
+				state_code: "MAS"
+			},
+			{
+				id: 1347,
+				name: "Metro Manila",
+				state_code: "NCR"
+			},
+			{
+				id: 1299,
+				name: "Mimaropa",
+				state_code: "41"
+			},
+			{
+				id: 1343,
+				name: "Misamis Occidental",
+				state_code: "MSC"
+			},
+			{
+				id: 1348,
+				name: "Misamis Oriental",
+				state_code: "MSR"
+			},
+			{
+				id: 1353,
+				name: "Mountain Province",
+				state_code: "MOU"
+			},
+			{
+				id: 1351,
+				name: "Negros Occidental",
+				state_code: "NEC"
+			},
+			{
+				id: 1350,
+				name: "Negros Oriental",
+				state_code: "NER"
+			},
+			{
+				id: 1339,
+				name: "Northern Mindanao",
+				state_code: "10"
+			},
+			{
+				id: 1349,
+				name: "Northern Samar",
+				state_code: "NSA"
+			},
+			{
+				id: 1360,
+				name: "Nueva Ecija",
+				state_code: "NUE"
+			},
+			{
+				id: 1358,
+				name: "Nueva Vizcaya",
+				state_code: "NUV"
+			},
+			{
+				id: 1356,
+				name: "Occidental Mindoro",
+				state_code: "MDC"
+			},
+			{
+				id: 1354,
+				name: "Oriental Mindoro",
+				state_code: "MDR"
+			},
+			{
+				id: 1361,
+				name: "Palawan",
+				state_code: "PLW"
+			},
+			{
+				id: 1365,
+				name: "Pampanga",
+				state_code: "PAM"
+			},
+			{
+				id: 1364,
+				name: "Pangasinan",
+				state_code: "PAN"
+			},
+			{
+				id: 1275,
+				name: "Quezon",
+				state_code: "QUE"
+			},
+			{
+				id: 1273,
+				name: "Quirino",
+				state_code: "QUI"
+			},
+			{
+				id: 1271,
+				name: "Rizal",
+				state_code: "RIZ"
+			},
+			{
+				id: 1269,
+				name: "Romblon",
+				state_code: "ROM"
+			},
+			{
+				id: 1277,
+				name: "Sarangani",
+				state_code: "SAR"
+			},
+			{
+				id: 1276,
+				name: "Siquijor",
+				state_code: "SIG"
+			},
+			{
+				id: 1310,
+				name: "Soccsksargen",
+				state_code: "12"
+			},
+			{
+				id: 1281,
+				name: "Sorsogon",
+				state_code: "SOR"
+			},
+			{
+				id: 1280,
+				name: "South Cotabato",
+				state_code: "SCO"
+			},
+			{
+				id: 1284,
+				name: "Southern Leyte",
+				state_code: "SLE"
+			},
+			{
+				id: 1282,
+				name: "Sultan Kudarat",
+				state_code: "SUK"
+			},
+			{
+				id: 1288,
+				name: "Sulu",
+				state_code: "SLU"
+			},
+			{
+				id: 1286,
+				name: "Surigao del Norte",
+				state_code: "SUN"
+			},
+			{
+				id: 1296,
+				name: "Surigao del Sur",
+				state_code: "SUR"
+			},
+			{
+				id: 1295,
+				name: "Tarlac",
+				state_code: "TAR"
+			},
+			{
+				id: 1293,
+				name: "Tawi-Tawi",
+				state_code: "TAW"
+			},
+			{
+				id: 1305,
+				name: "Western Visayas",
+				state_code: "06"
+			},
+			{
+				id: 1297,
+				name: "Zambales",
+				state_code: "ZMB"
+			},
+			{
+				id: 1302,
+				name: "Zamboanga del Norte",
+				state_code: "ZAN"
+			},
+			{
+				id: 1357,
+				name: "Zamboanga del Sur",
+				state_code: "ZAS"
+			},
+			{
+				id: 1325,
+				name: "Zamboanga Peninsula",
+				state_code: "09"
+			},
+			{
+				id: 1362,
+				name: "Zamboanga Sibugay",
+				state_code: "ZSI"
+			}
+		]
+	},
+	{
+		name: "Pitcairn Island",
+		iso3: "PCN",
+		iso2: "PN",
+		numeric_code: "612",
+		phone_code: "870",
+		emoji: "🇵🇳",
+		emojiU: "U+1F1F5 U+1F1F3",
+		states: [
+		]
+	},
+	{
+		name: "Poland",
+		iso3: "POL",
+		iso2: "PL",
+		numeric_code: "616",
+		phone_code: "48",
+		emoji: "🇵🇱",
+		emojiU: "U+1F1F5 U+1F1F1",
+		states: [
+			{
+				id: 1634,
+				name: "Greater Poland Voivodeship",
+				state_code: "WP"
+			},
+			{
+				id: 1625,
+				name: "Kuyavian-Pomeranian Voivodeship",
+				state_code: "KP"
+			},
+			{
+				id: 1635,
+				name: "Lesser Poland Voivodeship",
+				state_code: "MA"
+			},
+			{
+				id: 1629,
+				name: "Lower Silesian Voivodeship",
+				state_code: "DS"
+			},
+			{
+				id: 1638,
+				name: "Lublin Voivodeship",
+				state_code: "LU"
+			},
+			{
+				id: 1631,
+				name: "Lubusz Voivodeship",
+				state_code: "LB"
+			},
+			{
+				id: 1636,
+				name: "Łódź Voivodeship",
+				state_code: "LD"
+			},
+			{
+				id: 1637,
+				name: "Masovian Voivodeship",
+				state_code: "MZ"
+			},
+			{
+				id: 1622,
+				name: "Opole Voivodeship",
+				state_code: "OP"
+			},
+			{
+				id: 1626,
+				name: "Podkarpackie Voivodeship",
+				state_code: "PK"
+			},
+			{
+				id: 1632,
+				name: "Podlaskie Voivodeship",
+				state_code: "PD"
+			},
+			{
+				id: 1624,
+				name: "Pomeranian Voivodeship",
+				state_code: "PM"
+			},
+			{
+				id: 1623,
+				name: "Silesian Voivodeship",
+				state_code: "SL"
+			},
+			{
+				id: 1630,
+				name: "Świętokrzyskie Voivodeship",
+				state_code: "SK"
+			},
+			{
+				id: 1628,
+				name: "Warmian-Masurian Voivodeship",
+				state_code: "WN"
+			},
+			{
+				id: 1633,
+				name: "West Pomeranian Voivodeship",
+				state_code: "ZP"
+			}
+		]
+	},
+	{
+		name: "Portugal",
+		iso3: "PRT",
+		iso2: "PT",
+		numeric_code: "620",
+		phone_code: "351",
+		emoji: "🇵🇹",
+		emojiU: "U+1F1F5 U+1F1F9",
+		states: [
+			{
+				id: 2233,
+				name: "Açores",
+				state_code: "20"
+			},
+			{
+				id: 2235,
+				name: "Aveiro",
+				state_code: "01"
+			},
+			{
+				id: 2230,
+				name: "Beja",
+				state_code: "02"
+			},
+			{
+				id: 2244,
+				name: "Braga",
+				state_code: "03"
+			},
+			{
+				id: 2229,
+				name: "Bragança",
+				state_code: "04"
+			},
+			{
+				id: 2241,
+				name: "Castelo Branco",
+				state_code: "05"
+			},
+			{
+				id: 2246,
+				name: "Coimbra",
+				state_code: "06"
+			},
+			{
+				id: 2236,
+				name: "Évora",
+				state_code: "07"
+			},
+			{
+				id: 2239,
+				name: "Faro",
+				state_code: "08"
+			},
+			{
+				id: 4859,
+				name: "Guarda",
+				state_code: "09"
+			},
+			{
+				id: 2240,
+				name: "Leiria",
+				state_code: "10"
+			},
+			{
+				id: 2228,
+				name: "Lisbon",
+				state_code: "11"
+			},
+			{
+				id: 2231,
+				name: "Madeira",
+				state_code: "30"
+			},
+			{
+				id: 2232,
+				name: "Portalegre",
+				state_code: "12"
+			},
+			{
+				id: 2243,
+				name: "Porto",
+				state_code: "13"
+			},
+			{
+				id: 2238,
+				name: "Santarém",
+				state_code: "14"
+			},
+			{
+				id: 2242,
+				name: "Setúbal",
+				state_code: "15"
+			},
+			{
+				id: 2245,
+				name: "Viana do Castelo",
+				state_code: "16"
+			},
+			{
+				id: 2234,
+				name: "Vila Real",
+				state_code: "17"
+			},
+			{
+				id: 2237,
+				name: "Viseu",
+				state_code: "18"
+			}
+		]
+	},
+	{
+		name: "Puerto Rico",
+		iso3: "PRI",
+		iso2: "PR",
+		numeric_code: "630",
+		phone_code: "+1-787 and 1-939",
+		emoji: "🇵🇷",
+		emojiU: "U+1F1F5 U+1F1F7",
+		states: [
+		]
+	},
+	{
+		name: "Qatar",
+		iso3: "QAT",
+		iso2: "QA",
+		numeric_code: "634",
+		phone_code: "974",
+		emoji: "🇶🇦",
+		emojiU: "U+1F1F6 U+1F1E6",
+		states: [
+			{
+				id: 3182,
+				name: "Al Daayen",
+				state_code: "ZA"
+			},
+			{
+				id: 3183,
+				name: "Al Khor",
+				state_code: "KH"
+			},
+			{
+				id: 3177,
+				name: "Al Rayyan Municipality",
+				state_code: "RA"
+			},
+			{
+				id: 3179,
+				name: "Al Wakrah",
+				state_code: "WA"
+			},
+			{
+				id: 3178,
+				name: "Al-Shahaniya",
+				state_code: "SH"
+			},
+			{
+				id: 3181,
+				name: "Doha",
+				state_code: "DA"
+			},
+			{
+				id: 3180,
+				name: "Madinat ash Shamal",
+				state_code: "MS"
+			},
+			{
+				id: 3184,
+				name: "Umm Salal Municipality",
+				state_code: "US"
+			}
+		]
+	},
+	{
+		name: "Reunion",
+		iso3: "REU",
+		iso2: "RE",
+		numeric_code: "638",
+		phone_code: "262",
+		emoji: "🇷🇪",
+		emojiU: "U+1F1F7 U+1F1EA",
+		states: [
+		]
+	},
+	{
+		name: "Romania",
+		iso3: "ROU",
+		iso2: "RO",
+		numeric_code: "642",
+		phone_code: "40",
+		emoji: "🇷🇴",
+		emojiU: "U+1F1F7 U+1F1F4",
+		states: [
+			{
+				id: 4724,
+				name: "Alba",
+				state_code: "AB"
+			},
+			{
+				id: 4739,
+				name: "Arad County",
+				state_code: "AR"
+			},
+			{
+				id: 4722,
+				name: "Arges",
+				state_code: "AG"
+			},
+			{
+				id: 4744,
+				name: "Bacău County",
+				state_code: "BC"
+			},
+			{
+				id: 4723,
+				name: "Bihor County",
+				state_code: "BH"
+			},
+			{
+				id: 4733,
+				name: "Bistrița-Năsăud County",
+				state_code: "BN"
+			},
+			{
+				id: 4740,
+				name: "Botoșani County",
+				state_code: "BT"
+			},
+			{
+				id: 4736,
+				name: "Braila",
+				state_code: "BR"
+			},
+			{
+				id: 4759,
+				name: "Brașov County",
+				state_code: "BV"
+			},
+			{
+				id: 4730,
+				name: "Bucharest",
+				state_code: "B"
+			},
+			{
+				id: 4756,
+				name: "Buzău County",
+				state_code: "BZ"
+			},
+			{
+				id: 4732,
+				name: "Călărași County",
+				state_code: "CL"
+			},
+			{
+				id: 4753,
+				name: "Caraș-Severin County",
+				state_code: "CS"
+			},
+			{
+				id: 4734,
+				name: "Cluj County",
+				state_code: "CJ"
+			},
+			{
+				id: 4737,
+				name: "Constanța County",
+				state_code: "CT"
+			},
+			{
+				id: 4754,
+				name: "Covasna County",
+				state_code: "CV"
+			},
+			{
+				id: 4745,
+				name: "Dâmbovița County",
+				state_code: "DB"
+			},
+			{
+				id: 4742,
+				name: "Dolj County",
+				state_code: "DJ"
+			},
+			{
+				id: 4747,
+				name: "Galați County",
+				state_code: "GL"
+			},
+			{
+				id: 4726,
+				name: "Giurgiu County",
+				state_code: "GR"
+			},
+			{
+				id: 4750,
+				name: "Gorj County",
+				state_code: "GJ"
+			},
+			{
+				id: 4749,
+				name: "Harghita County",
+				state_code: "HR"
+			},
+			{
+				id: 4721,
+				name: "Hunedoara County",
+				state_code: "HD"
+			},
+			{
+				id: 4743,
+				name: "Ialomița County",
+				state_code: "IL"
+			},
+			{
+				id: 4735,
+				name: "Iași County",
+				state_code: "IS"
+			},
+			{
+				id: 4725,
+				name: "Ilfov County",
+				state_code: "IF"
+			},
+			{
+				id: 4760,
+				name: "Maramureș County",
+				state_code: "MM"
+			},
+			{
+				id: 4751,
+				name: "Mehedinți County",
+				state_code: "MH"
+			},
+			{
+				id: 4915,
+				name: "Mureș County",
+				state_code: "MS"
+			},
+			{
+				id: 4731,
+				name: "Neamț County",
+				state_code: "NT"
+			},
+			{
+				id: 4738,
+				name: "Olt County",
+				state_code: "OT"
+			},
+			{
+				id: 4729,
+				name: "Prahova County",
+				state_code: "PH"
+			},
+			{
+				id: 4741,
+				name: "Sălaj County",
+				state_code: "SJ"
+			},
+			{
+				id: 4746,
+				name: "Satu Mare County",
+				state_code: "SM"
+			},
+			{
+				id: 4755,
+				name: "Sibiu County",
+				state_code: "SB"
+			},
+			{
+				id: 4720,
+				name: "Suceava County",
+				state_code: "SV"
+			},
+			{
+				id: 4728,
+				name: "Teleorman County",
+				state_code: "TR"
+			},
+			{
+				id: 4748,
+				name: "Timiș County",
+				state_code: "TM"
+			},
+			{
+				id: 4727,
+				name: "Tulcea County",
+				state_code: "TL"
+			},
+			{
+				id: 4757,
+				name: "Vâlcea County",
+				state_code: "VL"
+			},
+			{
+				id: 4752,
+				name: "Vaslui County",
+				state_code: "VS"
+			},
+			{
+				id: 4758,
+				name: "Vrancea County",
+				state_code: "VN"
+			}
+		]
+	},
+	{
+		name: "Russia",
+		iso3: "RUS",
+		iso2: "RU",
+		numeric_code: "643",
+		phone_code: "7",
+		emoji: "🇷🇺",
+		emojiU: "U+1F1F7 U+1F1FA",
+		states: [
+			{
+				id: 1911,
+				name: "Altai Krai",
+				state_code: "ALT"
+			},
+			{
+				id: 1876,
+				name: "Altai Republic",
+				state_code: "AL"
+			},
+			{
+				id: 1858,
+				name: "Amur Oblast",
+				state_code: "AMU"
+			},
+			{
+				id: 1849,
+				name: "Arkhangelsk",
+				state_code: "ARK"
+			},
+			{
+				id: 1866,
+				name: "Astrakhan Oblast",
+				state_code: "AST"
+			},
+			{
+				id: 1903,
+				name: "Belgorod Oblast",
+				state_code: "BEL"
+			},
+			{
+				id: 1867,
+				name: "Bryansk Oblast",
+				state_code: "BRY"
+			},
+			{
+				id: 1893,
+				name: "Chechen Republic",
+				state_code: "CE"
+			},
+			{
+				id: 1845,
+				name: "Chelyabinsk Oblast",
+				state_code: "CHE"
+			},
+			{
+				id: 1859,
+				name: "Chukotka Autonomous Okrug",
+				state_code: "CHU"
+			},
+			{
+				id: 1914,
+				name: "Chuvash Republic",
+				state_code: "CU"
+			},
+			{
+				id: 1880,
+				name: "Irkutsk",
+				state_code: "IRK"
+			},
+			{
+				id: 1864,
+				name: "Ivanovo Oblast",
+				state_code: "IVA"
+			},
+			{
+				id: 1835,
+				name: "Jewish Autonomous Oblast",
+				state_code: "YEV"
+			},
+			{
+				id: 1892,
+				name: "Kabardino-Balkar Republic",
+				state_code: "KB"
+			},
+			{
+				id: 1902,
+				name: "Kaliningrad",
+				state_code: "KGD"
+			},
+			{
+				id: 1844,
+				name: "Kaluga Oblast",
+				state_code: "KLU"
+			},
+			{
+				id: 1865,
+				name: "Kamchatka Krai",
+				state_code: "KAM"
+			},
+			{
+				id: 1869,
+				name: "Karachay-Cherkess Republic",
+				state_code: "KC"
+			},
+			{
+				id: 1897,
+				name: "Kemerovo Oblast",
+				state_code: "KEM"
+			},
+			{
+				id: 1873,
+				name: "Khabarovsk Krai",
+				state_code: "KHA"
+			},
+			{
+				id: 1838,
+				name: "Khanty-Mansi Autonomous Okrug",
+				state_code: "KHM"
+			},
+			{
+				id: 1890,
+				name: "Kirov Oblast",
+				state_code: "KIR"
+			},
+			{
+				id: 1899,
+				name: "Komi Republic",
+				state_code: "KO"
+			},
+			{
+				id: 1910,
+				name: "Kostroma Oblast",
+				state_code: "KOS"
+			},
+			{
+				id: 1891,
+				name: "Krasnodar Krai",
+				state_code: "KDA"
+			},
+			{
+				id: 1840,
+				name: "Krasnoyarsk Krai",
+				state_code: "KYA"
+			},
+			{
+				id: 1915,
+				name: "Kurgan Oblast",
+				state_code: "KGN"
+			},
+			{
+				id: 1855,
+				name: "Kursk Oblast",
+				state_code: "KRS"
+			},
+			{
+				id: 1896,
+				name: "Leningrad Oblast",
+				state_code: "LEN"
+			},
+			{
+				id: 1889,
+				name: "Lipetsk Oblast",
+				state_code: "LIP"
+			},
+			{
+				id: 1839,
+				name: "Magadan Oblast",
+				state_code: "MAG"
+			},
+			{
+				id: 1870,
+				name: "Mari El Republic",
+				state_code: "ME"
+			},
+			{
+				id: 1901,
+				name: "Moscow",
+				state_code: "MOW"
+			},
+			{
+				id: 1882,
+				name: "Moscow Oblast",
+				state_code: "MOS"
+			},
+			{
+				id: 1843,
+				name: "Murmansk Oblast",
+				state_code: "MUR"
+			},
+			{
+				id: 1836,
+				name: "Nenets Autonomous Okrug",
+				state_code: "NEN"
+			},
+			{
+				id: 1857,
+				name: "Nizhny Novgorod Oblast",
+				state_code: "NIZ"
+			},
+			{
+				id: 1834,
+				name: "Novgorod Oblast",
+				state_code: "NGR"
+			},
+			{
+				id: 1888,
+				name: "Novosibirsk",
+				state_code: "NVS"
+			},
+			{
+				id: 1846,
+				name: "Omsk Oblast",
+				state_code: "OMS"
+			},
+			{
+				id: 1886,
+				name: "Orenburg Oblast",
+				state_code: "ORE"
+			},
+			{
+				id: 1908,
+				name: "Oryol Oblast",
+				state_code: "ORL"
+			},
+			{
+				id: 1909,
+				name: "Penza Oblast",
+				state_code: "PNZ"
+			},
+			{
+				id: 1871,
+				name: "Perm Krai",
+				state_code: "PER"
+			},
+			{
+				id: 1833,
+				name: "Primorsky Krai",
+				state_code: "PRI"
+			},
+			{
+				id: 1863,
+				name: "Pskov Oblast",
+				state_code: "PSK"
+			},
+			{
+				id: 1852,
+				name: "Republic of Adygea",
+				state_code: "AD"
+			},
+			{
+				id: 1854,
+				name: "Republic of Bashkortostan",
+				state_code: "BA"
+			},
+			{
+				id: 1842,
+				name: "Republic of Buryatia",
+				state_code: "BU"
+			},
+			{
+				id: 1850,
+				name: "Republic of Dagestan",
+				state_code: "DA"
+			},
+			{
+				id: 1884,
+				name: "Republic of Ingushetia",
+				state_code: "IN"
+			},
+			{
+				id: 1883,
+				name: "Republic of Kalmykia",
+				state_code: "KL"
+			},
+			{
+				id: 1841,
+				name: "Republic of Karelia",
+				state_code: "KR"
+			},
+			{
+				id: 1877,
+				name: "Republic of Khakassia",
+				state_code: "KK"
+			},
+			{
+				id: 1898,
+				name: "Republic of Mordovia",
+				state_code: "MO"
+			},
+			{
+				id: 1853,
+				name: "Republic of North Ossetia-Alania",
+				state_code: "SE"
+			},
+			{
+				id: 1861,
+				name: "Republic of Tatarstan",
+				state_code: "TA"
+			},
+			{
+				id: 1837,
+				name: "Rostov Oblast",
+				state_code: "ROS"
+			},
+			{
+				id: 1905,
+				name: "Ryazan Oblast",
+				state_code: "RYA"
+			},
+			{
+				id: 1879,
+				name: "Saint Petersburg",
+				state_code: "SPE"
+			},
+			{
+				id: 1848,
+				name: "Sakha Republic",
+				state_code: "SA"
+			},
+			{
+				id: 1875,
+				name: "Sakhalin",
+				state_code: "SAK"
+			},
+			{
+				id: 1862,
+				name: "Samara Oblast",
+				state_code: "SAM"
+			},
+			{
+				id: 1887,
+				name: "Saratov Oblast",
+				state_code: "SAR"
+			},
+			{
+				id: 1912,
+				name: "Sevastopol",
+				state_code: "UA-40"
+			},
+			{
+				id: 1885,
+				name: "Smolensk Oblast",
+				state_code: "SMO"
+			},
+			{
+				id: 1868,
+				name: "Stavropol Krai",
+				state_code: "STA"
+			},
+			{
+				id: 1894,
+				name: "Sverdlovsk",
+				state_code: "SVE"
+			},
+			{
+				id: 1878,
+				name: "Tambov Oblast",
+				state_code: "TAM"
+			},
+			{
+				id: 1872,
+				name: "Tomsk Oblast",
+				state_code: "TOM"
+			},
+			{
+				id: 1895,
+				name: "Tula Oblast",
+				state_code: "TUL"
+			},
+			{
+				id: 1900,
+				name: "Tuva Republic",
+				state_code: "TY"
+			},
+			{
+				id: 1860,
+				name: "Tver Oblast",
+				state_code: "TVE"
+			},
+			{
+				id: 1907,
+				name: "Tyumen Oblast",
+				state_code: "TYU"
+			},
+			{
+				id: 1913,
+				name: "Udmurt Republic",
+				state_code: "UD"
+			},
+			{
+				id: 1856,
+				name: "Ulyanovsk Oblast",
+				state_code: "ULY"
+			},
+			{
+				id: 1881,
+				name: "Vladimir Oblast",
+				state_code: "VLA"
+			},
+			{
+				id: 4916,
+				name: "Volgograd Oblast",
+				state_code: "VGG"
+			},
+			{
+				id: 1874,
+				name: "Vologda Oblast",
+				state_code: "VLG"
+			},
+			{
+				id: 1906,
+				name: "Voronezh Oblast",
+				state_code: "VOR"
+			},
+			{
+				id: 1847,
+				name: "Yamalo-Nenets Autonomous Okrug",
+				state_code: "YAN"
+			},
+			{
+				id: 1851,
+				name: "Yaroslavl Oblast",
+				state_code: "YAR"
+			},
+			{
+				id: 1904,
+				name: "Zabaykalsky Krai",
+				state_code: "ZAB"
+			}
+		]
+	},
+	{
+		name: "Rwanda",
+		iso3: "RWA",
+		iso2: "RW",
+		numeric_code: "646",
+		phone_code: "250",
+		emoji: "🇷🇼",
+		emojiU: "U+1F1F7 U+1F1FC",
+		states: [
+			{
+				id: 261,
+				name: "Eastern Province",
+				state_code: "02"
+			},
+			{
+				id: 262,
+				name: "Kigali district",
+				state_code: "01"
+			},
+			{
+				id: 263,
+				name: "Northern Province",
+				state_code: "03"
+			},
+			{
+				id: 259,
+				name: "Southern Province",
+				state_code: "05"
+			},
+			{
+				id: 260,
+				name: "Western Province",
+				state_code: "04"
+			}
+		]
+	},
+	{
+		name: "Saint Helena",
+		iso3: "SHN",
+		iso2: "SH",
+		numeric_code: "654",
+		phone_code: "290",
+		emoji: "🇸🇭",
+		emojiU: "U+1F1F8 U+1F1ED",
+		states: [
+		]
+	},
+	{
+		name: "Saint Kitts And Nevis",
+		iso3: "KNA",
+		iso2: "KN",
+		numeric_code: "659",
+		phone_code: "+1-869",
+		emoji: "🇰🇳",
+		emojiU: "U+1F1F0 U+1F1F3",
+		states: [
+			{
+				id: 3833,
+				name: "Christ Church Nichola Town Parish",
+				state_code: "01"
+			},
+			{
+				id: 3832,
+				name: "Nevis",
+				state_code: "N"
+			},
+			{
+				id: 3836,
+				name: "Saint Anne Sandy Point Parish",
+				state_code: "02"
+			},
+			{
+				id: 3837,
+				name: "Saint George Gingerland Parish",
+				state_code: "04"
+			},
+			{
+				id: 3835,
+				name: "Saint James Windward Parish",
+				state_code: "05"
+			},
+			{
+				id: 3845,
+				name: "Saint John Capisterre Parish",
+				state_code: "06"
+			},
+			{
+				id: 3840,
+				name: "Saint John Figtree Parish",
+				state_code: "07"
+			},
+			{
+				id: 3841,
+				name: "Saint Kitts",
+				state_code: "K"
+			},
+			{
+				id: 3844,
+				name: "Saint Mary Cayon Parish",
+				state_code: "08"
+			},
+			{
+				id: 3834,
+				name: "Saint Paul Capisterre Parish",
+				state_code: "09"
+			},
+			{
+				id: 3838,
+				name: "Saint Paul Charlestown Parish",
+				state_code: "10"
+			},
+			{
+				id: 3831,
+				name: "Saint Peter Basseterre Parish",
+				state_code: "11"
+			},
+			{
+				id: 3839,
+				name: "Saint Thomas Lowland Parish",
+				state_code: "12"
+			},
+			{
+				id: 3842,
+				name: "Saint Thomas Middle Island Parish",
+				state_code: "13"
+			},
+			{
+				id: 3843,
+				name: "Trinity Palmetto Point Parish",
+				state_code: "15"
+			}
+		]
+	},
+	{
+		name: "Saint Lucia",
+		iso3: "LCA",
+		iso2: "LC",
+		numeric_code: "662",
+		phone_code: "+1-758",
+		emoji: "🇱🇨",
+		emojiU: "U+1F1F1 U+1F1E8",
+		states: [
+			{
+				id: 3757,
+				name: "Anse la Raye Quarter",
+				state_code: "01"
+			},
+			{
+				id: 3761,
+				name: "Canaries",
+				state_code: "12"
+			},
+			{
+				id: 3758,
+				name: "Castries Quarter",
+				state_code: "02"
+			},
+			{
+				id: 3760,
+				name: "Choiseul Quarter",
+				state_code: "03"
+			},
+			{
+				id: 3767,
+				name: "Dauphin Quarter",
+				state_code: "04"
+			},
+			{
+				id: 3756,
+				name: "Dennery Quarter",
+				state_code: "05"
+			},
+			{
+				id: 3766,
+				name: "Gros Islet Quarter",
+				state_code: "06"
+			},
+			{
+				id: 3759,
+				name: "Laborie Quarter",
+				state_code: "07"
+			},
+			{
+				id: 3762,
+				name: "Micoud Quarter",
+				state_code: "08"
+			},
+			{
+				id: 3765,
+				name: "Praslin Quarter",
+				state_code: "09"
+			},
+			{
+				id: 3764,
+				name: "Soufrière Quarter",
+				state_code: "10"
+			},
+			{
+				id: 3763,
+				name: "Vieux Fort Quarter",
+				state_code: "11"
+			}
+		]
+	},
+	{
+		name: "Saint Pierre and Miquelon",
+		iso3: "SPM",
+		iso2: "PM",
+		numeric_code: "666",
+		phone_code: "508",
+		emoji: "🇵🇲",
+		emojiU: "U+1F1F5 U+1F1F2",
+		states: [
+		]
+	},
+	{
+		name: "Saint Vincent And The Grenadines",
+		iso3: "VCT",
+		iso2: "VC",
+		numeric_code: "670",
+		phone_code: "+1-784",
+		emoji: "🇻🇨",
+		emojiU: "U+1F1FB U+1F1E8",
+		states: [
+			{
+				id: 3389,
+				name: "Charlotte Parish",
+				state_code: "01"
+			},
+			{
+				id: 3388,
+				name: "Grenadines Parish",
+				state_code: "06"
+			},
+			{
+				id: 3386,
+				name: "Saint Andrew Parish",
+				state_code: "02"
+			},
+			{
+				id: 3387,
+				name: "Saint David Parish",
+				state_code: "03"
+			},
+			{
+				id: 3384,
+				name: "Saint George Parish",
+				state_code: "04"
+			},
+			{
+				id: 3385,
+				name: "Saint Patrick Parish",
+				state_code: "05"
+			}
+		]
+	},
+	{
+		name: "Saint-Barthelemy",
+		iso3: "BLM",
+		iso2: "BL",
+		numeric_code: "652",
+		phone_code: "590",
+		emoji: "🇧🇱",
+		emojiU: "U+1F1E7 U+1F1F1",
+		states: [
+		]
+	},
+	{
+		name: "Saint-Martin (French part)",
+		iso3: "MAF",
+		iso2: "MF",
+		numeric_code: "663",
+		phone_code: "590",
+		emoji: "🇲🇫",
+		emojiU: "U+1F1F2 U+1F1EB",
+		states: [
+		]
+	},
+	{
+		name: "Samoa",
+		iso3: "WSM",
+		iso2: "WS",
+		numeric_code: "882",
+		phone_code: "685",
+		emoji: "🇼🇸",
+		emojiU: "U+1F1FC U+1F1F8",
+		states: [
+			{
+				id: 4763,
+				name: "A'ana",
+				state_code: "AA"
+			},
+			{
+				id: 4761,
+				name: "Aiga-i-le-Tai",
+				state_code: "AL"
+			},
+			{
+				id: 4765,
+				name: "Atua",
+				state_code: "AT"
+			},
+			{
+				id: 4764,
+				name: "Fa'asaleleaga",
+				state_code: "FA"
+			},
+			{
+				id: 4769,
+				name: "Gaga'emauga",
+				state_code: "GE"
+			},
+			{
+				id: 4771,
+				name: "Gaga'ifomauga",
+				state_code: "GI"
+			},
+			{
+				id: 4767,
+				name: "Palauli",
+				state_code: "PA"
+			},
+			{
+				id: 4762,
+				name: "Satupa'itea",
+				state_code: "SA"
+			},
+			{
+				id: 4770,
+				name: "Tuamasaga",
+				state_code: "TU"
+			},
+			{
+				id: 4768,
+				name: "Va'a-o-Fonoti",
+				state_code: "VF"
+			},
+			{
+				id: 4766,
+				name: "Vaisigano",
+				state_code: "VS"
+			}
+		]
+	},
+	{
+		name: "San Marino",
+		iso3: "SMR",
+		iso2: "SM",
+		numeric_code: "674",
+		phone_code: "378",
+		emoji: "🇸🇲",
+		emojiU: "U+1F1F8 U+1F1F2",
+		states: [
+			{
+				id: 59,
+				name: "Acquaviva",
+				state_code: "01"
+			},
+			{
+				id: 61,
+				name: "Borgo Maggiore",
+				state_code: "06"
+			},
+			{
+				id: 60,
+				name: "Chiesanuova",
+				state_code: "02"
+			},
+			{
+				id: 64,
+				name: "Domagnano",
+				state_code: "03"
+			},
+			{
+				id: 62,
+				name: "Faetano",
+				state_code: "04"
+			},
+			{
+				id: 66,
+				name: "Fiorentino",
+				state_code: "05"
+			},
+			{
+				id: 63,
+				name: "Montegiardino",
+				state_code: "08"
+			},
+			{
+				id: 58,
+				name: "San Marino",
+				state_code: "07"
+			},
+			{
+				id: 65,
+				name: "Serravalle",
+				state_code: "09"
+			}
+		]
+	},
+	{
+		name: "Sao Tome and Principe",
+		iso3: "STP",
+		iso2: "ST",
+		numeric_code: "678",
+		phone_code: "239",
+		emoji: "🇸🇹",
+		emojiU: "U+1F1F8 U+1F1F9",
+		states: [
+			{
+				id: 270,
+				name: "Príncipe Province",
+				state_code: "P"
+			},
+			{
+				id: 271,
+				name: "São Tomé Province",
+				state_code: "S"
+			}
+		]
+	},
+	{
+		name: "Saudi Arabia",
+		iso3: "SAU",
+		iso2: "SA",
+		numeric_code: "682",
+		phone_code: "966",
+		emoji: "🇸🇦",
+		emojiU: "U+1F1F8 U+1F1E6",
+		states: [
+			{
+				id: 2853,
+				name: "'Asir",
+				state_code: "14"
+			},
+			{
+				id: 2859,
+				name: "Al Bahah",
+				state_code: "11"
+			},
+			{
+				id: 2857,
+				name: "Al Jawf",
+				state_code: "12"
+			},
+			{
+				id: 2851,
+				name: "Al Madinah",
+				state_code: "03"
+			},
+			{
+				id: 2861,
+				name: "Al-Qassim",
+				state_code: "05"
+			},
+			{
+				id: 2856,
+				name: "Eastern Province",
+				state_code: "04"
+			},
+			{
+				id: 2855,
+				name: "Ha'il",
+				state_code: "06"
+			},
+			{
+				id: 2858,
+				name: "Jizan",
+				state_code: "09"
+			},
+			{
+				id: 2850,
+				name: "Makkah",
+				state_code: "02"
+			},
+			{
+				id: 2860,
+				name: "Najran",
+				state_code: "10"
+			},
+			{
+				id: 2854,
+				name: "Northern Borders",
+				state_code: "08"
+			},
+			{
+				id: 2849,
+				name: "Riyadh",
+				state_code: "01"
+			},
+			{
+				id: 2852,
+				name: "Tabuk",
+				state_code: "07"
+			}
+		]
+	},
+	{
+		name: "Senegal",
+		iso3: "SEN",
+		iso2: "SN",
+		numeric_code: "686",
+		phone_code: "221",
+		emoji: "🇸🇳",
+		emojiU: "U+1F1F8 U+1F1F3",
+		states: [
+			{
+				id: 473,
+				name: "Dakar",
+				state_code: "DK"
+			},
+			{
+				id: 480,
+				name: "Diourbel Region",
+				state_code: "DB"
+			},
+			{
+				id: 479,
+				name: "Fatick",
+				state_code: "FK"
+			},
+			{
+				id: 475,
+				name: "Kaffrine",
+				state_code: "KA"
+			},
+			{
+				id: 483,
+				name: "Kaolack",
+				state_code: "KL"
+			},
+			{
+				id: 481,
+				name: "Kédougou",
+				state_code: "KE"
+			},
+			{
+				id: 474,
+				name: "Kolda",
+				state_code: "KD"
+			},
+			{
+				id: 485,
+				name: "Louga",
+				state_code: "LG"
+			},
+			{
+				id: 476,
+				name: "Matam",
+				state_code: "MT"
+			},
+			{
+				id: 477,
+				name: "Saint-Louis",
+				state_code: "SL"
+			},
+			{
+				id: 482,
+				name: "Sédhiou",
+				state_code: "SE"
+			},
+			{
+				id: 486,
+				name: "Tambacounda Region",
+				state_code: "TC"
+			},
+			{
+				id: 484,
+				name: "Thiès Region",
+				state_code: "TH"
+			},
+			{
+				id: 478,
+				name: "Ziguinchor",
+				state_code: "ZG"
+			}
+		]
+	},
+	{
+		name: "Serbia",
+		iso3: "SRB",
+		iso2: "RS",
+		numeric_code: "688",
+		phone_code: "381",
+		emoji: "🇷🇸",
+		emojiU: "U+1F1F7 U+1F1F8",
+		states: [
+			{
+				id: 3728,
+				name: "Belgrade",
+				state_code: "00"
+			},
+			{
+				id: 3717,
+				name: "Bor District",
+				state_code: "14"
+			},
+			{
+				id: 3732,
+				name: "Braničevo District",
+				state_code: "11"
+			},
+			{
+				id: 3716,
+				name: "Central Banat District",
+				state_code: "02"
+			},
+			{
+				id: 3715,
+				name: "Jablanica District",
+				state_code: "23"
+			},
+			{
+				id: 3724,
+				name: "Kolubara District",
+				state_code: "09"
+			},
+			{
+				id: 3719,
+				name: "Mačva District",
+				state_code: "08"
+			},
+			{
+				id: 3727,
+				name: "Moravica District",
+				state_code: "17"
+			},
+			{
+				id: 3722,
+				name: "Nišava District",
+				state_code: "20"
+			},
+			{
+				id: 3714,
+				name: "North Bačka District",
+				state_code: "01"
+			},
+			{
+				id: 3736,
+				name: "North Banat District",
+				state_code: "03"
+			},
+			{
+				id: 3721,
+				name: "Pčinja District",
+				state_code: "24"
+			},
+			{
+				id: 3712,
+				name: "Pirot District",
+				state_code: "22"
+			},
+			{
+				id: 3741,
+				name: "Podunavlje District",
+				state_code: "10"
+			},
+			{
+				id: 3737,
+				name: "Pomoravlje District",
+				state_code: "13"
+			},
+			{
+				id: 3720,
+				name: "Rasina District",
+				state_code: "19"
+			},
+			{
+				id: 3725,
+				name: "Raška District",
+				state_code: "18"
+			},
+			{
+				id: 3711,
+				name: "South Bačka District",
+				state_code: "06"
+			},
+			{
+				id: 3713,
+				name: "South Banat District",
+				state_code: "04"
+			},
+			{
+				id: 3740,
+				name: "Srem District",
+				state_code: "07"
+			},
+			{
+				id: 3734,
+				name: "Šumadija District",
+				state_code: "12"
+			},
+			{
+				id: 3718,
+				name: "Toplica District",
+				state_code: "21"
+			},
+			{
+				id: 3733,
+				name: "Vojvodina",
+				state_code: "VO"
+			},
+			{
+				id: 3726,
+				name: "West Bačka District",
+				state_code: "05"
+			},
+			{
+				id: 3731,
+				name: "Zaječar District",
+				state_code: "15"
+			},
+			{
+				id: 3729,
+				name: "Zlatibor District",
+				state_code: "16"
+			}
+		]
+	},
+	{
+		name: "Seychelles",
+		iso3: "SYC",
+		iso2: "SC",
+		numeric_code: "690",
+		phone_code: "248",
+		emoji: "🇸🇨",
+		emojiU: "U+1F1F8 U+1F1E8",
+		states: [
+			{
+				id: 513,
+				name: "Anse Boileau",
+				state_code: "02"
+			},
+			{
+				id: 502,
+				name: "Anse Royale",
+				state_code: "05"
+			},
+			{
+				id: 506,
+				name: "Anse-aux-Pins",
+				state_code: "01"
+			},
+			{
+				id: 508,
+				name: "Au Cap",
+				state_code: "04"
+			},
+			{
+				id: 497,
+				name: "Baie Lazare",
+				state_code: "06"
+			},
+			{
+				id: 514,
+				name: "Baie Sainte Anne",
+				state_code: "07"
+			},
+			{
+				id: 512,
+				name: "Beau Vallon",
+				state_code: "08"
+			},
+			{
+				id: 515,
+				name: "Bel Air",
+				state_code: "09"
+			},
+			{
+				id: 505,
+				name: "Bel Ombre",
+				state_code: "10"
+			},
+			{
+				id: 517,
+				name: "Cascade",
+				state_code: "11"
+			},
+			{
+				id: 503,
+				name: "Glacis",
+				state_code: "12"
+			},
+			{
+				id: 500,
+				name: "Grand'Anse Mahé",
+				state_code: "13"
+			},
+			{
+				id: 504,
+				name: "Grand'Anse Praslin",
+				state_code: "14"
+			},
+			{
+				id: 495,
+				name: "La Digue",
+				state_code: "15"
+			},
+			{
+				id: 516,
+				name: "La Rivière Anglaise",
+				state_code: "16"
+			},
+			{
+				id: 499,
+				name: "Les Mamelles",
+				state_code: "24"
+			},
+			{
+				id: 494,
+				name: "Mont Buxton",
+				state_code: "17"
+			},
+			{
+				id: 498,
+				name: "Mont Fleuri",
+				state_code: "18"
+			},
+			{
+				id: 511,
+				name: "Plaisance",
+				state_code: "19"
+			},
+			{
+				id: 510,
+				name: "Pointe La Rue",
+				state_code: "20"
+			},
+			{
+				id: 507,
+				name: "Port Glaud",
+				state_code: "21"
+			},
+			{
+				id: 501,
+				name: "Roche Caiman",
+				state_code: "25"
+			},
+			{
+				id: 496,
+				name: "Saint Louis",
+				state_code: "22"
+			},
+			{
+				id: 509,
+				name: "Takamaka",
+				state_code: "23"
+			}
+		]
+	},
+	{
+		name: "Sierra Leone",
+		iso3: "SLE",
+		iso2: "SL",
+		numeric_code: "694",
+		phone_code: "232",
+		emoji: "🇸🇱",
+		emojiU: "U+1F1F8 U+1F1F1",
+		states: [
+			{
+				id: 914,
+				name: "Eastern Province",
+				state_code: "E"
+			},
+			{
+				id: 911,
+				name: "Northern Province",
+				state_code: "N"
+			},
+			{
+				id: 912,
+				name: "Southern Province",
+				state_code: "S"
+			},
+			{
+				id: 913,
+				name: "Western Area",
+				state_code: "W"
+			}
+		]
+	},
+	{
+		name: "Singapore",
+		iso3: "SGP",
+		iso2: "SG",
+		numeric_code: "702",
+		phone_code: "65",
+		emoji: "🇸🇬",
+		emojiU: "U+1F1F8 U+1F1EC",
+		states: [
+			{
+				id: 4651,
+				name: "Central Singapore Community Development Council",
+				state_code: "01"
+			},
+			{
+				id: 4649,
+				name: "North East Community Development Council",
+				state_code: "02"
+			},
+			{
+				id: 4653,
+				name: "North West Community Development Council",
+				state_code: "03"
+			},
+			{
+				id: 4650,
+				name: "South East Community Development Council",
+				state_code: "04"
+			},
+			{
+				id: 4652,
+				name: "South West Community Development Council",
+				state_code: "05"
+			}
+		]
+	},
+	{
+		name: "Sint Maarten (Dutch part)",
+		iso3: "SXM",
+		iso2: "SX",
+		numeric_code: "534",
+		phone_code: "1721",
+		emoji: "🇸🇽",
+		emojiU: "U+1F1F8 U+1F1FD",
+		states: [
+		]
+	},
+	{
+		name: "Slovakia",
+		iso3: "SVK",
+		iso2: "SK",
+		numeric_code: "703",
+		phone_code: "421",
+		emoji: "🇸🇰",
+		emojiU: "U+1F1F8 U+1F1F0",
+		states: [
+			{
+				id: 4352,
+				name: "Banská Bystrica Region",
+				state_code: "BC"
+			},
+			{
+				id: 4356,
+				name: "Bratislava Region",
+				state_code: "BL"
+			},
+			{
+				id: 4353,
+				name: "Košice Region",
+				state_code: "KI"
+			},
+			{
+				id: 4357,
+				name: "Nitra Region",
+				state_code: "NI"
+			},
+			{
+				id: 4354,
+				name: "Prešov Region",
+				state_code: "PV"
+			},
+			{
+				id: 4358,
+				name: "Trenčín Region",
+				state_code: "TC"
+			},
+			{
+				id: 4355,
+				name: "Trnava Region",
+				state_code: "TA"
+			},
+			{
+				id: 4359,
+				name: "Žilina Region",
+				state_code: "ZI"
+			}
+		]
+	},
+	{
+		name: "Slovenia",
+		iso3: "SVN",
+		iso2: "SI",
+		numeric_code: "705",
+		phone_code: "386",
+		emoji: "🇸🇮",
+		emojiU: "U+1F1F8 U+1F1EE",
+		states: [
+			{
+				id: 4183,
+				name: "Ajdovščina Municipality",
+				state_code: "001"
+			},
+			{
+				id: 4326,
+				name: "Ankaran Municipality",
+				state_code: "213"
+			},
+			{
+				id: 4301,
+				name: "Beltinci Municipality",
+				state_code: "002"
+			},
+			{
+				id: 4166,
+				name: "Benedikt Municipality",
+				state_code: "148"
+			},
+			{
+				id: 4179,
+				name: "Bistrica ob Sotli Municipality",
+				state_code: "149"
+			},
+			{
+				id: 4202,
+				name: "Bled Municipality",
+				state_code: "003"
+			},
+			{
+				id: 4278,
+				name: "Bloke Municipality",
+				state_code: "150"
+			},
+			{
+				id: 4282,
+				name: "Bohinj Municipality",
+				state_code: "004"
+			},
+			{
+				id: 4200,
+				name: "Borovnica Municipality",
+				state_code: "005"
+			},
+			{
+				id: 4181,
+				name: "Bovec Municipality",
+				state_code: "006"
+			},
+			{
+				id: 4141,
+				name: "Braslovče Municipality",
+				state_code: "151"
+			},
+			{
+				id: 4240,
+				name: "Brda Municipality",
+				state_code: "007"
+			},
+			{
+				id: 4215,
+				name: "Brežice Municipality",
+				state_code: "009"
+			},
+			{
+				id: 4165,
+				name: "Brezovica Municipality",
+				state_code: "008"
+			},
+			{
+				id: 4147,
+				name: "Cankova Municipality",
+				state_code: "152"
+			},
+			{
+				id: 4310,
+				name: "Cerklje na Gorenjskem Municipality",
+				state_code: "012"
+			},
+			{
+				id: 4162,
+				name: "Cerknica Municipality",
+				state_code: "013"
+			},
+			{
+				id: 4178,
+				name: "Cerkno Municipality",
+				state_code: "014"
+			},
+			{
+				id: 4176,
+				name: "Cerkvenjak Municipality",
+				state_code: "153"
+			},
+			{
+				id: 4191,
+				name: "City Municipality of Celje",
+				state_code: "011"
+			},
+			{
+				id: 4236,
+				name: "City Municipality of Novo Mesto",
+				state_code: "085"
+			},
+			{
+				id: 4151,
+				name: "Črenšovci Municipality",
+				state_code: "015"
+			},
+			{
+				id: 4232,
+				name: "Črna na Koroškem Municipality",
+				state_code: "016"
+			},
+			{
+				id: 4291,
+				name: "Črnomelj Municipality",
+				state_code: "017"
+			},
+			{
+				id: 4304,
+				name: "Destrnik Municipality",
+				state_code: "018"
+			},
+			{
+				id: 4167,
+				name: "Divača Municipality",
+				state_code: "019"
+			},
+			{
+				id: 4295,
+				name: "Dobje Municipality",
+				state_code: "154"
+			},
+			{
+				id: 4216,
+				name: "Dobrepolje Municipality",
+				state_code: "020"
+			},
+			{
+				id: 4252,
+				name: "Dobrna Municipality",
+				state_code: "155"
+			},
+			{
+				id: 4308,
+				name: "Dobrova–Polhov Gradec Municipality",
+				state_code: "021"
+			},
+			{
+				id: 4189,
+				name: "Dobrovnik Municipality",
+				state_code: "156"
+			},
+			{
+				id: 4173,
+				name: "Dol pri Ljubljani Municipality",
+				state_code: "022"
+			},
+			{
+				id: 4281,
+				name: "Dolenjske Toplice Municipality",
+				state_code: "157"
+			},
+			{
+				id: 4159,
+				name: "Domžale Municipality",
+				state_code: "023"
+			},
+			{
+				id: 4290,
+				name: "Dornava Municipality",
+				state_code: "024"
+			},
+			{
+				id: 4345,
+				name: "Dravograd Municipality",
+				state_code: "025"
+			},
+			{
+				id: 4213,
+				name: "Duplek Municipality",
+				state_code: "026"
+			},
+			{
+				id: 4293,
+				name: "Gorenja Vas–Poljane Municipality",
+				state_code: "027"
+			},
+			{
+				id: 4210,
+				name: "Gorišnica Municipality",
+				state_code: "028"
+			},
+			{
+				id: 4284,
+				name: "Gorje Municipality",
+				state_code: "207"
+			},
+			{
+				id: 4343,
+				name: "Gornja Radgona Municipality",
+				state_code: "029"
+			},
+			{
+				id: 4339,
+				name: "Gornji Grad Municipality",
+				state_code: "030"
+			},
+			{
+				id: 4271,
+				name: "Gornji Petrovci Municipality",
+				state_code: "031"
+			},
+			{
+				id: 4217,
+				name: "Grad Municipality",
+				state_code: "158"
+			},
+			{
+				id: 4336,
+				name: "Grosuplje Municipality",
+				state_code: "032"
+			},
+			{
+				id: 4145,
+				name: "Hajdina Municipality",
+				state_code: "159"
+			},
+			{
+				id: 4175,
+				name: "Hoče–Slivnica Municipality",
+				state_code: "160"
+			},
+			{
+				id: 4327,
+				name: "Hodoš Municipality",
+				state_code: "161"
+			},
+			{
+				id: 4193,
+				name: "Horjul Municipality",
+				state_code: "162"
+			},
+			{
+				id: 4341,
+				name: "Hrastnik Municipality",
+				state_code: "034"
+			},
+			{
+				id: 4321,
+				name: "Hrpelje–Kozina Municipality",
+				state_code: "035"
+			},
+			{
+				id: 4152,
+				name: "Idrija Municipality",
+				state_code: "036"
+			},
+			{
+				id: 4286,
+				name: "Ig Municipality",
+				state_code: "037"
+			},
+			{
+				id: 4305,
+				name: "Ivančna Gorica Municipality",
+				state_code: "039"
+			},
+			{
+				id: 4322,
+				name: "Izola Municipality",
+				state_code: "040"
+			},
+			{
+				id: 4337,
+				name: "Jesenice Municipality",
+				state_code: "041"
+			},
+			{
+				id: 4203,
+				name: "Jezersko Municipality",
+				state_code: "163"
+			},
+			{
+				id: 4266,
+				name: "Juršinci Municipality",
+				state_code: "042"
+			},
+			{
+				id: 4180,
+				name: "Kamnik Municipality",
+				state_code: "043"
+			},
+			{
+				id: 4227,
+				name: "Kanal ob Soči Municipality",
+				state_code: "044"
+			},
+			{
+				id: 4150,
+				name: "Kidričevo Municipality",
+				state_code: "045"
+			},
+			{
+				id: 4243,
+				name: "Kobarid Municipality",
+				state_code: "046"
+			},
+			{
+				id: 4325,
+				name: "Kobilje Municipality",
+				state_code: "047"
+			},
+			{
+				id: 4335,
+				name: "Kočevje Municipality",
+				state_code: "048"
+			},
+			{
+				id: 4315,
+				name: "Komen Municipality",
+				state_code: "049"
+			},
+			{
+				id: 4283,
+				name: "Komenda Municipality",
+				state_code: "164"
+			},
+			{
+				id: 4319,
+				name: "Koper City Municipality",
+				state_code: "050"
+			},
+			{
+				id: 4254,
+				name: "Kostanjevica na Krki Municipality",
+				state_code: "197"
+			},
+			{
+				id: 4331,
+				name: "Kostel Municipality",
+				state_code: "165"
+			},
+			{
+				id: 4186,
+				name: "Kozje Municipality",
+				state_code: "051"
+			},
+			{
+				id: 4287,
+				name: "Kranj City Municipality",
+				state_code: "052"
+			},
+			{
+				id: 4340,
+				name: "Kranjska Gora Municipality",
+				state_code: "053"
+			},
+			{
+				id: 4238,
+				name: "Križevci Municipality",
+				state_code: "166"
+			},
+			{
+				id: 4197,
+				name: "Kungota",
+				state_code: "055"
+			},
+			{
+				id: 4211,
+				name: "Kuzma Municipality",
+				state_code: "056"
+			},
+			{
+				id: 4338,
+				name: "Laško Municipality",
+				state_code: "057"
+			},
+			{
+				id: 4142,
+				name: "Lenart Municipality",
+				state_code: "058"
+			},
+			{
+				id: 4225,
+				name: "Lendava Municipality",
+				state_code: "059"
+			},
+			{
+				id: 4347,
+				name: "Litija Municipality",
+				state_code: "060"
+			},
+			{
+				id: 4270,
+				name: "Ljubljana City Municipality",
+				state_code: "061"
+			},
+			{
+				id: 4294,
+				name: "Ljubno Municipality",
+				state_code: "062"
+			},
+			{
+				id: 4351,
+				name: "Ljutomer Municipality",
+				state_code: "063"
+			},
+			{
+				id: 4306,
+				name: "Log–Dragomer Municipality",
+				state_code: "208"
+			},
+			{
+				id: 4350,
+				name: "Logatec Municipality",
+				state_code: "064"
+			},
+			{
+				id: 4174,
+				name: "Loška Dolina Municipality",
+				state_code: "065"
+			},
+			{
+				id: 4158,
+				name: "Loški Potok Municipality",
+				state_code: "066"
+			},
+			{
+				id: 4156,
+				name: "Lovrenc na Pohorju Municipality",
+				state_code: "167"
+			},
+			{
+				id: 4219,
+				name: "Luče Municipality",
+				state_code: "067"
+			},
+			{
+				id: 4302,
+				name: "Lukovica Municipality",
+				state_code: "068"
+			},
+			{
+				id: 4157,
+				name: "Majšperk Municipality",
+				state_code: "069"
+			},
+			{
+				id: 4224,
+				name: "Makole Municipality",
+				state_code: "198"
+			},
+			{
+				id: 4242,
+				name: "Maribor City Municipality",
+				state_code: "070"
+			},
+			{
+				id: 4244,
+				name: "Markovci Municipality",
+				state_code: "168"
+			},
+			{
+				id: 4349,
+				name: "Medvode Municipality",
+				state_code: "071"
+			},
+			{
+				id: 4348,
+				name: "Mengeš Municipality",
+				state_code: "072"
+			},
+			{
+				id: 4323,
+				name: "Metlika Municipality",
+				state_code: "073"
+			},
+			{
+				id: 4265,
+				name: "Mežica Municipality",
+				state_code: "074"
+			},
+			{
+				id: 4223,
+				name: "Miklavž na Dravskem Polju Municipality",
+				state_code: "169"
+			},
+			{
+				id: 4220,
+				name: "Miren–Kostanjevica Municipality",
+				state_code: "075"
+			},
+			{
+				id: 4298,
+				name: "Mirna Municipality",
+				state_code: "212"
+			},
+			{
+				id: 4237,
+				name: "Mirna Peč Municipality",
+				state_code: "170"
+			},
+			{
+				id: 4212,
+				name: "Mislinja Municipality",
+				state_code: "076"
+			},
+			{
+				id: 4297,
+				name: "Mokronog–Trebelno Municipality",
+				state_code: "199"
+			},
+			{
+				id: 4168,
+				name: "Moravče Municipality",
+				state_code: "077"
+			},
+			{
+				id: 4218,
+				name: "Moravske Toplice Municipality",
+				state_code: "078"
+			},
+			{
+				id: 4190,
+				name: "Mozirje Municipality",
+				state_code: "079"
+			},
+			{
+				id: 4318,
+				name: "Municipality of Apače",
+				state_code: "195"
+			},
+			{
+				id: 4309,
+				name: "Municipality of Cirkulane",
+				state_code: "196"
+			},
+			{
+				id: 4344,
+				name: "Municipality of Ilirska Bistrica",
+				state_code: "038"
+			},
+			{
+				id: 4314,
+				name: "Municipality of Krško",
+				state_code: "054"
+			},
+			{
+				id: 4187,
+				name: "Municipality of Škofljica",
+				state_code: "123"
+			},
+			{
+				id: 4313,
+				name: "Murska Sobota City Municipality",
+				state_code: "080"
+			},
+			{
+				id: 4208,
+				name: "Muta Municipality",
+				state_code: "081"
+			},
+			{
+				id: 4177,
+				name: "Naklo Municipality",
+				state_code: "082"
+			},
+			{
+				id: 4329,
+				name: "Nazarje Municipality",
+				state_code: "083"
+			},
+			{
+				id: 4205,
+				name: "Nova Gorica City Municipality",
+				state_code: "084"
+			},
+			{
+				id: 4320,
+				name: "Odranci Municipality",
+				state_code: "086"
+			},
+			{
+				id: 4143,
+				name: "Oplotnica",
+				state_code: "171"
+			},
+			{
+				id: 4221,
+				name: "Ormož Municipality",
+				state_code: "087"
+			},
+			{
+				id: 4199,
+				name: "Osilnica Municipality",
+				state_code: "088"
+			},
+			{
+				id: 4172,
+				name: "Pesnica Municipality",
+				state_code: "089"
+			},
+			{
+				id: 4201,
+				name: "Piran Municipality",
+				state_code: "090"
+			},
+			{
+				id: 4184,
+				name: "Pivka Municipality",
+				state_code: "091"
+			},
+			{
+				id: 4146,
+				name: "Podčetrtek Municipality",
+				state_code: "092"
+			},
+			{
+				id: 4161,
+				name: "Podlehnik Municipality",
+				state_code: "172"
+			},
+			{
+				id: 4234,
+				name: "Podvelka Municipality",
+				state_code: "093"
+			},
+			{
+				id: 4239,
+				name: "Poljčane Municipality",
+				state_code: "200"
+			},
+			{
+				id: 4272,
+				name: "Polzela Municipality",
+				state_code: "173"
+			},
+			{
+				id: 4330,
+				name: "Postojna Municipality",
+				state_code: "094"
+			},
+			{
+				id: 4188,
+				name: "Prebold Municipality",
+				state_code: "174"
+			},
+			{
+				id: 4303,
+				name: "Preddvor Municipality",
+				state_code: "095"
+			},
+			{
+				id: 4274,
+				name: "Prevalje Municipality",
+				state_code: "175"
+			},
+			{
+				id: 4228,
+				name: "Ptuj City Municipality",
+				state_code: "096"
+			},
+			{
+				id: 4288,
+				name: "Puconci Municipality",
+				state_code: "097"
+			},
+			{
+				id: 4204,
+				name: "Rače–Fram Municipality",
+				state_code: "098"
+			},
+			{
+				id: 4195,
+				name: "Radeče Municipality",
+				state_code: "099"
+			},
+			{
+				id: 4292,
+				name: "Radenci Municipality",
+				state_code: "100"
+			},
+			{
+				id: 4275,
+				name: "Radlje ob Dravi Municipality",
+				state_code: "101"
+			},
+			{
+				id: 4231,
+				name: "Radovljica Municipality",
+				state_code: "102"
+			},
+			{
+				id: 4155,
+				name: "Ravne na Koroškem Municipality",
+				state_code: "103"
+			},
+			{
+				id: 4206,
+				name: "Razkrižje Municipality",
+				state_code: "176"
+			},
+			{
+				id: 4160,
+				name: "Rečica ob Savinji Municipality",
+				state_code: "209"
+			},
+			{
+				id: 4253,
+				name: "Renče–Vogrsko Municipality",
+				state_code: "201"
+			},
+			{
+				id: 4235,
+				name: "Ribnica Municipality",
+				state_code: "104"
+			},
+			{
+				id: 4207,
+				name: "Ribnica na Pohorju Municipality",
+				state_code: "177"
+			},
+			{
+				id: 4233,
+				name: "Rogaška Slatina Municipality",
+				state_code: "106"
+			},
+			{
+				id: 4264,
+				name: "Rogašovci Municipality",
+				state_code: "105"
+			},
+			{
+				id: 4209,
+				name: "Rogatec Municipality",
+				state_code: "107"
+			},
+			{
+				id: 4280,
+				name: "Ruše Municipality",
+				state_code: "108"
+			},
+			{
+				id: 4222,
+				name: "Šalovci Municipality",
+				state_code: "033"
+			},
+			{
+				id: 4230,
+				name: "Selnica ob Dravi Municipality",
+				state_code: "178"
+			},
+			{
+				id: 4346,
+				name: "Semič Municipality",
+				state_code: "109"
+			},
+			{
+				id: 4317,
+				name: "Šempeter–Vrtojba Municipality",
+				state_code: "183"
+			},
+			{
+				id: 4299,
+				name: "Šenčur Municipality",
+				state_code: "117"
+			},
+			{
+				id: 4324,
+				name: "Šentilj Municipality",
+				state_code: "118"
+			},
+			{
+				id: 4241,
+				name: "Šentjernej Municipality",
+				state_code: "119"
+			},
+			{
+				id: 4171,
+				name: "Šentjur Municipality",
+				state_code: "120"
+			},
+			{
+				id: 4311,
+				name: "Šentrupert Municipality",
+				state_code: "211"
+			},
+			{
+				id: 4268,
+				name: "Sevnica Municipality",
+				state_code: "110"
+			},
+			{
+				id: 4149,
+				name: "Sežana Municipality",
+				state_code: "111"
+			},
+			{
+				id: 4170,
+				name: "Škocjan Municipality",
+				state_code: "121"
+			},
+			{
+				id: 4316,
+				name: "Škofja Loka Municipality",
+				state_code: "122"
+			},
+			{
+				id: 4169,
+				name: "Slovenj Gradec City Municipality",
+				state_code: "112"
+			},
+			{
+				id: 4332,
+				name: "Slovenska Bistrica Municipality",
+				state_code: "113"
+			},
+			{
+				id: 4198,
+				name: "Slovenske Konjice Municipality",
+				state_code: "114"
+			},
+			{
+				id: 4285,
+				name: "Šmarje pri Jelšah Municipality",
+				state_code: "124"
+			},
+			{
+				id: 4289,
+				name: "Šmarješke Toplice Municipality",
+				state_code: "206"
+			},
+			{
+				id: 4296,
+				name: "Šmartno ob Paki Municipality",
+				state_code: "125"
+			},
+			{
+				id: 4279,
+				name: "Šmartno pri Litiji Municipality",
+				state_code: "194"
+			},
+			{
+				id: 4277,
+				name: "Sodražica Municipality",
+				state_code: "179"
+			},
+			{
+				id: 4261,
+				name: "Solčava Municipality",
+				state_code: "180"
+			},
+			{
+				id: 4248,
+				name: "Šoštanj Municipality",
+				state_code: "126"
+			},
+			{
+				id: 4263,
+				name: "Središče ob Dravi",
+				state_code: "202"
+			},
+			{
+				id: 4259,
+				name: "Starše Municipality",
+				state_code: "115"
+			},
+			{
+				id: 4185,
+				name: "Štore Municipality",
+				state_code: "127"
+			},
+			{
+				id: 4333,
+				name: "Straža Municipality",
+				state_code: "203"
+			},
+			{
+				id: 4164,
+				name: "Sveta Ana Municipality",
+				state_code: "181"
+			},
+			{
+				id: 4260,
+				name: "Sveta Trojica v Slovenskih Goricah Municipality",
+				state_code: "204"
+			},
+			{
+				id: 4229,
+				name: "Sveti Andraž v Slovenskih Goricah Municipality",
+				state_code: "182"
+			},
+			{
+				id: 4255,
+				name: "Sveti Jurij ob Ščavnici Municipality",
+				state_code: "116"
+			},
+			{
+				id: 4328,
+				name: "Sveti Jurij v Slovenskih Goricah Municipality",
+				state_code: "210"
+			},
+			{
+				id: 4273,
+				name: "Sveti Tomaž Municipality",
+				state_code: "205"
+			},
+			{
+				id: 4194,
+				name: "Tabor Municipality",
+				state_code: "184"
+			},
+			{
+				id: 4312,
+				name: "Tišina Municipality",
+				state_code: "010"
+			},
+			{
+				id: 4247,
+				name: "Tolmin Municipality",
+				state_code: "128"
+			},
+			{
+				id: 4246,
+				name: "Trbovlje Municipality",
+				state_code: "129"
+			},
+			{
+				id: 4214,
+				name: "Trebnje Municipality",
+				state_code: "130"
+			},
+			{
+				id: 4153,
+				name: "Trnovska Vas Municipality",
+				state_code: "185"
+			},
+			{
+				id: 4250,
+				name: "Tržič Municipality",
+				state_code: "131"
+			},
+			{
+				id: 4334,
+				name: "Trzin Municipality",
+				state_code: "186"
+			},
+			{
+				id: 4251,
+				name: "Turnišče Municipality",
+				state_code: "132"
+			},
+			{
+				id: 4267,
+				name: "Velika Polana Municipality",
+				state_code: "187"
+			},
+			{
+				id: 4144,
+				name: "Velike Lašče Municipality",
+				state_code: "134"
+			},
+			{
+				id: 4257,
+				name: "Veržej Municipality",
+				state_code: "188"
+			},
+			{
+				id: 4300,
+				name: "Videm Municipality",
+				state_code: "135"
+			},
+			{
+				id: 4196,
+				name: "Vipava Municipality",
+				state_code: "136"
+			},
+			{
+				id: 4148,
+				name: "Vitanje Municipality",
+				state_code: "137"
+			},
+			{
+				id: 4154,
+				name: "Vodice Municipality",
+				state_code: "138"
+			},
+			{
+				id: 4245,
+				name: "Vojnik Municipality",
+				state_code: "139"
+			},
+			{
+				id: 4163,
+				name: "Vransko Municipality",
+				state_code: "189"
+			},
+			{
+				id: 4262,
+				name: "Vrhnika Municipality",
+				state_code: "140"
+			},
+			{
+				id: 4226,
+				name: "Vuzenica Municipality",
+				state_code: "141"
+			},
+			{
+				id: 4269,
+				name: "Zagorje ob Savi Municipality",
+				state_code: "142"
+			},
+			{
+				id: 4258,
+				name: "Žalec Municipality",
+				state_code: "190"
+			},
+			{
+				id: 4182,
+				name: "Zavrč Municipality",
+				state_code: "143"
+			},
+			{
+				id: 4256,
+				name: "Železniki Municipality",
+				state_code: "146"
+			},
+			{
+				id: 4249,
+				name: "Žetale Municipality",
+				state_code: "191"
+			},
+			{
+				id: 4192,
+				name: "Žiri Municipality",
+				state_code: "147"
+			},
+			{
+				id: 4276,
+				name: "Žirovnica Municipality",
+				state_code: "192"
+			},
+			{
+				id: 4342,
+				name: "Zreče Municipality",
+				state_code: "144"
+			},
+			{
+				id: 4307,
+				name: "Žužemberk Municipality",
+				state_code: "193"
+			}
+		]
+	},
+	{
+		name: "Solomon Islands",
+		iso3: "SLB",
+		iso2: "SB",
+		numeric_code: "090",
+		phone_code: "677",
+		emoji: "🇸🇧",
+		emojiU: "U+1F1F8 U+1F1E7",
+		states: [
+			{
+				id: 4784,
+				name: "Central Province",
+				state_code: "CE"
+			},
+			{
+				id: 4781,
+				name: "Choiseul Province",
+				state_code: "CH"
+			},
+			{
+				id: 4785,
+				name: "Guadalcanal Province",
+				state_code: "GU"
+			},
+			{
+				id: 4778,
+				name: "Honiara",
+				state_code: "CT"
+			},
+			{
+				id: 4780,
+				name: "Isabel Province",
+				state_code: "IS"
+			},
+			{
+				id: 4782,
+				name: "Makira-Ulawa Province",
+				state_code: "MK"
+			},
+			{
+				id: 4783,
+				name: "Malaita Province",
+				state_code: "ML"
+			},
+			{
+				id: 4787,
+				name: "Rennell and Bellona Province",
+				state_code: "RB"
+			},
+			{
+				id: 4779,
+				name: "Temotu Province",
+				state_code: "TE"
+			},
+			{
+				id: 4786,
+				name: "Western Province",
+				state_code: "WE"
+			}
+		]
+	},
+	{
+		name: "Somalia",
+		iso3: "SOM",
+		iso2: "SO",
+		numeric_code: "706",
+		phone_code: "252",
+		emoji: "🇸🇴",
+		emojiU: "U+1F1F8 U+1F1F4",
+		states: [
+			{
+				id: 925,
+				name: "Awdal Region",
+				state_code: "AW"
+			},
+			{
+				id: 917,
+				name: "Bakool",
+				state_code: "BK"
+			},
+			{
+				id: 927,
+				name: "Banaadir",
+				state_code: "BN"
+			},
+			{
+				id: 930,
+				name: "Bari",
+				state_code: "BR"
+			},
+			{
+				id: 926,
+				name: "Bay",
+				state_code: "BY"
+			},
+			{
+				id: 918,
+				name: "Galguduud",
+				state_code: "GA"
+			},
+			{
+				id: 928,
+				name: "Gedo",
+				state_code: "GE"
+			},
+			{
+				id: 915,
+				name: "Hiran",
+				state_code: "HI"
+			},
+			{
+				id: 924,
+				name: "Lower Juba",
+				state_code: "JH"
+			},
+			{
+				id: 921,
+				name: "Lower Shebelle",
+				state_code: "SH"
+			},
+			{
+				id: 922,
+				name: "Middle Juba",
+				state_code: "JD"
+			},
+			{
+				id: 923,
+				name: "Middle Shebelle",
+				state_code: "SD"
+			},
+			{
+				id: 916,
+				name: "Mudug",
+				state_code: "MU"
+			},
+			{
+				id: 920,
+				name: "Nugal",
+				state_code: "NU"
+			},
+			{
+				id: 919,
+				name: "Sanaag Region",
+				state_code: "SA"
+			},
+			{
+				id: 929,
+				name: "Togdheer Region",
+				state_code: "TO"
+			}
+		]
+	},
+	{
+		name: "South Africa",
+		iso3: "ZAF",
+		iso2: "ZA",
+		numeric_code: "710",
+		phone_code: "27",
+		emoji: "🇿🇦",
+		emojiU: "U+1F1FF U+1F1E6",
+		states: [
+			{
+				id: 938,
+				name: "Eastern Cape",
+				state_code: "EC"
+			},
+			{
+				id: 932,
+				name: "Free State",
+				state_code: "FS"
+			},
+			{
+				id: 936,
+				name: "Gauteng",
+				state_code: "GP"
+			},
+			{
+				id: 935,
+				name: "KwaZulu-Natal",
+				state_code: "KZN"
+			},
+			{
+				id: 933,
+				name: "Limpopo",
+				state_code: "LP"
+			},
+			{
+				id: 937,
+				name: "Mpumalanga",
+				state_code: "MP"
+			},
+			{
+				id: 934,
+				name: "North West",
+				state_code: "NW"
+			},
+			{
+				id: 931,
+				name: "Northern Cape",
+				state_code: "NC"
+			},
+			{
+				id: 939,
+				name: "Western Cape",
+				state_code: "WC"
+			}
+		]
+	},
+	{
+		name: "South Georgia",
+		iso3: "SGS",
+		iso2: "GS",
+		numeric_code: "239",
+		phone_code: "500",
+		emoji: "🇬🇸",
+		emojiU: "U+1F1EC U+1F1F8",
+		states: [
+		]
+	},
+	{
+		name: "South Korea",
+		iso3: "KOR",
+		iso2: "KR",
+		numeric_code: "410",
+		phone_code: "82",
+		emoji: "🇰🇷",
+		emojiU: "U+1F1F0 U+1F1F7",
+		states: [
+			{
+				id: 3860,
+				name: "Busan",
+				state_code: "26"
+			},
+			{
+				id: 3846,
+				name: "Daegu",
+				state_code: "27"
+			},
+			{
+				id: 3850,
+				name: "Daejeon",
+				state_code: "30"
+			},
+			{
+				id: 3862,
+				name: "Gangwon Province",
+				state_code: "42"
+			},
+			{
+				id: 3858,
+				name: "Gwangju",
+				state_code: "29"
+			},
+			{
+				id: 3847,
+				name: "Gyeonggi Province",
+				state_code: "41"
+			},
+			{
+				id: 3848,
+				name: "Incheon",
+				state_code: "28"
+			},
+			{
+				id: 3853,
+				name: "Jeju",
+				state_code: "49"
+			},
+			{
+				id: 3854,
+				name: "North Chungcheong Province",
+				state_code: "43"
+			},
+			{
+				id: 3855,
+				name: "North Gyeongsang Province",
+				state_code: "47"
+			},
+			{
+				id: 3851,
+				name: "North Jeolla Province",
+				state_code: "45"
+			},
+			{
+				id: 3861,
+				name: "Sejong City",
+				state_code: "50"
+			},
+			{
+				id: 3849,
+				name: "Seoul",
+				state_code: "11"
+			},
+			{
+				id: 3859,
+				name: "South Chungcheong Province",
+				state_code: "44"
+			},
+			{
+				id: 3857,
+				name: "South Gyeongsang Province",
+				state_code: "48"
+			},
+			{
+				id: 3856,
+				name: "South Jeolla Province",
+				state_code: "46"
+			},
+			{
+				id: 3852,
+				name: "Ulsan",
+				state_code: "31"
+			}
+		]
+	},
+	{
+		name: "South Sudan",
+		iso3: "SSD",
+		iso2: "SS",
+		numeric_code: "728",
+		phone_code: "211",
+		emoji: "🇸🇸",
+		emojiU: "U+1F1F8 U+1F1F8",
+		states: [
+			{
+				id: 2092,
+				name: "Central Equatoria",
+				state_code: "EC"
+			},
+			{
+				id: 2093,
+				name: "Eastern Equatoria",
+				state_code: "EE"
+			},
+			{
+				id: 2094,
+				name: "Jonglei State",
+				state_code: "JG"
+			},
+			{
+				id: 2090,
+				name: "Lakes",
+				state_code: "LK"
+			},
+			{
+				id: 2088,
+				name: "Northern Bahr el Ghazal",
+				state_code: "BN"
+			},
+			{
+				id: 2085,
+				name: "Unity",
+				state_code: "UY"
+			},
+			{
+				id: 2086,
+				name: "Upper Nile",
+				state_code: "NU"
+			},
+			{
+				id: 2087,
+				name: "Warrap",
+				state_code: "WR"
+			},
+			{
+				id: 2091,
+				name: "Western Bahr el Ghazal",
+				state_code: "BW"
+			},
+			{
+				id: 2089,
+				name: "Western Equatoria",
+				state_code: "EW"
+			}
+		]
+	},
+	{
+		name: "Spain",
+		iso3: "ESP",
+		iso2: "ES",
+		numeric_code: "724",
+		phone_code: "34",
+		emoji: "🇪🇸",
+		emojiU: "U+1F1EA U+1F1F8",
+		states: [
+			{
+				id: 1193,
+				name: "Andalusia",
+				state_code: "AN"
+			},
+			{
+				id: 1177,
+				name: "Aragon",
+				state_code: "AR"
+			},
+			{
+				id: 1160,
+				name: "Asturias",
+				state_code: "AS"
+			},
+			{
+				id: 1189,
+				name: "Ávila",
+				state_code: "AV"
+			},
+			{
+				id: 1174,
+				name: "Balearic Islands",
+				state_code: "PM"
+			},
+			{
+				id: 1191,
+				name: "Basque Country",
+				state_code: "PV"
+			},
+			{
+				id: 1146,
+				name: "Burgos Province",
+				state_code: "BU"
+			},
+			{
+				id: 1185,
+				name: "Canary Islands",
+				state_code: "CN"
+			},
+			{
+				id: 1170,
+				name: "Cantabria",
+				state_code: "CB"
+			},
+			{
+				id: 1184,
+				name: "Castile and León",
+				state_code: "CL"
+			},
+			{
+				id: 1205,
+				name: "Castilla La Mancha",
+				state_code: "CM"
+			},
+			{
+				id: 1203,
+				name: "Catalonia",
+				state_code: "CT"
+			},
+			{
+				id: 1206,
+				name: "Ceuta",
+				state_code: "CE"
+			},
+			{
+				id: 1190,
+				name: "Extremadura",
+				state_code: "EX"
+			},
+			{
+				id: 1167,
+				name: "Galicia",
+				state_code: "GA"
+			},
+			{
+				id: 1171,
+				name: "La Rioja",
+				state_code: "RI"
+			},
+			{
+				id: 1200,
+				name: "Léon",
+				state_code: "LE"
+			},
+			{
+				id: 1158,
+				name: "Madrid",
+				state_code: "MD"
+			},
+			{
+				id: 1159,
+				name: "Melilla",
+				state_code: "ML"
+			},
+			{
+				id: 1176,
+				name: "Murcia",
+				state_code: "MC"
+			},
+			{
+				id: 1204,
+				name: "Navarra",
+				state_code: "NC"
+			},
+			{
+				id: 1157,
+				name: "Palencia Province",
+				state_code: "P"
+			},
+			{
+				id: 1147,
+				name: "Salamanca Province",
+				state_code: "SA"
+			},
+			{
+				id: 1192,
+				name: "Segovia Province",
+				state_code: "SG"
+			},
+			{
+				id: 1208,
+				name: "Soria Province",
+				state_code: "SO"
+			},
+			{
+				id: 1175,
+				name: "Valencia",
+				state_code: "VC"
+			},
+			{
+				id: 1183,
+				name: "Valladolid Province",
+				state_code: "VA"
+			},
+			{
+				id: 1161,
+				name: "Zamora Province",
+				state_code: "ZA"
+			}
+		]
+	},
+	{
+		name: "Sri Lanka",
+		iso3: "LKA",
+		iso2: "LK",
+		numeric_code: "144",
+		phone_code: "94",
+		emoji: "🇱🇰",
+		emojiU: "U+1F1F1 U+1F1F0",
+		states: [
+			{
+				id: 2799,
+				name: "Ampara District",
+				state_code: "52"
+			},
+			{
+				id: 2816,
+				name: "Anuradhapura District",
+				state_code: "71"
+			},
+			{
+				id: 2790,
+				name: "Badulla District",
+				state_code: "81"
+			},
+			{
+				id: 2818,
+				name: "Batticaloa District",
+				state_code: "51"
+			},
+			{
+				id: 2798,
+				name: "Central Province",
+				state_code: "2"
+			},
+			{
+				id: 2815,
+				name: "Colombo District",
+				state_code: "11"
+			},
+			{
+				id: 2808,
+				name: "Eastern Province",
+				state_code: "5"
+			},
+			{
+				id: 2792,
+				name: "Galle District",
+				state_code: "31"
+			},
+			{
+				id: 2804,
+				name: "Gampaha District",
+				state_code: "12"
+			},
+			{
+				id: 2791,
+				name: "Hambantota District",
+				state_code: "33"
+			},
+			{
+				id: 2787,
+				name: "Jaffna District",
+				state_code: "41"
+			},
+			{
+				id: 2789,
+				name: "Kalutara District",
+				state_code: "13"
+			},
+			{
+				id: 2788,
+				name: "Kandy District",
+				state_code: "21"
+			},
+			{
+				id: 2797,
+				name: "Kegalle District",
+				state_code: "92"
+			},
+			{
+				id: 2793,
+				name: "Kilinochchi District",
+				state_code: "42"
+			},
+			{
+				id: 2805,
+				name: "Mannar District",
+				state_code: "43"
+			},
+			{
+				id: 2810,
+				name: "Matale District",
+				state_code: "22"
+			},
+			{
+				id: 2806,
+				name: "Matara District",
+				state_code: "32"
+			},
+			{
+				id: 2819,
+				name: "Monaragala District",
+				state_code: "82"
+			},
+			{
+				id: 2814,
+				name: "Mullaitivu District",
+				state_code: "45"
+			},
+			{
+				id: 2800,
+				name: "North Central Province",
+				state_code: "7"
+			},
+			{
+				id: 2817,
+				name: "North Western Province",
+				state_code: "6"
+			},
+			{
+				id: 2813,
+				name: "Northern Province",
+				state_code: "4"
+			},
+			{
+				id: 2794,
+				name: "Nuwara Eliya District",
+				state_code: "23"
+			},
+			{
+				id: 2812,
+				name: "Polonnaruwa District",
+				state_code: "72"
+			},
+			{
+				id: 2796,
+				name: "Puttalam District",
+				state_code: "62"
+			},
+			{
+				id: 2807,
+				name: "Ratnapura district",
+				state_code: "91"
+			},
+			{
+				id: 2803,
+				name: "Sabaragamuwa Province",
+				state_code: "9"
+			},
+			{
+				id: 2801,
+				name: "Southern Province",
+				state_code: "3"
+			},
+			{
+				id: 2795,
+				name: "Trincomalee District",
+				state_code: "53"
+			},
+			{
+				id: 2811,
+				name: "Uva Province",
+				state_code: "8"
+			},
+			{
+				id: 2809,
+				name: "Vavuniya District",
+				state_code: "44"
+			},
+			{
+				id: 2802,
+				name: "Western Province",
+				state_code: "1"
+			}
+		]
+	},
+	{
+		name: "Sudan",
+		iso3: "SDN",
+		iso2: "SD",
+		numeric_code: "729",
+		phone_code: "249",
+		emoji: "🇸🇩",
+		emojiU: "U+1F1F8 U+1F1E9",
+		states: [
+			{
+				id: 885,
+				name: "Al Jazirah",
+				state_code: "GZ"
+			},
+			{
+				id: 886,
+				name: "Al Qadarif",
+				state_code: "GD"
+			},
+			{
+				id: 887,
+				name: "Blue Nile",
+				state_code: "NB"
+			},
+			{
+				id: 896,
+				name: "Central Darfur",
+				state_code: "DC"
+			},
+			{
+				id: 892,
+				name: "East Darfur",
+				state_code: "DE"
+			},
+			{
+				id: 884,
+				name: "Kassala",
+				state_code: "KA"
+			},
+			{
+				id: 881,
+				name: "Khartoum",
+				state_code: "KH"
+			},
+			{
+				id: 890,
+				name: "North Darfur",
+				state_code: "DN"
+			},
+			{
+				id: 893,
+				name: "North Kordofan",
+				state_code: "KN"
+			},
+			{
+				id: 895,
+				name: "Northern",
+				state_code: "NO"
+			},
+			{
+				id: 880,
+				name: "Red Sea",
+				state_code: "RS"
+			},
+			{
+				id: 891,
+				name: "River Nile",
+				state_code: "NR"
+			},
+			{
+				id: 882,
+				name: "Sennar",
+				state_code: "SI"
+			},
+			{
+				id: 894,
+				name: "South Darfur",
+				state_code: "DS"
+			},
+			{
+				id: 883,
+				name: "South Kordofan",
+				state_code: "KS"
+			},
+			{
+				id: 888,
+				name: "West Darfur",
+				state_code: "DW"
+			},
+			{
+				id: 889,
+				name: "West Kordofan",
+				state_code: "GK"
+			},
+			{
+				id: 879,
+				name: "White Nile",
+				state_code: "NW"
+			}
+		]
+	},
+	{
+		name: "Suriname",
+		iso3: "SUR",
+		iso2: "SR",
+		numeric_code: "740",
+		phone_code: "597",
+		emoji: "🇸🇷",
+		emojiU: "U+1F1F8 U+1F1F7",
+		states: [
+			{
+				id: 2846,
+				name: "Brokopondo District",
+				state_code: "BR"
+			},
+			{
+				id: 2839,
+				name: "Commewijne District",
+				state_code: "CM"
+			},
+			{
+				id: 2842,
+				name: "Coronie District",
+				state_code: "CR"
+			},
+			{
+				id: 2845,
+				name: "Marowijne District",
+				state_code: "MA"
+			},
+			{
+				id: 2840,
+				name: "Nickerie District",
+				state_code: "NI"
+			},
+			{
+				id: 2841,
+				name: "Para District",
+				state_code: "PR"
+			},
+			{
+				id: 2843,
+				name: "Paramaribo District",
+				state_code: "PM"
+			},
+			{
+				id: 2848,
+				name: "Saramacca District",
+				state_code: "SA"
+			},
+			{
+				id: 2847,
+				name: "Sipaliwini District",
+				state_code: "SI"
+			},
+			{
+				id: 2844,
+				name: "Wanica District",
+				state_code: "WA"
+			}
+		]
+	},
+	{
+		name: "Svalbard And Jan Mayen Islands",
+		iso3: "SJM",
+		iso2: "SJ",
+		numeric_code: "744",
+		phone_code: "47",
+		emoji: "🇸🇯",
+		emojiU: "U+1F1F8 U+1F1EF",
+		states: [
+		]
+	},
+	{
+		name: "Swaziland",
+		iso3: "SWZ",
+		iso2: "SZ",
+		numeric_code: "748",
+		phone_code: "268",
+		emoji: "🇸🇿",
+		emojiU: "U+1F1F8 U+1F1FF",
+		states: [
+			{
+				id: 969,
+				name: "Hhohho District",
+				state_code: "HH"
+			},
+			{
+				id: 970,
+				name: "Lubombo District",
+				state_code: "LU"
+			},
+			{
+				id: 968,
+				name: "Manzini District",
+				state_code: "MA"
+			},
+			{
+				id: 971,
+				name: "Shiselweni District",
+				state_code: "SH"
+			}
+		]
+	},
+	{
+		name: "Sweden",
+		iso3: "SWE",
+		iso2: "SE",
+		numeric_code: "752",
+		phone_code: "46",
+		emoji: "🇸🇪",
+		emojiU: "U+1F1F8 U+1F1EA",
+		states: [
+			{
+				id: 1537,
+				name: "Blekinge",
+				state_code: "K"
+			},
+			{
+				id: 1534,
+				name: "Dalarna County",
+				state_code: "W"
+			},
+			{
+				id: 1533,
+				name: "Gävleborg County",
+				state_code: "X"
+			},
+			{
+				id: 1546,
+				name: "Gotland County",
+				state_code: "I"
+			},
+			{
+				id: 1548,
+				name: "Halland County",
+				state_code: "N"
+			},
+			{
+				id: 1550,
+				name: "Jönköping County",
+				state_code: "F"
+			},
+			{
+				id: 1544,
+				name: "Kalmar County",
+				state_code: "H"
+			},
+			{
+				id: 1542,
+				name: "Kronoberg County",
+				state_code: "G"
+			},
+			{
+				id: 1538,
+				name: "Norrbotten County",
+				state_code: "BD"
+			},
+			{
+				id: 1539,
+				name: "Örebro County",
+				state_code: "T"
+			},
+			{
+				id: 1536,
+				name: "Östergötland County",
+				state_code: "E"
+			},
+			{
+				id: 1541,
+				name: "Skåne County",
+				state_code: "M"
+			},
+			{
+				id: 1540,
+				name: "Södermanland County",
+				state_code: "D"
+			},
+			{
+				id: 1551,
+				name: "Stockholm County",
+				state_code: "AB"
+			},
+			{
+				id: 1545,
+				name: "Uppsala County",
+				state_code: "C"
+			},
+			{
+				id: 1535,
+				name: "Värmland County",
+				state_code: "S"
+			},
+			{
+				id: 1543,
+				name: "Västerbotten County",
+				state_code: "AC"
+			},
+			{
+				id: 1552,
+				name: "Västernorrland County",
+				state_code: "Y"
+			},
+			{
+				id: 1549,
+				name: "Västmanland County",
+				state_code: "U"
+			},
+			{
+				id: 1547,
+				name: "Västra Götaland County",
+				state_code: "O"
+			}
+		]
+	},
+	{
+		name: "Switzerland",
+		iso3: "CHE",
+		iso2: "CH",
+		numeric_code: "756",
+		phone_code: "41",
+		emoji: "🇨🇭",
+		emojiU: "U+1F1E8 U+1F1ED",
+		states: [
+			{
+				id: 1639,
+				name: "Aargau",
+				state_code: "AG"
+			},
+			{
+				id: 1655,
+				name: "Appenzell Ausserrhoden",
+				state_code: "AR"
+			},
+			{
+				id: 1649,
+				name: "Appenzell Innerrhoden",
+				state_code: "AI"
+			},
+			{
+				id: 1641,
+				name: "Basel-Land",
+				state_code: "BL"
+			},
+			{
+				id: 4957,
+				name: "Basel-Stadt",
+				state_code: "BS"
+			},
+			{
+				id: 1645,
+				name: "Bern",
+				state_code: "BE"
+			},
+			{
+				id: 1640,
+				name: "Fribourg",
+				state_code: "FR"
+			},
+			{
+				id: 1647,
+				name: "Geneva",
+				state_code: "GE"
+			},
+			{
+				id: 1661,
+				name: "Glarus",
+				state_code: "GL"
+			},
+			{
+				id: 1660,
+				name: "Graubünden",
+				state_code: "GR"
+			},
+			{
+				id: 1658,
+				name: "Jura",
+				state_code: "JU"
+			},
+			{
+				id: 1663,
+				name: "Lucerne",
+				state_code: "LU"
+			},
+			{
+				id: 1659,
+				name: "Neuchâtel",
+				state_code: "NE"
+			},
+			{
+				id: 1652,
+				name: "Nidwalden",
+				state_code: "NW"
+			},
+			{
+				id: 1650,
+				name: "Obwalden",
+				state_code: "OW"
+			},
+			{
+				id: 1654,
+				name: "Schaffhausen",
+				state_code: "SH"
+			},
+			{
+				id: 1653,
+				name: "Schwyz",
+				state_code: "SZ"
+			},
+			{
+				id: 1662,
+				name: "Solothurn",
+				state_code: "SO"
+			},
+			{
+				id: 1644,
+				name: "St. Gallen",
+				state_code: "SG"
+			},
+			{
+				id: 1657,
+				name: "Thurgau",
+				state_code: "TG"
+			},
+			{
+				id: 1643,
+				name: "Ticino",
+				state_code: "TI"
+			},
+			{
+				id: 1642,
+				name: "Uri",
+				state_code: "UR"
+			},
+			{
+				id: 1648,
+				name: "Valais",
+				state_code: "VS"
+			},
+			{
+				id: 1651,
+				name: "Vaud",
+				state_code: "VD"
+			},
+			{
+				id: 1646,
+				name: "Zug",
+				state_code: "ZG"
+			},
+			{
+				id: 1656,
+				name: "Zürich",
+				state_code: "ZH"
+			}
+		]
+	},
+	{
+		name: "Syria",
+		iso3: "SYR",
+		iso2: "SY",
+		numeric_code: "760",
+		phone_code: "963",
+		emoji: "🇸🇾",
+		emojiU: "U+1F1F8 U+1F1FE",
+		states: [
+			{
+				id: 2941,
+				name: "Al-Hasakah Governorate",
+				state_code: "HA"
+			},
+			{
+				id: 2944,
+				name: "Al-Raqqah Governorate",
+				state_code: "RA"
+			},
+			{
+				id: 2946,
+				name: "Aleppo Governorate",
+				state_code: "HL"
+			},
+			{
+				id: 2936,
+				name: "As-Suwayda Governorate",
+				state_code: "SU"
+			},
+			{
+				id: 2939,
+				name: "Damascus Governorate",
+				state_code: "DI"
+			},
+			{
+				id: 2945,
+				name: "Daraa Governorate",
+				state_code: "DR"
+			},
+			{
+				id: 2937,
+				name: "Deir ez-Zor Governorate",
+				state_code: "DY"
+			},
+			{
+				id: 2934,
+				name: "Hama Governorate",
+				state_code: "HM"
+			},
+			{
+				id: 2942,
+				name: "Homs Governorate",
+				state_code: "HI"
+			},
+			{
+				id: 2940,
+				name: "Idlib Governorate",
+				state_code: "ID"
+			},
+			{
+				id: 2938,
+				name: "Latakia Governorate",
+				state_code: "LA"
+			},
+			{
+				id: 2943,
+				name: "Quneitra Governorate",
+				state_code: "QU"
+			},
+			{
+				id: 2935,
+				name: "Rif Dimashq Governorate",
+				state_code: "RD"
+			},
+			{
+				id: 2947,
+				name: "Tartus Governorate",
+				state_code: "TA"
+			}
+		]
+	},
+	{
+		name: "Taiwan",
+		iso3: "TWN",
+		iso2: "TW",
+		numeric_code: "158",
+		phone_code: "886",
+		emoji: "🇹🇼",
+		emojiU: "U+1F1F9 U+1F1FC",
+		states: [
+			{
+				id: 3404,
+				name: "Changhua",
+				state_code: "CHA"
+			},
+			{
+				id: 3408,
+				name: "Chiayi",
+				state_code: "CYI"
+			},
+			{
+				id: 3418,
+				name: "Chiayi",
+				state_code: "CYQ"
+			},
+			{
+				id: 3423,
+				name: "Hsinchu",
+				state_code: "HSQ"
+			},
+			{
+				id: 3417,
+				name: "Hsinchu",
+				state_code: "HSZ"
+			},
+			{
+				id: 3411,
+				name: "Hualien",
+				state_code: "HUA"
+			},
+			{
+				id: 3412,
+				name: "Kaohsiung",
+				state_code: "KHH"
+			},
+			{
+				id: 4965,
+				name: "Keelung",
+				state_code: "KEE"
+			},
+			{
+				id: 3415,
+				name: "Kinmen",
+				state_code: "KIN"
+			},
+			{
+				id: 3420,
+				name: "Lienchiang",
+				state_code: "LIE"
+			},
+			{
+				id: 3413,
+				name: "Miaoli",
+				state_code: "MIA"
+			},
+			{
+				id: 3407,
+				name: "Nantou",
+				state_code: "NAN"
+			},
+			{
+				id: 4966,
+				name: "New Taipei",
+				state_code: "NWT"
+			},
+			{
+				id: 3403,
+				name: "Penghu",
+				state_code: "PEN"
+			},
+			{
+				id: 3405,
+				name: "Pingtung",
+				state_code: "PIF"
+			},
+			{
+				id: 3406,
+				name: "Taichung",
+				state_code: "TXG"
+			},
+			{
+				id: 3421,
+				name: "Tainan",
+				state_code: "TNN"
+			},
+			{
+				id: 3422,
+				name: "Taipei",
+				state_code: "TPE"
+			},
+			{
+				id: 3410,
+				name: "Taitung",
+				state_code: "TTT"
+			},
+			{
+				id: 3419,
+				name: "Taoyuan",
+				state_code: "TAO"
+			},
+			{
+				id: 3402,
+				name: "Yilan",
+				state_code: "ILA"
+			},
+			{
+				id: 3416,
+				name: "Yunlin",
+				state_code: "YUN"
+			}
+		]
+	},
+	{
+		name: "Tajikistan",
+		iso3: "TJK",
+		iso2: "TJ",
+		numeric_code: "762",
+		phone_code: "992",
+		emoji: "🇹🇯",
+		emojiU: "U+1F1F9 U+1F1EF",
+		states: [
+			{
+				id: 3397,
+				name: "districts of Republican Subordination",
+				state_code: "RA"
+			},
+			{
+				id: 3399,
+				name: "Gorno-Badakhshan Autonomous Province",
+				state_code: "GB"
+			},
+			{
+				id: 3398,
+				name: "Khatlon Province",
+				state_code: "KT"
+			},
+			{
+				id: 3400,
+				name: "Sughd Province",
+				state_code: "SU"
+			}
+		]
+	},
+	{
+		name: "Tanzania",
+		iso3: "TZA",
+		iso2: "TZ",
+		numeric_code: "834",
+		phone_code: "255",
+		emoji: "🇹🇿",
+		emojiU: "U+1F1F9 U+1F1FF",
+		states: [
+			{
+				id: 1491,
+				name: "Arusha",
+				state_code: "01"
+			},
+			{
+				id: 1490,
+				name: "Dar es Salaam",
+				state_code: "02"
+			},
+			{
+				id: 1466,
+				name: "Dodoma",
+				state_code: "03"
+			},
+			{
+				id: 1481,
+				name: "Geita",
+				state_code: "27"
+			},
+			{
+				id: 1489,
+				name: "Iringa",
+				state_code: "04"
+			},
+			{
+				id: 1465,
+				name: "Kagera",
+				state_code: "05"
+			},
+			{
+				id: 1482,
+				name: "Katavi",
+				state_code: "28"
+			},
+			{
+				id: 1478,
+				name: "Kigoma",
+				state_code: "08"
+			},
+			{
+				id: 1467,
+				name: "Kilimanjaro",
+				state_code: "09"
+			},
+			{
+				id: 1483,
+				name: "Lindi",
+				state_code: "12"
+			},
+			{
+				id: 1484,
+				name: "Manyara",
+				state_code: "26"
+			},
+			{
+				id: 1468,
+				name: "Mara",
+				state_code: "13"
+			},
+			{
+				id: 4955,
+				name: "Mbeya",
+				state_code: "14"
+			},
+			{
+				id: 1470,
+				name: "Morogoro",
+				state_code: "16"
+			},
+			{
+				id: 1476,
+				name: "Mtwara",
+				state_code: "17"
+			},
+			{
+				id: 1479,
+				name: "Mwanza",
+				state_code: "18"
+			},
+			{
+				id: 1480,
+				name: "Njombe",
+				state_code: "29"
+			},
+			{
+				id: 1488,
+				name: "Pemba North",
+				state_code: "06"
+			},
+			{
+				id: 1472,
+				name: "Pemba South",
+				state_code: "10"
+			},
+			{
+				id: 1485,
+				name: "Pwani",
+				state_code: "19"
+			},
+			{
+				id: 1477,
+				name: "Rukwa",
+				state_code: "20"
+			},
+			{
+				id: 1486,
+				name: "Ruvuma",
+				state_code: "21"
+			},
+			{
+				id: 1463,
+				name: "Shinyanga",
+				state_code: "22"
+			},
+			{
+				id: 1464,
+				name: "Simiyu",
+				state_code: "30"
+			},
+			{
+				id: 1474,
+				name: "Singida",
+				state_code: "23"
+			},
+			{
+				id: 4956,
+				name: "Songwe",
+				state_code: "31"
+			},
+			{
+				id: 1469,
+				name: "Tabora",
+				state_code: "24"
+			},
+			{
+				id: 1487,
+				name: "Tanga",
+				state_code: "25"
+			},
+			{
+				id: 1473,
+				name: "Zanzibar North",
+				state_code: "07"
+			},
+			{
+				id: 1471,
+				name: "Zanzibar South",
+				state_code: "11"
+			},
+			{
+				id: 1475,
+				name: "Zanzibar West",
+				state_code: "15"
+			}
+		]
+	},
+	{
+		name: "Thailand",
+		iso3: "THA",
+		iso2: "TH",
+		numeric_code: "764",
+		phone_code: "66",
+		emoji: "🇹🇭",
+		emojiU: "U+1F1F9 U+1F1ED",
+		states: [
+			{
+				id: 3523,
+				name: "Amnat Charoen",
+				state_code: "37"
+			},
+			{
+				id: 3519,
+				name: "Ang Thong",
+				state_code: "15"
+			},
+			{
+				id: 3554,
+				name: "Bangkok",
+				state_code: "10"
+			},
+			{
+				id: 3533,
+				name: "Bueng Kan",
+				state_code: "38"
+			},
+			{
+				id: 3534,
+				name: "Buri Ram",
+				state_code: "31"
+			},
+			{
+				id: 3552,
+				name: "Chachoengsao",
+				state_code: "24"
+			},
+			{
+				id: 3522,
+				name: "Chai Nat",
+				state_code: "18"
+			},
+			{
+				id: 4954,
+				name: "Chaiyaphum",
+				state_code: "36"
+			},
+			{
+				id: 3486,
+				name: "Chanthaburi",
+				state_code: "22"
+			},
+			{
+				id: 3491,
+				name: "Chiang Mai",
+				state_code: "50"
+			},
+			{
+				id: 3498,
+				name: "Chiang Rai",
+				state_code: "57"
+			},
+			{
+				id: 3513,
+				name: "Chon Buri",
+				state_code: "20"
+			},
+			{
+				id: 3526,
+				name: "Chumphon",
+				state_code: "86"
+			},
+			{
+				id: 3550,
+				name: "Kalasin",
+				state_code: "46"
+			},
+			{
+				id: 3516,
+				name: "Kamphaeng Phet",
+				state_code: "62"
+			},
+			{
+				id: 3511,
+				name: "Kanchanaburi",
+				state_code: "71"
+			},
+			{
+				id: 3485,
+				name: "Khon Kaen",
+				state_code: "40"
+			},
+			{
+				id: 3478,
+				name: "Krabi",
+				state_code: "81"
+			},
+			{
+				id: 3544,
+				name: "Lampang",
+				state_code: "52"
+			},
+			{
+				id: 3483,
+				name: "Lamphun",
+				state_code: "51"
+			},
+			{
+				id: 3509,
+				name: "Loei",
+				state_code: "42"
+			},
+			{
+				id: 3543,
+				name: "Lop Buri",
+				state_code: "16"
+			},
+			{
+				id: 3505,
+				name: "Mae Hong Son",
+				state_code: "58"
+			},
+			{
+				id: 3517,
+				name: "Maha Sarakham",
+				state_code: "44"
+			},
+			{
+				id: 3546,
+				name: "Mukdahan",
+				state_code: "49"
+			},
+			{
+				id: 3535,
+				name: "Nakhon Nayok",
+				state_code: "26"
+			},
+			{
+				id: 3503,
+				name: "Nakhon Pathom",
+				state_code: "73"
+			},
+			{
+				id: 3548,
+				name: "Nakhon Phanom",
+				state_code: "48"
+			},
+			{
+				id: 3497,
+				name: "Nakhon Ratchasima",
+				state_code: "30"
+			},
+			{
+				id: 3492,
+				name: "Nakhon Sawan",
+				state_code: "60"
+			},
+			{
+				id: 3520,
+				name: "Nakhon Si Thammarat",
+				state_code: "80"
+			},
+			{
+				id: 3530,
+				name: "Nan",
+				state_code: "55"
+			},
+			{
+				id: 3553,
+				name: "Narathiwat",
+				state_code: "96"
+			},
+			{
+				id: 3480,
+				name: "Nong Bua Lam Phu",
+				state_code: "39"
+			},
+			{
+				id: 3484,
+				name: "Nong Khai",
+				state_code: "43"
+			},
+			{
+				id: 3495,
+				name: "Nonthaburi",
+				state_code: "12"
+			},
+			{
+				id: 3500,
+				name: "Pathum Thani",
+				state_code: "13"
+			},
+			{
+				id: 3540,
+				name: "Pattani",
+				state_code: "94"
+			},
+			{
+				id: 3507,
+				name: "Pattaya",
+				state_code: "S"
+			},
+			{
+				id: 3549,
+				name: "Phangnga",
+				state_code: "82"
+			},
+			{
+				id: 3488,
+				name: "Phatthalung",
+				state_code: "93"
+			},
+			{
+				id: 3538,
+				name: "Phayao",
+				state_code: "56"
+			},
+			{
+				id: 3515,
+				name: "Phetchabun",
+				state_code: "67"
+			},
+			{
+				id: 3532,
+				name: "Phetchaburi",
+				state_code: "76"
+			},
+			{
+				id: 3514,
+				name: "Phichit",
+				state_code: "66"
+			},
+			{
+				id: 3506,
+				name: "Phitsanulok",
+				state_code: "65"
+			},
+			{
+				id: 3494,
+				name: "Phra Nakhon Si Ayutthaya",
+				state_code: "14"
+			},
+			{
+				id: 3528,
+				name: "Phrae",
+				state_code: "54"
+			},
+			{
+				id: 3536,
+				name: "Phuket",
+				state_code: "83"
+			},
+			{
+				id: 3542,
+				name: "Prachin Buri",
+				state_code: "25"
+			},
+			{
+				id: 3508,
+				name: "Prachuap Khiri Khan",
+				state_code: "77"
+			},
+			{
+				id: 3479,
+				name: "Ranong",
+				state_code: "85"
+			},
+			{
+				id: 3499,
+				name: "Ratchaburi",
+				state_code: "70"
+			},
+			{
+				id: 3518,
+				name: "Rayong",
+				state_code: "21"
+			},
+			{
+				id: 3510,
+				name: "Roi Et",
+				state_code: "45"
+			},
+			{
+				id: 3529,
+				name: "Sa Kaeo",
+				state_code: "27"
+			},
+			{
+				id: 3501,
+				name: "Sakon Nakhon",
+				state_code: "47"
+			},
+			{
+				id: 3481,
+				name: "Samut Prakan",
+				state_code: "11"
+			},
+			{
+				id: 3504,
+				name: "Samut Sakhon",
+				state_code: "74"
+			},
+			{
+				id: 3502,
+				name: "Samut Songkhram",
+				state_code: "75"
+			},
+			{
+				id: 3487,
+				name: "Saraburi",
+				state_code: "19"
+			},
+			{
+				id: 3537,
+				name: "Satun",
+				state_code: "91"
+			},
+			{
+				id: 3547,
+				name: "Si Sa Ket",
+				state_code: "33"
+			},
+			{
+				id: 3490,
+				name: "Sing Buri",
+				state_code: "17"
+			},
+			{
+				id: 3539,
+				name: "Songkhla",
+				state_code: "90"
+			},
+			{
+				id: 3545,
+				name: "Sukhothai",
+				state_code: "64"
+			},
+			{
+				id: 3524,
+				name: "Suphan Buri",
+				state_code: "72"
+			},
+			{
+				id: 3482,
+				name: "Surat Thani",
+				state_code: "84"
+			},
+			{
+				id: 3531,
+				name: "Surin",
+				state_code: "32"
+			},
+			{
+				id: 3525,
+				name: "Tak",
+				state_code: "63"
+			},
+			{
+				id: 3541,
+				name: "Trang",
+				state_code: "92"
+			},
+			{
+				id: 3496,
+				name: "Trat",
+				state_code: "23"
+			},
+			{
+				id: 3512,
+				name: "Ubon Ratchathani",
+				state_code: "34"
+			},
+			{
+				id: 3527,
+				name: "Udon Thani",
+				state_code: "41"
+			},
+			{
+				id: 3551,
+				name: "Uthai Thani",
+				state_code: "61"
+			},
+			{
+				id: 3489,
+				name: "Uttaradit",
+				state_code: "53"
+			},
+			{
+				id: 3493,
+				name: "Yala",
+				state_code: "95"
+			},
+			{
+				id: 3521,
+				name: "Yasothon",
+				state_code: "35"
+			}
+		]
+	},
+	{
+		name: "Togo",
+		iso3: "TGO",
+		iso2: "TG",
+		numeric_code: "768",
+		phone_code: "228",
+		emoji: "🇹🇬",
+		emojiU: "U+1F1F9 U+1F1EC",
+		states: [
+			{
+				id: 2575,
+				name: "Centrale Region",
+				state_code: "C"
+			},
+			{
+				id: 2579,
+				name: "Kara Region",
+				state_code: "K"
+			},
+			{
+				id: 2576,
+				name: "Maritime",
+				state_code: "M"
+			},
+			{
+				id: 2577,
+				name: "Plateaux Region",
+				state_code: "P"
+			},
+			{
+				id: 2578,
+				name: "Savanes Region",
+				state_code: "S"
+			}
+		]
+	},
+	{
+		name: "Tokelau",
+		iso3: "TKL",
+		iso2: "TK",
+		numeric_code: "772",
+		phone_code: "690",
+		emoji: "🇹🇰",
+		emojiU: "U+1F1F9 U+1F1F0",
+		states: [
+		]
+	},
+	{
+		name: "Tonga",
+		iso3: "TON",
+		iso2: "TO",
+		numeric_code: "776",
+		phone_code: "676",
+		emoji: "🇹🇴",
+		emojiU: "U+1F1F9 U+1F1F4",
+		states: [
+			{
+				id: 3913,
+				name: "Haʻapai",
+				state_code: "02"
+			},
+			{
+				id: 3915,
+				name: "ʻEua",
+				state_code: "01"
+			},
+			{
+				id: 3914,
+				name: "Niuas",
+				state_code: "03"
+			},
+			{
+				id: 3912,
+				name: "Tongatapu",
+				state_code: "04"
+			},
+			{
+				id: 3911,
+				name: "Vavaʻu",
+				state_code: "05"
+			}
+		]
+	},
+	{
+		name: "Trinidad And Tobago",
+		iso3: "TTO",
+		iso2: "TT",
+		numeric_code: "780",
+		phone_code: "+1-868",
+		emoji: "🇹🇹",
+		emojiU: "U+1F1F9 U+1F1F9",
+		states: [
+			{
+				id: 3362,
+				name: "Arima",
+				state_code: "ARI"
+			},
+			{
+				id: 3366,
+				name: "Chaguanas",
+				state_code: "CHA"
+			},
+			{
+				id: 3354,
+				name: "Couva-Tabaquite-Talparo Regional Corporation",
+				state_code: "CTT"
+			},
+			{
+				id: 3367,
+				name: "Diego Martin Regional Corporation",
+				state_code: "DMN"
+			},
+			{
+				id: 3355,
+				name: "Eastern Tobago",
+				state_code: "ETO"
+			},
+			{
+				id: 3365,
+				name: "Penal-Debe Regional Corporation",
+				state_code: "PED"
+			},
+			{
+				id: 3360,
+				name: "Point Fortin",
+				state_code: "PTF"
+			},
+			{
+				id: 3363,
+				name: "Port of Spain",
+				state_code: "POS"
+			},
+			{
+				id: 3368,
+				name: "Princes Town Regional Corporation",
+				state_code: "PRT"
+			},
+			{
+				id: 3356,
+				name: "Rio Claro-Mayaro Regional Corporation",
+				state_code: "MRC"
+			},
+			{
+				id: 3359,
+				name: "San Fernando",
+				state_code: "SFO"
+			},
+			{
+				id: 3357,
+				name: "San Juan-Laventille Regional Corporation",
+				state_code: "SJL"
+			},
+			{
+				id: 3361,
+				name: "Sangre Grande Regional Corporation",
+				state_code: "SGE"
+			},
+			{
+				id: 3364,
+				name: "Siparia Regional Corporation",
+				state_code: "SIP"
+			},
+			{
+				id: 3358,
+				name: "Tunapuna-Piarco Regional Corporation",
+				state_code: "TUP"
+			},
+			{
+				id: 3353,
+				name: "Western Tobago",
+				state_code: "WTO"
+			}
+		]
+	},
+	{
+		name: "Tunisia",
+		iso3: "TUN",
+		iso2: "TN",
+		numeric_code: "788",
+		phone_code: "216",
+		emoji: "🇹🇳",
+		emojiU: "U+1F1F9 U+1F1F3",
+		states: [
+			{
+				id: 2550,
+				name: "Ariana Governorate",
+				state_code: "12"
+			},
+			{
+				id: 2566,
+				name: "Ben Arous Governorate",
+				state_code: "13"
+			},
+			{
+				id: 2551,
+				name: "Bizerte Governorate",
+				state_code: "23"
+			},
+			{
+				id: 2558,
+				name: "Gabès Governorate",
+				state_code: "81"
+			},
+			{
+				id: 2556,
+				name: "Gafsa Governorate",
+				state_code: "71"
+			},
+			{
+				id: 2552,
+				name: "Jendouba Governorate",
+				state_code: "32"
+			},
+			{
+				id: 2564,
+				name: "Kairouan Governorate",
+				state_code: "41"
+			},
+			{
+				id: 2570,
+				name: "Kasserine Governorate",
+				state_code: "42"
+			},
+			{
+				id: 2572,
+				name: "Kassrine",
+				state_code: "31"
+			},
+			{
+				id: 2562,
+				name: "Kebili Governorate",
+				state_code: "73"
+			},
+			{
+				id: 2561,
+				name: "Kef Governorate",
+				state_code: "33"
+			},
+			{
+				id: 2568,
+				name: "Mahdia Governorate",
+				state_code: "53"
+			},
+			{
+				id: 2555,
+				name: "Manouba Governorate",
+				state_code: "14"
+			},
+			{
+				id: 2560,
+				name: "Medenine Governorate",
+				state_code: "82"
+			},
+			{
+				id: 2553,
+				name: "Monastir Governorate",
+				state_code: "52"
+			},
+			{
+				id: 2557,
+				name: "Sfax Governorate",
+				state_code: "61"
+			},
+			{
+				id: 2567,
+				name: "Sidi Bouzid Governorate",
+				state_code: "43"
+			},
+			{
+				id: 2563,
+				name: "Siliana Governorate",
+				state_code: "34"
+			},
+			{
+				id: 2571,
+				name: "Sousse Governorate",
+				state_code: "51"
+			},
+			{
+				id: 2559,
+				name: "Tataouine Governorate",
+				state_code: "83"
+			},
+			{
+				id: 2569,
+				name: "Tozeur Governorate",
+				state_code: "72"
+			},
+			{
+				id: 2554,
+				name: "Tunis Governorate",
+				state_code: "11"
+			},
+			{
+				id: 2565,
+				name: "Zaghouan Governorate",
+				state_code: "22"
+			}
+		]
+	},
+	{
+		name: "Turkey",
+		iso3: "TUR",
+		iso2: "TR",
+		numeric_code: "792",
+		phone_code: "90",
+		emoji: "🇹🇷",
+		emojiU: "U+1F1F9 U+1F1F7",
+		states: [
+			{
+				id: 2212,
+				name: "Adana",
+				state_code: "01"
+			},
+			{
+				id: 2155,
+				name: "Adıyaman",
+				state_code: "02"
+			},
+			{
+				id: 2179,
+				name: "Afyonkarahisar",
+				state_code: "03"
+			},
+			{
+				id: 2193,
+				name: "Ağrı",
+				state_code: "04"
+			},
+			{
+				id: 2210,
+				name: "Aksaray",
+				state_code: "68"
+			},
+			{
+				id: 2161,
+				name: "Amasya",
+				state_code: "05"
+			},
+			{
+				id: 2217,
+				name: "Ankara",
+				state_code: "06"
+			},
+			{
+				id: 2169,
+				name: "Antalya",
+				state_code: "07"
+			},
+			{
+				id: 2185,
+				name: "Ardahan",
+				state_code: "75"
+			},
+			{
+				id: 2191,
+				name: "Artvin",
+				state_code: "08"
+			},
+			{
+				id: 2187,
+				name: "Aydın",
+				state_code: "09"
+			},
+			{
+				id: 2175,
+				name: "Balıkesir",
+				state_code: "10"
+			},
+			{
+				id: 2148,
+				name: "Bartın",
+				state_code: "74"
+			},
+			{
+				id: 2194,
+				name: "Batman",
+				state_code: "72"
+			},
+			{
+				id: 2177,
+				name: "Bayburt",
+				state_code: "69"
+			},
+			{
+				id: 2221,
+				name: "Bilecik",
+				state_code: "11"
+			},
+			{
+				id: 2153,
+				name: "Bingöl",
+				state_code: "12"
+			},
+			{
+				id: 2215,
+				name: "Bitlis",
+				state_code: "13"
+			},
+			{
+				id: 2172,
+				name: "Bolu",
+				state_code: "14"
+			},
+			{
+				id: 2209,
+				name: "Burdur",
+				state_code: "15"
+			},
+			{
+				id: 2163,
+				name: "Bursa",
+				state_code: "16"
+			},
+			{
+				id: 2216,
+				name: "Çanakkale",
+				state_code: "17"
+			},
+			{
+				id: 2168,
+				name: "Çankırı",
+				state_code: "18"
+			},
+			{
+				id: 2173,
+				name: "Çorum",
+				state_code: "19"
+			},
+			{
+				id: 2157,
+				name: "Denizli",
+				state_code: "20"
+			},
+			{
+				id: 2226,
+				name: "Diyarbakır",
+				state_code: "21"
+			},
+			{
+				id: 2202,
+				name: "Düzce",
+				state_code: "81"
+			},
+			{
+				id: 2151,
+				name: "Edirne",
+				state_code: "22"
+			},
+			{
+				id: 2159,
+				name: "Elazığ",
+				state_code: "23"
+			},
+			{
+				id: 2160,
+				name: "Erzincan",
+				state_code: "24"
+			},
+			{
+				id: 2165,
+				name: "Erzurum",
+				state_code: "25"
+			},
+			{
+				id: 2164,
+				name: "Eskişehir",
+				state_code: "26"
+			},
+			{
+				id: 2203,
+				name: "Gaziantep",
+				state_code: "27"
+			},
+			{
+				id: 2186,
+				name: "Giresun",
+				state_code: "28"
+			},
+			{
+				id: 2204,
+				name: "Gümüşhane",
+				state_code: "29"
+			},
+			{
+				id: 2190,
+				name: "Hakkâri",
+				state_code: "30"
+			},
+			{
+				id: 2211,
+				name: "Hatay",
+				state_code: "31"
+			},
+			{
+				id: 2166,
+				name: "Iğdır",
+				state_code: "76"
+			},
+			{
+				id: 2222,
+				name: "Isparta",
+				state_code: "32"
+			},
+			{
+				id: 2170,
+				name: "Istanbul",
+				state_code: "34"
+			},
+			{
+				id: 2205,
+				name: "İzmir",
+				state_code: "35"
+			},
+			{
+				id: 2227,
+				name: "Kahramanmaraş",
+				state_code: "46"
+			},
+			{
+				id: 2223,
+				name: "Karabük",
+				state_code: "78"
+			},
+			{
+				id: 2184,
+				name: "Karaman",
+				state_code: "70"
+			},
+			{
+				id: 2208,
+				name: "Kars",
+				state_code: "36"
+			},
+			{
+				id: 2197,
+				name: "Kastamonu",
+				state_code: "37"
+			},
+			{
+				id: 2200,
+				name: "Kayseri",
+				state_code: "38"
+			},
+			{
+				id: 2154,
+				name: "Kilis",
+				state_code: "79"
+			},
+			{
+				id: 2178,
+				name: "Kırıkkale",
+				state_code: "71"
+			},
+			{
+				id: 2176,
+				name: "Kırklareli",
+				state_code: "39"
+			},
+			{
+				id: 2180,
+				name: "Kırşehir",
+				state_code: "40"
+			},
+			{
+				id: 2195,
+				name: "Kocaeli",
+				state_code: "41"
+			},
+			{
+				id: 2171,
+				name: "Konya",
+				state_code: "42"
+			},
+			{
+				id: 2149,
+				name: "Kütahya",
+				state_code: "43"
+			},
+			{
+				id: 2158,
+				name: "Malatya",
+				state_code: "44"
+			},
+			{
+				id: 2198,
+				name: "Manisa",
+				state_code: "45"
+			},
+			{
+				id: 2224,
+				name: "Mardin",
+				state_code: "47"
+			},
+			{
+				id: 2156,
+				name: "Mersin",
+				state_code: "33"
+			},
+			{
+				id: 2182,
+				name: "Muğla",
+				state_code: "48"
+			},
+			{
+				id: 2162,
+				name: "Muş",
+				state_code: "49"
+			},
+			{
+				id: 2196,
+				name: "Nevşehir",
+				state_code: "50"
+			},
+			{
+				id: 2189,
+				name: "Niğde",
+				state_code: "51"
+			},
+			{
+				id: 2174,
+				name: "Ordu",
+				state_code: "52"
+			},
+			{
+				id: 2214,
+				name: "Osmaniye",
+				state_code: "80"
+			},
+			{
+				id: 2219,
+				name: "Rize",
+				state_code: "53"
+			},
+			{
+				id: 2150,
+				name: "Sakarya",
+				state_code: "54"
+			},
+			{
+				id: 2220,
+				name: "Samsun",
+				state_code: "55"
+			},
+			{
+				id: 2183,
+				name: "Şanlıurfa",
+				state_code: "63"
+			},
+			{
+				id: 2207,
+				name: "Siirt",
+				state_code: "56"
+			},
+			{
+				id: 4854,
+				name: "Sinop",
+				state_code: "57"
+			},
+			{
+				id: 2181,
+				name: "Sivas",
+				state_code: "58"
+			},
+			{
+				id: 2225,
+				name: "Şırnak",
+				state_code: "73"
+			},
+			{
+				id: 2167,
+				name: "Tekirdağ",
+				state_code: "59"
+			},
+			{
+				id: 2199,
+				name: "Tokat",
+				state_code: "60"
+			},
+			{
+				id: 2206,
+				name: "Trabzon",
+				state_code: "61"
+			},
+			{
+				id: 2192,
+				name: "Tunceli",
+				state_code: "62"
+			},
+			{
+				id: 2201,
+				name: "Uşak",
+				state_code: "64"
+			},
+			{
+				id: 2152,
+				name: "Van",
+				state_code: "65"
+			},
+			{
+				id: 2218,
+				name: "Yalova",
+				state_code: "77"
+			},
+			{
+				id: 2188,
+				name: "Yozgat",
+				state_code: "66"
+			},
+			{
+				id: 2213,
+				name: "Zonguldak",
+				state_code: "67"
+			}
+		]
+	},
+	{
+		name: "Turkmenistan",
+		iso3: "TKM",
+		iso2: "TM",
+		numeric_code: "795",
+		phone_code: "993",
+		emoji: "🇹🇲",
+		emojiU: "U+1F1F9 U+1F1F2",
+		states: [
+			{
+				id: 3374,
+				name: "Ahal Region",
+				state_code: "A"
+			},
+			{
+				id: 3371,
+				name: "Ashgabat",
+				state_code: "S"
+			},
+			{
+				id: 3372,
+				name: "Balkan Region",
+				state_code: "B"
+			},
+			{
+				id: 3373,
+				name: "Daşoguz Region",
+				state_code: "D"
+			},
+			{
+				id: 3370,
+				name: "Lebap Region",
+				state_code: "L"
+			},
+			{
+				id: 3369,
+				name: "Mary Region",
+				state_code: "M"
+			}
+		]
+	},
+	{
+		name: "Turks And Caicos Islands",
+		iso3: "TCA",
+		iso2: "TC",
+		numeric_code: "796",
+		phone_code: "+1-649",
+		emoji: "🇹🇨",
+		emojiU: "U+1F1F9 U+1F1E8",
+		states: [
+		]
+	},
+	{
+		name: "Tuvalu",
+		iso3: "TUV",
+		iso2: "TV",
+		numeric_code: "798",
+		phone_code: "688",
+		emoji: "🇹🇻",
+		emojiU: "U+1F1F9 U+1F1FB",
+		states: [
+			{
+				id: 3951,
+				name: "Funafuti",
+				state_code: "FUN"
+			},
+			{
+				id: 3947,
+				name: "Nanumanga",
+				state_code: "NMG"
+			},
+			{
+				id: 3949,
+				name: "Nanumea",
+				state_code: "NMA"
+			},
+			{
+				id: 3946,
+				name: "Niutao Island Council",
+				state_code: "NIT"
+			},
+			{
+				id: 3948,
+				name: "Nui",
+				state_code: "NUI"
+			},
+			{
+				id: 3952,
+				name: "Nukufetau",
+				state_code: "NKF"
+			},
+			{
+				id: 3953,
+				name: "Nukulaelae",
+				state_code: "NKL"
+			},
+			{
+				id: 3950,
+				name: "Vaitupu",
+				state_code: "VAI"
+			}
+		]
+	},
+	{
+		name: "Uganda",
+		iso3: "UGA",
+		iso2: "UG",
+		numeric_code: "800",
+		phone_code: "256",
+		emoji: "🇺🇬",
+		emojiU: "U+1F1FA U+1F1EC",
+		states: [
+			{
+				id: 329,
+				name: "Abim District",
+				state_code: "314"
+			},
+			{
+				id: 361,
+				name: "Adjumani District",
+				state_code: "301"
+			},
+			{
+				id: 392,
+				name: "Agago District",
+				state_code: "322"
+			},
+			{
+				id: 344,
+				name: "Alebtong District",
+				state_code: "323"
+			},
+			{
+				id: 416,
+				name: "Amolatar District",
+				state_code: "315"
+			},
+			{
+				id: 353,
+				name: "Amudat District",
+				state_code: "324"
+			},
+			{
+				id: 352,
+				name: "Amuria District",
+				state_code: "216"
+			},
+			{
+				id: 335,
+				name: "Amuru District",
+				state_code: "316"
+			},
+			{
+				id: 328,
+				name: "Apac District",
+				state_code: "302"
+			},
+			{
+				id: 447,
+				name: "Arua District",
+				state_code: "303"
+			},
+			{
+				id: 441,
+				name: "Budaka District",
+				state_code: "217"
+			},
+			{
+				id: 349,
+				name: "Bududa District",
+				state_code: "218"
+			},
+			{
+				id: 387,
+				name: "Bugiri District",
+				state_code: "201"
+			},
+			{
+				id: 391,
+				name: "Buhweju District",
+				state_code: "420"
+			},
+			{
+				id: 377,
+				name: "Buikwe District",
+				state_code: "117"
+			},
+			{
+				id: 343,
+				name: "Bukedea District",
+				state_code: "219"
+			},
+			{
+				id: 375,
+				name: "Bukomansimbi District",
+				state_code: "118"
+			},
+			{
+				id: 385,
+				name: "Bukwo District",
+				state_code: "220"
+			},
+			{
+				id: 428,
+				name: "Bulambuli District",
+				state_code: "225"
+			},
+			{
+				id: 389,
+				name: "Buliisa District",
+				state_code: "416"
+			},
+			{
+				id: 419,
+				name: "Bundibugyo District",
+				state_code: "401"
+			},
+			{
+				id: 381,
+				name: "Bunyangabu District",
+				state_code: "430"
+			},
+			{
+				id: 386,
+				name: "Bushenyi District",
+				state_code: "402"
+			},
+			{
+				id: 431,
+				name: "Busia District",
+				state_code: "202"
+			},
+			{
+				id: 365,
+				name: "Butaleja District",
+				state_code: "221"
+			},
+			{
+				id: 384,
+				name: "Butambala District",
+				state_code: "119"
+			},
+			{
+				id: 388,
+				name: "Butebo District",
+				state_code: "233"
+			},
+			{
+				id: 414,
+				name: "Buvuma District",
+				state_code: "120"
+			},
+			{
+				id: 380,
+				name: "Buyende District",
+				state_code: "226"
+			},
+			{
+				id: 396,
+				name: "Central Region",
+				state_code: "C"
+			},
+			{
+				id: 341,
+				name: "Dokolo District",
+				state_code: "317"
+			},
+			{
+				id: 372,
+				name: "Eastern Region",
+				state_code: "E"
+			},
+			{
+				id: 366,
+				name: "Gomba District",
+				state_code: "121"
+			},
+			{
+				id: 413,
+				name: "Gulu District",
+				state_code: "304"
+			},
+			{
+				id: 339,
+				name: "Ibanda District",
+				state_code: "417"
+			},
+			{
+				id: 340,
+				name: "Iganga District",
+				state_code: "203"
+			},
+			{
+				id: 383,
+				name: "Isingiro District",
+				state_code: "418"
+			},
+			{
+				id: 367,
+				name: "Jinja District",
+				state_code: "204"
+			},
+			{
+				id: 434,
+				name: "Kaabong District",
+				state_code: "318"
+			},
+			{
+				id: 426,
+				name: "Kabale District",
+				state_code: "404"
+			},
+			{
+				id: 326,
+				name: "Kabarole District",
+				state_code: "405"
+			},
+			{
+				id: 336,
+				name: "Kaberamaido District",
+				state_code: "213"
+			},
+			{
+				id: 403,
+				name: "Kagadi District",
+				state_code: "427"
+			},
+			{
+				id: 399,
+				name: "Kakumiro District",
+				state_code: "428"
+			},
+			{
+				id: 405,
+				name: "Kalangala District",
+				state_code: "101"
+			},
+			{
+				id: 398,
+				name: "Kaliro District",
+				state_code: "222"
+			},
+			{
+				id: 394,
+				name: "Kalungu District",
+				state_code: "122"
+			},
+			{
+				id: 382,
+				name: "Kampala District",
+				state_code: "102"
+			},
+			{
+				id: 334,
+				name: "Kamuli District",
+				state_code: "205"
+			},
+			{
+				id: 360,
+				name: "Kamwenge District",
+				state_code: "413"
+			},
+			{
+				id: 373,
+				name: "Kanungu District",
+				state_code: "414"
+			},
+			{
+				id: 432,
+				name: "Kapchorwa District",
+				state_code: "206"
+			},
+			{
+				id: 440,
+				name: "Kasese District",
+				state_code: "406"
+			},
+			{
+				id: 420,
+				name: "Katakwi District",
+				state_code: "207"
+			},
+			{
+				id: 368,
+				name: "Kayunga District",
+				state_code: "112"
+			},
+			{
+				id: 436,
+				name: "Kibaale District",
+				state_code: "407"
+			},
+			{
+				id: 347,
+				name: "Kiboga District",
+				state_code: "103"
+			},
+			{
+				id: 338,
+				name: "Kibuku District",
+				state_code: "227"
+			},
+			{
+				id: 355,
+				name: "Kiruhura District",
+				state_code: "419"
+			},
+			{
+				id: 346,
+				name: "Kiryandongo District",
+				state_code: "421"
+			},
+			{
+				id: 409,
+				name: "Kisoro District",
+				state_code: "408"
+			},
+			{
+				id: 348,
+				name: "Kitgum District",
+				state_code: "305"
+			},
+			{
+				id: 345,
+				name: "Koboko District",
+				state_code: "319"
+			},
+			{
+				id: 401,
+				name: "Kole District",
+				state_code: "325"
+			},
+			{
+				id: 443,
+				name: "Kotido District",
+				state_code: "306"
+			},
+			{
+				id: 425,
+				name: "Kumi District",
+				state_code: "208"
+			},
+			{
+				id: 369,
+				name: "Kween District",
+				state_code: "228"
+			},
+			{
+				id: 325,
+				name: "Kyankwanzi District",
+				state_code: "123"
+			},
+			{
+				id: 437,
+				name: "Kyegegwa District",
+				state_code: "422"
+			},
+			{
+				id: 402,
+				name: "Kyenjojo District",
+				state_code: "415"
+			},
+			{
+				id: 448,
+				name: "Kyotera District",
+				state_code: "125"
+			},
+			{
+				id: 411,
+				name: "Lamwo District",
+				state_code: "326"
+			},
+			{
+				id: 342,
+				name: "Lira District",
+				state_code: "307"
+			},
+			{
+				id: 445,
+				name: "Luuka District",
+				state_code: "229"
+			},
+			{
+				id: 433,
+				name: "Luwero District",
+				state_code: "104"
+			},
+			{
+				id: 417,
+				name: "Lwengo District",
+				state_code: "124"
+			},
+			{
+				id: 376,
+				name: "Lyantonde District",
+				state_code: "114"
+			},
+			{
+				id: 438,
+				name: "Manafwa District",
+				state_code: "223"
+			},
+			{
+				id: 421,
+				name: "Maracha District",
+				state_code: "320"
+			},
+			{
+				id: 356,
+				name: "Masaka District",
+				state_code: "105"
+			},
+			{
+				id: 354,
+				name: "Masindi District",
+				state_code: "409"
+			},
+			{
+				id: 418,
+				name: "Mayuge District",
+				state_code: "214"
+			},
+			{
+				id: 350,
+				name: "Mbale District",
+				state_code: "209"
+			},
+			{
+				id: 415,
+				name: "Mbarara District",
+				state_code: "410"
+			},
+			{
+				id: 435,
+				name: "Mitooma District",
+				state_code: "423"
+			},
+			{
+				id: 364,
+				name: "Mityana District",
+				state_code: "115"
+			},
+			{
+				id: 395,
+				name: "Moroto District",
+				state_code: "308"
+			},
+			{
+				id: 363,
+				name: "Moyo District",
+				state_code: "309"
+			},
+			{
+				id: 327,
+				name: "Mpigi District",
+				state_code: "106"
+			},
+			{
+				id: 371,
+				name: "Mubende District",
+				state_code: "107"
+			},
+			{
+				id: 410,
+				name: "Mukono District",
+				state_code: "108"
+			},
+			{
+				id: 393,
+				name: "Nakapiripirit District",
+				state_code: "311"
+			},
+			{
+				id: 423,
+				name: "Nakaseke District",
+				state_code: "116"
+			},
+			{
+				id: 406,
+				name: "Nakasongola District",
+				state_code: "109"
+			},
+			{
+				id: 351,
+				name: "Namayingo District",
+				state_code: "230"
+			},
+			{
+				id: 400,
+				name: "Namisindwa District",
+				state_code: "234"
+			},
+			{
+				id: 337,
+				name: "Namutumba District",
+				state_code: "224"
+			},
+			{
+				id: 430,
+				name: "Napak District",
+				state_code: "327"
+			},
+			{
+				id: 446,
+				name: "Nebbi District",
+				state_code: "310"
+			},
+			{
+				id: 424,
+				name: "Ngora District",
+				state_code: "231"
+			},
+			{
+				id: 332,
+				name: "Northern Region",
+				state_code: "N"
+			},
+			{
+				id: 422,
+				name: "Ntoroko District",
+				state_code: "424"
+			},
+			{
+				id: 404,
+				name: "Ntungamo District",
+				state_code: "411"
+			},
+			{
+				id: 378,
+				name: "Nwoya District",
+				state_code: "328"
+			},
+			{
+				id: 374,
+				name: "Omoro District",
+				state_code: "331"
+			},
+			{
+				id: 390,
+				name: "Otuke District",
+				state_code: "329"
+			},
+			{
+				id: 397,
+				name: "Oyam District",
+				state_code: "321"
+			},
+			{
+				id: 408,
+				name: "Pader District",
+				state_code: "312"
+			},
+			{
+				id: 357,
+				name: "Pakwach District",
+				state_code: "332"
+			},
+			{
+				id: 412,
+				name: "Pallisa District",
+				state_code: "210"
+			},
+			{
+				id: 439,
+				name: "Rakai District",
+				state_code: "110"
+			},
+			{
+				id: 358,
+				name: "Rubanda District",
+				state_code: "429"
+			},
+			{
+				id: 442,
+				name: "Rubirizi District",
+				state_code: "425"
+			},
+			{
+				id: 331,
+				name: "Rukiga District",
+				state_code: "431"
+			},
+			{
+				id: 324,
+				name: "Rukungiri District",
+				state_code: "412"
+			},
+			{
+				id: 427,
+				name: "Sembabule District",
+				state_code: "111"
+			},
+			{
+				id: 333,
+				name: "Serere District",
+				state_code: "232"
+			},
+			{
+				id: 407,
+				name: "Sheema District",
+				state_code: "426"
+			},
+			{
+				id: 429,
+				name: "Sironko District",
+				state_code: "215"
+			},
+			{
+				id: 444,
+				name: "Soroti District",
+				state_code: "211"
+			},
+			{
+				id: 359,
+				name: "Tororo District",
+				state_code: "212"
+			},
+			{
+				id: 362,
+				name: "Wakiso District",
+				state_code: "113"
+			},
+			{
+				id: 370,
+				name: "Western Region",
+				state_code: "W"
+			},
+			{
+				id: 330,
+				name: "Yumbe District",
+				state_code: "313"
+			},
+			{
+				id: 379,
+				name: "Zombo District",
+				state_code: "330"
+			}
+		]
+	},
+	{
+		name: "Ukraine",
+		iso3: "UKR",
+		iso2: "UA",
+		numeric_code: "804",
+		phone_code: "380",
+		emoji: "🇺🇦",
+		emojiU: "U+1F1FA U+1F1E6",
+		states: [
+			{
+				id: 4689,
+				name: "Autonomous Republic of Crimea",
+				state_code: "43"
+			},
+			{
+				id: 4680,
+				name: "Cherkasy Oblast",
+				state_code: "71"
+			},
+			{
+				id: 4692,
+				name: "Chernihiv Oblast",
+				state_code: "74"
+			},
+			{
+				id: 4678,
+				name: "Chernivtsi Oblast",
+				state_code: "77"
+			},
+			{
+				id: 4675,
+				name: "Dnipropetrovsk Oblast",
+				state_code: "12"
+			},
+			{
+				id: 4691,
+				name: "Donetsk Oblast",
+				state_code: "14"
+			},
+			{
+				id: 4682,
+				name: "Ivano-Frankivsk Oblast",
+				state_code: "26"
+			},
+			{
+				id: 4686,
+				name: "Kharkiv Oblast",
+				state_code: "63"
+			},
+			{
+				id: 4684,
+				name: "Kherson Oblast",
+				state_code: "65"
+			},
+			{
+				id: 4681,
+				name: "Khmelnytsky Oblast",
+				state_code: "68"
+			},
+			{
+				id: 4676,
+				name: "Kiev",
+				state_code: "30"
+			},
+			{
+				id: 4677,
+				name: "Kirovohrad Oblast",
+				state_code: "35"
+			},
+			{
+				id: 4671,
+				name: "Kyiv Oblast",
+				state_code: "32"
+			},
+			{
+				id: 4673,
+				name: "Luhansk Oblast",
+				state_code: "09"
+			},
+			{
+				id: 4672,
+				name: "Lviv Oblast",
+				state_code: "46"
+			},
+			{
+				id: 4679,
+				name: "Mykolaiv Oblast",
+				state_code: "48"
+			},
+			{
+				id: 4688,
+				name: "Odessa Oblast",
+				state_code: "51"
+			},
+			{
+				id: 4683,
+				name: "Rivne Oblast",
+				state_code: "56"
+			},
+			{
+				id: 4685,
+				name: "Sumy Oblast",
+				state_code: "59"
+			},
+			{
+				id: 4674,
+				name: "Ternopil Oblast",
+				state_code: "61"
+			},
+			{
+				id: 4669,
+				name: "Vinnytsia Oblast",
+				state_code: "05"
+			},
+			{
+				id: 4690,
+				name: "Volyn Oblast",
+				state_code: "07"
+			},
+			{
+				id: 4670,
+				name: "Zakarpattia Oblast",
+				state_code: "21"
+			},
+			{
+				id: 4687,
+				name: "Zaporizhzhya Oblast",
+				state_code: "23"
+			},
+			{
+				id: 4668,
+				name: "Zhytomyr Oblast",
+				state_code: "18"
+			}
+		]
+	},
+	{
+		name: "United Arab Emirates",
+		iso3: "ARE",
+		iso2: "AE",
+		numeric_code: "784",
+		phone_code: "971",
+		emoji: "🇦🇪",
+		emojiU: "U+1F1E6 U+1F1EA",
+		states: [
+			{
+				id: 3396,
+				name: "Abu Dhabi Emirate",
+				state_code: "AZ"
+			},
+			{
+				id: 3395,
+				name: "Ajman Emirate",
+				state_code: "AJ"
+			},
+			{
+				id: 3391,
+				name: "Dubai",
+				state_code: "DU"
+			},
+			{
+				id: 3393,
+				name: "Fujairah",
+				state_code: "FU"
+			},
+			{
+				id: 3394,
+				name: "Ras al-Khaimah",
+				state_code: "RK"
+			},
+			{
+				id: 3390,
+				name: "Sharjah Emirate",
+				state_code: "SH"
+			},
+			{
+				id: 3392,
+				name: "Umm al-Quwain",
+				state_code: "UQ"
+			}
+		]
+	},
+	{
+		name: "United Kingdom",
+		iso3: "GBR",
+		iso2: "GB",
+		numeric_code: "826",
+		phone_code: "44",
+		emoji: "🇬🇧",
+		emojiU: "U+1F1EC U+1F1E7",
+		states: [
+			{
+				id: 2463,
+				name: "Aberdeen",
+				state_code: "ABE"
+			},
+			{
+				id: 2401,
+				name: "Aberdeenshire",
+				state_code: "ABD"
+			},
+			{
+				id: 2387,
+				name: "Angus",
+				state_code: "ANS"
+			},
+			{
+				id: 2533,
+				name: "Antrim",
+				state_code: "ANT"
+			},
+			{
+				id: 2412,
+				name: "Antrim and Newtownabbey",
+				state_code: "ANN"
+			},
+			{
+				id: 2498,
+				name: "Ards",
+				state_code: "ARD"
+			},
+			{
+				id: 2523,
+				name: "Ards and North Down",
+				state_code: "AND"
+			},
+			{
+				id: 2392,
+				name: "Argyll and Bute",
+				state_code: "AGB"
+			},
+			{
+				id: 2331,
+				name: "Armagh City and District Council",
+				state_code: "ARM"
+			},
+			{
+				id: 2324,
+				name: "Armagh, Banbridge and Craigavon",
+				state_code: "ABC"
+			},
+			{
+				id: 2378,
+				name: "Ascension Island",
+				state_code: "SH-AC"
+			},
+			{
+				id: 2363,
+				name: "Ballymena Borough",
+				state_code: "BLA"
+			},
+			{
+				id: 2361,
+				name: "Ballymoney",
+				state_code: "BLY"
+			},
+			{
+				id: 2315,
+				name: "Banbridge",
+				state_code: "BNB"
+			},
+			{
+				id: 2499,
+				name: "Barnsley",
+				state_code: "BNS"
+			},
+			{
+				id: 2339,
+				name: "Bath and North East Somerset",
+				state_code: "BAS"
+			},
+			{
+				id: 2507,
+				name: "Bedford",
+				state_code: "BDF"
+			},
+			{
+				id: 2311,
+				name: "Belfast district",
+				state_code: "BFS"
+			},
+			{
+				id: 2425,
+				name: "Birmingham",
+				state_code: "BIR"
+			},
+			{
+				id: 2329,
+				name: "Blackburn with Darwen",
+				state_code: "BBD"
+			},
+			{
+				id: 2451,
+				name: "Blackpool",
+				state_code: "BPL"
+			},
+			{
+				id: 2530,
+				name: "Blaenau Gwent County Borough",
+				state_code: "BGW"
+			},
+			{
+				id: 2504,
+				name: "Bolton",
+				state_code: "BOL"
+			},
+			{
+				id: 2342,
+				name: "Bournemouth",
+				state_code: "BMH"
+			},
+			{
+				id: 2470,
+				name: "Bracknell Forest",
+				state_code: "BRC"
+			},
+			{
+				id: 2529,
+				name: "Bradford",
+				state_code: "BRD"
+			},
+			{
+				id: 2452,
+				name: "Bridgend County Borough",
+				state_code: "BGE"
+			},
+			{
+				id: 2395,
+				name: "Brighton and Hove",
+				state_code: "BNH"
+			},
+			{
+				id: 2405,
+				name: "Buckinghamshire",
+				state_code: "BKM"
+			},
+			{
+				id: 2459,
+				name: "Bury",
+				state_code: "BUR"
+			},
+			{
+				id: 2298,
+				name: "Caerphilly County Borough",
+				state_code: "CAY"
+			},
+			{
+				id: 2517,
+				name: "Calderdale",
+				state_code: "CLD"
+			},
+			{
+				id: 2423,
+				name: "Cambridgeshire",
+				state_code: "CAM"
+			},
+			{
+				id: 2484,
+				name: "Carmarthenshire",
+				state_code: "CMN"
+			},
+			{
+				id: 2439,
+				name: "Carrickfergus Borough Council",
+				state_code: "CKF"
+			},
+			{
+				id: 2525,
+				name: "Castlereagh",
+				state_code: "CSR"
+			},
+			{
+				id: 2316,
+				name: "Causeway Coast and Glens",
+				state_code: "CCG"
+			},
+			{
+				id: 2303,
+				name: "Central Bedfordshire",
+				state_code: "CBF"
+			},
+			{
+				id: 2509,
+				name: "Ceredigion",
+				state_code: "CGN"
+			},
+			{
+				id: 2444,
+				name: "Cheshire East",
+				state_code: "CHE"
+			},
+			{
+				id: 2442,
+				name: "Cheshire West and Chester",
+				state_code: "CHW"
+			},
+			{
+				id: 2528,
+				name: "City and County of Cardiff",
+				state_code: "CRF"
+			},
+			{
+				id: 2433,
+				name: "City and County of Swansea",
+				state_code: "SWA"
+			},
+			{
+				id: 2413,
+				name: "City of Bristol",
+				state_code: "BST"
+			},
+			{
+				id: 2485,
+				name: "City of Derby",
+				state_code: "DER"
+			},
+			{
+				id: 2475,
+				name: "City of Kingston upon Hull",
+				state_code: "KHL"
+			},
+			{
+				id: 2318,
+				name: "City of Leicester",
+				state_code: "LCE"
+			},
+			{
+				id: 2424,
+				name: "City of London",
+				state_code: "LND"
+			},
+			{
+				id: 2359,
+				name: "City of Nottingham",
+				state_code: "NGM"
+			},
+			{
+				id: 2297,
+				name: "City of Peterborough",
+				state_code: "PTE"
+			},
+			{
+				id: 2514,
+				name: "City of Plymouth",
+				state_code: "PLY"
+			},
+			{
+				id: 2305,
+				name: "City of Portsmouth",
+				state_code: "POR"
+			},
+			{
+				id: 2294,
+				name: "City of Southampton",
+				state_code: "STH"
+			},
+			{
+				id: 2506,
+				name: "City of Stoke-on-Trent",
+				state_code: "STE"
+			},
+			{
+				id: 2372,
+				name: "City of Sunderland",
+				state_code: "SND"
+			},
+			{
+				id: 2357,
+				name: "City of Westminster",
+				state_code: "WSM"
+			},
+			{
+				id: 2489,
+				name: "City of Wolverhampton",
+				state_code: "WLV"
+			},
+			{
+				id: 2426,
+				name: "City of York",
+				state_code: "YOR"
+			},
+			{
+				id: 2450,
+				name: "Clackmannanshire",
+				state_code: "CLK"
+			},
+			{
+				id: 2461,
+				name: "Coleraine Borough Council",
+				state_code: "CLR"
+			},
+			{
+				id: 2352,
+				name: "Conwy County Borough",
+				state_code: "CWY"
+			},
+			{
+				id: 2445,
+				name: "Cookstown District Council",
+				state_code: "CKT"
+			},
+			{
+				id: 2312,
+				name: "Cornwall",
+				state_code: "CON"
+			},
+			{
+				id: 2406,
+				name: "County Durham",
+				state_code: "DUR"
+			},
+			{
+				id: 2438,
+				name: "Coventry",
+				state_code: "COV"
+			},
+			{
+				id: 2449,
+				name: "Craigavon Borough Council",
+				state_code: "CGV"
+			},
+			{
+				id: 2334,
+				name: "Cumbria",
+				state_code: "CMA"
+			},
+			{
+				id: 2389,
+				name: "Darlington",
+				state_code: "DAL"
+			},
+			{
+				id: 2497,
+				name: "Denbighshire",
+				state_code: "DEN"
+			},
+			{
+				id: 2403,
+				name: "Derbyshire",
+				state_code: "DBY"
+			},
+			{
+				id: 2446,
+				name: "Derry City and Strabane",
+				state_code: "DRS"
+			},
+			{
+				id: 2417,
+				name: "Derry City Council",
+				state_code: "DRY"
+			},
+			{
+				id: 2491,
+				name: "Devon",
+				state_code: "DEV"
+			},
+			{
+				id: 2364,
+				name: "Doncaster",
+				state_code: "DNC"
+			},
+			{
+				id: 2345,
+				name: "Dorset",
+				state_code: "DOR"
+			},
+			{
+				id: 2304,
+				name: "Down District Council",
+				state_code: "DOW"
+			},
+			{
+				id: 2457,
+				name: "Dudley",
+				state_code: "DUD"
+			},
+			{
+				id: 2415,
+				name: "Dumfries and Galloway",
+				state_code: "DGY"
+			},
+			{
+				id: 2511,
+				name: "Dundee",
+				state_code: "DND"
+			},
+			{
+				id: 2508,
+				name: "Dungannon and South Tyrone Borough Council",
+				state_code: "DGN"
+			},
+			{
+				id: 2374,
+				name: "East Ayrshire",
+				state_code: "EAY"
+			},
+			{
+				id: 2454,
+				name: "East Dunbartonshire",
+				state_code: "EDU"
+			},
+			{
+				id: 2462,
+				name: "East Lothian",
+				state_code: "ELN"
+			},
+			{
+				id: 2333,
+				name: "East Renfrewshire",
+				state_code: "ERW"
+			},
+			{
+				id: 2370,
+				name: "East Riding of Yorkshire",
+				state_code: "ERY"
+			},
+			{
+				id: 2414,
+				name: "East Sussex",
+				state_code: "ESX"
+			},
+			{
+				id: 2428,
+				name: "Edinburgh",
+				state_code: "EDH"
+			},
+			{
+				id: 2336,
+				name: "England",
+				state_code: "ENG"
+			},
+			{
+				id: 2410,
+				name: "Essex",
+				state_code: "ESS"
+			},
+			{
+				id: 2344,
+				name: "Falkirk",
+				state_code: "FAL"
+			},
+			{
+				id: 2366,
+				name: "Fermanagh and Omagh",
+				state_code: "FMO"
+			},
+			{
+				id: 2531,
+				name: "Fermanagh District Council",
+				state_code: "FER"
+			},
+			{
+				id: 2479,
+				name: "Fife",
+				state_code: "FIF"
+			},
+			{
+				id: 2437,
+				name: "Flintshire",
+				state_code: "FLN"
+			},
+			{
+				id: 2431,
+				name: "Gateshead",
+				state_code: "GAT"
+			},
+			{
+				id: 2404,
+				name: "Glasgow",
+				state_code: "GLG"
+			},
+			{
+				id: 2373,
+				name: "Gloucestershire",
+				state_code: "GLS"
+			},
+			{
+				id: 2379,
+				name: "Gwynedd",
+				state_code: "GWN"
+			},
+			{
+				id: 2466,
+				name: "Halton",
+				state_code: "HAL"
+			},
+			{
+				id: 2435,
+				name: "Hampshire",
+				state_code: "HAM"
+			},
+			{
+				id: 2309,
+				name: "Hartlepool",
+				state_code: "HPL"
+			},
+			{
+				id: 2500,
+				name: "Herefordshire",
+				state_code: "HEF"
+			},
+			{
+				id: 2369,
+				name: "Hertfordshire",
+				state_code: "HRT"
+			},
+			{
+				id: 2383,
+				name: "Highland",
+				state_code: "HLD"
+			},
+			{
+				id: 2388,
+				name: "Inverclyde",
+				state_code: "IVC"
+			},
+			{
+				id: 2289,
+				name: "Isle of Wight",
+				state_code: "IOW"
+			},
+			{
+				id: 2343,
+				name: "Isles of Scilly",
+				state_code: "IOS"
+			},
+			{
+				id: 2464,
+				name: "Kent",
+				state_code: "KEN"
+			},
+			{
+				id: 2371,
+				name: "Kirklees",
+				state_code: "KIR"
+			},
+			{
+				id: 2330,
+				name: "Knowsley",
+				state_code: "KWL"
+			},
+			{
+				id: 2495,
+				name: "Lancashire",
+				state_code: "LAN"
+			},
+			{
+				id: 2515,
+				name: "Larne Borough Council",
+				state_code: "LRN"
+			},
+			{
+				id: 2503,
+				name: "Leeds",
+				state_code: "LDS"
+			},
+			{
+				id: 2516,
+				name: "Leicestershire",
+				state_code: "LEC"
+			},
+			{
+				id: 2382,
+				name: "Limavady Borough Council",
+				state_code: "LMV"
+			},
+			{
+				id: 2355,
+				name: "Lincolnshire",
+				state_code: "LIN"
+			},
+			{
+				id: 2460,
+				name: "Lisburn and Castlereagh",
+				state_code: "LBC"
+			},
+			{
+				id: 2494,
+				name: "Lisburn City Council",
+				state_code: "LSB"
+			},
+			{
+				id: 2340,
+				name: "Liverpool",
+				state_code: "LIV"
+			},
+			{
+				id: 2356,
+				name: "London Borough of Barking and Dagenham",
+				state_code: "BDG"
+			},
+			{
+				id: 2520,
+				name: "London Borough of Barnet",
+				state_code: "BNE"
+			},
+			{
+				id: 2307,
+				name: "London Borough of Bexley",
+				state_code: "BEX"
+			},
+			{
+				id: 2291,
+				name: "London Borough of Brent",
+				state_code: "BEN"
+			},
+			{
+				id: 2490,
+				name: "London Borough of Bromley",
+				state_code: "BRY"
+			},
+			{
+				id: 2349,
+				name: "London Borough of Camden",
+				state_code: "CMD"
+			},
+			{
+				id: 2512,
+				name: "London Borough of Croydon",
+				state_code: "CRY"
+			},
+			{
+				id: 2532,
+				name: "London Borough of Ealing",
+				state_code: "EAL"
+			},
+			{
+				id: 2476,
+				name: "London Borough of Enfield",
+				state_code: "ENF"
+			},
+			{
+				id: 2411,
+				name: "London Borough of Hackney",
+				state_code: "HCK"
+			},
+			{
+				id: 2448,
+				name: "London Borough of Hammersmith and Fulham",
+				state_code: "HMF"
+			},
+			{
+				id: 2306,
+				name: "London Borough of Haringey",
+				state_code: "HRY"
+			},
+			{
+				id: 2385,
+				name: "London Borough of Harrow",
+				state_code: "HRW"
+			},
+			{
+				id: 2347,
+				name: "London Borough of Havering",
+				state_code: "HAV"
+			},
+			{
+				id: 2376,
+				name: "London Borough of Hillingdon",
+				state_code: "HIL"
+			},
+			{
+				id: 2380,
+				name: "London Borough of Hounslow",
+				state_code: "HNS"
+			},
+			{
+				id: 2319,
+				name: "London Borough of Islington",
+				state_code: "ISL"
+			},
+			{
+				id: 2396,
+				name: "London Borough of Lambeth",
+				state_code: "LBH"
+			},
+			{
+				id: 2358,
+				name: "London Borough of Lewisham",
+				state_code: "LEW"
+			},
+			{
+				id: 2483,
+				name: "London Borough of Merton",
+				state_code: "MRT"
+			},
+			{
+				id: 2418,
+				name: "London Borough of Newham",
+				state_code: "NWM"
+			},
+			{
+				id: 2397,
+				name: "London Borough of Redbridge",
+				state_code: "RDB"
+			},
+			{
+				id: 2501,
+				name: "London Borough of Richmond upon Thames",
+				state_code: "RIC"
+			},
+			{
+				id: 2432,
+				name: "London Borough of Southwark",
+				state_code: "SWK"
+			},
+			{
+				id: 2313,
+				name: "London Borough of Sutton",
+				state_code: "STN"
+			},
+			{
+				id: 2390,
+				name: "London Borough of Tower Hamlets",
+				state_code: "TWH"
+			},
+			{
+				id: 2326,
+				name: "London Borough of Waltham Forest",
+				state_code: "WFT"
+			},
+			{
+				id: 2434,
+				name: "London Borough of Wandsworth",
+				state_code: "WND"
+			},
+			{
+				id: 2322,
+				name: "Magherafelt District Council",
+				state_code: "MFT"
+			},
+			{
+				id: 2398,
+				name: "Manchester",
+				state_code: "MAN"
+			},
+			{
+				id: 2381,
+				name: "Medway",
+				state_code: "MDW"
+			},
+			{
+				id: 2328,
+				name: "Merthyr Tydfil County Borough",
+				state_code: "MTY"
+			},
+			{
+				id: 2320,
+				name: "Metropolitan Borough of Wigan",
+				state_code: "WGN"
+			},
+			{
+				id: 2429,
+				name: "Mid and East Antrim",
+				state_code: "MEA"
+			},
+			{
+				id: 2399,
+				name: "Mid Ulster",
+				state_code: "MUL"
+			},
+			{
+				id: 2332,
+				name: "Middlesbrough",
+				state_code: "MDB"
+			},
+			{
+				id: 2519,
+				name: "Midlothian",
+				state_code: "MLN"
+			},
+			{
+				id: 2416,
+				name: "Milton Keynes",
+				state_code: "MIK"
+			},
+			{
+				id: 2402,
+				name: "Monmouthshire",
+				state_code: "MON"
+			},
+			{
+				id: 2360,
+				name: "Moray",
+				state_code: "MRY"
+			},
+			{
+				id: 2348,
+				name: "Moyle District Council",
+				state_code: "MYL"
+			},
+			{
+				id: 2351,
+				name: "Neath Port Talbot County Borough",
+				state_code: "NTL"
+			},
+			{
+				id: 2458,
+				name: "Newcastle upon Tyne",
+				state_code: "NET"
+			},
+			{
+				id: 2524,
+				name: "Newport",
+				state_code: "NWP"
+			},
+			{
+				id: 2350,
+				name: "Newry and Mourne District Council",
+				state_code: "NYM"
+			},
+			{
+				id: 2534,
+				name: "Newry, Mourne and Down",
+				state_code: "NMD"
+			},
+			{
+				id: 2317,
+				name: "Newtownabbey Borough Council",
+				state_code: "NTA"
+			},
+			{
+				id: 2473,
+				name: "Norfolk",
+				state_code: "NFK"
+			},
+			{
+				id: 2535,
+				name: "North Ayrshire",
+				state_code: "NAY"
+			},
+			{
+				id: 2513,
+				name: "North Down Borough Council",
+				state_code: "NDN"
+			},
+			{
+				id: 2384,
+				name: "North East Lincolnshire",
+				state_code: "NEL"
+			},
+			{
+				id: 2487,
+				name: "North Lanarkshire",
+				state_code: "NLK"
+			},
+			{
+				id: 2453,
+				name: "North Lincolnshire",
+				state_code: "NLN"
+			},
+			{
+				id: 2430,
+				name: "North Somerset",
+				state_code: "NSM"
+			},
+			{
+				id: 2521,
+				name: "North Tyneside",
+				state_code: "NTY"
+			},
+			{
+				id: 2522,
+				name: "North Yorkshire",
+				state_code: "NYK"
+			},
+			{
+				id: 2480,
+				name: "Northamptonshire",
+				state_code: "NTH"
+			},
+			{
+				id: 2337,
+				name: "Northern Ireland",
+				state_code: "NIR"
+			},
+			{
+				id: 2365,
+				name: "Northumberland",
+				state_code: "NBL"
+			},
+			{
+				id: 2456,
+				name: "Nottinghamshire",
+				state_code: "NTT"
+			},
+			{
+				id: 2477,
+				name: "Oldham",
+				state_code: "OLD"
+			},
+			{
+				id: 2314,
+				name: "Omagh District Council",
+				state_code: "OMH"
+			},
+			{
+				id: 2474,
+				name: "Orkney Islands",
+				state_code: "ORK"
+			},
+			{
+				id: 2353,
+				name: "Outer Hebrides",
+				state_code: "ELS"
+			},
+			{
+				id: 2321,
+				name: "Oxfordshire",
+				state_code: "OXF"
+			},
+			{
+				id: 2486,
+				name: "Pembrokeshire",
+				state_code: "PEM"
+			},
+			{
+				id: 2325,
+				name: "Perth and Kinross",
+				state_code: "PKN"
+			},
+			{
+				id: 2302,
+				name: "Poole",
+				state_code: "POL"
+			},
+			{
+				id: 2441,
+				name: "Powys",
+				state_code: "POW"
+			},
+			{
+				id: 2455,
+				name: "Reading",
+				state_code: "RDG"
+			},
+			{
+				id: 2527,
+				name: "Redcar and Cleveland",
+				state_code: "RCC"
+			},
+			{
+				id: 2443,
+				name: "Renfrewshire",
+				state_code: "RFW"
+			},
+			{
+				id: 2301,
+				name: "Rhondda Cynon Taf",
+				state_code: "RCT"
+			},
+			{
+				id: 2327,
+				name: "Rochdale",
+				state_code: "RCH"
+			},
+			{
+				id: 2308,
+				name: "Rotherham",
+				state_code: "ROT"
+			},
+			{
+				id: 2492,
+				name: "Royal Borough of Greenwich",
+				state_code: "GRE"
+			},
+			{
+				id: 2368,
+				name: "Royal Borough of Kensington and Chelsea",
+				state_code: "KEC"
+			},
+			{
+				id: 2481,
+				name: "Royal Borough of Kingston upon Thames",
+				state_code: "KTT"
+			},
+			{
+				id: 2472,
+				name: "Rutland",
+				state_code: "RUT"
+			},
+			{
+				id: 2502,
+				name: "Saint Helena",
+				state_code: "SH-HL"
+			},
+			{
+				id: 2493,
+				name: "Salford",
+				state_code: "SLF"
+			},
+			{
+				id: 2341,
+				name: "Sandwell",
+				state_code: "SAW"
+			},
+			{
+				id: 2335,
+				name: "Scotland",
+				state_code: "SCT"
+			},
+			{
+				id: 2346,
+				name: "Scottish Borders",
+				state_code: "SCB"
+			},
+			{
+				id: 2518,
+				name: "Sefton",
+				state_code: "SFT"
+			},
+			{
+				id: 2295,
+				name: "Sheffield",
+				state_code: "SHF"
+			},
+			{
+				id: 2300,
+				name: "Shetland Islands",
+				state_code: "ZET"
+			},
+			{
+				id: 2407,
+				name: "Shropshire",
+				state_code: "SHR"
+			},
+			{
+				id: 2427,
+				name: "Slough",
+				state_code: "SLG"
+			},
+			{
+				id: 2469,
+				name: "Solihull",
+				state_code: "SOL"
+			},
+			{
+				id: 2386,
+				name: "Somerset",
+				state_code: "SOM"
+			},
+			{
+				id: 2377,
+				name: "South Ayrshire",
+				state_code: "SAY"
+			},
+			{
+				id: 2400,
+				name: "South Gloucestershire",
+				state_code: "SGC"
+			},
+			{
+				id: 2362,
+				name: "South Lanarkshire",
+				state_code: "SLK"
+			},
+			{
+				id: 2409,
+				name: "South Tyneside",
+				state_code: "STY"
+			},
+			{
+				id: 2323,
+				name: "Southend-on-Sea",
+				state_code: "SOS"
+			},
+			{
+				id: 2290,
+				name: "St Helens",
+				state_code: "SHN"
+			},
+			{
+				id: 2447,
+				name: "Staffordshire",
+				state_code: "STS"
+			},
+			{
+				id: 2488,
+				name: "Stirling",
+				state_code: "STG"
+			},
+			{
+				id: 2394,
+				name: "Stockport",
+				state_code: "SKP"
+			},
+			{
+				id: 2421,
+				name: "Stockton-on-Tees",
+				state_code: "STT"
+			},
+			{
+				id: 2393,
+				name: "Strabane District Council",
+				state_code: "STB"
+			},
+			{
+				id: 2467,
+				name: "Suffolk",
+				state_code: "SFK"
+			},
+			{
+				id: 2526,
+				name: "Surrey",
+				state_code: "SRY"
+			},
+			{
+				id: 2422,
+				name: "Swindon",
+				state_code: "SWD"
+			},
+			{
+				id: 2367,
+				name: "Tameside",
+				state_code: "TAM"
+			},
+			{
+				id: 2310,
+				name: "Telford and Wrekin",
+				state_code: "TFW"
+			},
+			{
+				id: 2468,
+				name: "Thurrock",
+				state_code: "THR"
+			},
+			{
+				id: 2478,
+				name: "Torbay",
+				state_code: "TOB"
+			},
+			{
+				id: 2496,
+				name: "Torfaen",
+				state_code: "TOF"
+			},
+			{
+				id: 2293,
+				name: "Trafford",
+				state_code: "TRF"
+			},
+			{
+				id: 2375,
+				name: "United Kingdom",
+				state_code: "UKM"
+			},
+			{
+				id: 2299,
+				name: "Vale of Glamorgan",
+				state_code: "VGL"
+			},
+			{
+				id: 2465,
+				name: "Wakefield",
+				state_code: "WKF"
+			},
+			{
+				id: 2338,
+				name: "Wales",
+				state_code: "WLS"
+			},
+			{
+				id: 2292,
+				name: "Walsall",
+				state_code: "WLL"
+			},
+			{
+				id: 2420,
+				name: "Warrington",
+				state_code: "WRT"
+			},
+			{
+				id: 2505,
+				name: "Warwickshire",
+				state_code: "WAR"
+			},
+			{
+				id: 2471,
+				name: "West Berkshire",
+				state_code: "WBK"
+			},
+			{
+				id: 2440,
+				name: "West Dunbartonshire",
+				state_code: "WDU"
+			},
+			{
+				id: 2354,
+				name: "West Lothian",
+				state_code: "WLN"
+			},
+			{
+				id: 2296,
+				name: "West Sussex",
+				state_code: "WSX"
+			},
+			{
+				id: 2391,
+				name: "Wiltshire",
+				state_code: "WIL"
+			},
+			{
+				id: 2482,
+				name: "Windsor and Maidenhead",
+				state_code: "WNM"
+			},
+			{
+				id: 2408,
+				name: "Wirral",
+				state_code: "WRL"
+			},
+			{
+				id: 2419,
+				name: "Wokingham",
+				state_code: "WOK"
+			},
+			{
+				id: 2510,
+				name: "Worcestershire",
+				state_code: "WOR"
+			},
+			{
+				id: 2436,
+				name: "Wrexham County Borough",
+				state_code: "WRX"
+			}
+		]
+	},
+	{
+		name: "United States Minor Outlying Islands",
+		iso3: "UMI",
+		iso2: "UM",
+		numeric_code: "581",
+		phone_code: "1",
+		emoji: "🇺🇲",
+		emojiU: "U+1F1FA U+1F1F2",
+		states: [
+		]
+	},
+	{
+		name: "Uruguay",
+		iso3: "URY",
+		iso2: "UY",
+		numeric_code: "858",
+		phone_code: "598",
+		emoji: "🇺🇾",
+		emojiU: "U+1F1FA U+1F1FE",
+		states: [
+			{
+				id: 3205,
+				name: "Artigas Department",
+				state_code: "AR"
+			},
+			{
+				id: 3213,
+				name: "Canelones Department",
+				state_code: "CA"
+			},
+			{
+				id: 3211,
+				name: "Cerro Largo Department",
+				state_code: "CL"
+			},
+			{
+				id: 3208,
+				name: "Colonia Department",
+				state_code: "CO"
+			},
+			{
+				id: 3209,
+				name: "Durazno Department",
+				state_code: "DU"
+			},
+			{
+				id: 3203,
+				name: "Flores Department",
+				state_code: "FS"
+			},
+			{
+				id: 3217,
+				name: "Florida Department",
+				state_code: "FD"
+			},
+			{
+				id: 3215,
+				name: "Lavalleja Department",
+				state_code: "LA"
+			},
+			{
+				id: 3206,
+				name: "Maldonado Department",
+				state_code: "MA"
+			},
+			{
+				id: 3218,
+				name: "Montevideo Department",
+				state_code: "MO"
+			},
+			{
+				id: 3212,
+				name: "Paysandú Department",
+				state_code: "PA"
+			},
+			{
+				id: 3210,
+				name: "Río Negro Department",
+				state_code: "RN"
+			},
+			{
+				id: 3207,
+				name: "Rivera Department",
+				state_code: "RV"
+			},
+			{
+				id: 3216,
+				name: "Rocha Department",
+				state_code: "RO"
+			},
+			{
+				id: 3220,
+				name: "Salto Department",
+				state_code: "SA"
+			},
+			{
+				id: 3204,
+				name: "San José Department",
+				state_code: "SJ"
+			},
+			{
+				id: 3219,
+				name: "Soriano Department",
+				state_code: "SO"
+			},
+			{
+				id: 3221,
+				name: "Tacuarembó Department",
+				state_code: "TA"
+			},
+			{
+				id: 3214,
+				name: "Treinta y Tres Department",
+				state_code: "TT"
+			}
+		]
+	},
+	{
+		name: "Uzbekistan",
+		iso3: "UZB",
+		iso2: "UZ",
+		numeric_code: "860",
+		phone_code: "998",
+		emoji: "🇺🇿",
+		emojiU: "U+1F1FA U+1F1FF",
+		states: [
+			{
+				id: 2540,
+				name: "Andijan Region",
+				state_code: "AN"
+			},
+			{
+				id: 2541,
+				name: "Bukhara Region",
+				state_code: "BU"
+			},
+			{
+				id: 2538,
+				name: "Fergana Region",
+				state_code: "FA"
+			},
+			{
+				id: 2545,
+				name: "Jizzakh Region",
+				state_code: "JI"
+			},
+			{
+				id: 2548,
+				name: "Karakalpakstan",
+				state_code: "QR"
+			},
+			{
+				id: 2537,
+				name: "Namangan Region",
+				state_code: "NG"
+			},
+			{
+				id: 2542,
+				name: "Navoiy Region",
+				state_code: "NW"
+			},
+			{
+				id: 2543,
+				name: "Qashqadaryo Region",
+				state_code: "QA"
+			},
+			{
+				id: 2544,
+				name: "Samarqand Region",
+				state_code: "SA"
+			},
+			{
+				id: 2547,
+				name: "Sirdaryo Region",
+				state_code: "SI"
+			},
+			{
+				id: 2546,
+				name: "Surxondaryo Region",
+				state_code: "SU"
+			},
+			{
+				id: 2536,
+				name: "Tashkent",
+				state_code: "TK"
+			},
+			{
+				id: 2549,
+				name: "Tashkent Region",
+				state_code: "TO"
+			},
+			{
+				id: 2539,
+				name: "Xorazm Region",
+				state_code: "XO"
+			}
+		]
+	},
+	{
+		name: "Vanuatu",
+		iso3: "VUT",
+		iso2: "VU",
+		numeric_code: "548",
+		phone_code: "678",
+		emoji: "🇻🇺",
+		emojiU: "U+1F1FB U+1F1FA",
+		states: [
+			{
+				id: 4775,
+				name: "Malampa",
+				state_code: "MAP"
+			},
+			{
+				id: 4773,
+				name: "Penama",
+				state_code: "PAM"
+			},
+			{
+				id: 4776,
+				name: "Sanma",
+				state_code: "SAM"
+			},
+			{
+				id: 4774,
+				name: "Shefa",
+				state_code: "SEE"
+			},
+			{
+				id: 4777,
+				name: "Tafea",
+				state_code: "TAE"
+			},
+			{
+				id: 4772,
+				name: "Torba",
+				state_code: "TOB"
+			}
+		]
+	},
+	{
+		name: "Vatican City State (Holy See)",
+		iso3: "VAT",
+		iso2: "VA",
+		numeric_code: "336",
+		phone_code: "379",
+		emoji: "🇻🇦",
+		emojiU: "U+1F1FB U+1F1E6",
+		states: [
+		]
+	},
+	{
+		name: "Venezuela",
+		iso3: "VEN",
+		iso2: "VE",
+		numeric_code: "862",
+		phone_code: "58",
+		emoji: "🇻🇪",
+		emojiU: "U+1F1FB U+1F1EA",
+		states: [
+			{
+				id: 2044,
+				name: "Amazonas",
+				state_code: "Z"
+			},
+			{
+				id: 2050,
+				name: "Anzoátegui",
+				state_code: "B"
+			},
+			{
+				id: 4856,
+				name: "Apure",
+				state_code: "C"
+			},
+			{
+				id: 2047,
+				name: "Aragua",
+				state_code: "D"
+			},
+			{
+				id: 2049,
+				name: "Barinas",
+				state_code: "E"
+			},
+			{
+				id: 2039,
+				name: "Bolívar",
+				state_code: "F"
+			},
+			{
+				id: 2040,
+				name: "Carabobo",
+				state_code: "G"
+			},
+			{
+				id: 2034,
+				name: "Cojedes",
+				state_code: "H"
+			},
+			{
+				id: 2051,
+				name: "Delta Amacuro",
+				state_code: "Y"
+			},
+			{
+				id: 4855,
+				name: "Distrito Capital",
+				state_code: "A"
+			},
+			{
+				id: 2035,
+				name: "Falcón",
+				state_code: "I"
+			},
+			{
+				id: 2046,
+				name: "Federal Dependencies of Venezuela",
+				state_code: "W"
+			},
+			{
+				id: 2045,
+				name: "Guárico",
+				state_code: "J"
+			},
+			{
+				id: 2055,
+				name: "La Guaira",
+				state_code: "X"
+			},
+			{
+				id: 2038,
+				name: "Lara",
+				state_code: "K"
+			},
+			{
+				id: 2053,
+				name: "Mérida",
+				state_code: "L"
+			},
+			{
+				id: 2037,
+				name: "Miranda",
+				state_code: "M"
+			},
+			{
+				id: 2054,
+				name: "Monagas",
+				state_code: "N"
+			},
+			{
+				id: 2052,
+				name: "Nueva Esparta",
+				state_code: "O"
+			},
+			{
+				id: 2036,
+				name: "Portuguesa",
+				state_code: "P"
+			},
+			{
+				id: 2056,
+				name: "Sucre",
+				state_code: "R"
+			},
+			{
+				id: 2048,
+				name: "Táchira",
+				state_code: "S"
+			},
+			{
+				id: 2043,
+				name: "Trujillo",
+				state_code: "T"
+			},
+			{
+				id: 2041,
+				name: "Yaracuy",
+				state_code: "U"
+			},
+			{
+				id: 2042,
+				name: "Zulia",
+				state_code: "V"
+			}
+		]
+	},
+	{
+		name: "Vietnam",
+		iso3: "VNM",
+		iso2: "VN",
+		numeric_code: "704",
+		phone_code: "84",
+		emoji: "🇻🇳",
+		emojiU: "U+1F1FB U+1F1F3",
+		states: [
+			{
+				id: 3794,
+				name: "An Giang",
+				state_code: "44"
+			},
+			{
+				id: 3770,
+				name: "Bà Rịa-Vũng Tàu",
+				state_code: "43"
+			},
+			{
+				id: 3815,
+				name: "Bắc Giang",
+				state_code: "54"
+			},
+			{
+				id: 3822,
+				name: "Bắc Kạn",
+				state_code: "53"
+			},
+			{
+				id: 3804,
+				name: "Bạc Liêu",
+				state_code: "55"
+			},
+			{
+				id: 3791,
+				name: "Bắc Ninh",
+				state_code: "56"
+			},
+			{
+				id: 3796,
+				name: "Bến Tre",
+				state_code: "50"
+			},
+			{
+				id: 3785,
+				name: "Bình Dương",
+				state_code: "57"
+			},
+			{
+				id: 3830,
+				name: "Bình Định",
+				state_code: "31"
+			},
+			{
+				id: 3797,
+				name: "Bình Phước",
+				state_code: "58"
+			},
+			{
+				id: 3787,
+				name: "Bình Thuận",
+				state_code: "40"
+			},
+			{
+				id: 3778,
+				name: "Cà Mau",
+				state_code: "59"
+			},
+			{
+				id: 4925,
+				name: "Cần Thơ",
+				state_code: "CT"
+			},
+			{
+				id: 3782,
+				name: "Cao Bằng",
+				state_code: "04"
+			},
+			{
+				id: 3806,
+				name: "Đà Nẵng",
+				state_code: "DN"
+			},
+			{
+				id: 3829,
+				name: "Đắk Lắk",
+				state_code: "33"
+			},
+			{
+				id: 3823,
+				name: "Đắk Nông",
+				state_code: "72"
+			},
+			{
+				id: 3773,
+				name: "Điện Biên",
+				state_code: "71"
+			},
+			{
+				id: 3821,
+				name: "Đồng Nai",
+				state_code: "39"
+			},
+			{
+				id: 3769,
+				name: "Đồng Tháp",
+				state_code: "45"
+			},
+			{
+				id: 3813,
+				name: "Gia Lai",
+				state_code: "30"
+			},
+			{
+				id: 3779,
+				name: "Hà Giang",
+				state_code: "03"
+			},
+			{
+				id: 3802,
+				name: "Hà Nam",
+				state_code: "63"
+			},
+			{
+				id: 3810,
+				name: "Hà Nội",
+				state_code: "HN"
+			},
+			{
+				id: 3816,
+				name: "Hà Tĩnh",
+				state_code: "23"
+			},
+			{
+				id: 3827,
+				name: "Hải Dương",
+				state_code: "61"
+			},
+			{
+				id: 3783,
+				name: "Hải Phòng",
+				state_code: "HP"
+			},
+			{
+				id: 3777,
+				name: "Hậu Giang",
+				state_code: "73"
+			},
+			{
+				id: 3811,
+				name: "Hồ Chí Minh",
+				state_code: "SG"
+			},
+			{
+				id: 3799,
+				name: "Hòa Bình",
+				state_code: "14"
+			},
+			{
+				id: 3768,
+				name: "Hưng Yên",
+				state_code: "66"
+			},
+			{
+				id: 3793,
+				name: "Khánh Hòa",
+				state_code: "34"
+			},
+			{
+				id: 3800,
+				name: "Kiên Giang",
+				state_code: "47"
+			},
+			{
+				id: 3772,
+				name: "Kon Tum",
+				state_code: "28"
+			},
+			{
+				id: 3825,
+				name: "Lai Châu",
+				state_code: "01"
+			},
+			{
+				id: 3818,
+				name: "Lâm Đồng",
+				state_code: "35"
+			},
+			{
+				id: 3792,
+				name: "Lạng Sơn",
+				state_code: "09"
+			},
+			{
+				id: 3817,
+				name: "Lào Cai",
+				state_code: "02"
+			},
+			{
+				id: 3808,
+				name: "Long An",
+				state_code: "41"
+			},
+			{
+				id: 3789,
+				name: "Nam Định",
+				state_code: "67"
+			},
+			{
+				id: 3780,
+				name: "Nghệ An",
+				state_code: "22"
+			},
+			{
+				id: 3786,
+				name: "Ninh Bình",
+				state_code: "18"
+			},
+			{
+				id: 3788,
+				name: "Ninh Thuận",
+				state_code: "36"
+			},
+			{
+				id: 3801,
+				name: "Phú Thọ",
+				state_code: "68"
+			},
+			{
+				id: 3824,
+				name: "Phú Yên",
+				state_code: "32"
+			},
+			{
+				id: 3809,
+				name: "Quảng Bình",
+				state_code: "24"
+			},
+			{
+				id: 3776,
+				name: "Quảng Nam",
+				state_code: "27"
+			},
+			{
+				id: 3828,
+				name: "Quảng Ngãi",
+				state_code: "29"
+			},
+			{
+				id: 3814,
+				name: "Quảng Ninh",
+				state_code: "13"
+			},
+			{
+				id: 3803,
+				name: "Quảng Trị",
+				state_code: "25"
+			},
+			{
+				id: 3819,
+				name: "Sóc Trăng",
+				state_code: "52"
+			},
+			{
+				id: 3812,
+				name: "Sơn La",
+				state_code: "05"
+			},
+			{
+				id: 3826,
+				name: "Tây Ninh",
+				state_code: "37"
+			},
+			{
+				id: 3775,
+				name: "Thái Bình",
+				state_code: "20"
+			},
+			{
+				id: 3807,
+				name: "Thái Nguyên",
+				state_code: "69"
+			},
+			{
+				id: 3771,
+				name: "Thanh Hóa",
+				state_code: "21"
+			},
+			{
+				id: 3798,
+				name: "Thừa Thiên-Huế",
+				state_code: "26"
+			},
+			{
+				id: 3781,
+				name: "Tiền Giang",
+				state_code: "46"
+			},
+			{
+				id: 3805,
+				name: "Trà Vinh",
+				state_code: "51"
+			},
+			{
+				id: 3795,
+				name: "Tuyên Quang",
+				state_code: "07"
+			},
+			{
+				id: 3790,
+				name: "Vĩnh Long",
+				state_code: "49"
+			},
+			{
+				id: 3774,
+				name: "Vĩnh Phúc",
+				state_code: "70"
+			},
+			{
+				id: 3784,
+				name: "Yên Bái",
+				state_code: "06"
+			}
+		]
+	},
+	{
+		name: "Virgin Islands (British)",
+		iso3: "VGB",
+		iso2: "VG",
+		numeric_code: "092",
+		phone_code: "+1-284",
+		emoji: "🇻🇬",
+		emojiU: "U+1F1FB U+1F1EC",
+		states: [
+		]
+	},
+	{
+		name: "Virgin Islands (US)",
+		iso3: "VIR",
+		iso2: "VI",
+		numeric_code: "850",
+		phone_code: "+1-340",
+		emoji: "🇻🇮",
+		emojiU: "U+1F1FB U+1F1EE",
+		states: [
+		]
+	},
+	{
+		name: "Wallis And Futuna Islands",
+		iso3: "WLF",
+		iso2: "WF",
+		numeric_code: "876",
+		phone_code: "681",
+		emoji: "🇼🇫",
+		emojiU: "U+1F1FC U+1F1EB",
+		states: [
+		]
+	},
+	{
+		name: "Western Sahara",
+		iso3: "ESH",
+		iso2: "EH",
+		numeric_code: "732",
+		phone_code: "212",
+		emoji: "🇪🇭",
+		emojiU: "U+1F1EA U+1F1ED",
+		states: [
+		]
+	},
+	{
+		name: "Yemen",
+		iso3: "YEM",
+		iso2: "YE",
+		numeric_code: "887",
+		phone_code: "967",
+		emoji: "🇾🇪",
+		emojiU: "U+1F1FE U+1F1EA",
+		states: [
+			{
+				id: 1242,
+				name: "'Adan Governorate",
+				state_code: "AD"
+			},
+			{
+				id: 1250,
+				name: "'Amran Governorate",
+				state_code: "AM"
+			},
+			{
+				id: 1237,
+				name: "Abyan Governorate",
+				state_code: "AB"
+			},
+			{
+				id: 1240,
+				name: "Al Bayda' Governorate",
+				state_code: "BA"
+			},
+			{
+				id: 1241,
+				name: "Al Hudaydah Governorate",
+				state_code: "HU"
+			},
+			{
+				id: 1243,
+				name: "Al Jawf Governorate",
+				state_code: "JA"
+			},
+			{
+				id: 1251,
+				name: "Al Mahrah Governorate",
+				state_code: "MR"
+			},
+			{
+				id: 1235,
+				name: "Al Mahwit Governorate",
+				state_code: "MW"
+			},
+			{
+				id: 1246,
+				name: "Dhamar Governorate",
+				state_code: "DH"
+			},
+			{
+				id: 1238,
+				name: "Hadhramaut Governorate",
+				state_code: "HD"
+			},
+			{
+				id: 1244,
+				name: "Hajjah Governorate",
+				state_code: "HJ"
+			},
+			{
+				id: 1233,
+				name: "Ibb Governorate",
+				state_code: "IB"
+			},
+			{
+				id: 1245,
+				name: "Lahij Governorate",
+				state_code: "LA"
+			},
+			{
+				id: 1234,
+				name: "Ma'rib Governorate",
+				state_code: "MA"
+			},
+			{
+				id: 1248,
+				name: "Raymah Governorate",
+				state_code: "RA"
+			},
+			{
+				id: 1249,
+				name: "Saada Governorate",
+				state_code: "SD"
+			},
+			{
+				id: 1232,
+				name: "Sana'a",
+				state_code: "SA"
+			},
+			{
+				id: 1236,
+				name: "Sana'a Governorate",
+				state_code: "SN"
+			},
+			{
+				id: 1247,
+				name: "Shabwah Governorate",
+				state_code: "SH"
+			},
+			{
+				id: 1239,
+				name: "Socotra Governorate",
+				state_code: "SU"
+			},
+			{
+				id: 1231,
+				name: "Ta'izz Governorate",
+				state_code: "TA"
+			}
+		]
+	},
+	{
+		name: "Zambia",
+		iso3: "ZMB",
+		iso2: "ZM",
+		numeric_code: "894",
+		phone_code: "260",
+		emoji: "🇿🇲",
+		emojiU: "U+1F1FF U+1F1F2",
+		states: [
+			{
+				id: 1986,
+				name: "Central Province",
+				state_code: "02"
+			},
+			{
+				id: 1984,
+				name: "Copperbelt Province",
+				state_code: "08"
+			},
+			{
+				id: 1991,
+				name: "Eastern Province",
+				state_code: "03"
+			},
+			{
+				id: 1987,
+				name: "Luapula Province",
+				state_code: "04"
+			},
+			{
+				id: 1988,
+				name: "Lusaka Province",
+				state_code: "09"
+			},
+			{
+				id: 1989,
+				name: "Muchinga Province",
+				state_code: "10"
+			},
+			{
+				id: 1982,
+				name: "Northern Province",
+				state_code: "05"
+			},
+			{
+				id: 1985,
+				name: "Northwestern Province",
+				state_code: "06"
+			},
+			{
+				id: 1990,
+				name: "Southern Province",
+				state_code: "07"
+			},
+			{
+				id: 1983,
+				name: "Western Province",
+				state_code: "01"
+			}
+		]
+	},
+	{
+		name: "Zimbabwe",
+		iso3: "ZWE",
+		iso2: "ZW",
+		numeric_code: "716",
+		phone_code: "263",
+		emoji: "🇿🇼",
+		emojiU: "U+1F1FF U+1F1FC",
+		states: [
+			{
+				id: 1956,
+				name: "Bulawayo Province",
+				state_code: "BU"
+			},
+			{
+				id: 1958,
+				name: "Harare Province",
+				state_code: "HA"
+			},
+			{
+				id: 1959,
+				name: "Manicaland",
+				state_code: "MA"
+			},
+			{
+				id: 1955,
+				name: "Mashonaland Central Province",
+				state_code: "MC"
+			},
+			{
+				id: 1951,
+				name: "Mashonaland East Province",
+				state_code: "ME"
+			},
+			{
+				id: 1953,
+				name: "Mashonaland West Province",
+				state_code: "MW"
+			},
+			{
+				id: 1960,
+				name: "Masvingo Province",
+				state_code: "MV"
+			},
+			{
+				id: 1954,
+				name: "Matabeleland North Province",
+				state_code: "MN"
+			},
+			{
+				id: 1952,
+				name: "Matabeleland South Province",
+				state_code: "MS"
+			},
+			{
+				id: 1957,
+				name: "Midlands Province",
+				state_code: "MI"
+			}
+		]
+	}
+];
+
+var _excluded$m = ["onChange"];
+
+var CountryDropdown = function CountryDropdown(_ref) {
+  var onChange = _ref.onChange,
+      props = _objectWithoutProperties(_ref, _excluded$m);
+
+  var options = countries.map(function (country) {
+    return {
+      text: country.name,
+      value: country.iso2,
+      states: country.states,
+      icon: /*#__PURE__*/React__default.createElement("span", null, country.emoji)
+    };
+  });
+
+  var handleChange = function handleChange(option) {
+    if (option) {
+      onChange(option.value, option.states);
+    }
+  };
+
+  return /*#__PURE__*/React__default.createElement(Dropdown, _extends$2({
+    options: options,
+    onChange: handleChange,
+    returnObjModel: true
+  }, props));
+};
+CountryDropdown.defaultProps = {};
+CountryDropdown.propTypes = {
+  onChange: propTypes$1.exports.func
 };
 
 var classnames = {exports: {}};
@@ -23968,9 +55510,9 @@ function _setPrototypeOf$x(o, p) { _setPrototypeOf$x = Object.setPrototypeOf || 
 
 function _createSuper$v(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$v(); return function _createSuperInternal() { var Super = _getPrototypeOf$v(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$v(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$v(this, result); }; }
 
-function _possibleConstructorReturn$v(self, call) { if (call && (_typeof$w(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$x(self); }
+function _possibleConstructorReturn$v(self, call) { if (call && (_typeof$w(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$w(self); }
 
-function _assertThisInitialized$x(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$w(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$v() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -24054,9 +55596,9 @@ var DateToSystemTimezoneSetter = /*#__PURE__*/function (_Setter2) {
 
     _this2 = _super2.call.apply(_super2, [this].concat(args));
 
-    _defineProperty$w(_assertThisInitialized$x(_this2), "priority", TIMEZONE_UNIT_PRIORITY);
+    _defineProperty$w(_assertThisInitialized$w(_this2), "priority", TIMEZONE_UNIT_PRIORITY);
 
-    _defineProperty$w(_assertThisInitialized$x(_this2), "subPriority", -1);
+    _defineProperty$w(_assertThisInitialized$w(_this2), "subPriority", -1);
 
     return _this2;
   }
@@ -24126,9 +55668,9 @@ function _setPrototypeOf$w(o, p) { _setPrototypeOf$w = Object.setPrototypeOf || 
 
 function _createSuper$u(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$u(); return function _createSuperInternal() { var Super = _getPrototypeOf$u(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$u(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$u(this, result); }; }
 
-function _possibleConstructorReturn$u(self, call) { if (call && (_typeof$v(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$w(self); }
+function _possibleConstructorReturn$u(self, call) { if (call && (_typeof$v(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$v(self); }
 
-function _assertThisInitialized$w(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$v(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$u() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -24151,9 +55693,9 @@ var EraParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$v(_assertThisInitialized$w(_this), "priority", 140);
+    _defineProperty$v(_assertThisInitialized$v(_this), "priority", 140);
 
-    _defineProperty$v(_assertThisInitialized$w(_this), "incompatibleTokens", ['R', 'u', 't', 'T']);
+    _defineProperty$v(_assertThisInitialized$v(_this), "incompatibleTokens", ['R', 'u', 't', 'T']);
 
     return _this;
   }
@@ -24432,9 +55974,9 @@ function _setPrototypeOf$v(o, p) { _setPrototypeOf$v = Object.setPrototypeOf || 
 
 function _createSuper$t(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$t(); return function _createSuperInternal() { var Super = _getPrototypeOf$t(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$t(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$t(this, result); }; }
 
-function _possibleConstructorReturn$t(self, call) { if (call && (_typeof$u(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$v(self); }
+function _possibleConstructorReturn$t(self, call) { if (call && (_typeof$u(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$u(self); }
 
-function _assertThisInitialized$v(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$u(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$t() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -24465,9 +56007,9 @@ var YearParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$u(_assertThisInitialized$v(_this), "priority", 130);
+    _defineProperty$u(_assertThisInitialized$u(_this), "priority", 130);
 
-    _defineProperty$u(_assertThisInitialized$v(_this), "incompatibleTokens", ['Y', 'R', 'u', 'w', 'I', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$u(_assertThisInitialized$u(_this), "incompatibleTokens", ['Y', 'R', 'u', 'w', 'I', 'i', 'e', 'c', 't', 'T']);
 
     return _this;
   }
@@ -24536,9 +56078,9 @@ function _setPrototypeOf$u(o, p) { _setPrototypeOf$u = Object.setPrototypeOf || 
 
 function _createSuper$s(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$s(); return function _createSuperInternal() { var Super = _getPrototypeOf$s(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$s(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$s(this, result); }; }
 
-function _possibleConstructorReturn$s(self, call) { if (call && (_typeof$t(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$u(self); }
+function _possibleConstructorReturn$s(self, call) { if (call && (_typeof$t(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$t(self); }
 
-function _assertThisInitialized$u(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$t(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$s() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -24562,9 +56104,9 @@ var LocalWeekYearParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$t(_assertThisInitialized$u(_this), "priority", 130);
+    _defineProperty$t(_assertThisInitialized$t(_this), "priority", 130);
 
-    _defineProperty$t(_assertThisInitialized$u(_this), "incompatibleTokens", ['y', 'R', 'u', 'Q', 'q', 'M', 'L', 'I', 'd', 'D', 'i', 't', 'T']);
+    _defineProperty$t(_assertThisInitialized$t(_this), "incompatibleTokens", ['y', 'R', 'u', 'Q', 'q', 'M', 'L', 'I', 'd', 'D', 'i', 't', 'T']);
 
     return _this;
   }
@@ -24633,9 +56175,9 @@ function _setPrototypeOf$t(o, p) { _setPrototypeOf$t = Object.setPrototypeOf || 
 
 function _createSuper$r(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$r(); return function _createSuperInternal() { var Super = _getPrototypeOf$r(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$r(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$r(this, result); }; }
 
-function _possibleConstructorReturn$r(self, call) { if (call && (_typeof$s(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$t(self); }
+function _possibleConstructorReturn$r(self, call) { if (call && (_typeof$s(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$s(self); }
 
-function _assertThisInitialized$t(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$s(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$r() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -24659,9 +56201,9 @@ var ISOWeekYearParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$s(_assertThisInitialized$t(_this), "priority", 130);
+    _defineProperty$s(_assertThisInitialized$s(_this), "priority", 130);
 
-    _defineProperty$s(_assertThisInitialized$t(_this), "incompatibleTokens", ['G', 'y', 'Y', 'u', 'Q', 'q', 'M', 'L', 'w', 'd', 'D', 'e', 'c', 't', 'T']);
+    _defineProperty$s(_assertThisInitialized$s(_this), "incompatibleTokens", ['G', 'y', 'Y', 'u', 'Q', 'q', 'M', 'L', 'w', 'd', 'D', 'e', 'c', 't', 'T']);
 
     return _this;
   }
@@ -24702,9 +56244,9 @@ function _setPrototypeOf$s(o, p) { _setPrototypeOf$s = Object.setPrototypeOf || 
 
 function _createSuper$q(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$q(); return function _createSuperInternal() { var Super = _getPrototypeOf$q(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$q(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$q(this, result); }; }
 
-function _possibleConstructorReturn$q(self, call) { if (call && (_typeof$r(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$s(self); }
+function _possibleConstructorReturn$q(self, call) { if (call && (_typeof$r(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$r(self); }
 
-function _assertThisInitialized$s(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$r(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$q() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -24727,9 +56269,9 @@ var ExtendedYearParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$r(_assertThisInitialized$s(_this), "priority", 130);
+    _defineProperty$r(_assertThisInitialized$r(_this), "priority", 130);
 
-    _defineProperty$r(_assertThisInitialized$s(_this), "incompatibleTokens", ['G', 'y', 'Y', 'R', 'w', 'I', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$r(_assertThisInitialized$r(_this), "incompatibleTokens", ['G', 'y', 'Y', 'R', 'w', 'I', 'i', 'e', 'c', 't', 'T']);
 
     return _this;
   }
@@ -24769,9 +56311,9 @@ function _setPrototypeOf$r(o, p) { _setPrototypeOf$r = Object.setPrototypeOf || 
 
 function _createSuper$p(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$p(); return function _createSuperInternal() { var Super = _getPrototypeOf$p(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$p(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$p(this, result); }; }
 
-function _possibleConstructorReturn$p(self, call) { if (call && (_typeof$q(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$r(self); }
+function _possibleConstructorReturn$p(self, call) { if (call && (_typeof$q(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$q(self); }
 
-function _assertThisInitialized$r(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$q(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$p() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -24794,9 +56336,9 @@ var QuarterParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$q(_assertThisInitialized$r(_this), "priority", 120);
+    _defineProperty$q(_assertThisInitialized$q(_this), "priority", 120);
 
-    _defineProperty$q(_assertThisInitialized$r(_this), "incompatibleTokens", ['Y', 'R', 'q', 'M', 'L', 'w', 'I', 'd', 'D', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$q(_assertThisInitialized$q(_this), "incompatibleTokens", ['Y', 'R', 'q', 'M', 'L', 'w', 'I', 'd', 'D', 'i', 'e', 'c', 't', 'T']);
 
     return _this;
   }
@@ -24880,9 +56422,9 @@ function _setPrototypeOf$q(o, p) { _setPrototypeOf$q = Object.setPrototypeOf || 
 
 function _createSuper$o(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$o(); return function _createSuperInternal() { var Super = _getPrototypeOf$o(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$o(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$o(this, result); }; }
 
-function _possibleConstructorReturn$o(self, call) { if (call && (_typeof$p(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$q(self); }
+function _possibleConstructorReturn$o(self, call) { if (call && (_typeof$p(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$p(self); }
 
-function _assertThisInitialized$q(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$p(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$o() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -24905,9 +56447,9 @@ var StandAloneQuarterParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$p(_assertThisInitialized$q(_this), "priority", 120);
+    _defineProperty$p(_assertThisInitialized$p(_this), "priority", 120);
 
-    _defineProperty$p(_assertThisInitialized$q(_this), "incompatibleTokens", ['Y', 'R', 'Q', 'M', 'L', 'w', 'I', 'd', 'D', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$p(_assertThisInitialized$p(_this), "incompatibleTokens", ['Y', 'R', 'Q', 'M', 'L', 'w', 'I', 'd', 'D', 'i', 'e', 'c', 't', 'T']);
 
     return _this;
   }
@@ -24991,9 +56533,9 @@ function _setPrototypeOf$p(o, p) { _setPrototypeOf$p = Object.setPrototypeOf || 
 
 function _createSuper$n(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$n(); return function _createSuperInternal() { var Super = _getPrototypeOf$n(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$n(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$n(this, result); }; }
 
-function _possibleConstructorReturn$n(self, call) { if (call && (_typeof$o(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$p(self); }
+function _possibleConstructorReturn$n(self, call) { if (call && (_typeof$o(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$o(self); }
 
-function _assertThisInitialized$p(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$o(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$n() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -25016,9 +56558,9 @@ var MonthParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$o(_assertThisInitialized$p(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'L', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$o(_assertThisInitialized$o(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'L', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
 
-    _defineProperty$o(_assertThisInitialized$p(_this), "priority", 110);
+    _defineProperty$o(_assertThisInitialized$o(_this), "priority", 110);
 
     return _this;
   }
@@ -25108,9 +56650,9 @@ function _setPrototypeOf$o(o, p) { _setPrototypeOf$o = Object.setPrototypeOf || 
 
 function _createSuper$m(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$m(); return function _createSuperInternal() { var Super = _getPrototypeOf$m(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$m(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$m(this, result); }; }
 
-function _possibleConstructorReturn$m(self, call) { if (call && (_typeof$n(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$o(self); }
+function _possibleConstructorReturn$m(self, call) { if (call && (_typeof$n(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$n(self); }
 
-function _assertThisInitialized$o(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$n(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$m() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -25133,9 +56675,9 @@ var StandAloneMonthParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$n(_assertThisInitialized$o(_this), "priority", 110);
+    _defineProperty$n(_assertThisInitialized$n(_this), "priority", 110);
 
-    _defineProperty$n(_assertThisInitialized$o(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'M', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$n(_assertThisInitialized$n(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'M', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
 
     return _this;
   }
@@ -25234,9 +56776,9 @@ function _setPrototypeOf$n(o, p) { _setPrototypeOf$n = Object.setPrototypeOf || 
 
 function _createSuper$l(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$l(); return function _createSuperInternal() { var Super = _getPrototypeOf$l(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$l(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$l(this, result); }; }
 
-function _possibleConstructorReturn$l(self, call) { if (call && (_typeof$m(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$n(self); }
+function _possibleConstructorReturn$l(self, call) { if (call && (_typeof$m(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$m(self); }
 
-function _assertThisInitialized$n(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$m(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$l() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -25260,9 +56802,9 @@ var LocalWeekParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$m(_assertThisInitialized$n(_this), "priority", 100);
+    _defineProperty$m(_assertThisInitialized$m(_this), "priority", 100);
 
-    _defineProperty$m(_assertThisInitialized$n(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'i', 't', 'T']);
+    _defineProperty$m(_assertThisInitialized$m(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'i', 't', 'T']);
 
     return _this;
   }
@@ -25321,9 +56863,9 @@ function _setPrototypeOf$m(o, p) { _setPrototypeOf$m = Object.setPrototypeOf || 
 
 function _createSuper$k(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$k(); return function _createSuperInternal() { var Super = _getPrototypeOf$k(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$k(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$k(this, result); }; }
 
-function _possibleConstructorReturn$k(self, call) { if (call && (_typeof$l(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$m(self); }
+function _possibleConstructorReturn$k(self, call) { if (call && (_typeof$l(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$l(self); }
 
-function _assertThisInitialized$m(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$l(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$k() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -25347,9 +56889,9 @@ var ISOWeekParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$l(_assertThisInitialized$m(_this), "priority", 100);
+    _defineProperty$l(_assertThisInitialized$l(_this), "priority", 100);
 
-    _defineProperty$l(_assertThisInitialized$m(_this), "incompatibleTokens", ['y', 'Y', 'u', 'q', 'Q', 'M', 'L', 'w', 'd', 'D', 'e', 'c', 't', 'T']);
+    _defineProperty$l(_assertThisInitialized$l(_this), "incompatibleTokens", ['y', 'Y', 'u', 'q', 'Q', 'M', 'L', 'w', 'd', 'D', 'e', 'c', 't', 'T']);
 
     return _this;
   }
@@ -25399,9 +56941,9 @@ function _setPrototypeOf$l(o, p) { _setPrototypeOf$l = Object.setPrototypeOf || 
 
 function _createSuper$j(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$j(); return function _createSuperInternal() { var Super = _getPrototypeOf$j(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$j(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$j(this, result); }; }
 
-function _possibleConstructorReturn$j(self, call) { if (call && (_typeof$k(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$l(self); }
+function _possibleConstructorReturn$j(self, call) { if (call && (_typeof$k(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$k(self); }
 
-function _assertThisInitialized$l(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$k(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$j() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -25427,11 +56969,11 @@ var DateParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$k(_assertThisInitialized$l(_this), "priority", 90);
+    _defineProperty$k(_assertThisInitialized$k(_this), "priority", 90);
 
-    _defineProperty$k(_assertThisInitialized$l(_this), "subPriority", 1);
+    _defineProperty$k(_assertThisInitialized$k(_this), "subPriority", 1);
 
-    _defineProperty$k(_assertThisInitialized$l(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$k(_assertThisInitialized$k(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
 
     return _this;
   }
@@ -25491,9 +57033,9 @@ function _setPrototypeOf$k(o, p) { _setPrototypeOf$k = Object.setPrototypeOf || 
 
 function _createSuper$i(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$i(); return function _createSuperInternal() { var Super = _getPrototypeOf$i(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$i(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$i(this, result); }; }
 
-function _possibleConstructorReturn$i(self, call) { if (call && (_typeof$j(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$k(self); }
+function _possibleConstructorReturn$i(self, call) { if (call && (_typeof$j(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$j(self); }
 
-function _assertThisInitialized$k(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$j(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$i() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -25516,11 +57058,11 @@ var DayOfYearParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$j(_assertThisInitialized$k(_this), "priority", 90);
+    _defineProperty$j(_assertThisInitialized$j(_this), "priority", 90);
 
-    _defineProperty$j(_assertThisInitialized$k(_this), "subpriority", 1);
+    _defineProperty$j(_assertThisInitialized$j(_this), "subpriority", 1);
 
-    _defineProperty$j(_assertThisInitialized$k(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'M', 'L', 'w', 'I', 'd', 'E', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$j(_assertThisInitialized$j(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'M', 'L', 'w', 'I', 'd', 'E', 'i', 'e', 'c', 't', 'T']);
 
     return _this;
   }
@@ -25601,9 +57143,9 @@ function _setPrototypeOf$j(o, p) { _setPrototypeOf$j = Object.setPrototypeOf || 
 
 function _createSuper$h(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$h(); return function _createSuperInternal() { var Super = _getPrototypeOf$h(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$h(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$h(this, result); }; }
 
-function _possibleConstructorReturn$h(self, call) { if (call && (_typeof$i(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$j(self); }
+function _possibleConstructorReturn$h(self, call) { if (call && (_typeof$i(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$i(self); }
 
-function _assertThisInitialized$j(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$i(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$h() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -25627,9 +57169,9 @@ var DayParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$i(_assertThisInitialized$j(_this), "priority", 90);
+    _defineProperty$i(_assertThisInitialized$i(_this), "priority", 90);
 
-    _defineProperty$i(_assertThisInitialized$j(_this), "incompatibleTokens", ['D', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$i(_assertThisInitialized$i(_this), "incompatibleTokens", ['D', 'i', 'e', 'c', 't', 'T']);
 
     return _this;
   }
@@ -25719,9 +57261,9 @@ function _setPrototypeOf$i(o, p) { _setPrototypeOf$i = Object.setPrototypeOf || 
 
 function _createSuper$g(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$g(); return function _createSuperInternal() { var Super = _getPrototypeOf$g(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$g(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$g(this, result); }; }
 
-function _possibleConstructorReturn$g(self, call) { if (call && (_typeof$h(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$i(self); }
+function _possibleConstructorReturn$g(self, call) { if (call && (_typeof$h(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$h(self); }
 
-function _assertThisInitialized$i(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$h(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$g() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -25745,9 +57287,9 @@ var LocalDayParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$h(_assertThisInitialized$i(_this), "priority", 90);
+    _defineProperty$h(_assertThisInitialized$h(_this), "priority", 90);
 
-    _defineProperty$h(_assertThisInitialized$i(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'E', 'i', 'c', 't', 'T']);
+    _defineProperty$h(_assertThisInitialized$h(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'E', 'i', 'c', 't', 'T']);
 
     return _this;
   }
@@ -25852,9 +57394,9 @@ function _setPrototypeOf$h(o, p) { _setPrototypeOf$h = Object.setPrototypeOf || 
 
 function _createSuper$f(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$f(); return function _createSuperInternal() { var Super = _getPrototypeOf$f(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$f(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$f(this, result); }; }
 
-function _possibleConstructorReturn$f(self, call) { if (call && (_typeof$g(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$h(self); }
+function _possibleConstructorReturn$f(self, call) { if (call && (_typeof$g(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$g(self); }
 
-function _assertThisInitialized$h(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$g(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$f() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -25878,9 +57420,9 @@ var StandAloneLocalDayParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$g(_assertThisInitialized$h(_this), "priority", 90);
+    _defineProperty$g(_assertThisInitialized$g(_this), "priority", 90);
 
-    _defineProperty$g(_assertThisInitialized$h(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'E', 'i', 'e', 't', 'T']);
+    _defineProperty$g(_assertThisInitialized$g(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'E', 'i', 'e', 't', 'T']);
 
     return _this;
   }
@@ -26003,9 +57545,9 @@ function _setPrototypeOf$g(o, p) { _setPrototypeOf$g = Object.setPrototypeOf || 
 
 function _createSuper$e(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$e(); return function _createSuperInternal() { var Super = _getPrototypeOf$e(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$e(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$e(this, result); }; }
 
-function _possibleConstructorReturn$e(self, call) { if (call && (_typeof$f(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$g(self); }
+function _possibleConstructorReturn$e(self, call) { if (call && (_typeof$f(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$f(self); }
 
-function _assertThisInitialized$g(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$f(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$e() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -26029,9 +57571,9 @@ var ISODayParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$f(_assertThisInitialized$g(_this), "priority", 90);
+    _defineProperty$f(_assertThisInitialized$f(_this), "priority", 90);
 
-    _defineProperty$f(_assertThisInitialized$g(_this), "incompatibleTokens", ['y', 'Y', 'u', 'q', 'Q', 'M', 'L', 'w', 'd', 'D', 'E', 'e', 'c', 't', 'T']);
+    _defineProperty$f(_assertThisInitialized$f(_this), "incompatibleTokens", ['y', 'Y', 'u', 'q', 'Q', 'M', 'L', 'w', 'd', 'D', 'E', 'e', 'c', 't', 'T']);
 
     return _this;
   }
@@ -26139,9 +57681,9 @@ function _setPrototypeOf$f(o, p) { _setPrototypeOf$f = Object.setPrototypeOf || 
 
 function _createSuper$d(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$d(); return function _createSuperInternal() { var Super = _getPrototypeOf$d(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$d(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$d(this, result); }; }
 
-function _possibleConstructorReturn$d(self, call) { if (call && (_typeof$e(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$f(self); }
+function _possibleConstructorReturn$d(self, call) { if (call && (_typeof$e(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$e(self); }
 
-function _assertThisInitialized$f(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$e(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$d() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -26164,9 +57706,9 @@ var AMPMParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$e(_assertThisInitialized$f(_this), "priority", 80);
+    _defineProperty$e(_assertThisInitialized$e(_this), "priority", 80);
 
-    _defineProperty$e(_assertThisInitialized$f(_this), "incompatibleTokens", ['b', 'B', 'H', 'k', 't', 'T']);
+    _defineProperty$e(_assertThisInitialized$e(_this), "incompatibleTokens", ['b', 'B', 'H', 'k', 't', 'T']);
 
     return _this;
   }
@@ -26231,9 +57773,9 @@ function _setPrototypeOf$e(o, p) { _setPrototypeOf$e = Object.setPrototypeOf || 
 
 function _createSuper$c(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$c(); return function _createSuperInternal() { var Super = _getPrototypeOf$c(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$c(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$c(this, result); }; }
 
-function _possibleConstructorReturn$c(self, call) { if (call && (_typeof$d(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$e(self); }
+function _possibleConstructorReturn$c(self, call) { if (call && (_typeof$d(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$d(self); }
 
-function _assertThisInitialized$e(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$d(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$c() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -26256,9 +57798,9 @@ var AMPMMidnightParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$d(_assertThisInitialized$e(_this), "priority", 80);
+    _defineProperty$d(_assertThisInitialized$d(_this), "priority", 80);
 
-    _defineProperty$d(_assertThisInitialized$e(_this), "incompatibleTokens", ['a', 'B', 'H', 'k', 't', 'T']);
+    _defineProperty$d(_assertThisInitialized$d(_this), "incompatibleTokens", ['a', 'B', 'H', 'k', 't', 'T']);
 
     return _this;
   }
@@ -26323,9 +57865,9 @@ function _setPrototypeOf$d(o, p) { _setPrototypeOf$d = Object.setPrototypeOf || 
 
 function _createSuper$b(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$b(); return function _createSuperInternal() { var Super = _getPrototypeOf$b(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$b(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$b(this, result); }; }
 
-function _possibleConstructorReturn$b(self, call) { if (call && (_typeof$c(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$d(self); }
+function _possibleConstructorReturn$b(self, call) { if (call && (_typeof$c(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$c(self); }
 
-function _assertThisInitialized$d(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$c(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$b() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -26349,9 +57891,9 @@ var DayPeriodParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$c(_assertThisInitialized$d(_this), "priority", 80);
+    _defineProperty$c(_assertThisInitialized$c(_this), "priority", 80);
 
-    _defineProperty$c(_assertThisInitialized$d(_this), "incompatibleTokens", ['a', 'b', 't', 'T']);
+    _defineProperty$c(_assertThisInitialized$c(_this), "incompatibleTokens", ['a', 'b', 't', 'T']);
 
     return _this;
   }
@@ -26416,9 +57958,9 @@ function _setPrototypeOf$c(o, p) { _setPrototypeOf$c = Object.setPrototypeOf || 
 
 function _createSuper$a(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$a(); return function _createSuperInternal() { var Super = _getPrototypeOf$a(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$a(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$a(this, result); }; }
 
-function _possibleConstructorReturn$a(self, call) { if (call && (_typeof$b(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$c(self); }
+function _possibleConstructorReturn$a(self, call) { if (call && (_typeof$b(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$b(self); }
 
-function _assertThisInitialized$c(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$b(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$a() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -26441,9 +57983,9 @@ var Hour1to12Parser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$b(_assertThisInitialized$c(_this), "priority", 70);
+    _defineProperty$b(_assertThisInitialized$b(_this), "priority", 70);
 
-    _defineProperty$b(_assertThisInitialized$c(_this), "incompatibleTokens", ['H', 'K', 'k', 't', 'T']);
+    _defineProperty$b(_assertThisInitialized$b(_this), "incompatibleTokens", ['H', 'K', 'k', 't', 'T']);
 
     return _this;
   }
@@ -26503,9 +58045,9 @@ function _setPrototypeOf$b(o, p) { _setPrototypeOf$b = Object.setPrototypeOf || 
 
 function _createSuper$9(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$9(); return function _createSuperInternal() { var Super = _getPrototypeOf$9(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$9(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$9(this, result); }; }
 
-function _possibleConstructorReturn$9(self, call) { if (call && (_typeof$a(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$b(self); }
+function _possibleConstructorReturn$9(self, call) { if (call && (_typeof$a(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$a(self); }
 
-function _assertThisInitialized$b(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$a(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$9() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -26528,9 +58070,9 @@ var Hour0to23Parser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$a(_assertThisInitialized$b(_this), "priority", 70);
+    _defineProperty$a(_assertThisInitialized$a(_this), "priority", 70);
 
-    _defineProperty$a(_assertThisInitialized$b(_this), "incompatibleTokens", ['a', 'b', 'h', 'K', 'k', 't', 'T']);
+    _defineProperty$a(_assertThisInitialized$a(_this), "incompatibleTokens", ['a', 'b', 'h', 'K', 'k', 't', 'T']);
 
     return _this;
   }
@@ -26581,9 +58123,9 @@ function _setPrototypeOf$a(o, p) { _setPrototypeOf$a = Object.setPrototypeOf || 
 
 function _createSuper$8(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$8(); return function _createSuperInternal() { var Super = _getPrototypeOf$8(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$8(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$8(this, result); }; }
 
-function _possibleConstructorReturn$8(self, call) { if (call && (_typeof$9(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$a(self); }
+function _possibleConstructorReturn$8(self, call) { if (call && (_typeof$9(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$9(self); }
 
-function _assertThisInitialized$a(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$9(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$8() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -26606,9 +58148,9 @@ var Hour0To11Parser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$9(_assertThisInitialized$a(_this), "priority", 70);
+    _defineProperty$9(_assertThisInitialized$9(_this), "priority", 70);
 
-    _defineProperty$9(_assertThisInitialized$a(_this), "incompatibleTokens", ['h', 'H', 'k', 't', 'T']);
+    _defineProperty$9(_assertThisInitialized$9(_this), "incompatibleTokens", ['h', 'H', 'k', 't', 'T']);
 
     return _this;
   }
@@ -26666,9 +58208,9 @@ function _setPrototypeOf$9(o, p) { _setPrototypeOf$9 = Object.setPrototypeOf || 
 
 function _createSuper$7(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$7(); return function _createSuperInternal() { var Super = _getPrototypeOf$7(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$7(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$7(this, result); }; }
 
-function _possibleConstructorReturn$7(self, call) { if (call && (_typeof$8(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$9(self); }
+function _possibleConstructorReturn$7(self, call) { if (call && (_typeof$8(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$8(self); }
 
-function _assertThisInitialized$9(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$8(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$7() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -26691,9 +58233,9 @@ var Hour1To24Parser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$8(_assertThisInitialized$9(_this), "priority", 70);
+    _defineProperty$8(_assertThisInitialized$8(_this), "priority", 70);
 
-    _defineProperty$8(_assertThisInitialized$9(_this), "incompatibleTokens", ['a', 'b', 'h', 'H', 'K', 't', 'T']);
+    _defineProperty$8(_assertThisInitialized$8(_this), "incompatibleTokens", ['a', 'b', 'h', 'H', 'K', 't', 'T']);
 
     return _this;
   }
@@ -26745,9 +58287,9 @@ function _setPrototypeOf$8(o, p) { _setPrototypeOf$8 = Object.setPrototypeOf || 
 
 function _createSuper$6(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$6(); return function _createSuperInternal() { var Super = _getPrototypeOf$6(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$6(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$6(this, result); }; }
 
-function _possibleConstructorReturn$6(self, call) { if (call && (_typeof$7(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$8(self); }
+function _possibleConstructorReturn$6(self, call) { if (call && (_typeof$7(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$7(self); }
 
-function _assertThisInitialized$8(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$7(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$6() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -26770,9 +58312,9 @@ var MinuteParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$7(_assertThisInitialized$8(_this), "priority", 60);
+    _defineProperty$7(_assertThisInitialized$7(_this), "priority", 60);
 
-    _defineProperty$7(_assertThisInitialized$8(_this), "incompatibleTokens", ['t', 'T']);
+    _defineProperty$7(_assertThisInitialized$7(_this), "incompatibleTokens", ['t', 'T']);
 
     return _this;
   }
@@ -26823,9 +58365,9 @@ function _setPrototypeOf$7(o, p) { _setPrototypeOf$7 = Object.setPrototypeOf || 
 
 function _createSuper$5(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$5(); return function _createSuperInternal() { var Super = _getPrototypeOf$5(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$5(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$5(this, result); }; }
 
-function _possibleConstructorReturn$5(self, call) { if (call && (_typeof$6(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$7(self); }
+function _possibleConstructorReturn$5(self, call) { if (call && (_typeof$6(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$6(self); }
 
-function _assertThisInitialized$7(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$6(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$5() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -26848,9 +58390,9 @@ var SecondParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$6(_assertThisInitialized$7(_this), "priority", 50);
+    _defineProperty$6(_assertThisInitialized$6(_this), "priority", 50);
 
-    _defineProperty$6(_assertThisInitialized$7(_this), "incompatibleTokens", ['t', 'T']);
+    _defineProperty$6(_assertThisInitialized$6(_this), "incompatibleTokens", ['t', 'T']);
 
     return _this;
   }
@@ -26901,9 +58443,9 @@ function _setPrototypeOf$6(o, p) { _setPrototypeOf$6 = Object.setPrototypeOf || 
 
 function _createSuper$4(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$4(); return function _createSuperInternal() { var Super = _getPrototypeOf$4(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$4(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$4(this, result); }; }
 
-function _possibleConstructorReturn$4(self, call) { if (call && (_typeof$5(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$6(self); }
+function _possibleConstructorReturn$4(self, call) { if (call && (_typeof$5(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$5(self); }
 
-function _assertThisInitialized$6(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$5(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$4() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -26926,9 +58468,9 @@ var FractionOfSecondParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$5(_assertThisInitialized$6(_this), "priority", 30);
+    _defineProperty$5(_assertThisInitialized$5(_this), "priority", 30);
 
-    _defineProperty$5(_assertThisInitialized$6(_this), "incompatibleTokens", ['t', 'T']);
+    _defineProperty$5(_assertThisInitialized$5(_this), "incompatibleTokens", ['t', 'T']);
 
     return _this;
   }
@@ -26967,9 +58509,9 @@ function _setPrototypeOf$5(o, p) { _setPrototypeOf$5 = Object.setPrototypeOf || 
 
 function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf$3(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$3(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$3(this, result); }; }
 
-function _possibleConstructorReturn$3(self, call) { if (call && (_typeof$4(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$5(self); }
+function _possibleConstructorReturn$3(self, call) { if (call && (_typeof$4(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$4(self); }
 
-function _assertThisInitialized$5(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$4(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$3() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -26993,9 +58535,9 @@ var ISOTimezoneWithZParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$4(_assertThisInitialized$5(_this), "priority", 10);
+    _defineProperty$4(_assertThisInitialized$4(_this), "priority", 10);
 
-    _defineProperty$4(_assertThisInitialized$5(_this), "incompatibleTokens", ['t', 'T', 'x']);
+    _defineProperty$4(_assertThisInitialized$4(_this), "incompatibleTokens", ['t', 'T', 'x']);
 
     return _this;
   }
@@ -27049,9 +58591,9 @@ function _setPrototypeOf$4(o, p) { _setPrototypeOf$4 = Object.setPrototypeOf || 
 
 function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf$2(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$2(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$2(this, result); }; }
 
-function _possibleConstructorReturn$2(self, call) { if (call && (_typeof$3(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$4(self); }
+function _possibleConstructorReturn$2(self, call) { if (call && (_typeof$3(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$3(self); }
 
-function _assertThisInitialized$4(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$3(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -27075,9 +58617,9 @@ var ISOTimezoneParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$3(_assertThisInitialized$4(_this), "priority", 10);
+    _defineProperty$3(_assertThisInitialized$3(_this), "priority", 10);
 
-    _defineProperty$3(_assertThisInitialized$4(_this), "incompatibleTokens", ['t', 'T', 'X']);
+    _defineProperty$3(_assertThisInitialized$3(_this), "incompatibleTokens", ['t', 'T', 'X']);
 
     return _this;
   }
@@ -27131,9 +58673,9 @@ function _setPrototypeOf$3(o, p) { _setPrototypeOf$3 = Object.setPrototypeOf || 
 
 function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf$1(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$1(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
 
-function _possibleConstructorReturn$1(self, call) { if (call && (_typeof$2(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$3(self); }
+function _possibleConstructorReturn$1(self, call) { if (call && (_typeof$2(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$2(self); }
 
-function _assertThisInitialized$3(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$2(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -27156,9 +58698,9 @@ var TimestampSecondsParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$2(_assertThisInitialized$3(_this), "priority", 40);
+    _defineProperty$2(_assertThisInitialized$2(_this), "priority", 40);
 
-    _defineProperty$2(_assertThisInitialized$3(_this), "incompatibleTokens", '*');
+    _defineProperty$2(_assertThisInitialized$2(_this), "incompatibleTokens", '*');
 
     return _this;
   }
@@ -27194,9 +58736,9 @@ function _setPrototypeOf$2(o, p) { _setPrototypeOf$2 = Object.setPrototypeOf || 
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof$1(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$2(self); }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof$1(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$1(self); }
 
-function _assertThisInitialized$2(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$1(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -27219,9 +58761,9 @@ var TimestampMillisecondsParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 20);
+    _defineProperty$1(_assertThisInitialized$1(_this), "priority", 20);
 
-    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", '*');
+    _defineProperty$1(_assertThisInitialized$1(_this), "incompatibleTokens", '*');
 
     return _this;
   }
@@ -28109,7 +59651,7 @@ function validateTimezone(_hours, minutes) {
   return minutes >= 0 && minutes <= 59;
 }
 
-function _inheritsLoose$2(subClass, superClass) {
+function _inheritsLoose$1(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
 
@@ -28125,7 +59667,7 @@ function _setPrototypeOf$1(o, p) {
   return _setPrototypeOf$1(o, p);
 }
 
-function _objectWithoutPropertiesLoose$2(source, excluded) {
+function _objectWithoutPropertiesLoose$1(source, excluded) {
   if (source == null) return {};
   var target = {};
   var sourceKeys = Object.keys(source);
@@ -28140,7 +59682,7 @@ function _objectWithoutPropertiesLoose$2(source, excluded) {
   return target;
 }
 
-function _assertThisInitialized$1(self) {
+function _assertThisInitialized(self) {
   if (self === void 0) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
@@ -28263,7 +59805,7 @@ function onClickOutsideHOC(WrappedComponent, config) {
 
   var componentName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
   return _temp = _class = /*#__PURE__*/function (_Component) {
-    _inheritsLoose$2(onClickOutside, _Component);
+    _inheritsLoose$1(onClickOutside, _Component);
 
     function onClickOutside(props) {
       var _this;
@@ -28344,7 +59886,7 @@ function onClickOutsideHOC(WrappedComponent, config) {
         };
 
         events.forEach(function (eventName) {
-          document.addEventListener(eventName, handlersMap[_this._uid], getEventHandlerOptions(_assertThisInitialized$1(_this), eventName));
+          document.addEventListener(eventName, handlersMap[_this._uid], getEventHandlerOptions(_assertThisInitialized(_this), eventName));
         });
       };
 
@@ -28360,7 +59902,7 @@ function onClickOutsideHOC(WrappedComponent, config) {
           }
 
           events.forEach(function (eventName) {
-            return document.removeEventListener(eventName, fn, getEventHandlerOptions(_assertThisInitialized$1(_this), eventName));
+            return document.removeEventListener(eventName, fn, getEventHandlerOptions(_assertThisInitialized(_this), eventName));
           });
           delete handlersMap[_this._uid];
         }
@@ -28441,7 +59983,7 @@ function onClickOutsideHOC(WrappedComponent, config) {
       // eslint-disable-next-line no-unused-vars
       var _this$props = this.props;
           _this$props.excludeScrollbar;
-          var props = _objectWithoutPropertiesLoose$2(_this$props, ["excludeScrollbar"]);
+          var props = _objectWithoutPropertiesLoose$1(_this$props, ["excludeScrollbar"]);
 
       if (WrappedComponent.prototype && WrappedComponent.prototype.isReactComponent) {
         props.ref = this.getRef;
@@ -30521,14 +62063,14 @@ var createPopper = /*#__PURE__*/popperGenerator({
 
 /* global Map:readonly, Set:readonly, ArrayBuffer:readonly */
 
-var hasElementType$1 = typeof Element !== 'undefined';
+var hasElementType = typeof Element !== 'undefined';
 var hasMap = typeof Map === 'function';
 var hasSet = typeof Set === 'function';
 var hasArrayBuffer = typeof ArrayBuffer === 'function' && !!ArrayBuffer.isView;
 
 // Note: We **don't** need `envHasBigInt64Array` in fde es6/index.js
 
-function equal$1(a, b) {
+function equal(a, b) {
   // START: fast-deep-equal es6/index.js 3.1.1
   if (a === b) return true;
 
@@ -30540,7 +62082,7 @@ function equal$1(a, b) {
       length = a.length;
       if (length != b.length) return false;
       for (i = length; i-- !== 0;)
-        if (!equal$1(a[i], b[i])) return false;
+        if (!equal(a[i], b[i])) return false;
       return true;
     }
 
@@ -30572,7 +62114,7 @@ function equal$1(a, b) {
         if (!b.has(i.value[0])) return false;
       it = a.entries();
       while (!(i = it.next()).done)
-        if (!equal$1(i.value[1], b.get(i.value[0]))) return false;
+        if (!equal(i.value[1], b.get(i.value[0]))) return false;
       return true;
     }
 
@@ -30607,7 +62149,7 @@ function equal$1(a, b) {
 
     // START: react-fast-compare
     // custom handling for DOM elements
-    if (hasElementType$1 && a instanceof Element) return false;
+    if (hasElementType && a instanceof Element) return false;
 
     // custom handling for React/Preact
     for (i = length; i-- !== 0;) {
@@ -30624,7 +62166,7 @@ function equal$1(a, b) {
       }
 
       // all other properties should be traversed as usual
-      if (!equal$1(a[keys[i]], b[keys[i]])) return false;
+      if (!equal(a[keys[i]], b[keys[i]])) return false;
     }
     // END: react-fast-compare
 
@@ -30636,9 +62178,9 @@ function equal$1(a, b) {
 }
 // end fast-deep-equal
 
-var reactFastCompare$1 = function isEqual(a, b) {
+var reactFastCompare = function isEqual(a, b) {
   try {
-    return equal$1(a, b);
+    return equal(a, b);
   } catch (error) {
     if (((error.message || '').match(/stack|recursion/i))) {
       // warn on circular references, don't crash
@@ -30717,7 +62259,7 @@ var usePopper = function usePopper(referenceElement, popperElement, options) {
       }])
     };
 
-    if (reactFastCompare$1(prevOptions.current, newOptions)) {
+    if (reactFastCompare(prevOptions.current, newOptions)) {
       return prevOptions.current || newOptions;
     } else {
       prevOptions.current = newOptions;
@@ -30840,7 +62382,7 @@ function Popper(_ref) {
 
 var __DEV__ = process.env.NODE_ENV !== 'production';
 
-var warning$4 = function() {};
+var warning$3 = function() {};
 
 if (__DEV__) {
   var printWarning = function printWarning(format, args) {
@@ -30865,7 +62407,7 @@ if (__DEV__) {
     } catch (x) {}
   };
 
-  warning$4 = function(condition, format, args) {
+  warning$3 = function(condition, format, args) {
     var len = arguments.length;
     args = new Array(len > 2 ? len - 2 : 0);
     for (var key = 2; key < len; key++) {
@@ -30883,7 +62425,7 @@ if (__DEV__) {
   };
 }
 
-var warning_1 = warning$4;
+var warning_1 = warning$3;
 
 function Reference(_ref) {
   var children = _ref.children,
@@ -30910,7 +62452,7 @@ function Reference(_ref) {
 
 function ae(e,t){var r=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);t&&(n=n.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),r.push.apply(r,n);}return r}function se(e){for(var t=1;t<arguments.length;t++){var r=null!=arguments[t]?arguments[t]:{};t%2?ae(Object(r),!0).forEach((function(t){de(e,t,r[t]);})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(r)):ae(Object(r)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(r,t));}));}return e}function ie(e){return (ie="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function pe(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function ce(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n);}}function le(e,t,r){return t&&ce(e.prototype,t),r&&ce(e,r),Object.defineProperty(e,"prototype",{writable:!1}),e}function de(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function ue(){return (ue=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(e[n]=r[n]);}return e}).apply(this,arguments)}function he(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");Object.defineProperty(e,"prototype",{value:Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),writable:!1}),t&&fe(e,t);}function me(e){return (me=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function fe(e,t){return (fe=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function ye(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function ve(e,t){if(t&&("object"==typeof t||"function"==typeof t))return t;if(void 0!==t)throw new TypeError("Derived constructors may only return object or undefined");return ye(e)}function De(e){var t=function(){if("undefined"==typeof Reflect||!Reflect.construct)return !1;if(Reflect.construct.sham)return !1;if("function"==typeof Proxy)return !0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return !1}}();return function(){var r,n=me(e);if(t){var o=me(this).constructor;r=Reflect.construct(n,arguments,o);}else r=n.apply(this,arguments);return ve(this,r)}}function we(e){return function(e){if(Array.isArray(e))return ge(e)}(e)||function(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}(e)||function(e,t){if(!e)return;if("string"==typeof e)return ge(e,t);var r=Object.prototype.toString.call(e).slice(8,-1);"Object"===r&&e.constructor&&(r=e.constructor.name);if("Map"===r||"Set"===r)return Array.from(e);if("Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r))return ge(e,t)}(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function ge(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=new Array(t);r<t;r++)n[r]=e[r];return n}function ke(e,t){switch(e){case"P":return t.date({width:"short"});case"PP":return t.date({width:"medium"});case"PPP":return t.date({width:"long"});case"PPPP":default:return t.date({width:"full"})}}function be(e,t){switch(e){case"p":return t.time({width:"short"});case"pp":return t.time({width:"medium"});case"ppp":return t.time({width:"long"});case"pppp":default:return t.time({width:"full"})}}var Ce={p:be,P:function(e,t){var r,n=e.match(/(P+)(p+)?/)||[],o=n[1],a=n[2];if(!a)return ke(e,t);switch(o){case"P":r=t.dateTime({width:"short"});break;case"PP":r=t.dateTime({width:"medium"});break;case"PPP":r=t.dateTime({width:"long"});break;case"PPPP":default:r=t.dateTime({width:"full"});}return r.replace("{{date}}",ke(o,t)).replace("{{time}}",be(a,t))}},Se=/P+p+|P+|p+|''|'(''|[^'])+('|$)|./g;function _e(e){var t=e?"string"==typeof e||e instanceof String?parseISO(e):toDate(e):new Date;return Pe(t)?t:null}function Me(e,t,r,n,o){var a=null,s=Ue(r)||Ue(qe()),i=!0;return Array.isArray(t)?(t.forEach((function(t){var p=parse$1(e,t,new Date,{locale:s});n&&(i=Pe(p,o)&&e===Ee(p,t,r)),Pe(p,o)&&i&&(a=p);})),a):(a=parse$1(e,t,new Date,{locale:s}),n?i=Pe(a)&&e===Ee(a,t,r):Pe(a)||(t=t.match(Se).map((function(e){var t=e[0];return "p"===t||"P"===t?s?(0, Ce[t])(e,s.formatLong):t:e})).join(""),e.length>0&&(a=parse$1(e,t.slice(0,e.length),new Date)),Pe(a)||(a=new Date(e))),Pe(a)&&i?a:null)}function Pe(e,t){return t=t||new Date("1/1/1000"),isValid(e)&&!isBefore(e,t)}function Ee(e,t,r){if("en"===r)return format$1(e,t,{awareOfUnicodeTokens:!0});var n=Ue(r);return r&&!n&&console.warn('A locale object was not found for the provided string ["'.concat(r,'"].')),!n&&qe()&&Ue(qe())&&(n=Ue(qe())),format$1(e,t,{locale:n||null,awareOfUnicodeTokens:!0})}function Ne(e,t){var r=t.dateFormat,n=t.locale;return e&&Ee(e,Array.isArray(r)?r[0]:r,n)||""}function xe(e,t){var r=t.hour,n=void 0===r?0:r,o=t.minute,a=void 0===o?0:o,s=t.second;return setHours(setMinutes(setSeconds(e,void 0===s?0:s),a),n)}function Ye(e,t){var r=t&&Ue(t)||qe()&&Ue(qe());return getISOWeek(e,r?{locale:r}:null)}function Oe(e,t){return Ee(e,"ddd",t)}function Ie(e){return startOfDay(e)}function Te(e,t,r){var n=Ue(t||qe());return startOfWeek(e,{locale:n,weekStartsOn:r})}function Le(e){return startOfMonth(e)}function Re(e){return startOfYear(e)}function Fe(e){return startOfQuarter(e)}function Ae(e,t){return e&&t?isSameYear(e,t):!e&&!t}function Be(e,t){return e&&t?isSameMonth(e,t):!e&&!t}function Ke(e,t){return e&&t?isSameQuarter(e,t):!e&&!t}function We(e,t){return e&&t?isSameDay(e,t):!e&&!t}function je(e,t){return e&&t?isEqual$3(e,t):!e&&!t}function He(e,t,r){var n,o=startOfDay(t),a=endOfDay(r);try{n=isWithinInterval(e,{start:o,end:a});}catch(e){n=!1;}return n}function qe(){return ("undefined"!=typeof window?window:globalThis).__localeId__}function Ue(e){if("string"==typeof e){var t="undefined"!=typeof window?window:globalThis;return t.__localeData__?t.__localeData__[e]:null}return e}function $e(e,t){return Ee(setMonth(_e(),e),"LLLL",t)}function ze(e,t){return Ee(setMonth(_e(),e),"LLL",t)}function Ge(e,t){return Ee(setQuarter(_e(),e),"QQQ",t)}function Je(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=t.excludeDates,a=t.excludeDateIntervals,s=t.includeDates,i=t.includeDateIntervals,p=t.filterDate;return ot(e,{minDate:r,maxDate:n})||o&&o.some((function(t){return We(e,t)}))||a&&a.some((function(t){var r=t.start,n=t.end;return isWithinInterval(e,{start:r,end:n})}))||s&&!s.some((function(t){return We(e,t)}))||i&&!i.some((function(t){var r=t.start,n=t.end;return isWithinInterval(e,{start:r,end:n})}))||p&&!p(_e(e))||!1}function Xe(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.excludeDates,n=t.excludeDateIntervals;return n&&n.length>0?n.some((function(t){var r=t.start,n=t.end;return isWithinInterval(e,{start:r,end:n})})):r&&r.some((function(t){return We(e,t)}))||!1}function Ze(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=t.excludeDates,a=t.includeDates,s=t.filterDate;return ot(e,{minDate:r,maxDate:n})||o&&o.some((function(t){return Be(e,t)}))||a&&!a.some((function(t){return Be(e,t)}))||s&&!s(_e(e))||!1}function et(e,t,r,n){var o=getYear(e),a=getMonth(e),s=getYear(t),i=getMonth(t),p=getYear(n);return o===s&&o===p?a<=r&&r<=i:o<s?p===o&&a<=r||p===s&&i>=r||p<s&&p>o:void 0}function tt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=t.excludeDates,a=t.includeDates,s=t.filterDate;return ot(e,{minDate:r,maxDate:n})||o&&o.some((function(t){return Ke(e,t)}))||a&&!a.some((function(t){return Ke(e,t)}))||s&&!s(_e(e))||!1}function rt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=new Date(e,0,1);return ot(o,{minDate:r,maxDate:n})||!1}function nt(e,t,r,n){var o=getYear(e),a=getQuarter(e),s=getYear(t),i=getQuarter(t),p=getYear(n);return o===s&&o===p?a<=r&&r<=i:o<s?p===o&&a<=r||p===s&&i>=r||p<s&&p>o:void 0}function ot(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate;return r&&differenceInCalendarDays(e,r)<0||n&&differenceInCalendarDays(e,n)>0}function at(e,t){return t.some((function(t){return getHours(t)===getHours(e)&&getMinutes(t)===getMinutes(e)}))}function st(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.excludeTimes,n=t.includeTimes,o=t.filterTime;return r&&at(e,r)||n&&!at(e,n)||o&&!o(e)||!1}function it(e,t){var r=t.minTime,n=t.maxTime;if(!r||!n)throw new Error("Both minTime and maxTime props required");var o,a=_e(),s=setHours(setMinutes(a,getMinutes(e)),getHours(e)),i=setHours(setMinutes(a,getMinutes(r)),getHours(r)),p=setHours(setMinutes(a,getMinutes(n)),getHours(n));try{o=!isWithinInterval(s,{start:i,end:p});}catch(e){o=!1;}return o}function pt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.includeDates,o=subMonths(e,1);return r&&differenceInCalendarMonths(r,o)>0||n&&n.every((function(e){return differenceInCalendarMonths(e,o)>0}))||!1}function ct(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.maxDate,n=t.includeDates,o=addMonths(e,1);return r&&differenceInCalendarMonths(o,r)>0||n&&n.every((function(e){return differenceInCalendarMonths(o,e)>0}))||!1}function lt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.includeDates,o=subYears(e,1);return r&&differenceInCalendarYears(r,o)>0||n&&n.every((function(e){return differenceInCalendarYears(e,o)>0}))||!1}function dt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.maxDate,n=t.includeDates,o=addYears(e,1);return r&&differenceInCalendarYears(o,r)>0||n&&n.every((function(e){return differenceInCalendarYears(o,e)>0}))||!1}function ut(e){var t=e.minDate,r=e.includeDates;if(r&&t){var n=r.filter((function(e){return differenceInCalendarDays(e,t)>=0}));return min$5(n)}return r?min$5(r):t}function ht(e){var t=e.maxDate,r=e.includeDates;if(r&&t){var n=r.filter((function(e){return differenceInCalendarDays(e,t)<=0}));return max$3(n)}return r?max$3(r):t}function mt(){for(var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:[],t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"react-datepicker__day--highlighted",r=new Map,o=0,a=e.length;o<a;o++){var s=e[o];if(isDate$1(s)){var i=Ee(s,"MM.dd.yyyy"),p=r.get(i)||[];p.includes(t)||(p.push(t),r.set(i,p));}else if("object"===ie(s)){var c=Object.keys(s),l=c[0],d=s[c[0]];if("string"==typeof l&&d.constructor===Array)for(var u=0,h=d.length;u<h;u++){var m=Ee(d[u],"MM.dd.yyyy"),f=r.get(m)||[];f.includes(l)||(f.push(l),r.set(m,f));}}}return r}function ft(e,t,r,n,o){for(var a=o.length,p=[],c=0;c<a;c++){var l=addMinutes(addHours(e,getHours(o[c])),getMinutes(o[c])),d=addMinutes(e,(r+1)*n);isAfter(l,t)&&isBefore(l,d)&&p.push(o[c]);}return p}function yt(e){return e<10?"0".concat(e):"".concat(e)}function vt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:12,r=Math.ceil(getYear(e)/t)*t,n=r-(t-1);return {startPeriod:n,endPeriod:r}}function Dt(e,t,r,n){for(var o=[],a=0;a<2*t+1;a++){var s=e+t-a,i=!0;r&&(i=getYear(r)<=s),n&&i&&(i=getYear(n)>=s),i&&o.push(s);}return o}var wt=onClickOutsideHOC(function(n){he(a,React__default.Component);var o=De(a);function a(r){var n;pe(this,a),de(ye(n=o.call(this,r)),"renderOptions",(function(){var t=n.props.year,r=n.state.yearsList.map((function(r){return React__default.createElement("div",{className:t===r?"react-datepicker__year-option react-datepicker__year-option--selected_year":"react-datepicker__year-option",key:r,onClick:n.onChange.bind(ye(n),r),"aria-selected":t===r?"true":void 0},t===r?React__default.createElement("span",{className:"react-datepicker__year-option--selected"},"✓"):"",r)})),o=n.props.minDate?getYear(n.props.minDate):null,a=n.props.maxDate?getYear(n.props.maxDate):null;return a&&n.state.yearsList.find((function(e){return e===a}))||r.unshift(React__default.createElement("div",{className:"react-datepicker__year-option",key:"upcoming",onClick:n.incrementYears},React__default.createElement("a",{className:"react-datepicker__navigation react-datepicker__navigation--years react-datepicker__navigation--years-upcoming"}))),o&&n.state.yearsList.find((function(e){return e===o}))||r.push(React__default.createElement("div",{className:"react-datepicker__year-option",key:"previous",onClick:n.decrementYears},React__default.createElement("a",{className:"react-datepicker__navigation react-datepicker__navigation--years react-datepicker__navigation--years-previous"}))),r})),de(ye(n),"onChange",(function(e){n.props.onChange(e);})),de(ye(n),"handleClickOutside",(function(){n.props.onCancel();})),de(ye(n),"shiftYears",(function(e){var t=n.state.yearsList.map((function(t){return t+e}));n.setState({yearsList:t});})),de(ye(n),"incrementYears",(function(){return n.shiftYears(1)})),de(ye(n),"decrementYears",(function(){return n.shiftYears(-1)}));var s=r.yearDropdownItemNumber,i=r.scrollableYearDropdown,p=s||(i?10:5);return n.state={yearsList:Dt(n.props.year,p,n.props.minDate,n.props.maxDate)},n.dropdownRef=createRef(),n}return le(a,[{key:"componentDidMount",value:function(){var e=this.dropdownRef.current;e&&(e.scrollTop=e.scrollHeight/2-e.clientHeight/2);}},{key:"render",value:function(){var t=r({"react-datepicker__year-dropdown":!0,"react-datepicker__year-dropdown--scrollable":this.props.scrollableYearDropdown});return React__default.createElement("div",{className:t,ref:this.dropdownRef},this.renderOptions())}}]),a}()),gt=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{dropdownVisible:!1}),de(ye(t),"renderSelectOptions",(function(){for(var r=t.props.minDate?getYear(t.props.minDate):1900,n=t.props.maxDate?getYear(t.props.maxDate):2100,o=[],a=r;a<=n;a++)o.push(React__default.createElement("option",{key:a,value:a},a));return o})),de(ye(t),"onSelectChange",(function(e){t.onChange(e.target.value);})),de(ye(t),"renderSelectMode",(function(){return React__default.createElement("select",{value:t.props.year,className:"react-datepicker__year-select",onChange:t.onSelectChange},t.renderSelectOptions())})),de(ye(t),"renderReadView",(function(r){return React__default.createElement("div",{key:"read",style:{visibility:r?"visible":"hidden"},className:"react-datepicker__year-read-view",onClick:function(e){return t.toggleDropdown(e)}},React__default.createElement("span",{className:"react-datepicker__year-read-view--down-arrow"}),React__default.createElement("span",{className:"react-datepicker__year-read-view--selected-year"},t.props.year))})),de(ye(t),"renderDropdown",(function(){return React__default.createElement(wt,{key:"dropdown",year:t.props.year,onChange:t.onChange,onCancel:t.toggleDropdown,minDate:t.props.minDate,maxDate:t.props.maxDate,scrollableYearDropdown:t.props.scrollableYearDropdown,yearDropdownItemNumber:t.props.yearDropdownItemNumber})})),de(ye(t),"renderScrollMode",(function(){var e=t.state.dropdownVisible,r=[t.renderReadView(!e)];return e&&r.unshift(t.renderDropdown()),r})),de(ye(t),"onChange",(function(e){t.toggleDropdown(),e!==t.props.year&&t.props.onChange(e);})),de(ye(t),"toggleDropdown",(function(e){t.setState({dropdownVisible:!t.state.dropdownVisible},(function(){t.props.adjustDateOnChange&&t.handleYearChange(t.props.date,e);}));})),de(ye(t),"handleYearChange",(function(e,r){t.onSelect(e,r),t.setOpen();})),de(ye(t),"onSelect",(function(e,r){t.props.onSelect&&t.props.onSelect(e,r);})),de(ye(t),"setOpen",(function(){t.props.setOpen&&t.props.setOpen(!0);})),t}return le(n,[{key:"render",value:function(){var t;switch(this.props.dropdownMode){case"scroll":t=this.renderScrollMode();break;case"select":t=this.renderSelectMode();}return React__default.createElement("div",{className:"react-datepicker__year-dropdown-container react-datepicker__year-dropdown-container--".concat(this.props.dropdownMode)},t)}}]),n}(),kt=onClickOutsideHOC(function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"isSelectedMonth",(function(e){return t.props.month===e})),de(ye(t),"renderOptions",(function(){return t.props.monthNames.map((function(r,n){return React__default.createElement("div",{className:t.isSelectedMonth(n)?"react-datepicker__month-option react-datepicker__month-option--selected_month":"react-datepicker__month-option",key:r,onClick:t.onChange.bind(ye(t),n),"aria-selected":t.isSelectedMonth(n)?"true":void 0},t.isSelectedMonth(n)?React__default.createElement("span",{className:"react-datepicker__month-option--selected"},"✓"):"",r)}))})),de(ye(t),"onChange",(function(e){return t.props.onChange(e)})),de(ye(t),"handleClickOutside",(function(){return t.props.onCancel()})),t}return le(n,[{key:"render",value:function(){return React__default.createElement("div",{className:"react-datepicker__month-dropdown"},this.renderOptions())}}]),n}()),bt=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{dropdownVisible:!1}),de(ye(t),"renderSelectOptions",(function(t){return t.map((function(t,r){return React__default.createElement("option",{key:r,value:r},t)}))})),de(ye(t),"renderSelectMode",(function(r){return React__default.createElement("select",{value:t.props.month,className:"react-datepicker__month-select",onChange:function(e){return t.onChange(e.target.value)}},t.renderSelectOptions(r))})),de(ye(t),"renderReadView",(function(r,n){return React__default.createElement("div",{key:"read",style:{visibility:r?"visible":"hidden"},className:"react-datepicker__month-read-view",onClick:t.toggleDropdown},React__default.createElement("span",{className:"react-datepicker__month-read-view--down-arrow"}),React__default.createElement("span",{className:"react-datepicker__month-read-view--selected-month"},n[t.props.month]))})),de(ye(t),"renderDropdown",(function(r){return React__default.createElement(kt,{key:"dropdown",month:t.props.month,monthNames:r,onChange:t.onChange,onCancel:t.toggleDropdown})})),de(ye(t),"renderScrollMode",(function(e){var r=t.state.dropdownVisible,n=[t.renderReadView(!r,e)];return r&&n.unshift(t.renderDropdown(e)),n})),de(ye(t),"onChange",(function(e){t.toggleDropdown(),e!==t.props.month&&t.props.onChange(e);})),de(ye(t),"toggleDropdown",(function(){return t.setState({dropdownVisible:!t.state.dropdownVisible})})),t}return le(n,[{key:"render",value:function(){var t,r=this,n=[0,1,2,3,4,5,6,7,8,9,10,11].map(this.props.useShortMonthInDropdown?function(e){return ze(e,r.props.locale)}:function(e){return $e(e,r.props.locale)});switch(this.props.dropdownMode){case"scroll":t=this.renderScrollMode(n);break;case"select":t=this.renderSelectMode(n);}return React__default.createElement("div",{className:"react-datepicker__month-dropdown-container react-datepicker__month-dropdown-container--".concat(this.props.dropdownMode)},t)}}]),n}();function Ct(e,t){for(var r=[],n=Le(e),o=Le(t);!isAfter(n,o);)r.push(_e(n)),n=addMonths(n,1);return r}var St=onClickOutsideHOC(function(t){he(o,React__default.Component);var n=De(o);function o(t){var r;return pe(this,o),de(ye(r=n.call(this,t)),"renderOptions",(function(){return r.state.monthYearsList.map((function(t){var n=getTime(t),o=Ae(r.props.date,t)&&Be(r.props.date,t);return React__default.createElement("div",{className:o?"react-datepicker__month-year-option--selected_month-year":"react-datepicker__month-year-option",key:n,onClick:r.onChange.bind(ye(r),n),"aria-selected":o?"true":void 0},o?React__default.createElement("span",{className:"react-datepicker__month-year-option--selected"},"✓"):"",Ee(t,r.props.dateFormat,r.props.locale))}))})),de(ye(r),"onChange",(function(e){return r.props.onChange(e)})),de(ye(r),"handleClickOutside",(function(){r.props.onCancel();})),r.state={monthYearsList:Ct(r.props.minDate,r.props.maxDate)},r}return le(o,[{key:"render",value:function(){var t=r({"react-datepicker__month-year-dropdown":!0,"react-datepicker__month-year-dropdown--scrollable":this.props.scrollableMonthYearDropdown});return React__default.createElement("div",{className:t},this.renderOptions())}}]),o}()),_t=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{dropdownVisible:!1}),de(ye(t),"renderSelectOptions",(function(){for(var r=Le(t.props.minDate),n=Le(t.props.maxDate),o=[];!isAfter(r,n);){var a=getTime(r);o.push(React__default.createElement("option",{key:a,value:a},Ee(r,t.props.dateFormat,t.props.locale))),r=addMonths(r,1);}return o})),de(ye(t),"onSelectChange",(function(e){t.onChange(e.target.value);})),de(ye(t),"renderSelectMode",(function(){return React__default.createElement("select",{value:getTime(Le(t.props.date)),className:"react-datepicker__month-year-select",onChange:t.onSelectChange},t.renderSelectOptions())})),de(ye(t),"renderReadView",(function(r){var n=Ee(t.props.date,t.props.dateFormat,t.props.locale);return React__default.createElement("div",{key:"read",style:{visibility:r?"visible":"hidden"},className:"react-datepicker__month-year-read-view",onClick:function(e){return t.toggleDropdown(e)}},React__default.createElement("span",{className:"react-datepicker__month-year-read-view--down-arrow"}),React__default.createElement("span",{className:"react-datepicker__month-year-read-view--selected-month-year"},n))})),de(ye(t),"renderDropdown",(function(){return React__default.createElement(St,{key:"dropdown",date:t.props.date,dateFormat:t.props.dateFormat,onChange:t.onChange,onCancel:t.toggleDropdown,minDate:t.props.minDate,maxDate:t.props.maxDate,scrollableMonthYearDropdown:t.props.scrollableMonthYearDropdown,locale:t.props.locale})})),de(ye(t),"renderScrollMode",(function(){var e=t.state.dropdownVisible,r=[t.renderReadView(!e)];return e&&r.unshift(t.renderDropdown()),r})),de(ye(t),"onChange",(function(e){t.toggleDropdown();var r=_e(parseInt(e));Ae(t.props.date,r)&&Be(t.props.date,r)||t.props.onChange(r);})),de(ye(t),"toggleDropdown",(function(){return t.setState({dropdownVisible:!t.state.dropdownVisible})})),t}return le(n,[{key:"render",value:function(){var t;switch(this.props.dropdownMode){case"scroll":t=this.renderScrollMode();break;case"select":t=this.renderSelectMode();}return React__default.createElement("div",{className:"react-datepicker__month-year-dropdown-container react-datepicker__month-year-dropdown-container--".concat(this.props.dropdownMode)},t)}}]),n}(),Mt=function(t){he(o,React__default.Component);var n=De(o);function o(){var t;pe(this,o);for(var a=arguments.length,s=new Array(a),i=0;i<a;i++)s[i]=arguments[i];return de(ye(t=n.call.apply(n,[this].concat(s))),"dayEl",React__default.createRef()),de(ye(t),"handleClick",(function(e){!t.isDisabled()&&t.props.onClick&&t.props.onClick(e);})),de(ye(t),"handleMouseEnter",(function(e){!t.isDisabled()&&t.props.onMouseEnter&&t.props.onMouseEnter(e);})),de(ye(t),"handleOnKeyDown",(function(e){" "===e.key&&(e.preventDefault(),e.key="Enter"),t.props.handleOnKeyDown(e);})),de(ye(t),"isSameDay",(function(e){return We(t.props.day,e)})),de(ye(t),"isKeyboardSelected",(function(){return !t.props.disabledKeyboardNavigation&&!t.isSameDay(t.props.selected)&&t.isSameDay(t.props.preSelection)})),de(ye(t),"isDisabled",(function(){return Je(t.props.day,t.props)})),de(ye(t),"isExcluded",(function(){return Xe(t.props.day,t.props)})),de(ye(t),"getHighLightedClass",(function(e){var r=t.props,n=r.day,o=r.highlightDates;if(!o)return !1;var a=Ee(n,"MM.dd.yyyy");return o.get(a)})),de(ye(t),"isInRange",(function(){var e=t.props,r=e.day,n=e.startDate,o=e.endDate;return !(!n||!o)&&He(r,n,o)})),de(ye(t),"isInSelectingRange",(function(){var e,r=t.props,n=r.day,o=r.selectsStart,a=r.selectsEnd,s=r.selectsRange,i=r.selectsDisabledDaysInRange,p=r.startDate,c=r.endDate,l=null!==(e=t.props.selectingDate)&&void 0!==e?e:t.props.preSelection;return !(!(o||a||s)||!l||!i&&t.isDisabled())&&(o&&c&&(isBefore(l,c)||je(l,c))?He(n,l,c):(a&&p&&(isAfter(l,p)||je(l,p))||!(!s||!p||c||!isAfter(l,p)&&!je(l,p)))&&He(n,p,l))})),de(ye(t),"isSelectingRangeStart",(function(){var e;if(!t.isInSelectingRange())return !1;var r=t.props,n=r.day,o=r.startDate,a=r.selectsStart,s=null!==(e=t.props.selectingDate)&&void 0!==e?e:t.props.preSelection;return We(n,a?s:o)})),de(ye(t),"isSelectingRangeEnd",(function(){var e;if(!t.isInSelectingRange())return !1;var r=t.props,n=r.day,o=r.endDate,a=r.selectsEnd,s=null!==(e=t.props.selectingDate)&&void 0!==e?e:t.props.preSelection;return We(n,a?s:o)})),de(ye(t),"isRangeStart",(function(){var e=t.props,r=e.day,n=e.startDate,o=e.endDate;return !(!n||!o)&&We(n,r)})),de(ye(t),"isRangeEnd",(function(){var e=t.props,r=e.day,n=e.startDate,o=e.endDate;return !(!n||!o)&&We(o,r)})),de(ye(t),"isWeekend",(function(){var e=getDay(t.props.day);return 0===e||6===e})),de(ye(t),"isAfterMonth",(function(){return void 0!==t.props.month&&(t.props.month+1)%12===getMonth(t.props.day)})),de(ye(t),"isBeforeMonth",(function(){return void 0!==t.props.month&&(getMonth(t.props.day)+1)%12===t.props.month})),de(ye(t),"isCurrentDay",(function(){return t.isSameDay(_e())})),de(ye(t),"isSelected",(function(){return t.isSameDay(t.props.selected)})),de(ye(t),"getClassNames",(function(e){var n=t.props.dayClassName?t.props.dayClassName(e):void 0;return r("react-datepicker__day",n,"react-datepicker__day--"+Oe(t.props.day),{"react-datepicker__day--disabled":t.isDisabled(),"react-datepicker__day--excluded":t.isExcluded(),"react-datepicker__day--selected":t.isSelected(),"react-datepicker__day--keyboard-selected":t.isKeyboardSelected(),"react-datepicker__day--range-start":t.isRangeStart(),"react-datepicker__day--range-end":t.isRangeEnd(),"react-datepicker__day--in-range":t.isInRange(),"react-datepicker__day--in-selecting-range":t.isInSelectingRange(),"react-datepicker__day--selecting-range-start":t.isSelectingRangeStart(),"react-datepicker__day--selecting-range-end":t.isSelectingRangeEnd(),"react-datepicker__day--today":t.isCurrentDay(),"react-datepicker__day--weekend":t.isWeekend(),"react-datepicker__day--outside-month":t.isAfterMonth()||t.isBeforeMonth()},t.getHighLightedClass("react-datepicker__day--highlighted"))})),de(ye(t),"getAriaLabel",(function(){var e=t.props,r=e.day,n=e.ariaLabelPrefixWhenEnabled,o=void 0===n?"Choose":n,a=e.ariaLabelPrefixWhenDisabled,s=void 0===a?"Not available":a,i=t.isDisabled()||t.isExcluded()?s:o;return "".concat(i," ").concat(Ee(r,"PPPP",t.props.locale))})),de(ye(t),"getTabIndex",(function(e,r){var n=e||t.props.selected,o=r||t.props.preSelection;return t.isKeyboardSelected()||t.isSameDay(n)&&We(o,n)?0:-1})),de(ye(t),"handleFocusDay",(function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},r=!1;0===t.getTabIndex()&&!e.isInputFocused&&t.isSameDay(t.props.preSelection)&&(document.activeElement&&document.activeElement!==document.body||(r=!0),t.props.inline&&!t.props.shouldFocusDayInline&&(r=!1),t.props.containerRef&&t.props.containerRef.current&&t.props.containerRef.current.contains(document.activeElement)&&document.activeElement.classList.contains("react-datepicker__day")&&(r=!0)),r&&t.dayEl.current.focus({preventScroll:!0});})),de(ye(t),"renderDayContents",(function(){return t.props.monthShowsDuplicateDaysEnd&&t.isAfterMonth()||t.props.monthShowsDuplicateDaysStart&&t.isBeforeMonth()?null:t.props.renderDayContents?t.props.renderDayContents(getDate(t.props.day),t.props.day):getDate(t.props.day)})),de(ye(t),"render",(function(){return React__default.createElement("div",{ref:t.dayEl,className:t.getClassNames(t.props.day),onKeyDown:t.handleOnKeyDown,onClick:t.handleClick,onMouseEnter:t.handleMouseEnter,tabIndex:t.getTabIndex(),"aria-label":t.getAriaLabel(),role:"option","aria-disabled":t.isDisabled(),"aria-current":t.isCurrentDay()?"date":void 0,"aria-selected":t.isSelected()},t.renderDayContents())})),t}return le(o,[{key:"componentDidMount",value:function(){this.handleFocusDay();}},{key:"componentDidUpdate",value:function(e){this.handleFocusDay(e);}}]),o}(),Pt=function(t){he(o,React__default.Component);var n=De(o);function o(){var e;pe(this,o);for(var t=arguments.length,r=new Array(t),a=0;a<t;a++)r[a]=arguments[a];return de(ye(e=n.call.apply(n,[this].concat(r))),"handleClick",(function(t){e.props.onClick&&e.props.onClick(t);})),e}return le(o,[{key:"render",value:function(){var t=this.props,n=t.weekNumber,o=t.ariaLabelPrefix,a=void 0===o?"week ":o,s={"react-datepicker__week-number":!0,"react-datepicker__week-number--clickable":!!t.onClick};return React__default.createElement("div",{className:r(s),"aria-label":"".concat(a," ").concat(this.props.weekNumber),onClick:this.handleClick},n)}}]),o}(),Et=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"handleDayClick",(function(e,r){t.props.onDayClick&&t.props.onDayClick(e,r);})),de(ye(t),"handleDayMouseEnter",(function(e){t.props.onDayMouseEnter&&t.props.onDayMouseEnter(e);})),de(ye(t),"handleWeekClick",(function(e,r,n){"function"==typeof t.props.onWeekSelect&&t.props.onWeekSelect(e,r,n),t.props.shouldCloseOnSelect&&t.props.setOpen(!1);})),de(ye(t),"formatWeekNumber",(function(e){return t.props.formatWeekNumber?t.props.formatWeekNumber(e):Ye(e)})),de(ye(t),"renderDays",(function(){var r=Te(t.props.day,t.props.locale,t.props.calendarStartDay),n=[],o=t.formatWeekNumber(r);if(t.props.showWeekNumber){var a=t.props.onWeekSelect?t.handleWeekClick.bind(ye(t),r,o):void 0;n.push(React__default.createElement(Pt,{key:"W",weekNumber:o,onClick:a,ariaLabelPrefix:t.props.ariaLabelPrefix}));}return n.concat([0,1,2,3,4,5,6].map((function(n){var o=addDays(r,n);return React__default.createElement(Mt,{ariaLabelPrefixWhenEnabled:t.props.chooseDayAriaLabelPrefix,ariaLabelPrefixWhenDisabled:t.props.disabledDayAriaLabelPrefix,key:o.valueOf(),day:o,month:t.props.month,onClick:t.handleDayClick.bind(ye(t),o),onMouseEnter:t.handleDayMouseEnter.bind(ye(t),o),minDate:t.props.minDate,maxDate:t.props.maxDate,excludeDates:t.props.excludeDates,excludeDateIntervals:t.props.excludeDateIntervals,includeDates:t.props.includeDates,includeDateIntervals:t.props.includeDateIntervals,highlightDates:t.props.highlightDates,selectingDate:t.props.selectingDate,filterDate:t.props.filterDate,preSelection:t.props.preSelection,selected:t.props.selected,selectsStart:t.props.selectsStart,selectsEnd:t.props.selectsEnd,selectsRange:t.props.selectsRange,selectsDisabledDaysInRange:t.props.selectsDisabledDaysInRange,startDate:t.props.startDate,endDate:t.props.endDate,dayClassName:t.props.dayClassName,renderDayContents:t.props.renderDayContents,disabledKeyboardNavigation:t.props.disabledKeyboardNavigation,handleOnKeyDown:t.props.handleOnKeyDown,isInputFocused:t.props.isInputFocused,containerRef:t.props.containerRef,inline:t.props.inline,shouldFocusDayInline:t.props.shouldFocusDayInline,monthShowsDuplicateDaysEnd:t.props.monthShowsDuplicateDaysEnd,monthShowsDuplicateDaysStart:t.props.monthShowsDuplicateDaysStart,locale:t.props.locale})})))})),t}return le(n,[{key:"render",value:function(){return React__default.createElement("div",{className:"react-datepicker__week"},this.renderDays())}}],[{key:"defaultProps",get:function(){return {shouldCloseOnSelect:!0}}}]),n}(),Nt=function(t){he(o,React__default.Component);var n=De(o);function o(){var t;pe(this,o);for(var a=arguments.length,s=new Array(a),i=0;i<a;i++)s[i]=arguments[i];return de(ye(t=n.call.apply(n,[this].concat(s))),"MONTH_REFS",we(Array(12)).map((function(){return React__default.createRef()}))),de(ye(t),"isDisabled",(function(e){return Je(e,t.props)})),de(ye(t),"isExcluded",(function(e){return Xe(e,t.props)})),de(ye(t),"handleDayClick",(function(e,r){t.props.onDayClick&&t.props.onDayClick(e,r,t.props.orderInDisplay);})),de(ye(t),"handleDayMouseEnter",(function(e){t.props.onDayMouseEnter&&t.props.onDayMouseEnter(e);})),de(ye(t),"handleMouseLeave",(function(){t.props.onMouseLeave&&t.props.onMouseLeave();})),de(ye(t),"isRangeStartMonth",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Be(setMonth(n,e),o)})),de(ye(t),"isRangeStartQuarter",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Ke(setQuarter(n,e),o)})),de(ye(t),"isRangeEndMonth",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Be(setMonth(n,e),a)})),de(ye(t),"isRangeEndQuarter",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Ke(setQuarter(n,e),a)})),de(ye(t),"isWeekInMonth",(function(e){var r=t.props.day,n=addDays(e,6);return Be(e,r)||Be(n,r)})),de(ye(t),"isCurrentMonth",(function(e,t){return getYear(e)===getYear(_e())&&t===getMonth(_e())})),de(ye(t),"isSelectedMonth",(function(e,t,r){return getMonth(e)===t&&getYear(e)===getYear(r)})),de(ye(t),"isSelectedQuarter",(function(e,t,r){return getQuarter(e)===t&&getYear(e)===getYear(r)})),de(ye(t),"renderWeeks",(function(){for(var r=[],n=t.props.fixedHeight,o=0,a=!1,s=Te(Le(t.props.day),t.props.locale,t.props.calendarStartDay);r.push(React__default.createElement(Et,{ariaLabelPrefix:t.props.weekAriaLabelPrefix,chooseDayAriaLabelPrefix:t.props.chooseDayAriaLabelPrefix,disabledDayAriaLabelPrefix:t.props.disabledDayAriaLabelPrefix,key:o,day:s,month:getMonth(t.props.day),onDayClick:t.handleDayClick,onDayMouseEnter:t.handleDayMouseEnter,onWeekSelect:t.props.onWeekSelect,formatWeekNumber:t.props.formatWeekNumber,locale:t.props.locale,minDate:t.props.minDate,maxDate:t.props.maxDate,excludeDates:t.props.excludeDates,excludeDateIntervals:t.props.excludeDateIntervals,includeDates:t.props.includeDates,includeDateIntervals:t.props.includeDateIntervals,inline:t.props.inline,shouldFocusDayInline:t.props.shouldFocusDayInline,highlightDates:t.props.highlightDates,selectingDate:t.props.selectingDate,filterDate:t.props.filterDate,preSelection:t.props.preSelection,selected:t.props.selected,selectsStart:t.props.selectsStart,selectsEnd:t.props.selectsEnd,selectsRange:t.props.selectsRange,selectsDisabledDaysInRange:t.props.selectsDisabledDaysInRange,showWeekNumber:t.props.showWeekNumbers,startDate:t.props.startDate,endDate:t.props.endDate,dayClassName:t.props.dayClassName,setOpen:t.props.setOpen,shouldCloseOnSelect:t.props.shouldCloseOnSelect,disabledKeyboardNavigation:t.props.disabledKeyboardNavigation,renderDayContents:t.props.renderDayContents,handleOnKeyDown:t.props.handleOnKeyDown,isInputFocused:t.props.isInputFocused,containerRef:t.props.containerRef,calendarStartDay:t.props.calendarStartDay,monthShowsDuplicateDaysEnd:t.props.monthShowsDuplicateDaysEnd,monthShowsDuplicateDaysStart:t.props.monthShowsDuplicateDaysStart})),!a;){o++,s=addWeeks(s,1);var i=n&&o>=6,p=!n&&!t.isWeekInMonth(s);if(i||p){if(!t.props.peekNextMonth)break;a=!0;}}return r})),de(ye(t),"onMonthClick",(function(e,r){t.handleDayClick(Le(setMonth(t.props.day,r)),e);})),de(ye(t),"handleMonthNavigation",(function(e,r){t.isDisabled(r)||t.isExcluded(r)||(t.props.setPreSelection(r),t.MONTH_REFS[e].current&&t.MONTH_REFS[e].current.focus());})),de(ye(t),"onMonthKeyDown",(function(e,r){var n=e.key;if(!t.props.disabledKeyboardNavigation)switch(n){case"Enter":t.onMonthClick(e,r),t.props.setPreSelection(t.props.selected);break;case"ArrowRight":t.handleMonthNavigation(11===r?0:r+1,addMonths(t.props.preSelection,1));break;case"ArrowLeft":t.handleMonthNavigation(0===r?11:r-1,subMonths(t.props.preSelection,1));}})),de(ye(t),"onQuarterClick",(function(e,r){t.handleDayClick(Fe(setQuarter(t.props.day,r)),e);})),de(ye(t),"getMonthClassNames",(function(e){var n=t.props,o=n.day,a=n.startDate,s=n.endDate,i=n.selected,p=n.minDate,c=n.maxDate,l=n.preSelection,d=n.monthClassName,u=d?d(o):void 0;return r("react-datepicker__month-text","react-datepicker__month-".concat(e),u,{"react-datepicker__month--disabled":(p||c)&&Ze(setMonth(o,e),t.props),"react-datepicker__month--selected":t.isSelectedMonth(o,e,i),"react-datepicker__month-text--keyboard-selected":getMonth(l)===e,"react-datepicker__month--in-range":et(a,s,e,o),"react-datepicker__month--range-start":t.isRangeStartMonth(e),"react-datepicker__month--range-end":t.isRangeEndMonth(e),"react-datepicker__month-text--today":t.isCurrentMonth(o,e)})})),de(ye(t),"getTabIndex",(function(e){var r=getMonth(t.props.preSelection);return t.props.disabledKeyboardNavigation||e!==r?"-1":"0"})),de(ye(t),"getAriaLabel",(function(e){var r=t.props,n=r.chooseDayAriaLabelPrefix,o=void 0===n?"Choose":n,a=r.disabledDayAriaLabelPrefix,s=void 0===a?"Not available":a,i=r.day,p=setMonth(i,e),c=t.isDisabled(p)||t.isExcluded(p)?s:o;return "".concat(c," ").concat(Ee(p,"MMMM yyyy"))})),de(ye(t),"getQuarterClassNames",(function(e){var n=t.props,o=n.day,a=n.startDate,s=n.endDate,i=n.selected,p=n.minDate,c=n.maxDate;return r("react-datepicker__quarter-text","react-datepicker__quarter-".concat(e),{"react-datepicker__quarter--disabled":(p||c)&&tt(setQuarter(o,e),t.props),"react-datepicker__quarter--selected":t.isSelectedQuarter(o,e,i),"react-datepicker__quarter--in-range":nt(a,s,e,o),"react-datepicker__quarter--range-start":t.isRangeStartQuarter(e),"react-datepicker__quarter--range-end":t.isRangeEndQuarter(e)})})),de(ye(t),"renderMonths",(function(){var r=t.props,n=r.showFullMonthYearPicker,o=r.showTwoColumnMonthYearPicker,a=r.showFourColumnMonthYearPicker,s=r.locale,i=r.day,p=r.selected;return (a?[[0,1,2,3],[4,5,6,7],[8,9,10,11]]:o?[[0,1],[2,3],[4,5],[6,7],[8,9],[10,11]]:[[0,1,2],[3,4,5],[6,7,8],[9,10,11]]).map((function(r,o){return React__default.createElement("div",{className:"react-datepicker__month-wrapper",key:o},r.map((function(r,o){return React__default.createElement("div",{ref:t.MONTH_REFS[r],key:o,onClick:function(e){t.onMonthClick(e,r);},onKeyDown:function(e){t.onMonthKeyDown(e,r);},tabIndex:t.getTabIndex(r),className:t.getMonthClassNames(r),role:"option","aria-label":t.getAriaLabel(r),"aria-current":t.isCurrentMonth(i,r)?"date":void 0,"aria-selected":t.isSelectedMonth(i,r,p)},n?$e(r,s):ze(r,s))})))}))})),de(ye(t),"renderQuarters",(function(){var r=t.props,n=r.day,o=r.selected;return React__default.createElement("div",{className:"react-datepicker__quarter-wrapper"},[1,2,3,4].map((function(r,a){return React__default.createElement("div",{key:a,role:"option",onClick:function(e){t.onQuarterClick(e,r);},className:t.getQuarterClassNames(r),"aria-selected":t.isSelectedQuarter(n,r,o)},Ge(r,t.props.locale))})))})),de(ye(t),"getClassNames",(function(){var e=t.props;e.day;var n=e.selectingDate,o=e.selectsStart,a=e.selectsEnd,s=e.showMonthYearPicker,i=e.showQuarterYearPicker;return r("react-datepicker__month",{"react-datepicker__month--selecting-range":n&&(o||a)},{"react-datepicker__monthPicker":s},{"react-datepicker__quarterPicker":i})})),t}return le(o,[{key:"render",value:function(){var t=this.props,r=t.showMonthYearPicker,n=t.showQuarterYearPicker,o=t.day,a=t.ariaLabelPrefix,s=void 0===a?"month ":a;return React__default.createElement("div",{className:this.getClassNames(),onMouseLeave:this.handleMouseLeave,"aria-label":"".concat(s," ").concat(Ee(o,"yyyy-MM")),role:"listbox"},r?this.renderMonths():n?this.renderQuarters():this.renderWeeks())}}]),o}(),xt=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),i=0;i<o;i++)a[i]=arguments[i];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{height:null}),de(ye(t),"handleClick",(function(e){(t.props.minTime||t.props.maxTime)&&it(e,t.props)||(t.props.excludeTimes||t.props.includeTimes||t.props.filterTime)&&st(e,t.props)||t.props.onChange(e);})),de(ye(t),"isSelectedTime",(function(e,r,n){return t.props.selected&&r===getHours(e)&&n===getMinutes(e)})),de(ye(t),"liClasses",(function(e,r,n){var o=["react-datepicker__time-list-item",t.props.timeClassName?t.props.timeClassName(e,r,n):void 0];return t.isSelectedTime(e,r,n)&&o.push("react-datepicker__time-list-item--selected"),((t.props.minTime||t.props.maxTime)&&it(e,t.props)||(t.props.excludeTimes||t.props.includeTimes||t.props.filterTime)&&st(e,t.props))&&o.push("react-datepicker__time-list-item--disabled"),t.props.injectTimes&&(60*getHours(e)+getMinutes(e))%t.props.intervals!=0&&o.push("react-datepicker__time-list-item--injected"),o.join(" ")})),de(ye(t),"handleOnKeyDown",(function(e,r){" "===e.key&&(e.preventDefault(),e.key="Enter"),"Enter"===e.key&&t.handleClick(r),t.props.handleOnKeyDown(e);})),de(ye(t),"renderTimes",(function(){for(var r=[],n=t.props.format?t.props.format:"p",o=t.props.intervals,a=Ie(_e(t.props.selected)),i=1440/o,p=t.props.injectTimes&&t.props.injectTimes.sort((function(e,t){return e-t})),c=t.props.selected||t.props.openToDate||_e(),l=getHours(c),d=getMinutes(c),u=setHours(setMinutes(a,d),l),h=0;h<i;h++){var m=addMinutes(a,h*o);if(r.push(m),p){var f=ft(a,m,h,o,p);r=r.concat(f);}}return r.map((function(r,o){return React__default.createElement("li",{key:o,onClick:t.handleClick.bind(ye(t),r),className:t.liClasses(r,l,d),ref:function(e){(isBefore(r,u)||je(r,u))&&(t.centerLi=e);},onKeyDown:function(e){t.handleOnKeyDown(e,r);},tabIndex:"0","aria-selected":t.isSelectedTime(r,l,d)?"true":void 0},Ee(r,n,t.props.locale))}))})),t}return le(n,[{key:"componentDidMount",value:function(){this.list.scrollTop=n.calcCenterPosition(this.props.monthRef?this.props.monthRef.clientHeight-this.header.clientHeight:this.list.clientHeight,this.centerLi),this.props.monthRef&&this.header&&this.setState({height:this.props.monthRef.clientHeight-this.header.clientHeight});}},{key:"render",value:function(){var t=this,r=this.state.height;return React__default.createElement("div",{className:"react-datepicker__time-container ".concat(this.props.todayButton?"react-datepicker__time-container--with-today-button":"")},React__default.createElement("div",{className:"react-datepicker__header react-datepicker__header--time ".concat(this.props.showTimeSelectOnly?"react-datepicker__header--time--only":""),ref:function(e){t.header=e;}},React__default.createElement("div",{className:"react-datepicker-time__header"},this.props.timeCaption)),React__default.createElement("div",{className:"react-datepicker__time"},React__default.createElement("div",{className:"react-datepicker__time-box"},React__default.createElement("ul",{className:"react-datepicker__time-list",ref:function(e){t.list=e;},style:r?{height:r}:{},tabIndex:"0"},this.renderTimes()))))}}],[{key:"defaultProps",get:function(){return {intervals:30,onTimeChange:function(){},todayButton:null,timeCaption:"Time"}}}]),n}();de(xt,"calcCenterPosition",(function(e,t){return t.offsetTop-(e/2-t.clientHeight/2)}));var Yt=function(t){he(o,React__default.Component);var n=De(o);function o(t){var a;return pe(this,o),de(ye(a=n.call(this,t)),"YEAR_REFS",we(Array(a.props.yearItemNumber)).map((function(){return React__default.createRef()}))),de(ye(a),"isDisabled",(function(e){return Je(e,a.props)})),de(ye(a),"isExcluded",(function(e){return Xe(e,a.props)})),de(ye(a),"updateFocusOnPaginate",(function(e){var t=function(){this.YEAR_REFS[e].current.focus();}.bind(ye(a));window.requestAnimationFrame(t);})),de(ye(a),"handleYearClick",(function(e,t){a.props.onDayClick&&a.props.onDayClick(e,t);})),de(ye(a),"handleYearNavigation",(function(e,t){var r=a.props,n=r.date,o=r.yearItemNumber,s=vt(n,o).startPeriod;a.isDisabled(t)||a.isExcluded(t)||(a.props.setPreSelection(t),e-s==-1?a.updateFocusOnPaginate(o-1):e-s===o?a.updateFocusOnPaginate(0):a.YEAR_REFS[e-s].current.focus());})),de(ye(a),"isSameDay",(function(e,t){return We(e,t)})),de(ye(a),"isCurrentYear",(function(e){return e===getYear(_e())})),de(ye(a),"isKeyboardSelected",(function(e){var t=Re(setYear(a.props.date,e));return !a.props.disabledKeyboardNavigation&&!a.props.inline&&!We(t,Re(a.props.selected))&&We(t,Re(a.props.preSelection))})),de(ye(a),"onYearClick",(function(e,t){var r=a.props.date;a.handleYearClick(Re(setYear(r,t)),e);})),de(ye(a),"onYearKeyDown",(function(e,t){var r=e.key;if(!a.props.disabledKeyboardNavigation)switch(r){case"Enter":a.onYearClick(e,t),a.props.setPreSelection(a.props.selected);break;case"ArrowRight":a.handleYearNavigation(t+1,addYears(a.props.preSelection,1));break;case"ArrowLeft":a.handleYearNavigation(t-1,subYears(a.props.preSelection,1));}})),de(ye(a),"getYearClassNames",(function(e){var t=a.props,n=t.minDate,o=t.maxDate,s=t.selected;return r("react-datepicker__year-text",{"react-datepicker__year-text--selected":e===getYear(s),"react-datepicker__year-text--disabled":(n||o)&&rt(e,a.props),"react-datepicker__year-text--keyboard-selected":a.isKeyboardSelected(e),"react-datepicker__year-text--today":a.isCurrentYear(e)})})),de(ye(a),"getYearTabIndex",(function(e){return a.props.disabledKeyboardNavigation?"-1":e===getYear(a.props.preSelection)?"0":"-1"})),a}return le(o,[{key:"render",value:function(){for(var t=this,r=[],n=this.props,o=vt(n.date,n.yearItemNumber),a=o.startPeriod,s=o.endPeriod,i=function(n){r.push(React__default.createElement("div",{ref:t.YEAR_REFS[n-a],onClick:function(e){t.onYearClick(e,n);},onKeyDown:function(e){t.onYearKeyDown(e,n);},tabIndex:t.getYearTabIndex(n),className:t.getYearClassNames(n),key:n,"aria-current":t.isCurrentYear(n)?"date":void 0},n));},p=a;p<=s;p++)i(p);return React__default.createElement("div",{className:"react-datepicker__year"},React__default.createElement("div",{className:"react-datepicker__year-wrapper"},r))}}]),o}(),Ot=function(t){he(n,React__default.Component);var r=De(n);function n(t){var o;return pe(this,n),de(ye(o=r.call(this,t)),"onTimeChange",(function(e){o.setState({time:e});var t=new Date;t.setHours(e.split(":")[0]),t.setMinutes(e.split(":")[1]),o.props.onChange(t);})),de(ye(o),"renderTimeInput",(function(){var t=o.state.time,r=o.props,n=r.date,a=r.timeString,s=r.customTimeInput;return s?React__default.cloneElement(s,{date:n,value:t,onChange:o.onTimeChange}):React__default.createElement("input",{type:"time",className:"react-datepicker-time__input",placeholder:"Time",name:"time-input",required:!0,value:t,onChange:function(e){o.onTimeChange(e.target.value||a);}})})),o.state={time:o.props.timeString},o}return le(n,[{key:"render",value:function(){return React__default.createElement("div",{className:"react-datepicker__input-time-container"},React__default.createElement("div",{className:"react-datepicker-time__caption"},this.props.timeInputLabel),React__default.createElement("div",{className:"react-datepicker-time__input-container"},React__default.createElement("div",{className:"react-datepicker-time__input"},this.renderTimeInput())))}}],[{key:"getDerivedStateFromProps",value:function(e,t){return e.timeString!==t.time?{time:e.timeString}:null}}]),n}();function It(t){var r=t.className,n=t.children,o=t.showPopperArrow,a=t.arrowProps,s=void 0===a?{}:a;return React__default.createElement("div",{className:r},o&&React__default.createElement("div",ue({className:"react-datepicker__triangle"},s)),n)}var Tt=["react-datepicker__year-select","react-datepicker__month-select","react-datepicker__month-year-select"],Lt=function(t){he(o,React__default.Component);var n=De(o);function o(t){var a;return pe(this,o),de(ye(a=n.call(this,t)),"handleClickOutside",(function(e){a.props.onClickOutside(e);})),de(ye(a),"setClickOutsideRef",(function(){return a.containerRef.current})),de(ye(a),"handleDropdownFocus",(function(e){(function(){var e=((arguments.length>0&&void 0!==arguments[0]?arguments[0]:{}).className||"").split(/\s+/);return Tt.some((function(t){return e.indexOf(t)>=0}))})(e.target)&&a.props.onDropdownFocus();})),de(ye(a),"getDateInView",(function(){var e=a.props,t=e.preSelection,r=e.selected,n=e.openToDate,o=ut(a.props),s=ht(a.props),i=_e(),p=n||r||t;return p||(o&&isBefore(i,o)?o:s&&isAfter(i,s)?s:i)})),de(ye(a),"increaseMonth",(function(){a.setState((function(e){var t=e.date;return {date:addMonths(t,1)}}),(function(){return a.handleMonthChange(a.state.date)}));})),de(ye(a),"decreaseMonth",(function(){a.setState((function(e){var t=e.date;return {date:subMonths(t,1)}}),(function(){return a.handleMonthChange(a.state.date)}));})),de(ye(a),"handleDayClick",(function(e,t,r){a.props.onSelect(e,t,r),a.props.setPreSelection&&a.props.setPreSelection(e);})),de(ye(a),"handleDayMouseEnter",(function(e){a.setState({selectingDate:e}),a.props.onDayMouseEnter&&a.props.onDayMouseEnter(e);})),de(ye(a),"handleMonthMouseLeave",(function(){a.setState({selectingDate:null}),a.props.onMonthMouseLeave&&a.props.onMonthMouseLeave();})),de(ye(a),"handleYearChange",(function(e){a.props.onYearChange&&a.props.onYearChange(e),a.props.adjustDateOnChange&&(a.props.onSelect&&a.props.onSelect(e),a.props.setOpen&&a.props.setOpen(!0)),a.props.setPreSelection&&a.props.setPreSelection(e);})),de(ye(a),"handleMonthChange",(function(e){a.props.onMonthChange&&a.props.onMonthChange(e),a.props.adjustDateOnChange&&(a.props.onSelect&&a.props.onSelect(e),a.props.setOpen&&a.props.setOpen(!0)),a.props.setPreSelection&&a.props.setPreSelection(e);})),de(ye(a),"handleMonthYearChange",(function(e){a.handleYearChange(e),a.handleMonthChange(e);})),de(ye(a),"changeYear",(function(e){a.setState((function(t){var r=t.date;return {date:setYear(r,e)}}),(function(){return a.handleYearChange(a.state.date)}));})),de(ye(a),"changeMonth",(function(e){a.setState((function(t){var r=t.date;return {date:setMonth(r,e)}}),(function(){return a.handleMonthChange(a.state.date)}));})),de(ye(a),"changeMonthYear",(function(e){a.setState((function(t){var r=t.date;return {date:setYear(setMonth(r,getMonth(e)),getYear(e))}}),(function(){return a.handleMonthYearChange(a.state.date)}));})),de(ye(a),"header",(function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:a.state.date,n=Te(t,a.props.locale,a.props.calendarStartDay),o=[];return a.props.showWeekNumbers&&o.push(React__default.createElement("div",{key:"W",className:"react-datepicker__day-name"},a.props.weekLabel||"#")),o.concat([0,1,2,3,4,5,6].map((function(t){var o=addDays(n,t),s=a.formatWeekday(o,a.props.locale),i=a.props.weekDayClassName?a.props.weekDayClassName(o):void 0;return React__default.createElement("div",{key:t,className:r("react-datepicker__day-name",i)},s)})))})),de(ye(a),"formatWeekday",(function(e,t){return a.props.formatWeekDay?function(e,t,r){return t(Ee(e,"EEEE",r))}(e,a.props.formatWeekDay,t):a.props.useWeekdaysShort?function(e,t){return Ee(e,"EEE",t)}(e,t):function(e,t){return Ee(e,"EEEEEE",t)}(e,t)})),de(ye(a),"decreaseYear",(function(){a.setState((function(e){var t=e.date;return {date:subYears(t,a.props.showYearPicker?a.props.yearItemNumber:1)}}),(function(){return a.handleYearChange(a.state.date)}));})),de(ye(a),"renderPreviousButton",(function(){if(!a.props.renderCustomHeader){var t;switch(!0){case a.props.showMonthYearPicker:t=lt(a.state.date,a.props);break;case a.props.showYearPicker:t=function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.yearItemNumber,o=void 0===n?12:n,a=vt(Re(subYears(e,o)),o).endPeriod,s=r&&getYear(r);return s&&s>a||!1}(a.state.date,a.props);break;default:t=pt(a.state.date,a.props);}if((a.props.forceShowMonthNavigation||a.props.showDisabledMonthNavigation||!t)&&!a.props.showTimeSelectOnly){var r=["react-datepicker__navigation","react-datepicker__navigation--previous"],n=a.decreaseMonth;(a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker)&&(n=a.decreaseYear),t&&a.props.showDisabledMonthNavigation&&(r.push("react-datepicker__navigation--previous--disabled"),n=null);var o=a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker,s=a.props,i=s.previousMonthButtonLabel,p=s.previousYearButtonLabel,c=a.props,l=c.previousMonthAriaLabel,d=void 0===l?"string"==typeof i?i:"Previous Month":l,u=c.previousYearAriaLabel,h=void 0===u?"string"==typeof p?p:"Previous Year":u;return React__default.createElement("button",{type:"button",className:r.join(" "),onClick:n,onKeyDown:a.props.handleOnKeyDown,"aria-label":o?h:d},React__default.createElement("span",{className:["react-datepicker__navigation-icon","react-datepicker__navigation-icon--previous"].join(" ")},o?a.props.previousYearButtonLabel:a.props.previousMonthButtonLabel))}}})),de(ye(a),"increaseYear",(function(){a.setState((function(e){var t=e.date;return {date:addYears(t,a.props.showYearPicker?a.props.yearItemNumber:1)}}),(function(){return a.handleYearChange(a.state.date)}));})),de(ye(a),"renderNextButton",(function(){if(!a.props.renderCustomHeader){var t;switch(!0){case a.props.showMonthYearPicker:t=dt(a.state.date,a.props);break;case a.props.showYearPicker:t=function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.maxDate,n=t.yearItemNumber,o=void 0===n?12:n,a=vt(addYears(e,o),o).startPeriod,s=r&&getYear(r);return s&&s<a||!1}(a.state.date,a.props);break;default:t=ct(a.state.date,a.props);}if((a.props.forceShowMonthNavigation||a.props.showDisabledMonthNavigation||!t)&&!a.props.showTimeSelectOnly){var r=["react-datepicker__navigation","react-datepicker__navigation--next"];a.props.showTimeSelect&&r.push("react-datepicker__navigation--next--with-time"),a.props.todayButton&&r.push("react-datepicker__navigation--next--with-today-button");var n=a.increaseMonth;(a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker)&&(n=a.increaseYear),t&&a.props.showDisabledMonthNavigation&&(r.push("react-datepicker__navigation--next--disabled"),n=null);var o=a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker,s=a.props,i=s.nextMonthButtonLabel,p=s.nextYearButtonLabel,c=a.props,l=c.nextMonthAriaLabel,u=void 0===l?"string"==typeof i?i:"Next Month":l,h=c.nextYearAriaLabel,m=void 0===h?"string"==typeof p?p:"Next Year":h;return React__default.createElement("button",{type:"button",className:r.join(" "),onClick:n,onKeyDown:a.props.handleOnKeyDown,"aria-label":o?m:u},React__default.createElement("span",{className:["react-datepicker__navigation-icon","react-datepicker__navigation-icon--next"].join(" ")},o?a.props.nextYearButtonLabel:a.props.nextMonthButtonLabel))}}})),de(ye(a),"renderCurrentMonth",(function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:a.state.date,r=["react-datepicker__current-month"];return a.props.showYearDropdown&&r.push("react-datepicker__current-month--hasYearDropdown"),a.props.showMonthDropdown&&r.push("react-datepicker__current-month--hasMonthDropdown"),a.props.showMonthYearDropdown&&r.push("react-datepicker__current-month--hasMonthYearDropdown"),React__default.createElement("div",{className:r.join(" ")},Ee(t,a.props.dateFormat,a.props.locale))})),de(ye(a),"renderYearDropdown",(function(){var t=arguments.length>0&&void 0!==arguments[0]&&arguments[0];if(a.props.showYearDropdown&&!t)return React__default.createElement(gt,{adjustDateOnChange:a.props.adjustDateOnChange,date:a.state.date,onSelect:a.props.onSelect,setOpen:a.props.setOpen,dropdownMode:a.props.dropdownMode,onChange:a.changeYear,minDate:a.props.minDate,maxDate:a.props.maxDate,year:getYear(a.state.date),scrollableYearDropdown:a.props.scrollableYearDropdown,yearDropdownItemNumber:a.props.yearDropdownItemNumber})})),de(ye(a),"renderMonthDropdown",(function(){var t=arguments.length>0&&void 0!==arguments[0]&&arguments[0];if(a.props.showMonthDropdown&&!t)return React__default.createElement(bt,{dropdownMode:a.props.dropdownMode,locale:a.props.locale,onChange:a.changeMonth,month:getMonth(a.state.date),useShortMonthInDropdown:a.props.useShortMonthInDropdown})})),de(ye(a),"renderMonthYearDropdown",(function(){var t=arguments.length>0&&void 0!==arguments[0]&&arguments[0];if(a.props.showMonthYearDropdown&&!t)return React__default.createElement(_t,{dropdownMode:a.props.dropdownMode,locale:a.props.locale,dateFormat:a.props.dateFormat,onChange:a.changeMonthYear,minDate:a.props.minDate,maxDate:a.props.maxDate,date:a.state.date,scrollableMonthYearDropdown:a.props.scrollableMonthYearDropdown})})),de(ye(a),"renderTodayButton",(function(){if(a.props.todayButton&&!a.props.showTimeSelectOnly)return React__default.createElement("div",{className:"react-datepicker__today-button",onClick:function(e){return a.props.onSelect(startOfDay(_e()),e)}},a.props.todayButton)})),de(ye(a),"renderDefaultHeader",(function(t){var r=t.monthDate,n=t.i;return React__default.createElement("div",{className:"react-datepicker__header ".concat(a.props.showTimeSelect?"react-datepicker__header--has-time-select":"")},a.renderCurrentMonth(r),React__default.createElement("div",{className:"react-datepicker__header__dropdown react-datepicker__header__dropdown--".concat(a.props.dropdownMode),onFocus:a.handleDropdownFocus},a.renderMonthDropdown(0!==n),a.renderMonthYearDropdown(0!==n),a.renderYearDropdown(0!==n)),React__default.createElement("div",{className:"react-datepicker__day-names"},a.header(r)))})),de(ye(a),"renderCustomHeader",(function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},r=t.monthDate,n=t.i;if(a.props.showTimeSelect&&!a.state.monthContainer||a.props.showTimeSelectOnly)return null;var o=pt(a.state.date,a.props),s=ct(a.state.date,a.props),i=lt(a.state.date,a.props),p=dt(a.state.date,a.props),c=!a.props.showMonthYearPicker&&!a.props.showQuarterYearPicker&&!a.props.showYearPicker;return React__default.createElement("div",{className:"react-datepicker__header react-datepicker__header--custom",onFocus:a.props.onDropdownFocus},a.props.renderCustomHeader(se(se({},a.state),{},{customHeaderCount:n,monthDate:r,changeMonth:a.changeMonth,changeYear:a.changeYear,decreaseMonth:a.decreaseMonth,increaseMonth:a.increaseMonth,decreaseYear:a.decreaseYear,increaseYear:a.increaseYear,prevMonthButtonDisabled:o,nextMonthButtonDisabled:s,prevYearButtonDisabled:i,nextYearButtonDisabled:p})),c&&React__default.createElement("div",{className:"react-datepicker__day-names"},a.header(r)))})),de(ye(a),"renderYearHeader",(function(){var t=a.state.date,r=a.props,n=r.showYearPicker,o=vt(t,r.yearItemNumber),s=o.startPeriod,i=o.endPeriod;return React__default.createElement("div",{className:"react-datepicker__header react-datepicker-year-header"},n?"".concat(s," - ").concat(i):getYear(t))})),de(ye(a),"renderHeader",(function(e){switch(!0){case void 0!==a.props.renderCustomHeader:return a.renderCustomHeader(e);case a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker:return a.renderYearHeader(e);default:return a.renderDefaultHeader(e)}})),de(ye(a),"renderMonths",(function(){if(!a.props.showTimeSelectOnly&&!a.props.showYearPicker){for(var t=[],r=a.props.showPreviousMonths?a.props.monthsShown-1:0,n=subMonths(a.state.date,r),o=0;o<a.props.monthsShown;++o){var s=o-a.props.monthSelectedIn,i=addMonths(n,s),p="month-".concat(o),c=o<a.props.monthsShown-1,d=o>0;t.push(React__default.createElement("div",{key:p,ref:function(e){a.monthContainer=e;},className:"react-datepicker__month-container"},a.renderHeader({monthDate:i,i:o}),React__default.createElement(Nt,{chooseDayAriaLabelPrefix:a.props.chooseDayAriaLabelPrefix,disabledDayAriaLabelPrefix:a.props.disabledDayAriaLabelPrefix,weekAriaLabelPrefix:a.props.weekAriaLabelPrefix,ariaLabelPrefix:a.props.monthAriaLabelPrefix,onChange:a.changeMonthYear,day:i,dayClassName:a.props.dayClassName,calendarStartDay:a.props.calendarStartDay,monthClassName:a.props.monthClassName,onDayClick:a.handleDayClick,handleOnKeyDown:a.props.handleOnDayKeyDown,onDayMouseEnter:a.handleDayMouseEnter,onMouseLeave:a.handleMonthMouseLeave,onWeekSelect:a.props.onWeekSelect,orderInDisplay:o,formatWeekNumber:a.props.formatWeekNumber,locale:a.props.locale,minDate:a.props.minDate,maxDate:a.props.maxDate,excludeDates:a.props.excludeDates,excludeDateIntervals:a.props.excludeDateIntervals,highlightDates:a.props.highlightDates,selectingDate:a.state.selectingDate,includeDates:a.props.includeDates,includeDateIntervals:a.props.includeDateIntervals,inline:a.props.inline,shouldFocusDayInline:a.props.shouldFocusDayInline,fixedHeight:a.props.fixedHeight,filterDate:a.props.filterDate,preSelection:a.props.preSelection,setPreSelection:a.props.setPreSelection,selected:a.props.selected,selectsStart:a.props.selectsStart,selectsEnd:a.props.selectsEnd,selectsRange:a.props.selectsRange,selectsDisabledDaysInRange:a.props.selectsDisabledDaysInRange,showWeekNumbers:a.props.showWeekNumbers,startDate:a.props.startDate,endDate:a.props.endDate,peekNextMonth:a.props.peekNextMonth,setOpen:a.props.setOpen,shouldCloseOnSelect:a.props.shouldCloseOnSelect,renderDayContents:a.props.renderDayContents,disabledKeyboardNavigation:a.props.disabledKeyboardNavigation,showMonthYearPicker:a.props.showMonthYearPicker,showFullMonthYearPicker:a.props.showFullMonthYearPicker,showTwoColumnMonthYearPicker:a.props.showTwoColumnMonthYearPicker,showFourColumnMonthYearPicker:a.props.showFourColumnMonthYearPicker,showYearPicker:a.props.showYearPicker,showQuarterYearPicker:a.props.showQuarterYearPicker,isInputFocused:a.props.isInputFocused,containerRef:a.containerRef,monthShowsDuplicateDaysEnd:c,monthShowsDuplicateDaysStart:d})));}return t}})),de(ye(a),"renderYears",(function(){if(!a.props.showTimeSelectOnly)return a.props.showYearPicker?React__default.createElement("div",{className:"react-datepicker__year--container"},a.renderHeader(),React__default.createElement(Yt,ue({onDayClick:a.handleDayClick,date:a.state.date},a.props))):void 0})),de(ye(a),"renderTimeSection",(function(){if(a.props.showTimeSelect&&(a.state.monthContainer||a.props.showTimeSelectOnly))return React__default.createElement(xt,{selected:a.props.selected,openToDate:a.props.openToDate,onChange:a.props.onTimeChange,timeClassName:a.props.timeClassName,format:a.props.timeFormat,includeTimes:a.props.includeTimes,intervals:a.props.timeIntervals,minTime:a.props.minTime,maxTime:a.props.maxTime,excludeTimes:a.props.excludeTimes,filterTime:a.props.filterTime,timeCaption:a.props.timeCaption,todayButton:a.props.todayButton,showMonthDropdown:a.props.showMonthDropdown,showMonthYearDropdown:a.props.showMonthYearDropdown,showYearDropdown:a.props.showYearDropdown,withPortal:a.props.withPortal,monthRef:a.state.monthContainer,injectTimes:a.props.injectTimes,locale:a.props.locale,handleOnKeyDown:a.props.handleOnKeyDown,showTimeSelectOnly:a.props.showTimeSelectOnly})})),de(ye(a),"renderInputTimeSection",(function(){var t=new Date(a.props.selected),r=Pe(t)&&Boolean(a.props.selected)?"".concat(yt(t.getHours()),":").concat(yt(t.getMinutes())):"";if(a.props.showTimeInput)return React__default.createElement(Ot,{date:t,timeString:r,timeInputLabel:a.props.timeInputLabel,onChange:a.props.onTimeChange,customTimeInput:a.props.customTimeInput})})),a.containerRef=React__default.createRef(),a.state={date:a.getDateInView(),selectingDate:null,monthContainer:null},a}return le(o,[{key:"componentDidMount",value:function(){var e=this;this.props.showTimeSelect&&(this.assignMonthContainer=void e.setState({monthContainer:e.monthContainer}));}},{key:"componentDidUpdate",value:function(e){this.props.preSelection&&!We(this.props.preSelection,e.preSelection)?this.setState({date:this.props.preSelection}):this.props.openToDate&&!We(this.props.openToDate,e.openToDate)&&this.setState({date:this.props.openToDate});}},{key:"render",value:function(){var t=this.props.container||It;return React__default.createElement("div",{ref:this.containerRef},React__default.createElement(t,{className:r("react-datepicker",this.props.className,{"react-datepicker--time-only":this.props.showTimeSelectOnly}),showPopperArrow:this.props.showPopperArrow,arrowProps:this.props.arrowProps},this.renderPreviousButton(),this.renderNextButton(),this.renderMonths(),this.renderYears(),this.renderTodayButton(),this.renderTimeSection(),this.renderInputTimeSection(),this.props.children))}}],[{key:"defaultProps",get:function(){return {onDropdownFocus:function(){},monthsShown:1,monthSelectedIn:0,forceShowMonthNavigation:!1,timeCaption:"Time",previousYearButtonLabel:"Previous Year",nextYearButtonLabel:"Next Year",previousMonthButtonLabel:"Previous Month",nextMonthButtonLabel:"Next Month",customTimeInput:null,yearItemNumber:12}}}]),o}(),Rt=function(t){he(n,React__default.Component);var r=De(n);function n(e){var t;return pe(this,n),(t=r.call(this,e)).el=document.createElement("div"),t}return le(n,[{key:"componentDidMount",value:function(){this.portalRoot=(this.props.portalHost||document).getElementById(this.props.portalId),this.portalRoot||(this.portalRoot=document.createElement("div"),this.portalRoot.setAttribute("id",this.props.portalId),(this.props.portalHost||document.body).appendChild(this.portalRoot)),this.portalRoot.appendChild(this.el);}},{key:"componentWillUnmount",value:function(){this.portalRoot.removeChild(this.el);}},{key:"render",value:function(){return ReactDOM__default.createPortal(this.props.children,this.el)}}]),n}(),Ft=function(e){return !e.disabled&&-1!==e.tabIndex},At=function(t){he(n,React__default.Component);var r=De(n);function n(t){var o;return pe(this,n),de(ye(o=r.call(this,t)),"getTabChildren",(function(){return Array.prototype.slice.call(o.tabLoopRef.current.querySelectorAll("[tabindex], a, button, input, select, textarea"),1,-1).filter(Ft)})),de(ye(o),"handleFocusStart",(function(e){var t=o.getTabChildren();t&&t.length>1&&t[t.length-1].focus();})),de(ye(o),"handleFocusEnd",(function(e){var t=o.getTabChildren();t&&t.length>1&&t[0].focus();})),o.tabLoopRef=React__default.createRef(),o}return le(n,[{key:"render",value:function(){return this.props.enableTabLoop?React__default.createElement("div",{className:"react-datepicker__tab-loop",ref:this.tabLoopRef},React__default.createElement("div",{className:"react-datepicker__tab-loop__start",tabIndex:"0",onFocus:this.handleFocusStart}),this.props.children,React__default.createElement("div",{className:"react-datepicker__tab-loop__end",tabIndex:"0",onFocus:this.handleFocusEnd})):this.props.children}}],[{key:"defaultProps",get:function(){return {enableTabLoop:!0}}}]),n}(),Bt=function(t){he(o,React__default.Component);var n=De(o);function o(){return pe(this,o),n.apply(this,arguments)}return le(o,[{key:"render",value:function(){var t,n=this.props,o=n.className,a=n.wrapperClassName,s=n.hidePopper,i=n.popperComponent,p=n.popperModifiers,c=n.popperPlacement,l=n.popperProps,d=n.targetComponent,u=n.enableTabLoop,h=n.popperOnKeyDown,m=n.portalId,f=n.portalHost;if(!s){var y=r("react-datepicker-popper",o);t=React__default.createElement(Popper,ue({modifiers:p,placement:c},l),(function(t){var r=t.ref,n=t.style,o=t.placement,a=t.arrowProps;return React__default.createElement(At,{enableTabLoop:u},React__default.createElement("div",{ref:r,style:n,className:y,"data-placement":o,onKeyDown:h},React__default.cloneElement(i,{arrowProps:a})))}));}this.props.popperContainer&&(t=React__default.createElement(this.props.popperContainer,{},t)),m&&!s&&(t=React__default.createElement(Rt,{portalId:m,portalHost:f},t));var v=r("react-datepicker-wrapper",a);return React__default.createElement(Manager,{className:"react-datepicker-manager"},React__default.createElement(Reference,null,(function(t){var r=t.ref;return React__default.createElement("div",{ref:r,className:v},d)})),t)}}],[{key:"defaultProps",get:function(){return {hidePopper:!0,popperModifiers:[],popperProps:{},popperPlacement:"bottom-start"}}}]),o}(),Kt=onClickOutsideHOC(Lt);var Wt=function(t){he(a,React__default.Component);var o=De(a);function a(t){var s;return pe(this,a),de(ye(s=o.call(this,t)),"getPreSelection",(function(){return s.props.openToDate?s.props.openToDate:s.props.selectsEnd&&s.props.startDate?s.props.startDate:s.props.selectsStart&&s.props.endDate?s.props.endDate:_e()})),de(ye(s),"calcInitialState",(function(){var e,t=s.getPreSelection(),r=ut(s.props),n=ht(s.props),o=r&&isBefore(t,startOfDay(r))?r:n&&isAfter(t,endOfDay(n))?n:t;return {open:s.props.startOpen||!1,preventFocus:!1,preSelection:null!==(e=s.props.selectsRange?s.props.startDate:s.props.selected)&&void 0!==e?e:o,highlightDates:mt(s.props.highlightDates),focused:!1,shouldFocusDayInline:!1}})),de(ye(s),"clearPreventFocusTimeout",(function(){s.preventFocusTimeout&&clearTimeout(s.preventFocusTimeout);})),de(ye(s),"setFocus",(function(){s.input&&s.input.focus&&s.input.focus({preventScroll:!0});})),de(ye(s),"setBlur",(function(){s.input&&s.input.blur&&s.input.blur(),s.cancelFocusInput();})),de(ye(s),"setOpen",(function(e){var t=arguments.length>1&&void 0!==arguments[1]&&arguments[1];s.setState({open:e,preSelection:e&&s.state.open?s.state.preSelection:s.calcInitialState().preSelection,lastPreSelectChange:Ht},(function(){e||s.setState((function(e){return {focused:!!t&&e.focused}}),(function(){!t&&s.setBlur(),s.setState({inputValue:null});}));}));})),de(ye(s),"inputOk",(function(){return isDate$1(s.state.preSelection)})),de(ye(s),"isCalendarOpen",(function(){return void 0===s.props.open?s.state.open&&!s.props.disabled&&!s.props.readOnly:s.props.open})),de(ye(s),"handleFocus",(function(e){s.state.preventFocus||(s.props.onFocus(e),s.props.preventOpenOnFocus||s.props.readOnly||s.setOpen(!0)),s.setState({focused:!0});})),de(ye(s),"cancelFocusInput",(function(){clearTimeout(s.inputFocusTimeout),s.inputFocusTimeout=null;})),de(ye(s),"deferFocusInput",(function(){s.cancelFocusInput(),s.inputFocusTimeout=setTimeout((function(){return s.setFocus()}),1);})),de(ye(s),"handleDropdownFocus",(function(){s.cancelFocusInput();})),de(ye(s),"handleBlur",(function(e){(!s.state.open||s.props.withPortal||s.props.showTimeInput)&&s.props.onBlur(e),s.setState({focused:!1});})),de(ye(s),"handleCalendarClickOutside",(function(e){s.props.inline||s.setOpen(!1),s.props.onClickOutside(e),s.props.withPortal&&e.preventDefault();})),de(ye(s),"handleChange",(function(){for(var e=arguments.length,t=new Array(e),r=0;r<e;r++)t[r]=arguments[r];var n=t[0];if(!s.props.onChangeRaw||(s.props.onChangeRaw.apply(ye(s),t),"function"==typeof n.isDefaultPrevented&&!n.isDefaultPrevented())){s.setState({inputValue:n.target.value,lastPreSelectChange:jt});var o=Me(n.target.value,s.props.dateFormat,s.props.locale,s.props.strictParsing,s.props.minDate);!o&&n.target.value||s.setSelected(o,n,!0);}})),de(ye(s),"handleSelect",(function(e,t,r){if(s.setState({preventFocus:!0},(function(){return s.preventFocusTimeout=setTimeout((function(){return s.setState({preventFocus:!1})}),50),s.preventFocusTimeout})),s.props.onChangeRaw&&s.props.onChangeRaw(t),s.setSelected(e,t,!1,r),!s.props.shouldCloseOnSelect||s.props.showTimeSelect)s.setPreSelection(e);else if(!s.props.inline){s.props.selectsRange||s.setOpen(!1);var n=s.props,o=n.startDate,a=n.endDate;!o||a||isBefore(e,o)||s.setOpen(!1);}})),de(ye(s),"setSelected",(function(e,t,r,n){var o=e;if(null===o||!Je(o,s.props)){var a=s.props,i=a.onChange,p=a.selectsRange,c=a.startDate,l=a.endDate;if(!je(s.props.selected,o)||s.props.allowSameDay||p)if(null!==o&&(!s.props.selected||r&&(s.props.showTimeSelect||s.props.showTimeSelectOnly||s.props.showTimeInput)||(o=xe(o,{hour:getHours(s.props.selected),minute:getMinutes(s.props.selected),second:getSeconds(s.props.selected)})),s.props.inline||s.setState({preSelection:o}),s.props.focusSelectedMonth||s.setState({monthSelectedIn:n})),p){var d=c&&!l,u=c&&l;!c&&!l?i([o,null],t):d&&(isBefore(o,c)?i([o,null],t):i([c,o],t)),u&&i([o,null],t);}else i(o,t);r||(s.props.onSelect(o,t),s.setState({inputValue:null}));}})),de(ye(s),"setPreSelection",(function(e){var t=void 0!==s.props.minDate,r=void 0!==s.props.maxDate,n=!0;if(e){var o=startOfDay(e);if(t&&r)n=He(e,s.props.minDate,s.props.maxDate);else if(t){var a=startOfDay(s.props.minDate);n=isAfter(e,a)||je(o,a);}else if(r){var i=endOfDay(s.props.maxDate);n=isBefore(e,i)||je(o,i);}}n&&s.setState({preSelection:e});})),de(ye(s),"handleTimeChange",(function(e){var t=xe(s.props.selected?s.props.selected:s.getPreSelection(),{hour:getHours(e),minute:getMinutes(e)});s.setState({preSelection:t}),s.props.onChange(t),s.props.shouldCloseOnSelect&&s.setOpen(!1),s.props.showTimeInput&&s.setOpen(!0),s.setState({inputValue:null});})),de(ye(s),"onInputClick",(function(){s.props.disabled||s.props.readOnly||s.setOpen(!0),s.props.onInputClick();})),de(ye(s),"onInputKeyDown",(function(e){s.props.onKeyDown(e);var t=e.key;if(s.state.open||s.props.inline||s.props.preventOpenOnFocus){if(s.state.open){if("ArrowDown"===t||"ArrowUp"===t){e.preventDefault();var r=s.calendar.componentNode&&s.calendar.componentNode.querySelector('.react-datepicker__day[tabindex="0"]');return void(r&&r.focus({preventScroll:!0}))}var n=_e(s.state.preSelection);"Enter"===t?(e.preventDefault(),s.inputOk()&&s.state.lastPreSelectChange===Ht?(s.handleSelect(n,e),!s.props.shouldCloseOnSelect&&s.setPreSelection(n)):s.setOpen(!1)):"Escape"===t&&(e.preventDefault(),s.setOpen(!1)),s.inputOk()||s.props.onInputError({code:1,msg:"Date input not valid."});}}else "ArrowDown"!==t&&"ArrowUp"!==t&&"Enter"!==t||s.onInputClick();})),de(ye(s),"onDayKeyDown",(function(e){s.props.onKeyDown(e);var t=e.key,r=_e(s.state.preSelection);if("Enter"===t)e.preventDefault(),s.handleSelect(r,e),!s.props.shouldCloseOnSelect&&s.setPreSelection(r);else if("Escape"===t)e.preventDefault(),s.setOpen(!1),s.inputOk()||s.props.onInputError({code:1,msg:"Date input not valid."});else if(!s.props.disabledKeyboardNavigation){var n;switch(t){case"ArrowLeft":n=subDays(r,1);break;case"ArrowRight":n=addDays(r,1);break;case"ArrowUp":n=subWeeks(r,1);break;case"ArrowDown":n=addWeeks(r,1);break;case"PageUp":n=subMonths(r,1);break;case"PageDown":n=addMonths(r,1);break;case"Home":n=subYears(r,1);break;case"End":n=addYears(r,1);}if(!n)return void(s.props.onInputError&&s.props.onInputError({code:1,msg:"Date input not valid."}));if(e.preventDefault(),s.setState({lastPreSelectChange:Ht}),s.props.adjustDateOnChange&&s.setSelected(n),s.setPreSelection(n),s.props.inline){var o=getMonth(r),a=getMonth(n),i=getYear(r),y=getYear(n);o!==a||i!==y?s.setState({shouldFocusDayInline:!0}):s.setState({shouldFocusDayInline:!1});}}})),de(ye(s),"onPopperKeyDown",(function(e){"Escape"===e.key&&(e.preventDefault(),s.setState({preventFocus:!0},(function(){s.setOpen(!1),setTimeout((function(){s.setFocus(),s.setState({preventFocus:!1});}));})));})),de(ye(s),"onClearClick",(function(e){e&&e.preventDefault&&e.preventDefault(),s.props.selectsRange?s.props.onChange([null,null],e):s.props.onChange(null,e),s.setState({inputValue:null});})),de(ye(s),"clear",(function(){s.onClearClick();})),de(ye(s),"onScroll",(function(e){"boolean"==typeof s.props.closeOnScroll&&s.props.closeOnScroll?e.target!==document&&e.target!==document.documentElement&&e.target!==document.body||s.setOpen(!1):"function"==typeof s.props.closeOnScroll&&s.props.closeOnScroll(e)&&s.setOpen(!1);})),de(ye(s),"renderCalendar",(function(){return s.props.inline||s.isCalendarOpen()?React__default.createElement(Kt,{ref:function(e){s.calendar=e;},locale:s.props.locale,calendarStartDay:s.props.calendarStartDay,chooseDayAriaLabelPrefix:s.props.chooseDayAriaLabelPrefix,disabledDayAriaLabelPrefix:s.props.disabledDayAriaLabelPrefix,weekAriaLabelPrefix:s.props.weekAriaLabelPrefix,monthAriaLabelPrefix:s.props.monthAriaLabelPrefix,adjustDateOnChange:s.props.adjustDateOnChange,setOpen:s.setOpen,shouldCloseOnSelect:s.props.shouldCloseOnSelect,dateFormat:s.props.dateFormatCalendar,useWeekdaysShort:s.props.useWeekdaysShort,formatWeekDay:s.props.formatWeekDay,dropdownMode:s.props.dropdownMode,selected:s.props.selected,preSelection:s.state.preSelection,onSelect:s.handleSelect,onWeekSelect:s.props.onWeekSelect,openToDate:s.props.openToDate,minDate:s.props.minDate,maxDate:s.props.maxDate,selectsStart:s.props.selectsStart,selectsEnd:s.props.selectsEnd,selectsRange:s.props.selectsRange,startDate:s.props.startDate,endDate:s.props.endDate,excludeDates:s.props.excludeDates,excludeDateIntervals:s.props.excludeDateIntervals,filterDate:s.props.filterDate,onClickOutside:s.handleCalendarClickOutside,formatWeekNumber:s.props.formatWeekNumber,highlightDates:s.state.highlightDates,includeDates:s.props.includeDates,includeDateIntervals:s.props.includeDateIntervals,includeTimes:s.props.includeTimes,injectTimes:s.props.injectTimes,inline:s.props.inline,shouldFocusDayInline:s.state.shouldFocusDayInline,peekNextMonth:s.props.peekNextMonth,showMonthDropdown:s.props.showMonthDropdown,showPreviousMonths:s.props.showPreviousMonths,useShortMonthInDropdown:s.props.useShortMonthInDropdown,showMonthYearDropdown:s.props.showMonthYearDropdown,showWeekNumbers:s.props.showWeekNumbers,showYearDropdown:s.props.showYearDropdown,withPortal:s.props.withPortal,forceShowMonthNavigation:s.props.forceShowMonthNavigation,showDisabledMonthNavigation:s.props.showDisabledMonthNavigation,scrollableYearDropdown:s.props.scrollableYearDropdown,scrollableMonthYearDropdown:s.props.scrollableMonthYearDropdown,todayButton:s.props.todayButton,weekLabel:s.props.weekLabel,outsideClickIgnoreClass:"react-datepicker-ignore-onclickoutside",fixedHeight:s.props.fixedHeight,monthsShown:s.props.monthsShown,monthSelectedIn:s.state.monthSelectedIn,onDropdownFocus:s.handleDropdownFocus,onMonthChange:s.props.onMonthChange,onYearChange:s.props.onYearChange,dayClassName:s.props.dayClassName,weekDayClassName:s.props.weekDayClassName,monthClassName:s.props.monthClassName,timeClassName:s.props.timeClassName,showTimeSelect:s.props.showTimeSelect,showTimeSelectOnly:s.props.showTimeSelectOnly,onTimeChange:s.handleTimeChange,timeFormat:s.props.timeFormat,timeIntervals:s.props.timeIntervals,minTime:s.props.minTime,maxTime:s.props.maxTime,excludeTimes:s.props.excludeTimes,filterTime:s.props.filterTime,timeCaption:s.props.timeCaption,className:s.props.calendarClassName,container:s.props.calendarContainer,yearItemNumber:s.props.yearItemNumber,yearDropdownItemNumber:s.props.yearDropdownItemNumber,previousMonthAriaLabel:s.props.previousMonthAriaLabel,previousMonthButtonLabel:s.props.previousMonthButtonLabel,nextMonthAriaLabel:s.props.nextMonthAriaLabel,nextMonthButtonLabel:s.props.nextMonthButtonLabel,previousYearAriaLabel:s.props.previousYearAriaLabel,previousYearButtonLabel:s.props.previousYearButtonLabel,nextYearAriaLabel:s.props.nextYearAriaLabel,nextYearButtonLabel:s.props.nextYearButtonLabel,timeInputLabel:s.props.timeInputLabel,disabledKeyboardNavigation:s.props.disabledKeyboardNavigation,renderCustomHeader:s.props.renderCustomHeader,popperProps:s.props.popperProps,renderDayContents:s.props.renderDayContents,onDayMouseEnter:s.props.onDayMouseEnter,onMonthMouseLeave:s.props.onMonthMouseLeave,selectsDisabledDaysInRange:s.props.selectsDisabledDaysInRange,showTimeInput:s.props.showTimeInput,showMonthYearPicker:s.props.showMonthYearPicker,showFullMonthYearPicker:s.props.showFullMonthYearPicker,showTwoColumnMonthYearPicker:s.props.showTwoColumnMonthYearPicker,showFourColumnMonthYearPicker:s.props.showFourColumnMonthYearPicker,showYearPicker:s.props.showYearPicker,showQuarterYearPicker:s.props.showQuarterYearPicker,showPopperArrow:s.props.showPopperArrow,excludeScrollbar:s.props.excludeScrollbar,handleOnKeyDown:s.props.onKeyDown,handleOnDayKeyDown:s.onDayKeyDown,isInputFocused:s.state.focused,customTimeInput:s.props.customTimeInput,setPreSelection:s.setPreSelection},s.props.children):null})),de(ye(s),"renderDateInput",(function(){var t,n=r(s.props.className,de({},"react-datepicker-ignore-onclickoutside",s.state.open)),o=s.props.customInput||React__default.createElement("input",{type:"text"}),a=s.props.customInputRef||"ref",i="string"==typeof s.props.value?s.props.value:"string"==typeof s.state.inputValue?s.state.inputValue:s.props.selectsRange?function(e,t,r){if(!e)return "";var n=Ne(e,r),o=t?Ne(t,r):"";return "".concat(n," - ").concat(o)}(s.props.startDate,s.props.endDate,s.props):Ne(s.props.selected,s.props);return React__default.cloneElement(o,(de(t={},a,(function(e){s.input=e;})),de(t,"value",i),de(t,"onBlur",s.handleBlur),de(t,"onChange",s.handleChange),de(t,"onClick",s.onInputClick),de(t,"onFocus",s.handleFocus),de(t,"onKeyDown",s.onInputKeyDown),de(t,"id",s.props.id),de(t,"name",s.props.name),de(t,"autoFocus",s.props.autoFocus),de(t,"placeholder",s.props.placeholderText),de(t,"disabled",s.props.disabled),de(t,"autoComplete",s.props.autoComplete),de(t,"className",r(o.props.className,n)),de(t,"title",s.props.title),de(t,"readOnly",s.props.readOnly),de(t,"required",s.props.required),de(t,"tabIndex",s.props.tabIndex),de(t,"aria-describedby",s.props.ariaDescribedBy),de(t,"aria-invalid",s.props.ariaInvalid),de(t,"aria-labelledby",s.props.ariaLabelledBy),de(t,"aria-required",s.props.ariaRequired),t))})),de(ye(s),"renderClearButton",(function(){var t=s.props,r=t.isClearable,n=t.selected,o=t.startDate,a=t.endDate,i=t.clearButtonTitle,p=t.clearButtonClassName,c=void 0===p?"":p,l=t.ariaLabelClose,d=void 0===l?"Close":l;return !r||null==n&&null==o&&null==a?null:React__default.createElement("button",{type:"button",className:"react-datepicker__close-icon ".concat(c).trim(),"aria-label":d,onClick:s.onClearClick,title:i,tabIndex:-1})})),s.state=s.calcInitialState(),s}return le(a,[{key:"componentDidMount",value:function(){window.addEventListener("scroll",this.onScroll,!0);}},{key:"componentDidUpdate",value:function(e,t){var r,n;e.inline&&(r=e.selected,n=this.props.selected,r&&n?getMonth(r)!==getMonth(n)||getYear(r)!==getYear(n):r!==n)&&this.setPreSelection(this.props.selected),void 0!==this.state.monthSelectedIn&&e.monthsShown!==this.props.monthsShown&&this.setState({monthSelectedIn:0}),e.highlightDates!==this.props.highlightDates&&this.setState({highlightDates:mt(this.props.highlightDates)}),t.focused||je(e.selected,this.props.selected)||this.setState({inputValue:null}),t.open!==this.state.open&&(!1===t.open&&!0===this.state.open&&this.props.onCalendarOpen(),!0===t.open&&!1===this.state.open&&this.props.onCalendarClose());}},{key:"componentWillUnmount",value:function(){this.clearPreventFocusTimeout(),window.removeEventListener("scroll",this.onScroll,!0);}},{key:"renderInputContainer",value:function(){return React__default.createElement("div",{className:"react-datepicker__input-container"},this.renderDateInput(),this.renderClearButton())}},{key:"render",value:function(){var t=this.renderCalendar();if(this.props.inline)return t;if(this.props.withPortal){var r=this.state.open?React__default.createElement("div",{className:"react-datepicker__portal"},t):null;return this.state.open&&this.props.portalId&&(r=React__default.createElement(Rt,{portalId:this.props.portalId,portalHost:this.props.portalHost},r)),React__default.createElement("div",null,this.renderInputContainer(),r)}return React__default.createElement(Bt,{className:this.props.popperClassName,wrapperClassName:this.props.wrapperClassName,hidePopper:!this.isCalendarOpen(),portalId:this.props.portalId,portalHost:this.props.portalHost,popperModifiers:this.props.popperModifiers,targetComponent:this.renderInputContainer(),popperContainer:this.props.popperContainer,popperComponent:t,popperPlacement:this.props.popperPlacement,popperProps:this.props.popperProps,popperOnKeyDown:this.onPopperKeyDown,enableTabLoop:this.props.enableTabLoop})}}],[{key:"defaultProps",get:function(){return {allowSameDay:!1,dateFormat:"MM/dd/yyyy",dateFormatCalendar:"LLLL yyyy",onChange:function(){},disabled:!1,disabledKeyboardNavigation:!1,dropdownMode:"scroll",onFocus:function(){},onBlur:function(){},onKeyDown:function(){},onInputClick:function(){},onSelect:function(){},onClickOutside:function(){},onMonthChange:function(){},onCalendarOpen:function(){},onCalendarClose:function(){},preventOpenOnFocus:!1,onYearChange:function(){},onInputError:function(){},monthsShown:1,readOnly:!1,withPortal:!1,selectsDisabledDaysInRange:!1,shouldCloseOnSelect:!0,showTimeSelect:!1,showTimeInput:!1,showPreviousMonths:!1,showMonthYearPicker:!1,showFullMonthYearPicker:!1,showTwoColumnMonthYearPicker:!1,showFourColumnMonthYearPicker:!1,showYearPicker:!1,showQuarterYearPicker:!1,strictParsing:!1,timeIntervals:30,timeCaption:"Time",previousMonthAriaLabel:"Previous Month",previousMonthButtonLabel:"Previous Month",nextMonthAriaLabel:"Next Month",nextMonthButtonLabel:"Next Month",previousYearAriaLabel:"Previous Year",previousYearButtonLabel:"Previous Year",nextYearAriaLabel:"Next Year",nextYearButtonLabel:"Next Year",timeInputLabel:"Time",enableTabLoop:!0,yearItemNumber:12,renderDayContents:function(e){return e},focusSelectedMonth:!1,showPopperArrow:!0,excludeScrollbar:!0,customTimeInput:null,calendarStartDay:void 0}}}]),a}(),jt="input",Ht="navigate";
 
-var _excluded$o = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "dateFormat", "range", "noCalendarIcon", "onChange"];
+var _excluded$l = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "dateFormat", "range", "noCalendarIcon", "onChange"];
 
 var DatePickerField = function DatePickerField(_ref) {
   var label = _ref.label,
@@ -30925,7 +62467,7 @@ var DatePickerField = function DatePickerField(_ref) {
       range = _ref.range,
       noCalendarIcon = _ref.noCalendarIcon,
       onChange = _ref.onChange,
-      props = _objectWithoutProperties(_ref, _excluded$o);
+      props = _objectWithoutProperties(_ref, _excluded$l);
 
   var _useState = useState([null, null]),
       _useState2 = _slicedToArray$1(_useState, 2),
@@ -31126,14 +62668,14 @@ function rfid() {
   return (new DOMParser().parseFromString("<svg width=\"45\" height=\"40\" viewBox=\"0 0 45 40\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<rect x=\"45\" y=\"40\" width=\"44.2975\" height=\"40\" rx=\"9.06992\" transform=\"rotate(-180 45 40)\" fill=\"#EED186\"/>\n<path d=\"M22.686 39.8337L22.686 32.3957M44.8347 32.2304L1.03307 32.2304M22.686 7.93292L22.686 0.164325\" stroke=\"#394C9B\" stroke-width=\"0.431901\"/>\n<path d=\"M44.8347 8.09897L1.03307 8.09896\" stroke=\"#394C9B\" stroke-width=\"0.431901\"/>\n<path d=\"M15.0826 16.0337L1.03306 16.0337\" stroke=\"#394C9B\" stroke-width=\"0.431901\"/>\n<path d=\"M44.8347 16.1987L30.4546 16.1987M44.8347 24.1326L29.7934 24.1326M16.0744 24.1326L1.19836 24.1326\" stroke=\"#394C9B\" stroke-width=\"0.431901\"/>\n<path d=\"M28.3058 32.2316C30.124 30.0828 31.7769 24.9588 27.6447 21.6531C28.4711 20.8267 30.4546 18.6779 30.4546 16.1985C30.4546 12.8927 27.9753 8.26463 22.8513 8.26463C17.7273 8.26463 15.0827 11.4051 15.0827 16.0332C15.0827 19.6696 17.7273 21.6531 17.7273 21.6531C17.7273 21.6531 16.405 22.6448 15.9091 24.1324\" stroke=\"#394C9B\" stroke-width=\"0.431901\"/>\n</svg>\n", 'image/svg+xml')).firstChild;
 }
 
-var _excluded$n = ["logo", "name", "width", "className"];
+var _excluded$k = ["logo", "name", "width", "className"];
 
 var DebitCard = function DebitCard(_ref) {
   var logo = _ref.logo,
       name = _ref.name,
       width = _ref.width,
       className = _ref.className,
-      props = _objectWithoutProperties(_ref, _excluded$n);
+      props = _objectWithoutProperties(_ref, _excluded$k);
 
   var _useDebitCard = useDebitCard(props),
       computedCardNo = _useDebitCard.computedCardNo,
@@ -31210,7 +62752,7 @@ DebitCard.defaultProps = {
   logo: "https://assets.ondeposits.com/img/logo/renapay/svg/logo_all_white.svg"
 };
 
-var _excluded$m = ["logo", "theme", "name", "balance", "className", "width"];
+var _excluded$j = ["logo", "theme", "name", "balance", "className", "width"];
 
 var DebitBalance = function DebitBalance(_ref) {
   _ref.logo;
@@ -31219,7 +62761,7 @@ var DebitBalance = function DebitBalance(_ref) {
       balance = _ref.balance,
       className = _ref.className,
       width = _ref.width,
-      props = _objectWithoutProperties(_ref, _excluded$m);
+      props = _objectWithoutProperties(_ref, _excluded$j);
 
   var computedLogo = props.logo ? props.logo : "https://assets.ondeposits.com/img/logo/renapay/svg/logo_all_".concat(theme === "light" ? "dark" : "white", ".svg");
 
@@ -31314,3989 +62856,6 @@ DebitBalance.defaultProps = {
   theme: "light",
   balance: "12568"
 };
-
-var wellKnownSymbol$5 = wellKnownSymbol$e;
-var create$2 = objectCreate$1;
-var defineProperty$4 = objectDefineProperty.f;
-
-var UNSCOPABLES = wellKnownSymbol$5('unscopables');
-var ArrayPrototype = Array.prototype;
-
-// Array.prototype[@@unscopables]
-// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
-if (ArrayPrototype[UNSCOPABLES] == undefined) {
-  defineProperty$4(ArrayPrototype, UNSCOPABLES, {
-    configurable: true,
-    value: create$2(null)
-  });
-}
-
-// add a key to Array.prototype[@@unscopables]
-var addToUnscopables$2 = function (key) {
-  ArrayPrototype[UNSCOPABLES][key] = true;
-};
-
-var $$5 = _export;
-var $includes = arrayIncludes.includes;
-var fails$3 = fails$p;
-var addToUnscopables$1 = addToUnscopables$2;
-
-// FF99+ bug
-var BROKEN_ON_SPARSE = fails$3(function () {
-  return !Array(1).includes();
-});
-
-// `Array.prototype.includes` method
-// https://tc39.es/ecma262/#sec-array.prototype.includes
-$$5({ target: 'Array', proto: true, forced: BROKEN_ON_SPARSE }, {
-  includes: function includes(el /* , fromIndex = 0 */) {
-    return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
-  }
-});
-
-// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
-addToUnscopables$1('includes');
-
-var isRegExp = isRegexp;
-
-var $TypeError$2 = TypeError;
-
-var notARegexp = function (it) {
-  if (isRegExp(it)) {
-    throw $TypeError$2("The method doesn't accept regular expressions");
-  } return it;
-};
-
-var wellKnownSymbol$4 = wellKnownSymbol$e;
-
-var MATCH = wellKnownSymbol$4('match');
-
-var correctIsRegexpLogic = function (METHOD_NAME) {
-  var regexp = /./;
-  try {
-    '/./'[METHOD_NAME](regexp);
-  } catch (error1) {
-    try {
-      regexp[MATCH] = false;
-      return '/./'[METHOD_NAME](regexp);
-    } catch (error2) { /* empty */ }
-  } return false;
-};
-
-var $$4 = _export;
-var uncurryThis$4 = functionUncurryThis;
-var notARegExp$2 = notARegexp;
-var requireObjectCoercible$3 = requireObjectCoercible$b;
-var toString$5 = toString$f;
-var correctIsRegExpLogic$2 = correctIsRegexpLogic;
-
-var stringIndexOf = uncurryThis$4(''.indexOf);
-
-// `String.prototype.includes` method
-// https://tc39.es/ecma262/#sec-string.prototype.includes
-$$4({ target: 'String', proto: true, forced: !correctIsRegExpLogic$2('includes') }, {
-  includes: function includes(searchString /* , position = 0 */) {
-    return !!~stringIndexOf(
-      toString$5(requireObjectCoercible$3(this)),
-      toString$5(notARegExp$2(searchString)),
-      arguments.length > 1 ? arguments[1] : undefined
-    );
-  }
-});
-
-var _excluded$l = ["label", "labelComponent", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onLeftIconClick", "onRightIconClick", "invisible", "disabled", "inputClass", "oneCharWide", "leftIconComponent", "rightIconComponent", "labelClass"];
-var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
-  var label = _ref.label;
-      _ref.labelComponent;
-      var leftIcon = _ref.leftIcon,
-      size = _ref.size,
-      dropDown = _ref.dropDown,
-      rightIcon = _ref.rightIcon,
-      errorMessage = _ref.errorMessage,
-      inputClassName = _ref.inputClassName,
-      className = _ref.className;
-      _ref.isHookForm;
-      _ref.isFormik;
-      _ref.onLeftIconClick;
-      _ref.onRightIconClick;
-      var invisible = _ref.invisible,
-      disabled = _ref.disabled,
-      inputClass = _ref.inputClass,
-      oneCharWide = _ref.oneCharWide,
-      leftIconComponent = _ref.leftIconComponent,
-      rightIconComponent = _ref.rightIconComponent,
-      labelClass = _ref.labelClass,
-      props = _objectWithoutProperties(_ref, _excluded$l);
-
-  var generateInputFieldClasses = classNames(_defineProperty$x({
-    "ui-text-field__input": true,
-    "has-error": errorMessage,
-    "has-left-icon": leftIcon,
-    "has-right-icon": dropDown || rightIcon,
-    invisible: invisible,
-    disabled: disabled,
-    oneCharWide: oneCharWide
-  }, inputClass, inputClass), inputClassName);
-  var wrapperClasses = classNames(["size__".concat(size), "ui-text-field__wrapper"], className);
-  return /*#__PURE__*/React__default.createElement(Box, {
-    className: wrapperClasses,
-    ref: ref
-  }, label && !invisible && (typeof label === "string" ? /*#__PURE__*/React__default.createElement(Box, {
-    is: "label"
-  }, /*#__PURE__*/React__default.createElement(Text$1, {
-    className: className(_defineProperty$x({
-      "ui-text-field__label": true
-    }, labelClass, labelClass)),
-    scale: "subhead"
-  }, label)) : label), /*#__PURE__*/React__default.createElement(Box, {
-    className: "ui-text-field__input-wrapper"
-  }, leftIcon && !leftIconComponent && /*#__PURE__*/React__default.createElement(Icon, {
-    icon: leftIcon,
-    className: "ui-text-field__left-icon"
-  }), leftIconComponent, /*#__PURE__*/React__default.createElement(Box, _extends$2({
-    className: generateInputFieldClasses,
-    is: "input"
-  }, props)), (dropDown || rightIcon) && !rightIconComponent && /*#__PURE__*/React__default.createElement(Icon, {
-    icon: dropDown ? ChevronFilledDown : rightIcon,
-    className: "ui-text-field__right-icon"
-  }), rightIconComponent), errorMessage && /*#__PURE__*/React__default.createElement(Box, {
-    className: "ui-text-field__error"
-  }, /*#__PURE__*/React__default.createElement(Icon, {
-    icon: Error$1,
-    className: "ui-text-field__error-icon"
-  }), /*#__PURE__*/React__default.createElement(Text$1, {
-    className: "ui-text-field__error-text",
-    scale: "subhead",
-    fontFace: "circularSTD"
-  }, errorMessage)));
-});
-TextField.propTypes = _objectSpread2$1(_objectSpread2$1({}, inputPropTypes), {}, {
-  dropDown: propTypes$1.exports.bool,
-  rightIcon: propTypes$1.exports.element,
-  leftIcon: propTypes$1.exports.element,
-  currency: propTypes$1.exports.bool,
-  emitOnlyCurrencyValue: propTypes$1.exports.bool,
-  oneCharWide: propTypes$1.exports.bool,
-  isPassword: propTypes$1.exports.bool,
-  ssn: propTypes$1.exports.bool,
-  maxlength: propTypes$1.exports.oneOfType([propTypes$1.exports.string, propTypes$1.exports.number]),
-  type: propTypes$1.exports.string,
-  inputClass: propTypes$1.exports.string,
-  onChange: propTypes$1.exports.func,
-  onInput: propTypes$1.exports.func,
-  onKeypress: propTypes$1.exports.func,
-  onKeydown: propTypes$1.exports.func,
-  onFocus: propTypes$1.exports.func,
-  onBlur: propTypes$1.exports.func,
-  onKeyup: propTypes$1.exports.func,
-  leftIconComponent: propTypes$1.exports.node,
-  rightIconComponent: propTypes$1.exports.node
-});
-TextField.defaultProps = _objectSpread2$1(_objectSpread2$1({}, defaultProps$2), {}, {
-  type: "text"
-});
-
-var propTypes = {
-  label: propTypes$1.exports.string,
-  dropDown: propTypes$1.exports.bool,
-  size: propTypes$1.exports.oneOf(["small", "medium", "large", "xlarge", "huge", "massive"]),
-  errorMessage: propTypes$1.exports.string
-};
-var defaultProps$1 = {
-  size: "medium"
-};
-
-var isArray$1 = Array.isArray;
-var keyList = Object.keys;
-var hasProp = Object.prototype.hasOwnProperty;
-var hasElementType = typeof Element !== 'undefined';
-
-function equal(a, b) {
-  // fast-deep-equal index.js 2.0.1
-  if (a === b) return true;
-
-  if (a && b && typeof a == 'object' && typeof b == 'object') {
-    var arrA = isArray$1(a)
-      , arrB = isArray$1(b)
-      , i
-      , length
-      , key;
-
-    if (arrA && arrB) {
-      length = a.length;
-      if (length != b.length) return false;
-      for (i = length; i-- !== 0;)
-        if (!equal(a[i], b[i])) return false;
-      return true;
-    }
-
-    if (arrA != arrB) return false;
-
-    var dateA = a instanceof Date
-      , dateB = b instanceof Date;
-    if (dateA != dateB) return false;
-    if (dateA && dateB) return a.getTime() == b.getTime();
-
-    var regexpA = a instanceof RegExp
-      , regexpB = b instanceof RegExp;
-    if (regexpA != regexpB) return false;
-    if (regexpA && regexpB) return a.toString() == b.toString();
-
-    var keys = keyList(a);
-    length = keys.length;
-
-    if (length !== keyList(b).length)
-      return false;
-
-    for (i = length; i-- !== 0;)
-      if (!hasProp.call(b, keys[i])) return false;
-    // end fast-deep-equal
-
-    // start react-fast-compare
-    // custom handling for DOM elements
-    if (hasElementType && a instanceof Element && b instanceof Element)
-      return a === b;
-
-    // custom handling for React
-    for (i = length; i-- !== 0;) {
-      key = keys[i];
-      if (key === '_owner' && a.$$typeof) {
-        // React-specific: avoid traversing React elements' _owner.
-        //  _owner contains circular references
-        // and is not needed when comparing the actual elements (and not their owners)
-        // .$$typeof and ._store on just reasonable markers of a react element
-        continue;
-      } else {
-        // all other properties should be traversed as usual
-        if (!equal(a[key], b[key])) return false;
-      }
-    }
-    // end react-fast-compare
-
-    // fast-deep-equal index.js 2.0.1
-    return true;
-  }
-
-  return a !== a && b !== b;
-}
-// end fast-deep-equal
-
-var reactFastCompare = function exportedEqual(a, b) {
-  try {
-    return equal(a, b);
-  } catch (error) {
-    if ((error.message && error.message.match(/stack|recursion/i)) || (error.number === -2146828260)) {
-      // warn on circular references, don't crash
-      // browsers give this different errors name and messages:
-      // chrome/safari: "RangeError", "Maximum call stack size exceeded"
-      // firefox: "InternalError", too much recursion"
-      // edge: "Error", "Out of stack space"
-      console.warn('Warning: react-fast-compare does not handle circular references.', error.name, error.message);
-      return false;
-    }
-    // some other error. we should definitely know about these
-    throw error;
-  }
-};
-
-/** Detect free variable `global` from Node.js. */
-var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
-
-/** Detect free variable `self`. */
-var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root = freeGlobal || freeSelf || Function('return this')();
-
-/** Built-in value references. */
-var Symbol$1 = root.Symbol;
-
-/** Used for built-in method references. */
-var objectProto$c = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty$9 = objectProto$c.hasOwnProperty;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var nativeObjectToString$1 = objectProto$c.toString;
-
-/** Built-in value references. */
-var symToStringTag$1 = Symbol$1 ? Symbol$1.toStringTag : undefined;
-
-/**
- * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the raw `toStringTag`.
- */
-function getRawTag(value) {
-  var isOwn = hasOwnProperty$9.call(value, symToStringTag$1),
-      tag = value[symToStringTag$1];
-
-  try {
-    value[symToStringTag$1] = undefined;
-    var unmasked = true;
-  } catch (e) {}
-
-  var result = nativeObjectToString$1.call(value);
-  if (unmasked) {
-    if (isOwn) {
-      value[symToStringTag$1] = tag;
-    } else {
-      delete value[symToStringTag$1];
-    }
-  }
-  return result;
-}
-
-/** Used for built-in method references. */
-var objectProto$b = Object.prototype;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var nativeObjectToString = objectProto$b.toString;
-
-/**
- * Converts `value` to a string using `Object.prototype.toString`.
- *
- * @private
- * @param {*} value The value to convert.
- * @returns {string} Returns the converted string.
- */
-function objectToString(value) {
-  return nativeObjectToString.call(value);
-}
-
-/** `Object#toString` result references. */
-var nullTag = '[object Null]',
-    undefinedTag = '[object Undefined]';
-
-/** Built-in value references. */
-var symToStringTag = Symbol$1 ? Symbol$1.toStringTag : undefined;
-
-/**
- * The base implementation of `getTag` without fallbacks for buggy environments.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the `toStringTag`.
- */
-function baseGetTag(value) {
-  if (value == null) {
-    return value === undefined ? undefinedTag : nullTag;
-  }
-  return (symToStringTag && symToStringTag in Object(value))
-    ? getRawTag(value)
-    : objectToString(value);
-}
-
-/**
- * Creates a unary function that invokes `func` with its argument transformed.
- *
- * @private
- * @param {Function} func The function to wrap.
- * @param {Function} transform The argument transform.
- * @returns {Function} Returns the new function.
- */
-function overArg(func, transform) {
-  return function(arg) {
-    return func(transform(arg));
-  };
-}
-
-/** Built-in value references. */
-var getPrototype = overArg(Object.getPrototypeOf, Object);
-
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike(value) {
-  return value != null && typeof value == 'object';
-}
-
-/** Used for built-in method references. */
-var funcProto$2 = Function.prototype;
-
-/** Used to resolve the decompiled source of functions. */
-var funcToString$2 = funcProto$2.toString;
-
-/** Used to infer the `Object` constructor. */
-funcToString$2.call(Object);
-
-/**
- * Removes all key-value entries from the list cache.
- *
- * @private
- * @name clear
- * @memberOf ListCache
- */
-function listCacheClear() {
-  this.__data__ = [];
-  this.size = 0;
-}
-
-/**
- * Performs a
- * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
- * comparison between two values to determine if they are equivalent.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to compare.
- * @param {*} other The other value to compare.
- * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
- * @example
- *
- * var object = { 'a': 1 };
- * var other = { 'a': 1 };
- *
- * _.eq(object, object);
- * // => true
- *
- * _.eq(object, other);
- * // => false
- *
- * _.eq('a', 'a');
- * // => true
- *
- * _.eq('a', Object('a'));
- * // => false
- *
- * _.eq(NaN, NaN);
- * // => true
- */
-function eq(value, other) {
-  return value === other || (value !== value && other !== other);
-}
-
-/**
- * Gets the index at which the `key` is found in `array` of key-value pairs.
- *
- * @private
- * @param {Array} array The array to inspect.
- * @param {*} key The key to search for.
- * @returns {number} Returns the index of the matched value, else `-1`.
- */
-function assocIndexOf(array, key) {
-  var length = array.length;
-  while (length--) {
-    if (eq(array[length][0], key)) {
-      return length;
-    }
-  }
-  return -1;
-}
-
-/** Used for built-in method references. */
-var arrayProto = Array.prototype;
-
-/** Built-in value references. */
-var splice = arrayProto.splice;
-
-/**
- * Removes `key` and its value from the list cache.
- *
- * @private
- * @name delete
- * @memberOf ListCache
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function listCacheDelete(key) {
-  var data = this.__data__,
-      index = assocIndexOf(data, key);
-
-  if (index < 0) {
-    return false;
-  }
-  var lastIndex = data.length - 1;
-  if (index == lastIndex) {
-    data.pop();
-  } else {
-    splice.call(data, index, 1);
-  }
-  --this.size;
-  return true;
-}
-
-/**
- * Gets the list cache value for `key`.
- *
- * @private
- * @name get
- * @memberOf ListCache
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function listCacheGet(key) {
-  var data = this.__data__,
-      index = assocIndexOf(data, key);
-
-  return index < 0 ? undefined : data[index][1];
-}
-
-/**
- * Checks if a list cache value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf ListCache
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function listCacheHas(key) {
-  return assocIndexOf(this.__data__, key) > -1;
-}
-
-/**
- * Sets the list cache `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf ListCache
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the list cache instance.
- */
-function listCacheSet(key, value) {
-  var data = this.__data__,
-      index = assocIndexOf(data, key);
-
-  if (index < 0) {
-    ++this.size;
-    data.push([key, value]);
-  } else {
-    data[index][1] = value;
-  }
-  return this;
-}
-
-/**
- * Creates an list cache object.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function ListCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
-
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
-}
-
-// Add methods to `ListCache`.
-ListCache.prototype.clear = listCacheClear;
-ListCache.prototype['delete'] = listCacheDelete;
-ListCache.prototype.get = listCacheGet;
-ListCache.prototype.has = listCacheHas;
-ListCache.prototype.set = listCacheSet;
-
-/**
- * Removes all key-value entries from the stack.
- *
- * @private
- * @name clear
- * @memberOf Stack
- */
-function stackClear() {
-  this.__data__ = new ListCache;
-  this.size = 0;
-}
-
-/**
- * Removes `key` and its value from the stack.
- *
- * @private
- * @name delete
- * @memberOf Stack
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function stackDelete(key) {
-  var data = this.__data__,
-      result = data['delete'](key);
-
-  this.size = data.size;
-  return result;
-}
-
-/**
- * Gets the stack value for `key`.
- *
- * @private
- * @name get
- * @memberOf Stack
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function stackGet(key) {
-  return this.__data__.get(key);
-}
-
-/**
- * Checks if a stack value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf Stack
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function stackHas(key) {
-  return this.__data__.has(key);
-}
-
-/**
- * Checks if `value` is the
- * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
- * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
- *
- * _.isObject(null);
- * // => false
- */
-function isObject$1(value) {
-  var type = typeof value;
-  return value != null && (type == 'object' || type == 'function');
-}
-
-/** `Object#toString` result references. */
-var asyncTag = '[object AsyncFunction]',
-    funcTag$2 = '[object Function]',
-    genTag$1 = '[object GeneratorFunction]',
-    proxyTag = '[object Proxy]';
-
-/**
- * Checks if `value` is classified as a `Function` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a function, else `false`.
- * @example
- *
- * _.isFunction(_);
- * // => true
- *
- * _.isFunction(/abc/);
- * // => false
- */
-function isFunction$1(value) {
-  if (!isObject$1(value)) {
-    return false;
-  }
-  // The use of `Object#toString` avoids issues with the `typeof` operator
-  // in Safari 9 which returns 'object' for typed arrays and other constructors.
-  var tag = baseGetTag(value);
-  return tag == funcTag$2 || tag == genTag$1 || tag == asyncTag || tag == proxyTag;
-}
-
-/** Used to detect overreaching core-js shims. */
-var coreJsData = root['__core-js_shared__'];
-
-/** Used to detect methods masquerading as native. */
-var maskSrcKey = (function() {
-  var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
-  return uid ? ('Symbol(src)_1.' + uid) : '';
-}());
-
-/**
- * Checks if `func` has its source masked.
- *
- * @private
- * @param {Function} func The function to check.
- * @returns {boolean} Returns `true` if `func` is masked, else `false`.
- */
-function isMasked(func) {
-  return !!maskSrcKey && (maskSrcKey in func);
-}
-
-/** Used for built-in method references. */
-var funcProto$1 = Function.prototype;
-
-/** Used to resolve the decompiled source of functions. */
-var funcToString$1 = funcProto$1.toString;
-
-/**
- * Converts `func` to its source code.
- *
- * @private
- * @param {Function} func The function to convert.
- * @returns {string} Returns the source code.
- */
-function toSource(func) {
-  if (func != null) {
-    try {
-      return funcToString$1.call(func);
-    } catch (e) {}
-    try {
-      return (func + '');
-    } catch (e) {}
-  }
-  return '';
-}
-
-/**
- * Used to match `RegExp`
- * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
- */
-var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
-
-/** Used to detect host constructors (Safari). */
-var reIsHostCtor = /^\[object .+?Constructor\]$/;
-
-/** Used for built-in method references. */
-var funcProto = Function.prototype,
-    objectProto$a = Object.prototype;
-
-/** Used to resolve the decompiled source of functions. */
-var funcToString = funcProto.toString;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty$8 = objectProto$a.hasOwnProperty;
-
-/** Used to detect if a method is native. */
-var reIsNative = RegExp('^' +
-  funcToString.call(hasOwnProperty$8).replace(reRegExpChar, '\\$&')
-  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
-);
-
-/**
- * The base implementation of `_.isNative` without bad shim checks.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a native function,
- *  else `false`.
- */
-function baseIsNative(value) {
-  if (!isObject$1(value) || isMasked(value)) {
-    return false;
-  }
-  var pattern = isFunction$1(value) ? reIsNative : reIsHostCtor;
-  return pattern.test(toSource(value));
-}
-
-/**
- * Gets the value at `key` of `object`.
- *
- * @private
- * @param {Object} [object] The object to query.
- * @param {string} key The key of the property to get.
- * @returns {*} Returns the property value.
- */
-function getValue$1(object, key) {
-  return object == null ? undefined : object[key];
-}
-
-/**
- * Gets the native function at `key` of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {string} key The key of the method to get.
- * @returns {*} Returns the function if it's native, else `undefined`.
- */
-function getNative(object, key) {
-  var value = getValue$1(object, key);
-  return baseIsNative(value) ? value : undefined;
-}
-
-/* Built-in method references that are verified to be native. */
-var Map$1 = getNative(root, 'Map');
-
-/* Built-in method references that are verified to be native. */
-var nativeCreate = getNative(Object, 'create');
-
-/**
- * Removes all key-value entries from the hash.
- *
- * @private
- * @name clear
- * @memberOf Hash
- */
-function hashClear() {
-  this.__data__ = nativeCreate ? nativeCreate(null) : {};
-  this.size = 0;
-}
-
-/**
- * Removes `key` and its value from the hash.
- *
- * @private
- * @name delete
- * @memberOf Hash
- * @param {Object} hash The hash to modify.
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function hashDelete(key) {
-  var result = this.has(key) && delete this.__data__[key];
-  this.size -= result ? 1 : 0;
-  return result;
-}
-
-/** Used to stand-in for `undefined` hash values. */
-var HASH_UNDEFINED$1 = '__lodash_hash_undefined__';
-
-/** Used for built-in method references. */
-var objectProto$9 = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty$7 = objectProto$9.hasOwnProperty;
-
-/**
- * Gets the hash value for `key`.
- *
- * @private
- * @name get
- * @memberOf Hash
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function hashGet(key) {
-  var data = this.__data__;
-  if (nativeCreate) {
-    var result = data[key];
-    return result === HASH_UNDEFINED$1 ? undefined : result;
-  }
-  return hasOwnProperty$7.call(data, key) ? data[key] : undefined;
-}
-
-/** Used for built-in method references. */
-var objectProto$8 = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty$6 = objectProto$8.hasOwnProperty;
-
-/**
- * Checks if a hash value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf Hash
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function hashHas(key) {
-  var data = this.__data__;
-  return nativeCreate ? (data[key] !== undefined) : hasOwnProperty$6.call(data, key);
-}
-
-/** Used to stand-in for `undefined` hash values. */
-var HASH_UNDEFINED = '__lodash_hash_undefined__';
-
-/**
- * Sets the hash `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf Hash
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the hash instance.
- */
-function hashSet(key, value) {
-  var data = this.__data__;
-  this.size += this.has(key) ? 0 : 1;
-  data[key] = (nativeCreate && value === undefined) ? HASH_UNDEFINED : value;
-  return this;
-}
-
-/**
- * Creates a hash object.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function Hash(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
-
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
-}
-
-// Add methods to `Hash`.
-Hash.prototype.clear = hashClear;
-Hash.prototype['delete'] = hashDelete;
-Hash.prototype.get = hashGet;
-Hash.prototype.has = hashHas;
-Hash.prototype.set = hashSet;
-
-/**
- * Removes all key-value entries from the map.
- *
- * @private
- * @name clear
- * @memberOf MapCache
- */
-function mapCacheClear() {
-  this.size = 0;
-  this.__data__ = {
-    'hash': new Hash,
-    'map': new (Map$1 || ListCache),
-    'string': new Hash
-  };
-}
-
-/**
- * Checks if `value` is suitable for use as unique object key.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
- */
-function isKeyable(value) {
-  var type = typeof value;
-  return (type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean')
-    ? (value !== '__proto__')
-    : (value === null);
-}
-
-/**
- * Gets the data for `map`.
- *
- * @private
- * @param {Object} map The map to query.
- * @param {string} key The reference key.
- * @returns {*} Returns the map data.
- */
-function getMapData(map, key) {
-  var data = map.__data__;
-  return isKeyable(key)
-    ? data[typeof key == 'string' ? 'string' : 'hash']
-    : data.map;
-}
-
-/**
- * Removes `key` and its value from the map.
- *
- * @private
- * @name delete
- * @memberOf MapCache
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function mapCacheDelete(key) {
-  var result = getMapData(this, key)['delete'](key);
-  this.size -= result ? 1 : 0;
-  return result;
-}
-
-/**
- * Gets the map value for `key`.
- *
- * @private
- * @name get
- * @memberOf MapCache
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function mapCacheGet(key) {
-  return getMapData(this, key).get(key);
-}
-
-/**
- * Checks if a map value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf MapCache
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function mapCacheHas(key) {
-  return getMapData(this, key).has(key);
-}
-
-/**
- * Sets the map `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf MapCache
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the map cache instance.
- */
-function mapCacheSet(key, value) {
-  var data = getMapData(this, key),
-      size = data.size;
-
-  data.set(key, value);
-  this.size += data.size == size ? 0 : 1;
-  return this;
-}
-
-/**
- * Creates a map cache object to store key-value pairs.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function MapCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
-
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
-}
-
-// Add methods to `MapCache`.
-MapCache.prototype.clear = mapCacheClear;
-MapCache.prototype['delete'] = mapCacheDelete;
-MapCache.prototype.get = mapCacheGet;
-MapCache.prototype.has = mapCacheHas;
-MapCache.prototype.set = mapCacheSet;
-
-/** Used as the size to enable large array optimizations. */
-var LARGE_ARRAY_SIZE = 200;
-
-/**
- * Sets the stack `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf Stack
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the stack cache instance.
- */
-function stackSet(key, value) {
-  var data = this.__data__;
-  if (data instanceof ListCache) {
-    var pairs = data.__data__;
-    if (!Map$1 || (pairs.length < LARGE_ARRAY_SIZE - 1)) {
-      pairs.push([key, value]);
-      this.size = ++data.size;
-      return this;
-    }
-    data = this.__data__ = new MapCache(pairs);
-  }
-  data.set(key, value);
-  this.size = data.size;
-  return this;
-}
-
-/**
- * Creates a stack cache object to store key-value pairs.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function Stack(entries) {
-  var data = this.__data__ = new ListCache(entries);
-  this.size = data.size;
-}
-
-// Add methods to `Stack`.
-Stack.prototype.clear = stackClear;
-Stack.prototype['delete'] = stackDelete;
-Stack.prototype.get = stackGet;
-Stack.prototype.has = stackHas;
-Stack.prototype.set = stackSet;
-
-/**
- * A specialized version of `_.forEach` for arrays without support for
- * iteratee shorthands.
- *
- * @private
- * @param {Array} [array] The array to iterate over.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array} Returns `array`.
- */
-function arrayEach(array, iteratee) {
-  var index = -1,
-      length = array == null ? 0 : array.length;
-
-  while (++index < length) {
-    if (iteratee(array[index], index, array) === false) {
-      break;
-    }
-  }
-  return array;
-}
-
-var defineProperty$3 = (function() {
-  try {
-    var func = getNative(Object, 'defineProperty');
-    func({}, '', {});
-    return func;
-  } catch (e) {}
-}());
-
-/**
- * The base implementation of `assignValue` and `assignMergeValue` without
- * value checks.
- *
- * @private
- * @param {Object} object The object to modify.
- * @param {string} key The key of the property to assign.
- * @param {*} value The value to assign.
- */
-function baseAssignValue(object, key, value) {
-  if (key == '__proto__' && defineProperty$3) {
-    defineProperty$3(object, key, {
-      'configurable': true,
-      'enumerable': true,
-      'value': value,
-      'writable': true
-    });
-  } else {
-    object[key] = value;
-  }
-}
-
-/** Used for built-in method references. */
-var objectProto$7 = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty$5 = objectProto$7.hasOwnProperty;
-
-/**
- * Assigns `value` to `key` of `object` if the existing value is not equivalent
- * using [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
- * for equality comparisons.
- *
- * @private
- * @param {Object} object The object to modify.
- * @param {string} key The key of the property to assign.
- * @param {*} value The value to assign.
- */
-function assignValue(object, key, value) {
-  var objValue = object[key];
-  if (!(hasOwnProperty$5.call(object, key) && eq(objValue, value)) ||
-      (value === undefined && !(key in object))) {
-    baseAssignValue(object, key, value);
-  }
-}
-
-/**
- * Copies properties of `source` to `object`.
- *
- * @private
- * @param {Object} source The object to copy properties from.
- * @param {Array} props The property identifiers to copy.
- * @param {Object} [object={}] The object to copy properties to.
- * @param {Function} [customizer] The function to customize copied values.
- * @returns {Object} Returns `object`.
- */
-function copyObject(source, props, object, customizer) {
-  var isNew = !object;
-  object || (object = {});
-
-  var index = -1,
-      length = props.length;
-
-  while (++index < length) {
-    var key = props[index];
-
-    var newValue = customizer
-      ? customizer(object[key], source[key], key, object, source)
-      : undefined;
-
-    if (newValue === undefined) {
-      newValue = source[key];
-    }
-    if (isNew) {
-      baseAssignValue(object, key, newValue);
-    } else {
-      assignValue(object, key, newValue);
-    }
-  }
-  return object;
-}
-
-/**
- * The base implementation of `_.times` without support for iteratee shorthands
- * or max array length checks.
- *
- * @private
- * @param {number} n The number of times to invoke `iteratee`.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array} Returns the array of results.
- */
-function baseTimes(n, iteratee) {
-  var index = -1,
-      result = Array(n);
-
-  while (++index < n) {
-    result[index] = iteratee(index);
-  }
-  return result;
-}
-
-/** `Object#toString` result references. */
-var argsTag$2 = '[object Arguments]';
-
-/**
- * The base implementation of `_.isArguments`.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an `arguments` object,
- */
-function baseIsArguments(value) {
-  return isObjectLike(value) && baseGetTag(value) == argsTag$2;
-}
-
-/** Used for built-in method references. */
-var objectProto$6 = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty$4 = objectProto$6.hasOwnProperty;
-
-/** Built-in value references. */
-var propertyIsEnumerable$1 = objectProto$6.propertyIsEnumerable;
-
-/**
- * Checks if `value` is likely an `arguments` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an `arguments` object,
- *  else `false`.
- * @example
- *
- * _.isArguments(function() { return arguments; }());
- * // => true
- *
- * _.isArguments([1, 2, 3]);
- * // => false
- */
-var isArguments = baseIsArguments(function() { return arguments; }()) ? baseIsArguments : function(value) {
-  return isObjectLike(value) && hasOwnProperty$4.call(value, 'callee') &&
-    !propertyIsEnumerable$1.call(value, 'callee');
-};
-
-/**
- * Checks if `value` is classified as an `Array` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an array, else `false`.
- * @example
- *
- * _.isArray([1, 2, 3]);
- * // => true
- *
- * _.isArray(document.body.children);
- * // => false
- *
- * _.isArray('abc');
- * // => false
- *
- * _.isArray(_.noop);
- * // => false
- */
-var isArray = Array.isArray;
-
-/**
- * This method returns `false`.
- *
- * @static
- * @memberOf _
- * @since 4.13.0
- * @category Util
- * @returns {boolean} Returns `false`.
- * @example
- *
- * _.times(2, _.stubFalse);
- * // => [false, false]
- */
-function stubFalse() {
-  return false;
-}
-
-/** Detect free variable `exports`. */
-var freeExports$2 = typeof exports == 'object' && exports && !exports.nodeType && exports;
-
-/** Detect free variable `module`. */
-var freeModule$2 = freeExports$2 && typeof module == 'object' && module && !module.nodeType && module;
-
-/** Detect the popular CommonJS extension `module.exports`. */
-var moduleExports$2 = freeModule$2 && freeModule$2.exports === freeExports$2;
-
-/** Built-in value references. */
-var Buffer$1 = moduleExports$2 ? root.Buffer : undefined;
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeIsBuffer = Buffer$1 ? Buffer$1.isBuffer : undefined;
-
-/**
- * Checks if `value` is a buffer.
- *
- * @static
- * @memberOf _
- * @since 4.3.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
- * @example
- *
- * _.isBuffer(new Buffer(2));
- * // => true
- *
- * _.isBuffer(new Uint8Array(2));
- * // => false
- */
-var isBuffer = nativeIsBuffer || stubFalse;
-
-/** Used as references for various `Number` constants. */
-var MAX_SAFE_INTEGER$1 = 9007199254740991;
-
-/** Used to detect unsigned integer values. */
-var reIsUint = /^(?:0|[1-9]\d*)$/;
-
-/**
- * Checks if `value` is a valid array-like index.
- *
- * @private
- * @param {*} value The value to check.
- * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
- * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
- */
-function isIndex(value, length) {
-  var type = typeof value;
-  length = length == null ? MAX_SAFE_INTEGER$1 : length;
-
-  return !!length &&
-    (type == 'number' ||
-      (type != 'symbol' && reIsUint.test(value))) &&
-        (value > -1 && value % 1 == 0 && value < length);
-}
-
-/** Used as references for various `Number` constants. */
-var MAX_SAFE_INTEGER = 9007199254740991;
-
-/**
- * Checks if `value` is a valid array-like length.
- *
- * **Note:** This method is loosely based on
- * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
- * @example
- *
- * _.isLength(3);
- * // => true
- *
- * _.isLength(Number.MIN_VALUE);
- * // => false
- *
- * _.isLength(Infinity);
- * // => false
- *
- * _.isLength('3');
- * // => false
- */
-function isLength(value) {
-  return typeof value == 'number' &&
-    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
-}
-
-/** `Object#toString` result references. */
-var argsTag$1 = '[object Arguments]',
-    arrayTag$1 = '[object Array]',
-    boolTag$2 = '[object Boolean]',
-    dateTag$2 = '[object Date]',
-    errorTag$1 = '[object Error]',
-    funcTag$1 = '[object Function]',
-    mapTag$4 = '[object Map]',
-    numberTag$2 = '[object Number]',
-    objectTag$2 = '[object Object]',
-    regexpTag$2 = '[object RegExp]',
-    setTag$4 = '[object Set]',
-    stringTag$2 = '[object String]',
-    weakMapTag$2 = '[object WeakMap]';
-
-var arrayBufferTag$2 = '[object ArrayBuffer]',
-    dataViewTag$3 = '[object DataView]',
-    float32Tag$2 = '[object Float32Array]',
-    float64Tag$2 = '[object Float64Array]',
-    int8Tag$2 = '[object Int8Array]',
-    int16Tag$2 = '[object Int16Array]',
-    int32Tag$2 = '[object Int32Array]',
-    uint8Tag$2 = '[object Uint8Array]',
-    uint8ClampedTag$2 = '[object Uint8ClampedArray]',
-    uint16Tag$2 = '[object Uint16Array]',
-    uint32Tag$2 = '[object Uint32Array]';
-
-/** Used to identify `toStringTag` values of typed arrays. */
-var typedArrayTags = {};
-typedArrayTags[float32Tag$2] = typedArrayTags[float64Tag$2] =
-typedArrayTags[int8Tag$2] = typedArrayTags[int16Tag$2] =
-typedArrayTags[int32Tag$2] = typedArrayTags[uint8Tag$2] =
-typedArrayTags[uint8ClampedTag$2] = typedArrayTags[uint16Tag$2] =
-typedArrayTags[uint32Tag$2] = true;
-typedArrayTags[argsTag$1] = typedArrayTags[arrayTag$1] =
-typedArrayTags[arrayBufferTag$2] = typedArrayTags[boolTag$2] =
-typedArrayTags[dataViewTag$3] = typedArrayTags[dateTag$2] =
-typedArrayTags[errorTag$1] = typedArrayTags[funcTag$1] =
-typedArrayTags[mapTag$4] = typedArrayTags[numberTag$2] =
-typedArrayTags[objectTag$2] = typedArrayTags[regexpTag$2] =
-typedArrayTags[setTag$4] = typedArrayTags[stringTag$2] =
-typedArrayTags[weakMapTag$2] = false;
-
-/**
- * The base implementation of `_.isTypedArray` without Node.js optimizations.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
- */
-function baseIsTypedArray(value) {
-  return isObjectLike(value) &&
-    isLength(value.length) && !!typedArrayTags[baseGetTag(value)];
-}
-
-/**
- * The base implementation of `_.unary` without support for storing metadata.
- *
- * @private
- * @param {Function} func The function to cap arguments for.
- * @returns {Function} Returns the new capped function.
- */
-function baseUnary(func) {
-  return function(value) {
-    return func(value);
-  };
-}
-
-/** Detect free variable `exports`. */
-var freeExports$1 = typeof exports == 'object' && exports && !exports.nodeType && exports;
-
-/** Detect free variable `module`. */
-var freeModule$1 = freeExports$1 && typeof module == 'object' && module && !module.nodeType && module;
-
-/** Detect the popular CommonJS extension `module.exports`. */
-var moduleExports$1 = freeModule$1 && freeModule$1.exports === freeExports$1;
-
-/** Detect free variable `process` from Node.js. */
-var freeProcess = moduleExports$1 && freeGlobal.process;
-
-/** Used to access faster Node.js helpers. */
-var nodeUtil = (function() {
-  try {
-    // Use `util.types` for Node.js 10+.
-    var types = freeModule$1 && freeModule$1.require && freeModule$1.require('util').types;
-
-    if (types) {
-      return types;
-    }
-
-    // Legacy `process.binding('util')` for Node.js < 10.
-    return freeProcess && freeProcess.binding && freeProcess.binding('util');
-  } catch (e) {}
-}());
-
-/* Node.js helper references. */
-var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
-
-/**
- * Checks if `value` is classified as a typed array.
- *
- * @static
- * @memberOf _
- * @since 3.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
- * @example
- *
- * _.isTypedArray(new Uint8Array);
- * // => true
- *
- * _.isTypedArray([]);
- * // => false
- */
-var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedArray;
-
-/** Used for built-in method references. */
-var objectProto$5 = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty$3 = objectProto$5.hasOwnProperty;
-
-/**
- * Creates an array of the enumerable property names of the array-like `value`.
- *
- * @private
- * @param {*} value The value to query.
- * @param {boolean} inherited Specify returning inherited property names.
- * @returns {Array} Returns the array of property names.
- */
-function arrayLikeKeys(value, inherited) {
-  var isArr = isArray(value),
-      isArg = !isArr && isArguments(value),
-      isBuff = !isArr && !isArg && isBuffer(value),
-      isType = !isArr && !isArg && !isBuff && isTypedArray(value),
-      skipIndexes = isArr || isArg || isBuff || isType,
-      result = skipIndexes ? baseTimes(value.length, String) : [],
-      length = result.length;
-
-  for (var key in value) {
-    if ((inherited || hasOwnProperty$3.call(value, key)) &&
-        !(skipIndexes && (
-           // Safari 9 has enumerable `arguments.length` in strict mode.
-           key == 'length' ||
-           // Node.js 0.10 has enumerable non-index properties on buffers.
-           (isBuff && (key == 'offset' || key == 'parent')) ||
-           // PhantomJS 2 has enumerable non-index properties on typed arrays.
-           (isType && (key == 'buffer' || key == 'byteLength' || key == 'byteOffset')) ||
-           // Skip index properties.
-           isIndex(key, length)
-        ))) {
-      result.push(key);
-    }
-  }
-  return result;
-}
-
-/** Used for built-in method references. */
-var objectProto$4 = Object.prototype;
-
-/**
- * Checks if `value` is likely a prototype object.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
- */
-function isPrototype(value) {
-  var Ctor = value && value.constructor,
-      proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto$4;
-
-  return value === proto;
-}
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeKeys = overArg(Object.keys, Object);
-
-/** Used for built-in method references. */
-var objectProto$3 = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty$2 = objectProto$3.hasOwnProperty;
-
-/**
- * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
- *
- * @private
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names.
- */
-function baseKeys(object) {
-  if (!isPrototype(object)) {
-    return nativeKeys(object);
-  }
-  var result = [];
-  for (var key in Object(object)) {
-    if (hasOwnProperty$2.call(object, key) && key != 'constructor') {
-      result.push(key);
-    }
-  }
-  return result;
-}
-
-/**
- * Checks if `value` is array-like. A value is considered array-like if it's
- * not a function and has a `value.length` that's an integer greater than or
- * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
- * @example
- *
- * _.isArrayLike([1, 2, 3]);
- * // => true
- *
- * _.isArrayLike(document.body.children);
- * // => true
- *
- * _.isArrayLike('abc');
- * // => true
- *
- * _.isArrayLike(_.noop);
- * // => false
- */
-function isArrayLike(value) {
-  return value != null && isLength(value.length) && !isFunction$1(value);
-}
-
-/**
- * Creates an array of the own enumerable property names of `object`.
- *
- * **Note:** Non-object values are coerced to objects. See the
- * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
- * for more details.
- *
- * @static
- * @since 0.1.0
- * @memberOf _
- * @category Object
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names.
- * @example
- *
- * function Foo() {
- *   this.a = 1;
- *   this.b = 2;
- * }
- *
- * Foo.prototype.c = 3;
- *
- * _.keys(new Foo);
- * // => ['a', 'b'] (iteration order is not guaranteed)
- *
- * _.keys('hi');
- * // => ['0', '1']
- */
-function keys(object) {
-  return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);
-}
-
-/**
- * The base implementation of `_.assign` without support for multiple sources
- * or `customizer` functions.
- *
- * @private
- * @param {Object} object The destination object.
- * @param {Object} source The source object.
- * @returns {Object} Returns `object`.
- */
-function baseAssign(object, source) {
-  return object && copyObject(source, keys(source), object);
-}
-
-/**
- * This function is like
- * [`Object.keys`](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
- * except that it includes inherited enumerable properties.
- *
- * @private
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names.
- */
-function nativeKeysIn(object) {
-  var result = [];
-  if (object != null) {
-    for (var key in Object(object)) {
-      result.push(key);
-    }
-  }
-  return result;
-}
-
-/** Used for built-in method references. */
-var objectProto$2 = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty$1 = objectProto$2.hasOwnProperty;
-
-/**
- * The base implementation of `_.keysIn` which doesn't treat sparse arrays as dense.
- *
- * @private
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names.
- */
-function baseKeysIn(object) {
-  if (!isObject$1(object)) {
-    return nativeKeysIn(object);
-  }
-  var isProto = isPrototype(object),
-      result = [];
-
-  for (var key in object) {
-    if (!(key == 'constructor' && (isProto || !hasOwnProperty$1.call(object, key)))) {
-      result.push(key);
-    }
-  }
-  return result;
-}
-
-/**
- * Creates an array of the own and inherited enumerable property names of `object`.
- *
- * **Note:** Non-object values are coerced to objects.
- *
- * @static
- * @memberOf _
- * @since 3.0.0
- * @category Object
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names.
- * @example
- *
- * function Foo() {
- *   this.a = 1;
- *   this.b = 2;
- * }
- *
- * Foo.prototype.c = 3;
- *
- * _.keysIn(new Foo);
- * // => ['a', 'b', 'c'] (iteration order is not guaranteed)
- */
-function keysIn(object) {
-  return isArrayLike(object) ? arrayLikeKeys(object, true) : baseKeysIn(object);
-}
-
-/**
- * The base implementation of `_.assignIn` without support for multiple sources
- * or `customizer` functions.
- *
- * @private
- * @param {Object} object The destination object.
- * @param {Object} source The source object.
- * @returns {Object} Returns `object`.
- */
-function baseAssignIn(object, source) {
-  return object && copyObject(source, keysIn(source), object);
-}
-
-/** Detect free variable `exports`. */
-var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
-
-/** Detect free variable `module`. */
-var freeModule = freeExports && typeof module == 'object' && module && !module.nodeType && module;
-
-/** Detect the popular CommonJS extension `module.exports`. */
-var moduleExports = freeModule && freeModule.exports === freeExports;
-
-/** Built-in value references. */
-var Buffer = moduleExports ? root.Buffer : undefined,
-    allocUnsafe = Buffer ? Buffer.allocUnsafe : undefined;
-
-/**
- * Creates a clone of  `buffer`.
- *
- * @private
- * @param {Buffer} buffer The buffer to clone.
- * @param {boolean} [isDeep] Specify a deep clone.
- * @returns {Buffer} Returns the cloned buffer.
- */
-function cloneBuffer(buffer, isDeep) {
-  if (isDeep) {
-    return buffer.slice();
-  }
-  var length = buffer.length,
-      result = allocUnsafe ? allocUnsafe(length) : new buffer.constructor(length);
-
-  buffer.copy(result);
-  return result;
-}
-
-/**
- * Copies the values of `source` to `array`.
- *
- * @private
- * @param {Array} source The array to copy values from.
- * @param {Array} [array=[]] The array to copy values to.
- * @returns {Array} Returns `array`.
- */
-function copyArray(source, array) {
-  var index = -1,
-      length = source.length;
-
-  array || (array = Array(length));
-  while (++index < length) {
-    array[index] = source[index];
-  }
-  return array;
-}
-
-/**
- * A specialized version of `_.filter` for arrays without support for
- * iteratee shorthands.
- *
- * @private
- * @param {Array} [array] The array to iterate over.
- * @param {Function} predicate The function invoked per iteration.
- * @returns {Array} Returns the new filtered array.
- */
-function arrayFilter(array, predicate) {
-  var index = -1,
-      length = array == null ? 0 : array.length,
-      resIndex = 0,
-      result = [];
-
-  while (++index < length) {
-    var value = array[index];
-    if (predicate(value, index, array)) {
-      result[resIndex++] = value;
-    }
-  }
-  return result;
-}
-
-/**
- * This method returns a new empty array.
- *
- * @static
- * @memberOf _
- * @since 4.13.0
- * @category Util
- * @returns {Array} Returns the new empty array.
- * @example
- *
- * var arrays = _.times(2, _.stubArray);
- *
- * console.log(arrays);
- * // => [[], []]
- *
- * console.log(arrays[0] === arrays[1]);
- * // => false
- */
-function stubArray() {
-  return [];
-}
-
-/** Used for built-in method references. */
-var objectProto$1 = Object.prototype;
-
-/** Built-in value references. */
-var propertyIsEnumerable = objectProto$1.propertyIsEnumerable;
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeGetSymbols$1 = Object.getOwnPropertySymbols;
-
-/**
- * Creates an array of the own enumerable symbols of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of symbols.
- */
-var getSymbols = !nativeGetSymbols$1 ? stubArray : function(object) {
-  if (object == null) {
-    return [];
-  }
-  object = Object(object);
-  return arrayFilter(nativeGetSymbols$1(object), function(symbol) {
-    return propertyIsEnumerable.call(object, symbol);
-  });
-};
-
-/**
- * Copies own symbols of `source` to `object`.
- *
- * @private
- * @param {Object} source The object to copy symbols from.
- * @param {Object} [object={}] The object to copy symbols to.
- * @returns {Object} Returns `object`.
- */
-function copySymbols(source, object) {
-  return copyObject(source, getSymbols(source), object);
-}
-
-/**
- * Appends the elements of `values` to `array`.
- *
- * @private
- * @param {Array} array The array to modify.
- * @param {Array} values The values to append.
- * @returns {Array} Returns `array`.
- */
-function arrayPush(array, values) {
-  var index = -1,
-      length = values.length,
-      offset = array.length;
-
-  while (++index < length) {
-    array[offset + index] = values[index];
-  }
-  return array;
-}
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeGetSymbols = Object.getOwnPropertySymbols;
-
-/**
- * Creates an array of the own and inherited enumerable symbols of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of symbols.
- */
-var getSymbolsIn = !nativeGetSymbols ? stubArray : function(object) {
-  var result = [];
-  while (object) {
-    arrayPush(result, getSymbols(object));
-    object = getPrototype(object);
-  }
-  return result;
-};
-
-/**
- * Copies own and inherited symbols of `source` to `object`.
- *
- * @private
- * @param {Object} source The object to copy symbols from.
- * @param {Object} [object={}] The object to copy symbols to.
- * @returns {Object} Returns `object`.
- */
-function copySymbolsIn(source, object) {
-  return copyObject(source, getSymbolsIn(source), object);
-}
-
-/**
- * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
- * `keysFunc` and `symbolsFunc` to get the enumerable property names and
- * symbols of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {Function} keysFunc The function to get the keys of `object`.
- * @param {Function} symbolsFunc The function to get the symbols of `object`.
- * @returns {Array} Returns the array of property names and symbols.
- */
-function baseGetAllKeys(object, keysFunc, symbolsFunc) {
-  var result = keysFunc(object);
-  return isArray(object) ? result : arrayPush(result, symbolsFunc(object));
-}
-
-/**
- * Creates an array of own enumerable property names and symbols of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names and symbols.
- */
-function getAllKeys(object) {
-  return baseGetAllKeys(object, keys, getSymbols);
-}
-
-/**
- * Creates an array of own and inherited enumerable property names and
- * symbols of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names and symbols.
- */
-function getAllKeysIn(object) {
-  return baseGetAllKeys(object, keysIn, getSymbolsIn);
-}
-
-/* Built-in method references that are verified to be native. */
-var DataView = getNative(root, 'DataView');
-
-/* Built-in method references that are verified to be native. */
-var Promise$1 = getNative(root, 'Promise');
-
-/* Built-in method references that are verified to be native. */
-var Set$1 = getNative(root, 'Set');
-
-/* Built-in method references that are verified to be native. */
-var WeakMap = getNative(root, 'WeakMap');
-
-/** `Object#toString` result references. */
-var mapTag$3 = '[object Map]',
-    objectTag$1 = '[object Object]',
-    promiseTag = '[object Promise]',
-    setTag$3 = '[object Set]',
-    weakMapTag$1 = '[object WeakMap]';
-
-var dataViewTag$2 = '[object DataView]';
-
-/** Used to detect maps, sets, and weakmaps. */
-var dataViewCtorString = toSource(DataView),
-    mapCtorString = toSource(Map$1),
-    promiseCtorString = toSource(Promise$1),
-    setCtorString = toSource(Set$1),
-    weakMapCtorString = toSource(WeakMap);
-
-/**
- * Gets the `toStringTag` of `value`.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the `toStringTag`.
- */
-var getTag = baseGetTag;
-
-// Fallback for data views, maps, sets, and weak maps in IE 11 and promises in Node.js < 6.
-if ((DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag$2) ||
-    (Map$1 && getTag(new Map$1) != mapTag$3) ||
-    (Promise$1 && getTag(Promise$1.resolve()) != promiseTag) ||
-    (Set$1 && getTag(new Set$1) != setTag$3) ||
-    (WeakMap && getTag(new WeakMap) != weakMapTag$1)) {
-  getTag = function(value) {
-    var result = baseGetTag(value),
-        Ctor = result == objectTag$1 ? value.constructor : undefined,
-        ctorString = Ctor ? toSource(Ctor) : '';
-
-    if (ctorString) {
-      switch (ctorString) {
-        case dataViewCtorString: return dataViewTag$2;
-        case mapCtorString: return mapTag$3;
-        case promiseCtorString: return promiseTag;
-        case setCtorString: return setTag$3;
-        case weakMapCtorString: return weakMapTag$1;
-      }
-    }
-    return result;
-  };
-}
-
-var getTag$1 = getTag;
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * Initializes an array clone.
- *
- * @private
- * @param {Array} array The array to clone.
- * @returns {Array} Returns the initialized clone.
- */
-function initCloneArray(array) {
-  var length = array.length,
-      result = new array.constructor(length);
-
-  // Add properties assigned by `RegExp#exec`.
-  if (length && typeof array[0] == 'string' && hasOwnProperty.call(array, 'index')) {
-    result.index = array.index;
-    result.input = array.input;
-  }
-  return result;
-}
-
-/** Built-in value references. */
-var Uint8Array = root.Uint8Array;
-
-/**
- * Creates a clone of `arrayBuffer`.
- *
- * @private
- * @param {ArrayBuffer} arrayBuffer The array buffer to clone.
- * @returns {ArrayBuffer} Returns the cloned array buffer.
- */
-function cloneArrayBuffer(arrayBuffer) {
-  var result = new arrayBuffer.constructor(arrayBuffer.byteLength);
-  new Uint8Array(result).set(new Uint8Array(arrayBuffer));
-  return result;
-}
-
-/**
- * Creates a clone of `dataView`.
- *
- * @private
- * @param {Object} dataView The data view to clone.
- * @param {boolean} [isDeep] Specify a deep clone.
- * @returns {Object} Returns the cloned data view.
- */
-function cloneDataView(dataView, isDeep) {
-  var buffer = isDeep ? cloneArrayBuffer(dataView.buffer) : dataView.buffer;
-  return new dataView.constructor(buffer, dataView.byteOffset, dataView.byteLength);
-}
-
-/** Used to match `RegExp` flags from their coerced string values. */
-var reFlags = /\w*$/;
-
-/**
- * Creates a clone of `regexp`.
- *
- * @private
- * @param {Object} regexp The regexp to clone.
- * @returns {Object} Returns the cloned regexp.
- */
-function cloneRegExp(regexp) {
-  var result = new regexp.constructor(regexp.source, reFlags.exec(regexp));
-  result.lastIndex = regexp.lastIndex;
-  return result;
-}
-
-/** Used to convert symbols to primitives and strings. */
-var symbolProto$1 = Symbol$1 ? Symbol$1.prototype : undefined,
-    symbolValueOf = symbolProto$1 ? symbolProto$1.valueOf : undefined;
-
-/**
- * Creates a clone of the `symbol` object.
- *
- * @private
- * @param {Object} symbol The symbol object to clone.
- * @returns {Object} Returns the cloned symbol object.
- */
-function cloneSymbol(symbol) {
-  return symbolValueOf ? Object(symbolValueOf.call(symbol)) : {};
-}
-
-/**
- * Creates a clone of `typedArray`.
- *
- * @private
- * @param {Object} typedArray The typed array to clone.
- * @param {boolean} [isDeep] Specify a deep clone.
- * @returns {Object} Returns the cloned typed array.
- */
-function cloneTypedArray(typedArray, isDeep) {
-  var buffer = isDeep ? cloneArrayBuffer(typedArray.buffer) : typedArray.buffer;
-  return new typedArray.constructor(buffer, typedArray.byteOffset, typedArray.length);
-}
-
-/** `Object#toString` result references. */
-var boolTag$1 = '[object Boolean]',
-    dateTag$1 = '[object Date]',
-    mapTag$2 = '[object Map]',
-    numberTag$1 = '[object Number]',
-    regexpTag$1 = '[object RegExp]',
-    setTag$2 = '[object Set]',
-    stringTag$1 = '[object String]',
-    symbolTag$2 = '[object Symbol]';
-
-var arrayBufferTag$1 = '[object ArrayBuffer]',
-    dataViewTag$1 = '[object DataView]',
-    float32Tag$1 = '[object Float32Array]',
-    float64Tag$1 = '[object Float64Array]',
-    int8Tag$1 = '[object Int8Array]',
-    int16Tag$1 = '[object Int16Array]',
-    int32Tag$1 = '[object Int32Array]',
-    uint8Tag$1 = '[object Uint8Array]',
-    uint8ClampedTag$1 = '[object Uint8ClampedArray]',
-    uint16Tag$1 = '[object Uint16Array]',
-    uint32Tag$1 = '[object Uint32Array]';
-
-/**
- * Initializes an object clone based on its `toStringTag`.
- *
- * **Note:** This function only supports cloning values with tags of
- * `Boolean`, `Date`, `Error`, `Map`, `Number`, `RegExp`, `Set`, or `String`.
- *
- * @private
- * @param {Object} object The object to clone.
- * @param {string} tag The `toStringTag` of the object to clone.
- * @param {boolean} [isDeep] Specify a deep clone.
- * @returns {Object} Returns the initialized clone.
- */
-function initCloneByTag(object, tag, isDeep) {
-  var Ctor = object.constructor;
-  switch (tag) {
-    case arrayBufferTag$1:
-      return cloneArrayBuffer(object);
-
-    case boolTag$1:
-    case dateTag$1:
-      return new Ctor(+object);
-
-    case dataViewTag$1:
-      return cloneDataView(object, isDeep);
-
-    case float32Tag$1: case float64Tag$1:
-    case int8Tag$1: case int16Tag$1: case int32Tag$1:
-    case uint8Tag$1: case uint8ClampedTag$1: case uint16Tag$1: case uint32Tag$1:
-      return cloneTypedArray(object, isDeep);
-
-    case mapTag$2:
-      return new Ctor;
-
-    case numberTag$1:
-    case stringTag$1:
-      return new Ctor(object);
-
-    case regexpTag$1:
-      return cloneRegExp(object);
-
-    case setTag$2:
-      return new Ctor;
-
-    case symbolTag$2:
-      return cloneSymbol(object);
-  }
-}
-
-/** Built-in value references. */
-var objectCreate = Object.create;
-
-/**
- * The base implementation of `_.create` without support for assigning
- * properties to the created object.
- *
- * @private
- * @param {Object} proto The object to inherit from.
- * @returns {Object} Returns the new object.
- */
-var baseCreate = (function() {
-  function object() {}
-  return function(proto) {
-    if (!isObject$1(proto)) {
-      return {};
-    }
-    if (objectCreate) {
-      return objectCreate(proto);
-    }
-    object.prototype = proto;
-    var result = new object;
-    object.prototype = undefined;
-    return result;
-  };
-}());
-
-/**
- * Initializes an object clone.
- *
- * @private
- * @param {Object} object The object to clone.
- * @returns {Object} Returns the initialized clone.
- */
-function initCloneObject(object) {
-  return (typeof object.constructor == 'function' && !isPrototype(object))
-    ? baseCreate(getPrototype(object))
-    : {};
-}
-
-/** `Object#toString` result references. */
-var mapTag$1 = '[object Map]';
-
-/**
- * The base implementation of `_.isMap` without Node.js optimizations.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a map, else `false`.
- */
-function baseIsMap(value) {
-  return isObjectLike(value) && getTag$1(value) == mapTag$1;
-}
-
-/* Node.js helper references. */
-var nodeIsMap = nodeUtil && nodeUtil.isMap;
-
-/**
- * Checks if `value` is classified as a `Map` object.
- *
- * @static
- * @memberOf _
- * @since 4.3.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a map, else `false`.
- * @example
- *
- * _.isMap(new Map);
- * // => true
- *
- * _.isMap(new WeakMap);
- * // => false
- */
-var isMap = nodeIsMap ? baseUnary(nodeIsMap) : baseIsMap;
-
-/** `Object#toString` result references. */
-var setTag$1 = '[object Set]';
-
-/**
- * The base implementation of `_.isSet` without Node.js optimizations.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a set, else `false`.
- */
-function baseIsSet(value) {
-  return isObjectLike(value) && getTag$1(value) == setTag$1;
-}
-
-/* Node.js helper references. */
-var nodeIsSet = nodeUtil && nodeUtil.isSet;
-
-/**
- * Checks if `value` is classified as a `Set` object.
- *
- * @static
- * @memberOf _
- * @since 4.3.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a set, else `false`.
- * @example
- *
- * _.isSet(new Set);
- * // => true
- *
- * _.isSet(new WeakSet);
- * // => false
- */
-var isSet = nodeIsSet ? baseUnary(nodeIsSet) : baseIsSet;
-
-/** Used to compose bitmasks for cloning. */
-var CLONE_DEEP_FLAG$1 = 1,
-    CLONE_FLAT_FLAG = 2,
-    CLONE_SYMBOLS_FLAG$2 = 4;
-
-/** `Object#toString` result references. */
-var argsTag = '[object Arguments]',
-    arrayTag = '[object Array]',
-    boolTag = '[object Boolean]',
-    dateTag = '[object Date]',
-    errorTag = '[object Error]',
-    funcTag = '[object Function]',
-    genTag = '[object GeneratorFunction]',
-    mapTag = '[object Map]',
-    numberTag = '[object Number]',
-    objectTag = '[object Object]',
-    regexpTag = '[object RegExp]',
-    setTag = '[object Set]',
-    stringTag = '[object String]',
-    symbolTag$1 = '[object Symbol]',
-    weakMapTag = '[object WeakMap]';
-
-var arrayBufferTag = '[object ArrayBuffer]',
-    dataViewTag = '[object DataView]',
-    float32Tag = '[object Float32Array]',
-    float64Tag = '[object Float64Array]',
-    int8Tag = '[object Int8Array]',
-    int16Tag = '[object Int16Array]',
-    int32Tag = '[object Int32Array]',
-    uint8Tag = '[object Uint8Array]',
-    uint8ClampedTag = '[object Uint8ClampedArray]',
-    uint16Tag = '[object Uint16Array]',
-    uint32Tag = '[object Uint32Array]';
-
-/** Used to identify `toStringTag` values supported by `_.clone`. */
-var cloneableTags = {};
-cloneableTags[argsTag] = cloneableTags[arrayTag] =
-cloneableTags[arrayBufferTag] = cloneableTags[dataViewTag] =
-cloneableTags[boolTag] = cloneableTags[dateTag] =
-cloneableTags[float32Tag] = cloneableTags[float64Tag] =
-cloneableTags[int8Tag] = cloneableTags[int16Tag] =
-cloneableTags[int32Tag] = cloneableTags[mapTag] =
-cloneableTags[numberTag] = cloneableTags[objectTag] =
-cloneableTags[regexpTag] = cloneableTags[setTag] =
-cloneableTags[stringTag] = cloneableTags[symbolTag$1] =
-cloneableTags[uint8Tag] = cloneableTags[uint8ClampedTag] =
-cloneableTags[uint16Tag] = cloneableTags[uint32Tag] = true;
-cloneableTags[errorTag] = cloneableTags[funcTag] =
-cloneableTags[weakMapTag] = false;
-
-/**
- * The base implementation of `_.clone` and `_.cloneDeep` which tracks
- * traversed objects.
- *
- * @private
- * @param {*} value The value to clone.
- * @param {boolean} bitmask The bitmask flags.
- *  1 - Deep clone
- *  2 - Flatten inherited properties
- *  4 - Clone symbols
- * @param {Function} [customizer] The function to customize cloning.
- * @param {string} [key] The key of `value`.
- * @param {Object} [object] The parent object of `value`.
- * @param {Object} [stack] Tracks traversed objects and their clone counterparts.
- * @returns {*} Returns the cloned value.
- */
-function baseClone(value, bitmask, customizer, key, object, stack) {
-  var result,
-      isDeep = bitmask & CLONE_DEEP_FLAG$1,
-      isFlat = bitmask & CLONE_FLAT_FLAG,
-      isFull = bitmask & CLONE_SYMBOLS_FLAG$2;
-
-  if (customizer) {
-    result = object ? customizer(value, key, object, stack) : customizer(value);
-  }
-  if (result !== undefined) {
-    return result;
-  }
-  if (!isObject$1(value)) {
-    return value;
-  }
-  var isArr = isArray(value);
-  if (isArr) {
-    result = initCloneArray(value);
-    if (!isDeep) {
-      return copyArray(value, result);
-    }
-  } else {
-    var tag = getTag$1(value),
-        isFunc = tag == funcTag || tag == genTag;
-
-    if (isBuffer(value)) {
-      return cloneBuffer(value, isDeep);
-    }
-    if (tag == objectTag || tag == argsTag || (isFunc && !object)) {
-      result = (isFlat || isFunc) ? {} : initCloneObject(value);
-      if (!isDeep) {
-        return isFlat
-          ? copySymbolsIn(value, baseAssignIn(result, value))
-          : copySymbols(value, baseAssign(result, value));
-      }
-    } else {
-      if (!cloneableTags[tag]) {
-        return object ? value : {};
-      }
-      result = initCloneByTag(value, tag, isDeep);
-    }
-  }
-  // Check for circular references and return its corresponding clone.
-  stack || (stack = new Stack);
-  var stacked = stack.get(value);
-  if (stacked) {
-    return stacked;
-  }
-  stack.set(value, result);
-
-  if (isSet(value)) {
-    value.forEach(function(subValue) {
-      result.add(baseClone(subValue, bitmask, customizer, subValue, value, stack));
-    });
-  } else if (isMap(value)) {
-    value.forEach(function(subValue, key) {
-      result.set(key, baseClone(subValue, bitmask, customizer, key, value, stack));
-    });
-  }
-
-  var keysFunc = isFull
-    ? (isFlat ? getAllKeysIn : getAllKeys)
-    : (isFlat ? keysIn : keys);
-
-  var props = isArr ? undefined : keysFunc(value);
-  arrayEach(props || value, function(subValue, key) {
-    if (props) {
-      key = subValue;
-      subValue = value[key];
-    }
-    // Recursively populate clone (susceptible to call stack limits).
-    assignValue(result, key, baseClone(subValue, bitmask, customizer, key, value, stack));
-  });
-  return result;
-}
-
-/** Used to compose bitmasks for cloning. */
-var CLONE_SYMBOLS_FLAG$1 = 4;
-
-/**
- * Creates a shallow clone of `value`.
- *
- * **Note:** This method is loosely based on the
- * [structured clone algorithm](https://mdn.io/Structured_clone_algorithm)
- * and supports cloning arrays, array buffers, booleans, date objects, maps,
- * numbers, `Object` objects, regexes, sets, strings, symbols, and typed
- * arrays. The own enumerable properties of `arguments` objects are cloned
- * as plain objects. An empty object is returned for uncloneable values such
- * as error objects, functions, DOM nodes, and WeakMaps.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to clone.
- * @returns {*} Returns the cloned value.
- * @see _.cloneDeep
- * @example
- *
- * var objects = [{ 'a': 1 }, { 'b': 2 }];
- *
- * var shallow = _.clone(objects);
- * console.log(shallow[0] === objects[0]);
- * // => true
- */
-function clone(value) {
-  return baseClone(value, CLONE_SYMBOLS_FLAG$1);
-}
-
-/**
- * A specialized version of `_.map` for arrays without support for iteratee
- * shorthands.
- *
- * @private
- * @param {Array} [array] The array to iterate over.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array} Returns the new mapped array.
- */
-function arrayMap(array, iteratee) {
-  var index = -1,
-      length = array == null ? 0 : array.length,
-      result = Array(length);
-
-  while (++index < length) {
-    result[index] = iteratee(array[index], index, array);
-  }
-  return result;
-}
-
-/** `Object#toString` result references. */
-var symbolTag = '[object Symbol]';
-
-/**
- * Checks if `value` is classified as a `Symbol` primitive or object.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
- * @example
- *
- * _.isSymbol(Symbol.iterator);
- * // => true
- *
- * _.isSymbol('abc');
- * // => false
- */
-function isSymbol(value) {
-  return typeof value == 'symbol' ||
-    (isObjectLike(value) && baseGetTag(value) == symbolTag);
-}
-
-/** Error message constants. */
-var FUNC_ERROR_TEXT = 'Expected a function';
-
-/**
- * Creates a function that memoizes the result of `func`. If `resolver` is
- * provided, it determines the cache key for storing the result based on the
- * arguments provided to the memoized function. By default, the first argument
- * provided to the memoized function is used as the map cache key. The `func`
- * is invoked with the `this` binding of the memoized function.
- *
- * **Note:** The cache is exposed as the `cache` property on the memoized
- * function. Its creation may be customized by replacing the `_.memoize.Cache`
- * constructor with one whose instances implement the
- * [`Map`](http://ecma-international.org/ecma-262/7.0/#sec-properties-of-the-map-prototype-object)
- * method interface of `clear`, `delete`, `get`, `has`, and `set`.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Function
- * @param {Function} func The function to have its output memoized.
- * @param {Function} [resolver] The function to resolve the cache key.
- * @returns {Function} Returns the new memoized function.
- * @example
- *
- * var object = { 'a': 1, 'b': 2 };
- * var other = { 'c': 3, 'd': 4 };
- *
- * var values = _.memoize(_.values);
- * values(object);
- * // => [1, 2]
- *
- * values(other);
- * // => [3, 4]
- *
- * object.a = 2;
- * values(object);
- * // => [1, 2]
- *
- * // Modify the result cache.
- * values.cache.set(object, ['a', 'b']);
- * values(object);
- * // => ['a', 'b']
- *
- * // Replace `_.memoize.Cache`.
- * _.memoize.Cache = WeakMap;
- */
-function memoize(func, resolver) {
-  if (typeof func != 'function' || (resolver != null && typeof resolver != 'function')) {
-    throw new TypeError(FUNC_ERROR_TEXT);
-  }
-  var memoized = function() {
-    var args = arguments,
-        key = resolver ? resolver.apply(this, args) : args[0],
-        cache = memoized.cache;
-
-    if (cache.has(key)) {
-      return cache.get(key);
-    }
-    var result = func.apply(this, args);
-    memoized.cache = cache.set(key, result) || cache;
-    return result;
-  };
-  memoized.cache = new (memoize.Cache || MapCache);
-  return memoized;
-}
-
-// Expose `MapCache`.
-memoize.Cache = MapCache;
-
-/** Used as the maximum memoize cache size. */
-var MAX_MEMOIZE_SIZE = 500;
-
-/**
- * A specialized version of `_.memoize` which clears the memoized function's
- * cache when it exceeds `MAX_MEMOIZE_SIZE`.
- *
- * @private
- * @param {Function} func The function to have its output memoized.
- * @returns {Function} Returns the new memoized function.
- */
-function memoizeCapped(func) {
-  var result = memoize(func, function(key) {
-    if (cache.size === MAX_MEMOIZE_SIZE) {
-      cache.clear();
-    }
-    return key;
-  });
-
-  var cache = result.cache;
-  return result;
-}
-
-/** Used to match property names within property paths. */
-var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
-
-/** Used to match backslashes in property paths. */
-var reEscapeChar = /\\(\\)?/g;
-
-/**
- * Converts `string` to a property path array.
- *
- * @private
- * @param {string} string The string to convert.
- * @returns {Array} Returns the property path array.
- */
-var stringToPath = memoizeCapped(function(string) {
-  var result = [];
-  if (string.charCodeAt(0) === 46 /* . */) {
-    result.push('');
-  }
-  string.replace(rePropName, function(match, number, quote, subString) {
-    result.push(quote ? subString.replace(reEscapeChar, '$1') : (number || match));
-  });
-  return result;
-});
-
-/** Used as references for various `Number` constants. */
-var INFINITY$1 = 1 / 0;
-
-/**
- * Converts `value` to a string key if it's not a string or symbol.
- *
- * @private
- * @param {*} value The value to inspect.
- * @returns {string|symbol} Returns the key.
- */
-function toKey(value) {
-  if (typeof value == 'string' || isSymbol(value)) {
-    return value;
-  }
-  var result = (value + '');
-  return (result == '0' && (1 / value) == -INFINITY$1) ? '-0' : result;
-}
-
-/** Used as references for various `Number` constants. */
-var INFINITY = 1 / 0;
-
-/** Used to convert symbols to primitives and strings. */
-var symbolProto = Symbol$1 ? Symbol$1.prototype : undefined,
-    symbolToString = symbolProto ? symbolProto.toString : undefined;
-
-/**
- * The base implementation of `_.toString` which doesn't convert nullish
- * values to empty strings.
- *
- * @private
- * @param {*} value The value to process.
- * @returns {string} Returns the string.
- */
-function baseToString(value) {
-  // Exit early for strings to avoid a performance hit in some environments.
-  if (typeof value == 'string') {
-    return value;
-  }
-  if (isArray(value)) {
-    // Recursively convert values (susceptible to call stack limits).
-    return arrayMap(value, baseToString) + '';
-  }
-  if (isSymbol(value)) {
-    return symbolToString ? symbolToString.call(value) : '';
-  }
-  var result = (value + '');
-  return (result == '0' && (1 / value) == -INFINITY) ? '-0' : result;
-}
-
-/**
- * Converts `value` to a string. An empty string is returned for `null`
- * and `undefined` values. The sign of `-0` is preserved.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to convert.
- * @returns {string} Returns the converted string.
- * @example
- *
- * _.toString(null);
- * // => ''
- *
- * _.toString(-0);
- * // => '-0'
- *
- * _.toString([1, 2, 3]);
- * // => '1,2,3'
- */
-function toString$4(value) {
-  return value == null ? '' : baseToString(value);
-}
-
-/**
- * Converts `value` to a property path array.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Util
- * @param {*} value The value to convert.
- * @returns {Array} Returns the new property path array.
- * @example
- *
- * _.toPath('a.b.c');
- * // => ['a', 'b', 'c']
- *
- * _.toPath('a[0].b.c');
- * // => ['a', '0', 'b', 'c']
- */
-function toPath(value) {
-  if (isArray(value)) {
-    return arrayMap(value, toKey);
-  }
-  return isSymbol(value) ? [value] : copyArray(stringToPath(toString$4(value)));
-}
-
-var isProduction$3 = process.env.NODE_ENV === 'production';
-function warning$3(condition, message) {
-  if (!isProduction$3) {
-    if (condition) {
-      return;
-    }
-
-    var text = "Warning: " + message;
-
-    if (typeof console !== 'undefined') {
-      console.warn(text);
-    }
-
-    try {
-      throw Error(text);
-    } catch (x) {}
-  }
-}
-
-var reactIs$2 = {exports: {}};
-
-var reactIs_production_min$1 = {};
-
-/** @license React v16.13.1
- * react-is.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var hasRequiredReactIs_production_min$1;
-
-function requireReactIs_production_min$1 () {
-	if (hasRequiredReactIs_production_min$1) return reactIs_production_min$1;
-	hasRequiredReactIs_production_min$1 = 1;
-var b="function"===typeof Symbol&&Symbol.for,c=b?Symbol.for("react.element"):60103,d=b?Symbol.for("react.portal"):60106,e=b?Symbol.for("react.fragment"):60107,f=b?Symbol.for("react.strict_mode"):60108,g=b?Symbol.for("react.profiler"):60114,h=b?Symbol.for("react.provider"):60109,k=b?Symbol.for("react.context"):60110,l=b?Symbol.for("react.async_mode"):60111,m=b?Symbol.for("react.concurrent_mode"):60111,n=b?Symbol.for("react.forward_ref"):60112,p=b?Symbol.for("react.suspense"):60113,q=b?
-	Symbol.for("react.suspense_list"):60120,r=b?Symbol.for("react.memo"):60115,t=b?Symbol.for("react.lazy"):60116,v=b?Symbol.for("react.block"):60121,w=b?Symbol.for("react.fundamental"):60117,x=b?Symbol.for("react.responder"):60118,y=b?Symbol.for("react.scope"):60119;
-	function z(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c:switch(a=a.type,a){case l:case m:case e:case g:case f:case p:return a;default:switch(a=a&&a.$$typeof,a){case k:case n:case t:case r:case h:return a;default:return u}}case d:return u}}}function A(a){return z(a)===m}reactIs_production_min$1.AsyncMode=l;reactIs_production_min$1.ConcurrentMode=m;reactIs_production_min$1.ContextConsumer=k;reactIs_production_min$1.ContextProvider=h;reactIs_production_min$1.Element=c;reactIs_production_min$1.ForwardRef=n;reactIs_production_min$1.Fragment=e;reactIs_production_min$1.Lazy=t;reactIs_production_min$1.Memo=r;reactIs_production_min$1.Portal=d;
-	reactIs_production_min$1.Profiler=g;reactIs_production_min$1.StrictMode=f;reactIs_production_min$1.Suspense=p;reactIs_production_min$1.isAsyncMode=function(a){return A(a)||z(a)===l};reactIs_production_min$1.isConcurrentMode=A;reactIs_production_min$1.isContextConsumer=function(a){return z(a)===k};reactIs_production_min$1.isContextProvider=function(a){return z(a)===h};reactIs_production_min$1.isElement=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c};reactIs_production_min$1.isForwardRef=function(a){return z(a)===n};reactIs_production_min$1.isFragment=function(a){return z(a)===e};reactIs_production_min$1.isLazy=function(a){return z(a)===t};
-	reactIs_production_min$1.isMemo=function(a){return z(a)===r};reactIs_production_min$1.isPortal=function(a){return z(a)===d};reactIs_production_min$1.isProfiler=function(a){return z(a)===g};reactIs_production_min$1.isStrictMode=function(a){return z(a)===f};reactIs_production_min$1.isSuspense=function(a){return z(a)===p};
-	reactIs_production_min$1.isValidElementType=function(a){return "string"===typeof a||"function"===typeof a||a===e||a===m||a===g||a===f||a===p||a===q||"object"===typeof a&&null!==a&&(a.$$typeof===t||a.$$typeof===r||a.$$typeof===h||a.$$typeof===k||a.$$typeof===n||a.$$typeof===w||a.$$typeof===x||a.$$typeof===y||a.$$typeof===v)};reactIs_production_min$1.typeOf=z;
-	return reactIs_production_min$1;
-}
-
-var reactIs_development$1 = {};
-
-/** @license React v16.13.1
- * react-is.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var hasRequiredReactIs_development$1;
-
-function requireReactIs_development$1 () {
-	if (hasRequiredReactIs_development$1) return reactIs_development$1;
-	hasRequiredReactIs_development$1 = 1;
-
-
-
-	if (process.env.NODE_ENV !== "production") {
-	  (function() {
-
-	// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-	// nor polyfill, then a plain number is used for performance.
-	var hasSymbol = typeof Symbol === 'function' && Symbol.for;
-	var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
-	var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
-	var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
-	var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
-	var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
-	var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
-	var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
-	// (unstable) APIs that have been removed. Can we remove the symbols?
-
-	var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
-	var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
-	var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
-	var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
-	var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
-	var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
-	var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
-	var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
-	var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
-	var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
-	var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
-
-	function isValidElementType(type) {
-	  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
-	  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
-	}
-
-	function typeOf(object) {
-	  if (typeof object === 'object' && object !== null) {
-	    var $$typeof = object.$$typeof;
-
-	    switch ($$typeof) {
-	      case REACT_ELEMENT_TYPE:
-	        var type = object.type;
-
-	        switch (type) {
-	          case REACT_ASYNC_MODE_TYPE:
-	          case REACT_CONCURRENT_MODE_TYPE:
-	          case REACT_FRAGMENT_TYPE:
-	          case REACT_PROFILER_TYPE:
-	          case REACT_STRICT_MODE_TYPE:
-	          case REACT_SUSPENSE_TYPE:
-	            return type;
-
-	          default:
-	            var $$typeofType = type && type.$$typeof;
-
-	            switch ($$typeofType) {
-	              case REACT_CONTEXT_TYPE:
-	              case REACT_FORWARD_REF_TYPE:
-	              case REACT_LAZY_TYPE:
-	              case REACT_MEMO_TYPE:
-	              case REACT_PROVIDER_TYPE:
-	                return $$typeofType;
-
-	              default:
-	                return $$typeof;
-	            }
-
-	        }
-
-	      case REACT_PORTAL_TYPE:
-	        return $$typeof;
-	    }
-	  }
-
-	  return undefined;
-	} // AsyncMode is deprecated along with isAsyncMode
-
-	var AsyncMode = REACT_ASYNC_MODE_TYPE;
-	var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
-	var ContextConsumer = REACT_CONTEXT_TYPE;
-	var ContextProvider = REACT_PROVIDER_TYPE;
-	var Element = REACT_ELEMENT_TYPE;
-	var ForwardRef = REACT_FORWARD_REF_TYPE;
-	var Fragment = REACT_FRAGMENT_TYPE;
-	var Lazy = REACT_LAZY_TYPE;
-	var Memo = REACT_MEMO_TYPE;
-	var Portal = REACT_PORTAL_TYPE;
-	var Profiler = REACT_PROFILER_TYPE;
-	var StrictMode = REACT_STRICT_MODE_TYPE;
-	var Suspense = REACT_SUSPENSE_TYPE;
-	var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
-
-	function isAsyncMode(object) {
-	  {
-	    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
-	      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
-
-	      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
-	    }
-	  }
-
-	  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
-	}
-	function isConcurrentMode(object) {
-	  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
-	}
-	function isContextConsumer(object) {
-	  return typeOf(object) === REACT_CONTEXT_TYPE;
-	}
-	function isContextProvider(object) {
-	  return typeOf(object) === REACT_PROVIDER_TYPE;
-	}
-	function isElement(object) {
-	  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-	}
-	function isForwardRef(object) {
-	  return typeOf(object) === REACT_FORWARD_REF_TYPE;
-	}
-	function isFragment(object) {
-	  return typeOf(object) === REACT_FRAGMENT_TYPE;
-	}
-	function isLazy(object) {
-	  return typeOf(object) === REACT_LAZY_TYPE;
-	}
-	function isMemo(object) {
-	  return typeOf(object) === REACT_MEMO_TYPE;
-	}
-	function isPortal(object) {
-	  return typeOf(object) === REACT_PORTAL_TYPE;
-	}
-	function isProfiler(object) {
-	  return typeOf(object) === REACT_PROFILER_TYPE;
-	}
-	function isStrictMode(object) {
-	  return typeOf(object) === REACT_STRICT_MODE_TYPE;
-	}
-	function isSuspense(object) {
-	  return typeOf(object) === REACT_SUSPENSE_TYPE;
-	}
-
-	reactIs_development$1.AsyncMode = AsyncMode;
-	reactIs_development$1.ConcurrentMode = ConcurrentMode;
-	reactIs_development$1.ContextConsumer = ContextConsumer;
-	reactIs_development$1.ContextProvider = ContextProvider;
-	reactIs_development$1.Element = Element;
-	reactIs_development$1.ForwardRef = ForwardRef;
-	reactIs_development$1.Fragment = Fragment;
-	reactIs_development$1.Lazy = Lazy;
-	reactIs_development$1.Memo = Memo;
-	reactIs_development$1.Portal = Portal;
-	reactIs_development$1.Profiler = Profiler;
-	reactIs_development$1.StrictMode = StrictMode;
-	reactIs_development$1.Suspense = Suspense;
-	reactIs_development$1.isAsyncMode = isAsyncMode;
-	reactIs_development$1.isConcurrentMode = isConcurrentMode;
-	reactIs_development$1.isContextConsumer = isContextConsumer;
-	reactIs_development$1.isContextProvider = isContextProvider;
-	reactIs_development$1.isElement = isElement;
-	reactIs_development$1.isForwardRef = isForwardRef;
-	reactIs_development$1.isFragment = isFragment;
-	reactIs_development$1.isLazy = isLazy;
-	reactIs_development$1.isMemo = isMemo;
-	reactIs_development$1.isPortal = isPortal;
-	reactIs_development$1.isProfiler = isProfiler;
-	reactIs_development$1.isStrictMode = isStrictMode;
-	reactIs_development$1.isSuspense = isSuspense;
-	reactIs_development$1.isValidElementType = isValidElementType;
-	reactIs_development$1.typeOf = typeOf;
-	  })();
-	}
-	return reactIs_development$1;
-}
-
-(function (module) {
-
-	if (process.env.NODE_ENV === 'production') {
-	  module.exports = requireReactIs_production_min$1();
-	} else {
-	  module.exports = requireReactIs_development$1();
-	}
-} (reactIs$2));
-
-var reactIs$1 = reactIs$2.exports;
-
-/**
- * Copyright 2015, Yahoo! Inc.
- * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
- */
-var REACT_STATICS = {
-  childContextTypes: true,
-  contextType: true,
-  contextTypes: true,
-  defaultProps: true,
-  displayName: true,
-  getDefaultProps: true,
-  getDerivedStateFromError: true,
-  getDerivedStateFromProps: true,
-  mixins: true,
-  propTypes: true,
-  type: true
-};
-var KNOWN_STATICS = {
-  name: true,
-  length: true,
-  prototype: true,
-  caller: true,
-  callee: true,
-  arguments: true,
-  arity: true
-};
-var FORWARD_REF_STATICS = {
-  '$$typeof': true,
-  render: true,
-  defaultProps: true,
-  displayName: true,
-  propTypes: true
-};
-var MEMO_STATICS = {
-  '$$typeof': true,
-  compare: true,
-  defaultProps: true,
-  displayName: true,
-  propTypes: true,
-  type: true
-};
-var TYPE_STATICS = {};
-TYPE_STATICS[reactIs$1.ForwardRef] = FORWARD_REF_STATICS;
-TYPE_STATICS[reactIs$1.Memo] = MEMO_STATICS;
-
-function getStatics(component) {
-  // React v16.11 and below
-  if (reactIs$1.isMemo(component)) {
-    return MEMO_STATICS;
-  } // React v16.12 and above
-
-
-  return TYPE_STATICS[component['$$typeof']] || REACT_STATICS;
-}
-
-var defineProperty$2 = Object.defineProperty;
-var getOwnPropertyNames = Object.getOwnPropertyNames;
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-var getOwnPropertyDescriptor$2 = Object.getOwnPropertyDescriptor;
-var getPrototypeOf$2 = Object.getPrototypeOf;
-var objectPrototype = Object.prototype;
-function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
-  if (typeof sourceComponent !== 'string') {
-    // don't hoist over string (html) components
-    if (objectPrototype) {
-      var inheritedComponent = getPrototypeOf$2(sourceComponent);
-
-      if (inheritedComponent && inheritedComponent !== objectPrototype) {
-        hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
-      }
-    }
-
-    var keys = getOwnPropertyNames(sourceComponent);
-
-    if (getOwnPropertySymbols) {
-      keys = keys.concat(getOwnPropertySymbols(sourceComponent));
-    }
-
-    var targetStatics = getStatics(targetComponent);
-    var sourceStatics = getStatics(sourceComponent);
-
-    for (var i = 0; i < keys.length; ++i) {
-      var key = keys[i];
-
-      if (!KNOWN_STATICS[key] && !(blacklist && blacklist[key]) && !(sourceStatics && sourceStatics[key]) && !(targetStatics && targetStatics[key])) {
-        var descriptor = getOwnPropertyDescriptor$2(sourceComponent, key);
-
-        try {
-          // Avoid failures from read-only properties
-          defineProperty$2(targetComponent, key, descriptor);
-        } catch (e) {}
-      }
-    }
-  }
-
-  return targetComponent;
-}
-
-var hoistNonReactStatics_cjs = hoistNonReactStatics;
-
-/** Used to compose bitmasks for cloning. */
-var CLONE_DEEP_FLAG = 1,
-    CLONE_SYMBOLS_FLAG = 4;
-
-/**
- * This method is like `_.clone` except that it recursively clones `value`.
- *
- * @static
- * @memberOf _
- * @since 1.0.0
- * @category Lang
- * @param {*} value The value to recursively clone.
- * @returns {*} Returns the deep cloned value.
- * @see _.clone
- * @example
- *
- * var objects = [{ 'a': 1 }, { 'b': 2 }];
- *
- * var deep = _.cloneDeep(objects);
- * console.log(deep[0] === objects[0]);
- * // => false
- */
-function cloneDeep(value) {
-  return baseClone(value, CLONE_DEEP_FLAG | CLONE_SYMBOLS_FLAG);
-}
-
-function _extends$1() {
-  _extends$1 = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends$1.apply(this, arguments);
-}
-
-function _inheritsLoose$1(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
-}
-
-function _objectWithoutPropertiesLoose$1(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-/** @private is the value an empty array? */
-
-var isEmptyArray = function isEmptyArray(value) {
-  return Array.isArray(value) && value.length === 0;
-};
-/** @private is the given object a Function? */
-
-var isFunction = function isFunction(obj) {
-  return typeof obj === 'function';
-};
-/** @private is the given object an Object? */
-
-var isObject = function isObject(obj) {
-  return obj !== null && typeof obj === 'object';
-};
-/** @private is the given object an integer? */
-
-var isInteger$1 = function isInteger(obj) {
-  return String(Math.floor(Number(obj))) === obj;
-};
-/** @private Does a React component have exactly 0 children? */
-
-var isEmptyChildren = function isEmptyChildren(children) {
-  return Children.count(children) === 0;
-};
-/**
- * Deeply get a value from an object via its path.
- */
-
-function getIn(obj, key, def, p) {
-  if (p === void 0) {
-    p = 0;
-  }
-
-  var path = toPath(key);
-
-  while (obj && p < path.length) {
-    obj = obj[path[p++]];
-  }
-
-  return obj === undefined ? def : obj;
-}
-/**
- * Deeply set a value from in object via it's path. If the value at `path`
- * has changed, return a shallow copy of obj with `value` set at `path`.
- * If `value` has not changed, return the original `obj`.
- *
- * Existing objects / arrays along `path` are also shallow copied. Sibling
- * objects along path retain the same internal js reference. Since new
- * objects / arrays are only created along `path`, we can test if anything
- * changed in a nested structure by comparing the object's reference in
- * the old and new object, similar to how russian doll cache invalidation
- * works.
- *
- * In earlier versions of this function, which used cloneDeep, there were
- * issues whereby settings a nested value would mutate the parent
- * instead of creating a new object. `clone` avoids that bug making a
- * shallow copy of the objects along the update path
- * so no object is mutated in place.
- *
- * Before changing this function, please read through the following
- * discussions.
- *
- * @see https://github.com/developit/linkstate
- * @see https://github.com/jaredpalmer/formik/pull/123
- */
-
-function setIn(obj, path, value) {
-  var res = clone(obj); // this keeps inheritance when obj is a class
-
-  var resVal = res;
-  var i = 0;
-  var pathArray = toPath(path);
-
-  for (; i < pathArray.length - 1; i++) {
-    var currentPath = pathArray[i];
-    var currentObj = getIn(obj, pathArray.slice(0, i + 1));
-
-    if (currentObj && (isObject(currentObj) || Array.isArray(currentObj))) {
-      resVal = resVal[currentPath] = clone(currentObj);
-    } else {
-      var nextPath = pathArray[i + 1];
-      resVal = resVal[currentPath] = isInteger$1(nextPath) && Number(nextPath) >= 0 ? [] : {};
-    }
-  } // Return original object if new value is the same as current
-
-
-  if ((i === 0 ? obj : resVal)[pathArray[i]] === value) {
-    return obj;
-  }
-
-  if (value === undefined) {
-    delete resVal[pathArray[i]];
-  } else {
-    resVal[pathArray[i]] = value;
-  } // If the path array has a single element, the loop did not run.
-  // Deleting on `resVal` had no effect in this scenario, so we delete on the result instead.
-
-
-  if (i === 0 && value === undefined) {
-    delete res[pathArray[i]];
-  }
-
-  return res;
-}
-
-var FormikContext = /*#__PURE__*/createContext(undefined);
-FormikContext.displayName = 'FormikContext';
-FormikContext.Provider;
-FormikContext.Consumer;
-function useFormikContext() {
-  var formik = useContext(FormikContext);
-  !!!formik ? process.env.NODE_ENV !== "production" ? warning$3(false, "Formik context is undefined, please verify you are calling useFormikContext() as child of a <Formik> component.") : warning$3(false) : void 0;
-  return formik;
-}
-
-var Form = /*#__PURE__*/forwardRef(function (props, ref) {
-  // iOS needs an "action" attribute for nice input: https://stackoverflow.com/a/39485162/406725
-  // We default the action to "#" in case the preventDefault fails (just updates the URL hash)
-  var action = props.action,
-      rest = _objectWithoutPropertiesLoose$1(props, ["action"]);
-
-  var _action = action != null ? action : '#';
-
-  var _useFormikContext = useFormikContext(),
-      handleReset = _useFormikContext.handleReset,
-      handleSubmit = _useFormikContext.handleSubmit;
-
-  return createElement$1("form", Object.assign({
-    onSubmit: handleSubmit,
-    ref: ref,
-    onReset: handleReset,
-    action: _action
-  }, rest));
-});
-Form.displayName = 'Form';
-
-/**
- * Some array helpers!
- */
-
-var move$1 = function move(array, from, to) {
-  var copy = copyArrayLike(array);
-  var value = copy[from];
-  copy.splice(from, 1);
-  copy.splice(to, 0, value);
-  return copy;
-};
-var swap = function swap(arrayLike, indexA, indexB) {
-  var copy = copyArrayLike(arrayLike);
-  var a = copy[indexA];
-  copy[indexA] = copy[indexB];
-  copy[indexB] = a;
-  return copy;
-};
-var insert = function insert(arrayLike, index, value) {
-  var copy = copyArrayLike(arrayLike);
-  copy.splice(index, 0, value);
-  return copy;
-};
-var replace = function replace(arrayLike, index, value) {
-  var copy = copyArrayLike(arrayLike);
-  copy[index] = value;
-  return copy;
-};
-
-var copyArrayLike = function copyArrayLike(arrayLike) {
-  if (!arrayLike) {
-    return [];
-  } else if (Array.isArray(arrayLike)) {
-    return [].concat(arrayLike);
-  } else {
-    var maxIndex = Object.keys(arrayLike).map(function (key) {
-      return parseInt(key);
-    }).reduce(function (max, el) {
-      return el > max ? el : max;
-    }, 0);
-    return Array.from(_extends$1({}, arrayLike, {
-      length: maxIndex + 1
-    }));
-  }
-};
-
-var FieldArrayInner = /*#__PURE__*/function (_React$Component) {
-  _inheritsLoose$1(FieldArrayInner, _React$Component);
-
-  function FieldArrayInner(props) {
-    var _this;
-
-    _this = _React$Component.call(this, props) || this;
-
-    _this.updateArrayField = function (fn, alterTouched, alterErrors) {
-      var _this$props = _this.props,
-          name = _this$props.name,
-          setFormikState = _this$props.formik.setFormikState;
-      setFormikState(function (prevState) {
-        var updateErrors = typeof alterErrors === 'function' ? alterErrors : fn;
-        var updateTouched = typeof alterTouched === 'function' ? alterTouched : fn; // values fn should be executed before updateErrors and updateTouched,
-        // otherwise it causes an error with unshift.
-
-        var values = setIn(prevState.values, name, fn(getIn(prevState.values, name)));
-        var fieldError = alterErrors ? updateErrors(getIn(prevState.errors, name)) : undefined;
-        var fieldTouched = alterTouched ? updateTouched(getIn(prevState.touched, name)) : undefined;
-
-        if (isEmptyArray(fieldError)) {
-          fieldError = undefined;
-        }
-
-        if (isEmptyArray(fieldTouched)) {
-          fieldTouched = undefined;
-        }
-
-        return _extends$1({}, prevState, {
-          values: values,
-          errors: alterErrors ? setIn(prevState.errors, name, fieldError) : prevState.errors,
-          touched: alterTouched ? setIn(prevState.touched, name, fieldTouched) : prevState.touched
-        });
-      });
-    };
-
-    _this.push = function (value) {
-      return _this.updateArrayField(function (arrayLike) {
-        return [].concat(copyArrayLike(arrayLike), [cloneDeep(value)]);
-      }, false, false);
-    };
-
-    _this.handlePush = function (value) {
-      return function () {
-        return _this.push(value);
-      };
-    };
-
-    _this.swap = function (indexA, indexB) {
-      return _this.updateArrayField(function (array) {
-        return swap(array, indexA, indexB);
-      }, true, true);
-    };
-
-    _this.handleSwap = function (indexA, indexB) {
-      return function () {
-        return _this.swap(indexA, indexB);
-      };
-    };
-
-    _this.move = function (from, to) {
-      return _this.updateArrayField(function (array) {
-        return move$1(array, from, to);
-      }, true, true);
-    };
-
-    _this.handleMove = function (from, to) {
-      return function () {
-        return _this.move(from, to);
-      };
-    };
-
-    _this.insert = function (index, value) {
-      return _this.updateArrayField(function (array) {
-        return insert(array, index, value);
-      }, function (array) {
-        return insert(array, index, null);
-      }, function (array) {
-        return insert(array, index, null);
-      });
-    };
-
-    _this.handleInsert = function (index, value) {
-      return function () {
-        return _this.insert(index, value);
-      };
-    };
-
-    _this.replace = function (index, value) {
-      return _this.updateArrayField(function (array) {
-        return replace(array, index, value);
-      }, false, false);
-    };
-
-    _this.handleReplace = function (index, value) {
-      return function () {
-        return _this.replace(index, value);
-      };
-    };
-
-    _this.unshift = function (value) {
-      var length = -1;
-
-      _this.updateArrayField(function (array) {
-        var arr = array ? [value].concat(array) : [value];
-
-        if (length < 0) {
-          length = arr.length;
-        }
-
-        return arr;
-      }, function (array) {
-        var arr = array ? [null].concat(array) : [null];
-
-        if (length < 0) {
-          length = arr.length;
-        }
-
-        return arr;
-      }, function (array) {
-        var arr = array ? [null].concat(array) : [null];
-
-        if (length < 0) {
-          length = arr.length;
-        }
-
-        return arr;
-      });
-
-      return length;
-    };
-
-    _this.handleUnshift = function (value) {
-      return function () {
-        return _this.unshift(value);
-      };
-    };
-
-    _this.handleRemove = function (index) {
-      return function () {
-        return _this.remove(index);
-      };
-    };
-
-    _this.handlePop = function () {
-      return function () {
-        return _this.pop();
-      };
-    }; // We need TypeScript generics on these, so we'll bind them in the constructor
-    // @todo Fix TS 3.2.1
-
-
-    _this.remove = _this.remove.bind(_assertThisInitialized(_this));
-    _this.pop = _this.pop.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  var _proto = FieldArrayInner.prototype;
-
-  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
-    if (this.props.validateOnChange && this.props.formik.validateOnChange && !reactFastCompare(getIn(prevProps.formik.values, prevProps.name), getIn(this.props.formik.values, this.props.name))) {
-      this.props.formik.validateForm(this.props.formik.values);
-    }
-  };
-
-  _proto.remove = function remove(index) {
-    // We need to make sure we also remove relevant pieces of `touched` and `errors`
-    var result;
-    this.updateArrayField( // so this gets call 3 times
-    function (array) {
-      var copy = array ? copyArrayLike(array) : [];
-
-      if (!result) {
-        result = copy[index];
-      }
-
-      if (isFunction(copy.splice)) {
-        copy.splice(index, 1);
-      }
-
-      return copy;
-    }, true, true);
-    return result;
-  };
-
-  _proto.pop = function pop() {
-    // Remove relevant pieces of `touched` and `errors` too!
-    var result;
-    this.updateArrayField( // so this gets call 3 times
-    function (array) {
-      var tmp = array;
-
-      if (!result) {
-        result = tmp && tmp.pop && tmp.pop();
-      }
-
-      return tmp;
-    }, true, true);
-    return result;
-  };
-
-  _proto.render = function render() {
-    var arrayHelpers = {
-      push: this.push,
-      pop: this.pop,
-      swap: this.swap,
-      move: this.move,
-      insert: this.insert,
-      replace: this.replace,
-      unshift: this.unshift,
-      remove: this.remove,
-      handlePush: this.handlePush,
-      handlePop: this.handlePop,
-      handleSwap: this.handleSwap,
-      handleMove: this.handleMove,
-      handleInsert: this.handleInsert,
-      handleReplace: this.handleReplace,
-      handleUnshift: this.handleUnshift,
-      handleRemove: this.handleRemove
-    };
-
-    var _this$props2 = this.props,
-        component = _this$props2.component,
-        render = _this$props2.render,
-        children = _this$props2.children,
-        name = _this$props2.name,
-        _this$props2$formik = _this$props2.formik,
-        restOfFormik = _objectWithoutPropertiesLoose$1(_this$props2$formik, ["validate", "validationSchema"]);
-
-    var props = _extends$1({}, arrayHelpers, {
-      form: restOfFormik,
-      name: name
-    });
-
-    return component ? createElement$1(component, props) : render ? render(props) : children // children come last, always called
-    ? typeof children === 'function' ? children(props) : !isEmptyChildren(children) ? Children.only(children) : null : null;
-  };
-
-  return FieldArrayInner;
-}(Component$1);
-
-FieldArrayInner.defaultProps = {
-  validateOnChange: true
-};
-
-_objectSpread2$1({}, propTypes);
-_objectSpread2$1({}, defaultProps$1);
-
-var _excluded$k = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onChange", "onBlur", "name"];
-var HookFormTextField = /*#__PURE__*/React__default.forwardRef(function (_ref, ref) {
-  var label = _ref.label,
-      leftIcon = _ref.leftIcon,
-      size = _ref.size,
-      dropDown = _ref.dropDown,
-      rightIcon = _ref.rightIcon,
-      errorMessage = _ref.errorMessage,
-      inputClassName = _ref.inputClassName,
-      className = _ref.className;
-      _ref.isHookForm;
-      _ref.isFormik;
-      var onChange = _ref.onChange,
-      onBlur = _ref.onBlur,
-      name = _ref.name,
-      props = _objectWithoutProperties(_ref, _excluded$k);
-
-  var generateInputFieldClasses = classNames({
-    "ui-text-field__input": true,
-    "has-error": errorMessage,
-    "has-left-icon": leftIcon,
-    "has-right-icon": dropDown || rightIcon
-  }, inputClassName);
-  var wrapperClasses = classNames(["size__".concat(size), "ui-text-field__wrapper"], className);
-  return /*#__PURE__*/React__default.createElement(Box, {
-    className: wrapperClasses
-  }, /*#__PURE__*/React__default.createElement(Box, {
-    is: "label"
-  }, /*#__PURE__*/React__default.createElement(Text$1, {
-    className: "ui-text-field__label",
-    scale: "subhead"
-  }, label)), /*#__PURE__*/React__default.createElement(Box, {
-    className: "ui-text-field__input-wrapper"
-  }, leftIcon && /*#__PURE__*/React__default.createElement(Icon, {
-    icon: leftIcon,
-    className: "ui-text-field__left-icon"
-  }), /*#__PURE__*/React__default.createElement(Box, _extends$2({
-    className: generateInputFieldClasses,
-    is: "input"
-  }, props, {
-    ref: ref,
-    onChange: onChange,
-    onBlur: onBlur,
-    name: name
-  })), (dropDown || rightIcon) && /*#__PURE__*/React__default.createElement(Icon, {
-    icon: dropDown ? ChevronFilledDown : rightIcon,
-    className: "ui-text-field__right-icon"
-  })), errorMessage && /*#__PURE__*/React__default.createElement(Box, {
-    className: "ui-text-field__error"
-  }, /*#__PURE__*/React__default.createElement(Icon, {
-    icon: Error$1,
-    className: "ui-text-field__error-icon"
-  }), /*#__PURE__*/React__default.createElement(Text$1, {
-    className: "ui-text-field__error-text",
-    scale: "subhead",
-    fontFace: "circularSTD"
-  }, errorMessage)));
-});
-HookFormTextField.propTypes = _objectSpread2$1({}, propTypes);
-HookFormTextField.defaultProps = _objectSpread2$1({}, defaultProps$1);
-
-var _excluded$j = ["options", "onChange", "returnObjModel"];
-
-var Dropdown = function Dropdown(_ref) {
-  var options = _ref.options,
-      onChange = _ref.onChange,
-      returnObjModel = _ref.returnObjModel,
-      props = _objectWithoutProperties(_ref, _excluded$j);
-
-  var _useState = useState(""),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      inputValue = _useState2[0],
-      setInputValue = _useState2[1];
-
-  var _useState3 = useState(false),
-      _useState4 = _slicedToArray$1(_useState3, 2),
-      showOptions = _useState4[0],
-      setShowOptions = _useState4[1];
-
-  var _useState5 = useState([]),
-      _useState6 = _slicedToArray$1(_useState5, 2),
-      computedOptions = _useState6[0],
-      setComputedOptions = _useState6[1];
-
-  var _useState7 = useState(-1),
-      _useState8 = _slicedToArray$1(_useState7, 2),
-      selectedIndex = _useState8[0],
-      setSelectedIndex = _useState8[1];
-
-  var _useState9 = useState(null),
-      _useState10 = _slicedToArray$1(_useState9, 2),
-      selectedOption = _useState10[0],
-      setSelectedOption = _useState10[1];
-
-  var _useState11 = useState(true),
-      _useState12 = _slicedToArray$1(_useState11, 2),
-      isBlur = _useState12[0],
-      setIsBlur = _useState12[1];
-
-  var returnOptionText = function returnOptionText(option) {
-    return _typeof$B(option) === "object" ? option.text : option;
-  };
-
-  useEffect(function () {
-    if (selectedOption) {
-      if (inputValue !== returnOptionText(selectedOption)) {
-        setSelectedOption(null);
-      }
-    } else {
-      if (inputValue) {
-        setComputedOptions(_toConsumableArray(options).filter(function (option) {
-          if (typeof option === "string") {
-            return option.toLowerCase().includes(inputValue.toLowerCase());
-          } else {
-            return option.text.toLowerCase().includes(inputValue.toLowerCase());
-          }
-        }));
-      } else {
-        setComputedOptions(_toConsumableArray(options));
-      }
-    }
-  }, [options, inputValue, selectedOption]);
-  useEffect(function () {
-    if (onChange && typeof onChange === "function") {
-      onChange(returnObjModel ? selectedOption : selectedOption === null || selectedOption === void 0 ? void 0 : selectedOption.value);
-    }
-  }, [selectedOption]);
-  useEffect(function () {
-    if (isBlur && !selectedOption) {
-      var exactMatch = false;
-
-      var _iterator = _createForOfIteratorHelper$1(computedOptions),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var option = _step.value;
-
-          if (typeof option === "string") {
-            if (option.toLowerCase() === inputValue.toLowerCase()) {
-              exactMatch = true;
-              setInputValue(option);
-              setSelectedOption(option);
-              break;
-            }
-          } else {
-            if (option.text.toLowerCase() === inputValue.toLowerCase()) {
-              exactMatch = true;
-              setInputValue(option.text);
-              setSelectedOption(option);
-              break;
-            }
-          }
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-
-      if (!exactMatch) {
-        setInputValue("");
-        setSelectedOption(null);
-      }
-    }
-  }, [isBlur]);
-
-  var handleFocus = function handleFocus() {
-    setIsBlur(false);
-    setShowOptions(true);
-  };
-
-  var handleBlur = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      return _regeneratorRuntime().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              setIsBlur(true);
-              setTimeout(function () {
-                setShowOptions(false);
-              }, 300);
-
-            case 2:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-
-    return function handleBlur() {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-
-  var handleClickedOption = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(option) {
-      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              if (typeof option === "string") {
-                setInputValue(option);
-              } else {
-                setInputValue(option.text);
-              }
-
-              setSelectedOption(option);
-              setTimeout(function () {
-                setShowOptions(false);
-              }, 300);
-
-            case 3:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2);
-    }));
-
-    return function handleClickedOption(_x) {
-      return _ref3.apply(this, arguments);
-    };
-  }();
-
-  var handleLeave = function handleLeave(e) {
-    if (!e.target.closest(".ui-dropdown")) {
-      handleBlur();
-    }
-  };
-
-  var handleKeyDown = function handleKeyDown(e) {
-    switch (e.key) {
-      case "ArrowDown":
-        if (selectedIndex + 1 <= computedOptions.length - 1) setSelectedIndex(selectedIndex + 1);else setSelectedIndex(0);
-        break;
-
-      case "ArrowUp":
-        if (selectedIndex - 1 >= 0) setSelectedIndex(selectedIndex - 1);else setSelectedIndex(computedOptions.length - 1);
-        break;
-
-      case "Enter":
-        handleClickedOption(computedOptions[selectedIndex]);
-        break;
-
-      case "Escape":
-        handleBlur();
-        e.target.blur();
-        break;
-    }
-  };
-
-  useEffect(function () {
-    window.addEventListener("click", handleLeave);
-    return function () {
-      window.removeEventListener("click", handleLeave);
-    };
-  }, []);
-  var mappedComputedOptions = computedOptions.map(function (option, index) {
-    return /*#__PURE__*/React__default.createElement(Box, {
-      className: classNames({
-        "ui-dropdown__option": true,
-        active: selectedIndex === index
-      }),
-      onMouseEnter: function onMouseEnter() {
-        return setSelectedIndex(index);
-      },
-      onClick: function onClick() {
-        return handleClickedOption(option);
-      },
-      key: "option-".concat(index)
-    }, _typeof$B(option) === "object" && option.icon && /*#__PURE__*/React__default.createElement(Box, {
-      className: "ui-dropdown__icon"
-    }, /*#__PURE__*/React__default.createElement(Box, {
-      is: "img",
-      alt: option.text,
-      src: option.icon
-    })), /*#__PURE__*/React__default.createElement(Text$1, {
-      marginY: 0,
-      scale: "subhead",
-      fontFace: "circularSTD"
-    }, typeof option === "string" ? option : option.text));
-  });
-  return /*#__PURE__*/React__default.createElement(Box, {
-    className: "ui-dropdown"
-  }, /*#__PURE__*/React__default.createElement(TextField, _extends$2({
-    dropDown: true
-  }, props, {
-    value: inputValue,
-    onKeyDown: handleKeyDown,
-    onFocus: handleFocus,
-    onBlur: handleBlur,
-    onChange: function onChange(e) {
-      return setInputValue(e.target.value);
-    },
-    onRightIconClick: function onRightIconClick() {
-      return setShowOptions(!showOptions);
-    }
-  })), showOptions && /*#__PURE__*/React__default.createElement(Box, {
-    className: "ui-dropdown__options"
-  }, mappedComputedOptions));
-};
-Dropdown.defaultProps = _objectSpread2$1({}, defaultProps$2);
-Dropdown.propTypes = _objectSpread2$1(_objectSpread2$1({}, inputPropTypes), {}, {
-  options: propTypes$1.exports.array,
-  returnObjModel: propTypes$1.exports.bool,
-  onChange: propTypes$1.exports.func
-});
 
 var Portal = function Portal(_ref) {
   var children = _ref.children,
@@ -35699,7 +63258,7 @@ PhoneField.defaultProps = {
   size: "medium"
 };
 
-var _excluded$f = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "options", "className"];
+var _excluded$f = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "options", "className", "placeholder"];
 
 var SelectField = function SelectField(_ref) {
   var label = _ref.label,
@@ -35711,6 +63270,7 @@ var SelectField = function SelectField(_ref) {
       inputClassName = _ref.inputClassName,
       options = _ref.options,
       className = _ref.className,
+      placeholder = _ref.placeholder,
       props = _objectWithoutProperties(_ref, _excluded$f);
 
   var generateInputFieldClasses = classNames({
@@ -35746,7 +63306,9 @@ var SelectField = function SelectField(_ref) {
   }), /*#__PURE__*/React__default.createElement(Box, _extends$2({
     className: generateInputFieldClasses,
     is: "select"
-  }, props), mappedOptions), /*#__PURE__*/React__default.createElement(Icon, {
+  }, props), placeholder && /*#__PURE__*/React__default.createElement("option", {
+    value: ""
+  }, placeholder), mappedOptions), /*#__PURE__*/React__default.createElement(Icon, {
     icon: ChevronFilledDown,
     className: "ui-text-field__right-icon"
   })), errorMessage && /*#__PURE__*/React__default.createElement("div", {
@@ -35764,11 +63326,13 @@ SelectField.propTypes = {
   label: propTypes$1.exports.string,
   dropDown: propTypes$1.exports.bool,
   size: propTypes$1.exports.oneOf(["small", "medium", "large", "xlarge", "huge", "massive"]),
-  options: propTypes$1.exports.array
+  options: propTypes$1.exports.array,
+  placeholder: propTypes$1.exports.string
 };
 SelectField.defaultProps = {
   size: "medium",
-  options: ["Item 1", "Item 2", "item 3"]
+  options: ["Item 1", "Item 2", "item 3"],
+  placeholder: "Enter a value here"
 };
 
 var _excluded$e = ["label", "colorScheme", "disabled", "className"];
@@ -50364,4 +77928,4 @@ Toast.defaultProps = {
   position: "top-right"
 };
 
-export { Accordion, AddBookmark as AddBookmarkIcon, AddCircle as AddCircleIcon, AddFile as AddFileIcon, Add as AddIcon, AddItem as AddItemIcon, AddUser as AddUserIcon, Alarm as AlarmIcon, Alert, Announce as AnnounceIcon, Apps as AppsIcon, ArrowDown as ArrowDownIcon, ArrowDownLeft as ArrowDownLeftIcon, ArrowDownRight as ArrowDownRightIcon, ArrowLeft as ArrowLeftIcon, ArrowRight as ArrowRightIcon, ArrowUp as ArrowUpIcon, ArrowUpLeft as ArrowUpLeftIcon, ArrowUpRight as ArrowUpRightIcon, Attachment as AttachmentIcon, Avatar, Avatar$1 as AvatarIcon, Backward as BackwardIcon, Badge, Bank as BankIcon, Banner, BarChart as BarChartIcon, Basket as BasketIcon, BendLeft as BendLeftIcon, BendRight as BendRightIcon, Bolt as BoltIcon, Book as BookIcon, Bookmark as BookmarkIcon, Box, Briefcase as BriefcaseIcon, Button, Calendar as CalendarIcon, Camera as CameraIcon, Card, Card$1 as CardIcon, CardInputField, Cart as CartIcon, Cash as CashIcon, CenterAlign as CenterAlignIcon, Certificate2 as Certificate2Icon, Certificate as CertificateIcon, Chart as ChartIcon, CheckCircle as CheckCircleIcon, Check as CheckIcon, Checkbox, ChevronArrowDown as ChevronArrowDownIcon, ChevronArrowLeft as ChevronArrowLeftIcon, ChevronArrowRight as ChevronArrowRightIcon, ChevronArrowUp as ChevronArrowUpIcon, ChevronFilledDown as ChevronFilledDownIcon, ChevronFilledLeft as ChevronFilledLeftIcon, ChevronFilledRight as ChevronFilledRightIcon, ChevronFilledUp as ChevronFilledUpIcon, Circle as CircleIcon, CloseCircle as CloseCircleIcon, Close as CloseIcon, CloudDownload as CloudDownloadIcon, CloudFlash as CloudFlashIcon, Cloud as CloudIcon, CloudRain as CloudRainIcon, CloudUpload as CloudUploadIcon, Command as CommandIcon, Company as CompanyIcon, Compass as CompassIcon, Compress2 as Compress2Icon, Compress as CompressIcon, Component as CopyIcon, Counter, Crop as CropIcon, Crown as CrownIcon, Cut as CutIcon, DatePickerField as DatePicker, DebitCard, DebitBalance as DebitCardBalance, Decrease2 as Decrease2Icon, Decrease as DecreaseIcon, Delete as DeleteIcon, Deposits as DepositsIcon, Details as DetailsIcon, Dial as DialIcon, DialOff as DialOffIcon, Disabled as DisabledIcon, Dislike as DislikeIcon, Document as DocumentIcon, DoubleCheck as DoubleCheckIcon, Download as DownloadIcon, Drop as DropIcon, Dropdown, Edit2 as Edit2Icon, Edit as EditIcon, ErrorCircle as ErrorCircleIcon, Error$1 as ErrorIcon, ExitFullScreen as ExitFullScreenIcon, Expand2 as Expand2Icon, Expand as ExpandIcon, ExternalLink as ExternalLinkIcon, Eye as EyeIcon, EyeOff as EyeOffIcon, File as FileIcon, Filter as FilterIcon, Flag as FlagIcon, Flame as FlameIcon, Flash as FlashIcon, Folder as FolderIcon, Forward as ForwardIcon, FullScreen as FullScreenIcon, Funnel as FunnelIcon, Gem as GemIcon, Gift as GiftIcon, Gitlab as GitlabIcon, Globe as GlobeIcon, Grid as GridIcon, Heading, HeartFilled as HeartFilledIcon, Heart as HeartIcon, Home as HomeIcon, Icon, Image as ImageIcon, Inbox as InboxIcon, Increase2 as Increase2Icon, Increase as IncreaseIcon, Info as InfoIcon, InfoOutline as InfoOutlineIcon, JustifyAlign as JustifyAlignIcon, Key as KeyIcon, LeftAlign as LeftAlignIcon, Like as LikeIcon, Link as LinkIcon, List2 as List2Icon, List as ListIcon, Location2 as Location2Icon, Location3 as Location3Icon, Location as LocationIcon, Lock as LockIcon, Login2 as Login2Icon, Login as LoginIcon, Logout2 as Logout2Icon, Logout as LogoutIcon, Map$2 as MapIcon, Menu2 as Menu2Icon, Menu3 as Menu3Icon, Menu4 as Menu4Icon, Menu5 as Menu5Icon, Menu6 as Menu6Icon, Menu7 as Menu7Icon, Menu8 as Menu8Icon, MenuH as MenuHIcon, Menu as MenuIcon, MenuV as MenuVIcon, Message as MessageIcon, Mic as MicIcon, MicOff as MicOffIcon, Modal, Moon as MoonIcon, Move as MoveIcon, Music as MusicIcon, Mute as MuteIcon, Network as NetworkIcon, Next as NextIcon, NotificationBell as NotificationBellIcon, Pagination, Pause as PauseIcon, PhoneField, Pie as PieIcon, Pin as PinIcon, PlayCircle as PlayCircleIcon, Power as PowerIcon, Previous as PreviousIcon, Print as PrintIcon, Profile as ProfileIcon, Pulse as PulseIcon, Radio, Refresh as RefreshIcon, Reload as ReloadIcon, RightAlign as RightAlignIcon, Rocket as RocketIcon, RotateLeft as RotateLeftIcon, RotateRight as RotateRightIcon, ScanCard as ScanCardIcon, Scroll as ScrollIcon, Search as SearchIcon, SelectField, SelectItem as SelectItemIcon, Send as SendIcon, Settings as SettingsIcon, Share as ShareIcon, Shield as ShieldCheckIcon, ShieldFlash as ShieldFlashIcon, Shield$1 as ShieldIcon, Shop as ShopIcon, Sort2 as Sort2Icon, SortAscending as SortAscendingIcon, SortDescending as SortDescendingIcon, Sort as SortIcon, Sound as SoundIcon, Stack$1 as StackIcon, Staff as StaffIcon, Star as StarIcon, StopCircle as StopCircleIcon, Stopwatch as StopwatchIcon, Sun as SunIcon, Support as SupportIcon, Switch, Tab, Table, Table$1 as TableIcon, TagDropdown, Tag as TagIcon, TagInput, Text$1 as Text, TextArea, TextField, Text as TextIconIcon, Time as TimeIcon, Toast, Transfer as TransferIcon, Trophy as TrophyIcon, Unlock as UnlockIcon, Upload as UploadIcon, VerticalArrows as VerticalArrowsIcon, Video as VideoIcon, VideoOff as VideoOffIcon, Voucher as VoucherIcon, Wallet as WalletIcon, Warning as WarningIcon, Wave as WaveIcon, Withdraw as WithdrawIcon, getTextColor, hexToRgbA };
+export { Accordion, AddBookmark as AddBookmarkIcon, AddCircle as AddCircleIcon, AddFile as AddFileIcon, Add as AddIcon, AddItem as AddItemIcon, AddUser as AddUserIcon, Alarm as AlarmIcon, Alert, Announce as AnnounceIcon, Apps as AppsIcon, ArrowDown as ArrowDownIcon, ArrowDownLeft as ArrowDownLeftIcon, ArrowDownRight as ArrowDownRightIcon, ArrowLeft as ArrowLeftIcon, ArrowRight as ArrowRightIcon, ArrowUp as ArrowUpIcon, ArrowUpLeft as ArrowUpLeftIcon, ArrowUpRight as ArrowUpRightIcon, Attachment as AttachmentIcon, Avatar, Avatar$1 as AvatarIcon, Backward as BackwardIcon, Badge, Bank as BankIcon, Banner, BarChart as BarChartIcon, Basket as BasketIcon, BendLeft as BendLeftIcon, BendRight as BendRightIcon, Bolt as BoltIcon, Book as BookIcon, Bookmark as BookmarkIcon, Box, Briefcase as BriefcaseIcon, Button, Calendar as CalendarIcon, Camera as CameraIcon, Card, Card$1 as CardIcon, CardInputField, Cart as CartIcon, Cash as CashIcon, CenterAlign as CenterAlignIcon, Certificate2 as Certificate2Icon, Certificate as CertificateIcon, Chart as ChartIcon, CheckCircle as CheckCircleIcon, Check as CheckIcon, Checkbox, ChevronArrowDown as ChevronArrowDownIcon, ChevronArrowLeft as ChevronArrowLeftIcon, ChevronArrowRight as ChevronArrowRightIcon, ChevronArrowUp as ChevronArrowUpIcon, ChevronFilledDown as ChevronFilledDownIcon, ChevronFilledLeft as ChevronFilledLeftIcon, ChevronFilledRight as ChevronFilledRightIcon, ChevronFilledUp as ChevronFilledUpIcon, Circle as CircleIcon, CloseCircle as CloseCircleIcon, Close as CloseIcon, CloudDownload as CloudDownloadIcon, CloudFlash as CloudFlashIcon, Cloud as CloudIcon, CloudRain as CloudRainIcon, CloudUpload as CloudUploadIcon, Command as CommandIcon, Company as CompanyIcon, Compass as CompassIcon, Compress2 as Compress2Icon, Compress as CompressIcon, Component as CopyIcon, Counter, CountryDropdown, Crop as CropIcon, Crown as CrownIcon, Cut as CutIcon, DatePickerField as DatePicker, DebitCard, DebitBalance as DebitCardBalance, Decrease2 as Decrease2Icon, Decrease as DecreaseIcon, Delete as DeleteIcon, Deposits as DepositsIcon, Details as DetailsIcon, Dial as DialIcon, DialOff as DialOffIcon, Disabled as DisabledIcon, Dislike as DislikeIcon, Document as DocumentIcon, DoubleCheck as DoubleCheckIcon, Download as DownloadIcon, Drop as DropIcon, Dropdown, Edit2 as Edit2Icon, Edit as EditIcon, ErrorCircle as ErrorCircleIcon, Error$1 as ErrorIcon, ExitFullScreen as ExitFullScreenIcon, Expand2 as Expand2Icon, Expand as ExpandIcon, ExternalLink as ExternalLinkIcon, Eye as EyeIcon, EyeOff as EyeOffIcon, File as FileIcon, Filter as FilterIcon, Flag as FlagIcon, Flame as FlameIcon, Flash as FlashIcon, Folder as FolderIcon, Forward as ForwardIcon, FullScreen as FullScreenIcon, Funnel as FunnelIcon, Gem as GemIcon, Gift as GiftIcon, Gitlab as GitlabIcon, Globe as GlobeIcon, Grid as GridIcon, Heading, HeartFilled as HeartFilledIcon, Heart as HeartIcon, Home as HomeIcon, Icon, Image as ImageIcon, Inbox as InboxIcon, Increase2 as Increase2Icon, Increase as IncreaseIcon, Info as InfoIcon, InfoOutline as InfoOutlineIcon, JustifyAlign as JustifyAlignIcon, Key as KeyIcon, LeftAlign as LeftAlignIcon, Like as LikeIcon, Link as LinkIcon, List2 as List2Icon, List as ListIcon, Location2 as Location2Icon, Location3 as Location3Icon, Location as LocationIcon, Lock as LockIcon, Login2 as Login2Icon, Login as LoginIcon, Logout2 as Logout2Icon, Logout as LogoutIcon, Map$2 as MapIcon, Menu2 as Menu2Icon, Menu3 as Menu3Icon, Menu4 as Menu4Icon, Menu5 as Menu5Icon, Menu6 as Menu6Icon, Menu7 as Menu7Icon, Menu8 as Menu8Icon, MenuH as MenuHIcon, Menu as MenuIcon, MenuV as MenuVIcon, Message as MessageIcon, Mic as MicIcon, MicOff as MicOffIcon, Modal, Moon as MoonIcon, Move as MoveIcon, Music as MusicIcon, Mute as MuteIcon, Network as NetworkIcon, Next as NextIcon, NotificationBell as NotificationBellIcon, Pagination, Pause as PauseIcon, PhoneField, Pie as PieIcon, Pin as PinIcon, PlayCircle as PlayCircleIcon, Power as PowerIcon, Previous as PreviousIcon, Print as PrintIcon, Profile as ProfileIcon, Pulse as PulseIcon, Radio, Refresh as RefreshIcon, Reload as ReloadIcon, RightAlign as RightAlignIcon, Rocket as RocketIcon, RotateLeft as RotateLeftIcon, RotateRight as RotateRightIcon, ScanCard as ScanCardIcon, Scroll as ScrollIcon, Search as SearchIcon, SelectField, SelectItem as SelectItemIcon, Send as SendIcon, Settings as SettingsIcon, Share as ShareIcon, Shield as ShieldCheckIcon, ShieldFlash as ShieldFlashIcon, Shield$1 as ShieldIcon, Shop as ShopIcon, Sort2 as Sort2Icon, SortAscending as SortAscendingIcon, SortDescending as SortDescendingIcon, Sort as SortIcon, Sound as SoundIcon, Stack$1 as StackIcon, Staff as StaffIcon, Star as StarIcon, StopCircle as StopCircleIcon, Stopwatch as StopwatchIcon, Sun as SunIcon, Support as SupportIcon, Switch, Tab, Table, Table$1 as TableIcon, TagDropdown, Tag as TagIcon, TagInput, Text$1 as Text, TextArea, TextField, Text as TextIconIcon, Time as TimeIcon, Toast, Transfer as TransferIcon, Trophy as TrophyIcon, Unlock as UnlockIcon, Upload as UploadIcon, VerticalArrows as VerticalArrowsIcon, Video as VideoIcon, VideoOff as VideoOffIcon, Voucher as VoucherIcon, Wallet as WalletIcon, Warning as WarningIcon, Wave as WaveIcon, Withdraw as WithdrawIcon, getTextColor, hexToRgbA };

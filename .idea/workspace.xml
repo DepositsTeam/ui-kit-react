@@ -8,21 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/country-dropdown/CountryDropdown.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/country-dropdown/CountryDropdown.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/country-dropdown/CountryDropdown.stories.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/country-dropdown/countries_states_cities.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/country-dropdown/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dropdown/Dropdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dropdown/Dropdown.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dropdown/Dropdown.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dropdown/Dropdown.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/select-field/SelectField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select-field/SelectField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/select-field/SelectField.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select-field/SelectField.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/TextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -352,7 +339,7 @@
       <workItem from="1669229164112" duration="9645000" />
       <workItem from="1669283543369" duration="15748000" />
       <workItem from="1669312421811" duration="11280000" />
-      <workItem from="1669340525049" duration="2968000" />
+      <workItem from="1669340525049" duration="3095000" />
     </task>
     <servers />
   </component>

@@ -4,7 +4,7 @@ import scss from "rollup-plugin-scss";
 import svg from "rollup-plugin-svg-import";
 import resolve from "@rollup/plugin-node-resolve";
 import external from "rollup-plugin-peer-deps-external";
-import { terser } from "rollup-plugin-terser";
+import json from "@rollup/plugin-json";
 import packageJSON from "./package.json";
 
 const input = "./src/index.js";
@@ -23,6 +23,7 @@ export default [
         exclude: "node_modules/**",
         presets: ["@babel/env", "@babel/preset-react"],
       }),
+      json(),
       commonjs(),
       babel({
         exclude: "node_modules/**",
@@ -52,6 +53,7 @@ export default [
         exclude: "node_modules/**",
         presets: ["@babel/env", "@babel/preset-react"],
       }),
+      json(),
       commonjs(),
       babel({
         exclude: "node_modules/**",
@@ -77,6 +79,7 @@ export default [
         exclude: "node_modules/**",
         presets: ["@babel/env", "@babel/preset-react"],
       }),
+      json(),
       commonjs(),
       babel({
         exclude: "node_modules/**",

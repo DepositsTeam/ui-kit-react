@@ -1822,6 +1822,13 @@
     "magic-string" "^0.25.7"
     "resolve" "^1.17.0"
 
+"@rollup/plugin-json@^5.0.1":
+  "integrity" "sha512-QCwhZZLvM8nRcTHyR1vOgyTMiAnjiNj1ebD/BMRvbO1oc/z14lZH6PfxXeegee2B6mky/u9fia4fxRM4TqrUaw=="
+  "resolved" "https://registry.npmjs.org/@rollup/plugin-json/-/plugin-json-5.0.1.tgz"
+  "version" "5.0.1"
+  dependencies:
+    "@rollup/pluginutils" "^5.0.1"
+
 "@rollup/plugin-node-resolve@^11.2.1":
   "integrity" "sha512-yc2n43jcqVyGE2sqV5/YCmocy9ArjVAP/BeXyTtADTBBX6V0e5UMqwO8CdQ0kzjb6zu5P1qMzsScCMRvE9OlVg=="
   "resolved" "https://registry.npmjs.org/@rollup/plugin-node-resolve/-/plugin-node-resolve-11.2.1.tgz"
@@ -1870,6 +1877,15 @@
   dependencies:
     "estree-walker" "^2.0.1"
     "picomatch" "^2.2.2"
+
+"@rollup/pluginutils@^5.0.1":
+  "integrity" "sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA=="
+  "resolved" "https://registry.npmjs.org/@rollup/pluginutils/-/pluginutils-5.0.2.tgz"
+  "version" "5.0.2"
+  dependencies:
+    "@types/estree" "^1.0.0"
+    "estree-walker" "^2.0.2"
+    "picomatch" "^2.3.1"
 
 "@rushstack/eslint-patch@^1.1.0":
   "integrity" "sha512-LwzQKA4vzIct1zNZzBmRKI9QuNpLgTQMEjsQLf3BXuGYb3QPTP4Yjf6mkdX+X1mYttZ808QpOwAzZjv28kq7DA=="
@@ -3054,7 +3070,7 @@
     "@types/estree" "*"
     "@types/json-schema" "*"
 
-"@types/estree@*":
+"@types/estree@*", "@types/estree@^1.0.0":
   "integrity" "sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ=="
   "resolved" "https://registry.npmjs.org/@types/estree/-/estree-1.0.0.tgz"
   "version" "1.0.0"
@@ -6868,6 +6884,11 @@
   "version" "1.0.1"
 
 "estree-walker@^2.0.1":
+  "integrity" "sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w=="
+  "resolved" "https://registry.npmjs.org/estree-walker/-/estree-walker-2.0.2.tgz"
+  "version" "2.0.2"
+
+"estree-walker@^2.0.2":
   "integrity" "sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w=="
   "resolved" "https://registry.npmjs.org/estree-walker/-/estree-walker-2.0.2.tgz"
   "version" "2.0.2"
@@ -12822,7 +12843,7 @@
   dependencies:
     "estree-walker" "^0.6.1"
 
-"rollup@*", "rollup@^1.20.0 || ^2.0.0", "rollup@^1.20.0||^2.0.0", "rollup@^2.0.0", "rollup@^2.42.0", "rollup@^2.43.1", "rollup@^2.68.0", "rollup@^2.77.2", "rollup@>=0.60.0 <3", "rollup@>=1.0.0", "rollup@>=1.11.0", "rollup@>=1.12.0", "rollup@>=1.29.0 <3.0.0":
+"rollup@*", "rollup@^1.20.0 || ^2.0.0", "rollup@^1.20.0||^2.0.0", "rollup@^1.20.0||^2.0.0||^3.0.0", "rollup@^2.0.0", "rollup@^2.42.0", "rollup@^2.43.1", "rollup@^2.68.0", "rollup@^2.77.2", "rollup@>=0.60.0 <3", "rollup@>=1.0.0", "rollup@>=1.11.0", "rollup@>=1.12.0", "rollup@>=1.29.0 <3.0.0":
   "integrity" "sha512-m/4YzYgLcpMQbxX3NmAqDvwLATZzxt8bIegO78FZLl+lAgKJBd1DRAOeEiZcKOIOPjxE6ewHWHNgGEalFXuz1g=="
   "resolved" "https://registry.npmjs.org/rollup/-/rollup-2.77.2.tgz"
   "version" "2.77.2"

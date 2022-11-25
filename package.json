@@ -1,6 +1,6 @@
 {
   "name": "@deposits/ui-kit-react",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "A reusable suite of React components to make your development experience stellar. Inspired by the ui at Deposits - the future of Fintech",
   "keywords": [
     "deposits",
@@ -89,6 +89,7 @@
     "@lopatnov/rollup-plugin-uglify": "^2.1.2",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-json": "^5.0.1",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@storybook/addon-actions": "^6.5.10",
     "@storybook/addon-essentials": "^6.5.10",
