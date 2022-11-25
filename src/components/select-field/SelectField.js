@@ -20,6 +20,7 @@ const SelectField = ({
   inputClassName,
   options,
   className,
+  placeholder,
   ...props
 }) => {
   const generateInputFieldClasses = classNames(
@@ -70,6 +71,7 @@ const SelectField = ({
           <Icon icon={leftIcon} className={"ui-text-field__left-icon"} />
         )}
         <Box className={generateInputFieldClasses} is={"select"} {...props}>
+          {placeholder && <option value={""}>{placeholder}</option>}
           {mappedOptions}
         </Box>
 
@@ -108,9 +110,11 @@ SelectField.propTypes = {
     "massive",
   ]),
   options: PropTypes.array,
+  placeholder: PropTypes.string,
 };
 
 SelectField.defaultProps = {
   size: "medium",
   options: ["Item 1", "Item 2", "item 3"],
+  placeholder: "Enter a value here",
 };

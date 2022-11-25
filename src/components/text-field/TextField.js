@@ -40,8 +40,8 @@ const TextField = forwardRef(
       {
         "ui-text-field__input": true,
         "has-error": errorMessage,
-        "has-left-icon": leftIcon,
-        "has-right-icon": dropDown || rightIcon,
+        "has-left-icon": leftIcon || leftIconComponent,
+        "has-right-icon": dropDown || rightIcon || rightIconComponent,
         invisible,
         disabled,
         oneCharWide,
@@ -79,7 +79,12 @@ const TextField = forwardRef(
           {leftIcon && !leftIconComponent && (
             <Icon icon={leftIcon} className={"ui-text-field__left-icon"} />
           )}
-          {leftIconComponent}
+          {leftIconComponent && (
+            <Box className={"ui-text-field__left-icon"}>
+              {leftIconComponent}
+            </Box>
+          )}
+
           <Box className={generateInputFieldClasses} is={"input"} {...props} />
           {(dropDown || rightIcon) && !rightIconComponent && (
             <Icon

@@ -22,6 +22,9 @@ const Dropdown = ({ options, onChange, returnObjModel, ...props }) => {
     typeof option === "object" ? option.text : option;
 
   useEffect(() => {
+    if (!isBlur) {
+      setShowOptions(true);
+    }
     if (selectedOption) {
       if (inputValue !== returnOptionText(selectedOption)) {
         setSelectedOption(null);
@@ -43,7 +46,7 @@ const Dropdown = ({ options, onChange, returnObjModel, ...props }) => {
         setComputedOptions([...options]);
       }
     }
-  }, [options, inputValue, selectedOption]);
+  }, [options, inputValue, selectedOption, isBlur]);
 
   useEffect(() => {
     if (onChange && typeof onChange === "function") {
@@ -91,15 +94,17 @@ const Dropdown = ({ options, onChange, returnObjModel, ...props }) => {
   };
 
   const handleClickedOption = async (option) => {
-    if (typeof option === "string") {
-      setInputValue(option);
-    } else {
-      setInputValue(option.text);
+    if (option) {
+      if (typeof option === "string") {
+        setInputValue(option);
+      } else {
+        setInputValue(option.text);
+      }
+      setSelectedOption(option);
+      setTimeout(() => {
+        setShowOptions(false);
+      }, 300);
     }
-    setSelectedOption(option);
-    setTimeout(() => {
-      setShowOptions(false);
-    }, 300);
   };
 
   const handleLeave = (e) => {
@@ -147,9 +152,7 @@ const Dropdown = ({ options, onChange, returnObjModel, ...props }) => {
       key={`option-${index}`}
     >
       {typeof option === "object" && option.icon && (
-        <Box className={"ui-dropdown__icon"}>
-          <Box is={"img"} alt={option.text} src={option.icon} />
-        </Box>
+        <Box className={"ui-dropdown__icon"}>{option.icon}</Box>
       )}
       <Text marginY={0} scale={"subhead"} fontFace={"circularSTD"}>
         {typeof option === "string" ? option : option.text}
@@ -168,6 +171,7 @@ const Dropdown = ({ options, onChange, returnObjModel, ...props }) => {
         onBlur={handleBlur}
         onChange={(e) => setInputValue(e.target.value)}
         onRightIconClick={() => setShowOptions(!showOptions)}
+        leftIconComponent={selectedOption?.icon}
       />
       {showOptions && (
         <Box className={"ui-dropdown__options"}>{mappedComputedOptions}</Box>

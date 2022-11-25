@@ -33,6 +33,7 @@ const options = [
 export const Default = Template.bind({});
 Default.args = {
   options: [...options],
+  placeholder: "A simple placeholder",
   onChange(value) {
     console.log("New value is", value);
   },
