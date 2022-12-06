@@ -21,6 +21,7 @@ const SelectField = ({
   options,
   className,
   placeholder,
+  onChange,
   ...props
 }) => {
   const generateInputFieldClasses = classNames(
@@ -43,6 +44,12 @@ const SelectField = ({
     [`size__${size}`, "ui-text-field__wrapper"],
     className
   );
+
+  const handleChange = (e) => {
+    if (typeof onChange === "function") {
+      onChange(e.target.value);
+    }
+  };
 
   const mappedOptions = options.map((option) => (
     <option
@@ -70,7 +77,12 @@ const SelectField = ({
         {leftIcon && (
           <Icon icon={leftIcon} className={"ui-text-field__left-icon"} />
         )}
-        <Box className={generateInputFieldClasses} is={"select"} {...props}>
+        <Box
+          className={generateInputFieldClasses}
+          is={"select"}
+          onChange={handleChange}
+          {...props}
+        >
           {placeholder && <option value={""}>{placeholder}</option>}
           {mappedOptions}
         </Box>

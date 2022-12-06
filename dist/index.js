@@ -63258,7 +63258,7 @@ PhoneField.defaultProps = {
   size: "medium"
 };
 
-var _excluded$f = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "options", "className", "placeholder"];
+var _excluded$f = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "options", "className", "placeholder", "onChange"];
 
 var SelectField = function SelectField(_ref) {
   var label = _ref.label,
@@ -63271,6 +63271,7 @@ var SelectField = function SelectField(_ref) {
       options = _ref.options,
       className = _ref.className,
       placeholder = _ref.placeholder,
+      onChange = _ref.onChange,
       props = _objectWithoutProperties(_ref, _excluded$f);
 
   var generateInputFieldClasses = classNames({
@@ -63285,6 +63286,13 @@ var SelectField = function SelectField(_ref) {
     "has-error": errorMessage
   });
   var wrapperClasses = classNames(["size__".concat(size), "ui-text-field__wrapper"], className);
+
+  var handleChange = function handleChange(e) {
+    if (typeof onChange === "function") {
+      onChange(e.target.value);
+    }
+  };
+
   var mappedOptions = options.map(function (option) {
     return /*#__PURE__*/React__default.createElement("option", {
       key: keyGen(),
@@ -63305,7 +63313,8 @@ var SelectField = function SelectField(_ref) {
     className: "ui-text-field__left-icon"
   }), /*#__PURE__*/React__default.createElement(Box, _extends$2({
     className: generateInputFieldClasses,
-    is: "select"
+    is: "select",
+    onChange: handleChange
   }, props), placeholder && /*#__PURE__*/React__default.createElement("option", {
     value: ""
   }, placeholder), mappedOptions), /*#__PURE__*/React__default.createElement(Icon, {

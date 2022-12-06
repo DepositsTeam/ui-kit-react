@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SelectField from "./index";
 import Search from "../icons/Search";
 
@@ -8,6 +8,21 @@ export default {
 };
 
 const Template = (props) => <SelectField {...props} />;
+
+const TemplateWithVal = (props) => {
+  const [value, setValue] = useState("");
+
+  useEffect(() => {
+    alert(value);
+  }, [value]);
+
+  const changeValue = (val) => {
+    // alert(val);
+    setValue(val);
+  };
+
+  return <SelectField {...props} value={value} onChange={changeValue} />;
+};
 
 export const Default = Template.bind({});
 Default.args = {
@@ -103,4 +118,30 @@ SizeSmall.args = {
   dropDown: true,
   leftIcon: Search,
   size: "small",
+};
+
+export const Options = TemplateWithVal.bind({});
+Options.args = {
+  placeholder: "Select a value",
+  label: "Select Label",
+  dropDown: true,
+  leftIcon: Search,
+  options: [
+    {
+      text: "Option 1",
+      value: "option_1",
+    },
+    {
+      text: "Option 2",
+      value: "option_2",
+    },
+    {
+      text: "Option 3",
+      value: "option_3",
+    },
+    {
+      text: "Option 4",
+      value: "option_4",
+    },
+  ],
 };
