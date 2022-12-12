@@ -8,3 +8,8 @@ export default {
 const Template = (args) => <DebitCardBalance {...args} />;
 
 export const Default = Template.bind({});
+
+export const DisabledHiding = Template.bind({});
+DisabledHiding.args = {
+  enableHiding: false,
+};

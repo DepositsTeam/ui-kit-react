@@ -9,6 +9,12 @@ import {
 export const useDebitCard = (props) => {
   const [hidden, setHidden] = useState(true);
 
+  useEffect(() => {
+    if (!props.enableHiding) {
+      setHidden(false);
+    }
+  }, [props.enableHiding]);
+
   const computedCardNo = hidden
     ? formatCardNo(asteriskCardNo(props.cardNo))
     : formatCardNo(props.cardNo);
@@ -19,7 +25,11 @@ export const useDebitCard = (props) => {
 
   const cardBrand = `https://assets.ondeposits.com/img/debit-card-brands/svg/${props.brand}_light.svg`;
 
-  const toggleHidden = () => setHidden(!hidden);
+  const toggleHidden = () => {
+    if (props.enableHiding) {
+      setHidden(!hidden);
+    }
+  };
 
   return { computedCardNo, computedExp, computedCVV, toggleHidden, cardBrand };
 };

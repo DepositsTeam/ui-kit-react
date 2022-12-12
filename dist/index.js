@@ -62164,12 +62164,19 @@ var useDebitCard = function useDebitCard(props) {
     _useState2 = _slicedToArray$1(_useState, 2),
     hidden = _useState2[0],
     setHidden = _useState2[1];
+  useEffect(function () {
+    if (!props.enableHiding) {
+      setHidden(false);
+    }
+  }, [props.enableHiding]);
   var computedCardNo = hidden ? formatCardNo(asteriskCardNo(props.cardNo)) : formatCardNo(props.cardNo);
   var computedExp = hidden ? asteriskExp(props.exp) : props.exp;
   var computedCVV = hidden ? asteriskCvv(props.cvv) : props.cvv;
   var cardBrand = "https://assets.ondeposits.com/img/debit-card-brands/svg/".concat(props.brand, "_light.svg");
   var toggleHidden = function toggleHidden() {
-    return setHidden(!hidden);
+    if (props.enableHiding) {
+      setHidden(!hidden);
+    }
   };
   return {
     computedCardNo: computedCardNo,
@@ -62352,7 +62359,8 @@ DebitBalance.propTypes = {
   brand: propTypes$1.exports.oneOfType([propTypes$1.exports.string, propTypes$1.exports.oneOf(CardBrands)]),
   width: propTypes$1.exports.string,
   theme: propTypes$1.exports.oneOf(["light", "dark"]),
-  balance: propTypes$1.exports.oneOfType([propTypes$1.exports.string, propTypes$1.exports.number])
+  balance: propTypes$1.exports.oneOfType([propTypes$1.exports.string, propTypes$1.exports.number]),
+  enableHiding: propTypes$1.exports.bool
 };
 DebitBalance.defaultProps = {
   cardNo: "5399415874124589",
@@ -62363,7 +62371,8 @@ DebitBalance.defaultProps = {
   width: "336px",
   logo: "https://assets.ondeposits.com/img/logo/renapay/svg/logo_all_white.svg",
   theme: "light",
-  balance: "12568"
+  balance: "12568",
+  enableHiding: true
 };
 
 var useFilePicker = function useFilePicker(props, file) {

@@ -130,6 +130,7 @@ DebitBalance.propTypes = {
   width: PropTypes.string,
   theme: PropTypes.oneOf(["light", "dark"]),
   balance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  enableHiding: PropTypes.bool,
 };
 
 DebitBalance.defaultProps = {
@@ -142,4 +143,5 @@ DebitBalance.defaultProps = {
   logo: "https://assets.ondeposits.com/img/logo/renapay/svg/logo_all_white.svg",
   theme: "light",
   balance: "12568",
+  enableHiding: true,
 };
