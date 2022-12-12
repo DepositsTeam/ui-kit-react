@@ -3,19 +3,43 @@ import React__default, { useState, useEffect, useRef, forwardRef, createContext,
 import * as ReactDOM from 'react-dom';
 import ReactDOM__default, { findDOMNode, unstable_batchedUpdates } from 'react-dom';
 
+function _iterableToArrayLimit(arr, i) {
+  var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"];
+  if (null != _i) {
+    var _s,
+      _e,
+      _x,
+      _r,
+      _arr = [],
+      _n = !0,
+      _d = !1;
+    try {
+      if (_x = (_i = _i.call(arr)).next, 0 === i) {
+        if (Object(_i) !== _i) return;
+        _n = !1;
+      } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0);
+    } catch (err) {
+      _d = !0, _e = err;
+    } finally {
+      try {
+        if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return;
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+    return _arr;
+  }
+}
 function ownKeys$3(object, enumerableOnly) {
   var keys = Object.keys(object);
-
   if (Object.getOwnPropertySymbols) {
     var symbols = Object.getOwnPropertySymbols(object);
     enumerableOnly && (symbols = symbols.filter(function (sym) {
       return Object.getOwnPropertyDescriptor(object, sym).enumerable;
     })), keys.push.apply(keys, symbols);
   }
-
   return keys;
 }
-
 function _objectSpread2$1(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = null != arguments[i] ? arguments[i] : {};
@@ -25,25 +49,22 @@ function _objectSpread2$1(target) {
       Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
     });
   }
-
   return target;
 }
-
 function _regeneratorRuntime() {
-  /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
-
   _regeneratorRuntime = function () {
     return exports;
   };
-
   var exports = {},
-      Op = Object.prototype,
-      hasOwn = Op.hasOwnProperty,
-      $Symbol = "function" == typeof Symbol ? Symbol : {},
-      iteratorSymbol = $Symbol.iterator || "@@iterator",
-      asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator",
-      toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
-
+    Op = Object.prototype,
+    hasOwn = Op.hasOwnProperty,
+    defineProperty = Object.defineProperty || function (obj, key, desc) {
+      obj[key] = desc.value;
+    },
+    $Symbol = "function" == typeof Symbol ? Symbol : {},
+    iteratorSymbol = $Symbol.iterator || "@@iterator",
+    asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator",
+    toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
   function define(obj, key, value) {
     return Object.defineProperty(obj, key, {
       value: value,
@@ -52,7 +73,6 @@ function _regeneratorRuntime() {
       writable: !0
     }), obj[key];
   }
-
   try {
     define({}, "");
   } catch (err) {
@@ -60,54 +80,14 @@ function _regeneratorRuntime() {
       return obj[key] = value;
     };
   }
-
   function wrap(innerFn, outerFn, self, tryLocsList) {
     var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator,
-        generator = Object.create(protoGenerator.prototype),
-        context = new Context(tryLocsList || []);
-    return generator._invoke = function (innerFn, self, context) {
-      var state = "suspendedStart";
-      return function (method, arg) {
-        if ("executing" === state) throw new Error("Generator is already running");
-
-        if ("completed" === state) {
-          if ("throw" === method) throw arg;
-          return doneResult();
-        }
-
-        for (context.method = method, context.arg = arg;;) {
-          var delegate = context.delegate;
-
-          if (delegate) {
-            var delegateResult = maybeInvokeDelegate(delegate, context);
-
-            if (delegateResult) {
-              if (delegateResult === ContinueSentinel) continue;
-              return delegateResult;
-            }
-          }
-
-          if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) {
-            if ("suspendedStart" === state) throw state = "completed", context.arg;
-            context.dispatchException(context.arg);
-          } else "return" === context.method && context.abrupt("return", context.arg);
-          state = "executing";
-          var record = tryCatch(innerFn, self, context);
-
-          if ("normal" === record.type) {
-            if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue;
-            return {
-              value: record.arg,
-              done: context.done
-            };
-          }
-
-          "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg);
-        }
-      };
-    }(innerFn, self, context), generator;
+      generator = Object.create(protoGenerator.prototype),
+      context = new Context(tryLocsList || []);
+    return defineProperty(generator, "_invoke", {
+      value: makeInvokeMethod(innerFn, self, context)
+    }), generator;
   }
-
   function tryCatch(fn, obj, arg) {
     try {
       return {
@@ -121,25 +101,19 @@ function _regeneratorRuntime() {
       };
     }
   }
-
   exports.wrap = wrap;
   var ContinueSentinel = {};
-
   function Generator() {}
-
   function GeneratorFunction() {}
-
   function GeneratorFunctionPrototype() {}
-
   var IteratorPrototype = {};
   define(IteratorPrototype, iteratorSymbol, function () {
     return this;
   });
   var getProto = Object.getPrototypeOf,
-      NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+    NativeIteratorPrototype = getProto && getProto(getProto(values([])));
   NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype);
   var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype);
-
   function defineIteratorMethods(prototype) {
     ["next", "throw", "return"].forEach(function (method) {
       define(prototype, method, function (arg) {
@@ -147,14 +121,12 @@ function _regeneratorRuntime() {
       });
     });
   }
-
   function AsyncIterator(generator, PromiseImpl) {
     function invoke(method, arg, resolve, reject) {
       var record = tryCatch(generator[method], generator, arg);
-
       if ("throw" !== record.type) {
         var result = record.arg,
-            value = result.value;
+          value = result.value;
         return value && "object" == typeof value && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) {
           invoke("next", value, resolve, reject);
         }, function (err) {
@@ -165,90 +137,109 @@ function _regeneratorRuntime() {
           return invoke("throw", error, resolve, reject);
         });
       }
-
       reject(record.arg);
     }
-
     var previousPromise;
-
-    this._invoke = function (method, arg) {
-      function callInvokeWithMethodAndArg() {
-        return new PromiseImpl(function (resolve, reject) {
-          invoke(method, arg, resolve, reject);
-        });
+    defineProperty(this, "_invoke", {
+      value: function (method, arg) {
+        function callInvokeWithMethodAndArg() {
+          return new PromiseImpl(function (resolve, reject) {
+            invoke(method, arg, resolve, reject);
+          });
+        }
+        return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
       }
-
-      return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
+    });
+  }
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = "suspendedStart";
+    return function (method, arg) {
+      if ("executing" === state) throw new Error("Generator is already running");
+      if ("completed" === state) {
+        if ("throw" === method) throw arg;
+        return doneResult();
+      }
+      for (context.method = method, context.arg = arg;;) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+        if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) {
+          if ("suspendedStart" === state) throw state = "completed", context.arg;
+          context.dispatchException(context.arg);
+        } else "return" === context.method && context.abrupt("return", context.arg);
+        state = "executing";
+        var record = tryCatch(innerFn, self, context);
+        if ("normal" === record.type) {
+          if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue;
+          return {
+            value: record.arg,
+            done: context.done
+          };
+        }
+        "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg);
+      }
     };
   }
-
   function maybeInvokeDelegate(delegate, context) {
-    var method = delegate.iterator[context.method];
-
-    if (undefined === method) {
-      if (context.delegate = null, "throw" === context.method) {
-        if (delegate.iterator.return && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel;
-        context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method");
-      }
-
-      return ContinueSentinel;
-    }
-
+    var methodName = context.method,
+      method = delegate.iterator[methodName];
+    if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator.return && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel;
     var record = tryCatch(method, delegate.iterator, context.arg);
     if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel;
     var info = record.arg;
     return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel);
   }
-
   function pushTryEntry(locs) {
     var entry = {
       tryLoc: locs[0]
     };
     1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry);
   }
-
   function resetTryEntry(entry) {
     var record = entry.completion || {};
     record.type = "normal", delete record.arg, entry.completion = record;
   }
-
   function Context(tryLocsList) {
     this.tryEntries = [{
       tryLoc: "root"
     }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0);
   }
-
   function values(iterable) {
     if (iterable) {
       var iteratorMethod = iterable[iteratorSymbol];
       if (iteratorMethod) return iteratorMethod.call(iterable);
       if ("function" == typeof iterable.next) return iterable;
-
       if (!isNaN(iterable.length)) {
         var i = -1,
-            next = function next() {
-          for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next;
-
-          return next.value = undefined, next.done = !0, next;
-        };
-
+          next = function next() {
+            for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next;
+            return next.value = undefined, next.done = !0, next;
+          };
         return next.next = next;
       }
     }
-
     return {
       next: doneResult
     };
   }
-
   function doneResult() {
     return {
       value: undefined,
       done: !0
     };
   }
-
-  return GeneratorFunction.prototype = GeneratorFunctionPrototype, define(Gp, "constructor", GeneratorFunctionPrototype), define(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) {
+  return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", {
+    value: GeneratorFunctionPrototype,
+    configurable: !0
+  }), defineProperty(GeneratorFunctionPrototype, "constructor", {
+    value: GeneratorFunction,
+    configurable: !0
+  }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) {
     var ctor = "function" == typeof genFun && genFun.constructor;
     return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name));
   }, exports.mark = function (genFun) {
@@ -269,17 +260,15 @@ function _regeneratorRuntime() {
     return this;
   }), define(Gp, "toString", function () {
     return "[object Generator]";
-  }), exports.keys = function (object) {
-    var keys = [];
-
+  }), exports.keys = function (val) {
+    var object = Object(val),
+      keys = [];
     for (var key in object) keys.push(key);
-
     return keys.reverse(), function next() {
       for (; keys.length;) {
         var key = keys.pop();
         if (key in object) return next.value = key, next.done = !1, next;
       }
-
       return next.done = !0, next;
     };
   }, exports.values = values, Context.prototype = {
@@ -296,20 +285,16 @@ function _regeneratorRuntime() {
     dispatchException: function (exception) {
       if (this.done) throw exception;
       var context = this;
-
       function handle(loc, caught) {
         return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught;
       }
-
       for (var i = this.tryEntries.length - 1; i >= 0; --i) {
         var entry = this.tryEntries[i],
-            record = entry.completion;
+          record = entry.completion;
         if ("root" === entry.tryLoc) return handle("end");
-
         if (entry.tryLoc <= this.prev) {
           var hasCatch = hasOwn.call(entry, "catchLoc"),
-              hasFinally = hasOwn.call(entry, "finallyLoc");
-
+            hasFinally = hasOwn.call(entry, "finallyLoc");
           if (hasCatch && hasFinally) {
             if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0);
             if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc);
@@ -325,13 +310,11 @@ function _regeneratorRuntime() {
     abrupt: function (type, arg) {
       for (var i = this.tryEntries.length - 1; i >= 0; --i) {
         var entry = this.tryEntries[i];
-
         if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) {
           var finallyEntry = entry;
           break;
         }
       }
-
       finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null);
       var record = finallyEntry ? finallyEntry.completion : {};
       return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record);
@@ -349,19 +332,15 @@ function _regeneratorRuntime() {
     catch: function (tryLoc) {
       for (var i = this.tryEntries.length - 1; i >= 0; --i) {
         var entry = this.tryEntries[i];
-
         if (entry.tryLoc === tryLoc) {
           var record = entry.completion;
-
           if ("throw" === record.type) {
             var thrown = record.arg;
             resetTryEntry(entry);
           }
-
           return thrown;
         }
       }
-
       throw new Error("illegal catch attempt");
     },
     delegateYield: function (iterable, resultName, nextLoc) {
@@ -373,7 +352,6 @@ function _regeneratorRuntime() {
     }
   }, exports;
 }
-
 function _typeof$B(obj) {
   "@babel/helpers - typeof";
 
@@ -383,7 +361,6 @@ function _typeof$B(obj) {
     return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
   }, _typeof$B(obj);
 }
-
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
@@ -392,35 +369,30 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
     reject(error);
     return;
   }
-
   if (info.done) {
     resolve(value);
   } else {
     Promise.resolve(value).then(_next, _throw);
   }
 }
-
 function _asyncToGenerator(fn) {
   return function () {
     var self = this,
-        args = arguments;
+      args = arguments;
     return new Promise(function (resolve, reject) {
       var gen = fn.apply(self, args);
-
       function _next(value) {
         asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
       }
-
       function _throw(err) {
         asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
       }
-
       _next(undefined);
     });
   };
 }
-
 function _defineProperty$x(obj, key, value) {
+  key = _toPropertyKey(key);
   if (key in obj) {
     Object.defineProperty(obj, key, {
       value: value,
@@ -431,52 +403,40 @@ function _defineProperty$x(obj, key, value) {
   } else {
     obj[key] = value;
   }
-
   return obj;
 }
-
 function _extends$2() {
   _extends$2 = Object.assign ? Object.assign.bind() : function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
-
       for (var key in source) {
         if (Object.prototype.hasOwnProperty.call(source, key)) {
           target[key] = source[key];
         }
       }
     }
-
     return target;
   };
   return _extends$2.apply(this, arguments);
 }
-
 function _objectWithoutPropertiesLoose$3(source, excluded) {
   if (source == null) return {};
   var target = {};
   var sourceKeys = Object.keys(source);
   var key, i;
-
   for (i = 0; i < sourceKeys.length; i++) {
     key = sourceKeys[i];
     if (excluded.indexOf(key) >= 0) continue;
     target[key] = source[key];
   }
-
   return target;
 }
-
 function _objectWithoutProperties(source, excluded) {
   if (source == null) return {};
-
   var target = _objectWithoutPropertiesLoose$3(source, excluded);
-
   var key, i;
-
   if (Object.getOwnPropertySymbols) {
     var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
     for (i = 0; i < sourceSymbolKeys.length; i++) {
       key = sourceSymbolKeys[i];
       if (excluded.indexOf(key) >= 0) continue;
@@ -484,60 +444,23 @@ function _objectWithoutProperties(source, excluded) {
       target[key] = source[key];
     }
   }
-
   return target;
 }
-
 function _slicedToArray$1(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray$1(arr, i) || _nonIterableRest();
 }
-
 function _toConsumableArray(arr) {
   return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray$1(arr) || _nonIterableSpread();
 }
-
 function _arrayWithoutHoles(arr) {
   if (Array.isArray(arr)) return _arrayLikeToArray$1(arr);
 }
-
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
-
 function _iterableToArray(iter) {
   if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
 }
-
-function _iterableToArrayLimit(arr, i) {
-  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-
-  if (_i == null) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-
-  var _s, _e;
-
-  try {
-    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-
 function _unsupportedIterableToArray$1(o, minLen) {
   if (!o) return;
   if (typeof o === "string") return _arrayLikeToArray$1(o, minLen);
@@ -546,33 +469,24 @@ function _unsupportedIterableToArray$1(o, minLen) {
   if (n === "Map" || n === "Set") return Array.from(o);
   if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$1(o, minLen);
 }
-
 function _arrayLikeToArray$1(arr, len) {
   if (len == null || len > arr.length) len = arr.length;
-
   for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
   return arr2;
 }
-
 function _nonIterableSpread() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-
 function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-
 function _createForOfIteratorHelper$1(o, allowArrayLike) {
   var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
-
   if (!it) {
     if (Array.isArray(o) || (it = _unsupportedIterableToArray$1(o)) || allowArrayLike && o && typeof o.length === "number") {
       if (it) o = it;
       var i = 0;
-
       var F = function () {};
-
       return {
         s: F,
         n: function () {
@@ -590,13 +504,11 @@ function _createForOfIteratorHelper$1(o, allowArrayLike) {
         f: F
       };
     }
-
     throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
   }
-
   var normalCompletion = true,
-      didErr = false,
-      err;
+    didErr = false,
+    err;
   return {
     s: function () {
       it = it.call(o);
@@ -618,6 +530,20 @@ function _createForOfIteratorHelper$1(o, allowArrayLike) {
       }
     }
   };
+}
+function _toPrimitive(input, hint) {
+  if (typeof input !== "object" || input === null) return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== undefined) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res !== "object") return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
+}
+function _toPropertyKey(arg) {
+  var key = _toPrimitive(arg, "string");
+  return typeof key === "symbol" ? key : String(key);
 }
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -7691,7 +7617,6 @@ function handleChannelOverlay(front, alpha) {
   var back = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
   return back + (front - back) * alpha / 255;
 }
-
 function overlayWithBlack(color, alpha) {
   var rgb = color.toRgb();
   return tinycolor({
@@ -7700,7 +7625,6 @@ function overlayWithBlack(color, alpha) {
     b: handleChannelOverlay(rgb.b, alpha)
   });
 }
-
 function overlayWithWhite(color, alpha) {
   var rgb = color.toRgb();
   return tinycolor({
@@ -7709,7 +7633,6 @@ function overlayWithWhite(color, alpha) {
     b: handleChannelOverlay(rgb.b, alpha, 255)
   });
 }
-
 function generateColorSpectrum(color) {
   var prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "--light-primary-";
   var hexColor = "".concat(color.toLowerCase());
@@ -7794,10 +7717,8 @@ function generateColorSpectrum(color) {
   var returnedSpectrum = {};
   mapper.forEach(function (item) {
     var hex = hexColor;
-
     if (!item.isOriginal) {
       var _color = tinycolor(hex);
-
       _color = item.darken ? _color.darken(item.darkLightFactor) : _color.lighten(item.darkLightFactor);
       _color = _color.brighten(item.brighten);
       _color = item.saturate > 0 ? _color.saturate(item.saturate) : _color.desaturate(Math.abs(item.saturate));
@@ -7812,20 +7733,17 @@ function generateColorSpectrum(color) {
 function getTextColor(hex) {
   var light = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "#ffffff";
   var dark = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "#212934";
-
   if (!hex) {
     return "";
   }
-
   if (!/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
     return "";
   }
-
   var hexCode = hex.charAt(0) === "#" ? hex.substr(1, 6) : hex;
   var hexR = parseInt(hexCode.substr(0, 2), 16);
   var hexG = parseInt(hexCode.substr(2, 2), 16);
-  var hexB = parseInt(hexCode.substr(4, 2), 16); // Gets the average value of the colors
-
+  var hexB = parseInt(hexCode.substr(4, 2), 16);
+  // Gets the average value of the colors
   var contrastRatio = (hexR + hexG + hexB) / (255 * 3);
   return contrastRatio >= 0.5 ? dark : light;
 }
@@ -7834,18 +7752,14 @@ function hexToRgbA(hex) {
   if (alpha > 1) alpha = 1;
   if (alpha < 0) alpha = 0;
   var c;
-
   if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
     c = hex.substring(1).split("");
-
     if (c.length == 3) {
       c = [c[0], c[0], c[1], c[1], c[2], c[2]];
     }
-
     c = "0x" + c.join("");
     return "rgba(" + [c >> 16 & 255, c >> 8 & 255, c & 255].join(",") + "," + alpha + ")";
   }
-
   throw new Error("Bad Hex");
 }
 
@@ -7980,52 +7894,40 @@ var uniqueRandomString = (function () {
   var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
   var permittedCharacters;
   var time = "".concat(new Date().getTime());
-
   switch (type) {
     case 1:
       permittedCharacters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-_";
       break;
-
     case 2:
       permittedCharacters = "0123456789abcdefghijklmnopqrstuvwxyz-_";
       break;
-
     case 3:
       permittedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_";
       break;
-
     case 4:
       permittedCharacters = "0123456789-_";
       break;
-
     case 5:
       permittedCharacters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
       break;
-
     case 6:
       permittedCharacters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       break;
-
     case 7:
       permittedCharacters = "0123456789abcdefghijklmnopqrstuvwxyz";
       break;
-
     case 8:
       permittedCharacters = "abcdefghijklmnopqrstuvwxyz";
       break;
-
     default:
       permittedCharacters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_";
       break;
   }
-
   var string = "";
   var randomLength = length - time.length;
-
   for (var i = 0; i < randomLength; i++) {
     string += permittedCharacters[Math.floor(Math.random() * permittedCharacters.length)];
   }
-
   var index = Math.floor(Math.random() * randomLength) + 1;
   var end = string.substr(index);
   var start = string.substr(3, index);
@@ -8033,20 +7935,18 @@ var uniqueRandomString = (function () {
   return finalString;
 });
 
-var _excluded$H = ["fontFace", "id", "className", "children", "style"];
+var _excluded$L = ["fontFace", "id", "className", "children", "style"];
 var Box = /*#__PURE__*/React__default.forwardRef(function (_ref, ref) {
   var fontFace = _ref.fontFace,
-      id = _ref.id,
-      className = _ref.className,
-      children = _ref.children,
-      style = _ref.style,
-      props = _objectWithoutProperties(_ref, _excluded$H);
-
+    id = _ref.id,
+    className = _ref.className,
+    children = _ref.children,
+    style = _ref.style,
+    props = _objectWithoutProperties(_ref, _excluded$L);
   var _useState = useState("auto_generated_" + uniqueRandomString(20)),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      uniqueID = _useState2[0],
-      setUniqueID = _useState2[1];
-
+    _useState2 = _slicedToArray$1(_useState, 2),
+    uniqueID = _useState2[0],
+    setUniqueID = _useState2[1];
   useEffect(function () {
     if (id) {
       setUniqueID(id);
@@ -8169,7 +8069,6 @@ $$9({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
 
 function classNames(obj, className) {
   var generatedClass;
-
   if (Array.isArray(obj)) {
     generatedClass = obj.join(" ");
   } else {
@@ -8179,19 +8078,16 @@ function classNames(obj, className) {
       return carry + "".concat(carry ? " " : "").concat(current[0]);
     }, "");
   }
-
   return (generatedClass + (className ? " ".concat(className) : "")).trim();
 }
 
-var _excluded$G = ["className", "icon", "children", "smartColor"];
-
+var _excluded$K = ["className", "icon", "children", "smartColor"];
 var Icon = function Icon(_ref) {
   var className = _ref.className,
-      icon = _ref.icon;
-      _ref.children;
-      var smartColor = _ref.smartColor,
-      props = _objectWithoutProperties(_ref, _excluded$G);
-
+    icon = _ref.icon;
+    _ref.children;
+    var smartColor = _ref.smartColor,
+    props = _objectWithoutProperties(_ref, _excluded$K);
   var defaultViewBox = "0 0 24 24";
   var IconComponent = icon.component;
   var generatedClassName = classNames({
@@ -8217,20 +8113,17 @@ Icon.propTypes = {
   height: propTypes$1.exports.string
 };
 
-var _excluded$F = ["className", "scale", "uppercase", "equalLineHeight", "fontWeight", "fontSize", "lineHeight"];
-
+var _excluded$J = ["className", "scale", "uppercase", "equalLineHeight", "fontWeight", "fontSize", "lineHeight"];
 var Text$1 = function Text(_ref) {
   var _props$is, _classNames;
-
   var className = _ref.className,
-      scale = _ref.scale,
-      uppercase = _ref.uppercase,
-      equalLineHeight = _ref.equalLineHeight,
-      fontWeight = _ref.fontWeight,
-      fontSize = _ref.fontSize,
-      lineHeight = _ref.lineHeight,
-      props = _objectWithoutProperties(_ref, _excluded$F);
-
+    scale = _ref.scale,
+    uppercase = _ref.uppercase,
+    equalLineHeight = _ref.equalLineHeight,
+    fontWeight = _ref.fontWeight,
+    fontSize = _ref.fontSize,
+    lineHeight = _ref.lineHeight,
+    props = _objectWithoutProperties(_ref, _excluded$J);
   var is = (_props$is = props.is) !== null && _props$is !== void 0 ? _props$is : "p";
   var generatedClass = classNames((_classNames = {}, _defineProperty$x(_classNames, scale, scale), _defineProperty$x(_classNames, "uppercase", uppercase), _defineProperty$x(_classNames, "equal-line-height", equalLineHeight), _defineProperty$x(_classNames, "ui-text", true), _defineProperty$x(_classNames, "customFontWeight", fontWeight), _defineProperty$x(_classNames, "customFontSize", fontSize), _defineProperty$x(_classNames, "customLineHeight", lineHeight), _classNames), className);
   return /*#__PURE__*/React__default.createElement(Box, _extends$2({
@@ -8243,7 +8136,6 @@ var Text$1 = function Text(_ref) {
     className: generatedClass
   }), props.children);
 };
-
 Text$1.propTypes = {
   is: propTypes$1.exports.oneOfType([propTypes$1.exports.oneOf(["p", "span", "small", "sub", "sup", "subhead", "a"]), propTypes$1.exports.elementType]),
   scale: propTypes$1.exports.oneOf(["body", "subhead", "p-18", "p-16", "overline", "footnote", "overline", "footnote-caps"]),
@@ -8261,12 +8153,12 @@ Text$1.defaultProps = {
 
 var AddComponent = function AddComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12 5.75V18.25",
     stroke: smartColor || stroke,
@@ -8281,7 +8173,6 @@ var AddComponent = function AddComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Add = {
   component: AddComponent,
   viewBox: "0 0 24 24",
@@ -8304,12 +8195,12 @@ AddComponent.defaultProps = {
 
 var AddBookmarkComponent = function AddBookmarkComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M16.958 3.00195V9.53895",
     stroke: smartColor || stroke,
@@ -8330,7 +8221,6 @@ var AddBookmarkComponent = function AddBookmarkComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var AddBookmark = {
   component: AddBookmarkComponent,
   viewBox: "0 0 24 24",
@@ -8353,12 +8243,12 @@ AddBookmarkComponent.defaultProps = {
 
 var AddCircleComponent = function AddCircleComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z",
     stroke: smartColor || stroke,
@@ -8379,7 +8269,6 @@ var AddCircleComponent = function AddCircleComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var AddCircle = {
   component: AddCircleComponent,
   viewBox: "0 0 24 24",
@@ -8402,14 +8291,14 @@ AddCircleComponent.defaultProps = {
 
 var AddFileComponent = function AddFileComponent(_ref) {
   var fill = _ref.fill,
-      stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin,
-      fillRule = _ref.fillRule,
-      clipRule = _ref.clipRule;
-      _ref.props;
+    stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin,
+    fillRule = _ref.fillRule,
+    clipRule = _ref.clipRule;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     fillRule: fillRule,
     clipRule: clipRule,
@@ -8429,7 +8318,6 @@ var AddFileComponent = function AddFileComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var AddFile = {
   component: AddFileComponent,
   viewBox: "0 0 24 24",
@@ -8456,12 +8344,12 @@ AddFileComponent.defaultProps = {
 
 var AddItemComponent = function AddItemComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M17.3604 12.016V18.2315C17.3604 18.7006 17.1729 19.1504 16.8395 19.4821C16.506 19.8138 16.0539 20.0003 15.5824 20.0003H5.77742C5.3059 20.0003 4.85376 19.8138 4.52035 19.4821C4.18694 19.1504 3.99945 18.7006 3.99945 18.2315V8.47685C3.99945 8.00775 4.18694 7.55771 4.52035 7.22601C4.85376 6.89431 5.3059 6.70801 5.77742 6.70801H11.9543",
     stroke: smartColor || stroke,
@@ -8482,7 +8370,6 @@ var AddItemComponent = function AddItemComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var AddItem = {
   component: AddItemComponent,
   viewBox: "0 0 24 24",
@@ -8505,12 +8392,12 @@ AddItemComponent.defaultProps = {
 
 var AlarmComponent = function AlarmComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M11.6733 7.26514V11.5181L15.0303 13.125",
     stroke: smartColor || stroke,
@@ -8567,7 +8454,6 @@ var AlarmComponent = function AlarmComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Alarm = {
   component: AlarmComponent,
   viewBox: "0 0 24 24",
@@ -8590,12 +8476,12 @@ AlarmComponent.defaultProps = {
 
 var AddUserComponent = function AddUserComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M9.99277 13.6949C11.8712 13.6949 13.394 12.1364 13.394 10.2139C13.394 8.2914 11.8712 6.73291 9.99277 6.73291C8.11431 6.73291 6.59152 8.2914 6.59152 10.2139C6.59152 12.1364 8.11431 13.6949 9.99277 13.6949Z",
     stroke: smartColor || stroke,
@@ -8622,7 +8508,6 @@ var AddUserComponent = function AddUserComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var AddUser = {
   component: AddUserComponent,
   viewBox: "0 0 24 24",
@@ -8645,12 +8530,12 @@ AddUserComponent.defaultProps = {
 
 var AnnounceComponent = function AnnounceComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M10.3101 10.0508L3.83725 13.982C3.44252 14.2219 3.15917 14.6089 3.04965 15.0577C2.94013 15.5064 3.01344 15.9803 3.25326 16.3751L4.41415 18.2891C4.6541 18.6838 5.0409 18.967 5.48959 19.0767C5.93828 19.1864 6.41224 19.1135 6.80722 18.8741L13.3412 14.9048M13.3412 14.9048L20.3683 15.7159C20.4492 15.7253 20.5312 15.7117 20.6048 15.6768C20.6784 15.6419 20.7408 15.5872 20.7848 15.5186C20.8287 15.45 20.8524 15.3706 20.8534 15.2891C20.8543 15.2077 20.8324 15.1278 20.7901 15.0582L13.5902 3.20904C13.5476 3.13913 13.4861 3.08258 13.4129 3.04595C13.3397 3.00932 13.2578 2.99418 13.1764 3.00201C13.0949 3.00983 13.0171 3.04049 12.9522 3.09039C12.8873 3.14028 12.8377 3.20701 12.8092 3.28375L11.2313 7.54986M13.3412 14.9048L10.3331 10.052M10.0633 19.3017L10.3062 19.7021C10.3994 19.8559 10.522 19.9897 10.667 20.0961C10.812 20.2025 10.9764 20.2795 11.1511 20.3222C11.3259 20.3649 11.5073 20.3726 11.6851 20.3452C11.8628 20.3177 12.0336 20.2555 12.1873 20.162C12.3411 20.0689 12.4749 19.9462 12.5813 19.8012C12.6877 19.6562 12.7644 19.4915 12.8071 19.3168C12.8499 19.1421 12.8578 18.9609 12.8303 18.7831C12.8029 18.6054 12.7407 18.4344 12.6472 18.2807L11.3372 16.123L8.99513 17.5439",
     stroke: smartColor || stroke,
@@ -8659,7 +8544,6 @@ var AnnounceComponent = function AnnounceComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Announce = {
   component: AnnounceComponent,
   viewBox: "0 0 24 24",
@@ -8682,12 +8566,12 @@ AnnounceComponent.defaultProps = {
 
 var AppsComponent = function AppsComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12.444 5.5C12.8582 5.5 13.194 5.16421 13.194 4.75C13.194 4.33579 12.8582 4 12.444 4C12.0298 4 11.694 4.33579 11.694 4.75C11.694 5.16421 12.0298 5.5 12.444 5.5Z",
     stroke: smartColor || stroke,
@@ -8744,7 +8628,6 @@ var AppsComponent = function AppsComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Apps = {
   component: AppsComponent,
   viewBox: "0 0 24 24",
@@ -8767,12 +8650,12 @@ AppsComponent.defaultProps = {
 
 var ArrowDownComponent = function ArrowDownComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12 5V19",
     stroke: smartColor || stroke,
@@ -8793,7 +8676,6 @@ var ArrowDownComponent = function ArrowDownComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var ArrowDown = {
   component: ArrowDownComponent,
   viewBox: "0 0 24 24",
@@ -8816,12 +8698,12 @@ ArrowDownComponent.defaultProps = {
 
 var ArrowDownLeftComponent = function ArrowDownLeftComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M17 7L7 17",
     stroke: smartColor || stroke,
@@ -8836,7 +8718,6 @@ var ArrowDownLeftComponent = function ArrowDownLeftComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var ArrowDownLeft = {
   component: ArrowDownLeftComponent,
   viewBox: "0 0 24 24",
@@ -8859,12 +8740,12 @@ ArrowDownLeftComponent.defaultProps = {
 
 var ArrowDownRightComponent = function ArrowDownRightComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M7 7L17 17",
     stroke: smartColor || stroke,
@@ -8879,7 +8760,6 @@ var ArrowDownRightComponent = function ArrowDownRightComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var ArrowDownRight = {
   component: ArrowDownRightComponent,
   viewBox: "0 0 24 24",
@@ -8902,12 +8782,12 @@ ArrowDownRightComponent.defaultProps = {
 
 var ArrowLeftComponent$1 = function ArrowLeftComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M5 12H19",
     stroke: smartColor || stroke,
@@ -8928,7 +8808,6 @@ var ArrowLeftComponent$1 = function ArrowLeftComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var ArrowLeft = {
   component: ArrowLeftComponent$1,
   viewBox: "0 0 24 24",
@@ -8951,12 +8830,12 @@ ArrowLeftComponent$1.defaultProps = {
 
 var ArrowRightComponent$1 = function ArrowRightComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M5 12H19",
     stroke: smartColor || stroke,
@@ -8977,7 +8856,6 @@ var ArrowRightComponent$1 = function ArrowRightComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var ArrowRight = {
   component: ArrowRightComponent$1,
   viewBox: "0 0 24 24",
@@ -9000,12 +8878,12 @@ ArrowRightComponent$1.defaultProps = {
 
 var ArrowUpComponent = function ArrowUpComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12 5V19",
     stroke: smartColor || stroke,
@@ -9026,7 +8904,6 @@ var ArrowUpComponent = function ArrowUpComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var ArrowUp = {
   component: ArrowUpComponent,
   viewBox: "0 0 24 24",
@@ -9049,12 +8926,12 @@ ArrowUpComponent.defaultProps = {
 
 var ArrowUpLeftComponent = function ArrowUpLeftComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M7 7L17 17",
     stroke: smartColor || stroke,
@@ -9069,7 +8946,6 @@ var ArrowUpLeftComponent = function ArrowUpLeftComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var ArrowUpLeft = {
   component: ArrowUpLeftComponent,
   viewBox: "0 0 24 24",
@@ -9092,12 +8968,12 @@ ArrowUpLeftComponent.defaultProps = {
 
 var ArrowUpRightComponent = function ArrowUpRightComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M17 7L7 17",
     stroke: smartColor || stroke,
@@ -9112,7 +8988,6 @@ var ArrowUpRightComponent = function ArrowUpRightComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var ArrowUpRight = {
   component: ArrowUpRightComponent,
   viewBox: "0 0 24 24",
@@ -9135,12 +9010,12 @@ ArrowUpRightComponent.defaultProps = {
 
 var AttachmentComponent = function AttachmentComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M18.4709 13.1455L11.9509 19.6465C11.0813 20.5132 9.9022 21 8.6727 21C7.44319 21 6.26382 20.5132 5.39428 19.6465V19.6465C4.50139 18.7562 4 17.5487 4 16.2896C4 15.0306 4.50139 13.823 5.39428 12.9328L14.3952 3.95861C15.011 3.3449 15.846 3 16.7166 3C17.5873 3 18.4225 3.3449 19.0383 3.95861C19.3432 4.26264 19.5851 4.62339 19.7501 5.02062C19.9152 5.41786 20 5.8437 20 6.27367C20 6.70363 19.9152 7.12947 19.7501 7.52671C19.5851 7.92395 19.3432 8.28469 19.0383 8.58872L10.4509 17.1508C10.2775 17.3238 10.0716 17.4608 9.845 17.5545C9.61837 17.6482 9.37554 17.6963 9.13021 17.6963C8.88488 17.6963 8.64205 17.6482 8.41542 17.5545C8.18879 17.4608 7.9829 17.3238 7.80951 17.1508V17.1508C7.45923 16.8015 7.26237 16.3276 7.26237 15.8337C7.26237 15.3398 7.45923 14.8659 7.80951 14.5167L13.8239 8.52028",
     stroke: smartColor || stroke,
@@ -9149,7 +9024,6 @@ var AttachmentComponent = function AttachmentComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Attachment = {
   component: AttachmentComponent,
   viewBox: "0 0 24 24",
@@ -9172,12 +9046,12 @@ AttachmentComponent.defaultProps = {
 
 var AvatarComponent = function AvatarComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M17.3061 18.5508C17.3061 17.3173 16.816 16.1344 15.9438 15.2622C15.0715 14.39 13.8885 13.8999 12.6549 13.8999H11.2001C9.96667 13.9002 8.78371 14.3905 7.91154 15.2627C7.03936 16.1349 6.54925 17.3173 6.54899 18.5508M14.981 10.8469C14.981 12.5331 13.6141 13.8999 11.928 13.8999C10.2419 13.8999 8.87501 12.5331 8.87501 10.8469C8.87501 9.16082 10.2419 7.79395 11.928 7.79395C13.6141 7.79395 14.981 9.16082 14.981 10.8469ZM20.856 11.928C20.856 16.8588 16.8588 20.856 11.928 20.856C6.9972 20.856 3 16.8588 3 11.928C3 6.9972 6.9972 3 11.928 3C16.8588 3 20.856 6.9972 20.856 11.928Z",
     stroke: smartColor || stroke,
@@ -9186,7 +9060,6 @@ var AvatarComponent = function AvatarComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Avatar$1 = {
   component: AvatarComponent,
   viewBox: "0 0 24 24",
@@ -9209,12 +9082,12 @@ AvatarComponent.defaultProps = {
 
 var BackwardComponent = function BackwardComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M16 15.8603L19.25 18.25V5.75L16 8.13971",
     stroke: smartColor || stroke,
@@ -9229,7 +9102,6 @@ var BackwardComponent = function BackwardComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Backward = {
   component: BackwardComponent,
   viewBox: "0 0 24 24",
@@ -9252,18 +9124,17 @@ BackwardComponent.defaultProps = {
 
 var BankComponent = function BankComponent(_ref) {
   var fill = _ref.fill;
-      _ref.stroke;
-      var smartColor = _ref.smartColor;
-      _ref.strokeWidth;
-      _ref.strokeLineCap;
-      _ref.strokeLineJoin;
-      _ref.props;
+    _ref.stroke;
+    var smartColor = _ref.smartColor;
+    _ref.strokeWidth;
+    _ref.strokeLineCap;
+    _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M2 20H22V22H2V20ZM4 12H6V19H4V12ZM9 12H11V19H9V12ZM13 12H15V19H13V12ZM18 12H20V19H18V12ZM2 7L12 2L22 7V11H2V7ZM4 8.236V9H20V8.236L12 4.236L4 8.236ZM12 8C11.8022 8 11.6089 7.94135 11.4444 7.83147C11.28 7.72159 11.1518 7.56541 11.0761 7.38268C11.0004 7.19996 10.9806 6.99889 11.0192 6.80491C11.0578 6.61093 11.153 6.43275 11.2929 6.29289C11.4327 6.15304 11.6109 6.0578 11.8049 6.01921C11.9989 5.98063 12.2 6.00043 12.3827 6.07612C12.5654 6.15181 12.7216 6.27998 12.8315 6.44443C12.9414 6.60888 13 6.80222 13 7C13 7.26522 12.8946 7.51957 12.7071 7.70711C12.5196 7.89464 12.2652 8 12 8Z",
     fill: smartColor || fill
   }));
 };
-
 var Bank = {
   component: BankComponent,
   viewBox: "0 0 24 24",
@@ -9287,14 +9158,14 @@ BankComponent.defaultProps = {
 
 var BarChartComponent = function BarChartComponent(_ref) {
   var fill = _ref.fill;
-      _ref.stroke;
-      var smartColor = _ref.smartColor;
-      _ref.strokeWidth;
-      _ref.strokeLineCap;
-      _ref.strokeLineJoin;
-      var fillRule = _ref.fillRule,
-      clipRule = _ref.clipRule;
-      _ref.props;
+    _ref.stroke;
+    var smartColor = _ref.smartColor;
+    _ref.strokeWidth;
+    _ref.strokeLineCap;
+    _ref.strokeLineJoin;
+    var fillRule = _ref.fillRule,
+    clipRule = _ref.clipRule;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     fillRule: fillRule,
     clipRule: clipRule,
@@ -9302,7 +9173,6 @@ var BarChartComponent = function BarChartComponent(_ref) {
     d: "M13.875 3.75C13.875 3.33579 14.2108 3 14.625 3H19.875C20.2892 3 20.625 3.33579 20.625 3.75V18.75H21.375C21.7892 18.75 22.125 19.0858 22.125 19.5C22.125 19.9142 21.7892 20.25 21.375 20.25H2.625C2.21079 20.25 1.875 19.9142 1.875 19.5C1.875 19.0858 2.21079 18.75 2.625 18.75H3.375V12.75C3.375 12.3358 3.71079 12 4.125 12H8.625V8.25C8.625 7.83579 8.96079 7.5 9.375 7.5H13.875V3.75ZM13.875 9H10.125V18.75H13.875V9ZM15.375 18.75H19.125V4.5H15.375V18.75ZM8.625 18.75V13.5H4.875V18.75H8.625Z"
   }));
 };
-
 var BarChart = {
   component: BarChartComponent,
   viewBox: "0 0 24 24",
@@ -9327,12 +9197,12 @@ BarChartComponent.defaultProps = {
 
 var BasketComponent = function BasketComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M7.55688 7.26703C7.55675 6.70673 7.66702 6.15185 7.88135 5.63416C8.09568 5.11646 8.40976 4.64606 8.80591 4.24982C9.20206 3.85358 9.67255 3.53928 10.1902 3.32483C10.7078 3.11038 11.2625 3 11.8228 3C12.9544 3 14.0399 3.44954 14.8401 4.24976C15.6403 5.04997 16.0898 6.13535 16.0898 7.26703V8.17902M16.0899 8.17383H19.014C19.2358 8.17397 19.4548 8.22372 19.6549 8.3194C19.855 8.41507 20.0314 8.55426 20.1707 8.72681C20.3101 8.89936 20.4091 9.10089 20.4605 9.31665C20.512 9.53241 20.5146 9.75693 20.4681 9.97382L18.398 19.5048C18.3159 19.8848 18.1062 20.2252 17.8036 20.4692C17.5009 20.7132 17.1237 20.8462 16.735 20.8459H6.76694C6.37803 20.8464 6.00066 20.7136 5.69785 20.4695C5.39503 20.2255 5.18525 19.885 5.10312 19.5048L3.03305 9.97382C2.98654 9.75693 2.98916 9.53241 3.04062 9.31665C3.09208 9.10089 3.19103 8.89936 3.33042 8.72681C3.4698 8.55426 3.64592 8.41507 3.84604 8.3194C4.04616 8.22372 4.2651 8.17397 4.48691 8.17383H12.9649M7.14087 15.5669H19.2189",
     stroke: smartColor || stroke,
@@ -9341,7 +9211,6 @@ var BasketComponent = function BasketComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Basket = {
   component: BasketComponent,
   viewBox: "0 0 24 24",
@@ -9364,12 +9233,12 @@ BasketComponent.defaultProps = {
 
 var BendLeftComponent = function BendLeftComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M18.8879 4V8.04102C18.8879 8.78703 18.7407 9.52569 18.4551 10.2148C18.1694 10.904 17.7507 11.5301 17.2229 12.0574C16.6951 12.5846 16.0686 13.0027 15.3792 13.2876C14.6897 13.5725 13.9509 13.7188 13.2048 13.718L4.00488 13.709M9.16895 18.8799L4 13.7109L9.16895 8.54199",
     stroke: smartColor || stroke,
@@ -9378,7 +9247,6 @@ var BendLeftComponent = function BendLeftComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var BendLeft = {
   component: BendLeftComponent,
   viewBox: "0 0 24 24",
@@ -9401,12 +9269,12 @@ BendLeftComponent.defaultProps = {
 
 var BendRightComponent = function BendRightComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M4 5V9.04102C4 9.78703 4.14695 10.5257 4.43262 11.2148C4.71829 11.904 5.137 12.5301 5.66479 13.0574C6.19259 13.5846 6.81909 14.0027 7.50854 14.2876C8.198 14.5725 8.93684 14.7188 9.68286 14.718L18.8879 14.709M15.6139 9.40088L20.7828 14.5698L15.6139 19.7388",
     stroke: smartColor || stroke,
@@ -9415,7 +9283,6 @@ var BendRightComponent = function BendRightComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var BendRight = {
   component: BendRightComponent,
   viewBox: "0 0 24 24",
@@ -9438,12 +9305,12 @@ BendRightComponent.defaultProps = {
 
 var BoltComponent = function BoltComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M10.5781 20.855L12.1531 13.4224H5L9.08301 3M14.4871 8.85791H19.3751L10.5281 20.8579M9.05219 3H16.5661L14.506 8.8584",
     stroke: smartColor || stroke,
@@ -9452,7 +9319,6 @@ var BoltComponent = function BoltComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Bolt = {
   component: BoltComponent,
   viewBox: "0 0 24 24",
@@ -9475,12 +9341,12 @@ BoltComponent.defaultProps = {
 
 var BookComponent = function BookComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M11.924 16.0908V6.7398M11.928 19.51C10.644 18.5538 9.06134 18.0864 7.46388 18.1911C6.17203 18.1572 4.89089 18.4313 3.72609 18.9909C3.65079 19.0313 3.56614 19.0516 3.48072 19.0495C3.3953 19.0474 3.31199 19.0228 3.23878 18.9787C3.16557 18.9347 3.1051 18.8726 3.06324 18.7981C3.02139 18.7236 2.99957 18.6394 3.00001 18.5539V7.12277C2.99939 6.98999 3.0256 6.85891 3.07716 6.73654C3.12872 6.61418 3.2046 6.50316 3.30006 6.41086C4.46777 5.44498 5.95205 4.94628 7.46608 5.01096C8.23091 5.00727 8.99173 5.11955 9.72291 5.34397M11.9241 19.5099C13.2082 18.554 14.7905 18.0865 16.3879 18.191C17.6798 18.157 18.9612 18.4311 20.126 18.9908C20.2013 19.0312 20.2857 19.0516 20.3711 19.0494C20.4565 19.0473 20.5401 19.0227 20.6133 18.9786C20.6865 18.9346 20.747 18.8725 20.7888 18.798C20.8307 18.7235 20.8525 18.6393 20.8521 18.5538V7.12268C20.8526 6.98992 20.8262 6.8588 20.7747 6.73645C20.7231 6.61411 20.6474 6.50314 20.552 6.41077C19.3842 5.44514 17.9 4.94648 16.386 5.01087C15.5612 4.95995 14.7352 5.08839 13.9646 5.38684C13.194 5.68529 12.4972 6.14669 11.9219 6.73987",
     stroke: smartColor || stroke,
@@ -9489,7 +9355,6 @@ var BookComponent = function BookComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Book = {
   component: BookComponent,
   viewBox: "0 0 24 24",
@@ -9512,12 +9377,12 @@ BookComponent.defaultProps = {
 
 var BookmarkComponent = function BookmarkComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M18.9991 4.49984C18.9992 4.30283 18.9607 4.10773 18.8857 3.92569C18.8107 3.74365 18.7008 3.57834 18.5622 3.43904C18.4235 3.29973 18.2589 3.18915 18.0777 3.11382C17.8965 3.03849 17.7024 2.99987 17.5063 3H7.99042C7.46256 3 6.95615 3.21066 6.5829 3.58571C6.20964 3.96076 6 4.4695 6 4.9999V21L12.4995 17.4357L19 20.9999V4.50168",
     stroke: smartColor || stroke,
@@ -9526,7 +9391,6 @@ var BookmarkComponent = function BookmarkComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Bookmark = {
   component: BookmarkComponent,
   viewBox: "0 0 24 24",
@@ -9549,18 +9413,17 @@ BookmarkComponent.defaultProps = {
 
 var BriefcaseComponent = function BriefcaseComponent(_ref) {
   var fill = _ref.fill;
-      _ref.stroke;
-      var smartColor = _ref.smartColor;
-      _ref.strokeWidth;
-      _ref.strokeLineCap;
-      _ref.strokeLineJoin;
-      _ref.props;
+    _ref.stroke;
+    var smartColor = _ref.smartColor;
+    _ref.strokeWidth;
+    _ref.strokeLineCap;
+    _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M20.331 6.092H15.586V5.569C15.5855 5.15304 15.42 4.75426 15.1259 4.46013C14.8317 4.166 14.433 4.00053 14.017 4H9.833C9.41721 4.00079 9.01869 4.16639 8.72478 4.46049C8.43087 4.75459 8.26553 5.15321 8.265 5.569V6.092H3.523C3.38437 6.09226 3.2515 6.14745 3.15348 6.24548C3.05545 6.3435 3.00026 6.47637 3 6.615V18.115C3.00053 18.531 3.166 18.9297 3.46013 19.2239C3.75426 19.518 4.15304 19.6835 4.569 19.684H19.281C19.6961 19.6835 20.0941 19.5187 20.3881 19.2256C20.6821 18.9326 20.8482 18.5351 20.85 18.12V6.624C20.8533 6.55427 20.8422 6.48461 20.8174 6.41936C20.7926 6.35411 20.7547 6.29467 20.7059 6.24475C20.6571 6.19484 20.5985 6.15551 20.5338 6.12923C20.4692 6.10294 20.3998 6.09027 20.33 6.092H20.331ZM9.31 5.569C9.31026 5.43037 9.36545 5.2975 9.46348 5.19948C9.5615 5.10145 9.69437 5.04626 9.833 5.046H14.017C14.1556 5.04626 14.2885 5.10145 14.3865 5.19948C14.4845 5.2975 14.5397 5.43037 14.54 5.569V6.092H9.31V5.569ZM19.6 7.138L17.978 12.01C17.9433 12.1149 17.8762 12.2061 17.7863 12.2704C17.6965 12.3348 17.5885 12.3689 17.478 12.368H14.54V11.844C14.54 11.7053 14.4849 11.5723 14.3868 11.4742C14.2887 11.3761 14.1557 11.321 14.017 11.321H9.833C9.69429 11.321 9.56126 11.3761 9.46318 11.4742C9.3651 11.5723 9.31 11.7053 9.31 11.844V12.367H6.369C6.25849 12.3679 6.15054 12.3338 6.06069 12.2694C5.97083 12.2051 5.90372 12.1139 5.869 12.009L4.249 7.138H19.6ZM13.494 12.367V13.413H10.356V12.367H13.494ZM19.8 18.12C19.7997 18.2586 19.7445 18.3915 19.6465 18.4895C19.5485 18.5875 19.4156 18.6427 19.277 18.643H4.569C4.43037 18.6427 4.2975 18.5875 4.19948 18.4895C4.10145 18.3915 4.04626 18.2586 4.046 18.12V9.837L4.88 12.337C4.98336 12.6502 5.18293 12.9229 5.45028 13.1161C5.71764 13.3093 6.03914 13.4132 6.369 13.413H9.31V13.936C9.31 14.0747 9.3651 14.2077 9.46318 14.3058C9.56126 14.4039 9.69429 14.459 9.833 14.459H14.017C14.1557 14.459 14.2887 14.4039 14.3868 14.3058C14.4849 14.2077 14.54 14.0747 14.54 13.936V13.413H17.482C17.8113 13.4132 18.1323 13.3096 18.3994 13.117C18.6665 12.9244 18.8662 12.6525 18.97 12.34L19.804 9.84L19.8 18.12Z",
     fill: smartColor || fill
   }));
 };
-
 var Briefcase = {
   component: BriefcaseComponent,
   viewBox: "0 0 24 24",
@@ -9583,12 +9446,12 @@ BriefcaseComponent.defaultProps = {
 
 var CalendarComponent = function CalendarComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M18.5319 5.81287H19.3671C19.7618 5.81287 20.1401 5.96985 20.4191 6.2489C20.6982 6.52796 20.8549 6.90626 20.8549 7.3009V19.3009C20.8549 19.6955 20.6982 20.0741 20.4191 20.3531C20.1401 20.6322 19.7618 20.7889 19.3671 20.7889H4.48796C4.09332 20.7889 3.71477 20.6322 3.43571 20.3531C3.15666 20.0741 2.99992 19.6955 2.99992 19.3009V7.3009C2.99992 6.90626 3.15666 6.52796 3.43571 6.2489C3.71477 5.96985 4.09332 5.81287 4.48796 5.81287H15.4191",
     stroke: smartColor || stroke,
@@ -9645,7 +9508,6 @@ var CalendarComponent = function CalendarComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 CalendarComponent.propTypes = {
   fill: propTypes$1.exports.string,
   stroke: propTypes$1.exports.string,
@@ -9667,12 +9529,12 @@ var Calendar = {
 
 var CameraComponent = function CameraComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M15.8411 6.63501L15.541 6.06604C15.3734 5.74465 15.121 5.47542 14.811 5.28748C14.5011 5.09954 14.1454 5.00004 13.783 5H10.083C9.72039 4.99997 9.3648 5.09942 9.05469 5.28735C8.74457 5.47529 8.49176 5.74457 8.32397 6.06604L8.02417 6.63501C7.85652 6.95666 7.60383 7.22619 7.2937 7.41431C6.98358 7.60243 6.62786 7.70196 6.26514 7.70203H4.98413C4.45794 7.70203 3.95313 7.91113 3.58105 8.2832C3.20898 8.65528 3 9.15985 3 9.68604V17.4191C3 17.9453 3.20898 18.4498 3.58105 18.8219C3.95313 19.194 4.45794 19.4031 4.98413 19.4031H18.8721C19.3983 19.4031 19.9028 19.194 20.2749 18.8219C20.647 18.4498 20.856 17.9453 20.856 17.4191V9.68604C20.856 9.15985 20.647 8.65528 20.2749 8.2832C19.9028 7.91113 19.3983 7.70203 18.8721 7.70203H17.592C17.2307 7.7005 16.8767 7.60039 16.5681 7.41235C16.2595 7.22431 16.0081 6.95546 15.8411 6.63501Z",
     stroke: smartColor || stroke,
@@ -9687,7 +9549,6 @@ var CameraComponent = function CameraComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Camera = {
   component: CameraComponent,
   viewBox: "0 0 24 24",
@@ -9708,17 +9569,15 @@ CameraComponent.defaultProps = {
   strokeLineJoin: "round"
 };
 
-var _excluded$E = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
-
+var _excluded$I = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
 var CardComponent = function CardComponent(_ref) {
   var fill = _ref.fill,
-      stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _objectWithoutProperties(_ref, _excluded$E);
-
+    stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _objectWithoutProperties(_ref, _excluded$I);
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M21 12.7707V15.9881C21 16.5216 20.7893 17.0333 20.4143 17.4106C20.0392 17.7879 19.5306 18 19.0001 18H4.99995C4.46951 18 3.96087 17.7879 3.5858 17.4106C3.21073 17.0333 3.00006 16.5216 3.00006 15.9881V7.01176C3.00006 6.47819 3.21073 5.96653 3.5858 5.58924C3.96087 5.21195 4.46951 5.00003 4.99995 5.00003H19.0001C19.5306 5.00003 20.0392 5.21195 20.4143 5.58924C20.7893 5.96653 21 6.47819 21 7.01176V9.84096",
     fill: fill || 'white'
@@ -9742,7 +9601,6 @@ var CardComponent = function CardComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 CardComponent.propTypes = {
   fill: propTypes$1.exports.string,
   stroke: propTypes$1.exports.string,
@@ -9766,12 +9624,12 @@ var Card$1 = {
 
 var CartComponent = function CartComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M10.3519 18C10.4925 18 10.6064 17.8925 10.6064 17.7599C10.6064 17.6273 10.4925 17.5198 10.3519 17.5198C10.2114 17.5198 10.0974 17.6273 10.0974 17.7599C10.0974 17.8925 10.2114 18 10.3519 18Z",
     stroke: smartColor || stroke,
@@ -9792,7 +9650,6 @@ var CartComponent = function CartComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Cart = {
   component: CartComponent,
   viewBox: "0 0 24 24",
@@ -9815,12 +9672,12 @@ CartComponent.defaultProps = {
 
 var CashComponent = function CashComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M18.9838 5H5.01624C3.9027 5 3 5.908 3 7.02808V15.9719C3 17.092 3.9027 18 5.01624 18H18.9838C20.0973 18 21 17.092 21 15.9719V7.02808C21 5.908 20.0973 5 18.9838 5Z",
     stroke: smartColor || stroke,
@@ -9865,7 +9722,6 @@ var CashComponent = function CashComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Cash = {
   component: CashComponent,
   viewBox: "0 0 24 24",
@@ -9888,12 +9744,12 @@ CashComponent.defaultProps = {
 
 var CenterAlignComponent = function CenterAlignComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M3 4H20.359M5.04498 9.11694H18.315M3 14.2349H20.359M7.04901 19.353H16.313",
     stroke: smartColor || stroke,
@@ -9902,7 +9758,6 @@ var CenterAlignComponent = function CenterAlignComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var CenterAlign = {
   component: CenterAlignComponent,
   viewBox: "0 0 24 24",
@@ -9925,12 +9780,12 @@ CenterAlignComponent.defaultProps = {
 
 var CertificateComponent = function CertificateComponent(_ref) {
   var fill = _ref.fill,
-      stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M3 11.9272C3 13.0742 4.1319 13.9884 4.5459 14.9854C4.9739 16.0184 4.83599 17.4622 5.61499 18.2402C6.39399 19.0182 7.83587 18.8811 8.86987 19.3091C9.86987 19.7231 10.781 20.854 11.927 20.854C13.073 20.854 13.9869 19.7221 14.9849 19.3091C16.0189 18.8801 17.461 19.0192 18.24 18.2402C19.019 17.4612 18.8808 16.0184 19.3088 14.9854C19.7228 13.9854 20.855 13.0742 20.855 11.9272C20.855 10.7802 19.7228 9.86712 19.3088 8.87012C18.8808 7.83612 19.019 6.39326 18.24 5.61426C17.461 4.83526 16.0189 4.97439 14.9849 4.54639C13.9849 4.13239 13.074 3 11.927 3C10.78 3 9.86687 4.13239 8.86987 4.54639C7.83687 4.97439 6.39399 4.83623 5.61499 5.61523C4.83599 6.39423 4.9749 7.83612 4.5459 8.87012C4.1329 9.86312 3 10.7802 3 11.9272Z",
     stroke: smartColor || stroke,
@@ -9951,7 +9806,6 @@ var CertificateComponent = function CertificateComponent(_ref) {
     fill: smartColor || fill
   }));
 };
-
 var Certificate = {
   component: CertificateComponent,
   viewBox: "0 0 24 24",
@@ -9974,12 +9828,12 @@ CertificateComponent.defaultProps = {
 
 var Certificate2Component = function Certificate2Component(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M15.258 9.38721L11.157 13.4882L8.89099 11.4222M3 11.9282C3 13.0742 4.13192 13.9893 4.54492 14.9863C4.97392 16.0203 4.83501 17.4632 5.61401 18.2412C6.39301 19.0192 7.8359 18.8811 8.8689 19.3101C9.8689 19.7241 10.779 20.855 11.927 20.855C13.075 20.855 13.9869 19.7231 14.9839 19.3101C16.0179 18.8811 17.461 19.0202 18.24 18.2412C19.019 17.4622 18.8801 16.0203 19.3091 14.9863C19.7231 13.9863 20.855 13.0752 20.855 11.9282C20.855 10.7812 19.7231 9.86812 19.3091 8.87012C18.8801 7.83612 19.019 6.39423 18.24 5.61523C17.461 4.83623 16.0181 4.9739 14.9851 4.5459C13.9851 4.1329 13.075 3 11.928 3C10.781 3 9.86812 4.1329 8.87012 4.5459C7.83612 4.9749 6.39299 4.83723 5.61499 5.61523C4.83699 6.39323 4.9739 7.83612 4.5459 8.87012C4.1319 9.86812 3 10.7812 3 11.9282Z",
     stroke: smartColor || stroke,
@@ -9988,7 +9842,6 @@ var Certificate2Component = function Certificate2Component(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Certificate2 = {
   component: Certificate2Component,
   viewBox: "0 0 24 24",
@@ -10011,12 +9864,12 @@ Certificate2Component.defaultProps = {
 
 var ChartComponent = function ChartComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M20.855 4L13.0278 11.8271L10.042 8.84131L3 15.8833M20.855 4H15.7128M20.855 4L20.8559 9.14307M8.03198 4H3.00293V19.3931H20.8579V16.2271",
     stroke: smartColor || stroke,
@@ -10025,7 +9878,6 @@ var ChartComponent = function ChartComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Chart = {
   component: ChartComponent,
   viewBox: "0 0 24 24",
@@ -10048,20 +9900,19 @@ ChartComponent.defaultProps = {
 
 var CheckComponent = function CheckComponent(_ref) {
   var fill = _ref.fill;
-      _ref.stroke;
-      var smartColor = _ref.smartColor;
-      _ref.strokeWidth;
-      _ref.strokeLineCap;
-      _ref.strokeLineJoin;
-      _ref.props;
+    _ref.stroke;
+    var smartColor = _ref.smartColor;
+    _ref.strokeWidth;
+    _ref.strokeLineCap;
+    _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
-    "fill-rule": "evenodd",
-    "clip-rule": "evenodd",
+    fillRule: "evenodd",
+    clipRule: "evenodd",
     d: "M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM16.5303 9.53033C16.8232 9.23744 16.8232 8.76256 16.5303 8.46967C16.2374 8.17678 15.7626 8.17678 15.4697 8.46967L11 12.9393L9.53033 11.4697C9.23744 11.1768 8.76256 11.1768 8.46967 11.4697C8.17678 11.7626 8.17678 12.2374 8.46967 12.5303L10.4697 14.5303C10.6103 14.671 10.8011 14.75 11 14.75C11.1989 14.75 11.3897 14.671 11.5303 14.5303L16.5303 9.53033Z",
     fill: smartColor || fill
   }));
 };
-
 CheckComponent.propTypes = {
   fill: propTypes$1.exports.string,
   stroke: propTypes$1.exports.string,
@@ -10081,12 +9932,12 @@ var Check = {
 
 var CheckCircleComponent = function CheckCircleComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z",
     stroke: smartColor || stroke,
@@ -10107,7 +9958,6 @@ var CheckCircleComponent = function CheckCircleComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var CheckCircle = {
   component: CheckCircleComponent,
   viewBox: "0 0 24 24",
@@ -10130,12 +9980,12 @@ CheckCircleComponent.defaultProps = {
 
 var ChevronArrowDownComponent = function ChevronArrowDownComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M6 9L12 15L18 9",
     stroke: smartColor || stroke,
@@ -10144,7 +9994,6 @@ var ChevronArrowDownComponent = function ChevronArrowDownComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var ChevronArrowDown = {
   component: ChevronArrowDownComponent,
   viewBox: "0 0 24 24",
@@ -10167,12 +10016,12 @@ ChevronArrowDownComponent.defaultProps = {
 
 var ArrowLeftComponent = function ArrowLeftComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M15 6L9 12L15 18",
     stroke: smartColor || stroke,
@@ -10181,7 +10030,6 @@ var ArrowLeftComponent = function ArrowLeftComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 ArrowLeftComponent.propTypes = {
   fill: propTypes$1.exports.string,
   stroke: propTypes$1.exports.string,
@@ -10203,12 +10051,12 @@ var ChevronArrowLeft = {
 
 var ArrowRightComponent = function ArrowRightComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M9 6L15 12L9 18",
     stroke: smartColor || stroke,
@@ -10217,7 +10065,6 @@ var ArrowRightComponent = function ArrowRightComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 ArrowRightComponent.propTypes = {
   fill: propTypes$1.exports.string,
   stroke: propTypes$1.exports.string,
@@ -10239,12 +10086,12 @@ var ChevronArrowRight = {
 
 var ChevronArrowUpComponent = function ChevronArrowUpComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M6 15L12 9L18 15",
     stroke: smartColor || stroke,
@@ -10253,7 +10100,6 @@ var ChevronArrowUpComponent = function ChevronArrowUpComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var ChevronArrowUp = {
   component: ChevronArrowUpComponent,
   viewBox: "0 0 24 24",
@@ -10276,18 +10122,17 @@ ChevronArrowUpComponent.defaultProps = {
 
 var ChevronFilledDownComponent = function ChevronFilledDownComponent(_ref) {
   var fill = _ref.fill;
-      _ref.stroke;
-      var smartColor = _ref.smartColor;
-      _ref.strokeWidth;
-      _ref.strokeLineCap;
-      _ref.strokeLineJoin;
-      _ref.props;
+    _ref.stroke;
+    var smartColor = _ref.smartColor;
+    _ref.strokeWidth;
+    _ref.strokeLineCap;
+    _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M7.10108 9.65718L11.7577 14.8872C11.8915 15.0376 12.1086 15.0376 12.2424 14.8872L16.8989 9.65718C17.1148 9.41466 16.962 9 16.6565 9H7.34344C7.03808 9 6.88516 9.41467 7.10108 9.65718Z",
     fill: smartColor || fill
   }));
 };
-
 ChevronFilledDownComponent.propTypes = {
   fill: propTypes$1.exports.string,
   stroke: propTypes$1.exports.string,
@@ -10307,18 +10152,17 @@ var ChevronFilledDown = {
 
 var ChevronFilledLeftComponent = function ChevronFilledLeftComponent(_ref) {
   var fill = _ref.fill;
-      _ref.stroke;
-      var smartColor = _ref.smartColor;
-      _ref.strokeWidth;
-      _ref.strokeLineCap;
-      _ref.strokeLineJoin;
-      _ref.props;
+    _ref.stroke;
+    var smartColor = _ref.smartColor;
+    _ref.strokeWidth;
+    _ref.strokeLineCap;
+    _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M14.3598 6.64019L9.26517 11.7349C9.11873 11.8814 9.11873 12.1188 9.26517 12.2652L14.3598 17.3598C14.5961 17.5961 15 17.4288 15 17.0948V6.90536C15 6.57126 14.5961 6.40395 14.3598 6.64019Z",
     fill: smartColor || fill
   }));
 };
-
 var ChevronFilledLeft = {
   component: ChevronFilledLeftComponent,
   viewBox: "0 0 24 24",
@@ -10341,18 +10185,17 @@ ChevronFilledLeftComponent.defaultProps = {
 
 var ChevronFilledRightComponent = function ChevronFilledRightComponent(_ref) {
   var fill = _ref.fill;
-      _ref.stroke;
-      var smartColor = _ref.smartColor;
-      _ref.strokeWidth;
-      _ref.strokeLineCap;
-      _ref.strokeLineJoin;
-      _ref.props;
+    _ref.stroke;
+    var smartColor = _ref.smartColor;
+    _ref.strokeWidth;
+    _ref.strokeLineCap;
+    _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M9.65718 7.11118L14.8872 12.2335C15.0376 12.3807 15.0376 12.6194 14.8872 12.7667L9.65718 17.8888C9.41466 18.1263 9 17.9582 9 17.6223V7.37779C9 7.04189 9.41467 6.87367 9.65718 7.11118Z",
     fill: smartColor || fill
   }));
 };
-
 var ChevronFilledRight = {
   component: ChevronFilledRightComponent,
   viewBox: "0 0 24 24",
@@ -10375,18 +10218,17 @@ ChevronFilledRightComponent.defaultProps = {
 
 var ChevronFilledUpComponent = function ChevronFilledUpComponent(_ref) {
   var fill = _ref.fill;
-      _ref.stroke;
-      var smartColor = _ref.smartColor;
-      _ref.strokeWidth;
-      _ref.strokeLineCap;
-      _ref.strokeLineJoin;
-      _ref.props;
+    _ref.stroke;
+    var smartColor = _ref.smartColor;
+    _ref.strokeWidth;
+    _ref.strokeLineCap;
+    _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M6.64017 14.3598L11.7349 9.26517C11.8813 9.11872 12.1188 9.11872 12.2652 9.26517L17.3598 14.3598C17.596 14.5961 17.4288 15 17.0946 15H6.90534C6.57125 15 6.40394 14.5961 6.64017 14.3598Z",
     fill: smartColor || fill
   }));
 };
-
 var ChevronFilledUp = {
   component: ChevronFilledUpComponent,
   viewBox: "0 0 24 24",
@@ -10409,14 +10251,14 @@ ChevronFilledUpComponent.defaultProps = {
 
 var CircleComponent = function CircleComponent(_ref) {
   var fill = _ref.fill,
-      stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin,
-      fillRule = _ref.fillRule,
-      clipRule = _ref.clipRule;
-      _ref.props;
+    stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin,
+    fillRule = _ref.fillRule,
+    clipRule = _ref.clipRule;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("g", {
     clipPath: "url(#clip0_379_504)"
   }, /*#__PURE__*/React__default.createElement("path", {
@@ -10445,7 +10287,6 @@ var CircleComponent = function CircleComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Circle = {
   component: CircleComponent,
   viewBox: "0 0 24 24",
@@ -10472,12 +10313,12 @@ CircleComponent.defaultProps = {
 
 var CloseComponent = function CloseComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M6 6L18 18M6 18L18 6L6 18Z",
     stroke: smartColor || stroke,
@@ -10486,7 +10327,6 @@ var CloseComponent = function CloseComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 CloseComponent.propTypes = {
   fill: propTypes$1.exports.string,
   stroke: propTypes$1.exports.string,
@@ -10509,12 +10349,12 @@ var Close = {
 
 var CloseCircleComponent = function CloseCircleComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z",
     stroke: smartColor || stroke,
@@ -10535,7 +10375,6 @@ var CloseCircleComponent = function CloseCircleComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var CloseCircle = {
   component: CloseCircleComponent,
   viewBox: "0 0 24 24",
@@ -10558,12 +10397,12 @@ CloseCircleComponent.defaultProps = {
 
 var CloudComponent = function CloudComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M10.0569 18.8937H17.6321C18.4262 18.8929 19.1919 18.5993 19.7825 18.0685C20.3731 17.5377 20.747 16.8072 20.8323 16.0177C20.9176 15.2282 20.7083 14.4353 20.2446 13.7907C19.781 13.146 19.0957 12.6954 18.3201 12.525C18.5586 11.117 18.2494 9.67075 17.4558 8.48352C16.6622 7.29629 15.4442 6.45813 14.052 6.14026C12.6598 5.82239 11.1987 6.04939 9.96851 6.77454C8.73827 7.49969 7.83218 8.66767 7.43604 10.0397H7.427C6.25289 10.0397 5.12685 10.5063 4.29663 11.3366C3.46641 12.1668 3 13.2928 3 14.4669C3 15.641 3.46641 16.7671 4.29663 17.5973C5.12685 18.4275 6.25289 18.8937 7.427 18.8937",
     stroke: smartColor || stroke,
@@ -10572,7 +10411,6 @@ var CloudComponent = function CloudComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Cloud = {
   component: CloudComponent,
   viewBox: "0 0 24 24",
@@ -10595,12 +10433,12 @@ CloudComponent.defaultProps = {
 
 var CloudDownloadComponent = function CloudDownloadComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M14.7234 15.8873H17.6333C18.4281 15.8874 19.195 15.5941 19.7864 15.0631C20.3778 14.5321 20.7519 13.801 20.8372 13.0108C20.9224 12.2206 20.7126 11.4272 20.248 10.7823C19.7835 10.1375 19.0968 9.68704 18.3203 9.51768C18.5564 8.11058 18.2458 6.66609 17.4519 5.48057C16.658 4.29506 15.441 3.45779 14.05 3.14024C12.6591 2.82268 11.1994 3.04902 9.96973 3.77256C8.74003 4.49611 7.83325 5.66218 7.4353 7.03233H7.42749C6.25324 7.03233 5.12695 7.49889 4.29663 8.3292C3.46631 9.15952 3 10.2858 3 11.4601C3 12.6343 3.46631 13.7606 4.29663 14.5909C5.12695 15.4212 6.25324 15.8873 7.42749 15.8873H11.6753M14.5953 18.1384L11.9263 20.8074M11.9263 20.8074L9.2574 18.1384M11.9263 20.8074L11.9264 11.6244",
     stroke: smartColor || stroke,
@@ -10609,7 +10447,6 @@ var CloudDownloadComponent = function CloudDownloadComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var CloudDownload = {
   component: CloudDownloadComponent,
   viewBox: "0 0 24 24",
@@ -10632,12 +10469,12 @@ CloudDownloadComponent.defaultProps = {
 
 var CloudFlashComponent = function CloudFlashComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M16.283 16.8938H17.6321C18.4262 16.893 19.1919 16.5994 19.7825 16.0686C20.3731 15.5378 20.747 14.8073 20.8323 14.0178C20.9176 13.2283 20.7083 12.4354 20.2446 11.7908C19.781 11.1461 19.0957 10.6955 18.3201 10.5251C18.5586 9.11715 18.2494 7.67086 17.4558 6.48363C16.6622 5.2964 15.4442 4.45823 14.052 4.14037C12.6598 3.8225 11.1987 4.049 9.96851 4.77415C8.73827 5.49931 7.83218 6.66777 7.43604 8.03978H7.427C6.25289 8.03978 5.12685 8.50643 4.29663 9.33665C3.46641 10.1669 3 11.2929 3 12.467C3 13.6411 3.46641 14.7672 4.29663 15.5974C5.12685 16.4276 6.25289 16.8938 7.427 16.8938M11.926 12.5146L10.0391 16.4619H13.813L11.926 20.4079",
     stroke: smartColor || stroke,
@@ -10646,7 +10483,6 @@ var CloudFlashComponent = function CloudFlashComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var CloudFlash = {
   component: CloudFlashComponent,
   viewBox: "0 0 24 24",
@@ -10669,12 +10505,12 @@ CloudFlashComponent.defaultProps = {
 
 var CloudRainComponent = function CloudRainComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M15.5991 16.8917H17.6321C18.4262 16.8909 19.1919 16.5968 19.7825 16.066C20.3731 15.5352 20.747 14.8052 20.8323 14.0157C20.9176 13.2262 20.7083 12.4328 20.2446 11.7882C19.781 11.1435 19.0957 10.6929 18.3201 10.5226C18.558 9.1148 18.2483 7.66925 17.4546 6.48251C16.6609 5.29577 15.4432 4.4579 14.0513 4.14023C12.6593 3.82256 11.1985 4.04915 9.96851 4.77402C8.73849 5.49889 7.83245 6.66709 7.43604 8.03866H7.427C6.25289 8.03866 5.12685 8.50532 4.29663 9.33554C3.46641 10.1658 3 11.2913 3 12.4654C3 13.6395 3.46641 14.7656 4.29663 15.5958C5.12685 16.426 6.25289 16.8927 7.427 16.8927M8.27206 15.2355V19.6465M15.6171 14.3485V18.9495M11.9441 16.5015V20.5805",
     stroke: smartColor || stroke,
@@ -10683,7 +10519,6 @@ var CloudRainComponent = function CloudRainComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var CloudRain = {
   component: CloudRainComponent,
   viewBox: "0 0 24 24",
@@ -10706,12 +10541,12 @@ CloudRainComponent.defaultProps = {
 
 var CloudUploadComponent = function CloudUploadComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M14.7236 16.8848H17.6326C18.4274 16.8852 19.1943 16.5915 19.7859 16.0606C20.3775 15.5297 20.752 14.7991 20.8374 14.0089C20.9228 13.2186 20.7129 12.4243 20.2483 11.7794C19.7837 11.1344 19.0972 10.6841 18.3206 10.5147C18.556 9.10784 18.2449 7.66411 17.4509 6.47907C16.6569 5.29404 15.44 4.45757 14.0493 4.14021C12.6586 3.82285 11.1994 4.04877 9.96997 4.77204C8.7405 5.49532 7.83375 6.6611 7.43555 8.03083H7.42749C6.25324 8.03083 5.12719 8.49739 4.29688 9.32771C3.46656 10.158 3 11.2838 3 12.4581C3 13.6323 3.46656 14.7586 4.29688 15.5889C5.12719 16.4193 6.25324 16.8858 7.42749 16.8858H11.6587M14.5966 12.6337L11.9276 9.96474M11.9276 9.96474L9.25867 12.6337M11.9276 9.96474L11.9276 19.1477",
     stroke: smartColor || stroke,
@@ -10720,7 +10555,6 @@ var CloudUploadComponent = function CloudUploadComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var CloudUpload = {
   component: CloudUploadComponent,
   viewBox: "0 0 24 24",
@@ -10743,12 +10577,12 @@ CloudUploadComponent.defaultProps = {
 
 var CommandComponent = function CommandComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M6.82257 4C7.57116 4 8.28909 4.29738 8.81843 4.82671C9.34776 5.35605 9.64514 6.07398 9.64514 6.82257V9.64514H6.82257C6.07398 9.64514 5.35605 9.34776 4.82671 8.81843C4.29738 8.28909 4 7.57116 4 6.82257V6.82257C4 6.07398 4.29738 5.35605 4.82671 4.82671C5.35605 4.29738 6.07398 4 6.82257 4V4Z",
     stroke: smartColor || stroke,
@@ -10781,7 +10615,6 @@ var CommandComponent = function CommandComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Command = {
   component: CommandComponent,
   viewBox: "0 0 24 24",
@@ -10804,12 +10637,12 @@ CommandComponent.defaultProps = {
 
 var CompanyComponent = function CompanyComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M9.7981 20.86V15.06H14.3049V20.86",
     stroke: smartColor || stroke,
@@ -10868,7 +10701,6 @@ var CompanyComponent = function CompanyComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Company = {
   component: CompanyComponent,
   viewBox: "0 0 24 24",
@@ -10891,12 +10723,12 @@ CompanyComponent.defaultProps = {
 
 var CompassComponent = function CompassComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M8 16L10 10L16 8L14 14L8 16Z",
     stroke: smartColor || stroke,
@@ -10911,7 +10743,6 @@ var CompassComponent = function CompassComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Compass = {
   component: CompassComponent,
   viewBox: "0 0 24 24",
@@ -10934,12 +10765,12 @@ CompassComponent.defaultProps = {
 
 var CompressComponent = function CompressComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M19.3559 9.85907H14.1407V4.6441",
     stroke: smartColor || stroke,
@@ -10990,7 +10821,6 @@ var CompressComponent = function CompressComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Compress = {
   component: CompressComponent,
   viewBox: "0 0 24 24",
@@ -11013,12 +10843,12 @@ CompressComponent.defaultProps = {
 
 var Compress2Component = function Compress2Component(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M19.3559 9.85907H14.1407V4.6441",
     stroke: smartColor || stroke,
@@ -11069,7 +10899,6 @@ var Compress2Component = function Compress2Component(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Compress2 = {
   component: Compress2Component,
   viewBox: "0 0 24 24",
@@ -11092,12 +10921,12 @@ Compress2Component.defaultProps = {
 
 var CopyComponent = function CopyComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M8.48309 8.37329H14.1976C14.5473 8.37329 14.8828 8.51352 15.1301 8.76317C15.3773 9.01282 15.5162 9.35149 15.5162 9.70456V15.6253",
     stroke: smartColor || stroke,
@@ -11118,7 +10947,6 @@ var CopyComponent = function CopyComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Component = {
   component: CopyComponent,
   viewBox: "0 0 24 24",
@@ -11141,12 +10969,12 @@ CopyComponent.defaultProps = {
 
 var CropComponent = function CropComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M7.92819 7.00611V3",
     stroke: smartColor || stroke,
@@ -11173,7 +11001,6 @@ var CropComponent = function CropComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Crop = {
   component: CropComponent,
   viewBox: "0 0 24 24",
@@ -11196,12 +11023,12 @@ CropComponent.defaultProps = {
 
 var CrownComponent = function CrownComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12 6L16 12L21 8L19 18H5L3 8L8 12L12 6Z",
     stroke: smartColor || stroke,
@@ -11210,7 +11037,6 @@ var CrownComponent = function CrownComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Crown = {
   component: CrownComponent,
   viewBox: "0 0 24 24",
@@ -11233,12 +11059,12 @@ CrownComponent.defaultProps = {
 
 var CutComponent = function CutComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M20.768 4.15405L9.10901 15.9361M13.056 11.7989L9.33002 8.03394M20.768 19.593L15.049 13.814M9.88 17.9161C9.88 19.5398 8.56372 20.8561 6.94 20.8561C5.31628 20.8561 4 19.5398 4 17.9161C4 16.2924 5.31628 14.9761 6.94 14.9761C8.56372 14.9761 9.88 16.2924 9.88 17.9161ZM9.88 5.94C9.88 7.56372 8.56372 8.88 6.94 8.88C5.31628 8.88 4 7.56372 4 5.94C4 4.31628 5.31628 3 6.94 3C8.56372 3 9.88 4.31628 9.88 5.94Z",
     stroke: smartColor || stroke,
@@ -11247,7 +11073,6 @@ var CutComponent = function CutComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Cut = {
   component: CutComponent,
   viewBox: "0 0 24 24",
@@ -11270,12 +11095,12 @@ CutComponent.defaultProps = {
 
 var DecreaseComponent = function DecreaseComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M5 4H9.07462C9.82658 4 10.5711 4.14811 11.2658 4.43587C11.9604 4.72362 12.5914 5.1454 13.1229 5.67705C13.6544 6.2087 14.0758 6.84013 14.3631 7.53465C14.6504 8.22917 14.7981 8.97327 14.7975 9.7248L14.7874 19",
     stroke: smartColor || stroke,
@@ -11290,7 +11115,6 @@ var DecreaseComponent = function DecreaseComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Decrease = {
   component: DecreaseComponent,
   viewBox: "0 0 24 24",
@@ -11313,12 +11137,12 @@ DecreaseComponent.defaultProps = {
 
 var Decrease2Component = function Decrease2Component(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M19.8829 5H15.8409C15.0951 5 14.3566 5.147 13.6676 5.43262C12.9786 5.71824 12.3525 6.13685 11.8253 6.66455C11.2982 7.19225 10.8802 7.81872 10.5953 8.50806C10.3104 9.19739 10.1644 9.936 10.1652 10.6819L10.174 19.8821M5 14.72L10.1689 19.8889L15.3381 14.72",
     stroke: smartColor || stroke,
@@ -11327,7 +11151,6 @@ var Decrease2Component = function Decrease2Component(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Decrease2 = {
   component: Decrease2Component,
   viewBox: "0 0 24 24",
@@ -11350,12 +11173,12 @@ Decrease2Component.defaultProps = {
 
 var DeleteComponent = function DeleteComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M9.162 6.33105H20.855M9.162 6.33105L14.692 6.331V5.765C14.692 5.03168 14.4007 4.32839 13.8822 3.80985C13.3636 3.29131 12.6603 3 11.927 3C11.1937 3 10.4904 3.29131 9.97185 3.80985C9.45331 4.32839 9.162 5.03168 9.162 5.765L9.162 6.33105ZM3 6.33105H6.82M19.218 6.33099V18.872C19.218 19.3982 19.009 19.9028 18.637 20.2748C18.2649 20.6469 17.7601 20.8559 17.2339 20.8559H6.67701C6.15082 20.8559 5.64625 20.6469 5.27417 20.2748C4.9021 19.9028 4.69312 19.3982 4.69312 18.872V6.33099M15.6 10.0191V17.1681M8.312 10.0191V17.1681M11.965 10.0191V17.1681",
     stroke: smartColor || stroke,
@@ -11364,7 +11187,6 @@ var DeleteComponent = function DeleteComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Delete = {
   component: DeleteComponent,
   viewBox: "0 0 24 24",
@@ -11387,18 +11209,17 @@ DeleteComponent.defaultProps = {
 
 var DepositsComponent = function DepositsComponent(_ref) {
   var fill = _ref.fill;
-      _ref.stroke;
-      var smartColor = _ref.smartColor;
-      _ref.strokeWidth;
-      _ref.strokeLineCap;
-      _ref.strokeLineJoin;
-      _ref.props;
+    _ref.stroke;
+    var smartColor = _ref.smartColor;
+    _ref.strokeWidth;
+    _ref.strokeLineCap;
+    _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M20 8V5H4V8H20ZM20 10H4V19H20V10ZM3 3H21C21.2652 3 21.5196 3.10536 21.7071 3.29289C21.8946 3.48043 22 3.73478 22 4V20C22 20.2652 21.8946 20.5196 21.7071 20.7071C21.5196 20.8946 21.2652 21 21 21H3C2.73478 21 2.48043 20.8946 2.29289 20.7071C2.10536 20.5196 2 20.2652 2 20V4C2 3.73478 2.10536 3.48043 2.29289 3.29289C2.48043 3.10536 2.73478 3 3 3ZM11 14H17V16H6.5L11 11.5V14Z",
     fill: smartColor || fill
   }));
 };
-
 var Deposits = {
   component: DepositsComponent,
   viewBox: "0 0 24 24",
@@ -11421,12 +11242,12 @@ DepositsComponent.defaultProps = {
 
 var DetailsComponent = function DetailsComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M4 20.8549V4.98376C4 4.45758 4.20923 3.953 4.5813 3.58093C4.95337 3.20886 5.45794 2.99988 5.98413 2.99988H18.884C19.4102 2.99988 19.9148 3.20886 20.2869 3.58093C20.6589 3.953 20.8682 4.45758 20.8682 4.98376V18.871C20.8682 19.3972 20.6589 19.9017 20.2869 20.2738C19.9148 20.6459 19.4102 20.8549 18.884 20.8549H7.43115",
     stroke: smartColor || stroke,
@@ -11453,7 +11274,6 @@ var DetailsComponent = function DetailsComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Details = {
   component: DetailsComponent,
   viewBox: "0 0 24 24",
@@ -11476,12 +11296,12 @@ DetailsComponent.defaultProps = {
 
 var DialComponent = function DialComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M20.2585 15.7603L18.8804 14.3823C18.692 14.1939 18.4686 14.0444 18.2224 13.9424C17.9763 13.8404 17.7125 13.7881 17.446 13.7881C17.1796 13.7881 16.9158 13.8404 16.6697 13.9424C16.4235 14.0444 16.1998 14.1939 16.0115 14.3823L15.2654 15.1274C14.7898 15.6029 14.1449 15.8701 13.4724 15.8701C12.7999 15.8701 12.155 15.6029 11.6794 15.1274L8.72534 12.1743C8.48977 11.9388 8.30303 11.6593 8.17554 11.3516C8.04804 11.0438 7.98242 10.714 7.98242 10.3809C7.98242 10.0478 8.04804 9.71789 8.17554 9.41016C8.30303 9.10242 8.48977 8.8229 8.72534 8.5874L9.47144 7.84131C9.6599 7.65297 9.80937 7.42924 9.91138 7.18311C10.0134 6.93697 10.0659 6.67318 10.0659 6.40674C10.0659 6.1403 10.0134 5.87651 9.91138 5.63037C9.80937 5.38423 9.6599 5.1605 9.47144 4.97217L8.09351 3.59424C7.90517 3.40577 7.68144 3.2563 7.4353 3.1543C7.18916 3.05229 6.92537 3 6.65894 3C6.3925 3 6.12871 3.05229 5.88257 3.1543C5.63643 3.2563 5.4127 3.40577 5.22437 3.59424V3.59424C3.80001 5.01939 3 6.95189 3 8.9668C3 10.9817 3.80001 12.9142 5.22437 14.3394L9.5144 18.6294C10.9396 20.0537 12.8721 20.854 14.887 20.854C16.9019 20.854 18.8344 20.0537 20.2595 18.6294C20.6398 18.2488 20.8532 17.7328 20.853 17.1948C20.8528 16.6568 20.6391 16.1406 20.2585 15.7603V15.7603Z",
     stroke: smartColor || stroke,
@@ -11490,7 +11310,6 @@ var DialComponent = function DialComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Dial = {
   component: DialComponent,
   viewBox: "0 0 24 24",
@@ -11513,12 +11332,12 @@ DialComponent.defaultProps = {
 
 var DialOffComponent = function DialOffComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M19.311 4.5434L3 20.8544",
     stroke: smartColor || stroke,
@@ -11539,7 +11358,6 @@ var DialOffComponent = function DialOffComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var DialOff = {
   component: DialOffComponent,
   viewBox: "0 0 24 24",
@@ -11562,12 +11380,12 @@ DialOffComponent.defaultProps = {
 
 var DisabledComponent = function DisabledComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M5.621 18.235L18.235 5.621M20.856 11.928C20.856 16.8588 16.8588 20.856 11.928 20.856C6.9972 20.856 3 16.8588 3 11.928C3 6.9972 6.9972 3 11.928 3C16.8588 3 20.856 6.9972 20.856 11.928Z",
     stroke: smartColor || stroke,
@@ -11576,7 +11394,6 @@ var DisabledComponent = function DisabledComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Disabled = {
   component: DisabledComponent,
   viewBox: "0 0 24 24",
@@ -11599,14 +11416,14 @@ DisabledComponent.defaultProps = {
 
 var DislikeComponent = function DislikeComponent(_ref) {
   var fill = _ref.fill;
-      _ref.stroke;
-      var smartColor = _ref.smartColor;
-      _ref.strokeWidth;
-      _ref.strokeLineCap;
-      _ref.strokeLineJoin;
-      _ref.fillRule;
-      _ref.clipRule;
-      _ref.props;
+    _ref.stroke;
+    var smartColor = _ref.smartColor;
+    _ref.strokeWidth;
+    _ref.strokeLineCap;
+    _ref.strokeLineJoin;
+    _ref.fillRule;
+    _ref.clipRule;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M13.0084 4.58333V13.05C13.0084 13.3833 12.9084 13.7083 12.7251 13.9833L10.4501 17.3667C10.0918 17.9083 9.2001 18.2917 8.44176 18.0083C7.62509 17.7333 7.08343 16.8167 7.25843 16L7.69176 13.275C7.72509 13.025 7.65843 12.8 7.51676 12.625C7.3751 12.4667 7.16676 12.3667 6.94176 12.3667H3.51676C2.85843 12.3667 2.29176 12.1 1.95843 11.6333C1.64176 11.1833 1.58343 10.6 1.79176 10.0083L3.84176 3.76666C4.10009 2.73333 5.2251 1.89166 6.34176 1.89166H9.59176C10.1501 1.89166 10.9334 2.08333 11.2918 2.44166L12.3584 3.26666C12.7668 3.58333 13.0084 4.06666 13.0084 4.58333Z",
     fill: smartColor || fill
@@ -11615,7 +11432,6 @@ var DislikeComponent = function DislikeComponent(_ref) {
     fill: smartColor || fill
   }));
 };
-
 var Dislike = {
   component: DislikeComponent,
   viewBox: "0 0 24 24",
@@ -11642,14 +11458,14 @@ DislikeComponent.defaultProps = {
 
 var DocumentComponent = function DocumentComponent(_ref) {
   var fill = _ref.fill,
-      stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin,
-      fillRule = _ref.fillRule,
-      clipRule = _ref.clipRule;
-      _ref.props;
+    stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin,
+    fillRule = _ref.fillRule,
+    clipRule = _ref.clipRule;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     fillRule: fillRule,
     clipRule: clipRule,
@@ -11675,7 +11491,6 @@ var DocumentComponent = function DocumentComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Document = {
   component: DocumentComponent,
   viewBox: "0 0 24 24",
@@ -11702,12 +11517,12 @@ DocumentComponent.defaultProps = {
 
 var DoubleCheckComponent = function DoubleCheckComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M7.6041 12.417L12.0211 16.834L20.8551 8M9.71899 14.532L16.251 8M3 12.417L7.417 16.834",
     stroke: smartColor || stroke,
@@ -11716,7 +11531,6 @@ var DoubleCheckComponent = function DoubleCheckComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var DoubleCheck = {
   component: DoubleCheckComponent,
   viewBox: "0 0 24 24",
@@ -11739,12 +11553,12 @@ DoubleCheckComponent.defaultProps = {
 
 var DownloadComponent = function DownloadComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M5.65325 13.3083L4.46296 14.6411C4.16465 14.9764 4.0002 15.4054 4 15.8492V18.493C4 18.8926 4.16283 19.276 4.45271 19.5586C4.74259 19.8412 5.13578 20 5.54574 20H19.4543C19.8642 20 20.2574 19.8412 20.5473 19.5586C20.8372 19.276 21 18.8926 21 18.493V15.8492C21.0001 15.4053 20.8358 14.9763 20.5373 14.6411L19.347 13.3083M7.98002 9.32613L12.498 13.731L17.0172 9.32613M12.4982 3V13.5083",
     stroke: smartColor || stroke,
@@ -11753,7 +11567,6 @@ var DownloadComponent = function DownloadComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Download = {
   component: DownloadComponent,
   viewBox: "0 0 24 24",
@@ -11776,12 +11589,12 @@ DownloadComponent.defaultProps = {
 
 var DropComponent = function DropComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12.0025 20.854C12.9383 20.8526 13.8644 20.6637 14.7261 20.2988C15.5879 19.934 16.368 19.4005 17.0203 18.7295C17.6727 18.0585 18.184 17.2638 18.5245 16.3921C18.8649 15.5204 19.0275 14.5893 19.0025 13.6538C18.7385 7.29081 12.0025 3 12.0025 3C9.2862 4.82059 7.12041 7.34943 5.74042 10.314C5.63242 10.5813 5.53447 10.8545 5.44647 11.1338M12.0025 20.8552C11.0667 20.8537 10.1408 20.6645 9.27908 20.2996C8.41738 19.9347 7.63744 19.4012 6.98513 18.7302C6.33282 18.0593 5.82122 17.2645 5.48074 16.3928C5.14026 15.5212 4.97765 14.5905 5.00247 13.655",
     stroke: smartColor || stroke,
@@ -11790,7 +11603,6 @@ var DropComponent = function DropComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Drop = {
   component: DropComponent,
   viewBox: "0 0 24 24",
@@ -11813,12 +11625,12 @@ DropComponent.defaultProps = {
 
 var EditComponent = function EditComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M4.30656 14.913L3 20.2908L8.37781 18.9842L19.452 7.90982C19.9909 7.37006 20.2938 6.63862 20.2938 5.87584C20.2938 5.11307 19.9909 4.38139 19.452 3.84164V3.84164C18.9122 3.30266 18.1808 3 17.418 3C16.6552 3 15.9235 3.30266 15.3838 3.84164L4.30656 14.913Z",
     stroke: smartColor || stroke,
@@ -11845,7 +11657,6 @@ var EditComponent = function EditComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Edit = {
   component: EditComponent,
   viewBox: "0 0 24 24",
@@ -11868,12 +11679,12 @@ EditComponent.defaultProps = {
 
 var Edit2Component = function Edit2Component(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M10.3262 11.1715L9.53613 14.4085L12.7892 13.6226L19.4903 6.95737C19.8167 6.63235 20.0001 6.19174 20.0001 5.73228C20.0001 5.27282 19.8167 4.83221 19.4903 4.50719V4.50719C19.1635 4.18243 18.7206 4 18.2587 4C17.7969 4 17.354 4.18243 17.0272 4.50719L10.3262 11.1715Z",
     stroke: smartColor || stroke,
@@ -11894,7 +11705,6 @@ var Edit2Component = function Edit2Component(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Edit2 = {
   component: Edit2Component,
   viewBox: "0 0 24 24",
@@ -11917,20 +11727,19 @@ Edit2Component.defaultProps = {
 
 var ErrorComponent = function ErrorComponent(_ref) {
   var fill = _ref.fill;
-      _ref.stroke;
-      var smartColor = _ref.smartColor;
-      _ref.strokeWidth;
-      _ref.strokeLineCap;
-      _ref.strokeLineJoin;
-      _ref.props;
+    _ref.stroke;
+    var smartColor = _ref.smartColor;
+    _ref.strokeWidth;
+    _ref.strokeLineCap;
+    _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
-    "fill-rule": "evenodd",
-    "clip-rule": "evenodd",
+    fillRule: "evenodd",
+    clipRule: "evenodd",
     d: "M7.89749 2.01923C7.69858 2.01923 7.50781 2.09825 7.36716 2.2389L2.23896 7.36711C2.0983 7.50776 2.01929 7.69852 2.01929 7.89744V16.1026C2.01929 16.3015 2.0983 16.4922 2.23896 16.6329L7.36716 21.7611C7.50781 21.9018 7.69858 21.9808 7.89749 21.9808H16.1026C16.3015 21.9808 16.4923 21.9018 16.6329 21.7611L21.7612 16.6329C21.9018 16.4922 21.9808 16.3015 21.9808 16.1026V7.89744C21.9808 7.69852 21.9018 7.50776 21.7612 7.36711L16.6329 2.2389C16.4923 2.09825 16.3015 2.01923 16.1026 2.01923H7.89749ZM12.7501 7.89743C12.7501 7.48322 12.4143 7.14743 12.0001 7.14743C11.5858 7.14743 11.2501 7.48322 11.2501 7.89743V13.0256C11.2501 13.4399 11.5858 13.7756 12.0001 13.7756C12.4143 13.7756 12.7501 13.4399 12.7501 13.0256V7.89743ZM13.0257 16.1026C13.0257 16.669 12.5665 17.1282 12.0001 17.1282C11.4336 17.1282 10.9744 16.669 10.9744 16.1026C10.9744 15.5361 11.4336 15.0769 12.0001 15.0769C12.5665 15.0769 13.0257 15.5361 13.0257 16.1026Z",
     fill: smartColor || fill
   }));
 };
-
 ErrorComponent.propTypes = {
   fill: propTypes$1.exports.string,
   stroke: propTypes$1.exports.string,
@@ -11950,12 +11759,12 @@ var Error$1 = {
 
 var ErrorCircleComponent = function ErrorCircleComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z",
     stroke: smartColor || stroke,
@@ -11970,7 +11779,6 @@ var ErrorCircleComponent = function ErrorCircleComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var ErrorCircle = {
   component: ErrorCircleComponent,
   viewBox: "0 0 24 24",
@@ -11993,12 +11801,12 @@ ErrorCircleComponent.defaultProps = {
 
 var ExitFullScreenComponent = function ExitFullScreenComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M7.92025 21V16.0918H3",
     stroke: smartColor || stroke,
@@ -12025,7 +11833,6 @@ var ExitFullScreenComponent = function ExitFullScreenComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var ExitFullScreen = {
   component: ExitFullScreenComponent,
   viewBox: "0 0 24 24",
@@ -12048,12 +11855,12 @@ ExitFullScreenComponent.defaultProps = {
 
 var ExpandComponent = function ExpandComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M14.7854 4.00024H20.0004V9.21516",
     stroke: smartColor || stroke,
@@ -12104,7 +11911,6 @@ var ExpandComponent = function ExpandComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Expand = {
   component: ExpandComponent,
   viewBox: "0 0 24 24",
@@ -12127,12 +11933,12 @@ ExpandComponent.defaultProps = {
 
 var Expand2Component = function Expand2Component(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M15.1317 3.00024H20.9987V8.86695",
     stroke: smartColor || stroke,
@@ -12159,7 +11965,6 @@ var Expand2Component = function Expand2Component(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Expand2 = {
   component: Expand2Component,
   viewBox: "0 0 24 24",
@@ -12182,12 +11987,12 @@ Expand2Component.defaultProps = {
 
 var ExternalLinkComponent = function ExternalLinkComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M14.1676 4.00171H20V10.4174M19.9964 14.7V18.6662C19.9964 19.0198 19.856 19.3587 19.606 19.6087C19.356 19.8587 19.0169 19.9994 18.6633 19.9994H5.33315C4.97958 19.9994 4.64044 19.8587 4.39043 19.6087C4.14042 19.3587 4 19.0198 4 18.6662V5.33586C4 4.98229 4.14042 4.64337 4.39043 4.39336C4.64044 4.14335 4.97958 4.00293 5.33315 4.00293H10.1657M11.9987 11.9987L19.9973 4",
     stroke: smartColor || stroke,
@@ -12196,7 +12001,6 @@ var ExternalLinkComponent = function ExternalLinkComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var ExternalLink = {
   component: ExternalLinkComponent,
   viewBox: "0 0 24 24",
@@ -12219,12 +12023,12 @@ ExternalLinkComponent.defaultProps = {
 
 var EyeComponent = function EyeComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M20.8589 11.8552C20.103 13.5947 18.8555 15.0753 17.2695 16.1154C15.6835 17.1555 13.828 17.7097 11.9314 17.7097C10.0348 17.7097 8.17952 17.1555 6.59351 16.1154C5.00749 15.0753 3.75981 13.5947 3.00391 11.8552M12.928 6.0542C12.5959 6.01807 12.262 5.99984 11.928 6C10.0432 6.05179 8.20999 6.62714 6.6333 7.66113C5.05662 8.69513 3.79864 10.147 3 11.855M20.8599 11.8549C19.6781 9.44015 17.6339 7.55638 15.1309 6.57516M14.422 11.8551C14.422 13.2303 13.3071 14.3451 11.932 14.3451C10.5568 14.3451 9.44196 13.2303 9.44196 11.8551C9.44196 10.4799 10.5568 9.36511 11.932 9.36511C13.3071 9.36511 14.422 10.4799 14.422 11.8551Z",
     stroke: smartColor || stroke,
@@ -12233,7 +12037,6 @@ var EyeComponent = function EyeComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Eye = {
   component: EyeComponent,
   viewBox: "0 0 24 24",
@@ -12256,12 +12059,12 @@ EyeComponent.defaultProps = {
 
 var EyeOffComponent = function EyeOffComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M5.15613 14.8959C4.28466 14.0271 3.5569 13.0255 3.00012 11.9281C3.79859 10.2202 5.05618 8.76807 6.63269 7.73407C8.2092 6.70007 10.0425 6.1248 11.9271 6.07294C12.6234 6.07344 13.3171 6.1542 13.995 6.31317M16.543 7.31195C18.3982 8.39918 19.8964 10.0033 20.8549 11.9281C20.0562 13.636 18.7983 15.0881 17.2216 16.1219C15.6449 17.1558 13.8116 17.7305 11.9269 17.7821C10.3067 17.7796 8.71552 17.3522 7.31195 16.5428L3 20.855M16.543 7.31195L20.855 3M16.543 7.31195L13.688 10.1668M10.1671 13.6878C10.397 13.9247 10.6716 14.1137 10.9752 14.2435C11.2787 14.3732 11.605 14.4412 11.9351 14.4437C12.2652 14.4461 12.5926 14.3828 12.898 14.2576C13.2035 14.1324 13.481 13.9481 13.7144 13.7147C13.9478 13.4812 14.1324 13.2037 14.2576 12.8983C14.3828 12.5928 14.4461 12.2655 14.4437 11.9354C14.4412 11.6053 14.3732 11.279 14.2435 10.9754C14.1137 10.6718 13.9249 10.3967 13.688 10.1668M13.688 10.1668L7.31201 16.544",
     stroke: smartColor || stroke,
@@ -12270,7 +12073,6 @@ var EyeOffComponent = function EyeOffComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var EyeOff = {
   component: EyeOffComponent,
   viewBox: "0 0 24 24",
@@ -12293,14 +12095,14 @@ EyeOffComponent.defaultProps = {
 
 var FileComponent = function FileComponent(_ref) {
   var fill = _ref.fill;
-      _ref.stroke;
-      var smartColor = _ref.smartColor;
-      _ref.strokeWidth;
-      _ref.strokeLineCap;
-      var fillRule = _ref.fillRule,
-      clipRule = _ref.clipRule;
-      _ref.strokeLineJoin;
-      _ref.props;
+    _ref.stroke;
+    var smartColor = _ref.smartColor;
+    _ref.strokeWidth;
+    _ref.strokeLineCap;
+    var fillRule = _ref.fillRule,
+    clipRule = _ref.clipRule;
+    _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     fillRule: fillRule,
     clipRule: clipRule,
@@ -12308,7 +12110,6 @@ var FileComponent = function FileComponent(_ref) {
     d: "M5.86913 3.86269C6.11037 3.63396 6.44561 3.49895 6.80309 3.4989H6.80329L12.3994 3.50043V7.001C12.3994 7.60038 12.6513 8.16594 13.0842 8.5764C13.5157 8.9856 14.093 9.20955 14.6877 9.20955H18.4935V18.3065C18.4935 18.6101 18.3668 18.9098 18.1268 19.1373C17.8855 19.3661 17.5502 19.5011 17.1927 19.5011H6.80329C6.44573 19.5011 6.11042 19.3661 5.86913 19.1373C5.62903 18.9096 5.50217 18.6099 5.50217 18.3065V4.69348C5.50217 4.39012 5.62903 4.09035 5.86913 3.86269ZM19.9935 8.37932V7.72043C19.9935 7.50944 19.9047 7.30822 19.7487 7.1661L14.2957 2.19649C14.1576 2.07064 13.9776 2.00087 13.7907 2.00082L6.8035 1.9989H6.80329C6.07294 1.9989 5.36504 2.27357 4.83706 2.7742C4.30789 3.27594 4.00217 3.96531 4.00217 4.69348V18.3065C4.00217 19.0347 4.30789 19.724 4.83706 20.2258C5.36504 20.7264 6.07294 21.0011 6.80329 21.0011H17.1927C17.923 21.0011 18.6309 20.7264 19.1589 20.2258C19.6882 19.7239 19.9935 19.0344 19.9935 18.3065V8.53978C19.9963 8.51342 19.9978 8.48666 19.9978 8.45955C19.9978 8.43245 19.9963 8.40568 19.9935 8.37932ZM18.1182 7.70955H14.6877C14.4665 7.70955 14.2616 7.62576 14.1162 7.48791C13.9722 7.35132 13.8994 7.17527 13.8994 7.001V3.8648L18.1182 7.70955Z"
   }));
 };
-
 var File = {
   component: FileComponent,
   viewBox: "0 0 24 24",
@@ -12335,12 +12136,12 @@ FileComponent.defaultProps = {
 
 var FilterComponent = function FilterComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M14 8C15.1046 8 16 7.10457 16 6C16 4.89543 15.1046 4 14 4C12.8954 4 12 4.89543 12 6C12 7.10457 12.8954 8 14 8Z",
     stroke: smartColor || stroke,
@@ -12397,7 +12198,6 @@ var FilterComponent = function FilterComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Filter = {
   component: FilterComponent,
   viewBox: "0 0 24 24",
@@ -12420,12 +12220,12 @@ FilterComponent.defaultProps = {
 
 var FlagComponent = function FlagComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M5 20.856V5.97607C5 5.18679 5.31347 4.42969 5.87158 3.87158C6.42969 3.31347 7.18655 3 7.97583 3H18.614L16.2349 8.01514L18.614 13.0308H8.72388",
     stroke: smartColor || stroke,
@@ -12434,7 +12234,6 @@ var FlagComponent = function FlagComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Flag = {
   component: FlagComponent,
   viewBox: "0 0 24 24",
@@ -12457,12 +12256,12 @@ FlagComponent.defaultProps = {
 
 var FlameComponent = function FlameComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M13.4128 3C11.853 3.90947 10.6799 5.35839 10.1147 7.07324C9.54958 8.78809 9.63156 10.6504 10.345 12.3091C8.95144 11.5933 7.84434 10.4222 7.20776 8.99072C7.11976 8.79072 7.04192 8.59086 6.97192 8.38086C5.92442 9.72763 5.26898 11.3378 5.07788 13.0332C5.02827 13.3576 5.00232 13.6851 5 14.0132C5 14.0422 5 14.0711 5 14.0991C5.0221 15.898 5.752 17.6155 7.03174 18.8799C8.31148 20.1443 10.0379 20.8536 11.8369 20.854M11.8409 20.854C13.6406 20.8557 15.3681 20.1472 16.6483 18.8823C17.9285 17.6175 18.6578 15.8987 18.6779 14.0991C18.6779 14.0701 18.6779 14.0422 18.6779 14.0132C18.672 13.6852 18.646 13.358 18.6 13.0332C18.589 12.9392 18.5738 12.846 18.5548 12.751C18.4144 12.0542 18.1318 11.3941 17.7247 10.8115C17.3176 10.2289 16.7948 9.73664 16.1888 9.36523C15.1342 8.71181 14.3036 7.75265 13.807 6.61572C13.3104 5.4788 13.1714 4.21772 13.4088 3",
     stroke: smartColor || stroke,
@@ -12471,7 +12270,6 @@ var FlameComponent = function FlameComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Flame = {
   component: FlameComponent,
   viewBox: "0 0 24 24",
@@ -12494,12 +12292,12 @@ FlameComponent.defaultProps = {
 
 var FlashComponent = function FlashComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M15.353 10.292H11.928V3L3 13.564H11.928V20.856L20.856 10.292H15.356",
     stroke: smartColor || stroke,
@@ -12508,7 +12306,6 @@ var FlashComponent = function FlashComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Flash = {
   component: FlashComponent,
   viewBox: "0 0 24 24",
@@ -12531,12 +12328,12 @@ FlashComponent.defaultProps = {
 
 var FolderComponent = function FolderComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M3 11.327V6.98401C3 6.45782 3.20898 5.95313 3.58105 5.58105C3.95313 5.20898 4.45794 5 4.98413 5H9.98999C10.5054 5.00017 11.0007 5.20057 11.3711 5.55896L12.5591 6.70996C12.929 7.06847 13.4238 7.26903 13.939 7.26904H18.8721C19.3983 7.26904 19.9028 7.47803 20.2749 7.8501C20.647 8.22217 20.856 8.72686 20.856 9.25305V17.453C20.856 17.9792 20.647 18.4839 20.2749 18.856C19.9028 19.228 19.3983 19.437 18.8721 19.437H4.98511C4.45892 19.437 3.9541 19.228 3.58203 18.856C3.20996 18.4839 3.00098 17.9792 3.00098 17.453V14.067",
     stroke: smartColor || stroke,
@@ -12545,7 +12342,6 @@ var FolderComponent = function FolderComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Folder = {
   component: FolderComponent,
   viewBox: "0 0 24 24",
@@ -12568,12 +12364,12 @@ FolderComponent.defaultProps = {
 
 var ForwardComponent = function ForwardComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M8 15.8603L4.75 18.25V5.75L8 8.13971",
     stroke: smartColor || stroke,
@@ -12588,7 +12384,6 @@ var ForwardComponent = function ForwardComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Forward = {
   component: ForwardComponent,
   viewBox: "0 0 24 24",
@@ -12611,12 +12406,12 @@ ForwardComponent.defaultProps = {
 
 var FunnelComponent = function FunnelComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M5 3V6.19387C5.00002 6.46603 5.05342 6.73548 5.15697 6.98545C5.26051 7.23542 5.41211 7.46054 5.6023 7.64756L9.59847 11.5744C9.78863 11.7613 9.94025 11.9867 10.0438 12.2365C10.1473 12.4863 10.2007 12.7551 10.2008 13.0271V21L14.7673 19.1097V13.0355C14.7674 12.7623 14.8213 12.4917 14.9257 12.241C15.0301 11.9902 15.1828 11.7644 15.3743 11.5774L19.3939 7.6515C19.5854 7.46444 19.7381 7.23864 19.8423 6.98791C19.9466 6.73718 20.0001 6.46703 20 6.19387V3.00394H8.06146",
     stroke: smartColor || stroke,
@@ -12625,7 +12420,6 @@ var FunnelComponent = function FunnelComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Funnel = {
   component: FunnelComponent,
   viewBox: "0 0 24 24",
@@ -12648,12 +12442,12 @@ FunnelComponent.defaultProps = {
 
 var FullScreenComponent = function FullScreenComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M3 16.1296V21.0001H7.88364",
     stroke: smartColor || stroke,
@@ -12680,7 +12474,6 @@ var FullScreenComponent = function FullScreenComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var FullScreen = {
   component: FullScreenComponent,
   viewBox: "0 0 24 24",
@@ -12703,12 +12496,12 @@ FullScreenComponent.defaultProps = {
 
 var GemComponent = function GemComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M3.43091 6.82202L2 9.21509L12.116 20.8552C12.146 20.7642 15.0828 9.21631 15.0828 9.21631L13.1219 3.00024M4.79999 4.53223L5.716 3H18.5159L22.2329 9.21631L12.117 20.856M12.4969 9.21606H22.0739M9.41089 9.21606H9.99689",
     stroke: smartColor || stroke,
@@ -12717,7 +12510,6 @@ var GemComponent = function GemComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Gem = {
   component: GemComponent,
   viewBox: "0 0 24 24",
@@ -12740,12 +12532,12 @@ GemComponent.defaultProps = {
 
 var GiftComponent = function GiftComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M19.8478 7.18091H4.15221C3.51586 7.18091 3 7.68827 3 8.31414V10.3447C3 10.9706 3.51586 11.4779 4.15221 11.4779H19.8478C20.4841 11.4779 21 10.9706 21 10.3447V8.31414C21 7.68827 20.4841 7.18091 19.8478 7.18091Z",
     stroke: smartColor || stroke,
@@ -12778,7 +12570,6 @@ var GiftComponent = function GiftComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Gift = {
   component: GiftComponent,
   viewBox: "0 0 24 24",
@@ -12801,14 +12592,14 @@ GiftComponent.defaultProps = {
 
 var GitlabComponent = function GitlabComponent(_ref) {
   var fill = _ref.fill,
-      stroke = _ref.stroke,
-      smartColor = _ref.smartColor;
-      _ref.strokeWidth;
-      _ref.strokeLineCap;
-      _ref.strokeLineJoin;
-      var fillRule = _ref.fillRule,
-      clipRule = _ref.clipRule;
-      _ref.props;
+    stroke = _ref.stroke,
+    smartColor = _ref.smartColor;
+    _ref.strokeWidth;
+    _ref.strokeLineCap;
+    _ref.strokeLineJoin;
+    var fillRule = _ref.fillRule,
+    clipRule = _ref.clipRule;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("mask", {
     id: "path-1-inside-1_717_2965",
     fill: "white"
@@ -12822,7 +12613,6 @@ var GitlabComponent = function GitlabComponent(_ref) {
     mask: "url(#path-1-inside-1_717_2965)"
   }));
 };
-
 var Gitlab = {
   component: GitlabComponent,
   viewBox: "0 0 24 24",
@@ -12847,19 +12637,17 @@ GitlabComponent.defaultProps = {
   clipRule: "evenodd"
 };
 
-var _excluded$D = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin", "fillRule", "clipRule"];
-
+var _excluded$H = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin", "fillRule", "clipRule"];
 var GlobeComponent = function GlobeComponent(_ref) {
   var fill = _ref.fill;
-      _ref.stroke;
-      var smartColor = _ref.smartColor;
-      _ref.strokeWidth;
-      _ref.strokeLineCap;
-      _ref.strokeLineJoin;
-      var fillRule = _ref.fillRule,
-      clipRule = _ref.clipRule;
-      _objectWithoutProperties(_ref, _excluded$D);
-
+    _ref.stroke;
+    var smartColor = _ref.smartColor;
+    _ref.strokeWidth;
+    _ref.strokeLineCap;
+    _ref.strokeLineJoin;
+    var fillRule = _ref.fillRule,
+    clipRule = _ref.clipRule;
+    _objectWithoutProperties(_ref, _excluded$H);
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     fillRule: fillRule,
     clipRule: clipRule,
@@ -12867,7 +12655,6 @@ var GlobeComponent = function GlobeComponent(_ref) {
     d: "M4.73565 11.1562H7.81049C7.97274 8.82285 8.78426 6.9305 9.58899 5.58928C9.72198 5.36763 9.85504 5.16056 9.98535 4.96855C7.18785 5.76859 5.0761 8.19301 4.73565 11.1562ZM7.8105 12.8438H4.73565C5.0761 15.807 7.1879 18.2315 9.98545 19.0315C9.85512 18.8394 9.72201 18.6323 9.58899 18.4106C8.78427 17.0694 7.97276 15.1771 7.8105 12.8438ZM9.50279 12.8438H14.4972C14.3391 14.7962 13.6548 16.391 12.964 17.5424C12.6195 18.1166 12.2756 18.5764 12 18.91C11.7244 18.5764 11.3805 18.1166 11.036 17.5424C10.3452 16.391 9.66089 14.7962 9.50279 12.8438ZM14.4973 11.1562H9.50278C9.66087 9.20377 10.3452 7.60887 11.036 6.45748C11.3805 5.88327 11.7244 5.42342 12 5.08991C12.2756 5.42342 12.6195 5.88327 12.964 6.45748C13.6548 7.60887 14.3391 9.20377 14.4973 11.1562ZM16.1895 12.8438C16.0273 15.1771 15.2157 17.0694 14.411 18.4106C14.278 18.6323 14.1449 18.8394 14.0145 19.0315C16.8121 18.2315 18.9239 15.807 19.2644 12.8438H16.1895ZM19.2644 11.1562H16.1895C16.0273 8.82285 15.2157 6.9305 14.411 5.58928C14.278 5.36763 14.1449 5.16056 14.0147 4.96854C16.8122 5.76858 18.9239 8.19301 19.2644 11.1562ZM12 3C7.02943 3 3 7.02943 3 12C3 16.9706 7.02943 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02943 16.9706 3 12 3Z"
   }));
 };
-
 var Globe = {
   component: GlobeComponent,
   viewBox: "0 0 24 24",
@@ -12894,12 +12681,12 @@ GlobeComponent.defaultProps = {
 
 var GridComponent = function GridComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M9.35081 3H3V9.35081H9.35081V3Z",
     stroke: smartColor || stroke,
@@ -12950,7 +12737,6 @@ var GridComponent = function GridComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Grid = {
   component: GridComponent,
   viewBox: "0 0 24 24",
@@ -12973,12 +12759,12 @@ GridComponent.defaultProps = {
 
 var HeartComponent = function HeartComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M11.9136 6.81458C9.4276 2.40958 3.74856 3.56169 3.07156 7.60169C2.33356 12.0097 7.4446 16.7266 11.9136 19.3696C16.3816 16.7266 21.6534 12.0297 20.7544 7.60169C19.9394 3.58769 14.3996 2.40958 11.9136 6.81458Z",
     stroke: smartColor || stroke,
@@ -12987,7 +12773,6 @@ var HeartComponent = function HeartComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Heart = {
   component: HeartComponent,
   viewBox: "0 0 24 24",
@@ -13010,18 +12795,17 @@ HeartComponent.defaultProps = {
 
 var HeartFilledComponent = function HeartFilledComponent(_ref) {
   var fill = _ref.fill;
-      _ref.stroke;
-      var smartColor = _ref.smartColor;
-      _ref.strokeWidth;
-      _ref.strokeLineCap;
-      _ref.strokeLineJoin;
-      _ref.props;
+    _ref.stroke;
+    var smartColor = _ref.smartColor;
+    _ref.strokeWidth;
+    _ref.strokeLineCap;
+    _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M11.9136 6.81458C9.4276 2.40958 3.74856 3.56169 3.07156 7.60169C2.33356 12.0097 7.4446 16.7266 11.9136 19.3696C16.3816 16.7266 21.6534 12.0297 20.7544 7.60169C19.9394 3.58769 14.3996 2.40958 11.9136 6.81458Z",
     fill: smartColor || fill
   }));
 };
-
 var HeartFilled = {
   component: HeartFilledComponent,
   viewBox: "0 0 24 24",
@@ -13044,12 +12828,12 @@ HeartFilledComponent.defaultProps = {
 
 var HomeComponent = function HomeComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M6.75024 19.2502H17.2502C18.3548 19.2502 19.2502 18.3548 19.2502 17.2502V9.75025L12.0002 4.75024L4.75024 9.75025V17.2502C4.75024 18.3548 5.64568 19.2502 6.75024 19.2502Z",
     stroke: smartColor || stroke,
@@ -13064,7 +12848,6 @@ var HomeComponent = function HomeComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Home = {
   component: HomeComponent,
   viewBox: "0 0 24 24",
@@ -13087,12 +12870,12 @@ HomeComponent.defaultProps = {
 
 var ImageComponent = function ImageComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M15 8H15.01",
     stroke: smartColor || stroke,
@@ -13119,7 +12902,6 @@ var ImageComponent = function ImageComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Image = {
   component: ImageComponent,
   viewBox: "0 0 24 24",
@@ -13142,12 +12924,12 @@ ImageComponent.defaultProps = {
 
 var InboxComponent = function InboxComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M3 14.2369V17.3199C3 17.8461 3.20898 18.3507 3.58105 18.7228C3.95313 19.0949 4.45794 19.304 4.98413 19.304H19.3669C19.8931 19.304 20.3979 19.0949 20.77 18.7228C21.1421 18.3507 21.3511 17.8461 21.3511 17.3199V11.1499H15.7571C15.5737 11.9629 15.1192 12.6894 14.4683 13.2098C13.8173 13.7303 13.0085 14.0139 12.175 14.0139C11.3416 14.0139 10.5328 13.7303 9.88184 13.2098C9.23087 12.6894 8.77642 11.9629 8.59302 11.1499H3M12.185 14.212C13.0181 14.2117 13.8263 13.9284 14.4772 13.4083C15.1281 12.8883 15.5829 12.1625 15.767 11.35H21.361L18.4401 4H5.93007L3.00918 11.35H8.60317C8.78746 12.1624 9.24214 12.8881 9.89296 13.4081C10.5438 13.9281 11.3519 14.2115 12.185 14.212Z",
     stroke: smartColor || stroke,
@@ -13156,7 +12938,6 @@ var InboxComponent = function InboxComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Inbox = {
   component: InboxComponent,
   viewBox: "0 0 24 24",
@@ -13179,12 +12960,12 @@ InboxComponent.defaultProps = {
 
 var IncreaseComponent = function IncreaseComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M19.9999 19H15.9246C15.1723 18.9999 14.4275 18.8515 13.7326 18.5637C13.0377 18.2759 12.4061 17.8543 11.8745 17.3227C11.3428 16.791 10.9212 16.1598 10.6338 15.4653C10.3464 14.7708 10.1988 14.0264 10.1995 13.2749L10.2096 4.00195",
     stroke: smartColor || stroke,
@@ -13199,7 +12980,6 @@ var IncreaseComponent = function IncreaseComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Increase = {
   component: IncreaseComponent,
   viewBox: "0 0 24 24",
@@ -13222,12 +13002,12 @@ IncreaseComponent.defaultProps = {
 
 var Increase2Component = function Increase2Component(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M5 19.887H9.04102C9.78695 19.887 10.5255 19.74 11.2146 19.4543C11.9037 19.1687 12.5297 18.7501 13.0569 18.2224C13.5841 17.6947 14.0024 17.0682 14.2874 16.3789C14.5724 15.6896 14.7187 14.951 14.718 14.2051L14.708 5.00488M19.8789 10.1689L14.71 5L9.54102 10.1689",
     stroke: smartColor || stroke,
@@ -13236,7 +13016,6 @@ var Increase2Component = function Increase2Component(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Increase2 = {
   component: Increase2Component,
   viewBox: "0 0 24 24",
@@ -13259,12 +13038,12 @@ Increase2Component.defaultProps = {
 
 var InfoComponent = function InfoComponent(_ref) {
   var fill = _ref.fill;
-      _ref.stroke;
-      var smartColor = _ref.smartColor;
-      _ref.strokeWidth;
-      _ref.strokeLineCap;
-      _ref.strokeLineJoin;
-      _ref.props;
+    _ref.stroke;
+    var smartColor = _ref.smartColor;
+    _ref.strokeWidth;
+    _ref.strokeLineCap;
+    _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     fillRule: "evenodd",
     clipRule: "evenodd",
@@ -13272,7 +13051,6 @@ var InfoComponent = function InfoComponent(_ref) {
     fill: smartColor || fill
   }));
 };
-
 InfoComponent.propTypes = {
   fill: propTypes$1.exports.string,
   stroke: propTypes$1.exports.string,
@@ -13292,14 +13070,14 @@ var Info = {
 
 var InfoOutlineComponent = function InfoOutlineComponent(_ref) {
   var fill = _ref.fill,
-      stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.fillRule;
-      _ref.clipRule;
-      _ref.props;
+    stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.fillRule;
+    _ref.clipRule;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z",
     stroke: smartColor || stroke,
@@ -13317,7 +13095,6 @@ var InfoOutlineComponent = function InfoOutlineComponent(_ref) {
     fill: smartColor || fill
   }));
 };
-
 var InfoOutline = {
   component: InfoOutlineComponent,
   viewBox: "0 0 24 24",
@@ -13344,12 +13121,12 @@ InfoOutlineComponent.defaultProps = {
 
 var JustifyAlignComponent = function JustifyAlignComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M3 4H20.359M3 9.11694H20.359M3 14.2349H20.359M3 19.353H20.359",
     stroke: smartColor || stroke,
@@ -13358,7 +13135,6 @@ var JustifyAlignComponent = function JustifyAlignComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var JustifyAlign = {
   component: JustifyAlignComponent,
   viewBox: "0 0 24 24",
@@ -13381,12 +13157,12 @@ JustifyAlignComponent.defaultProps = {
 
 var KeyComponent = function KeyComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M10.6243 11.6885C11.3516 12.4158 11.8054 13.3717 11.9093 14.395C12.0131 15.4183 11.7607 16.4461 11.1944 17.3047C10.6281 18.1633 9.78285 18.8004 8.80134 19.1079C7.81984 19.4154 6.76216 19.3747 5.8072 18.9927C4.85224 18.6106 4.05847 17.9104 3.55989 17.0107C3.06131 16.1111 2.88841 15.067 3.07063 14.0547C3.25284 13.0424 3.77889 12.1244 4.55989 11.4551C5.34088 10.7858 6.32901 10.4064 7.35725 10.3813M16.9852 9.30322L17.8182 10.1362L20.8541 7.1001L17.7542 4L10.3311 11.4233",
     stroke: smartColor || stroke,
@@ -13395,7 +13171,6 @@ var KeyComponent = function KeyComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Key = {
   component: KeyComponent,
   viewBox: "0 0 24 24",
@@ -13418,12 +13193,12 @@ KeyComponent.defaultProps = {
 
 var LeftAlignComponent = function LeftAlignComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M3 4H20.359M3 9.11694H18.118M3 14.2349H20.359M3 19.353H15.876",
     stroke: smartColor || stroke,
@@ -13432,7 +13207,6 @@ var LeftAlignComponent = function LeftAlignComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var LeftAlign = {
   component: LeftAlignComponent,
   viewBox: "0 0 24 24",
@@ -13455,14 +13229,14 @@ LeftAlignComponent.defaultProps = {
 
 var LikeComponent = function LikeComponent(_ref) {
   var fill = _ref.fill;
-      _ref.stroke;
-      var smartColor = _ref.smartColor;
-      _ref.strokeWidth;
-      _ref.strokeLineCap;
-      _ref.strokeLineJoin;
-      _ref.fillRule;
-      _ref.clipRule;
-      _ref.props;
+    _ref.stroke;
+    var smartColor = _ref.smartColor;
+    _ref.strokeWidth;
+    _ref.strokeLineCap;
+    _ref.strokeLineJoin;
+    _ref.fillRule;
+    _ref.clipRule;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M6.9917 15.4084V6.94169C6.9917 6.60835 7.0917 6.28335 7.27503 6.00835L9.55003 2.62502C9.90837 2.08335 10.8 1.70002 11.5584 1.98335C12.375 2.25835 12.9167 3.17502 12.7417 3.99169L12.3084 6.71669C12.275 6.96669 12.3417 7.19169 12.4834 7.36669C12.625 7.52502 12.8334 7.62502 13.0584 7.62502H16.4834C17.1417 7.62502 17.7084 7.89169 18.0417 8.35835C18.3584 8.80835 18.4167 9.39169 18.2084 9.98335L16.1584 16.225C15.9 17.2584 14.775 18.1 13.6584 18.1H10.4084C9.85003 18.1 9.0667 17.9084 8.70837 17.55L7.6417 16.725C7.23337 16.4167 6.9917 15.925 6.9917 15.4084Z",
     fill: smartColor || fill
@@ -13471,7 +13245,6 @@ var LikeComponent = function LikeComponent(_ref) {
     fill: smartColor || fill
   }));
 };
-
 var Like = {
   component: LikeComponent,
   viewBox: "0 0 24 24",
@@ -13498,12 +13271,12 @@ LikeComponent.defaultProps = {
 
 var LinkComponent = function LinkComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M8.06177 10.6437L4.08691 14.6188C3.39101 15.3147 3 16.2581 3 17.2423C3 18.2265 3.39101 19.1704 4.08691 19.8663C4.78294 20.5617 5.72659 20.9523 6.71045 20.9523C7.69431 20.9523 8.63771 20.5617 9.33374 19.8663L13.3088 15.8917M16.0087 13.1904L19.8649 9.33447C20.5605 8.63857 20.9511 7.69488 20.9511 6.71094C20.9511 5.727 20.5605 4.7833 19.8649 4.0874C19.5204 3.74271 19.1113 3.46927 18.6611 3.28271C18.2108 3.09616 17.7283 3 17.2409 3C16.7536 3 16.271 3.09616 15.8207 3.28271C15.3705 3.46927 14.9614 3.74271 14.6169 4.0874L10.7609 7.94336M9.69086 14.2615L14.2609 9.69153",
     stroke: smartColor || stroke,
@@ -13512,7 +13285,6 @@ var LinkComponent = function LinkComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Link = {
   component: LinkComponent,
   viewBox: "0 0 24 24",
@@ -13535,12 +13307,12 @@ LinkComponent.defaultProps = {
 
 var ListComponent = function ListComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M20.855 3H3V9.3H20.855V3Z",
     stroke: smartColor || stroke,
@@ -13567,7 +13339,6 @@ var ListComponent = function ListComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var List = {
   component: ListComponent,
   viewBox: "0 0 24 24",
@@ -13590,12 +13361,12 @@ ListComponent.defaultProps = {
 
 var List2Component = function List2Component(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M9 6H20",
     stroke: smartColor || stroke,
@@ -13634,7 +13405,6 @@ var List2Component = function List2Component(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var List2 = {
   component: List2Component,
   viewBox: "0 0 24 24",
@@ -13657,12 +13427,12 @@ List2Component.defaultProps = {
 
 var LocationComponent = function LocationComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M13.756 11.5189C14.7245 10.5504 14.7245 8.98018 13.756 8.01168C12.7875 7.04318 11.2172 7.04318 10.2487 8.01168C9.28022 8.98018 9.28022 10.5504 10.2487 11.5189C11.2172 12.4874 12.7875 12.4874 13.756 11.5189Z",
     stroke: smartColor || stroke,
@@ -13689,7 +13459,6 @@ var LocationComponent = function LocationComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Location = {
   component: LocationComponent,
   viewBox: "0 0 24 24",
@@ -13712,12 +13481,12 @@ LocationComponent.defaultProps = {
 
 var Location2Component = function Location2Component(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M21 3L14.5 21C14.4561 21.0957 14.3857 21.1769 14.2971 21.2338C14.2084 21.2906 14.1053 21.3209 14 21.3209C13.8947 21.3209 13.7916 21.2906 13.703 21.2338C13.6143 21.1769 13.5439 21.0957 13.5 21L10 14L3 10.5C2.90426 10.4561 2.82313 10.3857 2.76625 10.2971C2.70937 10.2084 2.67913 10.1053 2.67913 10C2.67913 9.89468 2.70937 9.79158 2.76625 9.70295C2.82313 9.61431 2.90426 9.54387 3 9.5L21 3Z",
     stroke: smartColor || stroke,
@@ -13726,7 +13495,6 @@ var Location2Component = function Location2Component(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Location2 = {
   component: Location2Component,
   viewBox: "0 0 24 24",
@@ -13749,12 +13517,12 @@ Location2Component.defaultProps = {
 
 var Location3Component = function Location3Component(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12.225 16.831V10.386M6.45801 14.698C6.04635 14.9367 5.69874 15.2716 5.44482 15.6741C5.1909 16.0765 5.03823 16.5347 5 17.009C5 19.134 8.23507 20.8562 12.2261 20.8562C16.2171 20.8562 19.4509 19.133 19.4509 17.009C19.4161 16.544 19.2702 16.094 19.0254 15.697C18.7805 15.3001 18.4439 14.9676 18.0439 14.7278C18.0299 14.7178 18.013 14.708 17.999 14.699M15.808 6.583C15.808 8.56184 14.2039 10.166 12.225 10.166C10.2462 10.166 8.64203 8.56184 8.64203 6.583C8.64203 4.60416 10.2462 3 12.225 3C14.2039 3 15.808 4.60416 15.808 6.583Z",
     stroke: smartColor || stroke,
@@ -13763,7 +13531,6 @@ var Location3Component = function Location3Component(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Location3 = {
   component: Location3Component,
   viewBox: "0 0 24 24",
@@ -13786,12 +13553,12 @@ Location3Component.defaultProps = {
 
 var LockComponent = function LockComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M15.0996 8.10577H9.90036C7.19397 8.10577 5 10.3624 5 13.1461V15.9596C5 18.7433 7.19397 20.9999 9.90036 20.9999H15.0996C17.806 20.9999 20 18.7433 20 15.9596V13.1461C20 10.3624 17.806 8.10577 15.0996 8.10577Z",
     stroke: smartColor || stroke,
@@ -13812,7 +13579,6 @@ var LockComponent = function LockComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Lock = {
   component: LockComponent,
   viewBox: "0 0 24 24",
@@ -13835,12 +13601,12 @@ LockComponent.defaultProps = {
 
 var LoginComponent = function LoginComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M11.9031 20.3669H4.48804C4.09339 20.3669 3.71485 20.2102 3.43579 19.9312C3.15674 19.6521 3 19.2735 3 18.8789V5.48792C3 5.09327 3.15674 4.71485 3.43579 4.43579C3.71485 4.15674 4.09339 4 4.48804 4H11.9031M15.291 17.834L20.9409 12.184L15.291 6.53394M10.27 12.1829H20.702",
     stroke: smartColor || stroke,
@@ -13849,7 +13615,6 @@ var LoginComponent = function LoginComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Login = {
   component: LoginComponent,
   viewBox: "0 0 24 24",
@@ -13872,12 +13637,12 @@ LoginComponent.defaultProps = {
 
 var Login2Component = function Login2Component(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12.038 20.3669H19.4531C19.8477 20.3669 20.226 20.2102 20.5051 19.9312C20.7841 19.6521 20.9411 19.2735 20.9411 18.8789V5.48792C20.9411 5.09327 20.7841 4.71485 20.5051 4.43579C20.226 4.15674 19.8477 4 19.4531 4H12.038M8.0199 17.834L13.67 12.184L8.0199 6.53394M3 12.1829H13.432",
     stroke: smartColor || stroke,
@@ -13886,7 +13651,6 @@ var Login2Component = function Login2Component(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Login2 = {
   component: Login2Component,
   viewBox: "0 0 24 24",
@@ -13909,12 +13673,12 @@ Login2Component.defaultProps = {
 
 var LogoutComponent = function LogoutComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12.0338 20.3669H19.4488C19.8435 20.3669 20.222 20.2102 20.5011 19.9312C20.7801 19.6521 20.9369 19.2735 20.9369 18.8789V5.48792C20.9369 5.09327 20.7801 4.71485 20.5011 4.43579C20.222 4.15674 19.8435 4 19.4488 4H12.0338M8.6499 17.834L3 12.184L8.6499 6.53394M13.6669 12.1829H3.23489",
     stroke: smartColor || stroke,
@@ -13923,7 +13687,6 @@ var LogoutComponent = function LogoutComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Logout = {
   component: LogoutComponent,
   viewBox: "0 0 24 24",
@@ -13946,12 +13709,12 @@ LogoutComponent.defaultProps = {
 
 var Logout2Component = function Logout2Component(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M11.9031 20.3669H4.48804C4.09339 20.3669 3.71485 20.2102 3.43579 19.9312C3.15674 19.6521 3 19.2735 3 18.8789V5.48792C3 5.09327 3.15674 4.71485 3.43579 4.43579C3.71485 4.15674 4.09339 4 4.48804 4H11.9031M15.9191 17.833L10.269 12.183L15.9191 6.53296M20.9411 12.1829H10.5091",
     stroke: smartColor || stroke,
@@ -13960,7 +13723,6 @@ var Logout2Component = function Logout2Component(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Logout2 = {
   component: Logout2Component,
   viewBox: "0 0 24 24",
@@ -13983,12 +13745,12 @@ Logout2Component.defaultProps = {
 
 var MapComponent = function MapComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M8.95215 17.8818V4L3 5.16406V19.0459L8.95215 17.8818ZM8.95215 17.8818L14.9042 19.0459V5.16895L8.95203 4.00488M14.904 19.041V5.16406L20.8561 4V17.8818L14.904 19.041Z",
     stroke: smartColor || stroke,
@@ -13997,7 +13759,6 @@ var MapComponent = function MapComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Map$2 = {
   component: MapComponent,
   viewBox: "0 0 24 24",
@@ -14020,12 +13781,12 @@ MapComponent.defaultProps = {
 
 var MenuComponent = function MenuComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M3 5H20.359M3 18.186H20.359M3 11.592H20.359",
     stroke: smartColor || stroke,
@@ -14034,7 +13795,6 @@ var MenuComponent = function MenuComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Menu = {
   component: MenuComponent,
   viewBox: "0 0 24 24",
@@ -14057,12 +13817,12 @@ MenuComponent.defaultProps = {
 
 var Menu2Component = function Menu2Component(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M3 5H20.359M3 18.186H11.68M3 11.592H20.359",
     stroke: smartColor || stroke,
@@ -14071,7 +13831,6 @@ var Menu2Component = function Menu2Component(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Menu2 = {
   component: Menu2Component,
   viewBox: "0 0 24 24",
@@ -14094,12 +13853,12 @@ Menu2Component.defaultProps = {
 
 var Menu3Component = function Menu3Component(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M3 5H20.359M3 18.186H8.786M3 11.593H14.573",
     stroke: smartColor || stroke,
@@ -14108,7 +13867,6 @@ var Menu3Component = function Menu3Component(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Menu3 = {
   component: Menu3Component,
   viewBox: "0 0 24 24",
@@ -14131,12 +13889,12 @@ Menu3Component.defaultProps = {
 
 var Menu4Component = function Menu4Component(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M3 5H20.359M8.78601 18.186H14.572M5.89203 11.593H17.465",
     stroke: smartColor || stroke,
@@ -14145,7 +13903,6 @@ var Menu4Component = function Menu4Component(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Menu4 = {
   component: Menu4Component,
   viewBox: "0 0 24 24",
@@ -14168,12 +13925,12 @@ Menu4Component.defaultProps = {
 
 var Menu5Component = function Menu5Component(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M20.359 5H3M20.359 18.186H14.573M20.36 11.593H8.78699",
     stroke: smartColor || stroke,
@@ -14182,7 +13939,6 @@ var Menu5Component = function Menu5Component(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Menu5 = {
   component: Menu5Component,
   viewBox: "0 0 24 24",
@@ -14205,12 +13961,12 @@ Menu5Component.defaultProps = {
 
 var Menu6Component = function Menu6Component(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M20.359 11.592H3M8.786 18.186H3M14.573 5H3",
     stroke: smartColor || stroke,
@@ -14219,7 +13975,6 @@ var Menu6Component = function Menu6Component(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Menu6 = {
   component: Menu6Component,
   viewBox: "0 0 24 24",
@@ -14242,12 +13997,12 @@ Menu6Component.defaultProps = {
 
 var Menu7Component = function Menu7Component(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M20.359 11.592H3M14.573 18.186H8.78699M17.466 5H5.89301",
     stroke: smartColor || stroke,
@@ -14256,7 +14011,6 @@ var Menu7Component = function Menu7Component(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Menu7 = {
   component: Menu7Component,
   viewBox: "0 0 24 24",
@@ -14279,12 +14033,12 @@ Menu7Component.defaultProps = {
 
 var Menu8Component = function Menu8Component(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M20.359 11.592H3M8.786 18.186H3M14.573 5H3",
     stroke: smartColor || stroke,
@@ -14293,7 +14047,6 @@ var Menu8Component = function Menu8Component(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Menu8 = {
   component: Menu8Component,
   viewBox: "0 0 24 24",
@@ -14316,12 +14069,12 @@ Menu8Component.defaultProps = {
 
 var MenuHComponent = function MenuHComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M20.139 12.5C20.5532 12.5 20.889 12.1642 20.889 11.75C20.889 11.3358 20.5532 11 20.139 11C19.7248 11 19.389 11.3358 19.389 11.75C19.389 12.1642 19.7248 12.5 20.139 12.5Z",
     stroke: smartColor || stroke,
@@ -14342,7 +14095,6 @@ var MenuHComponent = function MenuHComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var MenuH = {
   component: MenuHComponent,
   viewBox: "0 0 24 24",
@@ -14365,12 +14117,12 @@ MenuHComponent.defaultProps = {
 
 var MenuVComponent = function MenuVComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M11.75 5.5C12.1642 5.5 12.5 5.16421 12.5 4.75C12.5 4.33579 12.1642 4 11.75 4C11.3358 4 11 4.33579 11 4.75C11 5.16421 11.3358 5.5 11.75 5.5Z",
     stroke: smartColor || stroke,
@@ -14391,7 +14143,6 @@ var MenuVComponent = function MenuVComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var MenuV = {
   component: MenuVComponent,
   viewBox: "0 0 24 24",
@@ -14414,12 +14165,12 @@ MenuVComponent.defaultProps = {
 
 var MessageComponent = function MessageComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M6.76923 4H5.00057C4.46996 4 3.96114 4.20663 3.58594 4.5745C3.21074 4.94237 3 5.44149 3 5.96175V14.0622C3 14.5825 3.21074 15.0816 3.58594 15.4494C3.96114 15.8173 4.46996 16.0239 5.00057 16.0239H8.13881C8.66842 16.0246 9.17605 16.231 9.55049 16.5982L11.9999 19L14.4495 16.5982C14.8239 16.231 15.3316 16.0246 15.8612 16.0239H18.9994C19.53 16.0239 20.0389 15.8173 20.4141 15.4494C20.7893 15.0816 21 14.5825 21 14.0622V5.96271C21 5.44246 20.7893 4.94358 20.4141 4.57571C20.0389 4.20783 19.53 4.00097 18.9994 4.00097H9.20557",
     stroke: smartColor || stroke,
@@ -14446,7 +14197,6 @@ var MessageComponent = function MessageComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Message = {
   component: MessageComponent,
   viewBox: "0 0 24 24",
@@ -14469,12 +14219,12 @@ MessageComponent.defaultProps = {
 
 var MicComponent = function MicComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M18.7729 12.2128C18.7729 13.9065 18.1002 15.5311 16.9026 16.7289C15.705 17.9266 14.0807 18.5997 12.387 18.6C10.693 18.6 9.0684 17.9272 7.87061 16.7294C6.67281 15.5316 6 13.9067 6 12.2128M12.3859 20.855V18.599M12.3859 3C13.8832 3 15.0969 4.21376 15.0969 5.711V12.176C15.0969 13.6732 13.8832 14.887 12.3859 14.887C10.8887 14.887 9.67493 13.6732 9.67493 12.176V5.711C9.67493 4.21376 10.8887 3 12.3859 3Z",
     stroke: smartColor || stroke,
@@ -14483,7 +14233,6 @@ var MicComponent = function MicComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Mic = {
   component: MicComponent,
   viewBox: "0 0 24 24",
@@ -14506,12 +14255,12 @@ MicComponent.defaultProps = {
 
 var MicOffComponent = function MicOffComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M9.89197 13.9686C10.2551 14.3833 10.7362 14.6778 11.2709 14.8119C11.8056 14.946 12.3685 14.9138 12.8844 14.7196C13.4003 14.5254 13.8448 14.1784 14.1583 13.725C14.4718 13.2716 14.6395 12.7333 14.639 12.182V9.22205M20.855 3.00287L3 20.8579M14.5831 5.32056V5.16773C14.4484 4.5094 14.074 3.92457 13.5325 3.52662C12.9911 3.12866 12.3212 2.94591 11.6527 3.01392C10.9841 3.08193 10.3646 3.39546 9.91437 3.89429C9.46415 4.39313 9.21521 5.04167 9.21588 5.71363V10.5916M18.314 12.2156C18.314 13.9094 17.6412 15.534 16.4436 16.7318C15.246 17.9295 13.6217 18.6026 11.928 18.6028V20.8579M11.9321 18.6019C11.0596 18.6022 10.1962 18.423 9.39594 18.0755C8.59564 17.728 7.87539 17.2196 7.27997 16.5818M5.54102 12.2156C5.54049 12.8001 5.62029 13.3819 5.77808 13.9446",
     stroke: smartColor || stroke,
@@ -14520,7 +14269,6 @@ var MicOffComponent = function MicOffComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var MicOff = {
   component: MicOffComponent,
   viewBox: "0 0 24 24",
@@ -14543,12 +14291,12 @@ MicOffComponent.defaultProps = {
 
 var MoonComponent = function MoonComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M11.9347 11.9237C11.13 10.5283 10.804 8.90801 11.0062 7.30993C11.2084 5.71185 11.9279 4.22362 13.0548 3.07263C11.4051 2.86082 9.72906 3.11447 8.21594 3.80505C6.70282 4.49563 5.41299 5.5958 4.49206 6.98083C3.57113 8.36586 3.05572 9.98048 3.00427 11.6429C2.95282 13.3054 3.36729 14.9492 4.2008 16.3885V16.3885C5.03048 17.8301 6.24662 19.011 7.71203 19.7977C9.17745 20.5845 10.8338 20.9456 12.4938 20.8407C14.1537 20.7357 15.7512 20.169 17.1058 19.204C18.4605 18.2389 19.5183 16.9143 20.1598 15.3798C18.5995 15.78 16.9512 15.6585 15.4662 15.0345C13.9812 14.4106 12.7409 13.3182 11.9347 11.9237V11.9237Z",
     stroke: smartColor || stroke,
@@ -14557,7 +14305,6 @@ var MoonComponent = function MoonComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Moon = {
   component: MoonComponent,
   viewBox: "0 0 24 24",
@@ -14580,12 +14327,12 @@ MoonComponent.defaultProps = {
 
 var MoveComponent = function MoveComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M15.1516 19.0984L12.5 21.75L9.84839 19.0984",
     stroke: smartColor || stroke,
@@ -14636,7 +14383,6 @@ var MoveComponent = function MoveComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Move = {
   component: MoveComponent,
   viewBox: "0 0 24 24",
@@ -14659,12 +14405,12 @@ MoveComponent.defaultProps = {
 
 var MusicComponent = function MusicComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M16.5269 8.63965L9.02887 10.8247V6.01807L19.386 3V7.80566M19.387 7.80688V15.8169M19.387 15.8169C19.387 17.2059 18.261 18.3319 16.872 18.3319C15.483 18.3319 14.357 17.2059 14.357 15.8169C14.357 14.4279 15.483 13.3019 16.872 13.3019C18.261 13.3019 19.387 14.4279 19.387 15.8169ZM9.03 10.3308V18.3408M9.03 18.3408C9.03 19.7298 7.904 20.8568 6.515 20.8568C5.126 20.8568 4 19.7308 4 18.3418C4 16.9528 5.126 15.8268 6.515 15.8268C7.904 15.8268 9.03 16.9518 9.03 18.3408Z",
     stroke: smartColor || stroke,
@@ -14673,7 +14419,6 @@ var MusicComponent = function MusicComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Music = {
   component: MusicComponent,
   viewBox: "0 0 24 24",
@@ -14696,12 +14441,12 @@ MusicComponent.defaultProps = {
 
 var MuteComponent = function MuteComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M6.53394 9.11145H4.48999C4.09473 9.11172 3.71568 9.26887 3.43628 9.54846C3.15688 9.82805 3 10.2074 3 10.6027V12.7028C2.99987 12.8985 3.03822 13.0922 3.11304 13.2731C3.18786 13.454 3.29766 13.6185 3.43604 13.757C3.57441 13.8954 3.73884 14.0053 3.91968 14.0802C4.10052 14.1551 4.29424 14.1935 4.48999 14.1935H6.53394C6.91443 14.1934 7.28046 14.3392 7.55689 14.6007L10.2849 17.1744C10.356 17.2393 10.4444 17.2825 10.5393 17.2985C10.6342 17.3144 10.7317 17.3024 10.8201 17.2643C10.9084 17.2262 10.984 17.1636 11.0376 17.0836C11.0912 17.0037 11.1205 16.9098 11.1221 16.8136V6.49182C11.1205 6.39559 11.0912 6.30177 11.0376 6.2218C10.984 6.14184 10.9084 6.07877 10.8201 6.04065C10.7317 6.00253 10.6342 5.99103 10.5393 6.00696C10.4444 6.02289 10.356 6.06561 10.2849 6.13049L7.55689 8.70471C7.28024 8.96584 6.91435 9.11116 6.53394 9.11145V9.11145Z",
     stroke: smartColor || stroke,
@@ -14722,7 +14467,6 @@ var MuteComponent = function MuteComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Mute = {
   component: MuteComponent,
   viewBox: "0 0 24 24",
@@ -14745,12 +14489,12 @@ MuteComponent.defaultProps = {
 
 var NetworkComponent = function NetworkComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M19.353 3V20.359M14.235 7.08911V20.3591M9.117 12.7761V20.3591M4 17.1162V20.3592",
     stroke: smartColor || stroke,
@@ -14759,7 +14503,6 @@ var NetworkComponent = function NetworkComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Network = {
   component: NetworkComponent,
   viewBox: "0 0 24 24",
@@ -14782,12 +14525,12 @@ NetworkComponent.defaultProps = {
 
 var NextComponent = function NextComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M18.6979 3L18.6989 20.359M6.02783 3.64386L17.8069 11.1138C17.9021 11.1743 17.9806 11.2579 18.0349 11.3568C18.0892 11.4556 18.1177 11.5667 18.1177 11.6795C18.1177 11.7923 18.0892 11.9032 18.0349 12.002C17.9806 12.1009 17.9021 12.1844 17.8069 12.2449L6.02783 19.7139C5.92652 19.778 5.80999 19.8136 5.69019 19.8172C5.57038 19.8208 5.45168 19.7922 5.34668 19.7344C5.24168 19.6766 5.15427 19.5918 5.09326 19.4886C5.03225 19.3854 5.00006 19.2679 5 19.148V4.21002C5.00006 4.09016 5.03225 3.97238 5.09326 3.8692C5.15427 3.76603 5.24168 3.68116 5.34668 3.62335C5.45168 3.56554 5.57038 3.53697 5.69019 3.54059C5.80999 3.54421 5.92652 3.57982 6.02783 3.64386Z",
     stroke: smartColor || stroke,
@@ -14796,7 +14539,6 @@ var NextComponent = function NextComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Next = {
   component: NextComponent,
   viewBox: "0 0 24 24",
@@ -14819,12 +14561,12 @@ NextComponent.defaultProps = {
 
 var NotificationBellComponent = function NotificationBellComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M6.96313 5.09998C7.54969 4.44229 8.26798 3.91545 9.07153 3.55365C9.87508 3.19185 10.746 3.0032 11.6272 3C12.4937 3.02102 13.3476 3.21254 14.1401 3.5636C14.9327 3.91466 15.6483 4.41838 16.2461 5.04602C16.8439 5.67366 17.3122 6.4129 17.6243 7.22156C17.9364 8.03022 18.0863 8.89243 18.0652 9.75897V11.859C17.9571 14.32 18.7339 16.7384 20.2551 18.676H3C4.52118 16.7384 5.29828 14.32 5.19019 11.859V9.75897C5.18864 8.88948 5.34829 8.02727 5.66113 7.216M12.7138 18.9397C12.8482 19.1553 12.923 19.4029 12.93 19.6569C12.9371 19.9109 12.8762 20.1622 12.754 20.385C12.6317 20.6077 12.4523 20.7938 12.2343 20.9242C12.0162 21.0547 11.7675 21.1248 11.5134 21.1272C11.2593 21.1296 11.0091 21.0642 10.7886 20.9379C10.5682 20.8115 10.3852 20.6288 10.2588 20.4084C10.1324 20.188 10.0672 19.9377 10.0695 19.6836C10.0718 19.4296 10.1414 19.1807 10.2717 18.9626",
     stroke: smartColor || stroke,
@@ -14833,7 +14575,6 @@ var NotificationBellComponent = function NotificationBellComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var NotificationBell = {
   component: NotificationBellComponent,
   viewBox: "0 0 24 24",
@@ -14856,12 +14597,12 @@ NotificationBellComponent.defaultProps = {
 
 var PauseComponent = function PauseComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M15.25 6.75V17.25",
     stroke: smartColor || stroke,
@@ -14876,7 +14617,6 @@ var PauseComponent = function PauseComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Pause = {
   component: PauseComponent,
   viewBox: "0 0 24 24",
@@ -14899,12 +14639,12 @@ PauseComponent.defaultProps = {
 
 var PieComponent = function PieComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M10.3579 7.14514C8.67163 7.14514 7.05454 7.82236 5.8622 9.02773C4.66986 10.2331 3.99997 11.8681 3.99997 13.5728C3.99997 15.2774 4.66986 16.912 5.8622 18.1174C7.05454 19.3227 8.67163 19.9999 10.3579 19.9999V19.9999C12.0437 19.9987 13.6601 19.3211 14.8522 18.116C16.0443 16.9109 16.7145 15.2771 16.7157 13.5728H10.3579V7.14514Z",
     stroke: smartColor || stroke,
@@ -14919,7 +14659,6 @@ var PieComponent = function PieComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Pie = {
   component: PieComponent,
   viewBox: "0 0 24 24",
@@ -14942,12 +14681,12 @@ PieComponent.defaultProps = {
 
 var PinComponent = function PinComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M15.736 5.16016L20.15 9.54004C20.336 9.72516 20.4409 9.97638 20.442 10.2388C20.4431 10.5012 20.3402 10.7532 20.1559 10.9399L18.8829 12.2231C18.6998 12.408 18.4512 12.5132 18.191 12.5166C17.9308 12.52 17.6799 12.4208 17.4921 12.2407L16.1539 10.959L14.901 12.2339C14.5198 12.6215 14.2223 13.0833 14.0272 13.5908C13.8321 14.0983 13.7436 14.6409 13.767 15.1841L13.8199 16.438C13.8316 16.713 13.7859 16.9873 13.6857 17.2437C13.5855 17.5 13.433 17.7326 13.2379 17.9268L11.7169 19.4429L7.35803 15.1182L3.08606 19.418M17.2539 6.667L12.8389 2.28663C12.6523 2.10214 12.4003 1.99907 12.1379 2.00001C11.8756 2.00094 11.6242 2.10618 11.439 2.292L10.166 3.57471C9.98266 3.75933 9.87924 4.00886 9.87793 4.26905C9.87662 4.52924 9.97744 4.77938 10.1589 4.96583L11.4509 6.29395L10.2139 7.55274C9.82802 7.94502 9.36486 8.25273 8.85376 8.45655C8.34266 8.66037 7.79478 8.75594 7.24487 8.73682L6.00098 8.69385C5.7295 8.68427 5.45892 8.73034 5.20605 8.8296C4.95319 8.92885 4.72348 9.07932 4.53101 9.271L3 10.7959L5.20605 12.9839",
     stroke: smartColor || stroke,
@@ -14956,7 +14695,6 @@ var PinComponent = function PinComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Pin = {
   component: PinComponent,
   viewBox: "0 0 24 24",
@@ -14979,12 +14717,12 @@ PinComponent.defaultProps = {
 
 var PlayCircleComponent = function PlayCircleComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z",
     stroke: smartColor || stroke,
@@ -14999,7 +14737,6 @@ var PlayCircleComponent = function PlayCircleComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var PlayCircle = {
   component: PlayCircleComponent,
   viewBox: "0 0 24 24",
@@ -15022,12 +14759,12 @@ PlayCircleComponent.defaultProps = {
 
 var PowerComponent = function PowerComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M16.5844 5.01849C17.9661 6.01285 19.0072 7.43129 19.5591 9.07088C20.1111 10.7105 20.1457 12.4875 19.6578 14.1484C19.17 15.8094 18.1847 17.2694 16.8428 18.3199C15.5008 19.3703 13.8708 19.9576 12.1853 19.9978C10.4997 20.038 8.84482 19.5288 7.45704 18.5435C6.06926 17.5581 5.01944 16.1466 4.45744 14.5106C3.89543 12.8747 3.85018 11.0981 4.32779 9.43399C4.80539 7.76986 5.78161 6.30357 7.1171 5.24445",
     stroke: smartColor || stroke,
@@ -15042,7 +14779,6 @@ var PowerComponent = function PowerComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Power = {
   component: PowerComponent,
   viewBox: "0 0 24 24",
@@ -15065,12 +14801,12 @@ PowerComponent.defaultProps = {
 
 var PreviousComponent = function PreviousComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M5.001 3L5 20.359M17.6721 3.64388L5.89304 11.1139C5.79784 11.1743 5.71932 11.2579 5.66501 11.3568C5.6107 11.4556 5.58224 11.5667 5.58224 11.6795C5.58224 11.7923 5.6107 11.9032 5.66501 12.002C5.71932 12.1009 5.79784 12.1845 5.89304 12.245L17.6721 19.7139C17.7734 19.7783 17.89 19.8142 18.01 19.818C18.1299 19.8217 18.2488 19.793 18.354 19.7352C18.4591 19.6773 18.5468 19.5924 18.6079 19.4891C18.6689 19.3858 18.701 19.268 18.7009 19.148V4.21004C18.701 4.09003 18.6689 3.97206 18.6079 3.86874C18.5468 3.76541 18.4591 3.68048 18.354 3.62264C18.2488 3.5648 18.1299 3.53612 18.01 3.53988C17.89 3.54363 17.7734 3.57958 17.6721 3.64388Z",
     stroke: smartColor || stroke,
@@ -15079,7 +14815,6 @@ var PreviousComponent = function PreviousComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Previous = {
   component: PreviousComponent,
   viewBox: "0 0 24 24",
@@ -15102,12 +14837,12 @@ PreviousComponent.defaultProps = {
 
 var PrintComponent = function PrintComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M4.98389 16.6428C4.4577 16.6428 3.95313 16.4338 3.58105 16.0618C3.20898 15.6897 3 15.1851 3 14.6589V9.19702C3 8.93653 3.05116 8.6784 3.15088 8.43774C3.2506 8.19709 3.39681 7.97834 3.58105 7.79419C3.7653 7.61004 3.98391 7.4641 4.22461 7.3645C4.46531 7.26491 4.72339 7.21398 4.98389 7.21411H18.8708C19.1313 7.21398 19.3894 7.26491 19.6301 7.3645C19.8708 7.4641 20.0894 7.61004 20.2737 7.79419C20.4579 7.97834 20.6041 8.19709 20.7039 8.43774C20.8036 8.6784 20.855 8.93653 20.855 9.19702V14.6589C20.855 15.1851 20.6458 15.6897 20.2737 16.0618C19.9016 16.4338 19.397 16.6428 18.8708 16.6428",
     stroke: smartColor || stroke,
@@ -15140,7 +14875,6 @@ var PrintComponent = function PrintComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Print = {
   component: PrintComponent,
   viewBox: "0 0 24 24",
@@ -15163,12 +14897,12 @@ PrintComponent.defaultProps = {
 
 var ProfileComponent = function ProfileComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M11.9987 13.0811C14.5073 13.0811 16.5409 11.0482 16.5409 8.54054C16.5409 6.03287 14.5073 4 11.9987 4C9.49014 4 7.45654 6.03287 7.45654 8.54054C7.45654 11.0482 9.49014 13.0811 11.9987 13.0811Z",
     stroke: smartColor || stroke,
@@ -15183,7 +14917,6 @@ var ProfileComponent = function ProfileComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Profile = {
   component: ProfileComponent,
   viewBox: "0 0 24 24",
@@ -15206,12 +14939,12 @@ ProfileComponent.defaultProps = {
 
 var PulseComponent = function PulseComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M3 14.166H6.56592L9.146 9.58301L11.751 18.1538L15.4351 6L17.7351 14.166H20.856",
     stroke: smartColor || stroke,
@@ -15220,7 +14953,6 @@ var PulseComponent = function PulseComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Pulse = {
   component: PulseComponent,
   viewBox: "0 0 24 24",
@@ -15243,12 +14975,12 @@ PulseComponent.defaultProps = {
 
 var RefreshComponent = function RefreshComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M16.1659 9.68896L19.5099 6.34399L16.1659 3M5 13.1918V9.16694C5 8.79635 5.07302 8.42924 5.21484 8.08686C5.35666 7.74448 5.56437 7.43338 5.82642 7.17134C6.08846 6.90929 6.39956 6.70158 6.74194 6.55976C7.08432 6.41794 7.45143 6.34492 7.82202 6.34492H19.511M8.34502 14.1661L5.00005 17.5111M5.00005 17.5111L8.34502 20.8551M5.00005 17.5111L16.689 17.511C17.4373 17.5107 18.1549 17.2133 18.6839 16.6841C19.2129 16.1549 19.51 15.4372 19.51 14.689V10.6641",
     stroke: smartColor || stroke,
@@ -15257,7 +14989,6 @@ var RefreshComponent = function RefreshComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Refresh = {
   component: RefreshComponent,
   viewBox: "0 0 24 24",
@@ -15280,12 +15011,12 @@ RefreshComponent.defaultProps = {
 
 var ReloadComponent = function ReloadComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M19.95 11C19.6971 9.07074 18.7498 7.29978 17.2853 6.01862C15.8209 4.73747 13.9397 4.03395 11.9939 4.03977C10.0482 4.04559 8.17123 4.76034 6.71446 6.05023C5.25769 7.34012 4.32096 9.11672 4.07962 11.0475C3.83828 12.9782 4.30887 14.9307 5.4033 16.5395C6.49774 18.1483 8.14098 19.3031 10.0254 19.7877C11.9099 20.2723 13.9064 20.0534 15.6411 19.1722C17.3759 18.2909 18.73 16.8077 19.45 15M19.95 20V15H14.95",
     stroke: smartColor || stroke,
@@ -15300,7 +15031,6 @@ var ReloadComponent = function ReloadComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Reload = {
   component: ReloadComponent,
   viewBox: "0 0 24 24",
@@ -15323,12 +15053,12 @@ ReloadComponent.defaultProps = {
 
 var RightAlignComponent = function RightAlignComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M3 4H20.359M7.08899 9.11694H20.359M3 14.2349H20.359M11.095 19.353H20.359",
     stroke: smartColor || stroke,
@@ -15337,7 +15067,6 @@ var RightAlignComponent = function RightAlignComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var RightAlign = {
   component: RightAlignComponent,
   viewBox: "0 0 24 24",
@@ -15360,12 +15089,12 @@ RightAlignComponent.defaultProps = {
 
 var RocketComponent = function RocketComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M11.1521 19.553L12.7842 21.1849L13.5371 20.4319C14.0838 19.8851 14.396 19.1469 14.408 18.3738L14.459 15.1419L17.0161 12.5862C17.9502 12.3734 18.81 11.9137 19.5063 11.2557C20.2027 10.5977 20.71 9.76508 20.9753 8.84454C21.2407 7.924 21.2546 6.94947 21.0154 6.02179C20.7762 5.09411 20.2927 4.24756 19.6152 3.57013C18.9378 2.8927 18.0913 2.40896 17.1636 2.16974C16.2359 1.93052 15.2609 1.94441 14.3403 2.20978C13.4198 2.47515 12.5872 2.98221 11.9292 3.67853C11.2712 4.37485 10.812 5.23517 10.5991 6.16925L8.04199 8.72492L4.81006 8.77618C4.03731 8.78841 3.29973 9.10038 2.75317 9.64679L2 10.4002L3.66699 12.0672M15.5291 7.6521C15.7148 7.83845 15.8537 8.06624 15.9344 8.31665C16.015 8.56706 16.035 8.83333 15.993 9.09302C15.9509 9.3527 15.848 9.59864 15.6924 9.81079C15.5369 10.0229 15.3332 10.195 15.0982 10.3132C14.8689 10.4321 14.6145 10.4944 14.3562 10.4944C14.098 10.4944 13.8433 10.4321 13.614 10.3132C13.3791 10.1949 13.1757 10.0225 13.0203 9.8103C12.8648 9.5981 12.7617 9.3522 12.7198 9.09253C12.6778 8.83285 12.6981 8.56701 12.7788 8.31665C12.8595 8.06629 12.9984 7.83839 13.1841 7.6521C13.2285 7.60799 13.2754 7.56627 13.3242 7.5271M7.16709 13.4182L4.24109 16.3442M9.73309 16.0522L7.45309 18.3322",
     stroke: smartColor || stroke,
@@ -15374,7 +15103,6 @@ var RocketComponent = function RocketComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Rocket = {
   component: RocketComponent,
   viewBox: "0 0 24 24",
@@ -15397,12 +15125,12 @@ RocketComponent.defaultProps = {
 
 var RotateLeftComponent = function RotateLeftComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M20.8872 19.8799V15.8428C20.8872 15.0968 20.7402 14.3583 20.4546 13.6692C20.169 12.9801 19.7503 12.3539 19.2227 11.8267C18.695 11.2994 18.0685 10.8814 17.3792 10.5964C16.6898 10.3114 15.951 10.1651 15.2051 10.1658L6 10.1748M11.1692 5L6 10.1689L11.1692 15.3379",
     stroke: smartColor || stroke,
@@ -15411,7 +15139,6 @@ var RotateLeftComponent = function RotateLeftComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var RotateLeft = {
   component: RotateLeftComponent,
   viewBox: "0 0 24 24",
@@ -15434,12 +15161,12 @@ RotateLeftComponent.defaultProps = {
 
 var RotateRightComponent = function RotateRightComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M5 19.8799V15.8428C5 15.0968 5.14695 14.3581 5.43262 13.6689C5.71829 12.9798 6.137 12.3537 6.66479 11.8264C7.19259 11.2992 7.81909 10.8811 8.50854 10.5962C9.198 10.3113 9.93684 10.165 10.6829 10.1658L19.8828 10.1748M14.718 5L19.887 10.1689L14.718 15.3379",
     stroke: smartColor || stroke,
@@ -15448,7 +15175,6 @@ var RotateRightComponent = function RotateRightComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var RotateRight = {
   component: RotateRightComponent,
   viewBox: "0 0 24 24",
@@ -15471,12 +15197,12 @@ RotateRightComponent.defaultProps = {
 
 var ScanCardComponent = function ScanCardComponent(_ref) {
   var fill = _ref.fill,
-      stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     fillRule: "evenodd",
     clipRule: "evenodd",
@@ -15518,7 +15244,6 @@ var ScanCardComponent = function ScanCardComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 ScanCardComponent.propTypes = {
   fill: propTypes$1.exports.string,
   stroke: propTypes$1.exports.string,
@@ -15542,12 +15267,12 @@ var ScanCard = {
 
 var ScrollComponent = function ScrollComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M19.585 20.856H6.47192C5.55109 20.856 4.66797 20.4905 4.01685 19.8394C3.36572 19.1882 3 18.3051 3 17.3843V3.99219C3 3.86192 3.02559 3.73266 3.07544 3.6123C3.12529 3.49195 3.19841 3.38264 3.29053 3.29053C3.38264 3.19841 3.49195 3.12554 3.6123 3.07568C3.73266 3.02583 3.86167 3 3.99194 3H16.0779C16.2082 3 16.3372 3.02583 16.4575 3.07568C16.5779 3.12554 16.6874 3.19841 16.7795 3.29053C16.8717 3.38264 16.9445 3.49195 16.9944 3.6123C17.0442 3.73266 17.0701 3.86192 17.0701 3.99219V15.3989",
     stroke: smartColor || stroke,
@@ -15580,7 +15305,6 @@ var ScrollComponent = function ScrollComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Scroll = {
   component: ScrollComponent,
   viewBox: "0 0 24 24",
@@ -15603,12 +15327,12 @@ ScrollComponent.defaultProps = {
 
 var SearchComponent = function SearchComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M19.25 19.25L15.5 15.5L19.25 19.25ZM4.75 11C4.75 7.54822 7.54822 4.75 11 4.75C14.4518 4.75 17.25 7.54822 17.25 11C17.25 14.4518 14.4518 17.25 11 17.25C7.54822 17.25 4.75 14.4518 4.75 11Z",
     stroke: smartColor || stroke,
@@ -15617,7 +15341,6 @@ var SearchComponent = function SearchComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Search = {
   component: SearchComponent,
   viewBox: "0 0 24 24",
@@ -15640,12 +15363,12 @@ SearchComponent.defaultProps = {
 
 var SelectItemComponent = function SelectItemComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M17.3609 12.0708V18.2217C17.3609 18.6933 17.1737 19.1456 16.8403 19.479C16.5068 19.8125 16.0545 20 15.5829 20H5.77778C5.30626 20 4.85411 19.8125 4.52069 19.479C4.18727 19.1456 4 18.6933 4 18.2217V8.41597C4 7.94437 4.18727 7.49215 4.52069 7.15868C4.85411 6.82521 5.30626 6.6377 5.77778 6.6377H11.9547",
     stroke: smartColor || stroke,
@@ -15660,7 +15383,6 @@ var SelectItemComponent = function SelectItemComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var SelectItem = {
   component: SelectItemComponent,
   viewBox: "0 0 24 24",
@@ -15683,12 +15405,12 @@ SelectItemComponent.defaultProps = {
 
 var SendComponent = function SendComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M10 14L21 3",
     stroke: smartColor || stroke,
@@ -15703,7 +15425,6 @@ var SendComponent = function SendComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Send = {
   component: SendComponent,
   viewBox: "0 0 24 24",
@@ -15726,12 +15447,12 @@ SendComponent.defaultProps = {
 
 var SettingsComponent = function SettingsComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M11.922 14.8101C13.5137 14.8101 14.804 13.5198 14.804 11.9281C14.804 10.3365 13.5137 9.04614 11.922 9.04614C10.3304 9.04614 9.04004 10.3365 9.04004 11.9281C9.04004 13.5198 10.3304 14.8101 11.922 14.8101Z",
     stroke: smartColor || stroke,
@@ -15746,7 +15467,6 @@ var SettingsComponent = function SettingsComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Settings = {
   component: SettingsComponent,
   viewBox: "0 0 24 24",
@@ -15769,12 +15489,12 @@ SettingsComponent.defaultProps = {
 
 var ShareComponent = function ShareComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M6 15C7.65685 15 9 13.6569 9 12C9 10.3431 7.65685 9 6 9C4.34315 9 3 10.3431 3 12C3 13.6569 4.34315 15 6 15Z",
     stroke: smartColor || stroke,
@@ -15807,7 +15527,6 @@ var ShareComponent = function ShareComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Share = {
   component: ShareComponent,
   viewBox: "0 0 24 24",
@@ -15830,12 +15549,12 @@ ShareComponent.defaultProps = {
 
 var ShieldComponent$1 = function ShieldComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M9.45518 4.021L12.13 3L19.2591 5.72021V11.2783C19.2589 13.4292 18.5651 15.5227 17.2809 17.248C15.9966 18.9734 14.1903 20.2384 12.13 20.856C10.0695 20.2386 8.26294 18.9725 6.97852 17.2471C5.6941 15.5217 5.00028 13.4283 5 11.2773V5.71924L6.9751 4.96631",
     stroke: smartColor || stroke,
@@ -15844,7 +15563,6 @@ var ShieldComponent$1 = function ShieldComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Shield$1 = {
   component: ShieldComponent$1,
   viewBox: "0 0 24 24",
@@ -15865,17 +15583,15 @@ ShieldComponent$1.defaultProps = {
   strokeLineJoin: "round"
 };
 
-var _excluded$C = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
-
+var _excluded$G = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
 var ShieldComponent = function ShieldComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _objectWithoutProperties(_ref, _excluded$C);
-
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _objectWithoutProperties(_ref, _excluded$G);
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M15.4601 9.38818L11.3591 13.4892L9.09308 11.4232M9.45518 4.021L12.13 3L19.2601 5.72021V11.2783C19.2598 13.4293 18.566 15.5226 17.2816 17.248C15.9972 18.9735 14.1905 20.2386 12.13 20.856C10.0695 20.2386 8.26294 18.9725 6.97852 17.2471C5.6941 15.5217 5.00028 13.4284 5 11.2774V5.71926L6.97412 4.96633",
     stroke: smartColor || stroke,
@@ -15884,7 +15600,6 @@ var ShieldComponent = function ShieldComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Shield = {
   component: ShieldComponent,
   viewBox: "0 0 24 24",
@@ -15907,12 +15622,12 @@ ShieldComponent.defaultProps = {
 
 var ShieldFlashComponent = function ShieldFlashComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12.13 20.855C14.1905 20.2377 15.9971 18.9725 17.2816 17.2471C18.566 15.5217 19.2598 13.4279 19.2601 11.2769V5.71979L12.13 3.00006L9.4549 4.02008",
     stroke: smartColor || stroke,
@@ -15933,7 +15648,6 @@ var ShieldFlashComponent = function ShieldFlashComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var ShieldFlash = {
   component: ShieldFlashComponent,
   viewBox: "0 0 24 24",
@@ -15956,12 +15670,12 @@ ShieldFlashComponent.defaultProps = {
 
 var ShopComponent = function ShopComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M19.2131 11.7781V18.373C19.2131 18.8992 19.0042 19.4041 18.6321 19.7761C18.26 20.1482 17.7554 20.3572 17.2292 20.3572H6.63916C6.11297 20.3572 5.6084 20.1482 5.23633 19.7761C4.86426 19.4041 4.65527 18.8992 4.65527 18.373V14.1931",
     stroke: smartColor || stroke,
@@ -15982,7 +15696,6 @@ var ShopComponent = function ShopComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Shop = {
   component: ShopComponent,
   viewBox: "0 0 24 24",
@@ -16005,12 +15718,12 @@ ShopComponent.defaultProps = {
 
 var SortComponent = function SortComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M6 9L12 3L18 9M18 15L12 21L6 15",
     stroke: smartColor || stroke,
@@ -16019,7 +15732,6 @@ var SortComponent = function SortComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Sort = {
   component: SortComponent,
   viewBox: "0 0 24 24",
@@ -16042,12 +15754,12 @@ SortComponent.defaultProps = {
 
 var Sort2Component = function Sort2Component(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M3 9L7 5M7 5L11 9M7 5V19",
     stroke: smartColor || stroke,
@@ -16062,7 +15774,6 @@ var Sort2Component = function Sort2Component(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Sort2 = {
   component: Sort2Component,
   viewBox: "0 0 24 24",
@@ -16085,12 +15796,12 @@ Sort2Component.defaultProps = {
 
 var SortAscendingComponent = function SortAscendingComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M4 6H11",
     stroke: smartColor || stroke,
@@ -16123,7 +15834,6 @@ var SortAscendingComponent = function SortAscendingComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var SortAscending = {
   component: SortAscendingComponent,
   viewBox: "0 0 24 24",
@@ -16146,12 +15856,12 @@ SortAscendingComponent.defaultProps = {
 
 var SortDescendingComponent = function SortDescendingComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M4.5 6H13.5",
     stroke: smartColor || stroke,
@@ -16184,7 +15894,6 @@ var SortDescendingComponent = function SortDescendingComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var SortDescending = {
   component: SortDescendingComponent,
   viewBox: "0 0 24 24",
@@ -16207,12 +15916,12 @@ SortDescendingComponent.defaultProps = {
 
 var SoundComponent = function SoundComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M6.52808 9.71173H4.48804C4.09339 9.71173 3.71485 9.86871 3.43579 10.1478C3.15674 10.4268 3 10.8054 3 11.2V13.2938C3 13.6884 3.15674 14.067 3.43579 14.346C3.71485 14.6251 4.09339 14.7816 4.48804 14.7816H6.52808C6.90774 14.7817 7.273 14.9272 7.54907 15.1878L10.271 17.7576C10.3421 17.8222 10.4304 17.8649 10.5251 17.8807C10.6199 17.8964 10.7172 17.8846 10.8054 17.8465C10.8936 17.8084 10.969 17.7461 11.0225 17.6663C11.076 17.5865 11.1054 17.4928 11.1072 17.3968V7.09698C11.1054 7.00095 11.076 6.90723 11.0225 6.82745C10.969 6.74768 10.8936 6.68487 10.8054 6.64679C10.7172 6.60871 10.6199 6.59686 10.5251 6.61261C10.4304 6.62836 10.3421 6.67109 10.271 6.73566L7.54907 9.30597C7.27311 9.56678 6.90778 9.71181 6.52808 9.71173V9.71173Z",
     stroke: smartColor || stroke,
@@ -16233,7 +15942,6 @@ var SoundComponent = function SoundComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Sound = {
   component: SoundComponent,
   viewBox: "0 0 24 24",
@@ -16256,12 +15964,12 @@ SoundComponent.defaultProps = {
 
 var StackComponent = function StackComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M16.6129 11.937L11.9659 15.0908L7.26012 11.918",
     stroke: smartColor || stroke,
@@ -16282,7 +15990,6 @@ var StackComponent = function StackComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Stack$1 = {
   component: StackComponent,
   viewBox: "0 0 24 24",
@@ -16305,12 +16012,12 @@ StackComponent.defaultProps = {
 
 var StaffComponent = function StaffComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M11.9119 13.118C14.7059 13.118 16.9709 10.853 16.9709 8.059C16.9709 5.26499 14.7059 3 11.9119 3C9.11791 3 6.85292 5.26499 6.85292 8.059C6.85292 10.853 9.11791 13.118 11.9119 13.118Z",
     stroke: smartColor || stroke,
@@ -16341,7 +16048,6 @@ var StaffComponent = function StaffComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Staff = {
   component: StaffComponent,
   viewBox: "0 0 24 24",
@@ -16364,12 +16070,12 @@ StaffComponent.defaultProps = {
 
 var StarComponent = function StarComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12.1741 17.5499L17.845 20.5499L16.762 14.2019L21.3499 9.7019L15.01 8.776L12.175 3L9.34009 8.776L3 9.7019L7.58789 14.2019L6.50488 20.5499L12.1741 17.5499Z",
     stroke: smartColor || stroke,
@@ -16378,7 +16084,6 @@ var StarComponent = function StarComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Star = {
   component: StarComponent,
   viewBox: "0 0 24 24",
@@ -16401,12 +16106,12 @@ StarComponent.defaultProps = {
 
 var StopCircleComponent = function StopCircleComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z",
     stroke: smartColor || stroke,
@@ -16421,7 +16126,6 @@ var StopCircleComponent = function StopCircleComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var StopCircle = {
   component: StopCircleComponent,
   viewBox: "0 0 24 24",
@@ -16444,12 +16148,12 @@ StopCircleComponent.defaultProps = {
 
 var StopwatchComponent = function StopwatchComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12.412 20.856C16.5055 20.856 19.824 17.5375 19.824 13.444C19.824 9.35045 16.5055 6.03198 12.412 6.03198C8.31847 6.03198 5 9.35045 5 13.444C5 17.5375 8.31847 20.856 12.412 20.856Z",
     stroke: smartColor || stroke,
@@ -16476,7 +16180,6 @@ var StopwatchComponent = function StopwatchComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Stopwatch = {
   component: StopwatchComponent,
   viewBox: "0 0 24 24",
@@ -16499,12 +16202,12 @@ StopwatchComponent.defaultProps = {
 
 var SunComponent = function SunComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M11.928 3V4.994M11.928 18.861V20.855M3 11.927H4.994M18.861 11.927H20.855M18.24 5.61499L16.83 7.02499M7.02501 16.83L5.61501 18.24M5.61501 5.61499L7.02501 7.02499M16.83 16.83L18.24 18.24M15.751 11.928C15.751 14.0394 14.0394 15.751 11.928 15.751C9.81661 15.751 8.105 14.0394 8.105 11.928C8.105 9.8166 9.81661 8.10498 11.928 8.10498C14.0394 8.10498 15.751 9.8166 15.751 11.928Z",
     stroke: smartColor || stroke,
@@ -16513,7 +16216,6 @@ var SunComponent = function SunComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Sun = {
   component: SunComponent,
   viewBox: "0 0 24 24",
@@ -16536,12 +16238,12 @@ SunComponent.defaultProps = {
 
 var SupportComponent = function SupportComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M14.0361 20.5952C12.6519 20.9429 11.2032 20.9429 9.81904 20.5952V15.4622M14.0361 20.5952C15.625 20.2076 17.0768 19.3909 18.2333 18.2344C19.3898 17.0779 20.2066 15.626 20.5941 14.0371M14.0361 20.5952L14.036 15.4619M14.0361 3.26076C12.6519 2.91308 11.2032 2.91308 9.81904 3.26076M14.0361 3.26076C15.6251 3.64823 17.077 4.46484 18.2335 5.62134C19.39 6.77784 20.2075 8.23011 20.5949 9.81909M14.0361 3.26076V8.39185M9.81904 3.26076C8.23011 3.64833 6.77826 4.46534 5.62178 5.62183C4.46529 6.77831 3.64851 8.23016 3.26094 9.81909M9.81904 3.26076V8.39185M20.5949 9.81909C20.9429 11.2032 20.9429 12.6518 20.5949 14.0359L15.463 14.0361M20.5949 9.81909H15.463C15.8459 10.4557 16.0482 11.1846 16.0482 11.9275C16.0482 12.6704 15.8459 13.3995 15.463 14.0361M3.26094 9.81909C2.91292 11.2032 2.91307 12.6518 3.26108 14.0359H8.3921C8.00951 13.3991 7.80738 12.6704 7.80738 11.9275C7.80738 11.1846 8.00951 10.4559 8.3921 9.81909H3.26094ZM9.82197 20.5933C8.23309 20.2056 6.78117 19.3889 5.62471 18.2324C4.46824 17.076 3.65179 15.624 3.26411 14.0352M14.0361 8.39185C13.3995 8.00873 12.6704 7.8064 11.9274 7.8064C11.1845 7.8064 10.4556 8.00873 9.81904 8.39185M14.0361 8.39185C14.6223 8.74188 15.1126 9.23186 15.463 9.81787M9.81904 8.39185C9.23294 8.74208 8.74274 9.23201 8.3921 9.81787M14.036 15.4619C14.6223 15.1119 15.1126 14.6222 15.463 14.0361M14.036 15.4619C13.3994 15.845 12.6704 16.0476 11.9274 16.0476C11.1845 16.0476 10.4556 15.8453 9.81904 15.4622M9.81904 15.4622C9.23289 15.112 8.74268 14.623 8.3921 14.0371",
     stroke: smartColor || stroke,
@@ -16550,7 +16252,6 @@ var SupportComponent = function SupportComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Support = {
   component: SupportComponent,
   viewBox: "0 0 24 24",
@@ -16573,14 +16274,14 @@ SupportComponent.defaultProps = {
 
 var TableComponent = function TableComponent(_ref) {
   var fill = _ref.fill;
-      _ref.stroke;
-      var smartColor = _ref.smartColor;
-      _ref.strokeWidth;
-      _ref.strokeLineCap;
-      _ref.strokeLineJoin;
-      var fillRule = _ref.fillRule,
-      clipRule = _ref.clipRule;
-      _ref.props;
+    _ref.stroke;
+    var smartColor = _ref.smartColor;
+    _ref.strokeWidth;
+    _ref.strokeLineCap;
+    _ref.strokeLineJoin;
+    var fillRule = _ref.fillRule,
+    clipRule = _ref.clipRule;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     fillRule: fillRule,
     clipRule: clipRule,
@@ -16588,7 +16289,6 @@ var TableComponent = function TableComponent(_ref) {
     d: "M2.25 5.25C2.25 4.83579 2.58579 4.5 3 4.5H21C21.4142 4.5 21.75 4.83579 21.75 5.25V18C21.75 18.3978 21.592 18.7794 21.3107 19.0607C21.0294 19.342 20.6478 19.5 20.25 19.5H3.75C3.35218 19.5 2.97065 19.342 2.68934 19.0607C2.40804 18.7794 2.25 18.3978 2.25 18V5.25ZM3.75 10.5V13.5H7.50001V10.5H3.75ZM3.75 9V6H20.25V9H3.75ZM9.00001 10.5V13.5H20.25V10.5H9.00001ZM20.25 15H9.00001V18H20.25V15ZM7.50001 18V15H3.75V18H7.50001Z"
   }));
 };
-
 var Table$1 = {
   component: TableComponent,
   viewBox: "0 0 24 24",
@@ -16615,12 +16315,12 @@ TableComponent.defaultProps = {
 
 var TagComponent = function TagComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M3.73396 15.2779L8.72224 20.2663C9.19206 20.736 9.82939 21 10.4938 21C11.1581 21 11.7952 20.736 12.265 20.2663L19.5595 12.9717C19.8412 12.6897 19.9996 12.3075 20 11.909V4H12.0914C11.6928 4.00009 11.3105 4.15856 11.0287 4.44048L3.73396 11.7351C3.50124 11.9676 3.3166 12.2438 3.19064 12.5477C3.06469 12.8517 3 13.1774 3 13.5064C3 13.8354 3.06469 14.1613 3.19064 14.4653C3.3166 14.7692 3.50124 15.0454 3.73396 15.2779Z",
     stroke: smartColor || stroke,
@@ -16635,7 +16335,6 @@ var TagComponent = function TagComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Tag = {
   component: TagComponent,
   viewBox: "0 0 24 24",
@@ -16658,12 +16357,12 @@ TagComponent.defaultProps = {
 
 var TextComponent = function TextComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M9.28998 19.0481H13.912M11.601 4V19.048M5 5.53589V4.00024H18.2V5.53589",
     stroke: smartColor || stroke,
@@ -16672,7 +16371,6 @@ var TextComponent = function TextComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Text = {
   component: TextComponent,
   viewBox: "0 0 24 24",
@@ -16695,12 +16393,12 @@ TextComponent.defaultProps = {
 
 var TimeComponent = function TimeComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M11.928 20.856C16.8588 20.856 20.856 16.8588 20.856 11.928C20.856 6.9972 16.8588 3 11.928 3C6.9972 3 3 6.9972 3 11.928C3 16.8588 6.9972 20.856 11.928 20.856Z",
     stroke: smartColor || stroke,
@@ -16715,7 +16413,6 @@ var TimeComponent = function TimeComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Time = {
   component: TimeComponent,
   viewBox: "0 0 24 24",
@@ -16738,12 +16435,12 @@ TimeComponent.defaultProps = {
 
 var TransferComponent = function TransferComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M21 7H3",
     stroke: smartColor || stroke,
@@ -16770,7 +16467,6 @@ var TransferComponent = function TransferComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Transfer = {
   component: TransferComponent,
   viewBox: "0 0 24 24",
@@ -16793,12 +16489,12 @@ TransferComponent.defaultProps = {
 
 var TrophyComponent = function TrophyComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M8.99103 4H15.7371C16.1318 4 16.5103 4.15649 16.7894 4.43555C17.0684 4.7146 17.2252 5.09315 17.2252 5.48779V9.9458C17.2349 11.4514 16.6587 12.9017 15.6185 13.9902C14.5783 15.0788 13.1557 15.7202 11.6512 15.7788C10.1467 15.7202 8.72384 15.0788 7.68365 13.9902C6.64346 12.9017 6.0675 11.4514 6.07721 9.9458V4.84619M15.747 19.9058V19.9542C15.747 20.1929 15.6521 20.4216 15.4833 20.5904C15.3146 20.7592 15.0858 20.8541 14.8471 20.8541H8.44696C8.32877 20.8541 8.21167 20.8304 8.10248 20.7852C7.99329 20.74 7.8943 20.674 7.81073 20.5904C7.72716 20.5068 7.66065 20.4076 7.61542 20.2984C7.57019 20.1892 7.54706 20.0724 7.54706 19.9542V19.9058M11.65 15.779V20.852M20.3 6.46509V11.1941M3 11.1941V6.46509",
     stroke: smartColor || stroke,
@@ -16807,7 +16503,6 @@ var TrophyComponent = function TrophyComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Trophy = {
   component: TrophyComponent,
   viewBox: "0 0 24 24",
@@ -16830,12 +16525,12 @@ TrophyComponent.defaultProps = {
 
 var UnlockComponent = function UnlockComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M15.0996 8.1153H9.90036C7.19397 8.1153 5 10.3703 5 13.1519V15.9633C5 18.745 7.19397 21 9.90036 21H15.0996C17.806 21 20 18.745 20 15.9633V13.1519C20 10.3703 17.806 8.1153 15.0996 8.1153Z",
     stroke: smartColor || stroke,
@@ -16856,7 +16551,6 @@ var UnlockComponent = function UnlockComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Unlock = {
   component: UnlockComponent,
   viewBox: "0 0 24 24",
@@ -16879,12 +16573,12 @@ UnlockComponent.defaultProps = {
 
 var UploadComponent = function UploadComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M4.69312 10.03L3.47412 8.63C3.16854 8.27784 3.00012 7.82722 3 7.36096V4.58301C3 4.16317 3.16675 3.76049 3.46362 3.46362C3.76049 3.16675 4.16317 3 4.58301 3H18.8281C19.248 3 19.6506 3.16675 19.9475 3.46362C20.2444 3.76049 20.4111 4.16317 20.4111 4.58301V7.36096C20.4111 7.82724 20.2427 8.27789 19.937 8.63L18.718 10.03M7.07599 14.2091L11.7032 9.58105L16.3311 14.2091M11.7041 20.8532V9.81519",
     stroke: smartColor || stroke,
@@ -16893,7 +16587,6 @@ var UploadComponent = function UploadComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Upload = {
   component: UploadComponent,
   viewBox: "0 0 24 24",
@@ -16916,12 +16609,12 @@ UploadComponent.defaultProps = {
 
 var VerticalArrowsComponent = function VerticalArrowsComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M8 7L12 3L16 7",
     stroke: smartColor || stroke,
@@ -16942,7 +16635,6 @@ var VerticalArrowsComponent = function VerticalArrowsComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var VerticalArrows = {
   component: VerticalArrowsComponent,
   viewBox: "0 0 24 24",
@@ -16965,12 +16657,12 @@ VerticalArrowsComponent.defaultProps = {
 
 var VideoComponent = function VideoComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M4.98413 6.00195C4.45794 6.00195 3.95313 6.21094 3.58105 6.58301C3.20898 6.95508 3 7.45965 3 7.98584V16.0068C3 16.533 3.20898 17.0376 3.58105 17.4097C3.95313 17.7817 4.45794 17.9907 4.98413 17.9907H13.0051C13.5313 17.9907 14.0359 17.7817 14.408 17.4097C14.78 17.0376 14.989 16.533 14.989 16.0068V14.2158L19.4121 16.479C19.5633 16.5564 19.7318 16.5933 19.9016 16.5869C20.0714 16.5805 20.2367 16.5305 20.3816 16.4419C20.5265 16.3533 20.6462 16.2292 20.7292 16.0811C20.8123 15.9329 20.856 15.7656 20.856 15.5957V8.396C20.856 8.22611 20.8123 8.05883 20.7292 7.91064C20.6462 7.76246 20.5265 7.63794 20.3816 7.54932C20.2367 7.46069 20.0714 7.41122 19.9016 7.40479C19.7318 7.39835 19.5633 7.43529 19.4121 7.5127L14.989 9.77588V7.98389C14.989 7.4577 14.78 6.95313 14.408 6.58105C14.0359 6.20898 13.5313 6 13.0051 6H7.46313",
     stroke: smartColor || stroke,
@@ -16979,7 +16671,6 @@ var VideoComponent = function VideoComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Video = {
   component: VideoComponent,
   viewBox: "0 0 24 24",
@@ -17002,12 +16693,12 @@ VideoComponent.defaultProps = {
 
 var VideoOffComponent = function VideoOffComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M4.94006 17.3965C5.25995 17.5966 5.63155 17.7027 6.0109 17.702H14.0912C14.6212 17.702 15.1295 17.4954 15.5044 17.1277C15.8792 16.7599 16.0897 16.2611 16.0897 15.741V13.9707L20.5455 16.2073C20.6978 16.2838 20.8676 16.3208 21.0386 16.3144C21.2096 16.3081 21.3761 16.2587 21.5221 16.1711C21.6681 16.0835 21.7886 15.9604 21.8723 15.8139C21.956 15.6674 22.0002 15.5026 22.0002 15.3347V8.21764C22.0001 8.04974 21.956 7.88482 21.8723 7.73838C21.7886 7.59193 21.6681 7.46889 21.5221 7.38122C21.3762 7.29356 21.2098 7.24393 21.0388 7.23739C20.8678 7.23086 20.6979 7.2678 20.5455 7.34406L16.0897 9.58061V7.81029C16.0902 7.45152 15.9899 7.09976 15.7997 6.79337",
     stroke: smartColor || stroke,
@@ -17028,7 +16719,6 @@ var VideoOffComponent = function VideoOffComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var VideoOff = {
   component: VideoOffComponent,
   viewBox: "0 0 24 24",
@@ -17051,12 +16741,12 @@ VideoOffComponent.defaultProps = {
 
 var VoucherComponent = function VoucherComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M11.9998 18H20.5775C20.6895 18 20.797 17.9575 20.8763 17.882C20.9555 17.8065 20.9998 17.7042 20.9998 17.5974V14.35H20.9656C20.6466 14.3502 20.3308 14.2904 20.036 14.1741C19.7413 14.0578 19.4733 13.8874 19.2477 13.6725C19.0221 13.4575 18.8432 13.2021 18.7211 12.9212C18.599 12.6403 18.5362 12.3392 18.5362 12.0351V12.0351C18.5362 11.4208 18.7921 10.8318 19.2477 10.3974C19.7034 9.9631 20.3213 9.71916 20.9656 9.71916H20.9998V6.4026C20.9998 6.29581 20.9555 6.19353 20.8763 6.11801C20.797 6.0425 20.6895 6 20.5775 6H8.78311",
     stroke: smartColor || stroke,
@@ -17101,7 +16791,6 @@ var VoucherComponent = function VoucherComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Voucher = {
   component: VoucherComponent,
   viewBox: "0 0 24 24",
@@ -17124,12 +16813,12 @@ VoucherComponent.defaultProps = {
 
 var WalletComponent = function WalletComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M20.999 6.26391V5.93689C20.999 5.42317 20.7884 4.93055 20.4135 4.56729C20.0385 4.20404 19.5298 4.00001 18.9995 4.00001H5.42472C5.10625 3.99936 4.79077 4.05957 4.49641 4.17734C4.20206 4.29511 3.93477 4.46807 3.70958 4.68623C3.48438 4.90439 3.30585 5.16357 3.18428 5.44873C3.06272 5.7339 3.00032 6.03953 3.00098 6.34805V6.34805C3.00032 6.65658 3.06272 6.96221 3.18428 7.24737C3.30585 7.53254 3.48438 7.79147 3.70958 8.00963C3.93477 8.2278 4.20206 8.40075 4.49641 8.51852C4.79077 8.6363 5.10625 8.6965 5.42472 8.69586H18.9955C19.5258 8.69586 20.0343 8.90013 20.4093 9.26339C20.7843 9.62664 20.9949 10.1193 20.9949 10.633V17.5472C20.9949 17.9325 20.8369 18.3021 20.5557 18.5745C20.2745 18.847 19.8932 19 19.4955 19H5.99923C5.2038 19 4.44106 18.6937 3.87861 18.1488C3.31616 17.6039 3 16.865 3 16.0944V6.45722C3 5.80549 3.26734 5.18045 3.74304 4.7196C4.21874 4.25876 4.86393 4.00001 5.53667 4.00001H15.2939",
     stroke: smartColor || stroke,
@@ -17144,7 +16833,6 @@ var WalletComponent = function WalletComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Wallet = {
   component: WalletComponent,
   viewBox: "0 0 24 24",
@@ -17167,20 +16855,19 @@ WalletComponent.defaultProps = {
 
 var WarningComponent = function WarningComponent(_ref) {
   var fill = _ref.fill;
-      _ref.stroke;
-      var smartColor = _ref.smartColor;
-      _ref.strokeWidth;
-      _ref.strokeLineCap;
-      _ref.strokeLineJoin;
-      _ref.props;
+    _ref.stroke;
+    var smartColor = _ref.smartColor;
+    _ref.strokeWidth;
+    _ref.strokeLineCap;
+    _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
-    "fill-rule": "evenodd",
-    "clip-rule": "evenodd",
+    fillRule: "evenodd",
+    clipRule: "evenodd",
     d: "M12.0001 2.24172C11.0768 2.24172 10.4033 2.79754 9.82709 3.52159C9.26349 4.22979 8.66372 5.26581 7.92199 6.54703L7.88928 6.60352L3.82707 13.6201L3.79433 13.6766L3.79432 13.6766C3.04978 14.9626 2.44788 16.0022 2.11333 16.8461C1.77141 17.7086 1.62431 18.5718 2.08656 19.3736C2.5488 20.1753 3.36953 20.4805 4.28727 20.6167C5.18526 20.75 6.38653 20.75 7.8725 20.75H7.93784H16.0623H16.1276C17.6136 20.75 18.8148 20.75 19.7128 20.6167C20.6306 20.4805 21.4513 20.1753 21.9136 19.3736C22.3758 18.5718 22.2287 17.7086 21.8868 16.8461C21.5522 16.0022 20.9504 14.9627 20.2059 13.6767L20.2058 13.6766L20.173 13.6201L16.1108 6.60353L16.0781 6.54702C15.3364 5.2658 14.7366 4.22979 14.173 3.52159C13.5968 2.79755 12.9233 2.24172 12.0001 2.24172ZM12.75 9.00002C12.75 8.58581 12.4143 8.25002 12 8.25002C11.5858 8.25002 11.25 8.58581 11.25 9.00002V13C11.25 13.4142 11.5858 13.75 12 13.75C12.4143 13.75 12.75 13.4142 12.75 13V9.00002ZM13.0001 16C13.0001 16.5523 12.5523 17 12.0001 17C11.4478 17 11.0001 16.5523 11.0001 16C11.0001 15.4477 11.4478 15 12.0001 15C12.5523 15 13.0001 15.4477 13.0001 16Z",
     fill: smartColor || fill
   }));
 };
-
 WarningComponent.propTypes = {
   fill: propTypes$1.exports.string,
   stroke: propTypes$1.exports.string,
@@ -17200,12 +16887,12 @@ var Warning = {
 
 var WaveComponent = function WaveComponent(_ref) {
   _ref.fill;
-      var stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    var stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M9.26312 12.7419V18.7629C9.26312 19.125 9.40679 19.4723 9.66278 19.7283C9.91877 19.9843 10.2661 20.1282 10.6281 20.1282C10.9901 20.1282 11.3372 19.9843 11.5932 19.7283C11.8492 19.4723 11.9931 19.125 11.9931 18.7629L11.993 5.36523C11.993 5.00321 12.1369 4.65589 12.3929 4.3999C12.6489 4.14392 12.996 4 13.358 4C13.72 4 14.0671 4.14392 14.3231 4.3999C14.579 4.65589 14.723 5.00321 14.723 5.36523L14.7229 16.0642C14.7229 16.4262 14.8668 16.7736 15.1228 17.0296C15.3788 17.2855 15.7261 17.429 16.0881 17.429C16.4502 17.429 16.7972 17.2855 17.0532 17.0296C17.3092 16.7736 17.4531 16.4262 17.4531 16.0642V14.3342C17.4636 13.9073 17.6408 13.5015 17.947 13.2039C18.2532 12.9062 18.664 12.7403 19.0911 12.742L20.855 12.7422M9.26208 12.7423V8.86438C9.26208 8.50236 9.11817 8.15504 8.86218 7.89905C8.6062 7.64306 8.25912 7.49915 7.89709 7.49915C7.53507 7.49915 7.18775 7.64306 6.93176 7.89905C6.67578 8.15504 6.5321 8.50236 6.5321 8.86438V11.194C6.5321 11.6045 6.3688 11.9984 6.07849 12.2887C5.78818 12.579 5.39456 12.7423 4.98401 12.7423L3 12.7422",
     stroke: smartColor || stroke,
@@ -17214,7 +16901,6 @@ var WaveComponent = function WaveComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Wave = {
   component: WaveComponent,
   viewBox: "0 0 24 24",
@@ -17237,12 +16923,12 @@ WaveComponent.defaultProps = {
 
 var WithdrawComponent = function WithdrawComponent(_ref) {
   var fill = _ref.fill,
-      stroke = _ref.stroke,
-      smartColor = _ref.smartColor,
-      strokeWidth = _ref.strokeWidth,
-      strokeLineCap = _ref.strokeLineCap,
-      strokeLineJoin = _ref.strokeLineJoin;
-      _ref.props;
+    stroke = _ref.stroke,
+    smartColor = _ref.smartColor,
+    strokeWidth = _ref.strokeWidth,
+    strokeLineCap = _ref.strokeLineCap,
+    strokeLineJoin = _ref.strokeLineJoin;
+    _ref.props;
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M12.0001 9.51472V20.4853",
     stroke: smartColor || stroke,
@@ -17260,7 +16946,6 @@ var WithdrawComponent = function WithdrawComponent(_ref) {
     strokeLinejoin: strokeLineJoin
   }));
 };
-
 var Withdraw = {
   component: WithdrawComponent,
   viewBox: "0 0 24 24",
@@ -17281,22 +16966,19 @@ WithdrawComponent.defaultProps = {
   strokeLineJoin: "round"
 };
 
-var _excluded$B = ["title", "leftIconActive", "leftIconInactive", "rightIcon", "children", "className"];
-
+var _excluded$F = ["title", "leftIconActive", "leftIconInactive", "rightIcon", "children", "className"];
 var Accordion = function Accordion(_ref) {
   var title = _ref.title,
-      leftIconActive = _ref.leftIconActive,
-      leftIconInactive = _ref.leftIconInactive,
-      rightIcon = _ref.rightIcon,
-      children = _ref.children,
-      className = _ref.className;
-      _objectWithoutProperties(_ref, _excluded$B);
-
+    leftIconActive = _ref.leftIconActive,
+    leftIconInactive = _ref.leftIconInactive,
+    rightIcon = _ref.rightIcon,
+    children = _ref.children,
+    className = _ref.className;
+    _objectWithoutProperties(_ref, _excluded$F);
   var _useState = useState(false),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      visible = _useState2[0],
-      setVisible = _useState2[1];
-
+    _useState2 = _slicedToArray$1(_useState, 2),
+    visible = _useState2[0],
+    setVisible = _useState2[1];
   var generateAccordionHeaderClassName = classNames(_defineProperty$x({
     active: visible,
     "ui-accordion__header": true
@@ -17406,33 +17088,29 @@ if (DESCRIPTORS$1 && isCallable$6(NativeSymbol) && (!('description' in SymbolPro
   });
 }
 
-var _excluded$A = ["is", "leftIcon", "rightIcon", "dropDown", "disabled", "size", "className", "colorScheme", "responsive", "text", "loading", "loadingText", "pill", "smartColor", "smartHoverColor"];
-
+var _excluded$E = ["is", "leftIcon", "rightIcon", "dropDown", "disabled", "size", "className", "colorScheme", "responsive", "text", "loading", "loadingText", "pill", "smartColor", "smartHoverColor"];
 var Button = function Button(_ref) {
   var _classNames;
-
   var is = _ref.is,
-      leftIcon = _ref.leftIcon,
-      rightIcon = _ref.rightIcon,
-      dropDown = _ref.dropDown,
-      disabled = _ref.disabled,
-      size = _ref.size,
-      className = _ref.className,
-      colorScheme = _ref.colorScheme,
-      responsive = _ref.responsive,
-      text = _ref.text,
-      loading = _ref.loading,
-      loadingText = _ref.loadingText,
-      pill = _ref.pill,
-      smartColor = _ref.smartColor,
-      smartHoverColor = _ref.smartHoverColor,
-      props = _objectWithoutProperties(_ref, _excluded$A);
-
+    leftIcon = _ref.leftIcon,
+    rightIcon = _ref.rightIcon,
+    dropDown = _ref.dropDown,
+    disabled = _ref.disabled,
+    size = _ref.size,
+    className = _ref.className,
+    colorScheme = _ref.colorScheme,
+    responsive = _ref.responsive,
+    text = _ref.text,
+    loading = _ref.loading,
+    loadingText = _ref.loadingText,
+    pill = _ref.pill,
+    smartColor = _ref.smartColor,
+    smartHoverColor = _ref.smartHoverColor,
+    props = _objectWithoutProperties(_ref, _excluded$E);
   var generatedClassName = classNames((_classNames = {
     "ui-button": true
   }, _defineProperty$x(_classNames, "semantic__".concat(colorScheme), colorScheme), _defineProperty$x(_classNames, "state__disabled", disabled), _defineProperty$x(_classNames, "size__".concat(size), size), _defineProperty$x(_classNames, "responsive", responsive), _defineProperty$x(_classNames, "smartColor", smartColor), _defineProperty$x(_classNames, "smartHoverColor", smartHoverColor), _defineProperty$x(_classNames, "pill", pill), _classNames), className);
   var smartCalculatedHoverColor = tinycolor(smartColor).darken(10).toHexString();
-
   var cssVars = _objectSpread2$1(_objectSpread2$1({
     "--smart-color": smartColor,
     "--smart-hover-color": smartHoverColor
@@ -17443,7 +17121,6 @@ var Button = function Button(_ref) {
     "--smart-text-color": getTextColor(smartColor),
     "--smart-hover-text-color": getTextColor(smartHoverColor)
   });
-
   return /*#__PURE__*/React__default.createElement(Box, _extends$2({
     is: is
   }, props, {
@@ -17466,7 +17143,6 @@ var Button = function Button(_ref) {
     icon: rightIcon
   }));
 };
-
 Button.propTypes = {
   is: propTypes$1.exports.oneOfType([propTypes$1.exports.oneOf(["button", "a", "span", "div"]), propTypes$1.exports.elementType]),
   colorScheme: propTypes$1.exports.oneOf(["primary", "danger", "success", "outline", "invisible"]),
@@ -17491,17 +17167,14 @@ Button.defaultProps = {
   loadingText: "Loading"
 };
 
-var _excluded$z = ["className", "equalLineHeight", "scale", "uppercase"];
-
+var _excluded$D = ["className", "equalLineHeight", "scale", "uppercase"];
 var Heading = function Heading(_ref) {
   var _props$is, _classNames;
-
   var className = _ref.className,
-      equalLineHeight = _ref.equalLineHeight,
-      scale = _ref.scale,
-      uppercase = _ref.uppercase,
-      props = _objectWithoutProperties(_ref, _excluded$z);
-
+    equalLineHeight = _ref.equalLineHeight,
+    scale = _ref.scale,
+    uppercase = _ref.uppercase,
+    props = _objectWithoutProperties(_ref, _excluded$D);
   var is = (_props$is = props.is) !== null && _props$is !== void 0 ? _props$is : "h2";
   var generatedClass = classNames((_classNames = {}, _defineProperty$x(_classNames, scale, scale), _defineProperty$x(_classNames, is, is), _defineProperty$x(_classNames, "uppercase", uppercase), _defineProperty$x(_classNames, "ui-heading", true), _defineProperty$x(_classNames, "equal-line-height", equalLineHeight), _classNames), className);
   return /*#__PURE__*/React__default.createElement(Box, _extends$2({
@@ -17511,7 +17184,6 @@ var Heading = function Heading(_ref) {
     className: generatedClass
   }), props.children);
 };
-
 Heading.propTypes = {
   is: propTypes$1.exports.oneOf(["h1", "h2", "h3", "h4", "h5", "h6"]),
   scale: propTypes$1.exports.oneOf(["subtitle-1", "subtitle-2", "subhead"]),
@@ -17525,31 +17197,27 @@ Heading.defaultProps = {
   equalLineHeight: false
 };
 
-var _excluded$y = ["message", "description", "colorScheme", "theme", "button", "buttonAction", "onAction", "className", "closable", "bordered", "smartColor", "iconColor", "icon"];
-
+var _excluded$C = ["message", "description", "colorScheme", "theme", "button", "buttonAction", "onAction", "className", "closable", "bordered", "smartColor", "iconColor", "icon"];
 var Alert = function Alert(_ref) {
   var _classNames;
-
   var message = _ref.message,
-      description = _ref.description,
-      colorScheme = _ref.colorScheme,
-      theme = _ref.theme,
-      button = _ref.button;
-      _ref.buttonAction;
-      _ref.onAction;
-      var className = _ref.className,
-      closable = _ref.closable;
-      _ref.bordered;
-      var smartColor = _ref.smartColor,
-      iconColor = _ref.iconColor,
-      icon = _ref.icon,
-      props = _objectWithoutProperties(_ref, _excluded$y);
-
+    description = _ref.description,
+    colorScheme = _ref.colorScheme,
+    theme = _ref.theme,
+    button = _ref.button;
+    _ref.buttonAction;
+    _ref.onAction;
+    var className = _ref.className,
+    closable = _ref.closable;
+    _ref.bordered;
+    var smartColor = _ref.smartColor,
+    iconColor = _ref.iconColor,
+    icon = _ref.icon,
+    props = _objectWithoutProperties(_ref, _excluded$C);
   var _useState = useState(true),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      showAlert = _useState2[0],
-      setShowAlert = _useState2[1];
-
+    _useState2 = _slicedToArray$1(_useState, 2),
+    showAlert = _useState2[0],
+    setShowAlert = _useState2[1];
   var generateAlertClassName = classNames((_classNames = {}, _defineProperty$x(_classNames, "theme__".concat(theme), true), _defineProperty$x(_classNames, "color-scheme__".concat(colorScheme), true), _defineProperty$x(_classNames, "ui-alert", true), _defineProperty$x(_classNames, "is-toast", closable), _defineProperty$x(_classNames, "smartColor", smartColor), _defineProperty$x(_classNames, "iconColor", iconColor), _classNames), className);
   var smartColors = {
     "--smart-color": smartColor,
@@ -17562,11 +17230,9 @@ var Alert = function Alert(_ref) {
     error: Error$1,
     success: Check
   };
-
   var remove = function remove() {
     setShowAlert(false);
   };
-
   return showAlert ? /*#__PURE__*/React__default.createElement(Box, _extends$2({
     className: generateAlertClassName
   }, props, {
@@ -17810,47 +17476,38 @@ function keyGen() {
   var length = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 20;
   var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   var result = '';
-
   for (var i = 0; i < length; i++) {
     result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
   }
-
   return result;
 }
 
-var _excluded$x = ["avatar", "subtle", "dropdown", "size", "visibleAvatars", "stacked", "avatars", "className"];
+var _excluded$B = ["avatar", "subtle", "dropdown", "size", "visibleAvatars", "stacked", "avatars", "className"];
 var colorSchemes = ["cyan", "green", "orange", "red", "gray", "blue"];
-
 var generateAvatarColorScheme = function generateAvatarColorScheme(avatar, index) {
   return avatar.colorScheme || (index < colorSchemes.length ? colorSchemes[index] : colorSchemes[index % colorSchemes.length]);
 };
-
 var generateAvatarClassName = function generateAvatarClassName(avatar) {
   var _classNames;
-
   var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
   return classNames((_classNames = {}, _defineProperty$x(_classNames, "background__".concat(generateAvatarColorScheme(avatar, index)), !avatar.imgURL), _defineProperty$x(_classNames, "status__".concat(avatar.status), avatar.status), _classNames), "ui-avatar");
 };
-
 var Avatar = function Avatar(_ref) {
   var _classNames2;
-
   var avatar = _ref.avatar,
-      subtle = _ref.subtle,
-      dropdown = _ref.dropdown,
-      size = _ref.size,
-      visibleAvatars = _ref.visibleAvatars,
-      stacked = _ref.stacked,
-      avatars = _ref.avatars,
-      className = _ref.className,
-      props = _objectWithoutProperties(_ref, _excluded$x);
-
+    subtle = _ref.subtle,
+    dropdown = _ref.dropdown,
+    size = _ref.size,
+    visibleAvatars = _ref.visibleAvatars,
+    stacked = _ref.stacked,
+    avatars = _ref.avatars,
+    className = _ref.className,
+    props = _objectWithoutProperties(_ref, _excluded$B);
   var wrapperClassName = classNames((_classNames2 = {
     "ui-avatars__wrapper": true,
     subtle: subtle
   }, _defineProperty$x(_classNames2, "size__".concat(size), true), _defineProperty$x(_classNames2, "padded", avatars.length & !stacked), _defineProperty$x(_classNames2, "stacked", avatars.length && stacked), _classNames2), className);
   var extraAvatars = avatars && avatars.length ? avatars.length - visibleAvatars : 0;
-
   var avatarFactory = function avatarFactory(avatar) {
     var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
     return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("div", {
@@ -17868,7 +17525,6 @@ var Avatar = function Avatar(_ref) {
       icon: ChevronFilledDown
     }));
   };
-
   var generatedAvatars = avatars.length ? avatars.slice(0, visibleAvatars).map(function (avatar, index) {
     return /*#__PURE__*/React__default.createElement("div", {
       key: "ui-avatar__".concat(keyGen()),
@@ -17888,7 +17544,6 @@ var Avatar = function Avatar(_ref) {
     scale: size === "small" ? "overline" : "footnote"
   }, "+", extraAvatars))));
 };
-
 Avatar.propTypes = {
   subtle: propTypes$1.exports.bool,
   stacked: propTypes$1.exports.bool,
@@ -17910,20 +17565,17 @@ Avatar.defaultProps = {
   avatars: []
 };
 
-var _excluded$w = ["children", "colorScheme", "className", "subtle", "size", "customSize", "smartColor"];
-
+var _excluded$A = ["children", "colorScheme", "className", "subtle", "size", "customSize", "smartColor"];
 var Badge = function Badge(_ref) {
   var _classNames;
-
   var children = _ref.children,
-      colorScheme = _ref.colorScheme,
-      className = _ref.className,
-      subtle = _ref.subtle,
-      size = _ref.size,
-      customSize = _ref.customSize,
-      smartColor = _ref.smartColor;
-      _objectWithoutProperties(_ref, _excluded$w);
-
+    colorScheme = _ref.colorScheme,
+    className = _ref.className,
+    subtle = _ref.subtle,
+    size = _ref.size,
+    customSize = _ref.customSize,
+    smartColor = _ref.smartColor;
+    _objectWithoutProperties(_ref, _excluded$A);
   var generatedClassName = classNames((_classNames = {}, _defineProperty$x(_classNames, "color-scheme__".concat(colorScheme), true), _defineProperty$x(_classNames, "subtle", subtle), _defineProperty$x(_classNames, "size__".concat(size), true), _defineProperty$x(_classNames, "ui-badge", true), _defineProperty$x(_classNames, "sizeCustom", customSize), _defineProperty$x(_classNames, "smartColor", smartColor), _classNames), className);
   var cssVars = {
     "--size": typeof customSize === "number" ? "".concat(customSize, "px") : customSize,
@@ -17953,30 +17605,26 @@ Badge.defaultProps = {
   size: "small"
 };
 
-var _excluded$v = ["colorScheme", "title", "description", "removable", "full", "onRemove", "alignTop", "icon", "iconColor", "noIcon", "smartColor", "className"];
-
+var _excluded$z = ["colorScheme", "title", "description", "removable", "full", "onRemove", "alignTop", "icon", "iconColor", "noIcon", "smartColor", "className"];
 var Banner = function Banner(_ref) {
   var _classNames;
-
   var colorScheme = _ref.colorScheme,
-      title = _ref.title,
-      description = _ref.description,
-      removable = _ref.removable,
-      full = _ref.full,
-      onRemove = _ref.onRemove,
-      alignTop = _ref.alignTop,
-      icon = _ref.icon,
-      iconColor = _ref.iconColor,
-      noIcon = _ref.noIcon,
-      smartColor = _ref.smartColor,
-      className = _ref.className,
-      props = _objectWithoutProperties(_ref, _excluded$v);
-
+    title = _ref.title,
+    description = _ref.description,
+    removable = _ref.removable,
+    full = _ref.full,
+    onRemove = _ref.onRemove,
+    alignTop = _ref.alignTop,
+    icon = _ref.icon,
+    iconColor = _ref.iconColor,
+    noIcon = _ref.noIcon,
+    smartColor = _ref.smartColor,
+    className = _ref.className,
+    props = _objectWithoutProperties(_ref, _excluded$z);
   var _useState = useState(true),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      visible = _useState2[0],
-      setVisible = _useState2[1];
-
+    _useState2 = _slicedToArray$1(_useState, 2),
+    visible = _useState2[0],
+    setVisible = _useState2[1];
   var schemeIcons = {
     info: Info,
     warning: Warning,
@@ -17992,15 +17640,12 @@ var Banner = function Banner(_ref) {
   var bannerClasses = classNames((_classNames = {
     "ui-banner": true
   }, _defineProperty$x(_classNames, "color-scheme__".concat(colorScheme), true), _defineProperty$x(_classNames, "alignTop", alignTop), _defineProperty$x(_classNames, "full", full), _defineProperty$x(_classNames, "smartColor", smartColor), _defineProperty$x(_classNames, "iconColor", iconColor), _classNames), className);
-
   var remove = function remove() {
     if (onRemove && typeof onRemove === "function") {
       onRemove();
     }
-
     setVisible(false);
   };
-
   return visible ? /*#__PURE__*/React__default.createElement(Box, _extends$2({
     className: bannerClasses,
     style: cssVars
@@ -18046,27 +17691,24 @@ Banner.propTypes = {
   smartColor: propTypes$1.exports.string
 };
 
-var _excluded$u = ["className", "children", "ringed", "alignToTop", "label", "value", "disabled", "labelClass", "alignRight", "checked", "onChange"];
-
+var _excluded$y = ["className", "children", "ringed", "alignToTop", "label", "value", "disabled", "labelClass", "alignRight", "checked", "onChange"];
 var Radio = function Radio(_ref) {
   var className = _ref.className,
-      children = _ref.children,
-      ringed = _ref.ringed,
-      alignToTop = _ref.alignToTop,
-      label = _ref.label,
-      value = _ref.value,
-      disabled = _ref.disabled,
-      labelClass = _ref.labelClass,
-      alignRight = _ref.alignRight,
-      checked = _ref.checked,
-      onChange = _ref.onChange,
-      props = _objectWithoutProperties(_ref, _excluded$u);
-
+    children = _ref.children,
+    ringed = _ref.ringed,
+    alignToTop = _ref.alignToTop,
+    label = _ref.label,
+    value = _ref.value,
+    disabled = _ref.disabled,
+    labelClass = _ref.labelClass,
+    alignRight = _ref.alignRight,
+    checked = _ref.checked,
+    onChange = _ref.onChange,
+    props = _objectWithoutProperties(_ref, _excluded$y);
   var radio = useRef();
   useEffect(function () {
     radio.current.checked = checked;
   }, [checked]);
-
   var handleOnChange = function handleOnChange(e) {
     if (checked === undefined) {
       if (onChange && typeof onChange === "function") {
@@ -18078,7 +17720,6 @@ var Radio = function Radio(_ref) {
       }
     }
   };
-
   label ? label : props.children;
   var generateRadioClassName = classNames({
     ringed: ringed,
@@ -18125,29 +17766,25 @@ Radio.propTypes = {
   onChange: propTypes$1.exports.func
 };
 
-var _excluded$t = ["children", "label", "alignToTop", "dashed", "disabled", "labelClass", "wrapperClass", "labelComponent", "className", "checked", "onChange"];
-
+var _excluded$x = ["children", "label", "alignToTop", "dashed", "disabled", "labelClass", "wrapperClass", "labelComponent", "className", "checked", "onChange"];
 var Checkbox = function Checkbox(_ref) {
   var _classNames;
-
   var children = _ref.children,
-      label = _ref.label,
-      alignToTop = _ref.alignToTop,
-      dashed = _ref.dashed,
-      disabled = _ref.disabled,
-      labelClass = _ref.labelClass,
-      wrapperClass = _ref.wrapperClass,
-      labelComponent = _ref.labelComponent,
-      className = _ref.className,
-      checked = _ref.checked,
-      onChange = _ref.onChange,
-      props = _objectWithoutProperties(_ref, _excluded$t);
-
+    label = _ref.label,
+    alignToTop = _ref.alignToTop,
+    dashed = _ref.dashed,
+    disabled = _ref.disabled,
+    labelClass = _ref.labelClass,
+    wrapperClass = _ref.wrapperClass,
+    labelComponent = _ref.labelComponent,
+    className = _ref.className,
+    checked = _ref.checked,
+    onChange = _ref.onChange,
+    props = _objectWithoutProperties(_ref, _excluded$x);
   var checkbox = useRef();
   useEffect(function () {
     checkbox.current.checked = checked;
   }, [checked]);
-
   var handleOnChange = function handleOnChange(e) {
     if (checked === undefined) {
       if (onChange && typeof onChange === "function") {
@@ -18159,7 +17796,6 @@ var Checkbox = function Checkbox(_ref) {
       }
     }
   };
-
   var checkboxClassName = classNames((_classNames = {
     "ui-checkbox__wrapper": true,
     alignToTop: alignToTop,
@@ -18207,45 +17843,39 @@ Checkbox.propTypes = {
   onChange: propTypes$1.exports.func
 };
 
-var _excluded$s = ["title", "subtitle", "desc", "children", "radio", "checkbox", "icon", "isSelected", "className", "ringedRadio", "dashedCheckbox", "wrapperClass", "hoverColor", "border", "cardClass", "header", "footer", "onChange", "checked"];
-
+var _excluded$w = ["title", "subtitle", "desc", "children", "radio", "checkbox", "icon", "isSelected", "className", "ringedRadio", "dashedCheckbox", "wrapperClass", "hoverColor", "border", "cardClass", "header", "footer", "onChange", "checked"];
 var Card = function Card(_ref) {
   var _classNames;
-
   var title = _ref.title,
-      subtitle = _ref.subtitle,
-      desc = _ref.desc,
-      children = _ref.children,
-      radio = _ref.radio,
-      checkbox = _ref.checkbox,
-      icon = _ref.icon,
-      isSelected = _ref.isSelected,
-      className = _ref.className;
-      _ref.ringedRadio;
-      _ref.dashedCheckbox;
-      var wrapperClass = _ref.wrapperClass,
-      hoverColor = _ref.hoverColor,
-      border = _ref.border,
-      cardClass = _ref.cardClass,
-      header = _ref.header,
-      footer = _ref.footer,
-      onChange = _ref.onChange,
-      checked = _ref.checked,
-      props = _objectWithoutProperties(_ref, _excluded$s);
-
+    subtitle = _ref.subtitle,
+    desc = _ref.desc,
+    children = _ref.children,
+    radio = _ref.radio,
+    checkbox = _ref.checkbox,
+    icon = _ref.icon,
+    isSelected = _ref.isSelected,
+    className = _ref.className;
+    _ref.ringedRadio;
+    _ref.dashedCheckbox;
+    var wrapperClass = _ref.wrapperClass,
+    hoverColor = _ref.hoverColor,
+    border = _ref.border,
+    cardClass = _ref.cardClass,
+    header = _ref.header,
+    footer = _ref.footer,
+    onChange = _ref.onChange,
+    checked = _ref.checked,
+    props = _objectWithoutProperties(_ref, _excluded$w);
   var _useState = useState(isSelected),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      selected = _useState2[0],
-      setSelected = _useState2[1];
-
+    _useState2 = _slicedToArray$1(_useState, 2),
+    selected = _useState2[0],
+    setSelected = _useState2[1];
   useEffect(function () {
     setSelected(checked);
   }, [checked]);
-
   var handleChange = function handleChange(e) {
     onChange(e);
   };
-
   return /*#__PURE__*/React__default.createElement(Box, {
     className: "ui-card__wrapper"
   }, header, /*#__PURE__*/React__default.createElement(Box, {
@@ -18290,7 +17920,6 @@ var Card = function Card(_ref) {
     icon: icon
   })), footer);
 };
-
 Card.propTypes = {
   title: propTypes$1.exports.string,
   icon: propTypes$1.exports.object,
@@ -18316,8 +17945,8 @@ Card.defaultProps = {
   isSelected: false,
   radio: false,
   checkbox: false,
-  checked: undefined // icon: ChevronFilledDown
-
+  checked: undefined
+  // icon: ChevronFilledDown
 };
 
 var call$3 = functionCall;
@@ -19410,75 +19039,63 @@ var cardValidator = {
 };
 var dist = cardValidator;
 
-var _excluded$r = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "initialCardExp", "initialCardNo", "initialCardCvv", "onChange", "allowExpiredCardDateInExp"];
-
+var _excluded$v = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "initialCardExp", "initialCardNo", "initialCardCvv", "onChange", "allowExpiredCardDateInExp"];
 var CardInputField = function CardInputField(_ref) {
   var label = _ref.label;
-      _ref.leftIcon;
-      var size = _ref.size;
-      _ref.dropDown;
-      _ref.rightIcon;
-      var errorMessage = _ref.errorMessage,
-      inputClassName = _ref.inputClassName,
-      className = _ref.className,
-      initialCardExp = _ref.initialCardExp,
-      initialCardNo = _ref.initialCardNo,
-      initialCardCvv = _ref.initialCardCvv,
-      onChange = _ref.onChange,
-      allowExpiredCardDateInExp = _ref.allowExpiredCardDateInExp,
-      props = _objectWithoutProperties(_ref, _excluded$r);
-
+    _ref.leftIcon;
+    var size = _ref.size;
+    _ref.dropDown;
+    _ref.rightIcon;
+    var errorMessage = _ref.errorMessage,
+    inputClassName = _ref.inputClassName,
+    className = _ref.className,
+    initialCardExp = _ref.initialCardExp,
+    initialCardNo = _ref.initialCardNo,
+    initialCardCvv = _ref.initialCardCvv,
+    onChange = _ref.onChange,
+    allowExpiredCardDateInExp = _ref.allowExpiredCardDateInExp,
+    props = _objectWithoutProperties(_ref, _excluded$v);
   var _useState = useState(-1),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      selectedCard = _useState2[0],
-      setSelectedCard = _useState2[1];
-
+    _useState2 = _slicedToArray$1(_useState, 2),
+    selectedCard = _useState2[0],
+    setSelectedCard = _useState2[1];
   var _useState3 = useState(""),
-      _useState4 = _slicedToArray$1(_useState3, 2),
-      cardNo = _useState4[0],
-      setCardNo = _useState4[1]; // const [cardNoIsFocused, setCardNoIsFocused] = useState(false);
-
-
+    _useState4 = _slicedToArray$1(_useState3, 2),
+    cardNo = _useState4[0],
+    setCardNo = _useState4[1];
+  // const [cardNoIsFocused, setCardNoIsFocused] = useState(false);
   var _useState5 = useState(""),
-      _useState6 = _slicedToArray$1(_useState5, 2),
-      cardNoDisplay = _useState6[0],
-      setCardNoDisplay = _useState6[1];
-
+    _useState6 = _slicedToArray$1(_useState5, 2),
+    cardNoDisplay = _useState6[0],
+    setCardNoDisplay = _useState6[1];
   var _useState7 = useState(""),
-      _useState8 = _slicedToArray$1(_useState7, 2),
-      cardExp = _useState8[0],
-      setCardExp = _useState8[1];
-
+    _useState8 = _slicedToArray$1(_useState7, 2),
+    cardExp = _useState8[0],
+    setCardExp = _useState8[1];
   var _useState9 = useState(""),
-      _useState10 = _slicedToArray$1(_useState9, 2),
-      cardCVV = _useState10[0],
-      setCardCVV = _useState10[1];
-
+    _useState10 = _slicedToArray$1(_useState9, 2),
+    cardCVV = _useState10[0],
+    setCardCVV = _useState10[1];
   var _useState11 = useState(null),
-      _useState12 = _slicedToArray$1(_useState11, 2),
-      targetPosition = _useState12[0],
-      setTargetPosition = _useState12[1];
-
+    _useState12 = _slicedToArray$1(_useState11, 2),
+    targetPosition = _useState12[0],
+    setTargetPosition = _useState12[1];
   var _useState13 = useState(null),
-      _useState14 = _slicedToArray$1(_useState13, 2),
-      cardNoError = _useState14[0],
-      setCardNoError = _useState14[1];
-
+    _useState14 = _slicedToArray$1(_useState13, 2),
+    cardNoError = _useState14[0],
+    setCardNoError = _useState14[1];
   var _useState15 = useState(null),
-      _useState16 = _slicedToArray$1(_useState15, 2),
-      cardExpError = _useState16[0],
-      setCardExpError = _useState16[1];
-
+    _useState16 = _slicedToArray$1(_useState15, 2),
+    cardExpError = _useState16[0],
+    setCardExpError = _useState16[1];
   var _useState17 = useState(null),
-      _useState18 = _slicedToArray$1(_useState17, 2),
-      cardCvvError = _useState18[0];
-      _useState18[1];
-
+    _useState18 = _slicedToArray$1(_useState17, 2),
+    cardCvvError = _useState18[0];
+    _useState18[1];
   var _useState19 = useState(null),
-      _useState20 = _slicedToArray$1(_useState19, 2),
-      computedErrorMessage = _useState20[0],
-      setComputedErrorMessage = _useState20[1];
-
+    _useState20 = _slicedToArray$1(_useState19, 2),
+    computedErrorMessage = _useState20[0],
+    setComputedErrorMessage = _useState20[1];
   var pseudoInput = useRef();
   var cardNoInput = useRef();
   var cardCVCInput = useRef();
@@ -19487,11 +19104,9 @@ var CardInputField = function CardInputField(_ref) {
     if (initialCardNo) {
       handleCardNoInput(initialCardNo);
     }
-
     if (initialCardExp) {
       handleCardExpInput(initialCardExp);
     }
-
     if (initialCardCvv) {
       handleCardCvvInput(initialCardCvv);
     }
@@ -19521,51 +19136,43 @@ var CardInputField = function CardInputField(_ref) {
       cardCVCInput.current.focus();
     }
   }, [cardExpError, cardExp]);
-
   var validateCardNo = function validateCardNo(cardNo) {
     setCardNoError(null);
     var validatedCardNo = dist.number(cardNo.replaceAll(" ", ""));
-
     if (validatedCardNo && validatedCardNo.card) {
       cardNoInput.current.setAttribute("maxlength", validatedCardNo.card.lengths[validatedCardNo.card.lengths.length - 1] + validatedCardNo.card.gaps.length);
       cardCVCInput.current.setAttribute("maxlength", validatedCardNo.card.code.size);
     }
-
     if (!validatedCardNo.isPotentiallyValid) {
       setCardNoError("Please enter a valid ".concat(validatedCardNo.card.niceType, " card number"));
     } else {
       setCardNoError(null);
     }
   };
-
   var handleCardNoFocus = function handleCardNoFocus() {
     if (cardExpError) {
       cardExpInput.current.focus();
     } else if (cardCvvError) {
       cardCvvError.current.focus();
     } else {
-      pseudoInput.current.classList.add("focus"); // setCardNoIsFocused(true);
-
+      pseudoInput.current.classList.add("focus");
+      // setCardNoIsFocused(true);
       setCardNoDisplay(cardNo);
     }
   };
-
   var allowOnlyNumbers = function allowOnlyNumbers(e) {
     var isNumber = isFinite(parseFloat(e.key));
     var value = e.key;
-
     if (!isNumber && value !== "Delete" && value !== "Backspace") {
       e.preventDefault();
       return;
     }
   };
-
   var handleCardNoBlur = function handleCardNoBlur(e) {
-    e.preventDefault(); // setCardNoIsFocused(false);
-
+    e.preventDefault();
+    // setCardNoIsFocused(false);
     pseudoInput.current.classList.remove("focus");
     var strippedCardNo = cardNo.replace(/\s/g, "");
-
     if (selectedCard === BRAND_ALIAS$1.AMEX) {
       if (strippedCardNo.length === 15) {
         setCardNoDisplay("**** ".concat(cardNo.substring(cardNo.length - 4)));
@@ -19576,7 +19183,6 @@ var CardInputField = function CardInputField(_ref) {
       }
     }
   };
-
   var handleExpFocus = function handleExpFocus() {
     if (cardNoError) {
       cardNoInput.current.focus();
@@ -19586,11 +19192,9 @@ var CardInputField = function CardInputField(_ref) {
       pseudoInput.current.classList.add("focus");
     }
   };
-
   var handleExpBlur = function handleExpBlur() {
     pseudoInput.current.classList.remove("focus");
   };
-
   var handleCVVFocus = function handleCVVFocus() {
     if (cardNoError) {
       cardNoInput.current.focus();
@@ -19600,11 +19204,9 @@ var CardInputField = function CardInputField(_ref) {
       pseudoInput.current.classList.add("focus");
     }
   };
-
   var handleCVVBlur = function handleCVVBlur() {
     pseudoInput.current.classList.remove("focus");
   };
-
   var handleCardNoChange = function handleCardNoChange(e) {
     setTimeout(function () {
       if (targetPosition !== null) {
@@ -19615,7 +19217,6 @@ var CardInputField = function CardInputField(_ref) {
       }
     });
   };
-
   var handleCardNoKeyDown = function handleCardNoKeyDown(e) {
     if (e.key === "Backspace" || e.key === "Delete") {
       if (cardNoDisplay.length !== e.target.selectionStart) {
@@ -19626,11 +19227,9 @@ var CardInputField = function CardInputField(_ref) {
       }
     }
   };
-
   var handleCardNoKeyPress = function handleCardNoKeyPress(e) {
     allowOnlyNumbers(e);
     var strippedCardNo = cardNo.replace(/\s/g, "");
-
     if (e.key !== "Backspace" && e.key !== "Delete" && e.key !== "ArrowUp" && e.key !== "ArrowLeft" && e.key !== "ArrowDown" && e.key !== "ArrowRight") {
       if (selectedCard === BRAND_ALIAS$1.AMEX) {
         if (strippedCardNo.length === 15) {
@@ -19649,39 +19248,31 @@ var CardInputField = function CardInputField(_ref) {
       }
     }
   };
-
   var handleCardCvvInput = function handleCardCvvInput(e) {
     var value = _typeof$B(e) === "object" ? e.target.value : e;
     setCardCVV(value);
   };
-
   var handleCardNoInput = function handleCardNoInput(e) {
     var value = _typeof$B(e) === "object" ? e.target.value.replace(/\s/g, "") : e;
-
     function parse(type) {
       switch (type) {
         case BRAND_ALIAS$1.AMEX:
           cardNoInput.current.setAttribute("maxlength", 17);
           cardCVCInput.current.setAttribute("maxlength", 4);
           break;
-
         default:
           cardNoInput.current.setAttribute("maxlength", 19);
           cardCVCInput.current.setAttribute("maxlength", 3);
           break;
       }
-
       var pseudoValue = "";
-
       for (var i = 0; i < value.length; i++) {
         pseudoValue += value.charAt(i);
         var strippedPseudoValue = pseudoValue.replace(/\s/g, "");
-
         if (type === BRAND_ALIAS$1.AMEX) {
           if (strippedPseudoValue.length === 4) {
             pseudoValue += " ";
           }
-
           if (strippedPseudoValue.length === 10) {
             pseudoValue += " ";
           }
@@ -19690,12 +19281,10 @@ var CardInputField = function CardInputField(_ref) {
             pseudoValue += " ";
           }
         }
-      } // alert(pseudoValue.trim())
-
-
+      }
+      // alert(pseudoValue.trim())
       return pseudoValue.trim();
     }
-
     switch (value.charAt(0)) {
       case "5":
         setSelectedCard(BRAND_ALIAS$1.MASTERCARD);
@@ -19703,7 +19292,6 @@ var CardInputField = function CardInputField(_ref) {
         setCardNoDisplay(parse(BRAND_ALIAS$1.MASTERCARD));
         validateCardNo(value);
         break;
-
       case "3":
         if (value.length >= 2) {
           if (value.charAt(1) === "4" || value.charAt(1) === "7") {
@@ -19714,37 +19302,31 @@ var CardInputField = function CardInputField(_ref) {
         } else {
           setSelectedCard(BRAND_ALIAS$1.AMEX);
         }
-
         setCardNo(parse(BRAND_ALIAS$1.AMEX));
         setCardNoDisplay(parse(BRAND_ALIAS$1.AMEX));
         validateCardNo(value);
         break;
-
       case "6":
         setSelectedCard(BRAND_ALIAS$1.DISCOVER);
         setCardNo(parse(BRAND_ALIAS$1.DISCOVER));
         setCardNoDisplay(parse(BRAND_ALIAS$1.DISCOVER));
         validateCardNo(value);
         break;
-
       case "4":
         setSelectedCard(BRAND_ALIAS$1.VISACARD);
         setCardNo(parse(BRAND_ALIAS$1.VISACARD));
         setCardNoDisplay(parse(BRAND_ALIAS$1.VISACARD));
         validateCardNo(value);
         break;
-
       default:
         setSelectedCard(BRAND_ALIAS$1.NOCARD);
         setCardNo(parse(null));
         setCardNoDisplay(parse(null));
     }
   };
-
   var handleCardExpInput = function handleCardExpInput(e) {
     setCardExpError(null);
     var value = e.target.value;
-
     if (cardNoError) {
       cardNoInput.current.focus();
     } else if (cardCvvError) {
@@ -19754,15 +19336,12 @@ var CardInputField = function CardInputField(_ref) {
         e.preventDefault();
         value = (e.clipboardData || window.clipboardData).getData("text");
       }
-
       setCardExp(value);
-
       var validateCompleteExp = function validateCompleteExp(value) {
         var month = value.substring(0, 2);
         var year = value.substring(3);
         var currentYear = new Date().getFullYear().toString().substring(2);
         var currentMonth = new Date().getMonth() + 1;
-
         if (month > 12 || month < 1) {
           setCardExpError("Please enter a valid month in the card expiry field");
           setCardExp(isFinite(month) ? month : "");
@@ -19779,11 +19358,9 @@ var CardInputField = function CardInputField(_ref) {
           setCardExpError("Please enter a valid month in the card expiry field");
         }
       };
-
       validateCompleteExp(value);
     }
   };
-
   var generateInputFieldClasses = classNames({
     "ui-card-input-field__card-no": true,
     "has-error": computedErrorMessage,
@@ -19881,63 +19458,54 @@ CardInputField.defaultProps = _objectSpread2$1(_objectSpread2$1({}, defaultProps
 function number_format(number, decimals, dec_point, thousands_sep) {
   // Strip all characters but numerical ones.
   number = (number + "").replace(/[^0-9+\-Ee.,]/g, "");
-
   var n = !isFinite(+number) ? 0 : +number,
-      prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-      sep = typeof thousands_sep === "undefined" ? "," : thousands_sep,
-      dec = typeof dec_point === "undefined" ? "." : dec_point,
-      s = "",
-      toFixedFix = function toFixedFix(n, prec) {
-    var k = Math.pow(10, prec);
-    return "" + Math.round(n * k) / k;
-  }; // Fix for IE parseFloat(0.55).toFixed(0) = 0;
-
-
+    prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+    sep = typeof thousands_sep === "undefined" ? "," : thousands_sep,
+    dec = typeof dec_point === "undefined" ? "." : dec_point,
+    s = "",
+    toFixedFix = function toFixedFix(n, prec) {
+      var k = Math.pow(10, prec);
+      return "" + Math.round(n * k) / k;
+    };
+  // Fix for IE parseFloat(0.55).toFixed(0) = 0;
   s = (prec ? toFixedFix(n, prec) : "" + Math.round(n)).split(".");
-
   if (s[0].length > 3) {
     s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
   }
-
   if ((s[1] || "").length < prec) {
     s[1] = s[1] || "";
     s[1] += new Array(prec - s[1].length + 1).join("0");
   }
-
   return s.join(dec);
 }
 
-var _excluded$q = ["label", "size", "max", "min", "errorMessage", "coloredButtons", "labelClass", "labelFontFace", "inputClass", "disabled", "decimal", "alterMagnitude", "spacing", "value", "onChange", "className"];
-
+var _excluded$u = ["label", "size", "max", "min", "errorMessage", "coloredButtons", "labelClass", "labelFontFace", "inputClass", "disabled", "decimal", "alterMagnitude", "spacing", "value", "onChange", "className"];
 var Counter = function Counter(_ref) {
   var label = _ref.label,
-      size = _ref.size,
-      max = _ref.max,
-      min = _ref.min,
-      errorMessage = _ref.errorMessage,
-      coloredButtons = _ref.coloredButtons,
-      labelClass = _ref.labelClass,
-      labelFontFace = _ref.labelFontFace,
-      inputClass = _ref.inputClass,
-      disabled = _ref.disabled,
-      decimal = _ref.decimal,
-      alterMagnitude = _ref.alterMagnitude,
-      spacing = _ref.spacing,
-      value = _ref.value,
-      onChange = _ref.onChange,
-      className = _ref.className,
-      props = _objectWithoutProperties(_ref, _excluded$q);
-
+    size = _ref.size,
+    max = _ref.max,
+    min = _ref.min,
+    errorMessage = _ref.errorMessage,
+    coloredButtons = _ref.coloredButtons,
+    labelClass = _ref.labelClass,
+    labelFontFace = _ref.labelFontFace,
+    inputClass = _ref.inputClass,
+    disabled = _ref.disabled,
+    decimal = _ref.decimal,
+    alterMagnitude = _ref.alterMagnitude,
+    spacing = _ref.spacing,
+    value = _ref.value,
+    onChange = _ref.onChange,
+    className = _ref.className,
+    props = _objectWithoutProperties(_ref, _excluded$u);
   var _useState = useState(null),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      internalValue = _useState2[0],
-      setInternalValue = _useState2[1];
-
+    _useState2 = _slicedToArray$1(_useState, 2),
+    internalValue = _useState2[0],
+    setInternalValue = _useState2[1];
   var _useState3 = useState(0),
-      _useState4 = _slicedToArray$1(_useState3, 2),
-      formattedValue = _useState4[0],
-      setFormattedValue = _useState4[1];
-
+    _useState4 = _slicedToArray$1(_useState3, 2),
+    formattedValue = _useState4[0],
+    setFormattedValue = _useState4[1];
   useEffect(function () {
     setInternalValue(value);
   }, []);
@@ -19945,24 +19513,20 @@ var Counter = function Counter(_ref) {
     if (onChange && typeof onChange === "function") {
       onChange(internalValue);
     }
-
     if (decimal) {
       setFormattedValue(number_format(internalValue, 2));
     } else {
       setFormattedValue(internalValue);
     }
   }, [internalValue]);
-
   var increase = function increase() {
     var temp = internalValue + alterMagnitude;
     setInternalValue((max === 0 || !!max) && temp >= max ? max : temp);
   };
-
   var decrease = function decrease() {
     var temp = internalValue - alterMagnitude;
     setInternalValue((min === 0 || !!min) && temp <= min ? min : temp);
   };
-
   return /*#__PURE__*/React__default.createElement(Box, {
     className: "ui-counter ".concat(className !== null && className !== void 0 ? className : className),
     style: {
@@ -20126,30 +19690,29 @@ $$4({ target: 'String', proto: true, forced: !correctIsRegExpLogic$2('includes')
   }
 });
 
-var _excluded$p = ["label", "labelComponent", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onLeftIconClick", "onRightIconClick", "invisible", "disabled", "inputClass", "oneCharWide", "leftIconComponent", "rightIconComponent", "labelClass"];
+var _excluded$t = ["label", "labelComponent", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onLeftIconClick", "onRightIconClick", "invisible", "disabled", "inputClass", "oneCharWide", "leftIconComponent", "rightIconComponent", "labelClass"];
 var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var label = _ref.label;
-      _ref.labelComponent;
-      var leftIcon = _ref.leftIcon,
-      size = _ref.size,
-      dropDown = _ref.dropDown,
-      rightIcon = _ref.rightIcon,
-      errorMessage = _ref.errorMessage,
-      inputClassName = _ref.inputClassName,
-      className = _ref.className;
-      _ref.isHookForm;
-      _ref.isFormik;
-      _ref.onLeftIconClick;
-      _ref.onRightIconClick;
-      var invisible = _ref.invisible,
-      disabled = _ref.disabled,
-      inputClass = _ref.inputClass,
-      oneCharWide = _ref.oneCharWide,
-      leftIconComponent = _ref.leftIconComponent,
-      rightIconComponent = _ref.rightIconComponent,
-      labelClass = _ref.labelClass,
-      props = _objectWithoutProperties(_ref, _excluded$p);
-
+    _ref.labelComponent;
+    var leftIcon = _ref.leftIcon,
+    size = _ref.size,
+    dropDown = _ref.dropDown,
+    rightIcon = _ref.rightIcon,
+    errorMessage = _ref.errorMessage,
+    inputClassName = _ref.inputClassName,
+    className = _ref.className;
+    _ref.isHookForm;
+    _ref.isFormik;
+    _ref.onLeftIconClick;
+    _ref.onRightIconClick;
+    var invisible = _ref.invisible,
+    disabled = _ref.disabled,
+    inputClass = _ref.inputClass,
+    oneCharWide = _ref.oneCharWide,
+    leftIconComponent = _ref.leftIconComponent,
+    rightIconComponent = _ref.rightIconComponent,
+    labelClass = _ref.labelClass,
+    props = _objectWithoutProperties(_ref, _excluded$t);
   var generateInputFieldClasses = classNames(_defineProperty$x({
     "ui-text-field__input": true,
     "has-error": errorMessage,
@@ -23712,23 +23275,22 @@ FieldArrayInner.defaultProps = {
 _objectSpread2$1({}, propTypes);
 _objectSpread2$1({}, defaultProps$1);
 
-var _excluded$o = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onChange", "onBlur", "name"];
+var _excluded$s = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onChange", "onBlur", "name"];
 var HookFormTextField = /*#__PURE__*/React__default.forwardRef(function (_ref, ref) {
   var label = _ref.label,
-      leftIcon = _ref.leftIcon,
-      size = _ref.size,
-      dropDown = _ref.dropDown,
-      rightIcon = _ref.rightIcon,
-      errorMessage = _ref.errorMessage,
-      inputClassName = _ref.inputClassName,
-      className = _ref.className;
-      _ref.isHookForm;
-      _ref.isFormik;
-      var onChange = _ref.onChange,
-      onBlur = _ref.onBlur,
-      name = _ref.name,
-      props = _objectWithoutProperties(_ref, _excluded$o);
-
+    leftIcon = _ref.leftIcon,
+    size = _ref.size,
+    dropDown = _ref.dropDown,
+    rightIcon = _ref.rightIcon,
+    errorMessage = _ref.errorMessage,
+    inputClassName = _ref.inputClassName,
+    className = _ref.className;
+    _ref.isHookForm;
+    _ref.isFormik;
+    var onChange = _ref.onChange,
+    onBlur = _ref.onBlur,
+    name = _ref.name,
+    props = _objectWithoutProperties(_ref, _excluded$s);
   var generateInputFieldClasses = classNames({
     "ui-text-field__input": true,
     "has-error": errorMessage,
@@ -23773,53 +23335,43 @@ var HookFormTextField = /*#__PURE__*/React__default.forwardRef(function (_ref, r
 HookFormTextField.propTypes = _objectSpread2$1({}, propTypes);
 HookFormTextField.defaultProps = _objectSpread2$1({}, defaultProps$1);
 
-var _excluded$n = ["options", "onChange", "returnObjModel"];
-
+var _excluded$r = ["options", "onChange", "returnObjModel"];
 var Dropdown = function Dropdown(_ref) {
   var options = _ref.options,
-      onChange = _ref.onChange,
-      returnObjModel = _ref.returnObjModel,
-      props = _objectWithoutProperties(_ref, _excluded$n);
-
+    onChange = _ref.onChange,
+    returnObjModel = _ref.returnObjModel,
+    props = _objectWithoutProperties(_ref, _excluded$r);
   var _useState = useState(""),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      inputValue = _useState2[0],
-      setInputValue = _useState2[1];
-
+    _useState2 = _slicedToArray$1(_useState, 2),
+    inputValue = _useState2[0],
+    setInputValue = _useState2[1];
   var _useState3 = useState(false),
-      _useState4 = _slicedToArray$1(_useState3, 2),
-      showOptions = _useState4[0],
-      setShowOptions = _useState4[1];
-
+    _useState4 = _slicedToArray$1(_useState3, 2),
+    showOptions = _useState4[0],
+    setShowOptions = _useState4[1];
   var _useState5 = useState([]),
-      _useState6 = _slicedToArray$1(_useState5, 2),
-      computedOptions = _useState6[0],
-      setComputedOptions = _useState6[1];
-
+    _useState6 = _slicedToArray$1(_useState5, 2),
+    computedOptions = _useState6[0],
+    setComputedOptions = _useState6[1];
   var _useState7 = useState(-1),
-      _useState8 = _slicedToArray$1(_useState7, 2),
-      selectedIndex = _useState8[0],
-      setSelectedIndex = _useState8[1];
-
+    _useState8 = _slicedToArray$1(_useState7, 2),
+    selectedIndex = _useState8[0],
+    setSelectedIndex = _useState8[1];
   var _useState9 = useState(null),
-      _useState10 = _slicedToArray$1(_useState9, 2),
-      selectedOption = _useState10[0],
-      setSelectedOption = _useState10[1];
-
+    _useState10 = _slicedToArray$1(_useState9, 2),
+    selectedOption = _useState10[0],
+    setSelectedOption = _useState10[1];
   var _useState11 = useState(true),
-      _useState12 = _slicedToArray$1(_useState11, 2),
-      isBlur = _useState12[0],
-      setIsBlur = _useState12[1];
-
+    _useState12 = _slicedToArray$1(_useState11, 2),
+    isBlur = _useState12[0],
+    setIsBlur = _useState12[1];
   var returnOptionText = function returnOptionText(option) {
     return _typeof$B(option) === "object" ? option.text : option;
   };
-
   useEffect(function () {
     if (!isBlur) {
       setShowOptions(true);
     }
-
     if (selectedOption) {
       if (inputValue !== returnOptionText(selectedOption)) {
         setSelectedOption(null);
@@ -23846,14 +23398,11 @@ var Dropdown = function Dropdown(_ref) {
   useEffect(function () {
     if (isBlur && !selectedOption) {
       var exactMatch = false;
-
       var _iterator = _createForOfIteratorHelper$1(computedOptions),
-          _step;
-
+        _step;
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var option = _step.value;
-
           if (typeof option === "string") {
             if (option.toLowerCase() === inputValue.toLowerCase()) {
               exactMatch = true;
@@ -23875,19 +23424,16 @@ var Dropdown = function Dropdown(_ref) {
       } finally {
         _iterator.f();
       }
-
       if (!exactMatch) {
         setInputValue("");
         setSelectedOption(null);
       }
     }
   }, [isBlur]);
-
   var handleFocus = function handleFocus() {
     setIsBlur(false);
     setShowOptions(true);
   };
-
   var handleBlur = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -23898,7 +23444,6 @@ var Dropdown = function Dropdown(_ref) {
               setTimeout(function () {
                 setShowOptions(false);
               }, 300);
-
             case 2:
             case "end":
               return _context.stop();
@@ -23906,12 +23451,10 @@ var Dropdown = function Dropdown(_ref) {
         }
       }, _callee);
     }));
-
     return function handleBlur() {
       return _ref2.apply(this, arguments);
     };
   }();
-
   var handleClickedOption = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(option) {
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
@@ -23924,13 +23467,11 @@ var Dropdown = function Dropdown(_ref) {
                 } else {
                   setInputValue(option.text);
                 }
-
                 setSelectedOption(option);
                 setTimeout(function () {
                   setShowOptions(false);
                 }, 300);
               }
-
             case 1:
             case "end":
               return _context2.stop();
@@ -23938,39 +23479,32 @@ var Dropdown = function Dropdown(_ref) {
         }
       }, _callee2);
     }));
-
     return function handleClickedOption(_x) {
       return _ref3.apply(this, arguments);
     };
   }();
-
   var handleLeave = function handleLeave(e) {
     if (!e.target.closest(".ui-dropdown")) {
       handleBlur();
     }
   };
-
   var handleKeyDown = function handleKeyDown(e) {
     switch (e.key) {
       case "ArrowDown":
         if (selectedIndex + 1 <= computedOptions.length - 1) setSelectedIndex(selectedIndex + 1);else setSelectedIndex(0);
         break;
-
       case "ArrowUp":
         if (selectedIndex - 1 >= 0) setSelectedIndex(selectedIndex - 1);else setSelectedIndex(computedOptions.length - 1);
         break;
-
       case "Enter":
         handleClickedOption(computedOptions[selectedIndex]);
         break;
-
       case "Escape":
         handleBlur();
         e.target.blur();
         break;
     }
   };
-
   useEffect(function () {
     window.addEventListener("click", handleLeave);
     return function () {
@@ -51547,12 +51081,10 @@ var countries = [
 	}
 ];
 
-var _excluded$m = ["onChange"];
-
+var _excluded$q = ["onChange"];
 var CountryDropdown = function CountryDropdown(_ref) {
   var onChange = _ref.onChange,
-      props = _objectWithoutProperties(_ref, _excluded$m);
-
+    props = _objectWithoutProperties(_ref, _excluded$q);
   var options = countries.map(function (country) {
     return {
       text: country.name,
@@ -51561,13 +51093,11 @@ var CountryDropdown = function CountryDropdown(_ref) {
       icon: /*#__PURE__*/React__default.createElement("span", null, country.emoji)
     };
   });
-
   var handleChange = function handleChange(option) {
     if (option) {
       onChange(option.value, option.states);
     }
   };
-
   return /*#__PURE__*/React__default.createElement(Dropdown, _extends$2({
     options: options,
     onChange: handleChange,
@@ -62452,37 +61982,32 @@ function Reference(_ref) {
 
 function ae(e,t){var r=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);t&&(n=n.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),r.push.apply(r,n);}return r}function se(e){for(var t=1;t<arguments.length;t++){var r=null!=arguments[t]?arguments[t]:{};t%2?ae(Object(r),!0).forEach((function(t){de(e,t,r[t]);})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(r)):ae(Object(r)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(r,t));}));}return e}function ie(e){return (ie="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function pe(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function ce(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n);}}function le(e,t,r){return t&&ce(e.prototype,t),r&&ce(e,r),Object.defineProperty(e,"prototype",{writable:!1}),e}function de(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function ue(){return (ue=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(e[n]=r[n]);}return e}).apply(this,arguments)}function he(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");Object.defineProperty(e,"prototype",{value:Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),writable:!1}),t&&fe(e,t);}function me(e){return (me=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function fe(e,t){return (fe=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function ye(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function ve(e,t){if(t&&("object"==typeof t||"function"==typeof t))return t;if(void 0!==t)throw new TypeError("Derived constructors may only return object or undefined");return ye(e)}function De(e){var t=function(){if("undefined"==typeof Reflect||!Reflect.construct)return !1;if(Reflect.construct.sham)return !1;if("function"==typeof Proxy)return !0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return !1}}();return function(){var r,n=me(e);if(t){var o=me(this).constructor;r=Reflect.construct(n,arguments,o);}else r=n.apply(this,arguments);return ve(this,r)}}function we(e){return function(e){if(Array.isArray(e))return ge(e)}(e)||function(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}(e)||function(e,t){if(!e)return;if("string"==typeof e)return ge(e,t);var r=Object.prototype.toString.call(e).slice(8,-1);"Object"===r&&e.constructor&&(r=e.constructor.name);if("Map"===r||"Set"===r)return Array.from(e);if("Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r))return ge(e,t)}(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function ge(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=new Array(t);r<t;r++)n[r]=e[r];return n}function ke(e,t){switch(e){case"P":return t.date({width:"short"});case"PP":return t.date({width:"medium"});case"PPP":return t.date({width:"long"});case"PPPP":default:return t.date({width:"full"})}}function be(e,t){switch(e){case"p":return t.time({width:"short"});case"pp":return t.time({width:"medium"});case"ppp":return t.time({width:"long"});case"pppp":default:return t.time({width:"full"})}}var Ce={p:be,P:function(e,t){var r,n=e.match(/(P+)(p+)?/)||[],o=n[1],a=n[2];if(!a)return ke(e,t);switch(o){case"P":r=t.dateTime({width:"short"});break;case"PP":r=t.dateTime({width:"medium"});break;case"PPP":r=t.dateTime({width:"long"});break;case"PPPP":default:r=t.dateTime({width:"full"});}return r.replace("{{date}}",ke(o,t)).replace("{{time}}",be(a,t))}},Se=/P+p+|P+|p+|''|'(''|[^'])+('|$)|./g;function _e(e){var t=e?"string"==typeof e||e instanceof String?parseISO(e):toDate(e):new Date;return Pe(t)?t:null}function Me(e,t,r,n,o){var a=null,s=Ue(r)||Ue(qe()),i=!0;return Array.isArray(t)?(t.forEach((function(t){var p=parse$1(e,t,new Date,{locale:s});n&&(i=Pe(p,o)&&e===Ee(p,t,r)),Pe(p,o)&&i&&(a=p);})),a):(a=parse$1(e,t,new Date,{locale:s}),n?i=Pe(a)&&e===Ee(a,t,r):Pe(a)||(t=t.match(Se).map((function(e){var t=e[0];return "p"===t||"P"===t?s?(0, Ce[t])(e,s.formatLong):t:e})).join(""),e.length>0&&(a=parse$1(e,t.slice(0,e.length),new Date)),Pe(a)||(a=new Date(e))),Pe(a)&&i?a:null)}function Pe(e,t){return t=t||new Date("1/1/1000"),isValid(e)&&!isBefore(e,t)}function Ee(e,t,r){if("en"===r)return format$1(e,t,{awareOfUnicodeTokens:!0});var n=Ue(r);return r&&!n&&console.warn('A locale object was not found for the provided string ["'.concat(r,'"].')),!n&&qe()&&Ue(qe())&&(n=Ue(qe())),format$1(e,t,{locale:n||null,awareOfUnicodeTokens:!0})}function Ne(e,t){var r=t.dateFormat,n=t.locale;return e&&Ee(e,Array.isArray(r)?r[0]:r,n)||""}function xe(e,t){var r=t.hour,n=void 0===r?0:r,o=t.minute,a=void 0===o?0:o,s=t.second;return setHours(setMinutes(setSeconds(e,void 0===s?0:s),a),n)}function Ye(e,t){var r=t&&Ue(t)||qe()&&Ue(qe());return getISOWeek(e,r?{locale:r}:null)}function Oe(e,t){return Ee(e,"ddd",t)}function Ie(e){return startOfDay(e)}function Te(e,t,r){var n=Ue(t||qe());return startOfWeek(e,{locale:n,weekStartsOn:r})}function Le(e){return startOfMonth(e)}function Re(e){return startOfYear(e)}function Fe(e){return startOfQuarter(e)}function Ae(e,t){return e&&t?isSameYear(e,t):!e&&!t}function Be(e,t){return e&&t?isSameMonth(e,t):!e&&!t}function Ke(e,t){return e&&t?isSameQuarter(e,t):!e&&!t}function We(e,t){return e&&t?isSameDay(e,t):!e&&!t}function je(e,t){return e&&t?isEqual$3(e,t):!e&&!t}function He(e,t,r){var n,o=startOfDay(t),a=endOfDay(r);try{n=isWithinInterval(e,{start:o,end:a});}catch(e){n=!1;}return n}function qe(){return ("undefined"!=typeof window?window:globalThis).__localeId__}function Ue(e){if("string"==typeof e){var t="undefined"!=typeof window?window:globalThis;return t.__localeData__?t.__localeData__[e]:null}return e}function $e(e,t){return Ee(setMonth(_e(),e),"LLLL",t)}function ze(e,t){return Ee(setMonth(_e(),e),"LLL",t)}function Ge(e,t){return Ee(setQuarter(_e(),e),"QQQ",t)}function Je(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=t.excludeDates,a=t.excludeDateIntervals,s=t.includeDates,i=t.includeDateIntervals,p=t.filterDate;return ot(e,{minDate:r,maxDate:n})||o&&o.some((function(t){return We(e,t)}))||a&&a.some((function(t){var r=t.start,n=t.end;return isWithinInterval(e,{start:r,end:n})}))||s&&!s.some((function(t){return We(e,t)}))||i&&!i.some((function(t){var r=t.start,n=t.end;return isWithinInterval(e,{start:r,end:n})}))||p&&!p(_e(e))||!1}function Xe(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.excludeDates,n=t.excludeDateIntervals;return n&&n.length>0?n.some((function(t){var r=t.start,n=t.end;return isWithinInterval(e,{start:r,end:n})})):r&&r.some((function(t){return We(e,t)}))||!1}function Ze(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=t.excludeDates,a=t.includeDates,s=t.filterDate;return ot(e,{minDate:r,maxDate:n})||o&&o.some((function(t){return Be(e,t)}))||a&&!a.some((function(t){return Be(e,t)}))||s&&!s(_e(e))||!1}function et(e,t,r,n){var o=getYear(e),a=getMonth(e),s=getYear(t),i=getMonth(t),p=getYear(n);return o===s&&o===p?a<=r&&r<=i:o<s?p===o&&a<=r||p===s&&i>=r||p<s&&p>o:void 0}function tt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=t.excludeDates,a=t.includeDates,s=t.filterDate;return ot(e,{minDate:r,maxDate:n})||o&&o.some((function(t){return Ke(e,t)}))||a&&!a.some((function(t){return Ke(e,t)}))||s&&!s(_e(e))||!1}function rt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=new Date(e,0,1);return ot(o,{minDate:r,maxDate:n})||!1}function nt(e,t,r,n){var o=getYear(e),a=getQuarter(e),s=getYear(t),i=getQuarter(t),p=getYear(n);return o===s&&o===p?a<=r&&r<=i:o<s?p===o&&a<=r||p===s&&i>=r||p<s&&p>o:void 0}function ot(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate;return r&&differenceInCalendarDays(e,r)<0||n&&differenceInCalendarDays(e,n)>0}function at(e,t){return t.some((function(t){return getHours(t)===getHours(e)&&getMinutes(t)===getMinutes(e)}))}function st(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.excludeTimes,n=t.includeTimes,o=t.filterTime;return r&&at(e,r)||n&&!at(e,n)||o&&!o(e)||!1}function it(e,t){var r=t.minTime,n=t.maxTime;if(!r||!n)throw new Error("Both minTime and maxTime props required");var o,a=_e(),s=setHours(setMinutes(a,getMinutes(e)),getHours(e)),i=setHours(setMinutes(a,getMinutes(r)),getHours(r)),p=setHours(setMinutes(a,getMinutes(n)),getHours(n));try{o=!isWithinInterval(s,{start:i,end:p});}catch(e){o=!1;}return o}function pt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.includeDates,o=subMonths(e,1);return r&&differenceInCalendarMonths(r,o)>0||n&&n.every((function(e){return differenceInCalendarMonths(e,o)>0}))||!1}function ct(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.maxDate,n=t.includeDates,o=addMonths(e,1);return r&&differenceInCalendarMonths(o,r)>0||n&&n.every((function(e){return differenceInCalendarMonths(o,e)>0}))||!1}function lt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.includeDates,o=subYears(e,1);return r&&differenceInCalendarYears(r,o)>0||n&&n.every((function(e){return differenceInCalendarYears(e,o)>0}))||!1}function dt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.maxDate,n=t.includeDates,o=addYears(e,1);return r&&differenceInCalendarYears(o,r)>0||n&&n.every((function(e){return differenceInCalendarYears(o,e)>0}))||!1}function ut(e){var t=e.minDate,r=e.includeDates;if(r&&t){var n=r.filter((function(e){return differenceInCalendarDays(e,t)>=0}));return min$5(n)}return r?min$5(r):t}function ht(e){var t=e.maxDate,r=e.includeDates;if(r&&t){var n=r.filter((function(e){return differenceInCalendarDays(e,t)<=0}));return max$3(n)}return r?max$3(r):t}function mt(){for(var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:[],t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"react-datepicker__day--highlighted",r=new Map,o=0,a=e.length;o<a;o++){var s=e[o];if(isDate$1(s)){var i=Ee(s,"MM.dd.yyyy"),p=r.get(i)||[];p.includes(t)||(p.push(t),r.set(i,p));}else if("object"===ie(s)){var c=Object.keys(s),l=c[0],d=s[c[0]];if("string"==typeof l&&d.constructor===Array)for(var u=0,h=d.length;u<h;u++){var m=Ee(d[u],"MM.dd.yyyy"),f=r.get(m)||[];f.includes(l)||(f.push(l),r.set(m,f));}}}return r}function ft(e,t,r,n,o){for(var a=o.length,p=[],c=0;c<a;c++){var l=addMinutes(addHours(e,getHours(o[c])),getMinutes(o[c])),d=addMinutes(e,(r+1)*n);isAfter(l,t)&&isBefore(l,d)&&p.push(o[c]);}return p}function yt(e){return e<10?"0".concat(e):"".concat(e)}function vt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:12,r=Math.ceil(getYear(e)/t)*t,n=r-(t-1);return {startPeriod:n,endPeriod:r}}function Dt(e,t,r,n){for(var o=[],a=0;a<2*t+1;a++){var s=e+t-a,i=!0;r&&(i=getYear(r)<=s),n&&i&&(i=getYear(n)>=s),i&&o.push(s);}return o}var wt=onClickOutsideHOC(function(n){he(a,React__default.Component);var o=De(a);function a(r){var n;pe(this,a),de(ye(n=o.call(this,r)),"renderOptions",(function(){var t=n.props.year,r=n.state.yearsList.map((function(r){return React__default.createElement("div",{className:t===r?"react-datepicker__year-option react-datepicker__year-option--selected_year":"react-datepicker__year-option",key:r,onClick:n.onChange.bind(ye(n),r),"aria-selected":t===r?"true":void 0},t===r?React__default.createElement("span",{className:"react-datepicker__year-option--selected"},"✓"):"",r)})),o=n.props.minDate?getYear(n.props.minDate):null,a=n.props.maxDate?getYear(n.props.maxDate):null;return a&&n.state.yearsList.find((function(e){return e===a}))||r.unshift(React__default.createElement("div",{className:"react-datepicker__year-option",key:"upcoming",onClick:n.incrementYears},React__default.createElement("a",{className:"react-datepicker__navigation react-datepicker__navigation--years react-datepicker__navigation--years-upcoming"}))),o&&n.state.yearsList.find((function(e){return e===o}))||r.push(React__default.createElement("div",{className:"react-datepicker__year-option",key:"previous",onClick:n.decrementYears},React__default.createElement("a",{className:"react-datepicker__navigation react-datepicker__navigation--years react-datepicker__navigation--years-previous"}))),r})),de(ye(n),"onChange",(function(e){n.props.onChange(e);})),de(ye(n),"handleClickOutside",(function(){n.props.onCancel();})),de(ye(n),"shiftYears",(function(e){var t=n.state.yearsList.map((function(t){return t+e}));n.setState({yearsList:t});})),de(ye(n),"incrementYears",(function(){return n.shiftYears(1)})),de(ye(n),"decrementYears",(function(){return n.shiftYears(-1)}));var s=r.yearDropdownItemNumber,i=r.scrollableYearDropdown,p=s||(i?10:5);return n.state={yearsList:Dt(n.props.year,p,n.props.minDate,n.props.maxDate)},n.dropdownRef=createRef(),n}return le(a,[{key:"componentDidMount",value:function(){var e=this.dropdownRef.current;e&&(e.scrollTop=e.scrollHeight/2-e.clientHeight/2);}},{key:"render",value:function(){var t=r({"react-datepicker__year-dropdown":!0,"react-datepicker__year-dropdown--scrollable":this.props.scrollableYearDropdown});return React__default.createElement("div",{className:t,ref:this.dropdownRef},this.renderOptions())}}]),a}()),gt=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{dropdownVisible:!1}),de(ye(t),"renderSelectOptions",(function(){for(var r=t.props.minDate?getYear(t.props.minDate):1900,n=t.props.maxDate?getYear(t.props.maxDate):2100,o=[],a=r;a<=n;a++)o.push(React__default.createElement("option",{key:a,value:a},a));return o})),de(ye(t),"onSelectChange",(function(e){t.onChange(e.target.value);})),de(ye(t),"renderSelectMode",(function(){return React__default.createElement("select",{value:t.props.year,className:"react-datepicker__year-select",onChange:t.onSelectChange},t.renderSelectOptions())})),de(ye(t),"renderReadView",(function(r){return React__default.createElement("div",{key:"read",style:{visibility:r?"visible":"hidden"},className:"react-datepicker__year-read-view",onClick:function(e){return t.toggleDropdown(e)}},React__default.createElement("span",{className:"react-datepicker__year-read-view--down-arrow"}),React__default.createElement("span",{className:"react-datepicker__year-read-view--selected-year"},t.props.year))})),de(ye(t),"renderDropdown",(function(){return React__default.createElement(wt,{key:"dropdown",year:t.props.year,onChange:t.onChange,onCancel:t.toggleDropdown,minDate:t.props.minDate,maxDate:t.props.maxDate,scrollableYearDropdown:t.props.scrollableYearDropdown,yearDropdownItemNumber:t.props.yearDropdownItemNumber})})),de(ye(t),"renderScrollMode",(function(){var e=t.state.dropdownVisible,r=[t.renderReadView(!e)];return e&&r.unshift(t.renderDropdown()),r})),de(ye(t),"onChange",(function(e){t.toggleDropdown(),e!==t.props.year&&t.props.onChange(e);})),de(ye(t),"toggleDropdown",(function(e){t.setState({dropdownVisible:!t.state.dropdownVisible},(function(){t.props.adjustDateOnChange&&t.handleYearChange(t.props.date,e);}));})),de(ye(t),"handleYearChange",(function(e,r){t.onSelect(e,r),t.setOpen();})),de(ye(t),"onSelect",(function(e,r){t.props.onSelect&&t.props.onSelect(e,r);})),de(ye(t),"setOpen",(function(){t.props.setOpen&&t.props.setOpen(!0);})),t}return le(n,[{key:"render",value:function(){var t;switch(this.props.dropdownMode){case"scroll":t=this.renderScrollMode();break;case"select":t=this.renderSelectMode();}return React__default.createElement("div",{className:"react-datepicker__year-dropdown-container react-datepicker__year-dropdown-container--".concat(this.props.dropdownMode)},t)}}]),n}(),kt=onClickOutsideHOC(function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"isSelectedMonth",(function(e){return t.props.month===e})),de(ye(t),"renderOptions",(function(){return t.props.monthNames.map((function(r,n){return React__default.createElement("div",{className:t.isSelectedMonth(n)?"react-datepicker__month-option react-datepicker__month-option--selected_month":"react-datepicker__month-option",key:r,onClick:t.onChange.bind(ye(t),n),"aria-selected":t.isSelectedMonth(n)?"true":void 0},t.isSelectedMonth(n)?React__default.createElement("span",{className:"react-datepicker__month-option--selected"},"✓"):"",r)}))})),de(ye(t),"onChange",(function(e){return t.props.onChange(e)})),de(ye(t),"handleClickOutside",(function(){return t.props.onCancel()})),t}return le(n,[{key:"render",value:function(){return React__default.createElement("div",{className:"react-datepicker__month-dropdown"},this.renderOptions())}}]),n}()),bt=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{dropdownVisible:!1}),de(ye(t),"renderSelectOptions",(function(t){return t.map((function(t,r){return React__default.createElement("option",{key:r,value:r},t)}))})),de(ye(t),"renderSelectMode",(function(r){return React__default.createElement("select",{value:t.props.month,className:"react-datepicker__month-select",onChange:function(e){return t.onChange(e.target.value)}},t.renderSelectOptions(r))})),de(ye(t),"renderReadView",(function(r,n){return React__default.createElement("div",{key:"read",style:{visibility:r?"visible":"hidden"},className:"react-datepicker__month-read-view",onClick:t.toggleDropdown},React__default.createElement("span",{className:"react-datepicker__month-read-view--down-arrow"}),React__default.createElement("span",{className:"react-datepicker__month-read-view--selected-month"},n[t.props.month]))})),de(ye(t),"renderDropdown",(function(r){return React__default.createElement(kt,{key:"dropdown",month:t.props.month,monthNames:r,onChange:t.onChange,onCancel:t.toggleDropdown})})),de(ye(t),"renderScrollMode",(function(e){var r=t.state.dropdownVisible,n=[t.renderReadView(!r,e)];return r&&n.unshift(t.renderDropdown(e)),n})),de(ye(t),"onChange",(function(e){t.toggleDropdown(),e!==t.props.month&&t.props.onChange(e);})),de(ye(t),"toggleDropdown",(function(){return t.setState({dropdownVisible:!t.state.dropdownVisible})})),t}return le(n,[{key:"render",value:function(){var t,r=this,n=[0,1,2,3,4,5,6,7,8,9,10,11].map(this.props.useShortMonthInDropdown?function(e){return ze(e,r.props.locale)}:function(e){return $e(e,r.props.locale)});switch(this.props.dropdownMode){case"scroll":t=this.renderScrollMode(n);break;case"select":t=this.renderSelectMode(n);}return React__default.createElement("div",{className:"react-datepicker__month-dropdown-container react-datepicker__month-dropdown-container--".concat(this.props.dropdownMode)},t)}}]),n}();function Ct(e,t){for(var r=[],n=Le(e),o=Le(t);!isAfter(n,o);)r.push(_e(n)),n=addMonths(n,1);return r}var St=onClickOutsideHOC(function(t){he(o,React__default.Component);var n=De(o);function o(t){var r;return pe(this,o),de(ye(r=n.call(this,t)),"renderOptions",(function(){return r.state.monthYearsList.map((function(t){var n=getTime(t),o=Ae(r.props.date,t)&&Be(r.props.date,t);return React__default.createElement("div",{className:o?"react-datepicker__month-year-option--selected_month-year":"react-datepicker__month-year-option",key:n,onClick:r.onChange.bind(ye(r),n),"aria-selected":o?"true":void 0},o?React__default.createElement("span",{className:"react-datepicker__month-year-option--selected"},"✓"):"",Ee(t,r.props.dateFormat,r.props.locale))}))})),de(ye(r),"onChange",(function(e){return r.props.onChange(e)})),de(ye(r),"handleClickOutside",(function(){r.props.onCancel();})),r.state={monthYearsList:Ct(r.props.minDate,r.props.maxDate)},r}return le(o,[{key:"render",value:function(){var t=r({"react-datepicker__month-year-dropdown":!0,"react-datepicker__month-year-dropdown--scrollable":this.props.scrollableMonthYearDropdown});return React__default.createElement("div",{className:t},this.renderOptions())}}]),o}()),_t=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{dropdownVisible:!1}),de(ye(t),"renderSelectOptions",(function(){for(var r=Le(t.props.minDate),n=Le(t.props.maxDate),o=[];!isAfter(r,n);){var a=getTime(r);o.push(React__default.createElement("option",{key:a,value:a},Ee(r,t.props.dateFormat,t.props.locale))),r=addMonths(r,1);}return o})),de(ye(t),"onSelectChange",(function(e){t.onChange(e.target.value);})),de(ye(t),"renderSelectMode",(function(){return React__default.createElement("select",{value:getTime(Le(t.props.date)),className:"react-datepicker__month-year-select",onChange:t.onSelectChange},t.renderSelectOptions())})),de(ye(t),"renderReadView",(function(r){var n=Ee(t.props.date,t.props.dateFormat,t.props.locale);return React__default.createElement("div",{key:"read",style:{visibility:r?"visible":"hidden"},className:"react-datepicker__month-year-read-view",onClick:function(e){return t.toggleDropdown(e)}},React__default.createElement("span",{className:"react-datepicker__month-year-read-view--down-arrow"}),React__default.createElement("span",{className:"react-datepicker__month-year-read-view--selected-month-year"},n))})),de(ye(t),"renderDropdown",(function(){return React__default.createElement(St,{key:"dropdown",date:t.props.date,dateFormat:t.props.dateFormat,onChange:t.onChange,onCancel:t.toggleDropdown,minDate:t.props.minDate,maxDate:t.props.maxDate,scrollableMonthYearDropdown:t.props.scrollableMonthYearDropdown,locale:t.props.locale})})),de(ye(t),"renderScrollMode",(function(){var e=t.state.dropdownVisible,r=[t.renderReadView(!e)];return e&&r.unshift(t.renderDropdown()),r})),de(ye(t),"onChange",(function(e){t.toggleDropdown();var r=_e(parseInt(e));Ae(t.props.date,r)&&Be(t.props.date,r)||t.props.onChange(r);})),de(ye(t),"toggleDropdown",(function(){return t.setState({dropdownVisible:!t.state.dropdownVisible})})),t}return le(n,[{key:"render",value:function(){var t;switch(this.props.dropdownMode){case"scroll":t=this.renderScrollMode();break;case"select":t=this.renderSelectMode();}return React__default.createElement("div",{className:"react-datepicker__month-year-dropdown-container react-datepicker__month-year-dropdown-container--".concat(this.props.dropdownMode)},t)}}]),n}(),Mt=function(t){he(o,React__default.Component);var n=De(o);function o(){var t;pe(this,o);for(var a=arguments.length,s=new Array(a),i=0;i<a;i++)s[i]=arguments[i];return de(ye(t=n.call.apply(n,[this].concat(s))),"dayEl",React__default.createRef()),de(ye(t),"handleClick",(function(e){!t.isDisabled()&&t.props.onClick&&t.props.onClick(e);})),de(ye(t),"handleMouseEnter",(function(e){!t.isDisabled()&&t.props.onMouseEnter&&t.props.onMouseEnter(e);})),de(ye(t),"handleOnKeyDown",(function(e){" "===e.key&&(e.preventDefault(),e.key="Enter"),t.props.handleOnKeyDown(e);})),de(ye(t),"isSameDay",(function(e){return We(t.props.day,e)})),de(ye(t),"isKeyboardSelected",(function(){return !t.props.disabledKeyboardNavigation&&!t.isSameDay(t.props.selected)&&t.isSameDay(t.props.preSelection)})),de(ye(t),"isDisabled",(function(){return Je(t.props.day,t.props)})),de(ye(t),"isExcluded",(function(){return Xe(t.props.day,t.props)})),de(ye(t),"getHighLightedClass",(function(e){var r=t.props,n=r.day,o=r.highlightDates;if(!o)return !1;var a=Ee(n,"MM.dd.yyyy");return o.get(a)})),de(ye(t),"isInRange",(function(){var e=t.props,r=e.day,n=e.startDate,o=e.endDate;return !(!n||!o)&&He(r,n,o)})),de(ye(t),"isInSelectingRange",(function(){var e,r=t.props,n=r.day,o=r.selectsStart,a=r.selectsEnd,s=r.selectsRange,i=r.selectsDisabledDaysInRange,p=r.startDate,c=r.endDate,l=null!==(e=t.props.selectingDate)&&void 0!==e?e:t.props.preSelection;return !(!(o||a||s)||!l||!i&&t.isDisabled())&&(o&&c&&(isBefore(l,c)||je(l,c))?He(n,l,c):(a&&p&&(isAfter(l,p)||je(l,p))||!(!s||!p||c||!isAfter(l,p)&&!je(l,p)))&&He(n,p,l))})),de(ye(t),"isSelectingRangeStart",(function(){var e;if(!t.isInSelectingRange())return !1;var r=t.props,n=r.day,o=r.startDate,a=r.selectsStart,s=null!==(e=t.props.selectingDate)&&void 0!==e?e:t.props.preSelection;return We(n,a?s:o)})),de(ye(t),"isSelectingRangeEnd",(function(){var e;if(!t.isInSelectingRange())return !1;var r=t.props,n=r.day,o=r.endDate,a=r.selectsEnd,s=null!==(e=t.props.selectingDate)&&void 0!==e?e:t.props.preSelection;return We(n,a?s:o)})),de(ye(t),"isRangeStart",(function(){var e=t.props,r=e.day,n=e.startDate,o=e.endDate;return !(!n||!o)&&We(n,r)})),de(ye(t),"isRangeEnd",(function(){var e=t.props,r=e.day,n=e.startDate,o=e.endDate;return !(!n||!o)&&We(o,r)})),de(ye(t),"isWeekend",(function(){var e=getDay(t.props.day);return 0===e||6===e})),de(ye(t),"isAfterMonth",(function(){return void 0!==t.props.month&&(t.props.month+1)%12===getMonth(t.props.day)})),de(ye(t),"isBeforeMonth",(function(){return void 0!==t.props.month&&(getMonth(t.props.day)+1)%12===t.props.month})),de(ye(t),"isCurrentDay",(function(){return t.isSameDay(_e())})),de(ye(t),"isSelected",(function(){return t.isSameDay(t.props.selected)})),de(ye(t),"getClassNames",(function(e){var n=t.props.dayClassName?t.props.dayClassName(e):void 0;return r("react-datepicker__day",n,"react-datepicker__day--"+Oe(t.props.day),{"react-datepicker__day--disabled":t.isDisabled(),"react-datepicker__day--excluded":t.isExcluded(),"react-datepicker__day--selected":t.isSelected(),"react-datepicker__day--keyboard-selected":t.isKeyboardSelected(),"react-datepicker__day--range-start":t.isRangeStart(),"react-datepicker__day--range-end":t.isRangeEnd(),"react-datepicker__day--in-range":t.isInRange(),"react-datepicker__day--in-selecting-range":t.isInSelectingRange(),"react-datepicker__day--selecting-range-start":t.isSelectingRangeStart(),"react-datepicker__day--selecting-range-end":t.isSelectingRangeEnd(),"react-datepicker__day--today":t.isCurrentDay(),"react-datepicker__day--weekend":t.isWeekend(),"react-datepicker__day--outside-month":t.isAfterMonth()||t.isBeforeMonth()},t.getHighLightedClass("react-datepicker__day--highlighted"))})),de(ye(t),"getAriaLabel",(function(){var e=t.props,r=e.day,n=e.ariaLabelPrefixWhenEnabled,o=void 0===n?"Choose":n,a=e.ariaLabelPrefixWhenDisabled,s=void 0===a?"Not available":a,i=t.isDisabled()||t.isExcluded()?s:o;return "".concat(i," ").concat(Ee(r,"PPPP",t.props.locale))})),de(ye(t),"getTabIndex",(function(e,r){var n=e||t.props.selected,o=r||t.props.preSelection;return t.isKeyboardSelected()||t.isSameDay(n)&&We(o,n)?0:-1})),de(ye(t),"handleFocusDay",(function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},r=!1;0===t.getTabIndex()&&!e.isInputFocused&&t.isSameDay(t.props.preSelection)&&(document.activeElement&&document.activeElement!==document.body||(r=!0),t.props.inline&&!t.props.shouldFocusDayInline&&(r=!1),t.props.containerRef&&t.props.containerRef.current&&t.props.containerRef.current.contains(document.activeElement)&&document.activeElement.classList.contains("react-datepicker__day")&&(r=!0)),r&&t.dayEl.current.focus({preventScroll:!0});})),de(ye(t),"renderDayContents",(function(){return t.props.monthShowsDuplicateDaysEnd&&t.isAfterMonth()||t.props.monthShowsDuplicateDaysStart&&t.isBeforeMonth()?null:t.props.renderDayContents?t.props.renderDayContents(getDate(t.props.day),t.props.day):getDate(t.props.day)})),de(ye(t),"render",(function(){return React__default.createElement("div",{ref:t.dayEl,className:t.getClassNames(t.props.day),onKeyDown:t.handleOnKeyDown,onClick:t.handleClick,onMouseEnter:t.handleMouseEnter,tabIndex:t.getTabIndex(),"aria-label":t.getAriaLabel(),role:"option","aria-disabled":t.isDisabled(),"aria-current":t.isCurrentDay()?"date":void 0,"aria-selected":t.isSelected()},t.renderDayContents())})),t}return le(o,[{key:"componentDidMount",value:function(){this.handleFocusDay();}},{key:"componentDidUpdate",value:function(e){this.handleFocusDay(e);}}]),o}(),Pt=function(t){he(o,React__default.Component);var n=De(o);function o(){var e;pe(this,o);for(var t=arguments.length,r=new Array(t),a=0;a<t;a++)r[a]=arguments[a];return de(ye(e=n.call.apply(n,[this].concat(r))),"handleClick",(function(t){e.props.onClick&&e.props.onClick(t);})),e}return le(o,[{key:"render",value:function(){var t=this.props,n=t.weekNumber,o=t.ariaLabelPrefix,a=void 0===o?"week ":o,s={"react-datepicker__week-number":!0,"react-datepicker__week-number--clickable":!!t.onClick};return React__default.createElement("div",{className:r(s),"aria-label":"".concat(a," ").concat(this.props.weekNumber),onClick:this.handleClick},n)}}]),o}(),Et=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"handleDayClick",(function(e,r){t.props.onDayClick&&t.props.onDayClick(e,r);})),de(ye(t),"handleDayMouseEnter",(function(e){t.props.onDayMouseEnter&&t.props.onDayMouseEnter(e);})),de(ye(t),"handleWeekClick",(function(e,r,n){"function"==typeof t.props.onWeekSelect&&t.props.onWeekSelect(e,r,n),t.props.shouldCloseOnSelect&&t.props.setOpen(!1);})),de(ye(t),"formatWeekNumber",(function(e){return t.props.formatWeekNumber?t.props.formatWeekNumber(e):Ye(e)})),de(ye(t),"renderDays",(function(){var r=Te(t.props.day,t.props.locale,t.props.calendarStartDay),n=[],o=t.formatWeekNumber(r);if(t.props.showWeekNumber){var a=t.props.onWeekSelect?t.handleWeekClick.bind(ye(t),r,o):void 0;n.push(React__default.createElement(Pt,{key:"W",weekNumber:o,onClick:a,ariaLabelPrefix:t.props.ariaLabelPrefix}));}return n.concat([0,1,2,3,4,5,6].map((function(n){var o=addDays(r,n);return React__default.createElement(Mt,{ariaLabelPrefixWhenEnabled:t.props.chooseDayAriaLabelPrefix,ariaLabelPrefixWhenDisabled:t.props.disabledDayAriaLabelPrefix,key:o.valueOf(),day:o,month:t.props.month,onClick:t.handleDayClick.bind(ye(t),o),onMouseEnter:t.handleDayMouseEnter.bind(ye(t),o),minDate:t.props.minDate,maxDate:t.props.maxDate,excludeDates:t.props.excludeDates,excludeDateIntervals:t.props.excludeDateIntervals,includeDates:t.props.includeDates,includeDateIntervals:t.props.includeDateIntervals,highlightDates:t.props.highlightDates,selectingDate:t.props.selectingDate,filterDate:t.props.filterDate,preSelection:t.props.preSelection,selected:t.props.selected,selectsStart:t.props.selectsStart,selectsEnd:t.props.selectsEnd,selectsRange:t.props.selectsRange,selectsDisabledDaysInRange:t.props.selectsDisabledDaysInRange,startDate:t.props.startDate,endDate:t.props.endDate,dayClassName:t.props.dayClassName,renderDayContents:t.props.renderDayContents,disabledKeyboardNavigation:t.props.disabledKeyboardNavigation,handleOnKeyDown:t.props.handleOnKeyDown,isInputFocused:t.props.isInputFocused,containerRef:t.props.containerRef,inline:t.props.inline,shouldFocusDayInline:t.props.shouldFocusDayInline,monthShowsDuplicateDaysEnd:t.props.monthShowsDuplicateDaysEnd,monthShowsDuplicateDaysStart:t.props.monthShowsDuplicateDaysStart,locale:t.props.locale})})))})),t}return le(n,[{key:"render",value:function(){return React__default.createElement("div",{className:"react-datepicker__week"},this.renderDays())}}],[{key:"defaultProps",get:function(){return {shouldCloseOnSelect:!0}}}]),n}(),Nt=function(t){he(o,React__default.Component);var n=De(o);function o(){var t;pe(this,o);for(var a=arguments.length,s=new Array(a),i=0;i<a;i++)s[i]=arguments[i];return de(ye(t=n.call.apply(n,[this].concat(s))),"MONTH_REFS",we(Array(12)).map((function(){return React__default.createRef()}))),de(ye(t),"isDisabled",(function(e){return Je(e,t.props)})),de(ye(t),"isExcluded",(function(e){return Xe(e,t.props)})),de(ye(t),"handleDayClick",(function(e,r){t.props.onDayClick&&t.props.onDayClick(e,r,t.props.orderInDisplay);})),de(ye(t),"handleDayMouseEnter",(function(e){t.props.onDayMouseEnter&&t.props.onDayMouseEnter(e);})),de(ye(t),"handleMouseLeave",(function(){t.props.onMouseLeave&&t.props.onMouseLeave();})),de(ye(t),"isRangeStartMonth",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Be(setMonth(n,e),o)})),de(ye(t),"isRangeStartQuarter",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Ke(setQuarter(n,e),o)})),de(ye(t),"isRangeEndMonth",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Be(setMonth(n,e),a)})),de(ye(t),"isRangeEndQuarter",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Ke(setQuarter(n,e),a)})),de(ye(t),"isWeekInMonth",(function(e){var r=t.props.day,n=addDays(e,6);return Be(e,r)||Be(n,r)})),de(ye(t),"isCurrentMonth",(function(e,t){return getYear(e)===getYear(_e())&&t===getMonth(_e())})),de(ye(t),"isSelectedMonth",(function(e,t,r){return getMonth(e)===t&&getYear(e)===getYear(r)})),de(ye(t),"isSelectedQuarter",(function(e,t,r){return getQuarter(e)===t&&getYear(e)===getYear(r)})),de(ye(t),"renderWeeks",(function(){for(var r=[],n=t.props.fixedHeight,o=0,a=!1,s=Te(Le(t.props.day),t.props.locale,t.props.calendarStartDay);r.push(React__default.createElement(Et,{ariaLabelPrefix:t.props.weekAriaLabelPrefix,chooseDayAriaLabelPrefix:t.props.chooseDayAriaLabelPrefix,disabledDayAriaLabelPrefix:t.props.disabledDayAriaLabelPrefix,key:o,day:s,month:getMonth(t.props.day),onDayClick:t.handleDayClick,onDayMouseEnter:t.handleDayMouseEnter,onWeekSelect:t.props.onWeekSelect,formatWeekNumber:t.props.formatWeekNumber,locale:t.props.locale,minDate:t.props.minDate,maxDate:t.props.maxDate,excludeDates:t.props.excludeDates,excludeDateIntervals:t.props.excludeDateIntervals,includeDates:t.props.includeDates,includeDateIntervals:t.props.includeDateIntervals,inline:t.props.inline,shouldFocusDayInline:t.props.shouldFocusDayInline,highlightDates:t.props.highlightDates,selectingDate:t.props.selectingDate,filterDate:t.props.filterDate,preSelection:t.props.preSelection,selected:t.props.selected,selectsStart:t.props.selectsStart,selectsEnd:t.props.selectsEnd,selectsRange:t.props.selectsRange,selectsDisabledDaysInRange:t.props.selectsDisabledDaysInRange,showWeekNumber:t.props.showWeekNumbers,startDate:t.props.startDate,endDate:t.props.endDate,dayClassName:t.props.dayClassName,setOpen:t.props.setOpen,shouldCloseOnSelect:t.props.shouldCloseOnSelect,disabledKeyboardNavigation:t.props.disabledKeyboardNavigation,renderDayContents:t.props.renderDayContents,handleOnKeyDown:t.props.handleOnKeyDown,isInputFocused:t.props.isInputFocused,containerRef:t.props.containerRef,calendarStartDay:t.props.calendarStartDay,monthShowsDuplicateDaysEnd:t.props.monthShowsDuplicateDaysEnd,monthShowsDuplicateDaysStart:t.props.monthShowsDuplicateDaysStart})),!a;){o++,s=addWeeks(s,1);var i=n&&o>=6,p=!n&&!t.isWeekInMonth(s);if(i||p){if(!t.props.peekNextMonth)break;a=!0;}}return r})),de(ye(t),"onMonthClick",(function(e,r){t.handleDayClick(Le(setMonth(t.props.day,r)),e);})),de(ye(t),"handleMonthNavigation",(function(e,r){t.isDisabled(r)||t.isExcluded(r)||(t.props.setPreSelection(r),t.MONTH_REFS[e].current&&t.MONTH_REFS[e].current.focus());})),de(ye(t),"onMonthKeyDown",(function(e,r){var n=e.key;if(!t.props.disabledKeyboardNavigation)switch(n){case"Enter":t.onMonthClick(e,r),t.props.setPreSelection(t.props.selected);break;case"ArrowRight":t.handleMonthNavigation(11===r?0:r+1,addMonths(t.props.preSelection,1));break;case"ArrowLeft":t.handleMonthNavigation(0===r?11:r-1,subMonths(t.props.preSelection,1));}})),de(ye(t),"onQuarterClick",(function(e,r){t.handleDayClick(Fe(setQuarter(t.props.day,r)),e);})),de(ye(t),"getMonthClassNames",(function(e){var n=t.props,o=n.day,a=n.startDate,s=n.endDate,i=n.selected,p=n.minDate,c=n.maxDate,l=n.preSelection,d=n.monthClassName,u=d?d(o):void 0;return r("react-datepicker__month-text","react-datepicker__month-".concat(e),u,{"react-datepicker__month--disabled":(p||c)&&Ze(setMonth(o,e),t.props),"react-datepicker__month--selected":t.isSelectedMonth(o,e,i),"react-datepicker__month-text--keyboard-selected":getMonth(l)===e,"react-datepicker__month--in-range":et(a,s,e,o),"react-datepicker__month--range-start":t.isRangeStartMonth(e),"react-datepicker__month--range-end":t.isRangeEndMonth(e),"react-datepicker__month-text--today":t.isCurrentMonth(o,e)})})),de(ye(t),"getTabIndex",(function(e){var r=getMonth(t.props.preSelection);return t.props.disabledKeyboardNavigation||e!==r?"-1":"0"})),de(ye(t),"getAriaLabel",(function(e){var r=t.props,n=r.chooseDayAriaLabelPrefix,o=void 0===n?"Choose":n,a=r.disabledDayAriaLabelPrefix,s=void 0===a?"Not available":a,i=r.day,p=setMonth(i,e),c=t.isDisabled(p)||t.isExcluded(p)?s:o;return "".concat(c," ").concat(Ee(p,"MMMM yyyy"))})),de(ye(t),"getQuarterClassNames",(function(e){var n=t.props,o=n.day,a=n.startDate,s=n.endDate,i=n.selected,p=n.minDate,c=n.maxDate;return r("react-datepicker__quarter-text","react-datepicker__quarter-".concat(e),{"react-datepicker__quarter--disabled":(p||c)&&tt(setQuarter(o,e),t.props),"react-datepicker__quarter--selected":t.isSelectedQuarter(o,e,i),"react-datepicker__quarter--in-range":nt(a,s,e,o),"react-datepicker__quarter--range-start":t.isRangeStartQuarter(e),"react-datepicker__quarter--range-end":t.isRangeEndQuarter(e)})})),de(ye(t),"renderMonths",(function(){var r=t.props,n=r.showFullMonthYearPicker,o=r.showTwoColumnMonthYearPicker,a=r.showFourColumnMonthYearPicker,s=r.locale,i=r.day,p=r.selected;return (a?[[0,1,2,3],[4,5,6,7],[8,9,10,11]]:o?[[0,1],[2,3],[4,5],[6,7],[8,9],[10,11]]:[[0,1,2],[3,4,5],[6,7,8],[9,10,11]]).map((function(r,o){return React__default.createElement("div",{className:"react-datepicker__month-wrapper",key:o},r.map((function(r,o){return React__default.createElement("div",{ref:t.MONTH_REFS[r],key:o,onClick:function(e){t.onMonthClick(e,r);},onKeyDown:function(e){t.onMonthKeyDown(e,r);},tabIndex:t.getTabIndex(r),className:t.getMonthClassNames(r),role:"option","aria-label":t.getAriaLabel(r),"aria-current":t.isCurrentMonth(i,r)?"date":void 0,"aria-selected":t.isSelectedMonth(i,r,p)},n?$e(r,s):ze(r,s))})))}))})),de(ye(t),"renderQuarters",(function(){var r=t.props,n=r.day,o=r.selected;return React__default.createElement("div",{className:"react-datepicker__quarter-wrapper"},[1,2,3,4].map((function(r,a){return React__default.createElement("div",{key:a,role:"option",onClick:function(e){t.onQuarterClick(e,r);},className:t.getQuarterClassNames(r),"aria-selected":t.isSelectedQuarter(n,r,o)},Ge(r,t.props.locale))})))})),de(ye(t),"getClassNames",(function(){var e=t.props;e.day;var n=e.selectingDate,o=e.selectsStart,a=e.selectsEnd,s=e.showMonthYearPicker,i=e.showQuarterYearPicker;return r("react-datepicker__month",{"react-datepicker__month--selecting-range":n&&(o||a)},{"react-datepicker__monthPicker":s},{"react-datepicker__quarterPicker":i})})),t}return le(o,[{key:"render",value:function(){var t=this.props,r=t.showMonthYearPicker,n=t.showQuarterYearPicker,o=t.day,a=t.ariaLabelPrefix,s=void 0===a?"month ":a;return React__default.createElement("div",{className:this.getClassNames(),onMouseLeave:this.handleMouseLeave,"aria-label":"".concat(s," ").concat(Ee(o,"yyyy-MM")),role:"listbox"},r?this.renderMonths():n?this.renderQuarters():this.renderWeeks())}}]),o}(),xt=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),i=0;i<o;i++)a[i]=arguments[i];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{height:null}),de(ye(t),"handleClick",(function(e){(t.props.minTime||t.props.maxTime)&&it(e,t.props)||(t.props.excludeTimes||t.props.includeTimes||t.props.filterTime)&&st(e,t.props)||t.props.onChange(e);})),de(ye(t),"isSelectedTime",(function(e,r,n){return t.props.selected&&r===getHours(e)&&n===getMinutes(e)})),de(ye(t),"liClasses",(function(e,r,n){var o=["react-datepicker__time-list-item",t.props.timeClassName?t.props.timeClassName(e,r,n):void 0];return t.isSelectedTime(e,r,n)&&o.push("react-datepicker__time-list-item--selected"),((t.props.minTime||t.props.maxTime)&&it(e,t.props)||(t.props.excludeTimes||t.props.includeTimes||t.props.filterTime)&&st(e,t.props))&&o.push("react-datepicker__time-list-item--disabled"),t.props.injectTimes&&(60*getHours(e)+getMinutes(e))%t.props.intervals!=0&&o.push("react-datepicker__time-list-item--injected"),o.join(" ")})),de(ye(t),"handleOnKeyDown",(function(e,r){" "===e.key&&(e.preventDefault(),e.key="Enter"),"Enter"===e.key&&t.handleClick(r),t.props.handleOnKeyDown(e);})),de(ye(t),"renderTimes",(function(){for(var r=[],n=t.props.format?t.props.format:"p",o=t.props.intervals,a=Ie(_e(t.props.selected)),i=1440/o,p=t.props.injectTimes&&t.props.injectTimes.sort((function(e,t){return e-t})),c=t.props.selected||t.props.openToDate||_e(),l=getHours(c),d=getMinutes(c),u=setHours(setMinutes(a,d),l),h=0;h<i;h++){var m=addMinutes(a,h*o);if(r.push(m),p){var f=ft(a,m,h,o,p);r=r.concat(f);}}return r.map((function(r,o){return React__default.createElement("li",{key:o,onClick:t.handleClick.bind(ye(t),r),className:t.liClasses(r,l,d),ref:function(e){(isBefore(r,u)||je(r,u))&&(t.centerLi=e);},onKeyDown:function(e){t.handleOnKeyDown(e,r);},tabIndex:"0","aria-selected":t.isSelectedTime(r,l,d)?"true":void 0},Ee(r,n,t.props.locale))}))})),t}return le(n,[{key:"componentDidMount",value:function(){this.list.scrollTop=n.calcCenterPosition(this.props.monthRef?this.props.monthRef.clientHeight-this.header.clientHeight:this.list.clientHeight,this.centerLi),this.props.monthRef&&this.header&&this.setState({height:this.props.monthRef.clientHeight-this.header.clientHeight});}},{key:"render",value:function(){var t=this,r=this.state.height;return React__default.createElement("div",{className:"react-datepicker__time-container ".concat(this.props.todayButton?"react-datepicker__time-container--with-today-button":"")},React__default.createElement("div",{className:"react-datepicker__header react-datepicker__header--time ".concat(this.props.showTimeSelectOnly?"react-datepicker__header--time--only":""),ref:function(e){t.header=e;}},React__default.createElement("div",{className:"react-datepicker-time__header"},this.props.timeCaption)),React__default.createElement("div",{className:"react-datepicker__time"},React__default.createElement("div",{className:"react-datepicker__time-box"},React__default.createElement("ul",{className:"react-datepicker__time-list",ref:function(e){t.list=e;},style:r?{height:r}:{},tabIndex:"0"},this.renderTimes()))))}}],[{key:"defaultProps",get:function(){return {intervals:30,onTimeChange:function(){},todayButton:null,timeCaption:"Time"}}}]),n}();de(xt,"calcCenterPosition",(function(e,t){return t.offsetTop-(e/2-t.clientHeight/2)}));var Yt=function(t){he(o,React__default.Component);var n=De(o);function o(t){var a;return pe(this,o),de(ye(a=n.call(this,t)),"YEAR_REFS",we(Array(a.props.yearItemNumber)).map((function(){return React__default.createRef()}))),de(ye(a),"isDisabled",(function(e){return Je(e,a.props)})),de(ye(a),"isExcluded",(function(e){return Xe(e,a.props)})),de(ye(a),"updateFocusOnPaginate",(function(e){var t=function(){this.YEAR_REFS[e].current.focus();}.bind(ye(a));window.requestAnimationFrame(t);})),de(ye(a),"handleYearClick",(function(e,t){a.props.onDayClick&&a.props.onDayClick(e,t);})),de(ye(a),"handleYearNavigation",(function(e,t){var r=a.props,n=r.date,o=r.yearItemNumber,s=vt(n,o).startPeriod;a.isDisabled(t)||a.isExcluded(t)||(a.props.setPreSelection(t),e-s==-1?a.updateFocusOnPaginate(o-1):e-s===o?a.updateFocusOnPaginate(0):a.YEAR_REFS[e-s].current.focus());})),de(ye(a),"isSameDay",(function(e,t){return We(e,t)})),de(ye(a),"isCurrentYear",(function(e){return e===getYear(_e())})),de(ye(a),"isKeyboardSelected",(function(e){var t=Re(setYear(a.props.date,e));return !a.props.disabledKeyboardNavigation&&!a.props.inline&&!We(t,Re(a.props.selected))&&We(t,Re(a.props.preSelection))})),de(ye(a),"onYearClick",(function(e,t){var r=a.props.date;a.handleYearClick(Re(setYear(r,t)),e);})),de(ye(a),"onYearKeyDown",(function(e,t){var r=e.key;if(!a.props.disabledKeyboardNavigation)switch(r){case"Enter":a.onYearClick(e,t),a.props.setPreSelection(a.props.selected);break;case"ArrowRight":a.handleYearNavigation(t+1,addYears(a.props.preSelection,1));break;case"ArrowLeft":a.handleYearNavigation(t-1,subYears(a.props.preSelection,1));}})),de(ye(a),"getYearClassNames",(function(e){var t=a.props,n=t.minDate,o=t.maxDate,s=t.selected;return r("react-datepicker__year-text",{"react-datepicker__year-text--selected":e===getYear(s),"react-datepicker__year-text--disabled":(n||o)&&rt(e,a.props),"react-datepicker__year-text--keyboard-selected":a.isKeyboardSelected(e),"react-datepicker__year-text--today":a.isCurrentYear(e)})})),de(ye(a),"getYearTabIndex",(function(e){return a.props.disabledKeyboardNavigation?"-1":e===getYear(a.props.preSelection)?"0":"-1"})),a}return le(o,[{key:"render",value:function(){for(var t=this,r=[],n=this.props,o=vt(n.date,n.yearItemNumber),a=o.startPeriod,s=o.endPeriod,i=function(n){r.push(React__default.createElement("div",{ref:t.YEAR_REFS[n-a],onClick:function(e){t.onYearClick(e,n);},onKeyDown:function(e){t.onYearKeyDown(e,n);},tabIndex:t.getYearTabIndex(n),className:t.getYearClassNames(n),key:n,"aria-current":t.isCurrentYear(n)?"date":void 0},n));},p=a;p<=s;p++)i(p);return React__default.createElement("div",{className:"react-datepicker__year"},React__default.createElement("div",{className:"react-datepicker__year-wrapper"},r))}}]),o}(),Ot=function(t){he(n,React__default.Component);var r=De(n);function n(t){var o;return pe(this,n),de(ye(o=r.call(this,t)),"onTimeChange",(function(e){o.setState({time:e});var t=new Date;t.setHours(e.split(":")[0]),t.setMinutes(e.split(":")[1]),o.props.onChange(t);})),de(ye(o),"renderTimeInput",(function(){var t=o.state.time,r=o.props,n=r.date,a=r.timeString,s=r.customTimeInput;return s?React__default.cloneElement(s,{date:n,value:t,onChange:o.onTimeChange}):React__default.createElement("input",{type:"time",className:"react-datepicker-time__input",placeholder:"Time",name:"time-input",required:!0,value:t,onChange:function(e){o.onTimeChange(e.target.value||a);}})})),o.state={time:o.props.timeString},o}return le(n,[{key:"render",value:function(){return React__default.createElement("div",{className:"react-datepicker__input-time-container"},React__default.createElement("div",{className:"react-datepicker-time__caption"},this.props.timeInputLabel),React__default.createElement("div",{className:"react-datepicker-time__input-container"},React__default.createElement("div",{className:"react-datepicker-time__input"},this.renderTimeInput())))}}],[{key:"getDerivedStateFromProps",value:function(e,t){return e.timeString!==t.time?{time:e.timeString}:null}}]),n}();function It(t){var r=t.className,n=t.children,o=t.showPopperArrow,a=t.arrowProps,s=void 0===a?{}:a;return React__default.createElement("div",{className:r},o&&React__default.createElement("div",ue({className:"react-datepicker__triangle"},s)),n)}var Tt=["react-datepicker__year-select","react-datepicker__month-select","react-datepicker__month-year-select"],Lt=function(t){he(o,React__default.Component);var n=De(o);function o(t){var a;return pe(this,o),de(ye(a=n.call(this,t)),"handleClickOutside",(function(e){a.props.onClickOutside(e);})),de(ye(a),"setClickOutsideRef",(function(){return a.containerRef.current})),de(ye(a),"handleDropdownFocus",(function(e){(function(){var e=((arguments.length>0&&void 0!==arguments[0]?arguments[0]:{}).className||"").split(/\s+/);return Tt.some((function(t){return e.indexOf(t)>=0}))})(e.target)&&a.props.onDropdownFocus();})),de(ye(a),"getDateInView",(function(){var e=a.props,t=e.preSelection,r=e.selected,n=e.openToDate,o=ut(a.props),s=ht(a.props),i=_e(),p=n||r||t;return p||(o&&isBefore(i,o)?o:s&&isAfter(i,s)?s:i)})),de(ye(a),"increaseMonth",(function(){a.setState((function(e){var t=e.date;return {date:addMonths(t,1)}}),(function(){return a.handleMonthChange(a.state.date)}));})),de(ye(a),"decreaseMonth",(function(){a.setState((function(e){var t=e.date;return {date:subMonths(t,1)}}),(function(){return a.handleMonthChange(a.state.date)}));})),de(ye(a),"handleDayClick",(function(e,t,r){a.props.onSelect(e,t,r),a.props.setPreSelection&&a.props.setPreSelection(e);})),de(ye(a),"handleDayMouseEnter",(function(e){a.setState({selectingDate:e}),a.props.onDayMouseEnter&&a.props.onDayMouseEnter(e);})),de(ye(a),"handleMonthMouseLeave",(function(){a.setState({selectingDate:null}),a.props.onMonthMouseLeave&&a.props.onMonthMouseLeave();})),de(ye(a),"handleYearChange",(function(e){a.props.onYearChange&&a.props.onYearChange(e),a.props.adjustDateOnChange&&(a.props.onSelect&&a.props.onSelect(e),a.props.setOpen&&a.props.setOpen(!0)),a.props.setPreSelection&&a.props.setPreSelection(e);})),de(ye(a),"handleMonthChange",(function(e){a.props.onMonthChange&&a.props.onMonthChange(e),a.props.adjustDateOnChange&&(a.props.onSelect&&a.props.onSelect(e),a.props.setOpen&&a.props.setOpen(!0)),a.props.setPreSelection&&a.props.setPreSelection(e);})),de(ye(a),"handleMonthYearChange",(function(e){a.handleYearChange(e),a.handleMonthChange(e);})),de(ye(a),"changeYear",(function(e){a.setState((function(t){var r=t.date;return {date:setYear(r,e)}}),(function(){return a.handleYearChange(a.state.date)}));})),de(ye(a),"changeMonth",(function(e){a.setState((function(t){var r=t.date;return {date:setMonth(r,e)}}),(function(){return a.handleMonthChange(a.state.date)}));})),de(ye(a),"changeMonthYear",(function(e){a.setState((function(t){var r=t.date;return {date:setYear(setMonth(r,getMonth(e)),getYear(e))}}),(function(){return a.handleMonthYearChange(a.state.date)}));})),de(ye(a),"header",(function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:a.state.date,n=Te(t,a.props.locale,a.props.calendarStartDay),o=[];return a.props.showWeekNumbers&&o.push(React__default.createElement("div",{key:"W",className:"react-datepicker__day-name"},a.props.weekLabel||"#")),o.concat([0,1,2,3,4,5,6].map((function(t){var o=addDays(n,t),s=a.formatWeekday(o,a.props.locale),i=a.props.weekDayClassName?a.props.weekDayClassName(o):void 0;return React__default.createElement("div",{key:t,className:r("react-datepicker__day-name",i)},s)})))})),de(ye(a),"formatWeekday",(function(e,t){return a.props.formatWeekDay?function(e,t,r){return t(Ee(e,"EEEE",r))}(e,a.props.formatWeekDay,t):a.props.useWeekdaysShort?function(e,t){return Ee(e,"EEE",t)}(e,t):function(e,t){return Ee(e,"EEEEEE",t)}(e,t)})),de(ye(a),"decreaseYear",(function(){a.setState((function(e){var t=e.date;return {date:subYears(t,a.props.showYearPicker?a.props.yearItemNumber:1)}}),(function(){return a.handleYearChange(a.state.date)}));})),de(ye(a),"renderPreviousButton",(function(){if(!a.props.renderCustomHeader){var t;switch(!0){case a.props.showMonthYearPicker:t=lt(a.state.date,a.props);break;case a.props.showYearPicker:t=function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.yearItemNumber,o=void 0===n?12:n,a=vt(Re(subYears(e,o)),o).endPeriod,s=r&&getYear(r);return s&&s>a||!1}(a.state.date,a.props);break;default:t=pt(a.state.date,a.props);}if((a.props.forceShowMonthNavigation||a.props.showDisabledMonthNavigation||!t)&&!a.props.showTimeSelectOnly){var r=["react-datepicker__navigation","react-datepicker__navigation--previous"],n=a.decreaseMonth;(a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker)&&(n=a.decreaseYear),t&&a.props.showDisabledMonthNavigation&&(r.push("react-datepicker__navigation--previous--disabled"),n=null);var o=a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker,s=a.props,i=s.previousMonthButtonLabel,p=s.previousYearButtonLabel,c=a.props,l=c.previousMonthAriaLabel,d=void 0===l?"string"==typeof i?i:"Previous Month":l,u=c.previousYearAriaLabel,h=void 0===u?"string"==typeof p?p:"Previous Year":u;return React__default.createElement("button",{type:"button",className:r.join(" "),onClick:n,onKeyDown:a.props.handleOnKeyDown,"aria-label":o?h:d},React__default.createElement("span",{className:["react-datepicker__navigation-icon","react-datepicker__navigation-icon--previous"].join(" ")},o?a.props.previousYearButtonLabel:a.props.previousMonthButtonLabel))}}})),de(ye(a),"increaseYear",(function(){a.setState((function(e){var t=e.date;return {date:addYears(t,a.props.showYearPicker?a.props.yearItemNumber:1)}}),(function(){return a.handleYearChange(a.state.date)}));})),de(ye(a),"renderNextButton",(function(){if(!a.props.renderCustomHeader){var t;switch(!0){case a.props.showMonthYearPicker:t=dt(a.state.date,a.props);break;case a.props.showYearPicker:t=function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.maxDate,n=t.yearItemNumber,o=void 0===n?12:n,a=vt(addYears(e,o),o).startPeriod,s=r&&getYear(r);return s&&s<a||!1}(a.state.date,a.props);break;default:t=ct(a.state.date,a.props);}if((a.props.forceShowMonthNavigation||a.props.showDisabledMonthNavigation||!t)&&!a.props.showTimeSelectOnly){var r=["react-datepicker__navigation","react-datepicker__navigation--next"];a.props.showTimeSelect&&r.push("react-datepicker__navigation--next--with-time"),a.props.todayButton&&r.push("react-datepicker__navigation--next--with-today-button");var n=a.increaseMonth;(a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker)&&(n=a.increaseYear),t&&a.props.showDisabledMonthNavigation&&(r.push("react-datepicker__navigation--next--disabled"),n=null);var o=a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker,s=a.props,i=s.nextMonthButtonLabel,p=s.nextYearButtonLabel,c=a.props,l=c.nextMonthAriaLabel,u=void 0===l?"string"==typeof i?i:"Next Month":l,h=c.nextYearAriaLabel,m=void 0===h?"string"==typeof p?p:"Next Year":h;return React__default.createElement("button",{type:"button",className:r.join(" "),onClick:n,onKeyDown:a.props.handleOnKeyDown,"aria-label":o?m:u},React__default.createElement("span",{className:["react-datepicker__navigation-icon","react-datepicker__navigation-icon--next"].join(" ")},o?a.props.nextYearButtonLabel:a.props.nextMonthButtonLabel))}}})),de(ye(a),"renderCurrentMonth",(function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:a.state.date,r=["react-datepicker__current-month"];return a.props.showYearDropdown&&r.push("react-datepicker__current-month--hasYearDropdown"),a.props.showMonthDropdown&&r.push("react-datepicker__current-month--hasMonthDropdown"),a.props.showMonthYearDropdown&&r.push("react-datepicker__current-month--hasMonthYearDropdown"),React__default.createElement("div",{className:r.join(" ")},Ee(t,a.props.dateFormat,a.props.locale))})),de(ye(a),"renderYearDropdown",(function(){var t=arguments.length>0&&void 0!==arguments[0]&&arguments[0];if(a.props.showYearDropdown&&!t)return React__default.createElement(gt,{adjustDateOnChange:a.props.adjustDateOnChange,date:a.state.date,onSelect:a.props.onSelect,setOpen:a.props.setOpen,dropdownMode:a.props.dropdownMode,onChange:a.changeYear,minDate:a.props.minDate,maxDate:a.props.maxDate,year:getYear(a.state.date),scrollableYearDropdown:a.props.scrollableYearDropdown,yearDropdownItemNumber:a.props.yearDropdownItemNumber})})),de(ye(a),"renderMonthDropdown",(function(){var t=arguments.length>0&&void 0!==arguments[0]&&arguments[0];if(a.props.showMonthDropdown&&!t)return React__default.createElement(bt,{dropdownMode:a.props.dropdownMode,locale:a.props.locale,onChange:a.changeMonth,month:getMonth(a.state.date),useShortMonthInDropdown:a.props.useShortMonthInDropdown})})),de(ye(a),"renderMonthYearDropdown",(function(){var t=arguments.length>0&&void 0!==arguments[0]&&arguments[0];if(a.props.showMonthYearDropdown&&!t)return React__default.createElement(_t,{dropdownMode:a.props.dropdownMode,locale:a.props.locale,dateFormat:a.props.dateFormat,onChange:a.changeMonthYear,minDate:a.props.minDate,maxDate:a.props.maxDate,date:a.state.date,scrollableMonthYearDropdown:a.props.scrollableMonthYearDropdown})})),de(ye(a),"renderTodayButton",(function(){if(a.props.todayButton&&!a.props.showTimeSelectOnly)return React__default.createElement("div",{className:"react-datepicker__today-button",onClick:function(e){return a.props.onSelect(startOfDay(_e()),e)}},a.props.todayButton)})),de(ye(a),"renderDefaultHeader",(function(t){var r=t.monthDate,n=t.i;return React__default.createElement("div",{className:"react-datepicker__header ".concat(a.props.showTimeSelect?"react-datepicker__header--has-time-select":"")},a.renderCurrentMonth(r),React__default.createElement("div",{className:"react-datepicker__header__dropdown react-datepicker__header__dropdown--".concat(a.props.dropdownMode),onFocus:a.handleDropdownFocus},a.renderMonthDropdown(0!==n),a.renderMonthYearDropdown(0!==n),a.renderYearDropdown(0!==n)),React__default.createElement("div",{className:"react-datepicker__day-names"},a.header(r)))})),de(ye(a),"renderCustomHeader",(function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},r=t.monthDate,n=t.i;if(a.props.showTimeSelect&&!a.state.monthContainer||a.props.showTimeSelectOnly)return null;var o=pt(a.state.date,a.props),s=ct(a.state.date,a.props),i=lt(a.state.date,a.props),p=dt(a.state.date,a.props),c=!a.props.showMonthYearPicker&&!a.props.showQuarterYearPicker&&!a.props.showYearPicker;return React__default.createElement("div",{className:"react-datepicker__header react-datepicker__header--custom",onFocus:a.props.onDropdownFocus},a.props.renderCustomHeader(se(se({},a.state),{},{customHeaderCount:n,monthDate:r,changeMonth:a.changeMonth,changeYear:a.changeYear,decreaseMonth:a.decreaseMonth,increaseMonth:a.increaseMonth,decreaseYear:a.decreaseYear,increaseYear:a.increaseYear,prevMonthButtonDisabled:o,nextMonthButtonDisabled:s,prevYearButtonDisabled:i,nextYearButtonDisabled:p})),c&&React__default.createElement("div",{className:"react-datepicker__day-names"},a.header(r)))})),de(ye(a),"renderYearHeader",(function(){var t=a.state.date,r=a.props,n=r.showYearPicker,o=vt(t,r.yearItemNumber),s=o.startPeriod,i=o.endPeriod;return React__default.createElement("div",{className:"react-datepicker__header react-datepicker-year-header"},n?"".concat(s," - ").concat(i):getYear(t))})),de(ye(a),"renderHeader",(function(e){switch(!0){case void 0!==a.props.renderCustomHeader:return a.renderCustomHeader(e);case a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker:return a.renderYearHeader(e);default:return a.renderDefaultHeader(e)}})),de(ye(a),"renderMonths",(function(){if(!a.props.showTimeSelectOnly&&!a.props.showYearPicker){for(var t=[],r=a.props.showPreviousMonths?a.props.monthsShown-1:0,n=subMonths(a.state.date,r),o=0;o<a.props.monthsShown;++o){var s=o-a.props.monthSelectedIn,i=addMonths(n,s),p="month-".concat(o),c=o<a.props.monthsShown-1,d=o>0;t.push(React__default.createElement("div",{key:p,ref:function(e){a.monthContainer=e;},className:"react-datepicker__month-container"},a.renderHeader({monthDate:i,i:o}),React__default.createElement(Nt,{chooseDayAriaLabelPrefix:a.props.chooseDayAriaLabelPrefix,disabledDayAriaLabelPrefix:a.props.disabledDayAriaLabelPrefix,weekAriaLabelPrefix:a.props.weekAriaLabelPrefix,ariaLabelPrefix:a.props.monthAriaLabelPrefix,onChange:a.changeMonthYear,day:i,dayClassName:a.props.dayClassName,calendarStartDay:a.props.calendarStartDay,monthClassName:a.props.monthClassName,onDayClick:a.handleDayClick,handleOnKeyDown:a.props.handleOnDayKeyDown,onDayMouseEnter:a.handleDayMouseEnter,onMouseLeave:a.handleMonthMouseLeave,onWeekSelect:a.props.onWeekSelect,orderInDisplay:o,formatWeekNumber:a.props.formatWeekNumber,locale:a.props.locale,minDate:a.props.minDate,maxDate:a.props.maxDate,excludeDates:a.props.excludeDates,excludeDateIntervals:a.props.excludeDateIntervals,highlightDates:a.props.highlightDates,selectingDate:a.state.selectingDate,includeDates:a.props.includeDates,includeDateIntervals:a.props.includeDateIntervals,inline:a.props.inline,shouldFocusDayInline:a.props.shouldFocusDayInline,fixedHeight:a.props.fixedHeight,filterDate:a.props.filterDate,preSelection:a.props.preSelection,setPreSelection:a.props.setPreSelection,selected:a.props.selected,selectsStart:a.props.selectsStart,selectsEnd:a.props.selectsEnd,selectsRange:a.props.selectsRange,selectsDisabledDaysInRange:a.props.selectsDisabledDaysInRange,showWeekNumbers:a.props.showWeekNumbers,startDate:a.props.startDate,endDate:a.props.endDate,peekNextMonth:a.props.peekNextMonth,setOpen:a.props.setOpen,shouldCloseOnSelect:a.props.shouldCloseOnSelect,renderDayContents:a.props.renderDayContents,disabledKeyboardNavigation:a.props.disabledKeyboardNavigation,showMonthYearPicker:a.props.showMonthYearPicker,showFullMonthYearPicker:a.props.showFullMonthYearPicker,showTwoColumnMonthYearPicker:a.props.showTwoColumnMonthYearPicker,showFourColumnMonthYearPicker:a.props.showFourColumnMonthYearPicker,showYearPicker:a.props.showYearPicker,showQuarterYearPicker:a.props.showQuarterYearPicker,isInputFocused:a.props.isInputFocused,containerRef:a.containerRef,monthShowsDuplicateDaysEnd:c,monthShowsDuplicateDaysStart:d})));}return t}})),de(ye(a),"renderYears",(function(){if(!a.props.showTimeSelectOnly)return a.props.showYearPicker?React__default.createElement("div",{className:"react-datepicker__year--container"},a.renderHeader(),React__default.createElement(Yt,ue({onDayClick:a.handleDayClick,date:a.state.date},a.props))):void 0})),de(ye(a),"renderTimeSection",(function(){if(a.props.showTimeSelect&&(a.state.monthContainer||a.props.showTimeSelectOnly))return React__default.createElement(xt,{selected:a.props.selected,openToDate:a.props.openToDate,onChange:a.props.onTimeChange,timeClassName:a.props.timeClassName,format:a.props.timeFormat,includeTimes:a.props.includeTimes,intervals:a.props.timeIntervals,minTime:a.props.minTime,maxTime:a.props.maxTime,excludeTimes:a.props.excludeTimes,filterTime:a.props.filterTime,timeCaption:a.props.timeCaption,todayButton:a.props.todayButton,showMonthDropdown:a.props.showMonthDropdown,showMonthYearDropdown:a.props.showMonthYearDropdown,showYearDropdown:a.props.showYearDropdown,withPortal:a.props.withPortal,monthRef:a.state.monthContainer,injectTimes:a.props.injectTimes,locale:a.props.locale,handleOnKeyDown:a.props.handleOnKeyDown,showTimeSelectOnly:a.props.showTimeSelectOnly})})),de(ye(a),"renderInputTimeSection",(function(){var t=new Date(a.props.selected),r=Pe(t)&&Boolean(a.props.selected)?"".concat(yt(t.getHours()),":").concat(yt(t.getMinutes())):"";if(a.props.showTimeInput)return React__default.createElement(Ot,{date:t,timeString:r,timeInputLabel:a.props.timeInputLabel,onChange:a.props.onTimeChange,customTimeInput:a.props.customTimeInput})})),a.containerRef=React__default.createRef(),a.state={date:a.getDateInView(),selectingDate:null,monthContainer:null},a}return le(o,[{key:"componentDidMount",value:function(){var e=this;this.props.showTimeSelect&&(this.assignMonthContainer=void e.setState({monthContainer:e.monthContainer}));}},{key:"componentDidUpdate",value:function(e){this.props.preSelection&&!We(this.props.preSelection,e.preSelection)?this.setState({date:this.props.preSelection}):this.props.openToDate&&!We(this.props.openToDate,e.openToDate)&&this.setState({date:this.props.openToDate});}},{key:"render",value:function(){var t=this.props.container||It;return React__default.createElement("div",{ref:this.containerRef},React__default.createElement(t,{className:r("react-datepicker",this.props.className,{"react-datepicker--time-only":this.props.showTimeSelectOnly}),showPopperArrow:this.props.showPopperArrow,arrowProps:this.props.arrowProps},this.renderPreviousButton(),this.renderNextButton(),this.renderMonths(),this.renderYears(),this.renderTodayButton(),this.renderTimeSection(),this.renderInputTimeSection(),this.props.children))}}],[{key:"defaultProps",get:function(){return {onDropdownFocus:function(){},monthsShown:1,monthSelectedIn:0,forceShowMonthNavigation:!1,timeCaption:"Time",previousYearButtonLabel:"Previous Year",nextYearButtonLabel:"Next Year",previousMonthButtonLabel:"Previous Month",nextMonthButtonLabel:"Next Month",customTimeInput:null,yearItemNumber:12}}}]),o}(),Rt=function(t){he(n,React__default.Component);var r=De(n);function n(e){var t;return pe(this,n),(t=r.call(this,e)).el=document.createElement("div"),t}return le(n,[{key:"componentDidMount",value:function(){this.portalRoot=(this.props.portalHost||document).getElementById(this.props.portalId),this.portalRoot||(this.portalRoot=document.createElement("div"),this.portalRoot.setAttribute("id",this.props.portalId),(this.props.portalHost||document.body).appendChild(this.portalRoot)),this.portalRoot.appendChild(this.el);}},{key:"componentWillUnmount",value:function(){this.portalRoot.removeChild(this.el);}},{key:"render",value:function(){return ReactDOM__default.createPortal(this.props.children,this.el)}}]),n}(),Ft=function(e){return !e.disabled&&-1!==e.tabIndex},At=function(t){he(n,React__default.Component);var r=De(n);function n(t){var o;return pe(this,n),de(ye(o=r.call(this,t)),"getTabChildren",(function(){return Array.prototype.slice.call(o.tabLoopRef.current.querySelectorAll("[tabindex], a, button, input, select, textarea"),1,-1).filter(Ft)})),de(ye(o),"handleFocusStart",(function(e){var t=o.getTabChildren();t&&t.length>1&&t[t.length-1].focus();})),de(ye(o),"handleFocusEnd",(function(e){var t=o.getTabChildren();t&&t.length>1&&t[0].focus();})),o.tabLoopRef=React__default.createRef(),o}return le(n,[{key:"render",value:function(){return this.props.enableTabLoop?React__default.createElement("div",{className:"react-datepicker__tab-loop",ref:this.tabLoopRef},React__default.createElement("div",{className:"react-datepicker__tab-loop__start",tabIndex:"0",onFocus:this.handleFocusStart}),this.props.children,React__default.createElement("div",{className:"react-datepicker__tab-loop__end",tabIndex:"0",onFocus:this.handleFocusEnd})):this.props.children}}],[{key:"defaultProps",get:function(){return {enableTabLoop:!0}}}]),n}(),Bt=function(t){he(o,React__default.Component);var n=De(o);function o(){return pe(this,o),n.apply(this,arguments)}return le(o,[{key:"render",value:function(){var t,n=this.props,o=n.className,a=n.wrapperClassName,s=n.hidePopper,i=n.popperComponent,p=n.popperModifiers,c=n.popperPlacement,l=n.popperProps,d=n.targetComponent,u=n.enableTabLoop,h=n.popperOnKeyDown,m=n.portalId,f=n.portalHost;if(!s){var y=r("react-datepicker-popper",o);t=React__default.createElement(Popper,ue({modifiers:p,placement:c},l),(function(t){var r=t.ref,n=t.style,o=t.placement,a=t.arrowProps;return React__default.createElement(At,{enableTabLoop:u},React__default.createElement("div",{ref:r,style:n,className:y,"data-placement":o,onKeyDown:h},React__default.cloneElement(i,{arrowProps:a})))}));}this.props.popperContainer&&(t=React__default.createElement(this.props.popperContainer,{},t)),m&&!s&&(t=React__default.createElement(Rt,{portalId:m,portalHost:f},t));var v=r("react-datepicker-wrapper",a);return React__default.createElement(Manager,{className:"react-datepicker-manager"},React__default.createElement(Reference,null,(function(t){var r=t.ref;return React__default.createElement("div",{ref:r,className:v},d)})),t)}}],[{key:"defaultProps",get:function(){return {hidePopper:!0,popperModifiers:[],popperProps:{},popperPlacement:"bottom-start"}}}]),o}(),Kt=onClickOutsideHOC(Lt);var Wt=function(t){he(a,React__default.Component);var o=De(a);function a(t){var s;return pe(this,a),de(ye(s=o.call(this,t)),"getPreSelection",(function(){return s.props.openToDate?s.props.openToDate:s.props.selectsEnd&&s.props.startDate?s.props.startDate:s.props.selectsStart&&s.props.endDate?s.props.endDate:_e()})),de(ye(s),"calcInitialState",(function(){var e,t=s.getPreSelection(),r=ut(s.props),n=ht(s.props),o=r&&isBefore(t,startOfDay(r))?r:n&&isAfter(t,endOfDay(n))?n:t;return {open:s.props.startOpen||!1,preventFocus:!1,preSelection:null!==(e=s.props.selectsRange?s.props.startDate:s.props.selected)&&void 0!==e?e:o,highlightDates:mt(s.props.highlightDates),focused:!1,shouldFocusDayInline:!1}})),de(ye(s),"clearPreventFocusTimeout",(function(){s.preventFocusTimeout&&clearTimeout(s.preventFocusTimeout);})),de(ye(s),"setFocus",(function(){s.input&&s.input.focus&&s.input.focus({preventScroll:!0});})),de(ye(s),"setBlur",(function(){s.input&&s.input.blur&&s.input.blur(),s.cancelFocusInput();})),de(ye(s),"setOpen",(function(e){var t=arguments.length>1&&void 0!==arguments[1]&&arguments[1];s.setState({open:e,preSelection:e&&s.state.open?s.state.preSelection:s.calcInitialState().preSelection,lastPreSelectChange:Ht},(function(){e||s.setState((function(e){return {focused:!!t&&e.focused}}),(function(){!t&&s.setBlur(),s.setState({inputValue:null});}));}));})),de(ye(s),"inputOk",(function(){return isDate$1(s.state.preSelection)})),de(ye(s),"isCalendarOpen",(function(){return void 0===s.props.open?s.state.open&&!s.props.disabled&&!s.props.readOnly:s.props.open})),de(ye(s),"handleFocus",(function(e){s.state.preventFocus||(s.props.onFocus(e),s.props.preventOpenOnFocus||s.props.readOnly||s.setOpen(!0)),s.setState({focused:!0});})),de(ye(s),"cancelFocusInput",(function(){clearTimeout(s.inputFocusTimeout),s.inputFocusTimeout=null;})),de(ye(s),"deferFocusInput",(function(){s.cancelFocusInput(),s.inputFocusTimeout=setTimeout((function(){return s.setFocus()}),1);})),de(ye(s),"handleDropdownFocus",(function(){s.cancelFocusInput();})),de(ye(s),"handleBlur",(function(e){(!s.state.open||s.props.withPortal||s.props.showTimeInput)&&s.props.onBlur(e),s.setState({focused:!1});})),de(ye(s),"handleCalendarClickOutside",(function(e){s.props.inline||s.setOpen(!1),s.props.onClickOutside(e),s.props.withPortal&&e.preventDefault();})),de(ye(s),"handleChange",(function(){for(var e=arguments.length,t=new Array(e),r=0;r<e;r++)t[r]=arguments[r];var n=t[0];if(!s.props.onChangeRaw||(s.props.onChangeRaw.apply(ye(s),t),"function"==typeof n.isDefaultPrevented&&!n.isDefaultPrevented())){s.setState({inputValue:n.target.value,lastPreSelectChange:jt});var o=Me(n.target.value,s.props.dateFormat,s.props.locale,s.props.strictParsing,s.props.minDate);!o&&n.target.value||s.setSelected(o,n,!0);}})),de(ye(s),"handleSelect",(function(e,t,r){if(s.setState({preventFocus:!0},(function(){return s.preventFocusTimeout=setTimeout((function(){return s.setState({preventFocus:!1})}),50),s.preventFocusTimeout})),s.props.onChangeRaw&&s.props.onChangeRaw(t),s.setSelected(e,t,!1,r),!s.props.shouldCloseOnSelect||s.props.showTimeSelect)s.setPreSelection(e);else if(!s.props.inline){s.props.selectsRange||s.setOpen(!1);var n=s.props,o=n.startDate,a=n.endDate;!o||a||isBefore(e,o)||s.setOpen(!1);}})),de(ye(s),"setSelected",(function(e,t,r,n){var o=e;if(null===o||!Je(o,s.props)){var a=s.props,i=a.onChange,p=a.selectsRange,c=a.startDate,l=a.endDate;if(!je(s.props.selected,o)||s.props.allowSameDay||p)if(null!==o&&(!s.props.selected||r&&(s.props.showTimeSelect||s.props.showTimeSelectOnly||s.props.showTimeInput)||(o=xe(o,{hour:getHours(s.props.selected),minute:getMinutes(s.props.selected),second:getSeconds(s.props.selected)})),s.props.inline||s.setState({preSelection:o}),s.props.focusSelectedMonth||s.setState({monthSelectedIn:n})),p){var d=c&&!l,u=c&&l;!c&&!l?i([o,null],t):d&&(isBefore(o,c)?i([o,null],t):i([c,o],t)),u&&i([o,null],t);}else i(o,t);r||(s.props.onSelect(o,t),s.setState({inputValue:null}));}})),de(ye(s),"setPreSelection",(function(e){var t=void 0!==s.props.minDate,r=void 0!==s.props.maxDate,n=!0;if(e){var o=startOfDay(e);if(t&&r)n=He(e,s.props.minDate,s.props.maxDate);else if(t){var a=startOfDay(s.props.minDate);n=isAfter(e,a)||je(o,a);}else if(r){var i=endOfDay(s.props.maxDate);n=isBefore(e,i)||je(o,i);}}n&&s.setState({preSelection:e});})),de(ye(s),"handleTimeChange",(function(e){var t=xe(s.props.selected?s.props.selected:s.getPreSelection(),{hour:getHours(e),minute:getMinutes(e)});s.setState({preSelection:t}),s.props.onChange(t),s.props.shouldCloseOnSelect&&s.setOpen(!1),s.props.showTimeInput&&s.setOpen(!0),s.setState({inputValue:null});})),de(ye(s),"onInputClick",(function(){s.props.disabled||s.props.readOnly||s.setOpen(!0),s.props.onInputClick();})),de(ye(s),"onInputKeyDown",(function(e){s.props.onKeyDown(e);var t=e.key;if(s.state.open||s.props.inline||s.props.preventOpenOnFocus){if(s.state.open){if("ArrowDown"===t||"ArrowUp"===t){e.preventDefault();var r=s.calendar.componentNode&&s.calendar.componentNode.querySelector('.react-datepicker__day[tabindex="0"]');return void(r&&r.focus({preventScroll:!0}))}var n=_e(s.state.preSelection);"Enter"===t?(e.preventDefault(),s.inputOk()&&s.state.lastPreSelectChange===Ht?(s.handleSelect(n,e),!s.props.shouldCloseOnSelect&&s.setPreSelection(n)):s.setOpen(!1)):"Escape"===t&&(e.preventDefault(),s.setOpen(!1)),s.inputOk()||s.props.onInputError({code:1,msg:"Date input not valid."});}}else "ArrowDown"!==t&&"ArrowUp"!==t&&"Enter"!==t||s.onInputClick();})),de(ye(s),"onDayKeyDown",(function(e){s.props.onKeyDown(e);var t=e.key,r=_e(s.state.preSelection);if("Enter"===t)e.preventDefault(),s.handleSelect(r,e),!s.props.shouldCloseOnSelect&&s.setPreSelection(r);else if("Escape"===t)e.preventDefault(),s.setOpen(!1),s.inputOk()||s.props.onInputError({code:1,msg:"Date input not valid."});else if(!s.props.disabledKeyboardNavigation){var n;switch(t){case"ArrowLeft":n=subDays(r,1);break;case"ArrowRight":n=addDays(r,1);break;case"ArrowUp":n=subWeeks(r,1);break;case"ArrowDown":n=addWeeks(r,1);break;case"PageUp":n=subMonths(r,1);break;case"PageDown":n=addMonths(r,1);break;case"Home":n=subYears(r,1);break;case"End":n=addYears(r,1);}if(!n)return void(s.props.onInputError&&s.props.onInputError({code:1,msg:"Date input not valid."}));if(e.preventDefault(),s.setState({lastPreSelectChange:Ht}),s.props.adjustDateOnChange&&s.setSelected(n),s.setPreSelection(n),s.props.inline){var o=getMonth(r),a=getMonth(n),i=getYear(r),y=getYear(n);o!==a||i!==y?s.setState({shouldFocusDayInline:!0}):s.setState({shouldFocusDayInline:!1});}}})),de(ye(s),"onPopperKeyDown",(function(e){"Escape"===e.key&&(e.preventDefault(),s.setState({preventFocus:!0},(function(){s.setOpen(!1),setTimeout((function(){s.setFocus(),s.setState({preventFocus:!1});}));})));})),de(ye(s),"onClearClick",(function(e){e&&e.preventDefault&&e.preventDefault(),s.props.selectsRange?s.props.onChange([null,null],e):s.props.onChange(null,e),s.setState({inputValue:null});})),de(ye(s),"clear",(function(){s.onClearClick();})),de(ye(s),"onScroll",(function(e){"boolean"==typeof s.props.closeOnScroll&&s.props.closeOnScroll?e.target!==document&&e.target!==document.documentElement&&e.target!==document.body||s.setOpen(!1):"function"==typeof s.props.closeOnScroll&&s.props.closeOnScroll(e)&&s.setOpen(!1);})),de(ye(s),"renderCalendar",(function(){return s.props.inline||s.isCalendarOpen()?React__default.createElement(Kt,{ref:function(e){s.calendar=e;},locale:s.props.locale,calendarStartDay:s.props.calendarStartDay,chooseDayAriaLabelPrefix:s.props.chooseDayAriaLabelPrefix,disabledDayAriaLabelPrefix:s.props.disabledDayAriaLabelPrefix,weekAriaLabelPrefix:s.props.weekAriaLabelPrefix,monthAriaLabelPrefix:s.props.monthAriaLabelPrefix,adjustDateOnChange:s.props.adjustDateOnChange,setOpen:s.setOpen,shouldCloseOnSelect:s.props.shouldCloseOnSelect,dateFormat:s.props.dateFormatCalendar,useWeekdaysShort:s.props.useWeekdaysShort,formatWeekDay:s.props.formatWeekDay,dropdownMode:s.props.dropdownMode,selected:s.props.selected,preSelection:s.state.preSelection,onSelect:s.handleSelect,onWeekSelect:s.props.onWeekSelect,openToDate:s.props.openToDate,minDate:s.props.minDate,maxDate:s.props.maxDate,selectsStart:s.props.selectsStart,selectsEnd:s.props.selectsEnd,selectsRange:s.props.selectsRange,startDate:s.props.startDate,endDate:s.props.endDate,excludeDates:s.props.excludeDates,excludeDateIntervals:s.props.excludeDateIntervals,filterDate:s.props.filterDate,onClickOutside:s.handleCalendarClickOutside,formatWeekNumber:s.props.formatWeekNumber,highlightDates:s.state.highlightDates,includeDates:s.props.includeDates,includeDateIntervals:s.props.includeDateIntervals,includeTimes:s.props.includeTimes,injectTimes:s.props.injectTimes,inline:s.props.inline,shouldFocusDayInline:s.state.shouldFocusDayInline,peekNextMonth:s.props.peekNextMonth,showMonthDropdown:s.props.showMonthDropdown,showPreviousMonths:s.props.showPreviousMonths,useShortMonthInDropdown:s.props.useShortMonthInDropdown,showMonthYearDropdown:s.props.showMonthYearDropdown,showWeekNumbers:s.props.showWeekNumbers,showYearDropdown:s.props.showYearDropdown,withPortal:s.props.withPortal,forceShowMonthNavigation:s.props.forceShowMonthNavigation,showDisabledMonthNavigation:s.props.showDisabledMonthNavigation,scrollableYearDropdown:s.props.scrollableYearDropdown,scrollableMonthYearDropdown:s.props.scrollableMonthYearDropdown,todayButton:s.props.todayButton,weekLabel:s.props.weekLabel,outsideClickIgnoreClass:"react-datepicker-ignore-onclickoutside",fixedHeight:s.props.fixedHeight,monthsShown:s.props.monthsShown,monthSelectedIn:s.state.monthSelectedIn,onDropdownFocus:s.handleDropdownFocus,onMonthChange:s.props.onMonthChange,onYearChange:s.props.onYearChange,dayClassName:s.props.dayClassName,weekDayClassName:s.props.weekDayClassName,monthClassName:s.props.monthClassName,timeClassName:s.props.timeClassName,showTimeSelect:s.props.showTimeSelect,showTimeSelectOnly:s.props.showTimeSelectOnly,onTimeChange:s.handleTimeChange,timeFormat:s.props.timeFormat,timeIntervals:s.props.timeIntervals,minTime:s.props.minTime,maxTime:s.props.maxTime,excludeTimes:s.props.excludeTimes,filterTime:s.props.filterTime,timeCaption:s.props.timeCaption,className:s.props.calendarClassName,container:s.props.calendarContainer,yearItemNumber:s.props.yearItemNumber,yearDropdownItemNumber:s.props.yearDropdownItemNumber,previousMonthAriaLabel:s.props.previousMonthAriaLabel,previousMonthButtonLabel:s.props.previousMonthButtonLabel,nextMonthAriaLabel:s.props.nextMonthAriaLabel,nextMonthButtonLabel:s.props.nextMonthButtonLabel,previousYearAriaLabel:s.props.previousYearAriaLabel,previousYearButtonLabel:s.props.previousYearButtonLabel,nextYearAriaLabel:s.props.nextYearAriaLabel,nextYearButtonLabel:s.props.nextYearButtonLabel,timeInputLabel:s.props.timeInputLabel,disabledKeyboardNavigation:s.props.disabledKeyboardNavigation,renderCustomHeader:s.props.renderCustomHeader,popperProps:s.props.popperProps,renderDayContents:s.props.renderDayContents,onDayMouseEnter:s.props.onDayMouseEnter,onMonthMouseLeave:s.props.onMonthMouseLeave,selectsDisabledDaysInRange:s.props.selectsDisabledDaysInRange,showTimeInput:s.props.showTimeInput,showMonthYearPicker:s.props.showMonthYearPicker,showFullMonthYearPicker:s.props.showFullMonthYearPicker,showTwoColumnMonthYearPicker:s.props.showTwoColumnMonthYearPicker,showFourColumnMonthYearPicker:s.props.showFourColumnMonthYearPicker,showYearPicker:s.props.showYearPicker,showQuarterYearPicker:s.props.showQuarterYearPicker,showPopperArrow:s.props.showPopperArrow,excludeScrollbar:s.props.excludeScrollbar,handleOnKeyDown:s.props.onKeyDown,handleOnDayKeyDown:s.onDayKeyDown,isInputFocused:s.state.focused,customTimeInput:s.props.customTimeInput,setPreSelection:s.setPreSelection},s.props.children):null})),de(ye(s),"renderDateInput",(function(){var t,n=r(s.props.className,de({},"react-datepicker-ignore-onclickoutside",s.state.open)),o=s.props.customInput||React__default.createElement("input",{type:"text"}),a=s.props.customInputRef||"ref",i="string"==typeof s.props.value?s.props.value:"string"==typeof s.state.inputValue?s.state.inputValue:s.props.selectsRange?function(e,t,r){if(!e)return "";var n=Ne(e,r),o=t?Ne(t,r):"";return "".concat(n," - ").concat(o)}(s.props.startDate,s.props.endDate,s.props):Ne(s.props.selected,s.props);return React__default.cloneElement(o,(de(t={},a,(function(e){s.input=e;})),de(t,"value",i),de(t,"onBlur",s.handleBlur),de(t,"onChange",s.handleChange),de(t,"onClick",s.onInputClick),de(t,"onFocus",s.handleFocus),de(t,"onKeyDown",s.onInputKeyDown),de(t,"id",s.props.id),de(t,"name",s.props.name),de(t,"autoFocus",s.props.autoFocus),de(t,"placeholder",s.props.placeholderText),de(t,"disabled",s.props.disabled),de(t,"autoComplete",s.props.autoComplete),de(t,"className",r(o.props.className,n)),de(t,"title",s.props.title),de(t,"readOnly",s.props.readOnly),de(t,"required",s.props.required),de(t,"tabIndex",s.props.tabIndex),de(t,"aria-describedby",s.props.ariaDescribedBy),de(t,"aria-invalid",s.props.ariaInvalid),de(t,"aria-labelledby",s.props.ariaLabelledBy),de(t,"aria-required",s.props.ariaRequired),t))})),de(ye(s),"renderClearButton",(function(){var t=s.props,r=t.isClearable,n=t.selected,o=t.startDate,a=t.endDate,i=t.clearButtonTitle,p=t.clearButtonClassName,c=void 0===p?"":p,l=t.ariaLabelClose,d=void 0===l?"Close":l;return !r||null==n&&null==o&&null==a?null:React__default.createElement("button",{type:"button",className:"react-datepicker__close-icon ".concat(c).trim(),"aria-label":d,onClick:s.onClearClick,title:i,tabIndex:-1})})),s.state=s.calcInitialState(),s}return le(a,[{key:"componentDidMount",value:function(){window.addEventListener("scroll",this.onScroll,!0);}},{key:"componentDidUpdate",value:function(e,t){var r,n;e.inline&&(r=e.selected,n=this.props.selected,r&&n?getMonth(r)!==getMonth(n)||getYear(r)!==getYear(n):r!==n)&&this.setPreSelection(this.props.selected),void 0!==this.state.monthSelectedIn&&e.monthsShown!==this.props.monthsShown&&this.setState({monthSelectedIn:0}),e.highlightDates!==this.props.highlightDates&&this.setState({highlightDates:mt(this.props.highlightDates)}),t.focused||je(e.selected,this.props.selected)||this.setState({inputValue:null}),t.open!==this.state.open&&(!1===t.open&&!0===this.state.open&&this.props.onCalendarOpen(),!0===t.open&&!1===this.state.open&&this.props.onCalendarClose());}},{key:"componentWillUnmount",value:function(){this.clearPreventFocusTimeout(),window.removeEventListener("scroll",this.onScroll,!0);}},{key:"renderInputContainer",value:function(){return React__default.createElement("div",{className:"react-datepicker__input-container"},this.renderDateInput(),this.renderClearButton())}},{key:"render",value:function(){var t=this.renderCalendar();if(this.props.inline)return t;if(this.props.withPortal){var r=this.state.open?React__default.createElement("div",{className:"react-datepicker__portal"},t):null;return this.state.open&&this.props.portalId&&(r=React__default.createElement(Rt,{portalId:this.props.portalId,portalHost:this.props.portalHost},r)),React__default.createElement("div",null,this.renderInputContainer(),r)}return React__default.createElement(Bt,{className:this.props.popperClassName,wrapperClassName:this.props.wrapperClassName,hidePopper:!this.isCalendarOpen(),portalId:this.props.portalId,portalHost:this.props.portalHost,popperModifiers:this.props.popperModifiers,targetComponent:this.renderInputContainer(),popperContainer:this.props.popperContainer,popperComponent:t,popperPlacement:this.props.popperPlacement,popperProps:this.props.popperProps,popperOnKeyDown:this.onPopperKeyDown,enableTabLoop:this.props.enableTabLoop})}}],[{key:"defaultProps",get:function(){return {allowSameDay:!1,dateFormat:"MM/dd/yyyy",dateFormatCalendar:"LLLL yyyy",onChange:function(){},disabled:!1,disabledKeyboardNavigation:!1,dropdownMode:"scroll",onFocus:function(){},onBlur:function(){},onKeyDown:function(){},onInputClick:function(){},onSelect:function(){},onClickOutside:function(){},onMonthChange:function(){},onCalendarOpen:function(){},onCalendarClose:function(){},preventOpenOnFocus:!1,onYearChange:function(){},onInputError:function(){},monthsShown:1,readOnly:!1,withPortal:!1,selectsDisabledDaysInRange:!1,shouldCloseOnSelect:!0,showTimeSelect:!1,showTimeInput:!1,showPreviousMonths:!1,showMonthYearPicker:!1,showFullMonthYearPicker:!1,showTwoColumnMonthYearPicker:!1,showFourColumnMonthYearPicker:!1,showYearPicker:!1,showQuarterYearPicker:!1,strictParsing:!1,timeIntervals:30,timeCaption:"Time",previousMonthAriaLabel:"Previous Month",previousMonthButtonLabel:"Previous Month",nextMonthAriaLabel:"Next Month",nextMonthButtonLabel:"Next Month",previousYearAriaLabel:"Previous Year",previousYearButtonLabel:"Previous Year",nextYearAriaLabel:"Next Year",nextYearButtonLabel:"Next Year",timeInputLabel:"Time",enableTabLoop:!0,yearItemNumber:12,renderDayContents:function(e){return e},focusSelectedMonth:!1,showPopperArrow:!0,excludeScrollbar:!0,customTimeInput:null,calendarStartDay:void 0}}}]),a}(),jt="input",Ht="navigate";
 
-var _excluded$l = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "dateFormat", "range", "noCalendarIcon", "onChange"];
-
+var _excluded$p = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "dateFormat", "range", "noCalendarIcon", "onChange"];
 var DatePickerField = function DatePickerField(_ref) {
   var label = _ref.label,
-      leftIcon = _ref.leftIcon,
-      size = _ref.size,
-      dropDown = _ref.dropDown,
-      rightIcon = _ref.rightIcon,
-      errorMessage = _ref.errorMessage,
-      inputClassName = _ref.inputClassName,
-      className = _ref.className,
-      dateFormat = _ref.dateFormat,
-      range = _ref.range,
-      noCalendarIcon = _ref.noCalendarIcon,
-      onChange = _ref.onChange,
-      props = _objectWithoutProperties(_ref, _excluded$l);
-
+    leftIcon = _ref.leftIcon,
+    size = _ref.size,
+    dropDown = _ref.dropDown,
+    rightIcon = _ref.rightIcon,
+    errorMessage = _ref.errorMessage,
+    inputClassName = _ref.inputClassName,
+    className = _ref.className,
+    dateFormat = _ref.dateFormat,
+    range = _ref.range,
+    noCalendarIcon = _ref.noCalendarIcon,
+    onChange = _ref.onChange,
+    props = _objectWithoutProperties(_ref, _excluded$p);
   var _useState = useState([null, null]),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      dateRange = _useState2[0],
-      setDateRange = _useState2[1];
-
+    _useState2 = _slicedToArray$1(_useState, 2),
+    dateRange = _useState2[0],
+    setDateRange = _useState2[1];
   var _dateRange = _slicedToArray$1(dateRange, 2),
-      startDate = _dateRange[0],
-      endDate = _dateRange[1];
-
+    startDate = _dateRange[0],
+    endDate = _dateRange[1];
   var _useState3 = useState(new Date()),
-      _useState4 = _slicedToArray$1(_useState3, 2),
-      date = _useState4[0],
-      setDate = _useState4[1];
-
+    _useState4 = _slicedToArray$1(_useState3, 2),
+    date = _useState4[0],
+    setDate = _useState4[1];
   useEffect(function () {
     if (onChange && typeof onChange === "function") {
       onChange(dateRange);
@@ -62573,19 +62098,15 @@ var BRAND_ALIAS = {
 };
 var formatCardNo = function formatCardNo(e) {
   var value = e.replace(/\s/g, "");
-
   var parse = function parse(type) {
     var pseudoValue = "";
-
     for (var i = 0; i < value.length; i++) {
       pseudoValue += value.charAt(i);
       var strippedPseudoValue = pseudoValue.replace(/\s/g, "");
-
       if (type === BRAND_ALIAS.AMEX) {
         if (strippedPseudoValue.length === 4) {
           pseudoValue += " ";
         }
-
         if (strippedPseudoValue.length === 10) {
           pseudoValue += " ";
         }
@@ -62595,14 +62116,11 @@ var formatCardNo = function formatCardNo(e) {
         }
       }
     }
-
     return pseudoValue.trim();
   };
-
   switch (value.charAt(0)) {
     case "5":
       return parse(BRAND_ALIAS.MASTERCARD);
-
     case "3":
       if (value.length >= 2) {
         if (value.charAt(1) == "4" || value.charAt(1) == "7") {
@@ -62613,13 +62131,10 @@ var formatCardNo = function formatCardNo(e) {
       } else {
         return parse(BRAND_ALIAS.AMEX);
       }
-
     case "6":
       return parse(BRAND_ALIAS.DISCOVER);
-
     case "4":
       return parse(BRAND_ALIAS.VISACARD);
-
     default:
       return parse(BRAND_ALIAS.NOCARD);
   }
@@ -62642,19 +62157,16 @@ var CardBrands = ["mastercard", "visa", "amex", "discover", "verve", "jcb"];
 
 var useDebitCard = function useDebitCard(props) {
   var _useState = useState(true),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      hidden = _useState2[0],
-      setHidden = _useState2[1];
-
+    _useState2 = _slicedToArray$1(_useState, 2),
+    hidden = _useState2[0],
+    setHidden = _useState2[1];
   var computedCardNo = hidden ? formatCardNo(asteriskCardNo(props.cardNo)) : formatCardNo(props.cardNo);
   var computedExp = hidden ? asteriskExp(props.exp) : props.exp;
   var computedCVV = hidden ? asteriskCvv(props.cvv) : props.cvv;
   var cardBrand = "https://assets.ondeposits.com/img/debit-card-brands/svg/".concat(props.brand, "_light.svg");
-
   var toggleHidden = function toggleHidden() {
     return setHidden(!hidden);
   };
-
   return {
     computedCardNo: computedCardNo,
     computedExp: computedExp,
@@ -62668,22 +62180,19 @@ function rfid() {
   return (new DOMParser().parseFromString("<svg width=\"45\" height=\"40\" viewBox=\"0 0 45 40\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<rect x=\"45\" y=\"40\" width=\"44.2975\" height=\"40\" rx=\"9.06992\" transform=\"rotate(-180 45 40)\" fill=\"#EED186\"/>\n<path d=\"M22.686 39.8337L22.686 32.3957M44.8347 32.2304L1.03307 32.2304M22.686 7.93292L22.686 0.164325\" stroke=\"#394C9B\" stroke-width=\"0.431901\"/>\n<path d=\"M44.8347 8.09897L1.03307 8.09896\" stroke=\"#394C9B\" stroke-width=\"0.431901\"/>\n<path d=\"M15.0826 16.0337L1.03306 16.0337\" stroke=\"#394C9B\" stroke-width=\"0.431901\"/>\n<path d=\"M44.8347 16.1987L30.4546 16.1987M44.8347 24.1326L29.7934 24.1326M16.0744 24.1326L1.19836 24.1326\" stroke=\"#394C9B\" stroke-width=\"0.431901\"/>\n<path d=\"M28.3058 32.2316C30.124 30.0828 31.7769 24.9588 27.6447 21.6531C28.4711 20.8267 30.4546 18.6779 30.4546 16.1985C30.4546 12.8927 27.9753 8.26463 22.8513 8.26463C17.7273 8.26463 15.0827 11.4051 15.0827 16.0332C15.0827 19.6696 17.7273 21.6531 17.7273 21.6531C17.7273 21.6531 16.405 22.6448 15.9091 24.1324\" stroke=\"#394C9B\" stroke-width=\"0.431901\"/>\n</svg>\n", 'image/svg+xml')).firstChild;
 }
 
-var _excluded$k = ["logo", "name", "width", "className"];
-
+var _excluded$o = ["logo", "name", "width", "className"];
 var DebitCard = function DebitCard(_ref) {
   var logo = _ref.logo,
-      name = _ref.name,
-      width = _ref.width,
-      className = _ref.className,
-      props = _objectWithoutProperties(_ref, _excluded$k);
-
+    name = _ref.name,
+    width = _ref.width,
+    className = _ref.className,
+    props = _objectWithoutProperties(_ref, _excluded$o);
   var _useDebitCard = useDebitCard(props),
-      computedCardNo = _useDebitCard.computedCardNo,
-      computedExp = _useDebitCard.computedExp,
-      computedCVV = _useDebitCard.computedCVV,
-      cardBrand = _useDebitCard.cardBrand,
-      toggleHidden = _useDebitCard.toggleHidden;
-
+    computedCardNo = _useDebitCard.computedCardNo,
+    computedExp = _useDebitCard.computedExp,
+    computedCVV = _useDebitCard.computedCVV,
+    cardBrand = _useDebitCard.cardBrand,
+    toggleHidden = _useDebitCard.toggleHidden;
   return /*#__PURE__*/React__default.createElement(Box, {
     className: "ui-d-debitcard__wrapper ".concat(className !== null && className !== void 0 ? className : className)
   }, /*#__PURE__*/React__default.createElement(Box, {
@@ -62752,26 +62261,22 @@ DebitCard.defaultProps = {
   logo: "https://assets.ondeposits.com/img/logo/renapay/svg/logo_all_white.svg"
 };
 
-var _excluded$j = ["logo", "theme", "name", "balance", "className", "width"];
-
+var _excluded$n = ["logo", "theme", "name", "balance", "className", "width"];
 var DebitBalance = function DebitBalance(_ref) {
   _ref.logo;
-      var theme = _ref.theme,
-      name = _ref.name,
-      balance = _ref.balance,
-      className = _ref.className,
-      width = _ref.width,
-      props = _objectWithoutProperties(_ref, _excluded$j);
-
+    var theme = _ref.theme,
+    name = _ref.name,
+    balance = _ref.balance,
+    className = _ref.className,
+    width = _ref.width,
+    props = _objectWithoutProperties(_ref, _excluded$n);
   var computedLogo = props.logo ? props.logo : "https://assets.ondeposits.com/img/logo/renapay/svg/logo_all_".concat(theme === "light" ? "dark" : "white", ".svg");
-
   var _useDebitCard = useDebitCard(props),
-      computedCardNo = _useDebitCard.computedCardNo,
-      computedExp = _useDebitCard.computedExp,
-      computedCVV = _useDebitCard.computedCVV,
-      cardBrand = _useDebitCard.cardBrand,
-      toggleHidden = _useDebitCard.toggleHidden;
-
+    computedCardNo = _useDebitCard.computedCardNo,
+    computedExp = _useDebitCard.computedExp,
+    computedCVV = _useDebitCard.computedCVV,
+    cardBrand = _useDebitCard.cardBrand,
+    toggleHidden = _useDebitCard.toggleHidden;
   var computedBalance = "$".concat(number_format(balance, 2));
   return /*#__PURE__*/React__default.createElement(Box, {
     className: classNames(["d-debit-card-balance", "theme__".concat(theme), className]),
@@ -62857,21 +62362,254 @@ DebitBalance.defaultProps = {
   balance: "12568"
 };
 
+var useFilePicker = function useFilePicker(props, file) {
+  var _useState = useState(""),
+    _useState2 = _slicedToArray$1(_useState, 2),
+    computedAccepts = _useState2[0],
+    setComputedAccepts = _useState2[1];
+  var _useState3 = useState(""),
+    _useState4 = _slicedToArray$1(_useState3, 2),
+    internalError = _useState4[0],
+    setInternalError = _useState4[1];
+  var _useState5 = useState(""),
+    _useState6 = _slicedToArray$1(_useState5, 2),
+    selectedFileName = _useState6[0],
+    setSelectedFileName = _useState6[1];
+  var _useState7 = useState(""),
+    _useState8 = _slicedToArray$1(_useState7, 2),
+    computedErrorMessage = _useState8[0],
+    setComputedErrorMessage = _useState8[1];
+  useEffect(function () {
+    if (Array.isArray(props.accepts)) setComputedAccepts(props.accepts.join(", "));else {
+      switch (props.accepts) {
+        case "image":
+          setComputedAccepts(".png, .jpg, .jpeg, .svg, .bmp, .gif");
+          break;
+        case "document":
+          setComputedAccepts(".csv, .xls, .xlsx, .pdf, .doc, .docx");
+          break;
+        case "csv":
+          setComputedAccepts(".csv");
+          break;
+        default:
+          setComputedAccepts(undefined);
+      }
+    }
+  }, [props.accepts]);
+  useEffect(function () {
+    setComputedErrorMessage(internalError ? internalError : props.errorMessage ? props.errorMessage : undefined);
+  }, [internalError, props.errorMessage]);
+  var updateName = function updateName(e) {
+    var files = e.target.files || e.dataTransfer.files;
+    setSelectedFileName(!files ? "" : files[0].name);
+    if (files.length > props.maxFiles) {
+      setInternalError("You cannot upload more than ".concat(props.maxFiles, " file(s) at once"));
+    } else {
+      setInternalError("");
+    }
+    var _iterator = _createForOfIteratorHelper$1(files),
+      _step;
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var currentFile = _step.value;
+        if (currentFile.size > props.fileMaxSize * 1000000) {
+          setInternalError("You cannot upload a file larger than ".concat(props.fileMaxSize, "MB"));
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+    if (internalError.value) {
+      var input = file.current.$el;
+      input.setAttribute("type", "text");
+      input.setAttribute("type", "file");
+      setSelectedFileName("");
+    } else {
+      if (typeof props.onChange === "function") {
+        props.onChange(files.length > 1 ? files : files[0]);
+      }
+    }
+  };
+  var emptyFile = function emptyFile() {
+    setSelectedFileName("");
+    var input = file.current.$el;
+    input.setAttribute("type", "text");
+    input.setAttribute("type", "file");
+    if (typeof props.onCleared === "function") props.onCleared();
+  };
+  return {
+    computedAccepts: computedAccepts,
+    computedErrorMessage: computedErrorMessage,
+    emptyFile: emptyFile,
+    updateName: updateName,
+    selectedFileName: selectedFileName
+  };
+};
+
+var _excluded$m = ["size", "labelFontFace", "labelClass", "variant", "label", "disabled", "fontFace", "btnText", "placeholder", "onChange", "onCleared", "accepts", "errorMessage", "maxFiles", "fileMaxSize"];
+var FilePickerInline = function FilePickerInline(_ref) {
+  var size = _ref.size,
+    labelFontFace = _ref.labelFontFace,
+    labelClass = _ref.labelClass,
+    variant = _ref.variant,
+    label = _ref.label,
+    disabled = _ref.disabled,
+    fontFace = _ref.fontFace,
+    btnText = _ref.btnText,
+    placeholder = _ref.placeholder,
+    onChange = _ref.onChange,
+    onCleared = _ref.onCleared,
+    accepts = _ref.accepts,
+    errorMessage = _ref.errorMessage,
+    maxFiles = _ref.maxFiles,
+    fileMaxSize = _ref.fileMaxSize,
+    props = _objectWithoutProperties(_ref, _excluded$m);
+  var file = useRef(null);
+  var _useState = useState(false),
+    _useState2 = _slicedToArray$1(_useState, 2),
+    inputIsHovered = _useState2[0],
+    setInputIsHovered = _useState2[1];
+  var _useFilePicker = useFilePicker({
+      accepts: accepts,
+      errorMessage: errorMessage,
+      onChange: onChange,
+      onCleared: onCleared,
+      maxFiles: maxFiles,
+      fileMaxSize: fileMaxSize
+    }, file),
+    updateName = _useFilePicker.updateName,
+    computedErrorMessage = _useFilePicker.computedErrorMessage,
+    computedAccepts = _useFilePicker.computedAccepts,
+    selectedFileName = _useFilePicker.selectedFileName;
+  return variant === "inline" ? /*#__PURE__*/React__default.createElement(Box, {
+    className: classNames(["ui-text-field__wrapper d-file-picker-inline", "size__".concat(size), "variant__".concat(variant)])
+  }, !!label && variant !== "button" && /*#__PURE__*/React__default.createElement(Box, {
+    is: "label"
+  }, /*#__PURE__*/React__default.createElement(Text$1, {
+    marginTop: 0,
+    scale: "subhead",
+    fontFace: labelFontFace,
+    className: classNames(["ui-text-field__label", labelClass])
+  }, label)), /*#__PURE__*/React__default.createElement(Box, {
+    display: "inline-flex",
+    className: "pseudo-input ".concat(disabled)
+  }, /*#__PURE__*/React__default.createElement(Box, _extends$2({
+    is: "input",
+    ref: file
+  }, props, {
+    disabled: disabled,
+    onChange: updateName,
+    accept: computedAccepts,
+    type: "file"
+  })), /*#__PURE__*/React__default.createElement(Box, {
+    display: "flex",
+    alignItems: "center",
+    className: classNames({
+      "ui-text-field__input": true,
+      "has-error": computedErrorMessage
+    })
+  }, /*#__PURE__*/React__default.createElement(Text$1, {
+    marginY: 0,
+    scale: "subhead",
+    fontFace: fontFace,
+    className: classNames({
+      placeholder: selectedFileName === placeholder
+    })
+  }, selectedFileName)), /*#__PURE__*/React__default.createElement(Box, {
+    className: "pseudo-button"
+  }, /*#__PURE__*/React__default.createElement(Text$1, {
+    scale: "subhead",
+    fontFace: "hero-new",
+    marginY: 0
+  }, btnText))), computedErrorMessage && /*#__PURE__*/React__default.createElement(Box, {
+    className: "ui-text-field__error"
+  }, /*#__PURE__*/React__default.createElement(Icon, {
+    icon: Error$1,
+    className: "ui-text-area__error-icon"
+  }), /*#__PURE__*/React__default.createElement(Text$1, {
+    className: "ui-text-field__error-text",
+    scale: "subhead",
+    fontFace: "circularSTD"
+  }, computedErrorMessage))) : /*#__PURE__*/React__default.createElement(Box, {
+    className: "ui-text-field__wrapper d-file-picker-inline-btn"
+  }, /*#__PURE__*/React__default.createElement(Box, {
+    is: "input",
+    ref: file,
+    disabled: disabled,
+    onChange: updateName,
+    accept: computedAccepts,
+    onMouseEnter: function onMouseEnter() {
+      return setInputIsHovered(true);
+    },
+    onMouseLeave: function onMouseLeave() {
+      return setInputIsHovered(false);
+    },
+    type: "file"
+  }), /*#__PURE__*/React__default.createElement(Button, _extends$2({
+    className: classNames({
+      hover: inputIsHovered
+    })
+  }, props), btnText));
+};
+FilePickerInline.propTypes = _objectSpread2$1(_objectSpread2$1({}, inputPropTypes), {}, {
+  placeholder: propTypes$1.exports.string,
+  btnText: propTypes$1.exports.string,
+  fileMaxSize: propTypes$1.exports.oneOfType([propTypes$1.exports.number, propTypes$1.exports.string]),
+  accepts: propTypes$1.exports.oneOfType([propTypes$1.exports.array, propTypes$1.exports.oneOf(["image", "document", "csv"])]),
+  variant: propTypes$1.exports.oneOf(["inline", "button"]),
+  onChange: propTypes$1.exports.func,
+  onCleared: propTypes$1.exports.func
+});
+FilePickerInline.defaultProps = _objectSpread2$1(_objectSpread2$1({}, defaultProps$2), {}, {
+  placeholder: "No file selected...",
+  btnText: "Choose File",
+  fileMaxSize: 100,
+  accepts: [".csv", ".xls", ".xlsx", ".pdf"],
+  variant: "inline"
+});
+
+var _excluded$l = ["fullPage", "loading", "loader", "children"];
+var Loader = function Loader(_ref) {
+  var fullPage = _ref.fullPage,
+    loading = _ref.loading,
+    loader = _ref.loader,
+    children = _ref.children;
+    _objectWithoutProperties(_ref, _excluded$l);
+  return /*#__PURE__*/React__default.createElement(Box, {
+    className: classNames({
+      "ui-d-loader": true,
+      fullPage: fullPage,
+      loading: loading
+    })
+  }, loading && /*#__PURE__*/React__default.createElement(Box, null, loader === "ring" ? /*#__PURE__*/React__default.createElement(Box, {
+    className: "ring-loader"
+  }, /*#__PURE__*/React__default.createElement(Box, null), /*#__PURE__*/React__default.createElement(Box, null), /*#__PURE__*/React__default.createElement(Box, null), /*#__PURE__*/React__default.createElement(Box, null)) : children));
+};
+Loader.propTypes = {
+  fullPage: propTypes$1.exports.bool,
+  loading: propTypes$1.exports.bool,
+  loader: propTypes$1.exports.oneOf(["ring"])
+};
+Loader.defaultProps = {
+  loading: true,
+  loader: "ring"
+};
+
 var Portal = function Portal(_ref) {
   var children = _ref.children,
-      _ref$className = _ref.className,
-      className = _ref$className === void 0 ? "root-portal" : _ref$className,
-      _ref$el = _ref.el,
-      el = _ref$el === void 0 ? "div" : _ref$el;
-
+    _ref$className = _ref.className,
+    className = _ref$className === void 0 ? "root-portal" : _ref$className,
+    _ref$el = _ref.el,
+    el = _ref$el === void 0 ? "div" : _ref$el;
   var _React$useState = React__default.useState(function () {
-    // This will be executed only on the initial render
-    // https://reactjs.org/docs/hooks-reference.html#lazy-initial-state
-    return document.createElement(el);
-  }),
-      _React$useState2 = _slicedToArray$1(_React$useState, 1),
-      container = _React$useState2[0];
-
+      // This will be executed only on the initial render
+      // https://reactjs.org/docs/hooks-reference.html#lazy-initial-state
+      return document.createElement(el);
+    }),
+    _React$useState2 = _slicedToArray$1(_React$useState, 1),
+    container = _React$useState2[0];
   React__default.useEffect(function () {
     container.classList.add(className);
     document.body.appendChild(container);
@@ -62884,40 +62622,35 @@ var Portal = function Portal(_ref) {
   return /*#__PURE__*/ReactDOM__default.createPortal(children, container);
 };
 
-var _excluded$i = ["show", "greyContent", "roundedBorders", "minModalWidth", "greyHeader", "overlayBg", "alignment", "onCloseModal", "modalWidth", "title", "maxModalWidth", "heading", "contentClass", "bodyClass"];
-
+var _excluded$k = ["show", "greyContent", "roundedBorders", "minModalWidth", "greyHeader", "overlayBg", "alignment", "onCloseModal", "modalWidth", "title", "maxModalWidth", "heading", "contentClass", "bodyClass"];
 var Modal = function Modal(_ref) {
   var _classNames;
-
   var show = _ref.show,
-      greyContent = _ref.greyContent,
-      roundedBorders = _ref.roundedBorders,
-      minModalWidth = _ref.minModalWidth,
-      greyHeader = _ref.greyHeader,
-      overlayBg = _ref.overlayBg,
-      alignment = _ref.alignment,
-      onCloseModal = _ref.onCloseModal,
-      modalWidth = _ref.modalWidth;
-      _ref.title;
-      var maxModalWidth = _ref.maxModalWidth,
-      heading = _ref.heading;
-      _ref.contentClass;
-      var bodyClass = _ref.bodyClass,
-      props = _objectWithoutProperties(_ref, _excluded$i);
-
+    greyContent = _ref.greyContent,
+    roundedBorders = _ref.roundedBorders,
+    minModalWidth = _ref.minModalWidth,
+    greyHeader = _ref.greyHeader,
+    overlayBg = _ref.overlayBg,
+    alignment = _ref.alignment,
+    onCloseModal = _ref.onCloseModal,
+    modalWidth = _ref.modalWidth;
+    _ref.title;
+    var maxModalWidth = _ref.maxModalWidth,
+    heading = _ref.heading;
+    _ref.contentClass;
+    var bodyClass = _ref.bodyClass,
+    props = _objectWithoutProperties(_ref, _excluded$k);
   var generatedClassNames = classNames((_classNames = {
     greyContent: greyContent,
     roundedBorders: roundedBorders,
     greyHeader: greyHeader,
     overlayBg: overlayBg
   }, _defineProperty$x(_classNames, "modal__".concat(alignment), alignment), _defineProperty$x(_classNames, "ui-modal", true), _defineProperty$x(_classNames, "ui-modal__closerr", true), _classNames));
-
   var handleCloseClicks = function handleCloseClicks(e) {
     if (e.target.classList.contains("ui-modal__closerr")) {
       onCloseModal();
     }
   };
-
   return show ? /*#__PURE__*/React__default.createElement(Portal, null, /*#__PURE__*/React__default.createElement(Box, {
     onClick: handleCloseClicks,
     className: generatedClassNames,
@@ -62973,12 +62706,10 @@ Modal.propTypes = {
 
 var rangedArray = (function (min, max) {
   var inclusive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-
   if (!inclusive) {
     min += 1;
     max -= 1;
   }
-
   return Array.from({
     length: max - min + 1
   }, function (v, i) {
@@ -62989,42 +62720,34 @@ var rangedArray = (function (min, max) {
 var dots = "...";
 var usePagination = function usePagination(_ref) {
   var totalPages = _ref.totalPages,
-      currentPage = _ref.currentPage,
-      onPageChange = _ref.onPageChange,
-      currentPageSiblings = _ref.currentPageSiblings;
-
+    currentPage = _ref.currentPage,
+    onPageChange = _ref.onPageChange,
+    currentPageSiblings = _ref.currentPageSiblings;
   var _useState = useState([]),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      renderedPages = _useState2[0],
-      setRenderedPages = _useState2[1];
-
+    _useState2 = _slicedToArray$1(_useState, 2),
+    renderedPages = _useState2[0],
+    setRenderedPages = _useState2[1];
   var _useState3 = useState(1),
-      _useState4 = _slicedToArray$1(_useState3, 2),
-      initializedCurrentPage = _useState4[0],
-      setInitializedCurrentPage = _useState4[1];
-
+    _useState4 = _slicedToArray$1(_useState3, 2),
+    initializedCurrentPage = _useState4[0],
+    setInitializedCurrentPage = _useState4[1];
   var _useState5 = useState(false),
-      _useState6 = _slicedToArray$1(_useState5, 2),
-      disablePrev = _useState6[0],
-      setDisablePrev = _useState6[1];
-
+    _useState6 = _slicedToArray$1(_useState5, 2),
+    disablePrev = _useState6[0],
+    setDisablePrev = _useState6[1];
   var _useState7 = useState(false),
-      _useState8 = _slicedToArray$1(_useState7, 2),
-      disableNext = _useState8[0],
-      setDisableNext = _useState8[1];
-
+    _useState8 = _slicedToArray$1(_useState7, 2),
+    disableNext = _useState8[0],
+    setDisableNext = _useState8[1];
   var updatePage = function updatePage(page) {
     if (page > totalPages || page < 1 || page === "...") {
       return;
     }
-
     setInitializedCurrentPage(page);
-
     if (onPageChange && typeof onPageChange === "function") {
       onPageChange(page);
     }
   };
-
   useEffect(function () {
     setInitializedCurrentPage(currentPage);
   }, []);
@@ -63034,7 +62757,6 @@ var usePagination = function usePagination(_ref) {
     var doubleVisibleSiblings = currentPageSiblings * 2;
     var middleMin = initializedCurrentPage - currentPageSiblings;
     var middleMax = initializedCurrentPage + currentPageSiblings;
-
     if (totalPages <= doubleVisibleSiblings + 2) {
       setRenderedPages(rangedArray(1, totalPages));
     } else {
@@ -63060,37 +62782,32 @@ var usePagination = function usePagination(_ref) {
   };
 };
 
-var _excluded$h = ["currentPage", "totalPages", "currentPageSiblings", "onPageChange", "className", "smartColor"];
-
+var _excluded$j = ["currentPage", "totalPages", "currentPageSiblings", "onPageChange", "className", "smartColor"];
 var Pagination = function Pagination(_ref) {
   var _classNames;
-
   var currentPage = _ref.currentPage,
-      totalPages = _ref.totalPages,
-      currentPageSiblings = _ref.currentPageSiblings,
-      onPageChange = _ref.onPageChange,
-      className = _ref.className,
-      smartColor = _ref.smartColor,
-      props = _objectWithoutProperties(_ref, _excluded$h);
-
+    totalPages = _ref.totalPages,
+    currentPageSiblings = _ref.currentPageSiblings,
+    onPageChange = _ref.onPageChange,
+    className = _ref.className,
+    smartColor = _ref.smartColor,
+    props = _objectWithoutProperties(_ref, _excluded$j);
   var _usePagination = usePagination({
-    totalPages: totalPages,
-    currentPage: currentPage,
-    currentPageSiblings: currentPageSiblings,
-    onPageChange: onPageChange
-  }),
-      renderedPages = _usePagination.renderedPages,
-      disableNext = _usePagination.disableNext,
-      disablePrev = _usePagination.disablePrev,
-      initializedCurrentPage = _usePagination.initializedCurrentPage,
-      updatePage = _usePagination.updatePage;
-
+      totalPages: totalPages,
+      currentPage: currentPage,
+      currentPageSiblings: currentPageSiblings,
+      onPageChange: onPageChange
+    }),
+    renderedPages = _usePagination.renderedPages,
+    disableNext = _usePagination.disableNext,
+    disablePrev = _usePagination.disablePrev,
+    initializedCurrentPage = _usePagination.initializedCurrentPage,
+    updatePage = _usePagination.updatePage;
   var generatedPageNumberClassName = function generatedPageNumberClassName(pageNumber) {
     return classNames({
       "ui-pagination__page-number__active": pageNumber === initializedCurrentPage
     }, "ui-pagination__page-number");
   };
-
   var leftControlClasses = classNames({
     disabled: disablePrev
   }, "ui-pagination__control");
@@ -63157,22 +62874,19 @@ Pagination.defaultProps = {
   currentPageSiblings: 3
 };
 
-var _excluded$g = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "disabled"];
-
+var _excluded$i = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "disabled"];
 var PhoneField = function PhoneField(_ref) {
   var _classNames;
-
   var label = _ref.label,
-      leftIcon = _ref.leftIcon,
-      size = _ref.size,
-      dropDown = _ref.dropDown,
-      rightIcon = _ref.rightIcon,
-      errorMessage = _ref.errorMessage,
-      inputClassName = _ref.inputClassName,
-      className = _ref.className,
-      disabled = _ref.disabled,
-      props = _objectWithoutProperties(_ref, _excluded$g);
-
+    leftIcon = _ref.leftIcon,
+    size = _ref.size,
+    dropDown = _ref.dropDown,
+    rightIcon = _ref.rightIcon,
+    errorMessage = _ref.errorMessage,
+    inputClassName = _ref.inputClassName,
+    className = _ref.className,
+    disabled = _ref.disabled,
+    props = _objectWithoutProperties(_ref, _excluded$i);
   var phoneInputRef = useRef();
   useLayoutEffect(function () {
     var elem = phoneInputRef.current;
@@ -63181,7 +62895,6 @@ var PhoneField = function PhoneField(_ref) {
     elem.style.width = "calc(" + value.length + "ch + 4px)";
     var wrapper = elem.closest(".ui-text-field__wrapper");
     var offset;
-
     if (wrapper.classList.contains("size__small")) {
       offset = 16;
     } else if (wrapper.classList.contains("size__xlarge")) {
@@ -63189,7 +62902,6 @@ var PhoneField = function PhoneField(_ref) {
     } else {
       offset = 26;
     }
-
     elem.nextSibling.style.paddingLeft = "calc(" + (value.length <= 2 ? 2 : value.length) + "ch + " + offset + "px)";
   }, []);
   var generateInputFieldClasses = classNames({
@@ -63199,13 +62911,11 @@ var PhoneField = function PhoneField(_ref) {
     "has-right-icon": dropDown || rightIcon
   }, inputClassName);
   var wrapperClasses = classNames((_classNames = {}, _defineProperty$x(_classNames, "size__".concat(size), true), _defineProperty$x(_classNames, "ui-text-field__wrapper", true), _defineProperty$x(_classNames, "has-error", errorMessage), _defineProperty$x(_classNames, "disabled", disabled), _classNames), className);
-
   var resizeCountryCode = function resizeCountryCode(elem) {
     var value = elem.target.value;
     elem.target.style.width = "calc(" + value.length + "ch + 4px)";
     var wrapper = elem.target.closest(".ui-text-field__wrapper");
     var offset;
-
     if (wrapper.classList.contains("size__small")) {
       offset = 16;
     } else if (wrapper.classList.contains("size__xlarge")) {
@@ -63213,10 +62923,8 @@ var PhoneField = function PhoneField(_ref) {
     } else {
       offset = 26;
     }
-
     elem.target.nextSibling.style.paddingLeft = "calc(" + (value.length <= 2 ? 2 : value.length) + "ch + " + offset + "px)";
   };
-
   return /*#__PURE__*/React__default.createElement(Box, {
     className: wrapperClasses
   }, /*#__PURE__*/React__default.createElement(Box, {
@@ -63258,22 +62966,80 @@ PhoneField.defaultProps = {
   size: "medium"
 };
 
-var _excluded$f = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "options", "className", "placeholder", "onChange"];
+var _excluded$h = ["variant", "percentage", "totalSteps", "currentStep", "fillColor", "emptyColor", "darkFillColor", "darkEmptyColor", "height"];
+var ProgressBar = function ProgressBar(_ref) {
+  var variant = _ref.variant,
+    percentage = _ref.percentage,
+    totalSteps = _ref.totalSteps,
+    currentStep = _ref.currentStep,
+    fillColor = _ref.fillColor,
+    emptyColor = _ref.emptyColor;
+    _ref.darkFillColor;
+    _ref.darkEmptyColor;
+    var height = _ref.height;
+    _objectWithoutProperties(_ref, _excluded$h);
+  var _useState = useState(0),
+    _useState2 = _slicedToArray$1(_useState, 2),
+    computedWidth = _useState2[0],
+    setComputedWidth = _useState2[1];
+  useEffect(function () {
+    if (percentage) {
+      setComputedWidth(percentage);
+    } else {
+      if (currentStep !== undefined && totalSteps !== undefined) {
+        setComputedWidth(Math.round(currentStep / totalSteps * 100));
+      } else setComputedWidth(0);
+    }
+  }, [percentage, currentStep, totalSteps]);
+  var computedThemeStyles = {
+    "--fill-color": fillColor || "#0db9e9",
+    "--empty-color": emptyColor || variant === "variant-2" ? "#bdf3fc" : "#999999",
+    "--height": height
+  };
+  return /*#__PURE__*/React__default.createElement(Box, {
+    className: classNames(_defineProperty$x({
+      "ui-progress-bar": true
+    }, variant, variant)),
+    style: _objectSpread2$1({}, computedThemeStyles)
+  }, /*#__PURE__*/React__default.createElement(Box, {
+    className: classNames(_defineProperty$x({
+      "ui-progress-bar__active": true
+    }, variant, variant)),
+    style: {
+      "--width": "".concat(computedWidth, "%")
+    }
+  }));
+};
+ProgressBar.propTypes = {
+  percentage: propTypes$1.exports.oneOfType([propTypes$1.exports.number, propTypes$1.exports.string]),
+  totalSteps: propTypes$1.exports.number,
+  currentStep: propTypes$1.exports.number,
+  fillColor: propTypes$1.exports.string,
+  emptyColor: propTypes$1.exports.string,
+  darkFillColor: propTypes$1.exports.string,
+  darkEmptyColor: propTypes$1.exports.string,
+  variant: propTypes$1.exports.oneOf(["variant-1", "variant-2"]),
+  height: propTypes$1.exports.string
+};
+ProgressBar.defaultProps = {
+  variant: "variant-1",
+  height: "6px"
+};
 
+var _excluded$g = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "options", "className", "placeholder", "onChange"];
 var SelectField = function SelectField(_ref) {
   var label = _ref.label,
-      leftIcon = _ref.leftIcon,
-      size = _ref.size,
-      dropDown = _ref.dropDown,
-      rightIcon = _ref.rightIcon,
-      errorMessage = _ref.errorMessage,
-      inputClassName = _ref.inputClassName,
-      options = _ref.options,
-      className = _ref.className,
-      placeholder = _ref.placeholder,
-      onChange = _ref.onChange,
-      props = _objectWithoutProperties(_ref, _excluded$f);
-
+    leftIcon = _ref.leftIcon,
+    size = _ref.size,
+    dropDown = _ref.dropDown,
+    rightIcon = _ref.rightIcon,
+    errorMessage = _ref.errorMessage,
+    inputClassName = _ref.inputClassName,
+    options = _ref.options,
+    className = _ref.className,
+    placeholder = _ref.placeholder,
+    onChange = _ref.onChange,
+    props = _objectWithoutProperties(_ref, _excluded$g);
   var generateInputFieldClasses = classNames({
     "ui-text-field__input": true,
     "has-error": errorMessage,
@@ -63286,13 +63052,11 @@ var SelectField = function SelectField(_ref) {
     "has-error": errorMessage
   });
   var wrapperClasses = classNames(["size__".concat(size), "ui-text-field__wrapper"], className);
-
   var handleChange = function handleChange(e) {
     if (typeof onChange === "function") {
-      onChange(e.target.value);
+      onChange(e);
     }
   };
-
   var mappedOptions = options.map(function (option) {
     return /*#__PURE__*/React__default.createElement("option", {
       key: keyGen(),
@@ -63344,17 +63108,88 @@ SelectField.defaultProps = {
   placeholder: "Enter a value here"
 };
 
-var _excluded$e = ["label", "colorScheme", "disabled", "className"];
+var _excluded$f = ["steps", "currentStep", "fontSize", "spacing", "indicatorSize", "scheme", "activeColor", "StepComponent"];
+var Stepper = function Stepper(_ref) {
+  var steps = _ref.steps,
+    currentStep = _ref.currentStep,
+    fontSize = _ref.fontSize,
+    spacing = _ref.spacing,
+    indicatorSize = _ref.indicatorSize,
+    scheme = _ref.scheme,
+    activeColor = _ref.activeColor,
+    StepComponent = _ref.StepComponent;
+    _objectWithoutProperties(_ref, _excluded$f);
+  var computedStyles = {
+    "--spacing": spacing,
+    "--indicator-size": indicatorSize,
+    "--active-color": activeColor,
+    "--active-color-bg": activeColor ? tinycolor(activeColor).lighten(43) : null
+  };
+  var mappedSteps = steps.map(function (step, index) {
+    var _classNames, _classNames2;
+    return /*#__PURE__*/React__default.createElement(Box, {
+      key: "step__".concat(index),
+      className: classNames((_classNames = {
+        active: currentStep === index,
+        completed: currentStep > index,
+        todo: currentStep < index,
+        last: index === steps.length - 1
+      }, _defineProperty$x(_classNames, scheme, scheme), _defineProperty$x(_classNames, "ui-step", true), _classNames))
+    }, /*#__PURE__*/React__default.createElement(Box, {
+      className: classNames((_classNames2 = {
+        active: currentStep === index,
+        completed: currentStep > index,
+        todo: currentStep < index,
+        last: index === steps.length - 1
+      }, _defineProperty$x(_classNames2, scheme, scheme), _defineProperty$x(_classNames2, "activeColor", activeColor), _defineProperty$x(_classNames2, "ui-step__indicator", true), _classNames2))
+    }, currentStep > index && /*#__PURE__*/React__default.createElement(Icon, {
+      className: "indicator-icon",
+      icon: Check
+    })), /*#__PURE__*/React__default.createElement(Box, {
+      className: "ui-step__content"
+    }, StepComponent ? /*#__PURE__*/React__default.createElement(StepComponent, {
+      step: step
+    }) : /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement(Text$1, {
+      marginY: "0",
+      className: "ui-step__content-title",
+      fontSize: fontSize
+    }, typeof step === "string" ? step : step.text), step.description && /*#__PURE__*/React__default.createElement(Text$1, {
+      marginY: "0",
+      fontFace: "circularSTD",
+      scale: "subhead",
+      color: "#878B9A"
+    }, step.description))));
+  });
+  return /*#__PURE__*/React__default.createElement(Box, {
+    className: classNames(["ui-stepper", scheme]),
+    style: _objectSpread2$1({}, computedStyles)
+  }, mappedSteps);
+};
+Stepper.propTypes = {
+  steps: propTypes$1.exports.array,
+  currentStep: propTypes$1.exports.number,
+  fontSize: propTypes$1.exports.string,
+  spacing: propTypes$1.exports.string,
+  indicatorSize: propTypes$1.exports.string,
+  scheme: propTypes$1.exports.oneOf(["variant-1", "variant-2"]),
+  activeColor: propTypes$1.exports.string
+};
+Stepper.defaultProps = {
+  currentStep: 0,
+  fontSize: "14px",
+  spacing: "50px",
+  indicatorSize: "20px",
+  scheme: "variant-1"
+};
 
+var _excluded$e = ["label", "colorScheme", "disabled", "className"];
 var Switch = function Switch(_ref) {
   var _classNames;
-
   var label = _ref.label,
-      colorScheme = _ref.colorScheme,
-      disabled = _ref.disabled,
-      className = _ref.className,
-      props = _objectWithoutProperties(_ref, _excluded$e);
-
+    colorScheme = _ref.colorScheme,
+    disabled = _ref.disabled,
+    className = _ref.className,
+    props = _objectWithoutProperties(_ref, _excluded$e);
   var switchClassName = classNames((_classNames = {
     "ui-switch__wrapper": true
   }, _defineProperty$x(_classNames, "state__disabled", disabled), _defineProperty$x(_classNames, "semantic__".concat(colorScheme), colorScheme), _classNames), className);
@@ -63386,21 +63221,18 @@ Switch.defaultProps = {
 };
 
 var _excluded$d = ["is", "text", "tabs", "horizontal", "spacing"],
-    _excluded2$1 = ["text", "is"];
-
+  _excluded2$1 = ["text", "is"];
 var Tab = function Tab(_ref) {
   _ref.is;
-      _ref.text;
-      var tabs = _ref.tabs,
-      horizontal = _ref.horizontal,
-      spacing = _ref.spacing;
-      _objectWithoutProperties(_ref, _excluded$d);
-
+    _ref.text;
+    var tabs = _ref.tabs,
+    horizontal = _ref.horizontal,
+    spacing = _ref.spacing;
+    _objectWithoutProperties(_ref, _excluded$d);
   var wrapperClassNames = classNames({
     "ui-tabs": true,
     horizontal: horizontal
   });
-
   var generateSpacing = function generateSpacing(index) {
     if (index < tabs.length - 1) {
       if (horizontal) {
@@ -63416,12 +63248,10 @@ var Tab = function Tab(_ref) {
       return {};
     }
   };
-
   var mappedTabs = tabs.map(function (_ref2, index) {
     var text = _ref2.text,
-        is = _ref2.is,
-        tab = _objectWithoutProperties(_ref2, _excluded2$1);
-
+      is = _ref2.is,
+      tab = _objectWithoutProperties(_ref2, _excluded2$1);
     var spacing = generateSpacing(index);
     return /*#__PURE__*/React__default.createElement(Box, _extends$2({
       is: is ? is : "a"
@@ -63536,24 +63366,21 @@ var availableFilters = [{
 var _excluded$c = ["column", "onClose"];
 var TableFilterDropdown = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var column = _ref.column,
-      onClose = _ref.onClose;
-      _objectWithoutProperties(_ref, _excluded$c);
-
+    onClose = _ref.onClose;
+    _objectWithoutProperties(_ref, _excluded$c);
   var _useContext = useContext(TableContext),
-      setFilter = _useContext.setFilter;
-
+    setFilter = _useContext.setFilter;
   var _useState = useState({
-    column: null,
-    selectedFilter: null,
-    selectedFilterValue: null,
-    join: null,
-    selectedFilter2: null,
-    selectedFilterValue2: null
-  }),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      localFilter = _useState2[0],
-      setLocalFilter = _useState2[1];
-
+      column: null,
+      selectedFilter: null,
+      selectedFilterValue: null,
+      join: null,
+      selectedFilter2: null,
+      selectedFilterValue2: null
+    }),
+    _useState2 = _slicedToArray$1(_useState, 2),
+    localFilter = _useState2[0],
+    setLocalFilter = _useState2[1];
   var updateLocalFilterSelectedFilterValue = function updateLocalFilterSelectedFilterValue(e) {
     var value = e.target.value;
     setLocalFilter(function (localFilter) {
@@ -63562,7 +63389,6 @@ var TableFilterDropdown = /*#__PURE__*/forwardRef(function (_ref, ref) {
       });
     });
   };
-
   var updateLocalFilterSelectedFilter = function updateLocalFilterSelectedFilter(e) {
     var value = e.target.value;
     setLocalFilter(function (localFilter) {
@@ -63571,14 +63397,12 @@ var TableFilterDropdown = /*#__PURE__*/forwardRef(function (_ref, ref) {
       });
     });
   };
-
   var applyFilter = function applyFilter() {
     setFilter(_objectSpread2$1(_objectSpread2$1({}, localFilter), {}, {
       column: column
     }));
     onClose();
   };
-
   useEffect(function () {
     return function () {
       setLocalFilter({
@@ -63591,11 +63415,9 @@ var TableFilterDropdown = /*#__PURE__*/forwardRef(function (_ref, ref) {
       });
     };
   }, []);
-
   var closeDropdown = function closeDropdown() {
     onClose();
   };
-
   var mappedAvailableFilters = availableFilters.map(function (filter, index) {
     return /*#__PURE__*/React__default.createElement(Box, {
       className: classNames({
@@ -64767,21 +64589,17 @@ const computePosition = (reference, floating, options) => computePosition$1(refe
 var _excluded$b = ["column", "thCell", "toggleSelection"];
 var TableHeadCellDropdown = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var column = _ref.column,
-      thCell = _ref.thCell,
-      toggleSelection = _ref.toggleSelection;
-      _objectWithoutProperties(_ref, _excluded$b);
-
+    thCell = _ref.thCell,
+    toggleSelection = _ref.toggleSelection;
+    _objectWithoutProperties(_ref, _excluded$b);
   var trigger = useRef();
   var target = useRef();
-
   var _useContext = useContext(TableContext),
-      setSortConfiguration = _useContext.setSortConfiguration;
-
+    setSortConfiguration = _useContext.setSortConfiguration;
   var _useState = useState(false),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      showFilterDropdown = _useState2[0],
-      setShowFilterDropdown = _useState2[1];
-
+    _useState2 = _slicedToArray$1(_useState, 2),
+    showFilterDropdown = _useState2[0],
+    setShowFilterDropdown = _useState2[1];
   useEffect(function () {
     if (showFilterDropdown) {
       computePosition(trigger.current, target.current, {
@@ -64789,7 +64607,7 @@ var TableHeadCellDropdown = /*#__PURE__*/forwardRef(function (_ref, ref) {
         middleware: [offset$1(6), flip(), shift$1()]
       }).then(function (_ref2) {
         var x = _ref2.x,
-            y = _ref2.y;
+          y = _ref2.y;
         Object.assign(target.current.style, {
           left: "".concat(x, "px"),
           top: "".concat(y, "px")
@@ -64797,21 +64615,17 @@ var TableHeadCellDropdown = /*#__PURE__*/forwardRef(function (_ref, ref) {
       });
     }
   }, [showFilterDropdown]);
-
   var closeFilterDropdownOnOutsideClick = function closeFilterDropdownOnOutsideClick(e) {
     var elem = e.target;
-
     if (thCell.current && elem.closest("#".concat(thCell.current.id)) === null) {
       toggleSelection();
     }
   };
-
   var closeFilterOnEsc = function closeFilterOnEsc(e) {
     if (e.key === "Escape") {
       toggleSelection();
     }
   };
-
   var triggerSort = function triggerSort(direction) {
     var sortConfiguration = {
       direction: direction,
@@ -64820,7 +64634,6 @@ var TableHeadCellDropdown = /*#__PURE__*/forwardRef(function (_ref, ref) {
     setSortConfiguration(_objectSpread2$1({}, sortConfiguration));
     toggleSelection();
   };
-
   useEffect(function () {
     window.addEventListener("click", closeFilterDropdownOnOutsideClick);
     document.addEventListener("keydown", closeFilterOnEsc);
@@ -64830,17 +64643,14 @@ var TableHeadCellDropdown = /*#__PURE__*/forwardRef(function (_ref, ref) {
       setShowFilterDropdown(false);
     };
   }, []);
-
   var closeFilterDropdown = function closeFilterDropdown() {
     setShowFilterDropdown(false);
   };
-
   var toggleFilterDropdown = function toggleFilterDropdown(e) {
     if (e.target.classList.contains("ui-table-filter-trigger") || e.target.closest(".ui-table-filter-trigger")) {
       setShowFilterDropdown(true);
     }
   };
-
   return /*#__PURE__*/React__default.createElement(Box, {
     ref: ref,
     className: "ui-table__heading-cell__dropdown__wrapper"
@@ -64892,20 +64702,16 @@ TableHeadCellDropdown.propTypes = {
 };
 
 var _excluded$a = ["column"];
-
 var TableHeadCell = function TableHeadCell(_ref) {
   var column = _ref.column;
-      _objectWithoutProperties(_ref, _excluded$a);
-
+    _objectWithoutProperties(_ref, _excluded$a);
   var trigger = useRef();
   var target = useRef();
   var thCell = useRef();
-
   var _useState = useState(false),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      isSelected = _useState2[0],
-      setIsSelected = _useState2[1];
-
+    _useState2 = _slicedToArray$1(_useState, 2),
+    isSelected = _useState2[0],
+    setIsSelected = _useState2[1];
   useEffect(function () {
     if (isSelected) {
       computePosition(trigger.current, target.current, {
@@ -64913,7 +64719,7 @@ var TableHeadCell = function TableHeadCell(_ref) {
         middleware: [offset$1(6), flip(), shift$1()]
       }).then(function (_ref2) {
         var x = _ref2.x,
-            y = _ref2.y;
+          y = _ref2.y;
         Object.assign(target.current.style, {
           left: "".concat(x, "px"),
           top: "".concat(y, "px")
@@ -64921,10 +64727,8 @@ var TableHeadCell = function TableHeadCell(_ref) {
       });
     }
   }, [isSelected]);
-
   var toggleSelection = function toggleSelection(e) {
     var shouldProceed = false;
-
     if (e === undefined) {
       shouldProceed = true;
     } else {
@@ -64934,12 +64738,10 @@ var TableHeadCell = function TableHeadCell(_ref) {
         }
       });
     }
-
     if (shouldProceed) {
       setIsSelected(!isSelected);
     }
   };
-
   return /*#__PURE__*/React__default.createElement(Box, {
     ref: thCell
   }, /*#__PURE__*/React__default.createElement(Box, {
@@ -64973,16 +64775,13 @@ var getColumnWidth = function getColumnWidth(column) {
   var returnedStyles = {
     "--column_min_width": "120px"
   };
-
   if (!isCheckbox) {
     if (column.width) {
       returnedStyles["--column_width"] = column.width;
     }
-
     if (column.maxWidth) {
       returnedStyles["--column_max_width"] = column.maxWidth;
     }
-
     if (column.minWidth) {
       returnedStyles["--column_min_width"] = column.minWidth;
     }
@@ -64993,7 +64792,6 @@ var getColumnWidth = function getColumnWidth(column) {
       "--column_max_width": "50px"
     };
   }
-
   return returnedStyles;
 };
 
@@ -65244,11 +65042,9 @@ function useExportCsv(data, generatedCsvName) {
     useKeysAsHeaders: true
   };
   var csvExporter = new build.ExportToCsv(options);
-
   var exportCsv = function exportCsv() {
     return csvExporter.generateCsv(data);
   };
-
   return {
     exportCsv: exportCsv
   };
@@ -65331,17 +65127,14 @@ var search = function search(_search, rows, columnHashMap) {
   return rows.filter(function (row) {
     for (var _i = 0, _Object$keys = Object.keys(row); _i < _Object$keys.length; _i++) {
       var key = _Object$keys[_i];
-
       if (columnHashMap[key].filterable) {
         var hayStack = caseSensitiveSearch ? row[key] : row[key].toLowerCase();
         var needle = caseSensitiveSearch ? _search : _search.toLowerCase();
-
         if (hayStack.includes(needle)) {
           return true;
         }
       }
     }
-
     return false;
   });
 };
@@ -65381,15 +65174,11 @@ var filter = function filter(_filter, rows) {
   var column = _filter.column.dataSelector;
   return rows.filter(function (row) {
     var dataItemToCheck = row[column];
-
     var leftFilter = filterMaps[_filter.selectedFilter](dataItemToCheck, _filter.selectedFilterValue);
-
     var rightFilter = null;
-
     if (_filter.join) {
       rightFilter = filterMaps[_filter.selectedFilter2](dataItemToCheck, _filter.selectedFilterValue2);
     }
-
     if (_filter.join) {
       return _filter.join === "and" ? leftFilter && rightFilter : leftFilter || rightFilter;
     } else {
@@ -65580,18 +65369,14 @@ var sort = function sort(sortConfiguration, data) {
       var _valueB = b[sortConfiguration.column.dataSelector];
       return sortConfiguration.direction === "asc" ? _valueA - _valueB : _valueB - _valueA;
     }
-
     var valueA = a[sortConfiguration.column.dataSelector].toUpperCase();
     var valueB = b[sortConfiguration.column.dataSelector].toUpperCase();
-
     if (valueA < valueB) {
       return sortConfiguration.direction === "asc" ? -1 : 1;
     }
-
     if (valueA > valueB) {
       return sortConfiguration.direction === "asc" ? 1 : -1;
     }
-
     return 0;
   });
 };
@@ -76267,48 +76052,38 @@ var ConnectedDroppable = connect(makeMapStateToProps$1, mapDispatchToProps$1, nu
 ConnectedDroppable.defaultProps = defaultProps;
 
 var _excluded$6 = ["show", "onCloseModal", "onColumnsOrderChanged", "columns"];
-
 var CustomizeViewModal = function CustomizeViewModal(_ref) {
   var show = _ref.show,
-      onCloseModal = _ref.onCloseModal,
-      onColumnsOrderChanged = _ref.onColumnsOrderChanged,
-      columns = _ref.columns;
-      _objectWithoutProperties(_ref, _excluded$6);
-
+    onCloseModal = _ref.onCloseModal,
+    onColumnsOrderChanged = _ref.onColumnsOrderChanged,
+    columns = _ref.columns;
+    _objectWithoutProperties(_ref, _excluded$6);
   var _useState = useState([]),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      internalColumns = _useState2[0],
-      setInternalColumns = _useState2[1];
-
+    _useState2 = _slicedToArray$1(_useState, 2),
+    internalColumns = _useState2[0],
+    setInternalColumns = _useState2[1];
   useEffect(function () {
     setInternalColumns(columns);
   }, [columns]);
-
   var hydrateColumns = function hydrateColumns() {
     onColumnsOrderChanged(_toConsumableArray(internalColumns));
     onCloseModal();
   };
-
   var onDragEnd = function onDragEnd(result) {
     // dropped outside the list
     if (!result.destination) {
       return;
     }
-
     var columnsCopy = _toConsumableArray(internalColumns);
-
     var movedColumn = columnsCopy.splice(result.source.index, 1)[0];
     columnsCopy.splice(result.destination.index, 0, movedColumn);
     setInternalColumns(columnsCopy);
   };
-
   var triggerVisibility = function triggerVisibility(column, index) {
     var columnsCopy = _toConsumableArray(internalColumns);
-
     columnsCopy[index].visible = !columnsCopy[index].visible;
     setInternalColumns(_toConsumableArray(columnsCopy));
   };
-
   var draggables = internalColumns.map(function (column, index) {
     return /*#__PURE__*/React__default.createElement(PublicDraggable, {
       key: column.dataSelector,
@@ -76375,44 +76150,37 @@ CustomizeViewModal.propTypes = {
 var _excluded$5 = ["onClose"];
 var TableActiveFiltersDropdown = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var onClose = _ref.onClose;
-      _objectWithoutProperties(_ref, _excluded$5);
-
+    _objectWithoutProperties(_ref, _excluded$5);
   var _useState = useState(false),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      showSecondOptions = _useState2[0],
-      setShowSecondOptions = _useState2[1];
-
+    _useState2 = _slicedToArray$1(_useState, 2),
+    showSecondOptions = _useState2[0],
+    setShowSecondOptions = _useState2[1];
   var _useContext = useContext(TableContext),
-      filter = _useContext.filter,
-      setFilter = _useContext.setFilter;
-
+    filter = _useContext.filter,
+    setFilter = _useContext.setFilter;
   var _useState3 = useState({
-    column: null,
-    selectedFilter: null,
-    selectedFilterValue: null,
-    join: null,
-    selectedFilter2: "Is",
-    selectedFilterValue2: null
-  }),
-      _useState4 = _slicedToArray$1(_useState3, 2),
-      localFilter = _useState4[0],
-      setLocalFilter = _useState4[1];
-
+      column: null,
+      selectedFilter: null,
+      selectedFilterValue: null,
+      join: null,
+      selectedFilter2: "Is",
+      selectedFilterValue2: null
+    }),
+    _useState4 = _slicedToArray$1(_useState3, 2),
+    localFilter = _useState4[0],
+    setLocalFilter = _useState4[1];
   useEffect(function () {
     setLocalFilter(_objectSpread2$1({}, filter));
   }, [filter]);
-
   var handleFormChange = function handleFormChange(e, field) {
     setLocalFilter(function (localFilter) {
       return _objectSpread2$1(_objectSpread2$1({}, localFilter), {}, _defineProperty$x({}, field, e.target.value));
     });
   };
-
   var publishLocalFilters = function publishLocalFilters() {
     setFilter(_objectSpread2$1({}, localFilter));
     onClose();
   };
-
   return /*#__PURE__*/React__default.createElement(Box, {
     ref: ref,
     className: "ui-table__active-filters-dropdown"
@@ -76531,107 +76299,91 @@ TableActiveFiltersDropdown.propTypes = {
 
 var _excluded$4 = ["showCheckboxes", "itemsPerPage", "paginate", "paginateRight", "initialCurrentPage", "currentPageSiblings", "asyncPagination", "columns", "data", "search", "enableCsvExport", "enableCustomizeView", "searchPlaceholder", "generatedCsvName", "loading", "checkboxDataSelector", "buttonActionsAlignment", "searchAlignment", "caseSensitiveSearch", "onPageChange", "onRowSelected"];
 var TableContext = /*#__PURE__*/createContext({});
-
 var Table = function Table(_ref) {
   var showCheckboxes = _ref.showCheckboxes,
-      itemsPerPage = _ref.itemsPerPage,
-      paginate = _ref.paginate,
-      paginateRight = _ref.paginateRight,
-      initialCurrentPage = _ref.initialCurrentPage,
-      currentPageSiblings = _ref.currentPageSiblings,
-      asyncPagination = _ref.asyncPagination,
-      columns = _ref.columns,
-      data = _ref.data,
-      search$1 = _ref.search,
-      enableCsvExport = _ref.enableCsvExport,
-      enableCustomizeView = _ref.enableCustomizeView;
-      _ref.searchPlaceholder;
-      var generatedCsvName = _ref.generatedCsvName;
-      _ref.loading;
-      var checkboxDataSelector = _ref.checkboxDataSelector,
-      buttonActionsAlignment = _ref.buttonActionsAlignment,
-      searchAlignment = _ref.searchAlignment,
-      caseSensitiveSearch = _ref.caseSensitiveSearch,
-      onPageChange = _ref.onPageChange,
-      onRowSelected = _ref.onRowSelected;
-      _objectWithoutProperties(_ref, _excluded$4);
-
+    itemsPerPage = _ref.itemsPerPage,
+    paginate = _ref.paginate,
+    paginateRight = _ref.paginateRight,
+    initialCurrentPage = _ref.initialCurrentPage,
+    currentPageSiblings = _ref.currentPageSiblings,
+    asyncPagination = _ref.asyncPagination,
+    columns = _ref.columns,
+    data = _ref.data,
+    search$1 = _ref.search,
+    enableCsvExport = _ref.enableCsvExport,
+    enableCustomizeView = _ref.enableCustomizeView;
+    _ref.searchPlaceholder;
+    var generatedCsvName = _ref.generatedCsvName;
+    _ref.loading;
+    var checkboxDataSelector = _ref.checkboxDataSelector,
+    buttonActionsAlignment = _ref.buttonActionsAlignment,
+    searchAlignment = _ref.searchAlignment,
+    caseSensitiveSearch = _ref.caseSensitiveSearch,
+    onPageChange = _ref.onPageChange,
+    onRowSelected = _ref.onRowSelected;
+    _objectWithoutProperties(_ref, _excluded$4);
   var _useState = useState(),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      internalCurrentPage = _useState2[0],
-      setInternalCurrentPage = _useState2[1];
-
+    _useState2 = _slicedToArray$1(_useState, 2),
+    internalCurrentPage = _useState2[0],
+    setInternalCurrentPage = _useState2[1];
   var _useExportCsv = useExportCsv(data, generatedCsvName),
-      exportCsv = _useExportCsv.exportCsv;
-
+    exportCsv = _useExportCsv.exportCsv;
   var _useState3 = useState([]),
-      _useState4 = _slicedToArray$1(_useState3, 2),
-      processedData = _useState4[0],
-      setProcessedData = _useState4[1];
-
+    _useState4 = _slicedToArray$1(_useState3, 2),
+    processedData = _useState4[0],
+    setProcessedData = _useState4[1];
   var _useState5 = useState(""),
-      _useState6 = _slicedToArray$1(_useState5, 2),
-      searchValue = _useState6[0],
-      setSearchValue = _useState6[1];
-
+    _useState6 = _slicedToArray$1(_useState5, 2),
+    searchValue = _useState6[0],
+    setSearchValue = _useState6[1];
   var _useState7 = useState([]),
-      _useState8 = _slicedToArray$1(_useState7, 2),
-      columnHashMap = _useState8[0],
-      setColumnHashMap = _useState8[1];
-
+    _useState8 = _slicedToArray$1(_useState7, 2),
+    columnHashMap = _useState8[0],
+    setColumnHashMap = _useState8[1];
   var _useState9 = useState([]),
-      _useState10 = _slicedToArray$1(_useState9, 2),
-      selectedRows = _useState10[0],
-      setSelectedRows = _useState10[1];
-
+    _useState10 = _slicedToArray$1(_useState9, 2),
+    selectedRows = _useState10[0],
+    setSelectedRows = _useState10[1];
   var _useState11 = useState(false),
-      _useState12 = _slicedToArray$1(_useState11, 2),
-      showCustomizeView = _useState12[0],
-      setShowCustomizeView = _useState12[1];
-
+    _useState12 = _slicedToArray$1(_useState11, 2),
+    showCustomizeView = _useState12[0],
+    setShowCustomizeView = _useState12[1];
   var _useState13 = useState([]),
-      _useState14 = _slicedToArray$1(_useState13, 2),
-      internalColumns = _useState14[0],
-      setInternalColumns = _useState14[1];
-
+    _useState14 = _slicedToArray$1(_useState13, 2),
+    internalColumns = _useState14[0],
+    setInternalColumns = _useState14[1];
   var _useState15 = useState(false),
-      _useState16 = _slicedToArray$1(_useState15, 2),
-      showActiveFiltersDropdown = _useState16[0],
-      setShowActiveFiltersDropdown = _useState16[1];
-
+    _useState16 = _slicedToArray$1(_useState15, 2),
+    showActiveFiltersDropdown = _useState16[0],
+    setShowActiveFiltersDropdown = _useState16[1];
   var _useState17 = useState({
-    column: null,
-    selectedFilter: null,
-    selectedFilterValue: null,
-    join: null,
-    selectedFilter2: null,
-    selectedFilterValue2: null
-  }),
-      _useState18 = _slicedToArray$1(_useState17, 2),
-      filter$1 = _useState18[0],
-      setFilter = _useState18[1];
-
+      column: null,
+      selectedFilter: null,
+      selectedFilterValue: null,
+      join: null,
+      selectedFilter2: null,
+      selectedFilterValue2: null
+    }),
+    _useState18 = _slicedToArray$1(_useState17, 2),
+    filter$1 = _useState18[0],
+    setFilter = _useState18[1];
   var _useState19 = useState(null),
-      _useState20 = _slicedToArray$1(_useState19, 2),
-      sortConfiguration = _useState20[0],
-      setSortConfiguration = _useState20[1];
-
+    _useState20 = _slicedToArray$1(_useState19, 2),
+    sortConfiguration = _useState20[0],
+    setSortConfiguration = _useState20[1];
   var target = useRef();
   var trigger = useRef();
-
   var toggleActiveFilters = function toggleActiveFilters(e) {
     if (e !== false && e && e.target.classList.contains("activeFiltersTrigger")) {
       setShowActiveFiltersDropdown(!showActiveFiltersDropdown);
     }
   };
-
   var initialContextState = {
     filter: filter$1,
     setFilter: setFilter,
     sortConfiguration: sortConfiguration,
     setSortConfiguration: setSortConfiguration
   };
-
   var updateInternalColumns = function updateInternalColumns(columns) {
     setInternalColumns(columns.map(function (column) {
       return _objectSpread2$1({
@@ -76650,7 +76402,6 @@ var Table = function Table(_ref) {
       }, column);
     }));
   };
-
   useEffect(function () {
     setInternalCurrentPage(initialCurrentPage);
     updateInternalColumns(columns);
@@ -76664,19 +76415,15 @@ var Table = function Table(_ref) {
   }, [columns, internalColumns]);
   useEffect(function () {
     var detachedData = _toConsumableArray(data);
-
     if (searchValue) {
       detachedData = search(searchValue, detachedData, columnHashMap, caseSensitiveSearch);
     }
-
     if (filter$1 && filter$1.column) {
       detachedData = filter(filter$1, detachedData);
     }
-
     if (sortConfiguration) {
       sort(sortConfiguration, detachedData);
     }
-
     setProcessedData(detachedData.map(function (item) {
       return _objectSpread2$1(_objectSpread2$1({}, item), {}, {
         uuuid: uniqueRandomString(30, 8)
@@ -76700,7 +76447,7 @@ var Table = function Table(_ref) {
         middleware: [offset$1(6), flip(), shift$1()]
       }).then(function (_ref2) {
         var x = _ref2.x,
-            y = _ref2.y;
+          y = _ref2.y;
         Object.assign(target.current.style, {
           left: "".concat(x, "px"),
           top: "".concat(y, "px")
@@ -76722,25 +76469,19 @@ var Table = function Table(_ref) {
       column: visibleColumn
     }));
   });
-
   var handlePageChange = function handlePageChange(page) {
     setInternalCurrentPage(page);
   };
-
   var totalPages = Math.ceil(data.length / itemsPerPage);
-
   var toggleSelectedRows = function toggleSelectedRows(uuuid) {
     var newSelectedRows = _toConsumableArray(selectedRows);
-
     if (newSelectedRows.includes(uuuid)) {
       newSelectedRows.splice(newSelectedRows.indexOf(uuuid), 1);
     } else {
       newSelectedRows.push(uuuid);
     }
-
     setSelectedRows(newSelectedRows);
   };
-
   var toggleAllRows = function toggleAllRows() {
     if (selectedRows.length === paginatedData.length) {
       setSelectedRows([]);
@@ -76750,7 +76491,6 @@ var Table = function Table(_ref) {
       }));
     }
   };
-
   var mappedRows = paginatedData.map(function (datum, index) {
     return /*#__PURE__*/React__default.createElement(Box, {
       is: "tr",
@@ -76960,49 +76700,41 @@ Table.defaultProps = {
 };
 
 var _excluded$3 = ["size", "options", "labelClass", "labelFontFace", "label", "errorMessage", "leftIcon", "rightIcon", "onChange", "placeholder", "showCheckboxes", "initiallySelectedTags"];
-
 var TagDropdown = function TagDropdown(_ref) {
   var _classNames2;
-
   var size = _ref.size,
-      options = _ref.options,
-      labelClass = _ref.labelClass,
-      labelFontFace = _ref.labelFontFace,
-      label = _ref.label,
-      errorMessage = _ref.errorMessage,
-      leftIcon = _ref.leftIcon,
-      rightIcon = _ref.rightIcon,
-      onChange = _ref.onChange,
-      placeholder = _ref.placeholder,
-      showCheckboxes = _ref.showCheckboxes,
-      initiallySelectedTags = _ref.initiallySelectedTags;
-      _objectWithoutProperties(_ref, _excluded$3);
-
+    options = _ref.options,
+    labelClass = _ref.labelClass,
+    labelFontFace = _ref.labelFontFace,
+    label = _ref.label,
+    errorMessage = _ref.errorMessage,
+    leftIcon = _ref.leftIcon,
+    rightIcon = _ref.rightIcon,
+    onChange = _ref.onChange,
+    placeholder = _ref.placeholder,
+    showCheckboxes = _ref.showCheckboxes,
+    initiallySelectedTags = _ref.initiallySelectedTags;
+    _objectWithoutProperties(_ref, _excluded$3);
   var _useState = useState([]),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      inputTags = _useState2[0],
-      setInputTags = _useState2[1];
-
+    _useState2 = _slicedToArray$1(_useState, 2),
+    inputTags = _useState2[0],
+    setInputTags = _useState2[1];
   var _useState3 = useState([]),
-      _useState4 = _slicedToArray$1(_useState3, 2),
-      selectedTags = _useState4[0],
-      setSelectedTags = _useState4[1];
-
+    _useState4 = _slicedToArray$1(_useState3, 2),
+    selectedTags = _useState4[0],
+    setSelectedTags = _useState4[1];
   var _useState5 = useState([]),
-      _useState6 = _slicedToArray$1(_useState5, 2),
-      showOptions = _useState6[0],
-      setShowOptions = _useState6[1];
-
+    _useState6 = _slicedToArray$1(_useState5, 2),
+    showOptions = _useState6[0],
+    setShowOptions = _useState6[1];
   var _useState7 = useState(""),
-      _useState8 = _slicedToArray$1(_useState7, 2),
-      inputValue = _useState8[0],
-      setInputValue = _useState8[1];
-
+    _useState8 = _slicedToArray$1(_useState7, 2),
+    inputValue = _useState8[0],
+    setInputValue = _useState8[1];
   var _useState9 = useState([]),
-      _useState10 = _slicedToArray$1(_useState9, 2),
-      availableOptions = _useState10[0],
-      setAvailableOptions = _useState10[1];
-
+    _useState10 = _slicedToArray$1(_useState9, 2),
+    availableOptions = _useState10[0],
+    setAvailableOptions = _useState10[1];
   var validInput = useRef();
   useEffect(function () {
     setInputTags(_toConsumableArray(options).filter(function (option) {
@@ -77017,11 +76749,9 @@ var TagDropdown = function TagDropdown(_ref) {
     if (initiallySelectedTags && Array.isArray(initiallySelectedTags)) {
       options.forEach(function (option) {
         var optionValue = returnOptionValue(option);
-
         if (initiallySelectedTags.includes(optionValue)) {
           setSelectedTags(function (tags) {
             var localTags = _toConsumableArray(tags);
-
             localTags.push(optionValue);
             return localTags;
           });
@@ -77032,25 +76762,20 @@ var TagDropdown = function TagDropdown(_ref) {
   useEffect(function () {
     onChange(selectedTags);
   }, [selectedTags, onChange]);
-
   var hideOptionsOnOutsideClick = function hideOptionsOnOutsideClick(e) {
     if (!e.target.closest(".ui-tag-dropdown__wrapper")) {
       setShowOptions(false);
     }
   };
-
   var toggleOptions = function toggleOptions() {
     setShowOptions(!showOptions);
   };
-
   var returnOptionValue = function returnOptionValue(option) {
     return _typeof$B(option) === "object" ? option.value : option;
   };
-
   var returnOptionText = function returnOptionText(option) {
     return _typeof$B(option) === "object" ? option.text : option;
   };
-
   useEffect(function () {
     if (showOptions) {
       validInput.current.getElementsByTagName("input")[0].focus();
@@ -77064,32 +76789,25 @@ var TagDropdown = function TagDropdown(_ref) {
   }, []);
   useEffect(function () {
     var unSelectedOptions = _toConsumableArray(options);
-
     setAvailableOptions(unSelectedOptions.filter(function (option) {
       return typeof option === "string" ? option.toLowerCase().includes(inputValue.toLowerCase()) : option.text.toLowerCase().includes(inputValue.toLowerCase());
     }));
   }, [options, selectedTags, inputValue]);
-
   var handleDeleteTag = function handleDeleteTag(currentTag) {
     setSelectedTags(_toConsumableArray(selectedTags).filter(function (tag) {
       return typeof currentTag === "string" ? tag !== currentTag : tag !== currentTag.value;
     }));
   };
-
   var switchOptionInTags = function switchOptionInTags(option) {
     var optionValue = returnOptionValue(option);
-
     var clonedTags = _toConsumableArray(selectedTags);
-
     if (clonedTags.includes(optionValue)) {
       clonedTags.splice(selectedTags.indexOf(optionValue), 1);
     } else {
       clonedTags.push(optionValue);
     }
-
     setSelectedTags(clonedTags);
   };
-
   var mappedInputTags = inputTags.map(function (tag, index) {
     return /*#__PURE__*/React__default.createElement(Box, {
       className: "ui-tag-dropdown__input-tag",
@@ -77588,48 +77306,41 @@ for (var COLLECTION_NAME in DOMIterables) {
 handlePrototype(DOMTokenListPrototype, 'DOMTokenList');
 
 var _excluded$2 = ["label", "className", "size", "tagDelimiterKey", "values", "onTagAdded", "onTagDeleted", "inputProps", "tagProps", "tagClassname", "onTextChanged", "onTagChanged"];
-
 var TagInput = function TagInput(_ref) {
   var label = _ref.label,
-      className = _ref.className,
-      size = _ref.size,
-      tagDelimiterKey = _ref.tagDelimiterKey,
-      values = _ref.values,
-      onTagAdded = _ref.onTagAdded,
-      onTagDeleted = _ref.onTagDeleted,
-      inputProps = _ref.inputProps,
-      _ref$tagProps = _ref.tagProps,
-      tagProps = _ref$tagProps === void 0 ? {} : _ref$tagProps,
-      tagClassname = _ref.tagClassname,
-      onTextChanged = _ref.onTextChanged,
-      onTagChanged = _ref.onTagChanged,
-      props = _objectWithoutProperties(_ref, _excluded$2);
-
+    className = _ref.className,
+    size = _ref.size,
+    tagDelimiterKey = _ref.tagDelimiterKey,
+    values = _ref.values,
+    onTagAdded = _ref.onTagAdded,
+    onTagDeleted = _ref.onTagDeleted,
+    inputProps = _ref.inputProps,
+    _ref$tagProps = _ref.tagProps,
+    tagProps = _ref$tagProps === void 0 ? {} : _ref$tagProps,
+    tagClassname = _ref.tagClassname,
+    onTextChanged = _ref.onTextChanged,
+    onTagChanged = _ref.onTagChanged,
+    props = _objectWithoutProperties(_ref, _excluded$2);
   var _useState = useState(""),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      input = _useState2[0],
-      setInput = _useState2[1];
-
+    _useState2 = _slicedToArray$1(_useState, 2),
+    input = _useState2[0],
+    setInput = _useState2[1];
   var _useState3 = useState(values || []),
-      _useState4 = _slicedToArray$1(_useState3, 2),
-      inputTags = _useState4[0],
-      setInputTags = _useState4[1];
-
+    _useState4 = _slicedToArray$1(_useState3, 2),
+    inputTags = _useState4[0],
+    setInputTags = _useState4[1];
   var _useState5 = useState(false),
-      _useState6 = _slicedToArray$1(_useState5, 2),
-      isKeyReleased = _useState6[0],
-      setIsKeyReleased = _useState6[1];
-
+    _useState6 = _slicedToArray$1(_useState5, 2),
+    isKeyReleased = _useState6[0],
+    setIsKeyReleased = _useState6[1];
   var invokeFunction = function invokeFunction(func) {
     if (typeof func === "function") {
       for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
         args[_key - 1] = arguments[_key];
       }
-
       return func.apply(void 0, args);
     }
   };
-
   var _tagDelimiterKey = {
     space: " ",
     enter: "Enter",
@@ -77639,17 +77350,14 @@ var TagInput = function TagInput(_ref) {
     "ui-tag-input__input": true
   });
   var wrapperClasses = classNames(["size__".concat(size), "ui-tag-input__wrapper"], className);
-
   var handleTextChange = function handleTextChange(event) {
     setInput(event.target.value);
     invokeFunction(onTextChanged, event.target.value);
   };
-
   var handleKeyDown = function handleKeyDown(event) {
     var newTag = input.trim();
     var oldTagArray = inputTags;
     var key = _tagDelimiterKey[tagDelimiterKey];
-
     if (event.key === key && newTag.length && !inputTags.includes(newTag)) {
       event.preventDefault();
       setInputTags(function (prev) {
@@ -77662,12 +77370,9 @@ var TagInput = function TagInput(_ref) {
       });
       setInput("");
     }
-
     if (event.key === "Backspace" && !input.length && inputTags.length && isKeyReleased) {
       event.preventDefault();
-
       var tagsArray = _toConsumableArray(inputTags);
-
       var deletedTag = tagsArray.pop();
       setInputTags(tagsArray);
       setInput(deletedTag);
@@ -77677,10 +77382,8 @@ var TagInput = function TagInput(_ref) {
         return state;
       });
     }
-
     setIsKeyReleased(false);
   };
-
   var handleDeleteTag = function handleDeleteTag(index) {
     var deletedTag = inputTags[index];
     var oldTagArray = inputTags;
@@ -77695,7 +77398,6 @@ var TagInput = function TagInput(_ref) {
       return state;
     });
   };
-
   return /*#__PURE__*/React__default.createElement(Box, {
     className: wrapperClasses
   }, /*#__PURE__*/React__default.createElement(Box, {
@@ -77764,15 +77466,13 @@ TagInput.defaultProps = {
 };
 
 var _excluded$1 = ["label", "errorMessage", "textAreaClassName", "className", "isHookForm"];
-
 var TextArea = function TextArea(_ref) {
   var label = _ref.label,
-      errorMessage = _ref.errorMessage,
-      textAreaClassName = _ref.textAreaClassName,
-      className = _ref.className,
-      isHookForm = _ref.isHookForm,
-      props = _objectWithoutProperties(_ref, _excluded$1);
-
+    errorMessage = _ref.errorMessage,
+    textAreaClassName = _ref.textAreaClassName,
+    className = _ref.className,
+    isHookForm = _ref.isHookForm,
+    props = _objectWithoutProperties(_ref, _excluded$1);
   var generateTextAreaClasses = classNames({
     "ui-text-area__textarea": true,
     "has-error": errorMessage
@@ -77780,9 +77480,9 @@ var TextArea = function TextArea(_ref) {
   var wrapperClasses = classNames(["ui-text-area__wrapper"], className);
   return isHookForm ? /*#__PURE__*/React__default.forwardRef(function (_ref2, ref) {
     var onChange = _ref2.onChange,
-        onBlur = _ref2.onBlur,
-        name = _ref2.name,
-        label = _ref2.label;
+      onBlur = _ref2.onBlur,
+      name = _ref2.name,
+      label = _ref2.label;
     return /*#__PURE__*/React__default.createElement(Box, null, /*#__PURE__*/React__default.createElement(Box, {
       is: "label",
       className: wrapperClasses
@@ -77838,14 +77538,12 @@ TextArea.defaultProps = {
 
 function useToast(props) {
   var _useState = useState(0),
-      _useState2 = _slicedToArray$1(_useState, 2),
-      setCountUp = _useState2[1];
-
+    _useState2 = _slicedToArray$1(_useState, 2),
+    setCountUp = _useState2[1];
   var _useState3 = useState([]),
-      _useState4 = _slicedToArray$1(_useState3, 2),
-      toasts = _useState4[0],
-      setToasts = _useState4[1];
-
+    _useState4 = _slicedToArray$1(_useState3, 2),
+    toasts = _useState4[0],
+    setToasts = _useState4[1];
   useEffect(function () {
     var interval = setInterval(function () {
       if (toasts.length) {
@@ -77856,17 +77554,14 @@ function useToast(props) {
         });
         var currentToast = toasts[0];
         var timeToClose = currentToast.autoClose || props.autoClose;
-
         if (holdingCountUp >= timeToClose) {
           var holderArray = _toConsumableArray(toasts);
-
           holderArray.shift();
           setToasts(holderArray);
           setCountUp(function (c) {
             return 0;
           });
         }
-
         setCountUp(function (countUp) {
           return countUp + 1;
         });
@@ -77882,30 +77577,24 @@ function useToast(props) {
 }
 
 var _excluded = ["position"];
-
 var Toast = function Toast(_ref) {
   var position = _ref.position,
-      props = _objectWithoutProperties(_ref, _excluded);
-
+    props = _objectWithoutProperties(_ref, _excluded);
   var _useToast = useToast(props),
-      _useToast2 = _slicedToArray$1(_useToast, 3),
-      toasts = _useToast2[0],
-      setToasts = _useToast2[1],
-      setCountUp = _useToast2[2];
-
+    _useToast2 = _slicedToArray$1(_useToast, 3),
+    toasts = _useToast2[0],
+    setToasts = _useToast2[1],
+    setCountUp = _useToast2[2];
   var removeToastItem = function removeToastItem(index) {
     var holderArray = _toConsumableArray(toasts);
-
     holderArray.splice(index, 1);
     setToasts(holderArray);
-
     if (index === 0) {
       setCountUp(function (c) {
         return 0;
       });
     }
   };
-
   var toastWrapperClassName = classNames(_defineProperty$x({
     "ui-toast__wrapper": true
   }, "position__".concat(position), true));
@@ -77937,4 +77626,4 @@ Toast.defaultProps = {
   position: "top-right"
 };
 
-export { Accordion, AddBookmark as AddBookmarkIcon, AddCircle as AddCircleIcon, AddFile as AddFileIcon, Add as AddIcon, AddItem as AddItemIcon, AddUser as AddUserIcon, Alarm as AlarmIcon, Alert, Announce as AnnounceIcon, Apps as AppsIcon, ArrowDown as ArrowDownIcon, ArrowDownLeft as ArrowDownLeftIcon, ArrowDownRight as ArrowDownRightIcon, ArrowLeft as ArrowLeftIcon, ArrowRight as ArrowRightIcon, ArrowUp as ArrowUpIcon, ArrowUpLeft as ArrowUpLeftIcon, ArrowUpRight as ArrowUpRightIcon, Attachment as AttachmentIcon, Avatar, Avatar$1 as AvatarIcon, Backward as BackwardIcon, Badge, Bank as BankIcon, Banner, BarChart as BarChartIcon, Basket as BasketIcon, BendLeft as BendLeftIcon, BendRight as BendRightIcon, Bolt as BoltIcon, Book as BookIcon, Bookmark as BookmarkIcon, Box, Briefcase as BriefcaseIcon, Button, Calendar as CalendarIcon, Camera as CameraIcon, Card, Card$1 as CardIcon, CardInputField, Cart as CartIcon, Cash as CashIcon, CenterAlign as CenterAlignIcon, Certificate2 as Certificate2Icon, Certificate as CertificateIcon, Chart as ChartIcon, CheckCircle as CheckCircleIcon, Check as CheckIcon, Checkbox, ChevronArrowDown as ChevronArrowDownIcon, ChevronArrowLeft as ChevronArrowLeftIcon, ChevronArrowRight as ChevronArrowRightIcon, ChevronArrowUp as ChevronArrowUpIcon, ChevronFilledDown as ChevronFilledDownIcon, ChevronFilledLeft as ChevronFilledLeftIcon, ChevronFilledRight as ChevronFilledRightIcon, ChevronFilledUp as ChevronFilledUpIcon, Circle as CircleIcon, CloseCircle as CloseCircleIcon, Close as CloseIcon, CloudDownload as CloudDownloadIcon, CloudFlash as CloudFlashIcon, Cloud as CloudIcon, CloudRain as CloudRainIcon, CloudUpload as CloudUploadIcon, Command as CommandIcon, Company as CompanyIcon, Compass as CompassIcon, Compress2 as Compress2Icon, Compress as CompressIcon, Component as CopyIcon, Counter, CountryDropdown, Crop as CropIcon, Crown as CrownIcon, Cut as CutIcon, DatePickerField as DatePicker, DebitCard, DebitBalance as DebitCardBalance, Decrease2 as Decrease2Icon, Decrease as DecreaseIcon, Delete as DeleteIcon, Deposits as DepositsIcon, Details as DetailsIcon, Dial as DialIcon, DialOff as DialOffIcon, Disabled as DisabledIcon, Dislike as DislikeIcon, Document as DocumentIcon, DoubleCheck as DoubleCheckIcon, Download as DownloadIcon, Drop as DropIcon, Dropdown, Edit2 as Edit2Icon, Edit as EditIcon, ErrorCircle as ErrorCircleIcon, Error$1 as ErrorIcon, ExitFullScreen as ExitFullScreenIcon, Expand2 as Expand2Icon, Expand as ExpandIcon, ExternalLink as ExternalLinkIcon, Eye as EyeIcon, EyeOff as EyeOffIcon, File as FileIcon, Filter as FilterIcon, Flag as FlagIcon, Flame as FlameIcon, Flash as FlashIcon, Folder as FolderIcon, Forward as ForwardIcon, FullScreen as FullScreenIcon, Funnel as FunnelIcon, Gem as GemIcon, Gift as GiftIcon, Gitlab as GitlabIcon, Globe as GlobeIcon, Grid as GridIcon, Heading, HeartFilled as HeartFilledIcon, Heart as HeartIcon, Home as HomeIcon, Icon, Image as ImageIcon, Inbox as InboxIcon, Increase2 as Increase2Icon, Increase as IncreaseIcon, Info as InfoIcon, InfoOutline as InfoOutlineIcon, JustifyAlign as JustifyAlignIcon, Key as KeyIcon, LeftAlign as LeftAlignIcon, Like as LikeIcon, Link as LinkIcon, List2 as List2Icon, List as ListIcon, Location2 as Location2Icon, Location3 as Location3Icon, Location as LocationIcon, Lock as LockIcon, Login2 as Login2Icon, Login as LoginIcon, Logout2 as Logout2Icon, Logout as LogoutIcon, Map$2 as MapIcon, Menu2 as Menu2Icon, Menu3 as Menu3Icon, Menu4 as Menu4Icon, Menu5 as Menu5Icon, Menu6 as Menu6Icon, Menu7 as Menu7Icon, Menu8 as Menu8Icon, MenuH as MenuHIcon, Menu as MenuIcon, MenuV as MenuVIcon, Message as MessageIcon, Mic as MicIcon, MicOff as MicOffIcon, Modal, Moon as MoonIcon, Move as MoveIcon, Music as MusicIcon, Mute as MuteIcon, Network as NetworkIcon, Next as NextIcon, NotificationBell as NotificationBellIcon, Pagination, Pause as PauseIcon, PhoneField, Pie as PieIcon, Pin as PinIcon, PlayCircle as PlayCircleIcon, Power as PowerIcon, Previous as PreviousIcon, Print as PrintIcon, Profile as ProfileIcon, Pulse as PulseIcon, Radio, Refresh as RefreshIcon, Reload as ReloadIcon, RightAlign as RightAlignIcon, Rocket as RocketIcon, RotateLeft as RotateLeftIcon, RotateRight as RotateRightIcon, ScanCard as ScanCardIcon, Scroll as ScrollIcon, Search as SearchIcon, SelectField, SelectItem as SelectItemIcon, Send as SendIcon, Settings as SettingsIcon, Share as ShareIcon, Shield as ShieldCheckIcon, ShieldFlash as ShieldFlashIcon, Shield$1 as ShieldIcon, Shop as ShopIcon, Sort2 as Sort2Icon, SortAscending as SortAscendingIcon, SortDescending as SortDescendingIcon, Sort as SortIcon, Sound as SoundIcon, Stack$1 as StackIcon, Staff as StaffIcon, Star as StarIcon, StopCircle as StopCircleIcon, Stopwatch as StopwatchIcon, Sun as SunIcon, Support as SupportIcon, Switch, Tab, Table, Table$1 as TableIcon, TagDropdown, Tag as TagIcon, TagInput, Text$1 as Text, TextArea, TextField, Text as TextIconIcon, Time as TimeIcon, Toast, Transfer as TransferIcon, Trophy as TrophyIcon, Unlock as UnlockIcon, Upload as UploadIcon, VerticalArrows as VerticalArrowsIcon, Video as VideoIcon, VideoOff as VideoOffIcon, Voucher as VoucherIcon, Wallet as WalletIcon, Warning as WarningIcon, Wave as WaveIcon, Withdraw as WithdrawIcon, getTextColor, hexToRgbA };
+export { Accordion, AddBookmark as AddBookmarkIcon, AddCircle as AddCircleIcon, AddFile as AddFileIcon, Add as AddIcon, AddItem as AddItemIcon, AddUser as AddUserIcon, Alarm as AlarmIcon, Alert, Announce as AnnounceIcon, Apps as AppsIcon, ArrowDown as ArrowDownIcon, ArrowDownLeft as ArrowDownLeftIcon, ArrowDownRight as ArrowDownRightIcon, ArrowLeft as ArrowLeftIcon, ArrowRight as ArrowRightIcon, ArrowUp as ArrowUpIcon, ArrowUpLeft as ArrowUpLeftIcon, ArrowUpRight as ArrowUpRightIcon, Attachment as AttachmentIcon, Avatar, Avatar$1 as AvatarIcon, Backward as BackwardIcon, Badge, Bank as BankIcon, Banner, BarChart as BarChartIcon, Basket as BasketIcon, BendLeft as BendLeftIcon, BendRight as BendRightIcon, Bolt as BoltIcon, Book as BookIcon, Bookmark as BookmarkIcon, Box, Briefcase as BriefcaseIcon, Button, Calendar as CalendarIcon, Camera as CameraIcon, Card, Card$1 as CardIcon, CardInputField, Cart as CartIcon, Cash as CashIcon, CenterAlign as CenterAlignIcon, Certificate2 as Certificate2Icon, Certificate as CertificateIcon, Chart as ChartIcon, CheckCircle as CheckCircleIcon, Check as CheckIcon, Checkbox, ChevronArrowDown as ChevronArrowDownIcon, ChevronArrowLeft as ChevronArrowLeftIcon, ChevronArrowRight as ChevronArrowRightIcon, ChevronArrowUp as ChevronArrowUpIcon, ChevronFilledDown as ChevronFilledDownIcon, ChevronFilledLeft as ChevronFilledLeftIcon, ChevronFilledRight as ChevronFilledRightIcon, ChevronFilledUp as ChevronFilledUpIcon, Circle as CircleIcon, CloseCircle as CloseCircleIcon, Close as CloseIcon, CloudDownload as CloudDownloadIcon, CloudFlash as CloudFlashIcon, Cloud as CloudIcon, CloudRain as CloudRainIcon, CloudUpload as CloudUploadIcon, Command as CommandIcon, Company as CompanyIcon, Compass as CompassIcon, Compress2 as Compress2Icon, Compress as CompressIcon, Component as CopyIcon, Counter, CountryDropdown, Crop as CropIcon, Crown as CrownIcon, Cut as CutIcon, DatePickerField as DatePicker, DebitCard, DebitBalance as DebitCardBalance, Decrease2 as Decrease2Icon, Decrease as DecreaseIcon, Delete as DeleteIcon, Deposits as DepositsIcon, Details as DetailsIcon, Dial as DialIcon, DialOff as DialOffIcon, Disabled as DisabledIcon, Dislike as DislikeIcon, Document as DocumentIcon, DoubleCheck as DoubleCheckIcon, Download as DownloadIcon, Drop as DropIcon, Dropdown, Edit2 as Edit2Icon, Edit as EditIcon, ErrorCircle as ErrorCircleIcon, Error$1 as ErrorIcon, ExitFullScreen as ExitFullScreenIcon, Expand2 as Expand2Icon, Expand as ExpandIcon, ExternalLink as ExternalLinkIcon, Eye as EyeIcon, EyeOff as EyeOffIcon, File as FileIcon, FilePickerInline, Filter as FilterIcon, Flag as FlagIcon, Flame as FlameIcon, Flash as FlashIcon, Folder as FolderIcon, Forward as ForwardIcon, FullScreen as FullScreenIcon, Funnel as FunnelIcon, Gem as GemIcon, Gift as GiftIcon, Gitlab as GitlabIcon, Globe as GlobeIcon, Grid as GridIcon, Heading, HeartFilled as HeartFilledIcon, Heart as HeartIcon, Home as HomeIcon, Icon, Image as ImageIcon, Inbox as InboxIcon, Increase2 as Increase2Icon, Increase as IncreaseIcon, Info as InfoIcon, InfoOutline as InfoOutlineIcon, JustifyAlign as JustifyAlignIcon, Key as KeyIcon, LeftAlign as LeftAlignIcon, Like as LikeIcon, Link as LinkIcon, List2 as List2Icon, List as ListIcon, Loader, Location2 as Location2Icon, Location3 as Location3Icon, Location as LocationIcon, Lock as LockIcon, Login2 as Login2Icon, Login as LoginIcon, Logout2 as Logout2Icon, Logout as LogoutIcon, Map$2 as MapIcon, Menu2 as Menu2Icon, Menu3 as Menu3Icon, Menu4 as Menu4Icon, Menu5 as Menu5Icon, Menu6 as Menu6Icon, Menu7 as Menu7Icon, Menu8 as Menu8Icon, MenuH as MenuHIcon, Menu as MenuIcon, MenuV as MenuVIcon, Message as MessageIcon, Mic as MicIcon, MicOff as MicOffIcon, Modal, Moon as MoonIcon, Move as MoveIcon, Music as MusicIcon, Mute as MuteIcon, Network as NetworkIcon, Next as NextIcon, NotificationBell as NotificationBellIcon, Pagination, Pause as PauseIcon, PhoneField, Pie as PieIcon, Pin as PinIcon, PlayCircle as PlayCircleIcon, Power as PowerIcon, Previous as PreviousIcon, Print as PrintIcon, Profile as ProfileIcon, ProgressBar, Pulse as PulseIcon, Radio, Refresh as RefreshIcon, Reload as ReloadIcon, RightAlign as RightAlignIcon, Rocket as RocketIcon, RotateLeft as RotateLeftIcon, RotateRight as RotateRightIcon, ScanCard as ScanCardIcon, Scroll as ScrollIcon, Search as SearchIcon, SelectField, SelectItem as SelectItemIcon, Send as SendIcon, Settings as SettingsIcon, Share as ShareIcon, Shield as ShieldCheckIcon, ShieldFlash as ShieldFlashIcon, Shield$1 as ShieldIcon, Shop as ShopIcon, Sort2 as Sort2Icon, SortAscending as SortAscendingIcon, SortDescending as SortDescendingIcon, Sort as SortIcon, Sound as SoundIcon, Stack$1 as StackIcon, Staff as StaffIcon, Star as StarIcon, Stepper, StopCircle as StopCircleIcon, Stopwatch as StopwatchIcon, Sun as SunIcon, Support as SupportIcon, Switch, Tab, Table, Table$1 as TableIcon, TagDropdown, Tag as TagIcon, TagInput, Text$1 as Text, TextArea, TextField, Text as TextIconIcon, Time as TimeIcon, Toast, Transfer as TransferIcon, Trophy as TrophyIcon, Unlock as UnlockIcon, Upload as UploadIcon, VerticalArrows as VerticalArrowsIcon, Video as VideoIcon, VideoOff as VideoOffIcon, Voucher as VoucherIcon, Wallet as WalletIcon, Warning as WarningIcon, Wave as WaveIcon, Withdraw as WithdrawIcon, getTextColor, hexToRgbA };

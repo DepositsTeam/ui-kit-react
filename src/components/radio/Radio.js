@@ -17,6 +17,7 @@ const Radio = ({
   alignRight,
   checked,
   onChange,
+  labelComponent,
   ...props
 }) => {
   const radio = useRef();
@@ -64,6 +65,8 @@ const Radio = ({
       />
       {children ? (
         <Box className={"ui-radio__label-wrap"}>{children}</Box>
+      ) : labelComponent ? (
+        <Box className={"ui-radio__label-text"}>{labelComponent}</Box>
       ) : (
         <Text
           className={classNames({
@@ -93,6 +96,7 @@ Radio.propTypes = {
   value: PropTypes.string,
   disabled: PropTypes.bool,
   labelClass: PropTypes.string,
+  labelComponent: PropTypes.node,
   alignRight: PropTypes.bool,
   checked: PropTypes.bool,
   onChange: PropTypes.func,

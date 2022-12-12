@@ -14,13 +14,17 @@ import DatePicker from "./components/date-picker";
 import DebitCard from "./components/debit-card";
 import DebitCardBalance from "./components/debit-card-balance";
 import Dropdown from "./components/dropdown";
+import FilePickerInline from "./components/file-picker-inline";
 import Heading from "./components/heading";
 import Icon from "./components/icon";
+import Loader from "./components/loader";
 import Modal from "./components/modal";
 import Pagination from "./components/pagination";
 import PhoneField from "./components/phone-field";
+import ProgressBar from "./components/progress-bar";
 import Radio from "./components/radio";
 import SelectField from "./components/select-field";
+import Stepper from "./components/stepper";
 import Switch from "./components/switch";
 import Tab from "./components/tab";
 import Table from "./components/table";
@@ -456,16 +460,20 @@ export {
   DebitCard,
   DebitCardBalance,
   Dropdown,
+  FilePickerInline,
   Heading,
   // FormikTextField,
   // HookFormTextField,
   // icons,
   Icon,
+  Loader,
   Modal,
   Pagination,
   PhoneField,
+  ProgressBar,
   Radio,
   SelectField,
+  Stepper,
   Switch,
   Tab,
   Table,

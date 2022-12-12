@@ -13,7 +13,7 @@ const TemplateWithVal = (props) => {
   const [value, setValue] = useState("");
 
   useEffect(() => {
-    alert(value);
+
   }, [value]);
 
   const changeValue = (val) => {

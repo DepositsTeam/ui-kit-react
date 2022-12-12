@@ -59,8 +59,10 @@ const Checkbox = ({
         ref={checkbox}
         onChange={handleOnChange}
       />
-      {children ? (
-        <Box className={"ui-checkbox__label-wrap"}>{children}</Box>
+      {children || labelComponent ? (
+        <Box className={"ui-checkbox__label-wrap"}>
+          {labelComponent ? labelComponent : children}
+        </Box>
       ) : (
         <Text
           className={classNames({
@@ -92,7 +94,7 @@ Checkbox.propTypes = {
   disabled: PropTypes.bool,
   labelClass: PropTypes.string,
   wrapperClass: PropTypes.string,
-  labelComponent: PropTypes.object,
+  labelComponent: PropTypes.node,
   checked: PropTypes.bool,
   onChange: PropTypes.func,
 };
