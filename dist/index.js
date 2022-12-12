@@ -17691,7 +17691,7 @@ Banner.propTypes = {
   smartColor: propTypes$1.exports.string
 };
 
-var _excluded$y = ["className", "children", "ringed", "alignToTop", "label", "value", "disabled", "labelClass", "alignRight", "checked", "onChange"];
+var _excluded$y = ["className", "children", "ringed", "alignToTop", "label", "value", "disabled", "labelClass", "alignRight", "checked", "onChange", "labelComponent"];
 var Radio = function Radio(_ref) {
   var className = _ref.className,
     children = _ref.children,
@@ -17704,6 +17704,7 @@ var Radio = function Radio(_ref) {
     alignRight = _ref.alignRight,
     checked = _ref.checked,
     onChange = _ref.onChange,
+    labelComponent = _ref.labelComponent,
     props = _objectWithoutProperties(_ref, _excluded$y);
   var radio = useRef();
   useEffect(function () {
@@ -17743,7 +17744,9 @@ var Radio = function Radio(_ref) {
     value: value
   })), children ? /*#__PURE__*/React__default.createElement(Box, {
     className: "ui-radio__label-wrap"
-  }, children) : /*#__PURE__*/React__default.createElement(Text$1, {
+  }, children) : labelComponent ? /*#__PURE__*/React__default.createElement(Box, {
+    className: "ui-radio__label-text"
+  }, labelComponent) : /*#__PURE__*/React__default.createElement(Text$1, {
     className: classNames(_defineProperty$x({
       "ui-radio__label-text": true
     }, labelClass, labelClass)),
@@ -17761,6 +17764,7 @@ Radio.propTypes = {
   value: propTypes$1.exports.string,
   disabled: propTypes$1.exports.bool,
   labelClass: propTypes$1.exports.string,
+  labelComponent: propTypes$1.exports.node,
   alignRight: propTypes$1.exports.bool,
   checked: propTypes$1.exports.bool,
   onChange: propTypes$1.exports.func
@@ -17816,9 +17820,9 @@ var Checkbox = function Checkbox(_ref) {
   }, props, {
     ref: checkbox,
     onChange: handleOnChange
-  })), children ? /*#__PURE__*/React__default.createElement(Box, {
+  })), children || labelComponent ? /*#__PURE__*/React__default.createElement(Box, {
     className: "ui-checkbox__label-wrap"
-  }, children) : /*#__PURE__*/React__default.createElement(Text$1, {
+  }, labelComponent ? labelComponent : children) : /*#__PURE__*/React__default.createElement(Text$1, {
     className: classNames(_defineProperty$x({
       "ui-checkbox__label-text": true
     }, labelClass, labelClass)),
@@ -17838,7 +17842,7 @@ Checkbox.propTypes = {
   disabled: propTypes$1.exports.bool,
   labelClass: propTypes$1.exports.string,
   wrapperClass: propTypes$1.exports.string,
-  labelComponent: propTypes$1.exports.object,
+  labelComponent: propTypes$1.exports.node,
   checked: propTypes$1.exports.bool,
   onChange: propTypes$1.exports.func
 };
@@ -76699,7 +76703,7 @@ Table.defaultProps = {
   caseSensitiveSearch: false
 };
 
-var _excluded$3 = ["size", "options", "labelClass", "labelFontFace", "label", "errorMessage", "leftIcon", "rightIcon", "onChange", "placeholder", "showCheckboxes", "initiallySelectedTags"];
+var _excluded$3 = ["size", "options", "labelClass", "labelFontFace", "label", "errorMessage", "leftIcon", "rightIcon", "onChange", "placeholder", "showCheckboxes", "initiallySelectedTags", "maxDropdownHeight"];
 var TagDropdown = function TagDropdown(_ref) {
   var _classNames2;
   var size = _ref.size,
@@ -76713,7 +76717,8 @@ var TagDropdown = function TagDropdown(_ref) {
     onChange = _ref.onChange,
     placeholder = _ref.placeholder,
     showCheckboxes = _ref.showCheckboxes,
-    initiallySelectedTags = _ref.initiallySelectedTags;
+    initiallySelectedTags = _ref.initiallySelectedTags,
+    maxDropdownHeight = _ref.maxDropdownHeight;
     _objectWithoutProperties(_ref, _excluded$3);
   var _useState = useState([]),
     _useState2 = _slicedToArray$1(_useState, 2),
@@ -76855,7 +76860,10 @@ var TagDropdown = function TagDropdown(_ref) {
   return /*#__PURE__*/React__default.createElement(Box, {
     className: classNames(_defineProperty$x({
       "ui-tag-dropdown__wrapper": true
-    }, "size__".concat(size), true))
+    }, "size__".concat(size), true)),
+    style: {
+      "--dropdown-content-height": maxDropdownHeight
+    }
   }, /*#__PURE__*/React__default.createElement(Box, {
     is: "label"
   }, /*#__PURE__*/React__default.createElement(Text$1, {
@@ -76913,10 +76921,12 @@ TagDropdown.propTypes = _objectSpread2$1(_objectSpread2$1({}, inputPropTypes), {
   modelValue: propTypes$1.exports.array,
   showCheckboxes: propTypes$1.exports.bool,
   onChange: propTypes$1.exports.func,
-  initiallySelectedTags: propTypes$1.exports.array
+  initiallySelectedTags: propTypes$1.exports.array,
+  maxDropdownHeight: propTypes$1.exports.string
 });
 TagDropdown.defaultProps = _objectSpread2$1(_objectSpread2$1({}, defaultProps$2), {}, {
-  showCheckboxes: true
+  showCheckboxes: true,
+  maxDropdownHeight: "250px"
 });
 
 // iterable DOM collections
