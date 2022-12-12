@@ -178,6 +178,11 @@
   }
 }
 
+.ui-tag-dropdown__dropdown__options {
+  max-height: var(--dropdown-content-height);
+  overflow-y: auto;
+}
+
 .ui-tag-dropdown__dropdown__option {
   padding: 8px 16px;
   display: flex;

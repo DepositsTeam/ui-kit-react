@@ -27,6 +27,7 @@ const TagDropdown = ({
   placeholder,
   showCheckboxes,
   initiallySelectedTags,
+  maxDropdownHeight,
   ...props
 }) => {
   const [inputTags, setInputTags] = useState([]);
@@ -190,6 +191,7 @@ const TagDropdown = ({
         "ui-tag-dropdown__wrapper": true,
         [`size__${size}`]: true,
       })}
+      style={{ "--dropdown-content-height": maxDropdownHeight }}
     >
       <Box is={"label"}>
         <Text
@@ -270,9 +272,11 @@ TagDropdown.propTypes = {
   showCheckboxes: PropTypes.bool,
   onChange: PropTypes.func,
   initiallySelectedTags: PropTypes.array,
+  maxDropdownHeight: PropTypes.string,
 };
 
 TagDropdown.defaultProps = {
   ...defaultProps,
   showCheckboxes: true,
+  maxDropdownHeight: "250px",
 };

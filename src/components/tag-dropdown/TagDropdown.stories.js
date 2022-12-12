@@ -57,6 +57,12 @@ Default.args = {
   options: [...options],
 };
 
+export const VariableMaxHeight = Template.bind({});
+VariableMaxHeight.args = {
+  options: [...options],
+  maxHeight: "150px",
+};
+
 export const Label = Template.bind({});
 Label.args = {
   options: [...options],
