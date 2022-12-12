@@ -16,6 +16,12 @@ Default.args = {
   children: "Default Button",
 };
 
+export const Loading = Template.bind({});
+Loading.args = {
+  loading: true,
+  loadingText: "Loading",
+};
+
 export const Primary = Template.bind({});
 Primary.args = { children: "Primary Button", colorScheme: "primary" };
 // Primary.storyName = "Primary";

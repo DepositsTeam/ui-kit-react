@@ -8,34 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/Button.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/Button.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/file-picker-inline/FilePickerInline.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/file-picker-inline/FilePickerInline.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/file-picker-inline/FilePickerInline.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/file-picker-inline/FilePickerInline.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/file-picker-inline/FilePickerInline.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/file-picker-inline/FilePickerInline.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/file-picker-inline/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/file-picker-inline/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icons/Check.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icons/Check.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icons/Error.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icons/Error.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icons/Warning.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icons/Warning.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/loader/Loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loader/Loader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/loader/Loader.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loader/Loader.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/loader/Loader.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loader/Loader.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/loader/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loader/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/select-field/SelectField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select-field/SelectField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/select-field/SelectField.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select-field/SelectField.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/stepper/Stepper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stepper/Stepper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/stepper/Stepper.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stepper/Stepper.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/stepper/Stepper.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stepper/Stepper.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/stepper/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stepper/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/hooks/useFilePicker.hook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/hooks/useFilePicker.hook.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storybook-static/282.9fef324a.iframe.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/storybook-static/282.9fef324a.iframe.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/button/Button.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/Button.stories.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -377,6 +350,7 @@
       <workItem from="1670487992970" duration="570000" />
       <workItem from="1670744924352" duration="14711000" />
       <workItem from="1670845780883" duration="1236000" />
+      <workItem from="1670869994657" duration="344000" />
     </task>
     <servers />
   </component>
