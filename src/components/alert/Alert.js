@@ -92,7 +92,7 @@ const Alert = ({
           smartcolor={"currentcolor"}
           className={"ui-alert__close-icon"}
           icon={Close}
-          onClick={props.onClick || remove}
+          onClick={props.onClose || props.onClick || remove}
         />
       )}
     </Box>

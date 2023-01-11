@@ -37,6 +37,17 @@
   }
 
   &:not(.smartColor) {
+    &.color-scheme__info {
+      &.is-toast {
+        border-color: #0d7fe9;
+        border-left: 4px solid #0d7fe9;
+      }
+
+      .ui-alert__header-icon {
+        color: #0d7fe9;
+      }
+    }
+
     &.color-scheme__warning {
       &.is-toast {
         border-color: #ff9505;
@@ -101,7 +112,8 @@
     }
 
     &:not(.color-scheme__default):not(.color-scheme__warning) {
-      .ui-alert__header-text, .ui-alert__header-icon {
+      .ui-alert__header-text,
+      .ui-alert__header-icon {
         color: #fff;
       }
     }

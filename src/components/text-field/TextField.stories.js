@@ -1,6 +1,7 @@
 import React from "react";
 import TextField from "./index";
 import Search from "../icons/Search";
+import Text from "../text";
 
 export default {
   title: "Forms/Text Field",
@@ -79,29 +80,39 @@ SizeXLarge.args = {
   size: "xlarge",
 };
 
-export const SizeLarge = Template.bind({})
+export const SizeLarge = Template.bind({});
 SizeLarge.args = {
   placeholder: "Input placeholder",
   label: "Form Label",
   dropDown: true,
   leftIcon: Search,
   size: "large",
-}
+};
 
-export const SizeMedium = Template.bind({})
+export const SizeMedium = Template.bind({});
 SizeMedium.args = {
   placeholder: "Input placeholder",
   label: "Form Label",
   dropDown: true,
   leftIcon: Search,
   size: "medium",
-}
+};
 
-export const SizeSmall = Template.bind({})
+export const SizeSmall = Template.bind({});
 SizeSmall.args = {
   placeholder: "Input placeholder",
   label: "Form Label",
   dropDown: true,
   leftIcon: Search,
   size: "small",
-}
+};
+
+export const CustomLabel = Template.bind({});
+CustomLabel.args = {
+  placeholder: "Input placeholder",
+  label: (
+    <Text color={"red"} fontSize={"29"} fontWeight={"700"}>
+      I am a random text
+    </Text>
+  ),
+};

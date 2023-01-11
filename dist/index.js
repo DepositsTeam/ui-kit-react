@@ -19696,9 +19696,9 @@ $$4({ target: 'String', proto: true, forced: !correctIsRegExpLogic$2('includes')
 
 var _excluded$t = ["label", "labelComponent", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onLeftIconClick", "onRightIconClick", "invisible", "disabled", "inputClass", "oneCharWide", "leftIconComponent", "rightIconComponent", "labelClass"];
 var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
-  var label = _ref.label;
-    _ref.labelComponent;
-    var leftIcon = _ref.leftIcon,
+  var label = _ref.label,
+    labelComponent = _ref.labelComponent,
+    leftIcon = _ref.leftIcon,
     size = _ref.size,
     dropDown = _ref.dropDown,
     rightIcon = _ref.rightIcon,
@@ -19730,7 +19730,7 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
   return /*#__PURE__*/React__default.createElement(Box, {
     className: wrapperClasses,
     ref: ref
-  }, label && !invisible && (typeof label === "string" ? /*#__PURE__*/React__default.createElement(Box, {
+  }, labelComponent ? labelComponent : label && !invisible && (typeof label === "string" ? /*#__PURE__*/React__default.createElement(Box, {
     is: "label"
   }, /*#__PURE__*/React__default.createElement(Text$1, {
     className: classNames(_defineProperty$x({

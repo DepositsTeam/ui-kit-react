@@ -57,23 +57,25 @@ const TextField = forwardRef(
 
     return (
       <Box className={wrapperClasses} ref={ref}>
-        {label &&
-          !invisible &&
-          (typeof label === "string" ? (
-            <Box is={"label"}>
-              <Text
-                className={classNames({
-                  "ui-text-field__label": true,
-                  [labelClass]: labelClass,
-                })}
-                scale={"subhead"}
-              >
-                {label}
-              </Text>
-            </Box>
-          ) : (
-            label
-          ))}
+        {labelComponent
+          ? labelComponent
+          : label &&
+            !invisible &&
+            (typeof label === "string" ? (
+              <Box is={"label"}>
+                <Text
+                  className={classNames({
+                    "ui-text-field__label": true,
+                    [labelClass]: labelClass,
+                  })}
+                  scale={"subhead"}
+                >
+                  {label}
+                </Text>
+              </Box>
+            ) : (
+              label
+            ))}
 
         <Box className={"ui-text-field__input-wrapper"}>
           {leftIcon && !leftIconComponent && (
