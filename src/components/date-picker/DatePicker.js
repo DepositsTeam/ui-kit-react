@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../scss/textfield.css";
+import "../../scss/textfield.scss";
 import Box from "../box";
 import Text from "../text";
 import PropTypes from "prop-types";

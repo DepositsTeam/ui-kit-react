@@ -8,19 +8,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/providers/ToastProvider.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/providers/ToastProvider.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/hooks/usePushToast.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/auto-layout/AutoLayout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/auto-layout/AutoLayout.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/auto-layout/Autolayout.stories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/grid-layout/GridLayout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/grid-layout/GridLayout.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/grid-layout/GridLayout.stories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/responsive-layout/Col.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/responsive-layout/Col.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/responsive-layout/ResponsiveLayout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/responsive-layout/ResponsiveLayout.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/responsive-layout/ResponsiveLayout.stories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/responsive-layout/Row.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scss/_variables.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/alert/Alert.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/alert/Alert.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/alert/Alert.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/alert/Alert.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/counter/Counter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/counter/Counter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/date-picker/DatePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/date-picker/DatePicker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/file-picker-inline/FilePickerInline.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/file-picker-inline/FilePickerInline.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/phone-field/PhoneField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/phone-field/PhoneField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/select-field/SelectField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select-field/SelectField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text-field/FormikTextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/FormikTextField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text-field/HookFormTextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/HookFormTextField.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/text-field/TextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/TextField.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/toast/Toast.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/toast/Toast.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/textfield.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/textfield.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +43,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="SCSS File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -185,33 +195,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.laravel-idea.search-composer-json": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/ericmcwinner/Documents/Work/Projects/Work/React/deposits-react-ui-kit",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "prettierjs.PrettierConfiguration.Package": "/Users/ericmcwinner/Documents/Work/Projects/Work/React/deposits-react-ui-kit/node_modules/prettier",
-    "settings.editor.selected.configurable": "preferences.rainbow.brackets",
-    "ts.external.directory.path": "/Applications/PhpStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.laravel-idea.search-composer-json&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/ericmcwinner/Documents/Work/Projects/Work/React/deposits-react-ui-kit/src/scss&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/ericmcwinner/Documents/Work/Projects/Work/React/deposits-react-ui-kit/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.rainbow.brackets&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/PhpStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "JavaScript",
-      "Vue"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;JavaScript&quot;,
+      &quot;Vue&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -222,11 +232,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/scss" />
       <recent name="$PROJECT_DIR$/src/components/country-dropdown" />
       <recent name="$PROJECT_DIR$/src/utils" />
       <recent name="$PROJECT_DIR$/src/components/table" />
       <recent name="$PROJECT_DIR$/src/components/debit-card" />
-      <recent name="$PROJECT_DIR$/src/components/icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components/providers" />
@@ -366,7 +376,9 @@
       <workItem from="1670871466983" duration="888000" />
       <workItem from="1671436648755" duration="1996000" />
       <workItem from="1671575500505" duration="128000" />
-      <workItem from="1673366302726" duration="20944000" />
+      <workItem from="1673366302726" duration="29945000" />
+      <workItem from="1673533437755" duration="853000" />
+      <workItem from="1673534478304" duration="420000" />
     </task>
     <servers />
   </component>

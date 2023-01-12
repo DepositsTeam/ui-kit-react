@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "../../utils/classNames";
-import "../../scss/textfield.css";
+import "../../scss/textfield.scss";
 import "./Counter.scss";
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";

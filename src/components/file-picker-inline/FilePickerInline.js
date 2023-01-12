@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
-import "../../scss/textfield.css";
+import "../../scss/textfield.scss";
 import "./FilePickerInline.scss";
 import Box from "../box";
 import Text from "../text";
