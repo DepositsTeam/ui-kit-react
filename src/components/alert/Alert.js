@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Box from "../box";
 import "./Alert.scss";
 import PropTypes from "prop-types";
@@ -13,6 +13,7 @@ import Info from "../icons/Info";
 import Close from "../icons/Close";
 import Heading from "../heading";
 import { getTextColor } from "../../utils/colorManager";
+import { ThemeContext } from "../providers/ThemeProvider";
 
 const Alert = ({
   message,
@@ -31,6 +32,7 @@ const Alert = ({
   ...props
 }) => {
   const [showAlert, setShowAlert] = useState(true);
+  const { theme: d__theme } = useContext(ThemeContext);
   const generateAlertClassName = classNames(
     {
       [`theme__${theme}`]: true,
@@ -46,6 +48,26 @@ const Alert = ({
     "--smart-color": smartColor,
     "--icon-color": iconColor,
     "--smart-text-color": getTextColor(smartColor),
+    "--light-primary-title-text-color": getTextColor(
+      d__theme["--light-primary-action-color"],
+      "#ffffff",
+      "#212934"
+    ),
+    "--light-primary-description-text-color": getTextColor(
+      d__theme["--light-primary-action-color"],
+      "#ffffff",
+      "#5f6b7a"
+    ),
+    "--dark-primary-title-text-color": getTextColor(
+      d__theme["--dark-primary-action-color"],
+      "#ffffff",
+      "#212934"
+    ),
+    "--dark-primary-description-text-color": getTextColor(
+      d__theme["--dark-primary-action-color"],
+      "#ffffff",
+      "#5f6b7a"
+    ),
   };
 
   const schemeIcons = {
