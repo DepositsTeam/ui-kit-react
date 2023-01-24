@@ -1,16 +1,49 @@
-import React from "react";
+import React, { useState, useLayoutEffect, useEffect } from "react";
 import "./Tab.scss";
-import PropType from "prop-types";
+import PropTypes from "prop-types";
 import Box from "../box";
 import keyGen from "../../utils/keyGen";
 import Text from "../text";
 import classNames from "../../utils/classNames";
 
-const Tab = ({ is, text, tabs, horizontal, spacing, ...props }) => {
+const Tab = ({
+  is,
+  text,
+  tabs,
+  className,
+  initiallyActiveTab,
+  horizontal,
+  spacing,
+  onTabChange,
+  ...props
+}) => {
+  const [internalActive, setInternalActive] = useState(0);
+
+  useLayoutEffect(() => {
+    if (
+      initiallyActiveTab !== undefined &&
+      typeof initiallyActiveTab === "number"
+    ) {
+      setInternalActive(initiallyActiveTab);
+    }
+  }, [initiallyActiveTab]);
+
+  useEffect(() => {
+    if (onTabChange && typeof onTabChange === "function") {
+      onTabChange(internalActive, tabs[internalActive]);
+    }
+  }, [internalActive]);
+
   const wrapperClassNames = classNames({
     "ui-tabs": true,
     horizontal,
   });
+
+  const switchActiveTabs = (index, tab) => {
+    if (!tab.disabled) {
+      setInternalActive(index);
+    }
+  };
   const generateSpacing = (index) => {
     if (index < tabs.length - 1) {
       if (horizontal) {
@@ -30,11 +63,20 @@ const Tab = ({ is, text, tabs, horizontal, spacing, ...props }) => {
     const spacing = generateSpacing(index);
     return (
       <Box
-        is={is ? is : "a"}
+        display={"inline-block"}
+        cursor={"pointer"}
         {...spacing}
         {...tab}
         key={keyGen()}
-        className={"ui-tab"}
+        className={classNames(
+          {
+            "ui-tab": true,
+            active: internalActive === index,
+            disabled: typeof tab === "object" && tab.disabled,
+          },
+          className
+        )}
+        onClick={() => switchActiveTabs(index, tab)}
       >
         <Text is={"span"} scale={"subhead"}>
           {text}
@@ -49,9 +91,15 @@ const Tab = ({ is, text, tabs, horizontal, spacing, ...props }) => {
 export default Tab;
 
 Tab.propTypes = {
-  tabs: PropType.array,
-  horizontal: PropType.bool,
-  spacing: PropType.string,
+  tabs: PropTypes.array,
+  horizontal: PropTypes.bool,
+  spacing: PropTypes.string,
+  initiallyActiveTab: PropTypes.number,
+  onTabChange: PropTypes.func,
 };
 
-Tab.defaultProps = {};
+Tab.defaultProps = {
+  horizontal: true,
+  initiallyActiveTab: 0,
+  spacing: "4px",
+};

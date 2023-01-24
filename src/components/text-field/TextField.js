@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState, useEffect, useLayoutEffect } from "react";
 import "../../scss/textfield.scss";
 import Box from "../box";
 import Text from "../text";
@@ -8,6 +8,12 @@ import ChevronFilledDown from "../icons/ChevronFilledDown";
 import Error from "../icons/Error";
 import classNames from "../../utils/classNames";
 import inputPropTypes, { defaultProps } from "../../utils/inputPropTypes";
+import { allowOnlyNumbers } from "../../utils/allowOnlyNumbers";
+import EyeFilledIcon from "../icons/filled/EyeFilledIcon";
+import NoEyeFilledIcon from "../icons/filled/NoEyeFilledIcon";
+import { formatSSN } from "../../utils/formatSSN";
+import number_format from "../../utils/number_format";
+import { formatPercentage } from "../../utils/formatPercentage";
 
 const TextField = forwardRef(
   (
@@ -32,14 +38,44 @@ const TextField = forwardRef(
       leftIconComponent,
       rightIconComponent,
       labelClass,
+      onlyNumbers,
+      showError,
+      onKeyup,
+      onKeydown,
+      onKeypress,
+      onChange,
+      onInput,
+      isPassword,
+      emitOnlyCurrencyValue,
+      currency,
+      type,
+      ssn,
+      percentage,
+      maxLength,
       ...props
     },
     ref
   ) => {
+    const [trueInternalValue, setTrueInternalValue] = useState("");
+    const [formattedSSN, setFormattedSSN] = useState(["", ""]);
+    const [localType, setLocalType] = useState("text");
+
+    useLayoutEffect(() => {}, [trueInternalValue]);
+
+    useLayoutEffect(() => {
+      if (ssn && formattedSSN) {
+        setTrueInternalValue(formattedSSN[0]);
+      }
+    }, [formattedSSN, ssn]);
+
+    useLayoutEffect(() => {
+      setLocalType(isPassword ? "password" : type);
+    }, [isPassword, type]);
+
     const generateInputFieldClasses = classNames(
       {
         "ui-text-field__input": true,
-        "has-error": errorMessage,
+        "has-error": errorMessage || showError,
         "has-left-icon": leftIcon || leftIconComponent,
         "has-right-icon": dropDown || rightIcon || rightIconComponent,
         invisible,
@@ -54,6 +90,183 @@ const TextField = forwardRef(
       [`size__${size}`, "ui-text-field__wrapper"],
       className
     );
+
+    const handleKeyEvents = (e) => {
+      if (onlyNumbers || ssn) {
+        return allowOnlyNumbers(e);
+      }
+    };
+
+    const handleKeyup = (e) => {
+      if (onKeyup && typeof onKeyup === "function") {
+        onKeyup(e);
+      }
+      return handleKeyEvents(e);
+    };
+
+    const handleKeydown = (e) => {
+      if (onKeydown && typeof onKeydown === "function") {
+        onKeydown(e);
+      }
+      return handleKeyEvents(e);
+    };
+
+    const handleKeypress = (e) => {
+      if (onKeypress && typeof onKeypress === "function") {
+        onKeypress(e);
+      }
+      return handleKeyEvents(e);
+    };
+
+    const handleRightIconClick = (e) => {
+      if (isPassword) {
+        setLocalType(localType === "text" ? "password" : "text");
+      }
+      if (onRightIconClick && typeof onRightIconClick === "function") {
+        onRightIconClick(e);
+      }
+    };
+
+    const handleLeftIconClick = (e) => {
+      if (onLeftIconClick && typeof onLeftIconClick === "function") {
+        onLeftIconClick(e);
+      }
+    };
+
+    const emitValue = (e, val) => {
+      if (onChange && typeof onChange === "function") {
+        onChange({
+          ...e,
+          target: {
+            ...e.target,
+            value: val ? val : trueInternalValue,
+          },
+        });
+      }
+      if (onInput && typeof onInput === "function") {
+        onInput({
+          ...e,
+          target: {
+            ...e.target,
+            value: val ? val : trueInternalValue,
+          },
+        });
+      }
+    };
+
+    const computedMaxLength = ssn ? 11 : maxLength;
+
+    const handleInputEvents = (e) => {
+      if (currency) {
+        let value = e.target.value,
+          temp,
+          regex = new RegExp(/^\d*(\.\d{0,2})?$/);
+        if (!regex.test(value)) {
+          temp = value.split("");
+          let tested = "";
+          for (let i = 0; i < temp.length; i++) {
+            tested += temp[i];
+            if (!regex.test(tested)) {
+              setTrueInternalValue(tested.substr(0, i));
+              emitValue(
+                e,
+                emitOnlyCurrencyValue
+                  ? tested.substr(0, i).replaceAll("$", "").replaceAll(",", "")
+                  : tested.substr(0, i)
+              );
+            }
+          }
+        } else {
+          if (emitOnlyCurrencyValue) {
+            const emittedValue = e.target.value
+              .replaceAll("$", "")
+              .replaceAll(",", "");
+            setTrueInternalValue(emittedValue);
+            emitValue(e, emittedValue);
+          } else {
+            setTrueInternalValue(e.target.value);
+            emitValue(e, e.target.value);
+          }
+        }
+      } else if (ssn) {
+        const formatted = formatSSN(e.target.value);
+        setFormattedSSN(formatted);
+        emitValue(e, formatted[0]);
+      } else if (percentage) {
+        try {
+          const formattedPercent = formatPercentage(e.target.value);
+          setTrueInternalValue(formattedPercent);
+          emitValue(e, formattedPercent);
+        } catch (err) {
+          setTrueInternalValue("");
+          emitValue(e, "");
+        }
+      } else {
+        setTrueInternalValue(e.target.value);
+        emitValue(e, e.target.value);
+      }
+    };
+
+    const handleBlurEvents = (e) => {
+      if (ssn) {
+        setTrueInternalValue(formattedSSN[1]);
+      }
+      if (currency) {
+        if (e.target.value) {
+          setTrueInternalValue(
+            `$${number_format(
+              parseFloat(
+                trueInternalValue.split(",").join("").replaceAll("$", "")
+              ),
+              2
+            )}`
+          );
+        } else {
+          setTrueInternalValue("$0.00");
+        }
+      }
+      if (percentage) {
+        const value = e.target.value;
+        if (value) {
+          const parsedValue = parseFloat(value.replaceAll("%", ""));
+          const renderedValue =
+            parsedValue < 0 ? 0 : parsedValue > 100 ? 100 : parsedValue;
+          setTrueInternalValue(`${renderedValue}%`);
+        } else {
+          setTrueInternalValue("0%");
+        }
+      }
+    };
+
+    const handleFocusEvents = (e) => {
+      if (ssn) {
+        setTrueInternalValue(formattedSSN[0]);
+      }
+      if (currency) {
+        if (props.emitOnlyCurrencyValue) {
+          setTrueInternalValue(
+            trueInternalValue
+              .substring(1)
+              .replaceAll("$", "")
+              .replaceAll(",", "")
+          );
+          setTimeout(() => {
+            e.target.select();
+          });
+        } else {
+          setTrueInternalValue(trueInternalValue.substring(1));
+          setTimeout(() => {
+            e.target.select();
+          });
+        }
+      }
+      if (percentage) {
+        setTrueInternalValue(e.target.value.replaceAll("%", ""));
+        setTimeout(() => {
+          e.target.select();
+        });
+      }
+    };
 
     return (
       <Box className={wrapperClasses} ref={ref}>
@@ -79,20 +292,50 @@ const TextField = forwardRef(
 
         <Box className={"ui-text-field__input-wrapper"}>
           {leftIcon && !leftIconComponent && (
-            <Icon icon={leftIcon} className={"ui-text-field__left-icon"} />
+            <Icon
+              icon={leftIcon}
+              className={"ui-text-field__left-icon"}
+              onClick={handleLeftIconClick}
+            />
           )}
           {leftIconComponent && (
-            <Box className={"ui-text-field__left-icon"}>
+            <Box
+              className={"ui-text-field__left-icon"}
+              onClick={handleLeftIconClick}
+            >
               {leftIconComponent}
             </Box>
           )}
 
-          <Box className={generateInputFieldClasses} is={"input"} {...props} />
-          {(dropDown || rightIcon) && !rightIconComponent && (
+          <Box
+            {...props}
+            className={generateInputFieldClasses}
+            onKeyUp={handleKeyup}
+            onKeyDown={handleKeydown}
+            onKeyPress={handleKeypress}
+            onInput={handleInputEvents}
+            onBlur={handleBlurEvents}
+            onFocus={handleFocusEvents}
+            type={localType}
+            is={"input"}
+            value={trueInternalValue}
+            maxLength={computedMaxLength}
+          />
+          {isPassword && !rightIcon ? (
             <Icon
-              icon={dropDown ? ChevronFilledDown : rightIcon}
+              icon={localType === "text" ? EyeFilledIcon : NoEyeFilledIcon}
               className={"ui-text-field__right-icon"}
+              onClick={handleRightIconClick}
             />
+          ) : (
+            (dropDown || rightIcon) &&
+            !rightIconComponent && (
+              <Icon
+                icon={dropDown ? ChevronFilledDown : rightIcon}
+                className={"ui-text-field__right-icon"}
+                onClick={handleRightIconClick}
+              />
+            )
           )}
           {rightIconComponent}
         </Box>
@@ -137,6 +380,8 @@ TextField.propTypes = {
   onKeyup: PropTypes.func,
   leftIconComponent: PropTypes.node,
   rightIconComponent: PropTypes.node,
+  onlyNumbers: PropTypes.bool,
+  percentage: PropTypes.bool,
 };
 
 TextField.defaultProps = {

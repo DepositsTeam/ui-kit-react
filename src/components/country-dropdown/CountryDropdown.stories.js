@@ -8,3 +8,6 @@ export default {
 const Template = (args) => <CountryDropdown {...args} />;
 
 export const Default = Template.bind({});
+Default.args = {
+  label: "Select a country",
+};

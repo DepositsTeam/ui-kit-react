@@ -26,6 +26,13 @@
             transparent 6px 9px
           );
         }
+        &.dark_mode::after {
+          background: repeating-linear-gradient(
+            to bottom,
+            #202b3c 0px 3px,
+            transparent 6px 9px
+          );
+        }
       }
       &.dark_mode {
         &::after {
@@ -56,6 +63,11 @@
           background: #94a3b8;
           border-radius: 50%;
         }
+        &.completed {
+          &::before {
+            display: none;
+          }
+        }
       }
       &.dark_mode {
         background: var(--dark-input-background-color);
@@ -74,6 +86,9 @@
           background: var(--active-color-bg);
           &::before {
             background: var(--active-color);
+          }
+          &.activeColor {
+            border-color: var(--active-color);
           }
         }
       }

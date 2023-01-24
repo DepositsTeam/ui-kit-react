@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import Box from "../box";
 import classNames from "../../utils/classNames";
 import "./ProgressBar.scss";
+import { DarkModeContext } from "../providers/DarkModeProvider";
+import { ThemeContext } from "../providers/ThemeProvider";
 
 const ProgressBar = ({
   variant,
@@ -17,6 +19,8 @@ const ProgressBar = ({
   ...props
 }) => {
   const [computedWidth, setComputedWidth] = useState(0);
+  const { darkMode } = useContext(DarkModeContext);
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     if (percentage) {
@@ -28,12 +32,24 @@ const ProgressBar = ({
     }
   }, [percentage, currentStep, totalSteps]);
 
-  const computedThemeStyles = {
-    "--fill-color": fillColor || "#0db9e9",
-    "--empty-color":
-      emptyColor || variant === "variant-2" ? "#bdf3fc" : "#999999",
-    "--height": height,
-  };
+  const computedThemeStyles = darkMode
+    ? {
+        "--fill-color": darkFillColor || theme["--dark-primary-action-color"],
+        "--empty-color": darkEmptyColor
+          ? emptyColor
+          : variant === "variant-2"
+          ? theme["--dark-primary-200"]
+          : "#384860",
+        "--height": height,
+      }
+    : {
+        "--fill-color": fillColor || theme["--light-primary-action-color"],
+        "--empty-color":
+          emptyColor || variant === "variant-2"
+            ? theme["--light-primary-200"]
+            : "#384860",
+        "--height": props.height,
+      };
 
   return (
     <Box

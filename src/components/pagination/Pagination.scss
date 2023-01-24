@@ -5,6 +5,10 @@
   &.smartColor {
     .ui-pagination__page-number__active {
       background: var(--smart-color);
+      color: var(--smart-text-color);
+      .ui-text {
+        color: var(--smart-text-color);
+      }
     }
 
     .ui-pagination__left-arrow,

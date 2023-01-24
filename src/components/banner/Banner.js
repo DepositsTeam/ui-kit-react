@@ -86,7 +86,8 @@ const Banner = ({
         <Icon
           icon={CloseIcon}
           onClick={remove}
-          className={"ui-banner_close-icon"}
+          className={"ui-banner__close-icon"}
+          cursor={"pointer"}
         />
       )}
     </Box>

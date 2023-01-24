@@ -7,6 +7,7 @@ import Icon from "../icon";
 import Close from "../icons/Close";
 import PropTypes from "prop-types";
 import keyGen from "../../utils/keyGen";
+import TextField from "../text-field";
 
 const TagInput = ({
   label,
@@ -106,7 +107,7 @@ const TagInput = ({
           {label}
         </Text>
       </Box>
-      <div className="ui-tag-input__input-wrapper">
+      <Box className="ui-tag-input__input-wrapper">
         {inputTags.map((tag, index) => (
           <Box
             is="div"
@@ -128,10 +129,11 @@ const TagInput = ({
             />
           </Box>
         ))}
-        <Box
+        <TextField
           className={generatedTagInputClasses}
-          is="input"
           {...props}
+          invisible
+          size={size}
           {...inputProps}
           onKeyDown={handleKeyDown}
           onKeyUp={() => setIsKeyReleased(true)}
@@ -140,7 +142,7 @@ const TagInput = ({
           autoFocus
           onFocus={(e) => e.currentTarget.select()}
         />
-      </div>
+      </Box>
     </Box>
   );
 };

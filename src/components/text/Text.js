@@ -8,6 +8,7 @@ const Text = ({
   className,
   scale,
   uppercase,
+  center,
   equalLineHeight,
   fontWeight,
   fontSize,
@@ -21,6 +22,7 @@ const Text = ({
       uppercase,
       "equal-line-height": equalLineHeight,
       "ui-text": true,
+      center,
       customFontWeight: fontWeight,
       customFontSize: fontSize,
       customLineHeight: lineHeight,
@@ -62,12 +64,15 @@ Text.propTypes = {
   fontWeight: PropTypes.string,
   fontSize: PropTypes.string,
   lineHeight: PropTypes.string,
+  darkClassName: PropTypes.string,
+  center: PropTypes.bool,
 };
 
 Text.defaultProps = {
   is: "p",
   uppercase: false,
   equalLineHeight: false,
+  darkClassName: "text-neutral-600",
 };
 
 export default Text;

@@ -1,11 +1,27 @@
 import TagDropdown from "./TagDropdown";
+import ThemeProvider from "../providers/ThemeProvider";
+import DarkModeProvider from "../providers/DarkModeProvider";
 
 export default {
   title: "Forms/Tag Dropdown",
   component: TagDropdown,
 };
 
-const Template = (args) => <TagDropdown {...args} />;
+const Template = (args) => (
+  <ThemeProvider>
+    <TagDropdown {...args} />
+  </ThemeProvider>
+);
+
+const DarkModeTemplate = (args) => (
+  <ThemeProvider>
+    <div style={{ padding: "3em", background: "#121A26" }}>
+      <DarkModeProvider darkMode={true}>
+        <TagDropdown {...args} />
+      </DarkModeProvider>
+    </div>
+  </ThemeProvider>
+);
 
 const options = [
   {
@@ -71,6 +87,29 @@ Label.args = {
 
 export const StringOptions = Template.bind({});
 StringOptions.args = {
+  options: [...stringOptions],
+  label: "String Options",
+};
+
+export const DarkModeDefault = DarkModeTemplate.bind({});
+DarkModeDefault.args = {
+  options: [...options],
+};
+
+export const DarkModeVariableMaxHeight = DarkModeTemplate.bind({});
+DarkModeVariableMaxHeight.args = {
+  options: [...options],
+  maxHeight: "150px",
+};
+
+export const DarkModeLabel = DarkModeTemplate.bind({});
+DarkModeLabel.args = {
+  options: [...options],
+  label: "Dropdown",
+};
+
+export const DarkModeStringOptions = DarkModeTemplate.bind({});
+DarkModeStringOptions.args = {
   options: [...stringOptions],
   label: "String Options",
 };

@@ -48,6 +48,7 @@ const Table = ({
   caseSensitiveSearch,
   onPageChange,
   onRowSelected,
+  exportCSVUrl,
   ...props
 }) => {
   const [internalCurrentPage, setInternalCurrentPage] = useState();
@@ -276,6 +277,14 @@ const Table = ({
 
   const buttonActionsEnabled = enableCustomizeView && enableCsvExport;
 
+  const handleCsvExport = () => {
+    if (exportCSVUrl) {
+      window.open(exportCSVUrl, "_blank");
+    } else {
+      exportCsv();
+    }
+  };
+
   return (
     <TableContext.Provider value={initialContextState}>
       <Box className={"ui-table__container"}>
@@ -316,7 +325,7 @@ const Table = ({
               <Button
                 leftIcon={ExternalLink}
                 size={"medium"}
-                onClick={exportCsv}
+                onClick={handleCsvExport}
               >
                 Export
               </Button>
@@ -483,6 +492,7 @@ Table.propTypes = {
   onPageChange: PropTypes.func,
   caseSensitiveSearch: PropTypes.bool,
   onRowSelected: PropTypes.func,
+  exportCSVUrl: PropTypes.string,
 };
 
 Table.defaultProps = {

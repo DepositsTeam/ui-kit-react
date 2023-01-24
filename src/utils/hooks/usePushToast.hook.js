@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ToastContext } from "../../components/providers/ToastProvider";
 import uniqueRandomString from "../uniqueRandomString";
 
-export const usePushToast = () => {
+export const usePushToastHook = () => {
   const { setToasts } = useContext(ToastContext);
 
   const pushToast = (toast) => {

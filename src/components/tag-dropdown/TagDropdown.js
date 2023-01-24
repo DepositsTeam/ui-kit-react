@@ -224,7 +224,12 @@ const TagDropdown = ({
           )}
         </Box>
         <Box className={"ui-tag-dropdown__input-wrapper__right"}>
-          {rightIcon || <Icon icon={ChevronFilledDown} />}
+          {rightIcon || (
+            <Icon
+              icon={ChevronFilledDown}
+              className={"ui-text-field__right-icon"}
+            />
+          )}
         </Box>
       </Box>
       {showOptions && (

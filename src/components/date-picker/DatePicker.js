@@ -138,6 +138,6 @@ DatePickerField.propTypes = {
 };
 
 DatePickerField.defaultProps = {
-  size: "medium",
+  size: "huge",
   dateFormat: "MM-dd-yyyy",
 };

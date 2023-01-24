@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./CountryDropdown.scss";
-import Box from "../box";
 import Dropdown from "../dropdown";
 import countries from "./countries_states_cities.json";
 

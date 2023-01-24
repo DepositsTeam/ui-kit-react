@@ -35,32 +35,38 @@
   background-size: cover;
   background-repeat: no-repeat;
 
-  &.background__cyan {
+  &.background__smartColor {
+    background: var(--smart-color);
+    color: var(--smart-text-color);
+  }
+
+  &.background__cyan:not(.background__smartColor) {
     background: #0c9ccc;
     color: #212934;
   }
 
-  &.background__green {
+  &.background__green:not(.background__smartColor) {
     background: #00b058;
     color: #fff;
   }
 
-  &.background__orange {
+  &.background__orange:not(.background__smartColor) {
     background: #ff9505;
     color: #212934;
   }
 
-  &.background__red {
+  &.background__red:not(.background__smartColor) {
     background: #d62f4b;
     color: #fff;
   }
 
-  &.background__gray {
+  &.background__gray:not(.background__smartColor),
+  &.background__grey:not(.background__smartColor) {
     background: #5f6b7a;
     color: #fff;
   }
 
-  &.background__blue {
+  &.background__blue:not(.background__smartColor) {
     background: #0d7fe9;
     color: #fff;
   }
@@ -70,31 +76,56 @@
   &.background__cyan {
     background: #bdf3fc;
     color: #085e7a;
+    &.dark_mode {
+      background: #0b5169;
+      color: #36bdea;
+    }
   }
 
   &.background__green {
     background: #c4efdf;
     color: #1f624a;
+    &.dark_mode {
+      background: #175636;
+      color: #36c77d;
+    }
   }
 
   &.background__orange {
     background: #fff0db;
     color: #995a06;
+    &.dark_mode {
+      background: #6e4102;
+      color: #fb9810;
+    }
   }
 
   &.background__red {
     background: #fcc5ce;
     color: #5c1e27;
+    &.dark_mode {
+      background: #911c30;
+      color: #eb98a6;
+    }
   }
 
-  &.background__grey {
+  &.background__grey,
+  &.background__gray {
     background: #e1e7ec;
     color: #212934;
+    &.dark_mode {
+      background: #202b3c;
+      color: #cbd5e1;
+    }
   }
 
   &.background__blue {
     background: #ddefff;
     color: #003f79;
+    &.dark_mode {
+      background: #2a4c76;
+      color: #7da7db;
+    }
   }
 }
 
@@ -102,6 +133,10 @@
   &.background__extra {
     background: #e1e7ec;
     color: #212934;
+    &.dark_mode {
+      background: #121a26;
+      color: #cbd5e1;
+    }
   }
 
   > .ui-avatar__avatar-status {
@@ -112,6 +147,9 @@
     border-radius: 50%;
     bottom: 0;
     right: -5%;
+    &.dark_mode {
+      border-color: #121a26;
+    }
   }
 
   &.status__green > .ui-avatar__avatar-status {
@@ -123,6 +161,10 @@
   }
 
   &.status__gray > .ui-avatar__avatar-status {
+    background-color: #e1e7ec;
+  }
+
+  &.status__grey > .ui-avatar__avatar-status {
     background-color: #e1e7ec;
   }
 }
@@ -161,6 +203,9 @@
   &.stacked {
     .ui-avatar {
       border: 3px solid #fff;
+      &.dark_mode {
+        border-color: #121a26;
+      }
     }
 
     > .ui-avatar__wrapper:not(:first-child) {

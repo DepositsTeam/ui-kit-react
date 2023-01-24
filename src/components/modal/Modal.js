@@ -57,7 +57,7 @@ const Modal = ({
             "--max-modal-width": maxModalWidth,
           })}
         >
-          <div className={"ui-modal__heading"}>
+          <Box className={"ui-modal__heading"}>
             {typeof heading === "string" ? (
               <Heading marginTop={0} marginBottom={0} is={"h5"}>
                 {heading}
@@ -74,15 +74,15 @@ const Modal = ({
               onClick={handleCloseClicks}
               cursor={"pointer"}
             />
-          </div>
-          <div
+          </Box>
+          <Box
             className={classNames({
               "ui-modal__body": true,
               [bodyClass]: bodyClass,
             })}
           >
             {props.children}
-          </div>
+          </Box>
         </Box>
       </Box>
     </Portal>

@@ -67,7 +67,7 @@ export const useFilePicker = (props, file) => {
 
   const emptyFile = () => {
     setSelectedFileName("");
-    const input = file.current.$el;
+    const input = file.current;
     input.setAttribute("type", "text");
     input.setAttribute("type", "file");
     if (typeof props.onCleared === "function") props.onCleared();

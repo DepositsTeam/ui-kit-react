@@ -124,6 +124,7 @@ Button.defaultProps = {
   leftIcon: null,
   size: "small",
   loadingText: "Loading",
+  colorScheme: "default",
 };
 
 export default Button;

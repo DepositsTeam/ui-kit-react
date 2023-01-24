@@ -18,6 +18,8 @@ const Radio = ({
   checked,
   onChange,
   labelComponent,
+  ringSize,
+  ringThickness,
   ...props
 }) => {
   const radio = useRef();
@@ -50,8 +52,13 @@ const Radio = ({
     className
   );
   return (
-    <Box is={"label"} className={generateRadioClassName}>
-      <input
+    <Box
+      is={"label"}
+      className={generateRadioClassName}
+      style={{ "--ring-size": ringSize, "--ring-thickness": ringThickness }}
+    >
+      <Box
+        is={"input"}
         className={classNames({
           "ui-radio": true,
           hasLabel: label || children,
@@ -87,6 +94,8 @@ export default Radio;
 Radio.defaultProps = {
   ringed: false,
   alignToTop: false,
+  ringSize: "16px",
+  ringThickness: "5px",
 };
 
 Radio.propTypes = {
@@ -100,4 +109,6 @@ Radio.propTypes = {
   alignRight: PropTypes.bool,
   checked: PropTypes.bool,
   onChange: PropTypes.func,
+  ringSize: PropTypes.string,
+  ringThickness: PropTypes.string,
 };

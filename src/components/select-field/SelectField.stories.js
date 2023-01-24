@@ -1,147 +1,212 @@
-import React, { useState, useEffect } from "react";
-import SelectField from "./index";
-import Search from "../icons/Search";
+import SelectField from "./SelectField";
+import DarkModeProvider from "../providers/DarkModeProvider";
+import ThemeProvider from "../providers/ThemeProvider";
+import SearchIcon from "../icons/Search";
+import { useState } from "react";
+import Box from "../box";
 
 export default {
   title: "Forms/Select Field",
   component: SelectField,
+  argTypes: {},
 };
 
-const Template = (props) => <SelectField {...props} />;
+const Template = (args) => (
+  <ThemeProvider>
+    <SelectField {...args} />
+  </ThemeProvider>
+);
 
-const TemplateWithVal = (props) => {
+const DarkModeTemplate = (args) => (
+  <ThemeProvider>
+    <div style={{ padding: "3em", background: "#121A26" }}>
+      <DarkModeProvider darkMode={true}>
+        <SelectField {...args} />
+      </DarkModeProvider>
+    </div>
+  </ThemeProvider>
+);
+
+const StatefulTemplate = (args) => {
   const [value, setValue] = useState("");
 
-  useEffect(() => {
-
-  }, [value]);
-
-  const changeValue = (val) => {
-    // alert(val);
-    setValue(val);
-  };
-
-  return <SelectField {...props} value={value} onChange={changeValue} />;
+  return (
+    <ThemeProvider>
+      <SelectField {...args} onChange={(value) => setValue(value)} />
+      <Box is={"span"}>{value}</Box>
+    </ThemeProvider>
+  );
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  placeholder: "Select a value",
+  label: "Form Label",
+};
+
+export const DarkModeDefault = DarkModeTemplate.bind({});
+DarkModeDefault.args = {
   label: "Form Label",
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  placeholder: "Select a value",
+  label: "Form Label",
+  disabled: true,
+};
+
+export const DarkModeDisabled = DarkModeTemplate.bind({});
+DarkModeDisabled.args = {
   label: "Form Label",
   disabled: true,
 };
 
 export const Error = Template.bind({});
 Error.args = {
-  placeholder: "Select a value",
+  label: "Form Label",
+  errorMessage: "Error Message",
+};
+
+export const DarkModeError = DarkModeTemplate.bind({});
+DarkModeError.args = {
   label: "Form Label",
   errorMessage: "Error Message",
 };
 
 export const LeftIcon = Template.bind({});
 LeftIcon.args = {
-  placeholder: "Select a value",
   label: "Form Label",
-  leftIcon: Search,
+  leftIcon: SearchIcon,
+};
+
+export const DarkModeLeftIcon = DarkModeTemplate.bind({});
+DarkModeLeftIcon.args = {
+  label: "Form Label",
+  leftIcon: SearchIcon,
 };
 
 export const DropDown = Template.bind({});
 DropDown.args = {
-  placeholder: "Select a value",
+  label: "Form Label",
+  dropDown: true,
+};
+
+export const DarkModeDropDown = DarkModeTemplate.bind({});
+DarkModeDropDown.args = {
   label: "Form Label",
   dropDown: true,
 };
 
 export const LeftIconAndDropDown = Template.bind({});
 LeftIconAndDropDown.args = {
-  placeholder: "Select a value",
   label: "Form Label",
   dropDown: true,
-  leftIcon: Search,
+  leftIcon: SearchIcon,
+};
+
+export const DarkModeLeftIconAndDropDown = DarkModeTemplate.bind({});
+DarkModeLeftIconAndDropDown.args = {
+  label: "Form Label",
+  dropDown: true,
+  leftIcon: SearchIcon,
 };
 
 export const SizeMassive = Template.bind({});
 SizeMassive.args = {
-  placeholder: "Select a value",
   label: "Form Label",
   dropDown: true,
-  leftIcon: Search,
+  leftIcon: SearchIcon,
+  size: "massive",
+};
+
+export const DarkModeSizeMassive = DarkModeTemplate.bind({});
+DarkModeSizeMassive.args = {
+  label: "Form Label",
+  dropDown: true,
+  leftIcon: SearchIcon,
   size: "massive",
 };
 
 export const SizeHuge = Template.bind({});
 SizeHuge.args = {
-  placeholder: "Select a value",
   label: "Form Label",
   dropDown: true,
-  leftIcon: Search,
+  leftIcon: SearchIcon,
+  size: "huge",
+};
+
+export const DarkModeSizeHuge = DarkModeTemplate.bind({});
+DarkModeSizeHuge.args = {
+  label: "Form Label",
+  dropDown: true,
+  leftIcon: SearchIcon,
   size: "huge",
 };
 
 export const SizeXLarge = Template.bind({});
 SizeXLarge.args = {
-  placeholder: "Select a value",
   label: "Form Label",
   dropDown: true,
-  leftIcon: Search,
+  leftIcon: SearchIcon,
+  size: "xlarge",
+};
+
+export const DarkModeXLarge = DarkModeTemplate.bind({});
+DarkModeXLarge.args = {
+  label: "Form Label",
+  dropDown: true,
+  leftIcon: SearchIcon,
   size: "xlarge",
 };
 
 export const SizeLarge = Template.bind({});
 SizeLarge.args = {
-  placeholder: "Select a value",
   label: "Form Label",
   dropDown: true,
-  leftIcon: Search,
+  leftIcon: SearchIcon,
+  size: "large",
+};
+
+export const DarkModeSizeLarge = DarkModeTemplate.bind({});
+DarkModeSizeLarge.args = {
+  label: "Form Label",
+  dropDown: true,
+  leftIcon: SearchIcon,
   size: "large",
 };
 
 export const SizeMedium = Template.bind({});
 SizeMedium.args = {
-  placeholder: "Select a value",
   label: "Form Label",
   dropDown: true,
-  leftIcon: Search,
+  leftIcon: SearchIcon,
+  size: "medium",
+};
+
+export const DarkModeSizeMedium = DarkModeTemplate.bind({});
+DarkModeSizeMedium.args = {
+  label: "Form Label",
+  dropDown: true,
+  leftIcon: SearchIcon,
   size: "medium",
 };
 
 export const SizeSmall = Template.bind({});
 SizeSmall.args = {
-  placeholder: "Select a value",
   label: "Form Label",
   dropDown: true,
-  leftIcon: Search,
+  leftIcon: SearchIcon,
   size: "small",
 };
 
-export const Options = TemplateWithVal.bind({});
-Options.args = {
-  placeholder: "Select a value",
-  label: "Select Label",
+export const DarkModeSizeSmall = DarkModeTemplate.bind({});
+DarkModeSizeSmall.args = {
+  label: "Form Label",
   dropDown: true,
-  leftIcon: Search,
-  options: [
-    {
-      text: "Option 1",
-      value: "option_1",
-    },
-    {
-      text: "Option 2",
-      value: "option_2",
-    },
-    {
-      text: "Option 3",
-      value: "option_3",
-    },
-    {
-      text: "Option 4",
-      value: "option_4",
-    },
-  ],
+  leftIcon: SearchIcon,
+  size: "small",
+};
+
+export const StatefulExample = StatefulTemplate.bind({});
+StatefulExample.args = {
+  size: "medium",
 };

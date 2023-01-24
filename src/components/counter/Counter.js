@@ -156,7 +156,7 @@ Counter.propTypes = {
 };
 
 Counter.defaultProps = {
-  size: "medium",
+  size: "huge",
   spacing: "16px",
   alterMagnitude: 1,
   value: 0,

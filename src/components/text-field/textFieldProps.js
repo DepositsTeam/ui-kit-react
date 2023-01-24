@@ -15,7 +15,7 @@ export const propTypes = {
 };
 
 export const defaultProps = {
-  size: "medium",
+  size: "huge",
 };
 
 

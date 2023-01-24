@@ -37,7 +37,9 @@ const Card = ({
   }, [checked]);
 
   const handleChange = (e) => {
-    onChange(e);
+    if (onChange && typeof onChange === "function") {
+      onChange(e);
+    }
   };
 
   return (

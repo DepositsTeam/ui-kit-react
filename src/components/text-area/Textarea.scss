@@ -1,22 +1,51 @@
+@import "../../scss/textfield";
+.ui-text-field__wrapper {
+  display: inline-block;
+  width: 100%;
+}
 .ui-text-area__textarea {
   border-radius: 6px;
   background: #ffffff;
   border: 1px solid #ced6de;
-  box-shadow: 0px 1px 2px rgba(63, 63, 68, 0.1);
+  box-shadow: 0 1px 2px rgba(63, 63, 68, 0.1);
   padding: 12px 12px 24px 12px;
   font-family: "Circular Std", sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 16px;
-  color: #b8c4ce;
+  width: 100%;
+  color: #444;
+
+  &::placeholder {
+    color: #b8c4ce;
+  }
+
+  &.dark_mode {
+    background: var(--dark-input-background-color);
+    border-color: var(--dark-input-border-color);
+    color: #ffffff;
+    &::placeholder {
+      color: var(--dark-input-label-color);
+    }
+  }
 
   &:hover:not(:disabled):not([disabled]):not(.has-error) {
     border-color: #0db9e9;
+    &.dark_mode {
+      border-color: var(--dark-primary-action-color);
+    }
   }
 
-  &:focus:not(:disabled):not([disabled]) {
+  &:focus:not(:disabled):not([disabled]):not(.has-error) {
     border-color: #0db9e9;
     box-shadow: 0px 0px 0px 3px rgba(67, 210, 250, 0.25);
+    outline: none;
+    &.dark_mode {
+      border-color: var(--dark-primary-action-color);
+      box-shadow: 0 0 0 3px var(--dark-primary-action-box-shadow-color);
+    }
+  }
+  &:focus {
     outline: none;
   }
 
@@ -24,6 +53,11 @@
     background: rgba(245, 248, 250, 0.5);
     color: #e1e7ec;
     cursor: not-allowed;
+    &.dark_mode {
+      background: var(--dark-input-disabled-color);
+      border-color: var(--dark-input-border-color);
+      color: var(--dark-input-disabled-text-color);
+    }
   }
 }
 
@@ -36,6 +70,9 @@
   font-size: 14px;
   line-height: 16px;
   color: #212934;
+  &.dark_mode {
+    color: var(--dark-input-label-color);
+  }
 }
 
 .ui-text-area::placeholder {
@@ -51,6 +88,10 @@
 .ui-text-area__textarea.has-error {
   background: #fff0f2;
   border-color: #d62f4b;
+  &.dark_mode {
+    background: #350a12;
+    border-color: #df5e74;
+  }
 }
 
 .ui-text-area__error-text {

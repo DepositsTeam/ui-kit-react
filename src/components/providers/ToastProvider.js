@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import Box from "../box";

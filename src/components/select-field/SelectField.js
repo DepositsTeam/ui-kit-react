@@ -126,7 +126,7 @@ SelectField.propTypes = {
 };
 
 SelectField.defaultProps = {
-  size: "medium",
+  size: "huge",
   options: ["Item 1", "Item 2", "item 3"],
   placeholder: "Enter a value here",
 };

@@ -8,6 +8,7 @@ import Icon from "../icon";
 import ChevronArrowRight from "../icons/ChevronArrowRight";
 import ChevronArrowLeft from "../icons/ChevronArrowLeft";
 import { usePagination } from "../../utils/hooks/pagination.hook";
+import {getTextColor} from "../../utils/colorManager";
 
 const Pagination = ({
   currentPage,
@@ -72,6 +73,7 @@ const Pagination = ({
       })}
       style={{
         "--smart-color": smartColor,
+        "--smart-text-color": getTextColor(smartColor),
       }}
     >
       <Box

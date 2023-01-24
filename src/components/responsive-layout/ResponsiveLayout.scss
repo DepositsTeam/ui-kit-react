@@ -1,4 +1,3 @@
-@use "sass:map";
 @import "../../scss/variables";
 
 .ui-responsive-layout {
@@ -21,19 +20,19 @@
   }
 
   &:not(.full) {
-    @media only screen and (min-width: map.get($responsive-layout-breakpoints, "sm")) {
+    @media only screen and (min-width: map-get($responsive-layout-breakpoints, "sm")) {
       padding: 0 32px;
     }
-    @media only screen and (min-width: map.get($responsive-layout-breakpoints, "md")) {
+    @media only screen and (min-width: map-get($responsive-layout-breakpoints, "md")) {
       padding: 0 40px;
     }
-    @media only screen and (min-width: map.get($responsive-layout-breakpoints, "lg")) {
+    @media only screen and (min-width: map-get($responsive-layout-breakpoints, "lg")) {
       padding: 0 48px;
     }
-    @media only screen and (min-width: map.get($responsive-layout-breakpoints, "xl")) {
+    @media only screen and (min-width: map-get($responsive-layout-breakpoints, "xl")) {
       padding: 0 56px;
     }
-    @media only screen and (min-width: map.get($responsive-layout-breakpoints, "xxl")) {
+    @media only screen and (min-width: map-get($responsive-layout-breakpoints, "xxl")) {
       max-width: calc(1400px - (56px * 2));
       width: 100%;
     }

@@ -1,106 +1,112 @@
-import React from "react";
 import DatePicker from "./DatePicker";
-import Search from "../icons/Search";
+import DarkModeProvider from "../providers/DarkModeProvider";
+import ThemeProvider from "../providers/ThemeProvider";
+import Counter from "../counter";
 
 export default {
   title: "Forms/Date Picker",
   component: DatePicker,
+  argTypes: {},
 };
 
-const Template = (props) => <DatePicker {...props} />;
+const Template = (args) => (
+  <ThemeProvider>
+    <DatePicker {...args} />
+  </ThemeProvider>
+);
+
+const DarkModeTemplate = (args) => (
+  <ThemeProvider>
+    <div style={{ padding: "3em", background: "#121A26" }}>
+      <DarkModeProvider darkMode={true}>
+        <DatePicker {...args} />
+      </DarkModeProvider>
+    </div>
+  </ThemeProvider>
+);
 
 export const Default = Template.bind({});
-Default.args = {
-  label: "DatePicker Title",
-  placeholder: "Input placeholder",
+
+export const DefaultDark = DarkModeTemplate.bind({});
+
+export const Range = Template.bind({});
+Range.args = {
+  range: true,
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  placeholder: "Input placeholder",
-  label: "DatePicker Title",
-  disabled: true,
-};
-
-export const Error = Template.bind({});
-Error.args = {
-  placeholder: "Input placeholder",
-  label: "DatePicker Title",
-  errorMessage: "Error Message",
-};
-
-export const LeftIcon = Template.bind({});
-LeftIcon.args = {
-  placeholder: "Input placeholder",
-  label: "DatePicker Title",
-  leftIcon: Search,
-};
-
-export const DropDown = Template.bind({});
-DropDown.args = {
-  placeholder: "Input placeholder",
-  label: "DatePicker Title",
-  dropDown: true,
-};
-
-export const LeftIconAndDropDown = Template.bind({});
-LeftIconAndDropDown.args = {
-  placeholder: "Input placeholder",
-  label: "DatePicker Title",
-  dropDown: true,
-  leftIcon: Search,
+export const DarkRange = DarkModeTemplate.bind({});
+DarkRange.args = {
+  range: true,
 };
 
 export const SizeMassive = Template.bind({});
 SizeMassive.args = {
-  placeholder: "Input placeholder",
-  label: "DatePicker Title",
-  dropDown: true,
-  leftIcon: Search,
+  label: "Form Label",
+  size: "massive",
+};
+
+export const DarkSizeMassive = DarkModeTemplate.bind({});
+DarkSizeMassive.args = {
+  label: "Form Label",
   size: "massive",
 };
 
 export const SizeHuge = Template.bind({});
 SizeHuge.args = {
-  placeholder: "Input placeholder",
-  label: "DatePicker Title",
-  dropDown: true,
-  leftIcon: Search,
+  label: "Form Label",
+  size: "huge",
+};
+
+export const DarkSizeHuge = DarkModeTemplate.bind({});
+DarkSizeHuge.args = {
+  label: "Form Label",
   size: "huge",
 };
 
 export const SizeXLarge = Template.bind({});
 SizeXLarge.args = {
-  placeholder: "Input placeholder",
-  label: "DatePicker Title",
-  dropDown: true,
-  leftIcon: Search,
+  label: "Form Label",
+  size: "xlarge",
+};
+
+export const DarkSizeXLarge = DarkModeTemplate.bind({});
+DarkSizeXLarge.args = {
+  label: "Form Label",
   size: "xlarge",
 };
 
 export const SizeLarge = Template.bind({});
 SizeLarge.args = {
-  placeholder: "Input placeholder",
-  label: "DatePicker Title",
-  dropDown: true,
-  leftIcon: Search,
+  label: "Form Label",
+  size: "large",
+};
+
+export const DarkSizeLarge = DarkModeTemplate.bind({});
+DarkSizeLarge.args = {
+  label: "Form Label",
   size: "large",
 };
 
 export const SizeMedium = Template.bind({});
 SizeMedium.args = {
-  placeholder: "Input placeholder",
-  label: "DatePicker Title",
-  dropDown: true,
-  leftIcon: Search,
+  label: "Form Label",
+  size: "medium",
+};
+
+export const DarkSizeMedium = DarkModeTemplate.bind({});
+DarkSizeMedium.args = {
+  label: "Form Label",
   size: "medium",
 };
 
 export const SizeSmall = Template.bind({});
 SizeSmall.args = {
-  placeholder: "Input placeholder",
-  label: "DatePicker Title",
-  dropDown: true,
-  leftIcon: Search,
+  label: "Form Label",
+  size: "small",
+};
+
+export const DarkSizeSmall = DarkModeTemplate.bind({});
+DarkSizeSmall.args = {
+  label: "Form Label",
   size: "small",
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import "./Dropdown.scss";
 import PropTypes from "prop-types";
 import Box from "../box";
@@ -7,7 +7,13 @@ import inputPropTypes, { defaultProps } from "../../utils/inputPropTypes";
 import classNames from "../../utils/classNames";
 import Text from "../text";
 
-const Dropdown = ({ options, onChange, returnObjModel, ...props }) => {
+const Dropdown = ({
+  options,
+  onChange,
+  initialValue,
+  returnObjModel,
+  ...props
+}) => {
   const [inputValue, setInputValue] = useState("");
   const [showOptions, setShowOptions] = useState(false);
   const [computedOptions, setComputedOptions] = useState([]);
@@ -20,6 +26,12 @@ const Dropdown = ({ options, onChange, returnObjModel, ...props }) => {
 
   const returnOptionText = (option) =>
     typeof option === "object" ? option.text : option;
+
+  useLayoutEffect(() => {
+    if (initialValue) {
+      setInputValue(initialValue);
+    }
+  }, []);
 
   useEffect(() => {
     if (!isBlur) {
@@ -191,4 +203,5 @@ Dropdown.propTypes = {
   options: PropTypes.array,
   returnObjModel: PropTypes.bool,
   onChange: PropTypes.func,
+  initialValue: PropTypes.string,
 };

@@ -1,4 +1,7 @@
 import Table from "./Table";
+import ThemeProvider from "../providers/ThemeProvider";
+import DarkModeProvider from "../providers/DarkModeProvider";
+
 import {
   columns,
   data,
@@ -11,7 +14,21 @@ export default {
   component: Table,
 };
 
-const Template = (args) => <Table {...args} />;
+const Template = (args) => (
+  <ThemeProvider>
+    <Table {...args} />
+  </ThemeProvider>
+);
+
+const DarkModeTemplate = (args) => (
+  <ThemeProvider>
+    <div style={{ padding: "3em", background: "#121A26" }}>
+      <DarkModeProvider darkMode={true}>
+        <Table {...args} />
+      </DarkModeProvider>
+    </div>
+  </ThemeProvider>
+);
 
 export const Default = Template.bind({});
 Default.args = {
@@ -56,6 +73,57 @@ RightPagination.args = {
 
 export const CustomComponent = Template.bind({});
 CustomComponent.args = {
+  search: true,
+  enableCsvExport: true,
+  enableCustomizeView: true,
+  columns,
+  data: customComponentData,
+  paginate: true,
+};
+
+export const DarkModeDefault = DarkModeTemplate.bind({});
+DarkModeDefault.args = {
+  columns,
+  data,
+};
+
+export const DarkModeSearch = DarkModeTemplate.bind({});
+DarkModeSearch.args = {
+  search: true,
+  data,
+  columns,
+};
+
+export const DarkModeCheckboxes = DarkModeTemplate.bind({});
+DarkModeCheckboxes.args = {
+  search: true,
+  columns,
+  data,
+  showCheckboxes: true,
+};
+
+export const DarkModeButtonActions = DarkModeTemplate.bind({});
+DarkModeButtonActions.args = {
+  search: true,
+  enableCsvExport: true,
+  enableCustomizeView: true,
+  columns,
+  data,
+};
+
+export const DarkModeRightPagination = DarkModeTemplate.bind({});
+DarkModeRightPagination.args = {
+  search: true,
+  enableCsvExport: true,
+  enableCustomizeView: true,
+  columns,
+  data: paginatedData,
+  paginate: true,
+  paginateRight: true,
+};
+
+export const DarkModeCustomComponent = DarkModeTemplate.bind({});
+DarkModeCustomComponent.args = {
   search: true,
   enableCsvExport: true,
   enableCustomizeView: true,

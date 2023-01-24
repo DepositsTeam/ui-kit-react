@@ -100,9 +100,9 @@ const CardInputField = ({
       );
     }
 
-    if (!validatedCardNo.isPotentiallyValid) {
+    if (!validatedCardNo.isPotentiallyValid && validatedCardNo.card) {
       setCardNoError(
-        `Please enter a valid ${validatedCardNo.card.niceType} card number`
+        `Please enter a valid ${validatedCardNo?.card?.niceType} card number`
       );
     } else {
       setCardNoError(null);
@@ -201,6 +201,7 @@ const CardInputField = ({
   };
 
   const handleCardNoKeyPress = (e) => {
+    console.log(e);
     allowOnlyNumbers(e);
     const strippedCardNo = cardNo.replace(/\s/g, "");
 
@@ -311,13 +312,13 @@ const CardInputField = ({
 
   const handleCardExpInput = (e) => {
     setCardExpError(null);
-    let value = e.target.value;
+    let value = typeof e === "object" ? e.target.value.replace(/\s/g, "") : e;
     if (cardNoError) {
       cardNoInput.current.focus();
     } else if (cardCvvError) {
       cardCVCInput.current.focus();
     } else {
-      if (e.type.toLowerCase() === "paste") {
+      if (typeof e === "object" && e.type.toLowerCase() === "paste") {
         e.preventDefault();
         value = (e.clipboardData || window.clipboardData).getData("text");
       }
@@ -385,7 +386,13 @@ const CardInputField = ({
         </Text>
       </Box>
       <Box className={"ui-card-input-field__input-wrapper"}>
-        <Box ref={pseudoInput} className={"ui-card-input-field__pseudo-input"}>
+        <Box
+          ref={pseudoInput}
+          className={classNames({
+            "ui-card-input-field__pseudo-input": true,
+            hasError: computedErrorMessage,
+          })}
+        >
           {selectedCard === -1 ? (
             <Icon
               icon={CardIcon}
@@ -459,6 +466,7 @@ const CardInputField = ({
             className={"ui-card-input-field__error-text"}
             scale={"subhead"}
             fontFace={"circularSTD"}
+            marginY={0}
           >
             {computedErrorMessage}
           </Text>

@@ -15,9 +15,6 @@
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
-  &.isForm {
-    align-items: center;
-  }
   &.dark_mode {
     background: transparent;
     border: 1px solid #384860;
@@ -34,9 +31,7 @@
   // margin-right: calc(0.75rem * var(--tw-space-x-reverse));
   // margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
   // cursor: pointer;
-  &.shouldHover {
-    border: 1px solid transparent;
-  }
+
   &.shouldHover:hover,
   &.selected {
     border: 1px solid #0db9e9;

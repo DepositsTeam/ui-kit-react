@@ -19,6 +19,9 @@ const Heading = ({
       uppercase,
       "ui-heading": true,
       "equal-line-height": equalLineHeight,
+      customFontWeight: props.fontWeight,
+      customFontSize: props.fontSize,
+      customLineHeight: props.lineHeight,
     },
     className
   );
@@ -34,6 +37,9 @@ Heading.propTypes = {
   scale: PropTypes.oneOf(["subtitle-1", "subtitle-2", "subhead"]),
   uppercase: PropTypes.bool,
   equalLineHeight: PropTypes.bool,
+  fontFace: PropTypes.string,
+  darkClassName: PropTypes.string,
+  lightClassName: PropTypes.string,
 };
 
 Heading.defaultProps = {
@@ -41,6 +47,7 @@ Heading.defaultProps = {
   scale: null,
   uppercase: false,
   equalLineHeight: false,
+  darkClassName: "text-neutral-300",
 };
 
 export default Heading;
