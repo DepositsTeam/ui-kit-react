@@ -8,22 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="Worked on several updates to bring the React UI kit on par with the Vue Ui Kit">
-      <change afterPath="$PROJECT_DIR$/src/components/text-field/FormikTextField.stories.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/alert/Alert.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/alert/Alert.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/Button.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/checkbox/Checkbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/checkbox/Checkbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/checkbox/Checkbox.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/checkbox/Checkbox.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/providers/ThemeProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/providers/ThemeProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/FormikTextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/FormikTextField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/TextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/allowOnlyNumbers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/allowOnlyNumbers.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +158,6 @@
     <setting file="file://$PROJECT_DIR$/src/components/icons/VideoOff.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/icons/Voucher.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/icons/index.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/text-field/HookFormTextField.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/text-field/TextField.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/text-field/TextField.stories.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/text-field/index.js" root0="FORCE_HIGHLIGHTING" />
@@ -239,7 +227,7 @@
       <recent name="$PROJECT_DIR$/src/components/switch" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.storybook">
+  <component name="RunManager" selected="Shell Script.Update UI Kit">
     <configuration name="Update UI Kit" type="ShConfigurationType">
       <option name="SCRIPT_TEXT" value="npm run build-rollup &amp;&amp; npm publish" />
       <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
@@ -409,7 +397,7 @@
       <workItem from="1674873912154" duration="607000" />
       <workItem from="1674944661852" duration="20156000" />
       <workItem from="1675121229932" duration="17000" />
-      <workItem from="1675163884544" duration="6614000" />
+      <workItem from="1675163884544" duration="8202000" />
     </task>
     <task id="LOCAL-00001" summary="Worked on several updates to bring the React UI kit on par with the Vue Ui Kit">
       <created>1674563026879</created>

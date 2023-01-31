@@ -52,6 +52,7 @@ const TextField = forwardRef(
       ssn,
       percentage,
       maxLength,
+      value,
       ...props
     },
     ref
@@ -59,6 +60,27 @@ const TextField = forwardRef(
     const [trueInternalValue, setTrueInternalValue] = useState("");
     const [formattedSSN, setFormattedSSN] = useState(["", ""]);
     const [localType, setLocalType] = useState("text");
+    const [initialized, setInitialized] = useState(false);
+
+    useLayoutEffect(() => {
+      if (!initialized) {
+        if (ssn) {
+          setTrueInternalValue(formatSSN(value)[0]);
+        } else if (currency) {
+          const strippedValue = value.replaceAll("$", "").replaceAll(",", "");
+          setTrueInternalValue(`$${number_format(strippedValue)}`);
+        } else if (percentage) {
+          const parsedValue = parseFloat(value.replaceAll("%", ""));
+          const renderedValue =
+            parsedValue < 0 ? 0 : parsedValue > 100 ? 100 : parsedValue;
+          const newValue = `${renderedValue}%`;
+          setTrueInternalValue(newValue);
+        } else {
+          setTrueInternalValue(value);
+        }
+        setInitialized(true);
+      }
+    }, []);
 
     useLayoutEffect(() => {}, [trueInternalValue]);
 
