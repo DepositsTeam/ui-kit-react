@@ -17,6 +17,7 @@ const Checkbox = ({
   className,
   checked,
   onChange,
+  size,
   ...props
 }) => {
   const checkbox = useRef();
@@ -46,7 +47,11 @@ const Checkbox = ({
     [className]: className,
   });
   return (
-    <Box is={"label"} className={checkboxClassName}>
+    <Box
+      is={"label"}
+      className={checkboxClassName}
+      style={{ "--checkbox-size": size }}
+    >
       <Box
         is={"input"}
         className={classNames({
@@ -85,6 +90,7 @@ Checkbox.defaultProps = {
   disabled: false,
   dashed: false,
   checked: undefined,
+  size: "16px",
 };
 
 Checkbox.propTypes = {
@@ -97,4 +103,5 @@ Checkbox.propTypes = {
   labelComponent: PropTypes.node,
   checked: PropTypes.bool,
   onChange: PropTypes.func,
+  size: PropTypes.string,
 };

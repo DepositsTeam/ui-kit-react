@@ -7945,14 +7945,14 @@ var uniqueRandomString = (function () {
   return finalString;
 });
 
-var _excluded$V = ["initialTheme", "children"];
+var _excluded$W = ["initialTheme", "children"];
 var ThemeContext = /*#__PURE__*/createContext({
   theme: _objectSpread2$1({}, convertObjToVars(defaultTheme))
 });
 var ThemeProvider = function ThemeProvider(_ref) {
   var initialTheme = _ref.initialTheme,
     children = _ref.children;
-    _objectWithoutProperties(_ref, _excluded$V);
+    _objectWithoutProperties(_ref, _excluded$W);
   var _useState = useState({}),
     _useState2 = _slicedToArray$4(_useState, 2),
     theme = _useState2[0],
@@ -7966,12 +7966,13 @@ var ThemeProvider = function ThemeProvider(_ref) {
     setInitialState = _useState4[1];
   useEffect(function () {
     var computedTheme = _objectSpread2$1(_objectSpread2$1(_objectSpread2$1({}, defaultTheme), initialTheme), theme);
-    if (computedTheme.primaryColor) {
-      computedTheme["light-primary-action-color"] = computedTheme.primaryColor;
-      computedTheme["dark-primary-action-color"] = computedTheme.primaryColor;
-      computedTheme["light-primary-color"] = computedTheme.primaryColor;
-      computedTheme["dark-primary-color"] = computedTheme.primaryColor;
-      computedTheme["primarycolor"] = computedTheme.primaryColor;
+    var primaryColor = computedTheme.primaryColor || computedTheme["primary-color"];
+    if (primaryColor) {
+      computedTheme["light-primary-action-color"] = primaryColor;
+      computedTheme["dark-primary-action-color"] = primaryColor;
+      computedTheme["light-primary-color"] = primaryColor;
+      computedTheme["dark-primary-color"] = primaryColor;
+      computedTheme["primarycolor"] = primaryColor;
     }
 
     // Depends on light primary action color
@@ -8055,14 +8056,14 @@ ThemeProvider.defaultProps = {
   initialTheme: {}
 };
 
-var _excluded$U = ["darkMode", "children"];
+var _excluded$V = ["darkMode", "children"];
 var DarkModeContext = /*#__PURE__*/createContext({
   darkMode: null
 });
 var DarkModeProvider = function DarkModeProvider(_ref) {
   var darkMode = _ref.darkMode,
     children = _ref.children;
-    _objectWithoutProperties(_ref, _excluded$U);
+    _objectWithoutProperties(_ref, _excluded$V);
   var _useState = useState(null),
     _useState2 = _slicedToArray$4(_useState, 2),
     darkModeState = _useState2[0],
@@ -8214,7 +8215,7 @@ function classNames(obj, className) {
   return (generatedClass + (className ? " ".concat(className) : "")).trim();
 }
 
-var _excluded$T = ["fontFace", "lightClassName", "darkClassName", "id", "className", "children", "style"];
+var _excluded$U = ["fontFace", "lightClassName", "darkClassName", "id", "className", "children", "style"];
 var Box = /*#__PURE__*/React__default.forwardRef(function (_ref, ref) {
   var _classNames;
   var fontFace = _ref.fontFace,
@@ -8224,7 +8225,7 @@ var Box = /*#__PURE__*/React__default.forwardRef(function (_ref, ref) {
     className = _ref.className,
     children = _ref.children,
     style = _ref.style,
-    props = _objectWithoutProperties(_ref, _excluded$T);
+    props = _objectWithoutProperties(_ref, _excluded$U);
   var _useState = useState("auto_generated_" + uniqueRandomString(20)),
     _useState2 = _slicedToArray$4(_useState, 2),
     uniqueID = _useState2[0],
@@ -8251,13 +8252,13 @@ Box.propTypes = {
   darkClassName: propTypes$1.exports.string
 };
 
-var _excluded$S = ["className", "icon", "children", "smartColor"];
+var _excluded$T = ["className", "icon", "children", "smartColor"];
 var Icon = function Icon(_ref) {
   var className = _ref.className,
     icon = _ref.icon;
     _ref.children;
     var smartColor = _ref.smartColor,
-    props = _objectWithoutProperties(_ref, _excluded$S);
+    props = _objectWithoutProperties(_ref, _excluded$T);
   var defaultViewBox = "0 0 24 24";
   var IconComponent = icon.component;
   var generatedClassName = classNames({
@@ -8283,7 +8284,7 @@ Icon.propTypes = {
   height: propTypes$1.exports.string
 };
 
-var _excluded$R = ["className", "scale", "uppercase", "center", "equalLineHeight", "fontWeight", "fontSize", "lineHeight"];
+var _excluded$S = ["className", "scale", "uppercase", "center", "equalLineHeight", "fontWeight", "fontSize", "lineHeight"];
 var Text$1 = function Text(_ref) {
   var _props$is, _classNames;
   var className = _ref.className,
@@ -8294,7 +8295,7 @@ var Text$1 = function Text(_ref) {
     fontWeight = _ref.fontWeight,
     fontSize = _ref.fontSize,
     lineHeight = _ref.lineHeight,
-    props = _objectWithoutProperties(_ref, _excluded$R);
+    props = _objectWithoutProperties(_ref, _excluded$S);
   var is = (_props$is = props.is) !== null && _props$is !== void 0 ? _props$is : "p";
   var generatedClass = classNames((_classNames = {}, _defineProperty$A(_classNames, scale, scale), _defineProperty$A(_classNames, "uppercase", uppercase), _defineProperty$A(_classNames, "equal-line-height", equalLineHeight), _defineProperty$A(_classNames, "ui-text", true), _defineProperty$A(_classNames, "center", center), _defineProperty$A(_classNames, "customFontWeight", fontWeight), _defineProperty$A(_classNames, "customFontSize", fontSize), _defineProperty$A(_classNames, "customLineHeight", lineHeight), _classNames), className);
   return /*#__PURE__*/React__default.createElement(Box, _extends$2({
@@ -9743,7 +9744,7 @@ CameraComponent.defaultProps = {
   strokeLineJoin: "round"
 };
 
-var _excluded$Q = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
+var _excluded$R = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
 var CardComponent = function CardComponent(_ref) {
   var fill = _ref.fill,
     stroke = _ref.stroke,
@@ -9751,7 +9752,7 @@ var CardComponent = function CardComponent(_ref) {
     strokeWidth = _ref.strokeWidth,
     strokeLineCap = _ref.strokeLineCap,
     strokeLineJoin = _ref.strokeLineJoin;
-    _objectWithoutProperties(_ref, _excluded$Q);
+    _objectWithoutProperties(_ref, _excluded$R);
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M21 12.7707V15.9881C21 16.5216 20.7893 17.0333 20.4143 17.4106C20.0392 17.7879 19.5306 18 19.0001 18H4.99995C4.46951 18 3.96087 17.7879 3.5858 17.4106C3.21073 17.0333 3.00006 16.5216 3.00006 15.9881V7.01176C3.00006 6.47819 3.21073 5.96653 3.5858 5.58924C3.96087 5.21195 4.46951 5.00003 4.99995 5.00003H19.0001C19.5306 5.00003 20.0392 5.21195 20.4143 5.58924C20.7893 5.96653 21 6.47819 21 7.01176V9.84096",
     fill: fill || 'white'
@@ -12811,7 +12812,7 @@ GitlabComponent.defaultProps = {
   clipRule: "evenodd"
 };
 
-var _excluded$P = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin", "fillRule", "clipRule"];
+var _excluded$Q = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin", "fillRule", "clipRule"];
 var GlobeComponent = function GlobeComponent(_ref) {
   var fill = _ref.fill;
     _ref.stroke;
@@ -12821,7 +12822,7 @@ var GlobeComponent = function GlobeComponent(_ref) {
     _ref.strokeLineJoin;
     var fillRule = _ref.fillRule,
     clipRule = _ref.clipRule;
-    _objectWithoutProperties(_ref, _excluded$P);
+    _objectWithoutProperties(_ref, _excluded$Q);
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     fillRule: fillRule,
     clipRule: clipRule,
@@ -15757,7 +15758,7 @@ ShieldComponent$1.defaultProps = {
   strokeLineJoin: "round"
 };
 
-var _excluded$O = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
+var _excluded$P = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
 var ShieldComponent = function ShieldComponent(_ref) {
   _ref.fill;
     var stroke = _ref.stroke,
@@ -15765,7 +15766,7 @@ var ShieldComponent = function ShieldComponent(_ref) {
     strokeWidth = _ref.strokeWidth,
     strokeLineCap = _ref.strokeLineCap,
     strokeLineJoin = _ref.strokeLineJoin;
-    _objectWithoutProperties(_ref, _excluded$O);
+    _objectWithoutProperties(_ref, _excluded$P);
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M15.4601 9.38818L11.3591 13.4892L9.09308 11.4232M9.45518 4.021L12.13 3L19.2601 5.72021V11.2783C19.2598 13.4293 18.566 15.5226 17.2816 17.248C15.9972 18.9735 14.1905 20.2386 12.13 20.856C10.0695 20.2386 8.26294 18.9725 6.97852 17.2471C5.6941 15.5217 5.00028 13.4284 5 11.2774V5.71926L6.97412 4.96633",
     stroke: smartColor || stroke,
@@ -17140,7 +17141,7 @@ WithdrawComponent.defaultProps = {
   strokeLineJoin: "round"
 };
 
-var _excluded$N = ["title", "leftIconActive", "leftIconInactive", "rightIcon", "children", "className"];
+var _excluded$O = ["title", "leftIconActive", "leftIconInactive", "rightIcon", "children", "className"];
 var Accordion = function Accordion(_ref) {
   var title = _ref.title,
     leftIconActive = _ref.leftIconActive,
@@ -17148,7 +17149,7 @@ var Accordion = function Accordion(_ref) {
     rightIcon = _ref.rightIcon,
     children = _ref.children,
     className = _ref.className;
-    _objectWithoutProperties(_ref, _excluded$N);
+    _objectWithoutProperties(_ref, _excluded$O);
   var _useState = useState(false),
     _useState2 = _slicedToArray$4(_useState, 2),
     visible = _useState2[0],
@@ -17262,7 +17263,7 @@ if (DESCRIPTORS$3 && isCallable$7(NativeSymbol) && (!('description' in SymbolPro
   });
 }
 
-var _excluded$M = ["is", "leftIcon", "rightIcon", "dropDown", "disabled", "size", "className", "colorScheme", "responsive", "text", "loading", "loadingText", "pill", "smartColor", "smartHoverColor"];
+var _excluded$N = ["is", "leftIcon", "rightIcon", "dropDown", "disabled", "size", "className", "colorScheme", "responsive", "text", "loading", "loadingText", "pill", "smartColor", "smartHoverColor"];
 var Button = function Button(_ref) {
   var _classNames;
   var is = _ref.is,
@@ -17280,7 +17281,7 @@ var Button = function Button(_ref) {
     pill = _ref.pill,
     smartColor = _ref.smartColor,
     smartHoverColor = _ref.smartHoverColor,
-    props = _objectWithoutProperties(_ref, _excluded$M);
+    props = _objectWithoutProperties(_ref, _excluded$N);
   var generatedClassName = classNames((_classNames = {
     "ui-button": true
   }, _defineProperty$A(_classNames, "semantic__".concat(colorScheme), colorScheme), _defineProperty$A(_classNames, "state__disabled", disabled), _defineProperty$A(_classNames, "size__".concat(size), size), _defineProperty$A(_classNames, "responsive", responsive), _defineProperty$A(_classNames, "smartColor", smartColor), _defineProperty$A(_classNames, "smartHoverColor", smartHoverColor), _defineProperty$A(_classNames, "pill", pill), _classNames), className);
@@ -17319,7 +17320,7 @@ var Button = function Button(_ref) {
 };
 Button.propTypes = {
   is: propTypes$1.exports.oneOfType([propTypes$1.exports.oneOf(["button", "a", "span", "div"]), propTypes$1.exports.elementType]),
-  colorScheme: propTypes$1.exports.oneOf(["primary", "danger", "success", "outline", "invisible"]),
+  colorScheme: propTypes$1.exports.oneOf(["primary", "danger", "success", "outline", "invisible", "default", "info"]),
   disabled: propTypes$1.exports.bool,
   size: propTypes$1.exports.oneOf(["small", "medium", "large", "xlarge", "huge", "massive"]),
   leftIcon: propTypes$1.exports.object,
@@ -17342,14 +17343,14 @@ Button.defaultProps = {
   colorScheme: "default"
 };
 
-var _excluded$L = ["className", "equalLineHeight", "scale", "uppercase"];
+var _excluded$M = ["className", "equalLineHeight", "scale", "uppercase"];
 var Heading = function Heading(_ref) {
   var _props$is, _classNames;
   var className = _ref.className,
     equalLineHeight = _ref.equalLineHeight,
     scale = _ref.scale,
     uppercase = _ref.uppercase,
-    props = _objectWithoutProperties(_ref, _excluded$L);
+    props = _objectWithoutProperties(_ref, _excluded$M);
   var is = (_props$is = props.is) !== null && _props$is !== void 0 ? _props$is : "h2";
   var generatedClass = classNames((_classNames = {}, _defineProperty$A(_classNames, scale, scale), _defineProperty$A(_classNames, is, is), _defineProperty$A(_classNames, "uppercase", uppercase), _defineProperty$A(_classNames, "ui-heading", true), _defineProperty$A(_classNames, "equal-line-height", equalLineHeight), _defineProperty$A(_classNames, "customFontWeight", props.fontWeight), _defineProperty$A(_classNames, "customFontSize", props.fontSize), _defineProperty$A(_classNames, "customLineHeight", props.lineHeight), _classNames), className);
   return /*#__PURE__*/React__default.createElement(Box, _extends$2({
@@ -17376,7 +17377,7 @@ Heading.defaultProps = {
   darkClassName: "text-neutral-300"
 };
 
-var _excluded$K = ["message", "description", "colorScheme", "theme", "button", "buttonAction", "onAction", "className", "closable", "bordered", "smartColor", "iconColor", "icon"];
+var _excluded$L = ["message", "description", "colorScheme", "theme", "button", "buttonAction", "onAction", "className", "closable", "bordered", "smartColor", "iconColor", "icon"];
 var Alert = function Alert(_ref) {
   var _classNames;
   var message = _ref.message,
@@ -17392,7 +17393,7 @@ var Alert = function Alert(_ref) {
     var smartColor = _ref.smartColor,
     iconColor = _ref.iconColor,
     icon = _ref.icon,
-    props = _objectWithoutProperties(_ref, _excluded$K);
+    props = _objectWithoutProperties(_ref, _excluded$L);
   var _useState = useState(true),
     _useState2 = _slicedToArray$4(_useState, 2),
     showAlert = _useState2[0],
@@ -17468,7 +17469,7 @@ Alert.defaultProps = {
   closable: false
 };
 
-var _excluded$J = ["alignment", "wrap", "stretchItems", "itemSpacing", "direction", "children", "className"];
+var _excluded$K = ["alignment", "wrap", "stretchItems", "itemSpacing", "direction", "children", "className"];
 var AutoLayout = function AutoLayout(_ref) {
   var _classNames;
   var alignment = _ref.alignment,
@@ -17478,7 +17479,7 @@ var AutoLayout = function AutoLayout(_ref) {
     direction = _ref.direction,
     children = _ref.children,
     className = _ref.className,
-    props = _objectWithoutProperties(_ref, _excluded$J);
+    props = _objectWithoutProperties(_ref, _excluded$K);
   return /*#__PURE__*/React__default.createElement(Box, _extends$2({
     className: classNames((_classNames = {
       "d-auto-layout": true
@@ -17697,7 +17698,7 @@ function keyGen() {
   return result;
 }
 
-var _excluded$I = ["avatar", "subtle", "dropdown", "size", "visibleAvatars", "stacked", "avatars", "className"];
+var _excluded$J = ["avatar", "subtle", "dropdown", "size", "visibleAvatars", "stacked", "avatars", "className"];
 var colorSchemes = ["cyan", "green", "orange", "red", "gray", "blue"];
 var generateAvatarColorScheme = function generateAvatarColorScheme(avatar, index) {
   return avatar.colorScheme || (index < colorSchemes.length ? colorSchemes[index] : colorSchemes[index % colorSchemes.length]);
@@ -17717,7 +17718,7 @@ var Avatar = function Avatar(_ref) {
     stacked = _ref.stacked,
     avatars = _ref.avatars,
     className = _ref.className,
-    props = _objectWithoutProperties(_ref, _excluded$I);
+    props = _objectWithoutProperties(_ref, _excluded$J);
   var wrapperClassName = classNames((_classNames2 = {
     "ui-avatars__wrapper": true,
     subtle: subtle
@@ -17780,7 +17781,7 @@ Avatar.defaultProps = {
   avatars: []
 };
 
-var _excluded$H = ["children", "colorScheme", "className", "subtle", "size", "customSize", "smartColor"];
+var _excluded$I = ["children", "colorScheme", "className", "subtle", "size", "customSize", "smartColor"];
 var Badge = function Badge(_ref) {
   var _classNames;
   var children = _ref.children,
@@ -17790,7 +17791,7 @@ var Badge = function Badge(_ref) {
     size = _ref.size,
     customSize = _ref.customSize,
     smartColor = _ref.smartColor;
-    _objectWithoutProperties(_ref, _excluded$H);
+    _objectWithoutProperties(_ref, _excluded$I);
   var generatedClassName = classNames((_classNames = {}, _defineProperty$A(_classNames, "color-scheme__".concat(colorScheme), true), _defineProperty$A(_classNames, "subtle", subtle), _defineProperty$A(_classNames, "size__".concat(size), true), _defineProperty$A(_classNames, "ui-badge", true), _defineProperty$A(_classNames, "sizeCustom", customSize), _defineProperty$A(_classNames, "smartColor", smartColor), _classNames), className);
   var cssVars = {
     "--size": typeof customSize === "number" ? "".concat(customSize, "px") : customSize,
@@ -17820,7 +17821,7 @@ Badge.defaultProps = {
   size: "small"
 };
 
-var _excluded$G = ["colorScheme", "title", "description", "removable", "full", "onRemove", "alignTop", "icon", "iconColor", "noIcon", "smartColor", "className"];
+var _excluded$H = ["colorScheme", "title", "description", "removable", "full", "onRemove", "alignTop", "icon", "iconColor", "noIcon", "smartColor", "className"];
 var Banner = function Banner(_ref) {
   var _classNames;
   var colorScheme = _ref.colorScheme,
@@ -17835,7 +17836,7 @@ var Banner = function Banner(_ref) {
     noIcon = _ref.noIcon,
     smartColor = _ref.smartColor,
     className = _ref.className,
-    props = _objectWithoutProperties(_ref, _excluded$G);
+    props = _objectWithoutProperties(_ref, _excluded$H);
   var _useState = useState(true),
     _useState2 = _slicedToArray$4(_useState, 2),
     visible = _useState2[0],
@@ -17907,7 +17908,7 @@ Banner.propTypes = {
   smartColor: propTypes$1.exports.string
 };
 
-var _excluded$F = ["className", "children", "ringed", "alignToTop", "label", "value", "disabled", "labelClass", "alignRight", "checked", "onChange", "labelComponent", "ringSize", "ringThickness"];
+var _excluded$G = ["className", "children", "ringed", "alignToTop", "label", "value", "disabled", "labelClass", "alignRight", "checked", "onChange", "labelComponent", "ringSize", "ringThickness"];
 var Radio = function Radio(_ref) {
   var className = _ref.className,
     children = _ref.children,
@@ -17923,7 +17924,7 @@ var Radio = function Radio(_ref) {
     labelComponent = _ref.labelComponent,
     ringSize = _ref.ringSize,
     ringThickness = _ref.ringThickness,
-    props = _objectWithoutProperties(_ref, _excluded$F);
+    props = _objectWithoutProperties(_ref, _excluded$G);
   var radio = useRef();
   useEffect(function () {
     radio.current.checked = checked;
@@ -17997,7 +17998,7 @@ Radio.propTypes = {
   ringThickness: propTypes$1.exports.string
 };
 
-var _excluded$E = ["children", "label", "alignToTop", "dashed", "disabled", "labelClass", "wrapperClass", "labelComponent", "className", "checked", "onChange"];
+var _excluded$F = ["children", "label", "alignToTop", "dashed", "disabled", "labelClass", "wrapperClass", "labelComponent", "className", "checked", "onChange", "size"];
 var Checkbox = function Checkbox(_ref) {
   var _classNames;
   var children = _ref.children,
@@ -18011,7 +18012,8 @@ var Checkbox = function Checkbox(_ref) {
     className = _ref.className,
     checked = _ref.checked,
     onChange = _ref.onChange,
-    props = _objectWithoutProperties(_ref, _excluded$E);
+    size = _ref.size,
+    props = _objectWithoutProperties(_ref, _excluded$F);
   var checkbox = useRef();
   useEffect(function () {
     checkbox.current.checked = checked;
@@ -18035,7 +18037,10 @@ var Checkbox = function Checkbox(_ref) {
   }, _defineProperty$A(_classNames, wrapperClass, wrapperClass), _defineProperty$A(_classNames, className, className), _classNames));
   return /*#__PURE__*/React__default.createElement(Box, {
     is: "label",
-    className: checkboxClassName
+    className: checkboxClassName,
+    style: {
+      "--checkbox-size": size
+    }
   }, /*#__PURE__*/React__default.createElement(Box, _extends$2({
     is: "input",
     className: classNames({
@@ -18060,7 +18065,8 @@ Checkbox.defaultProps = {
   alignToTop: false,
   disabled: false,
   dashed: false,
-  checked: undefined
+  checked: undefined,
+  size: "16px"
 };
 Checkbox.propTypes = {
   label: propTypes$1.exports.string,
@@ -18071,10 +18077,11 @@ Checkbox.propTypes = {
   wrapperClass: propTypes$1.exports.string,
   labelComponent: propTypes$1.exports.node,
   checked: propTypes$1.exports.bool,
-  onChange: propTypes$1.exports.func
+  onChange: propTypes$1.exports.func,
+  size: propTypes$1.exports.string
 };
 
-var _excluded$D = ["title", "subtitle", "desc", "children", "radio", "checkbox", "icon", "isSelected", "className", "ringedRadio", "dashedCheckbox", "wrapperClass", "hoverColor", "border", "cardClass", "header", "footer", "onChange", "checked"];
+var _excluded$E = ["title", "subtitle", "desc", "children", "radio", "checkbox", "icon", "isSelected", "className", "ringedRadio", "dashedCheckbox", "wrapperClass", "hoverColor", "border", "cardClass", "header", "footer", "onChange", "checked"];
 var Card = function Card(_ref) {
   var _classNames;
   var title = _ref.title,
@@ -18096,7 +18103,7 @@ var Card = function Card(_ref) {
     footer = _ref.footer,
     onChange = _ref.onChange,
     checked = _ref.checked,
-    props = _objectWithoutProperties(_ref, _excluded$D);
+    props = _objectWithoutProperties(_ref, _excluded$E);
   var _useState = useState(isSelected),
     _useState2 = _slicedToArray$4(_useState, 2),
     selected = _useState2[0],
@@ -19272,7 +19279,7 @@ var cardValidator = {
 };
 var dist = cardValidator;
 
-var _excluded$C = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "initialCardExp", "initialCardNo", "initialCardCvv", "onChange", "allowExpiredCardDateInExp"];
+var _excluded$D = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "initialCardExp", "initialCardNo", "initialCardCvv", "onChange", "allowExpiredCardDateInExp"];
 var CardInputField = function CardInputField(_ref) {
   var label = _ref.label;
     _ref.leftIcon;
@@ -19287,7 +19294,7 @@ var CardInputField = function CardInputField(_ref) {
     initialCardCvv = _ref.initialCardCvv,
     onChange = _ref.onChange,
     allowExpiredCardDateInExp = _ref.allowExpiredCardDateInExp,
-    props = _objectWithoutProperties(_ref, _excluded$C);
+    props = _objectWithoutProperties(_ref, _excluded$D);
   var _useState = useState(-1),
     _useState2 = _slicedToArray$4(_useState, 2),
     selectedCard = _useState2[0],
@@ -19694,11 +19701,11 @@ CardInputField.defaultProps = _objectSpread2$1(_objectSpread2$1({}, defaultProps
   allowExpiredCardDateInExp: false
 });
 
-var _excluded$B = ["children"];
+var _excluded$C = ["children"];
 var Col = function Col(_ref) {
   var _classNames;
   var children = _ref.children,
-    props = _objectWithoutProperties(_ref, _excluded$B);
+    props = _objectWithoutProperties(_ref, _excluded$C);
   var computedXS = props.xs ? _typeof$E(props.xs) === "object" ? props.xs.span : props.xs : undefined;
   var computedSM = props.sm ? _typeof$E(props.sm) === "object" ? props.sm.span : props.sm : undefined;
   var computedMD = props.md ? _typeof$E(props.md) === "object" ? props.md.span : props.md : undefined;
@@ -19768,7 +19775,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
-var _excluded$A = ["label", "size", "max", "min", "errorMessage", "coloredButtons", "labelClass", "labelFontFace", "inputClass", "disabled", "decimal", "alterMagnitude", "spacing", "value", "onChange", "className"];
+var _excluded$B = ["label", "size", "max", "min", "errorMessage", "coloredButtons", "labelClass", "labelFontFace", "inputClass", "disabled", "decimal", "alterMagnitude", "spacing", "value", "onChange", "className"];
 var Counter = function Counter(_ref) {
   var label = _ref.label,
     size = _ref.size,
@@ -19786,7 +19793,7 @@ var Counter = function Counter(_ref) {
     value = _ref.value,
     onChange = _ref.onChange,
     className = _ref.className,
-    props = _objectWithoutProperties(_ref, _excluded$A);
+    props = _objectWithoutProperties(_ref, _excluded$B);
   var _useState = useState(null),
     _useState2 = _slicedToArray$4(_useState, 2),
     internalValue = _useState2[0],
@@ -20262,7 +20269,7 @@ var allowOnlyNumbers = function allowOnlyNumbers(e) {
   var isNumber = isFinite(parseFloat(e.key));
   var value = e.key;
   if (value !== ".") {
-    if (!isNumber && value !== "Delete" && value !== "Backspace" && value !== "Tab") {
+    if (!isNumber && value !== "Delete" && value !== "Backspace" && value !== "Tab" && value !== "ArrowRight" && value !== "ArrowLeft") {
       e.preventDefault();
       return;
     }
@@ -20379,7 +20386,7 @@ function formatPercentage(percentage) {
   }
 }
 
-var _excluded$z = ["label", "labelComponent", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onLeftIconClick", "onRightIconClick", "invisible", "disabled", "inputClass", "oneCharWide", "leftIconComponent", "rightIconComponent", "labelClass", "onlyNumbers", "showError", "onKeyup", "onKeydown", "onKeypress", "onChange", "onInput", "isPassword", "emitOnlyCurrencyValue", "currency", "type", "ssn", "percentage", "maxLength"];
+var _excluded$A = ["label", "labelComponent", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onLeftIconClick", "onRightIconClick", "invisible", "disabled", "inputClass", "oneCharWide", "leftIconComponent", "rightIconComponent", "labelClass", "onlyNumbers", "showError", "onKeyup", "onKeydown", "onKeypress", "onChange", "onInput", "isPassword", "emitOnlyCurrencyValue", "currency", "type", "ssn", "percentage", "maxLength"];
 var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var label = _ref.label,
     labelComponent = _ref.labelComponent,
@@ -20415,7 +20422,7 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
     ssn = _ref.ssn,
     percentage = _ref.percentage,
     maxLength = _ref.maxLength,
-    props = _objectWithoutProperties(_ref, _excluded$z);
+    props = _objectWithoutProperties(_ref, _excluded$A);
   var _useState = useState(""),
     _useState2 = _slicedToArray$4(_useState, 2),
     trueInternalValue = _useState2[0],
@@ -20485,18 +20492,14 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
   };
   var emitValue = function emitValue(e, val) {
     if (onChange && typeof onChange === "function") {
-      onChange(_objectSpread2$1(_objectSpread2$1({}, e), {}, {
-        target: _objectSpread2$1(_objectSpread2$1({}, e.target), {}, {
-          value: val ? val : trueInternalValue
-        })
-      }));
+      var clonedE = Object.assign({}, e);
+      clonedE.target.value = val ? val : trueInternalValue;
+      onChange(clonedE);
     }
     if (onInput && typeof onInput === "function") {
-      onInput(_objectSpread2$1(_objectSpread2$1({}, e), {}, {
-        target: _objectSpread2$1(_objectSpread2$1({}, e.target), {}, {
-          value: val ? val : trueInternalValue
-        })
-      }));
+      var _clonedE = Object.assign({}, e);
+      _clonedE.target.value = val ? val : trueInternalValue;
+      onInput(_clonedE);
     }
   };
   var computedMaxLength = ssn ? 11 : maxLength;
@@ -20546,12 +20549,17 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var handleBlurEvents = function handleBlurEvents(e) {
     if (ssn) {
       setTrueInternalValue(formattedSSN[1]);
+      emitValue(e, formattedSSN[0]);
     }
     if (currency) {
       if (e.target.value) {
-        setTrueInternalValue("$".concat(number_format(parseFloat(trueInternalValue.split(",").join("").replaceAll("$", "")), 2)));
+        var newValue = "$".concat(number_format(parseFloat(trueInternalValue.split(",").join("").replaceAll("$", "")), 2));
+        setTrueInternalValue(newValue);
+        emitValue(e, emitOnlyCurrencyValue ? number_format(e.target.value, 2) : newValue);
       } else {
-        setTrueInternalValue("$0.00");
+        var _newValue = "$0.00";
+        setTrueInternalValue(_newValue);
+        emitValue(e, _newValue);
       }
     }
     if (percentage) {
@@ -20559,24 +20567,31 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
       if (value) {
         var parsedValue = parseFloat(value.replaceAll("%", ""));
         var renderedValue = parsedValue < 0 ? 0 : parsedValue > 100 ? 100 : parsedValue;
-        setTrueInternalValue("".concat(renderedValue, "%"));
+        var _newValue2 = "".concat(renderedValue, "%");
+        setTrueInternalValue(_newValue2);
+        emitValue(e, _newValue2);
       } else {
-        setTrueInternalValue("0%");
+        var _newValue3 = "0%";
+        setTrueInternalValue(_newValue3);
+        emitValue(e, _newValue3);
       }
     }
   };
   var handleFocusEvents = function handleFocusEvents(e) {
     if (ssn) {
       setTrueInternalValue(formattedSSN[0]);
+      setTimeout(function () {
+        e.target.select();
+      });
     }
     if (currency) {
       if (props.emitOnlyCurrencyValue) {
-        setTrueInternalValue(trueInternalValue.substring(1).replaceAll("$", "").replaceAll(",", ""));
+        setTrueInternalValue(trueInternalValue.replaceAll("$", "").replaceAll(",", ""));
         setTimeout(function () {
           e.target.select();
         });
       } else {
-        setTrueInternalValue(trueInternalValue.substring(1));
+        setTrueInternalValue(trueInternalValue.replaceAll("$", "").replaceAll(",", ""));
         setTimeout(function () {
           e.target.select();
         });
@@ -20666,16 +20681,6 @@ TextField.propTypes = _objectSpread2$1(_objectSpread2$1({}, inputPropTypes), {},
 TextField.defaultProps = _objectSpread2$1(_objectSpread2$1({}, defaultProps$2), {}, {
   type: "text"
 });
-
-var propTypes = {
-  label: propTypes$1.exports.string,
-  dropDown: propTypes$1.exports.bool,
-  size: propTypes$1.exports.oneOf(["small", "medium", "large", "xlarge", "huge", "massive"]),
-  errorMessage: propTypes$1.exports.string
-};
-var defaultProps$1 = {
-  size: "huge"
-};
 
 var isArray$1 = Array.isArray;
 var keyList = Object.keys;
@@ -23843,6 +23848,42 @@ function useFormikContext() {
   return formik;
 }
 
+function useField(propsOrFieldName) {
+  var formik = useFormikContext();
+  var getFieldProps = formik.getFieldProps,
+      getFieldMeta = formik.getFieldMeta,
+      getFieldHelpers = formik.getFieldHelpers,
+      registerField = formik.registerField,
+      unregisterField = formik.unregisterField;
+  var isAnObject = isObject(propsOrFieldName); // Normalize propsOrFieldName to FieldHookConfig<Val>
+
+  var props = isAnObject ? propsOrFieldName : {
+    name: propsOrFieldName
+  };
+  var fieldName = props.name,
+      validateFn = props.validate;
+  useEffect(function () {
+    if (fieldName) {
+      registerField(fieldName, {
+        validate: validateFn
+      });
+    }
+
+    return function () {
+      if (fieldName) {
+        unregisterField(fieldName);
+      }
+    };
+  }, [registerField, unregisterField, fieldName, validateFn]);
+
+  if (process.env.NODE_ENV !== "production") {
+    !formik ? process.env.NODE_ENV !== "production" ? warning$4(false, 'useField() / <Field /> must be used underneath a <Formik> component or withFormik() higher order component') : warning$4(false) : void 0;
+  }
+
+  !fieldName ? process.env.NODE_ENV !== "production" ? warning$4(false, 'Invalid field name. Either pass `useField` a string or an object containing a `name` key.') : warning$4(false) : void 0;
+  return [getFieldProps(props), getFieldMeta(fieldName), getFieldHelpers(fieldName)];
+}
+
 var Form = /*#__PURE__*/forwardRef(function (props, ref) {
   // iOS needs an "action" attribute for nice input: https://stackoverflow.com/a/39485162/406725
   // We default the action to "#" in case the preventDefault fails (just updates the URL hash)
@@ -24156,8 +24197,57 @@ FieldArrayInner.defaultProps = {
   validateOnChange: true
 };
 
-_objectSpread2$1({}, propTypes);
-_objectSpread2$1({}, defaultProps$1);
+var _excluded$z = ["errorMessage"];
+var FormikTextField = function FormikTextField(_ref) {
+  var errorMessage = _ref.errorMessage,
+    props = _objectWithoutProperties(_ref, _excluded$z);
+  var _useField = useField(props),
+    _useField2 = _slicedToArray$4(_useField, 3),
+    field = _useField2[0],
+    meta = _useField2[1];
+    _useField2[2];
+  var computedErrorMessage = meta.touched && meta.error ? meta.error : errorMessage;
+  return /*#__PURE__*/React__default.createElement(TextField, _extends$2({}, props, {
+    errorMessage: computedErrorMessage
+  }, field));
+};
+FormikTextField.propTypes = _objectSpread2$1(_objectSpread2$1({}, inputPropTypes), {}, {
+  dropDown: propTypes$1.exports.bool,
+  rightIcon: propTypes$1.exports.element,
+  leftIcon: propTypes$1.exports.element,
+  currency: propTypes$1.exports.bool,
+  emitOnlyCurrencyValue: propTypes$1.exports.bool,
+  oneCharWide: propTypes$1.exports.bool,
+  isPassword: propTypes$1.exports.bool,
+  ssn: propTypes$1.exports.bool,
+  maxlength: propTypes$1.exports.oneOfType([propTypes$1.exports.string, propTypes$1.exports.number]),
+  type: propTypes$1.exports.string,
+  inputClass: propTypes$1.exports.string,
+  onChange: propTypes$1.exports.func,
+  onInput: propTypes$1.exports.func,
+  onKeypress: propTypes$1.exports.func,
+  onKeydown: propTypes$1.exports.func,
+  onFocus: propTypes$1.exports.func,
+  onBlur: propTypes$1.exports.func,
+  onKeyup: propTypes$1.exports.func,
+  leftIconComponent: propTypes$1.exports.node,
+  rightIconComponent: propTypes$1.exports.node,
+  onlyNumbers: propTypes$1.exports.bool,
+  percentage: propTypes$1.exports.bool
+});
+FormikTextField.defaultProps = _objectSpread2$1(_objectSpread2$1({}, defaultProps$2), {}, {
+  type: "text"
+});
+
+var propTypes = {
+  label: propTypes$1.exports.string,
+  dropDown: propTypes$1.exports.bool,
+  size: propTypes$1.exports.oneOf(["small", "medium", "large", "xlarge", "huge", "massive"]),
+  errorMessage: propTypes$1.exports.string
+};
+var defaultProps$1 = {
+  size: "huge"
+};
 
 var _excluded$y = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onChange", "onBlur", "name"];
 var HookFormTextField = /*#__PURE__*/React__default.forwardRef(function (_ref, ref) {
@@ -86238,4 +86328,4 @@ ToastProvider.defaultProps = {
   position: "top-right"
 };
 
-export { Accordion, AddBookmark as AddBookmarkIcon, AddCircle as AddCircleIcon, AddFile as AddFileIcon, Add as AddIcon, AddItem as AddItemIcon, AddUser as AddUserIcon, Alarm as AlarmIcon, Alert, Announce as AnnounceIcon, Apps as AppsIcon, ArrowDown as ArrowDownIcon, ArrowDownLeft as ArrowDownLeftIcon, ArrowDownRight as ArrowDownRightIcon, ArrowLeft as ArrowLeftIcon, ArrowRight as ArrowRightIcon, ArrowUp as ArrowUpIcon, ArrowUpLeft as ArrowUpLeftIcon, ArrowUpRight as ArrowUpRightIcon, Attachment as AttachmentIcon, AutoLayout, Avatar, Avatar$1 as AvatarIcon, Backward as BackwardIcon, Badge, Bank as BankIcon, Banner, BarChart as BarChartIcon, Basket as BasketIcon, BendLeft as BendLeftIcon, BendRight as BendRightIcon, Bolt as BoltIcon, Book as BookIcon, Bookmark as BookmarkIcon, Box, Briefcase as BriefcaseIcon, Button, Calendar as CalendarIcon, Camera as CameraIcon, Card, Card$1 as CardIcon, CardInputField, Cart as CartIcon, Cash as CashIcon, CenterAlign as CenterAlignIcon, Certificate2 as Certificate2Icon, Certificate as CertificateIcon, Chart as ChartIcon, CheckCircle as CheckCircleIcon, Check as CheckIcon, Checkbox, ChevronArrowDown as ChevronArrowDownIcon, ChevronArrowLeft as ChevronArrowLeftIcon, ChevronArrowRight as ChevronArrowRightIcon, ChevronArrowUp as ChevronArrowUpIcon, ChevronFilledDown as ChevronFilledDownIcon, ChevronFilledLeft as ChevronFilledLeftIcon, ChevronFilledRight as ChevronFilledRightIcon, ChevronFilledUp as ChevronFilledUpIcon, Circle as CircleIcon, CloseCircle as CloseCircleIcon, Close as CloseIcon, CloudDownload as CloudDownloadIcon, CloudFlash as CloudFlashIcon, Cloud as CloudIcon, CloudRain as CloudRainIcon, CloudUploadFilledIcon, CloudUpload as CloudUploadIcon, Col, Command as CommandIcon, Company as CompanyIcon, Compass as CompassIcon, Compress2 as Compress2Icon, Compress as CompressIcon, Component as CopyIcon, Counter, CountryDropdown, Crop as CropIcon, Crown as CrownIcon, Cut as CutIcon, DarkModeContext, DarkModeProvider, DatePickerField as DatePicker, DebitCard, DebitBalance as DebitCardBalance, Decrease2 as Decrease2Icon, Decrease as DecreaseIcon, Delete as DeleteIcon, Deposits as DepositsIcon, Details as DetailsIcon, Dial as DialIcon, DialOff as DialOffIcon, Disabled as DisabledIcon, Dislike as DislikeIcon, Document as DocumentIcon, DoubleCheck as DoubleCheckIcon, Download as DownloadIcon, Drop as DropIcon, Dropdown, Edit2 as Edit2Icon, Edit as EditIcon, ErrorCircle as ErrorCircleIcon, Error$1 as ErrorIcon, ExitFullScreen as ExitFullScreenIcon, Expand2 as Expand2Icon, Expand as ExpandIcon, ExternalLink as ExternalLinkIcon, Eye as EyeIcon, EyeOff as EyeOffIcon, File as FileIcon, FilePicker, FilePickerInline, Filter as FilterIcon, Flag as FlagIcon, Flame as FlameIcon, Flash as FlashIcon, Folder as FolderIcon, Forward as ForwardIcon, FullScreen as FullScreenIcon, Funnel as FunnelIcon, Gem as GemIcon, Gift as GiftIcon, Gitlab as GitlabIcon, Globe as GlobeIcon, Grid as GridIcon, GridLayout, Heading, HeartFilled as HeartFilledIcon, Heart as HeartIcon, Home as HomeIcon, Icon, Image as ImageIcon, Inbox as InboxIcon, Increase2 as Increase2Icon, Increase as IncreaseIcon, Info as InfoIcon, InfoOutline as InfoOutlineIcon, JustifyAlign as JustifyAlignIcon, Key as KeyIcon, LeftAlign as LeftAlignIcon, Like as LikeIcon, Link as LinkIcon, List2 as List2Icon, List as ListIcon, Loader, Location2 as Location2Icon, Location3 as Location3Icon, Location as LocationIcon, Lock as LockIcon, Login2 as Login2Icon, Login as LoginIcon, Logout2 as Logout2Icon, Logout as LogoutIcon, Map$2 as MapIcon, Menu2 as Menu2Icon, Menu3 as Menu3Icon, Menu4 as Menu4Icon, Menu5 as Menu5Icon, Menu6 as Menu6Icon, Menu7 as Menu7Icon, Menu8 as Menu8Icon, MenuH as MenuHIcon, Menu as MenuIcon, MenuV as MenuVIcon, Message as MessageIcon, Mic as MicIcon, MicOff as MicOffIcon, Modal, Moon as MoonIcon, Move as MoveIcon, Music as MusicIcon, Mute as MuteIcon, Network as NetworkIcon, Next as NextIcon, NotificationBell as NotificationBellIcon, Pagination, Pause as PauseIcon, PhoneField, Pie as PieIcon, Pin as PinIcon, PinInput, PlayCircle as PlayCircleIcon, Power as PowerIcon, Previous as PreviousIcon, Print as PrintIcon, Profile as ProfileIcon, ProgressBar, Pulse as PulseIcon, Radio, Refresh as RefreshIcon, Reload as ReloadIcon, ResponsiveLayout, RightAlign as RightAlignIcon, Rocket as RocketIcon, RotateLeft as RotateLeftIcon, RotateRight as RotateRightIcon, Row, ScanCard as ScanCardIcon, Scroll as ScrollIcon, Search as SearchIcon, SelectField, SelectItem as SelectItemIcon, Send as SendIcon, Settings as SettingsIcon, Share as ShareIcon, Shield as ShieldCheckIcon, ShieldFlash as ShieldFlashIcon, Shield$1 as ShieldIcon, Shop as ShopIcon, Sort2 as Sort2Icon, SortAscending as SortAscendingIcon, SortDescending as SortDescendingIcon, Sort as SortIcon, Sound as SoundIcon, Stack$1 as StackIcon, Staff as StaffIcon, Star as StarIcon, Stepper, StopCircle as StopCircleIcon, Stopwatch as StopwatchIcon, Sun as SunIcon, Support as SupportIcon, Switch, Tab, Table, Table$1 as TableIcon, TagDropdown, Tag as TagIcon, TagInput, Text$1 as Text, TextArea, TextField, Text as TextIconIcon, ThemeContext, ThemeProvider, Time as TimeIcon, Toast, ToastContext, ToastProvider, Transfer as TransferIcon, Trophy as TrophyIcon, Unlock as UnlockIcon, Upload as UploadIcon, VerticalArrows as VerticalArrowsIcon, Video as VideoIcon, VideoOff as VideoOffIcon, Voucher as VoucherIcon, Wallet as WalletIcon, Warning as WarningIcon, Wave as WaveIcon, Withdraw as WithdrawIcon, getTextColor, hexToRgbA };
+export { Accordion, AddBookmark as AddBookmarkIcon, AddCircle as AddCircleIcon, AddFile as AddFileIcon, Add as AddIcon, AddItem as AddItemIcon, AddUser as AddUserIcon, Alarm as AlarmIcon, Alert, Announce as AnnounceIcon, Apps as AppsIcon, ArrowDown as ArrowDownIcon, ArrowDownLeft as ArrowDownLeftIcon, ArrowDownRight as ArrowDownRightIcon, ArrowLeft as ArrowLeftIcon, ArrowRight as ArrowRightIcon, ArrowUp as ArrowUpIcon, ArrowUpLeft as ArrowUpLeftIcon, ArrowUpRight as ArrowUpRightIcon, Attachment as AttachmentIcon, AutoLayout, Avatar, Avatar$1 as AvatarIcon, Backward as BackwardIcon, Badge, Bank as BankIcon, Banner, BarChart as BarChartIcon, Basket as BasketIcon, BendLeft as BendLeftIcon, BendRight as BendRightIcon, Bolt as BoltIcon, Book as BookIcon, Bookmark as BookmarkIcon, Box, Briefcase as BriefcaseIcon, Button, Calendar as CalendarIcon, Camera as CameraIcon, Card, Card$1 as CardIcon, CardInputField, Cart as CartIcon, Cash as CashIcon, CenterAlign as CenterAlignIcon, Certificate2 as Certificate2Icon, Certificate as CertificateIcon, Chart as ChartIcon, CheckCircle as CheckCircleIcon, Check as CheckIcon, Checkbox, ChevronArrowDown as ChevronArrowDownIcon, ChevronArrowLeft as ChevronArrowLeftIcon, ChevronArrowRight as ChevronArrowRightIcon, ChevronArrowUp as ChevronArrowUpIcon, ChevronFilledDown as ChevronFilledDownIcon, ChevronFilledLeft as ChevronFilledLeftIcon, ChevronFilledRight as ChevronFilledRightIcon, ChevronFilledUp as ChevronFilledUpIcon, Circle as CircleIcon, CloseCircle as CloseCircleIcon, Close as CloseIcon, CloudDownload as CloudDownloadIcon, CloudFlash as CloudFlashIcon, Cloud as CloudIcon, CloudRain as CloudRainIcon, CloudUploadFilledIcon, CloudUpload as CloudUploadIcon, Col, Command as CommandIcon, Company as CompanyIcon, Compass as CompassIcon, Compress2 as Compress2Icon, Compress as CompressIcon, Component as CopyIcon, Counter, CountryDropdown, Crop as CropIcon, Crown as CrownIcon, Cut as CutIcon, DarkModeContext, DarkModeProvider, DatePickerField as DatePicker, DebitCard, DebitBalance as DebitCardBalance, Decrease2 as Decrease2Icon, Decrease as DecreaseIcon, Delete as DeleteIcon, Deposits as DepositsIcon, Details as DetailsIcon, Dial as DialIcon, DialOff as DialOffIcon, Disabled as DisabledIcon, Dislike as DislikeIcon, Document as DocumentIcon, DoubleCheck as DoubleCheckIcon, Download as DownloadIcon, Drop as DropIcon, Dropdown, Edit2 as Edit2Icon, Edit as EditIcon, ErrorCircle as ErrorCircleIcon, Error$1 as ErrorIcon, ExitFullScreen as ExitFullScreenIcon, Expand2 as Expand2Icon, Expand as ExpandIcon, ExternalLink as ExternalLinkIcon, Eye as EyeIcon, EyeOff as EyeOffIcon, File as FileIcon, FilePicker, FilePickerInline, Filter as FilterIcon, Flag as FlagIcon, Flame as FlameIcon, Flash as FlashIcon, Folder as FolderIcon, FormikTextField, Forward as ForwardIcon, FullScreen as FullScreenIcon, Funnel as FunnelIcon, Gem as GemIcon, Gift as GiftIcon, Gitlab as GitlabIcon, Globe as GlobeIcon, Grid as GridIcon, GridLayout, Heading, HeartFilled as HeartFilledIcon, Heart as HeartIcon, Home as HomeIcon, Icon, Image as ImageIcon, Inbox as InboxIcon, Increase2 as Increase2Icon, Increase as IncreaseIcon, Info as InfoIcon, InfoOutline as InfoOutlineIcon, JustifyAlign as JustifyAlignIcon, Key as KeyIcon, LeftAlign as LeftAlignIcon, Like as LikeIcon, Link as LinkIcon, List2 as List2Icon, List as ListIcon, Loader, Location2 as Location2Icon, Location3 as Location3Icon, Location as LocationIcon, Lock as LockIcon, Login2 as Login2Icon, Login as LoginIcon, Logout2 as Logout2Icon, Logout as LogoutIcon, Map$2 as MapIcon, Menu2 as Menu2Icon, Menu3 as Menu3Icon, Menu4 as Menu4Icon, Menu5 as Menu5Icon, Menu6 as Menu6Icon, Menu7 as Menu7Icon, Menu8 as Menu8Icon, MenuH as MenuHIcon, Menu as MenuIcon, MenuV as MenuVIcon, Message as MessageIcon, Mic as MicIcon, MicOff as MicOffIcon, Modal, Moon as MoonIcon, Move as MoveIcon, Music as MusicIcon, Mute as MuteIcon, Network as NetworkIcon, Next as NextIcon, NotificationBell as NotificationBellIcon, Pagination, Pause as PauseIcon, PhoneField, Pie as PieIcon, Pin as PinIcon, PinInput, PlayCircle as PlayCircleIcon, Power as PowerIcon, Previous as PreviousIcon, Print as PrintIcon, Profile as ProfileIcon, ProgressBar, Pulse as PulseIcon, Radio, Refresh as RefreshIcon, Reload as ReloadIcon, ResponsiveLayout, RightAlign as RightAlignIcon, Rocket as RocketIcon, RotateLeft as RotateLeftIcon, RotateRight as RotateRightIcon, Row, ScanCard as ScanCardIcon, Scroll as ScrollIcon, Search as SearchIcon, SelectField, SelectItem as SelectItemIcon, Send as SendIcon, Settings as SettingsIcon, Share as ShareIcon, Shield as ShieldCheckIcon, ShieldFlash as ShieldFlashIcon, Shield$1 as ShieldIcon, Shop as ShopIcon, Sort2 as Sort2Icon, SortAscending as SortAscendingIcon, SortDescending as SortDescendingIcon, Sort as SortIcon, Sound as SoundIcon, Stack$1 as StackIcon, Staff as StaffIcon, Star as StarIcon, Stepper, StopCircle as StopCircleIcon, Stopwatch as StopwatchIcon, Sun as SunIcon, Support as SupportIcon, Switch, Tab, Table, Table$1 as TableIcon, TagDropdown, Tag as TagIcon, TagInput, Text$1 as Text, TextArea, TextField, Text as TextIconIcon, ThemeContext, ThemeProvider, Time as TimeIcon, Toast, ToastContext, ToastProvider, Transfer as TransferIcon, Trophy as TrophyIcon, Unlock as UnlockIcon, Upload as UploadIcon, VerticalArrows as VerticalArrowsIcon, Video as VideoIcon, VideoOff as VideoOffIcon, Voucher as VoucherIcon, Wallet as WalletIcon, Warning as WarningIcon, Wave as WaveIcon, Withdraw as WithdrawIcon, getTextColor, hexToRgbA };

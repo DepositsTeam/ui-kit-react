@@ -135,22 +135,14 @@ const TextField = forwardRef(
 
     const emitValue = (e, val) => {
       if (onChange && typeof onChange === "function") {
-        onChange({
-          ...e,
-          target: {
-            ...e.target,
-            value: val ? val : trueInternalValue,
-          },
-        });
+        const clonedE = Object.assign({}, e);
+        clonedE.target.value = val ? val : trueInternalValue;
+        onChange(clonedE);
       }
       if (onInput && typeof onInput === "function") {
-        onInput({
-          ...e,
-          target: {
-            ...e.target,
-            value: val ? val : trueInternalValue,
-          },
-        });
+        const clonedE = Object.assign({}, e);
+        clonedE.target.value = val ? val : trueInternalValue;
+        onInput(clonedE);
       }
     };
 
@@ -210,19 +202,25 @@ const TextField = forwardRef(
     const handleBlurEvents = (e) => {
       if (ssn) {
         setTrueInternalValue(formattedSSN[1]);
+        emitValue(e, formattedSSN[0]);
       }
       if (currency) {
         if (e.target.value) {
-          setTrueInternalValue(
-            `$${number_format(
-              parseFloat(
-                trueInternalValue.split(",").join("").replaceAll("$", "")
-              ),
-              2
-            )}`
+          const newValue = `$${number_format(
+            parseFloat(
+              trueInternalValue.split(",").join("").replaceAll("$", "")
+            ),
+            2
+          )}`;
+          setTrueInternalValue(newValue);
+          emitValue(
+            e,
+            emitOnlyCurrencyValue ? number_format(e.target.value, 2) : newValue
           );
         } else {
-          setTrueInternalValue("$0.00");
+          const newValue = "$0.00";
+          setTrueInternalValue(newValue);
+          emitValue(e, newValue);
         }
       }
       if (percentage) {
@@ -231,9 +229,13 @@ const TextField = forwardRef(
           const parsedValue = parseFloat(value.replaceAll("%", ""));
           const renderedValue =
             parsedValue < 0 ? 0 : parsedValue > 100 ? 100 : parsedValue;
-          setTrueInternalValue(`${renderedValue}%`);
+          const newValue = `${renderedValue}%`;
+          setTrueInternalValue(newValue);
+          emitValue(e, newValue);
         } else {
-          setTrueInternalValue("0%");
+          const newValue = "0%";
+          setTrueInternalValue(newValue);
+          emitValue(e, newValue);
         }
       }
     };
@@ -241,20 +243,22 @@ const TextField = forwardRef(
     const handleFocusEvents = (e) => {
       if (ssn) {
         setTrueInternalValue(formattedSSN[0]);
+        setTimeout(() => {
+          e.target.select();
+        });
       }
       if (currency) {
         if (props.emitOnlyCurrencyValue) {
           setTrueInternalValue(
-            trueInternalValue
-              .substring(1)
-              .replaceAll("$", "")
-              .replaceAll(",", "")
+            trueInternalValue.replaceAll("$", "").replaceAll(",", "")
           );
           setTimeout(() => {
             e.target.select();
           });
         } else {
-          setTrueInternalValue(trueInternalValue.substring(1));
+          setTrueInternalValue(
+            trueInternalValue.replaceAll("$", "").replaceAll(",", "")
+          );
           setTimeout(() => {
             e.target.select();
           });

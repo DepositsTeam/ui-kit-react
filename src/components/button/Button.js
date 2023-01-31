@@ -96,6 +96,8 @@ Button.propTypes = {
     "success",
     "outline",
     "invisible",
+    "default",
+    "info",
   ]),
   disabled: PropType.bool,
   size: PropTypes.oneOf([

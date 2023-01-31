@@ -1,6 +1,6 @@
 {
   "name": "@deposits/ui-kit-react",
-  "version": "0.0.45",
+  "version": "0.0.47",
   "description": "A reusable suite of React components to make your development experience stellar. Inspired by the ui at Deposits - the future of Fintech",
   "keywords": [
     "deposits",
@@ -27,6 +27,7 @@
     "@floating-ui/dom": "^1.0.6",
     "card-validator": "^8.1.1",
     "export-to-csv": "^0.2.1",
+    "formik": "^2.2.9",
     "libphonenumber-js": "^1.10.14",
     "prop-types": "^15.8.1",
     "react-beautiful-dnd": "^13.1.1",
@@ -103,7 +104,6 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "css-loader": "^6.7.2",
-    "formik": "^2.2.9",
     "prettier": "^2.8.1",
     "rollup": "^2.77.2",
     "rollup-plugin-babel": "^4.4.0",

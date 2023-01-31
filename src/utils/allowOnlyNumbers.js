@@ -6,7 +6,9 @@ export const allowOnlyNumbers = (e, allowPeriod = false) => {
       !isNumber &&
       value !== "Delete" &&
       value !== "Backspace" &&
-      value !== "Tab"
+      value !== "Tab" &&
+      value !== "ArrowRight" &&
+      value !== "ArrowLeft"
     ) {
       e.preventDefault();
       return;
