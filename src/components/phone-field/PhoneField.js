@@ -25,6 +25,7 @@ const PhoneField = ({
   labelClass,
   phoneNumber,
   onChange,
+  value,
   code,
   ...props
 }) => {
@@ -56,13 +57,28 @@ const PhoneField = ({
   const [formattedInternalPhone, setFormattedInternalPhone] = useState("");
   const [localErrorMessage, setLocalErrorMessage] = useState("");
   const [codeIsFocused, setCodeIsFocused] = useState(false);
+  const [lastEvent, setLastEvent] = useState(null);
+  const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
-    if (code) {
-      setInternalCode(code);
-    }
-    if (phoneNumber) {
-      setInternalPhone(phoneNumber);
+    if (!initialized) {
+      if (code) {
+        setInternalCode(code);
+      }
+      if (phoneNumber) {
+        setInternalPhone(phoneNumber);
+      }
+      if (value) {
+        const asYouType = new AsYouType({
+          defaultCountry: countryCodes[internalCode][0],
+        });
+        asYouType.input(value);
+        if (asYouType.getNumber() && asYouType.getNumber().isPossible()) {
+          setInternalPhone(asYouType.getNumber().formatNational());
+          setInternalCode(`+${asYouType.getCallingCode()}`);
+        }
+      }
+      setInitialized(true);
     }
   }, [code, phoneNumber]);
 
@@ -92,12 +108,16 @@ const PhoneField = ({
 
   useEffect(() => {
     if (onChange && typeof onChange === "function") {
-      onChange({
-        code: internalCode,
-        phoneNumber: internalPhone,
-      });
+      if (lastEvent && lastEvent.target) {
+        const clonedE = Object.assign({}, lastEvent);
+        clonedE.target.value = `${internalCode} ${internalPhone}`;
+        onChange(clonedE, {
+          code: internalCode,
+          number: internalPhone,
+        });
+      }
     }
-  }, [internalCode, internalPhone]);
+  }, [internalCode, internalPhone, lastEvent]);
 
   useEffect(() => {
     if (internalCode && countryCodes[internalCode]) {
@@ -112,9 +132,11 @@ const PhoneField = ({
   }, [internalPhone, internalCode]);
 
   const updateInternalPhone = (e) => {
+    setLastEvent(e);
     setInternalPhone(e.target.value);
   };
   const updateInternalCode = (e) => {
+    setLastEvent(e);
     setInternalCode(e.target.value);
   };
 

@@ -12,8 +12,11 @@
       <change beforePath="$PROJECT_DIR$/dist/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/TextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/phone-field/PhoneField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/phone-field/PhoneField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/phone-field/PhoneField.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/phone-field/PhoneField.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -398,7 +401,7 @@
       <workItem from="1674873912154" duration="607000" />
       <workItem from="1674944661852" duration="20156000" />
       <workItem from="1675121229932" duration="17000" />
-      <workItem from="1675163884544" duration="10638000" />
+      <workItem from="1675163884544" duration="15587000" />
     </task>
     <task id="LOCAL-00001" summary="Worked on several updates to bring the React UI kit on par with the Vue Ui Kit">
       <created>1674563026879</created>

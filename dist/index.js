@@ -20445,13 +20445,19 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
       if (ssn) {
         setTrueInternalValue(formatSSN(value)[0]);
       } else if (currency) {
-        var strippedValue = value.replaceAll("$", "").replaceAll(",", "");
-        setTrueInternalValue("$".concat(number_format(strippedValue)));
+        var regex = /[0-9$,\.]/;
+        if (regex.test(value)) {
+          var strippedValue = value.replaceAll("$", "").replaceAll(",", "");
+          setTrueInternalValue("$".concat(number_format(strippedValue)));
+        }
       } else if (percentage) {
-        var parsedValue = parseFloat(value.replaceAll("%", ""));
-        var renderedValue = parsedValue < 0 ? 0 : parsedValue > 100 ? 100 : parsedValue;
-        var newValue = "".concat(renderedValue, "%");
-        setTrueInternalValue(newValue);
+        var _regex = /[0-9%\.]/;
+        if (_regex.test(value)) {
+          var parsedValue = parseFloat(value.replaceAll("%", ""));
+          var renderedValue = parsedValue < 0 ? 0 : parsedValue > 100 ? 100 : parsedValue;
+          var newValue = "".concat(renderedValue, "%");
+          setTrueInternalValue(newValue);
+        }
       } else {
         setTrueInternalValue(value);
       }
@@ -67938,6 +67944,10 @@ var PhoneField = function PhoneField(_ref) {
     _useState10 = _slicedToArray$4(_useState9, 2),
     codeIsFocused = _useState10[0],
     setCodeIsFocused = _useState10[1];
+  var _useState11 = useState(null),
+    _useState12 = _slicedToArray$4(_useState11, 2),
+    lastEvent = _useState12[0],
+    setLastEvent = _useState12[1];
   useEffect(function () {
     if (code) {
       setInternalCode(code);
@@ -67971,12 +67981,16 @@ var PhoneField = function PhoneField(_ref) {
   }, [internalCode, internalPhone]);
   useEffect(function () {
     if (onChange && typeof onChange === "function") {
-      onChange({
-        code: internalCode,
-        phoneNumber: internalPhone
-      });
+      if (lastEvent && lastEvent.target) {
+        var clonedE = Object.assign({}, lastEvent);
+        clonedE.target.value = "".concat(internalCode, " ").concat(internalPhone);
+        onChange(clonedE, {
+          code: internalCode,
+          number: internalPhone
+        });
+      }
     }
-  }, [internalCode, internalPhone]);
+  }, [internalCode, internalPhone, lastEvent]);
   useEffect(function () {
     if (internalCode && countryCodes[internalCode]) {
       setFormattedInternalPhone(new AsYouType({
@@ -67987,9 +68001,11 @@ var PhoneField = function PhoneField(_ref) {
     }
   }, [internalPhone, internalCode]);
   var updateInternalPhone = function updateInternalPhone(e) {
+    setLastEvent(e);
     setInternalPhone(e.target.value);
   };
   var updateInternalCode = function updateInternalCode(e) {
+    setLastEvent(e);
     setInternalCode(e.target.value);
   };
   var changeFocusStyle = function changeFocusStyle(val) {

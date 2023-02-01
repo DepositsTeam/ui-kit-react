@@ -10,7 +10,7 @@ export default {
 
 const Template = (args) => (
   <ThemeProvider>
-    <PhoneField {...args} />
+    <PhoneField {...args} onChange={(e) => console.log(e.target.value)} />
   </ThemeProvider>
 );
 
