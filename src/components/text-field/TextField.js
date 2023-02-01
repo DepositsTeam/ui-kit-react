@@ -301,7 +301,7 @@ const TextField = forwardRef(
     };
 
     return (
-      <Box className={wrapperClasses} ref={ref}>
+      <Box className={wrapperClasses}>
         {labelComponent
           ? labelComponent
           : label &&
@@ -352,6 +352,7 @@ const TextField = forwardRef(
             is={"input"}
             value={trueInternalValue}
             maxLength={computedMaxLength}
+            ref={ref}
           />
           {isPassword && !rightIcon ? (
             <Icon
