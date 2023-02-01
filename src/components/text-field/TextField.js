@@ -67,14 +67,20 @@ const TextField = forwardRef(
         if (ssn) {
           setTrueInternalValue(formatSSN(value)[0]);
         } else if (currency) {
-          const strippedValue = value.replaceAll("$", "").replaceAll(",", "");
-          setTrueInternalValue(`$${number_format(strippedValue)}`);
+          const regex = /[0-9$,\.]/;
+          if (regex.test(value)) {
+            const strippedValue = value.replaceAll("$", "").replaceAll(",", "");
+            setTrueInternalValue(`$${number_format(strippedValue)}`);
+          }
         } else if (percentage) {
-          const parsedValue = parseFloat(value.replaceAll("%", ""));
-          const renderedValue =
-            parsedValue < 0 ? 0 : parsedValue > 100 ? 100 : parsedValue;
-          const newValue = `${renderedValue}%`;
-          setTrueInternalValue(newValue);
+          const regex = /[0-9%\.]/;
+          if (regex.test(value)) {
+            const parsedValue = parseFloat(value.replaceAll("%", ""));
+            const renderedValue =
+              parsedValue < 0 ? 0 : parsedValue > 100 ? 100 : parsedValue;
+            const newValue = `${renderedValue}%`;
+            setTrueInternalValue(newValue);
+          }
         } else {
           setTrueInternalValue(value);
         }

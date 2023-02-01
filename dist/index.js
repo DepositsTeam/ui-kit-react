@@ -20386,7 +20386,7 @@ function formatPercentage(percentage) {
   }
 }
 
-var _excluded$y = ["label", "labelComponent", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onLeftIconClick", "onRightIconClick", "invisible", "disabled", "inputClass", "oneCharWide", "leftIconComponent", "rightIconComponent", "labelClass", "onlyNumbers", "showError", "onKeyup", "onKeydown", "onKeypress", "onChange", "onInput", "isPassword", "emitOnlyCurrencyValue", "currency", "type", "ssn", "percentage", "maxLength"];
+var _excluded$y = ["label", "labelComponent", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onLeftIconClick", "onRightIconClick", "invisible", "disabled", "inputClass", "oneCharWide", "leftIconComponent", "rightIconComponent", "labelClass", "onlyNumbers", "showError", "onKeyup", "onKeydown", "onKeypress", "onChange", "onInput", "isPassword", "emitOnlyCurrencyValue", "currency", "type", "ssn", "percentage", "maxLength", "value"];
 var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var label = _ref.label,
     labelComponent = _ref.labelComponent,
@@ -20422,6 +20422,7 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
     ssn = _ref.ssn,
     percentage = _ref.percentage,
     maxLength = _ref.maxLength,
+    value = _ref.value,
     props = _objectWithoutProperties(_ref, _excluded$y);
   var _useState = useState(""),
     _useState2 = _slicedToArray$4(_useState, 2),
@@ -20435,6 +20436,28 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
     _useState6 = _slicedToArray$4(_useState5, 2),
     localType = _useState6[0],
     setLocalType = _useState6[1];
+  var _useState7 = useState(false),
+    _useState8 = _slicedToArray$4(_useState7, 2),
+    initialized = _useState8[0],
+    setInitialized = _useState8[1];
+  useLayoutEffect(function () {
+    if (!initialized) {
+      if (ssn) {
+        setTrueInternalValue(formatSSN(value)[0]);
+      } else if (currency) {
+        var strippedValue = value.replaceAll("$", "").replaceAll(",", "");
+        setTrueInternalValue("$".concat(number_format(strippedValue)));
+      } else if (percentage) {
+        var parsedValue = parseFloat(value.replaceAll("%", ""));
+        var renderedValue = parsedValue < 0 ? 0 : parsedValue > 100 ? 100 : parsedValue;
+        var newValue = "".concat(renderedValue, "%");
+        setTrueInternalValue(newValue);
+      } else {
+        setTrueInternalValue(value);
+      }
+      setInitialized(true);
+    }
+  }, []);
   useLayoutEffect(function () {}, [trueInternalValue]);
   useLayoutEffect(function () {
     if (ssn && formattedSSN) {
@@ -20505,11 +20528,11 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var computedMaxLength = ssn ? 11 : maxLength;
   var handleInputEvents = function handleInputEvents(e) {
     if (currency) {
-      var value = e.target.value,
+      var _value = e.target.value,
         temp,
         regex = new RegExp(/^\d*(\.\d{0,2})?$/);
-      if (!regex.test(value)) {
-        temp = value.split("");
+      if (!regex.test(_value)) {
+        temp = _value.split("");
         var tested = "";
         for (var i = 0; i < temp.length; i++) {
           tested += temp[i];
@@ -20563,9 +20586,9 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
       }
     }
     if (percentage) {
-      var value = e.target.value;
-      if (value) {
-        var parsedValue = parseFloat(value.replaceAll("%", ""));
+      var _value2 = e.target.value;
+      if (_value2) {
+        var parsedValue = parseFloat(_value2.replaceAll("%", ""));
         var renderedValue = parsedValue < 0 ? 0 : parsedValue > 100 ? 100 : parsedValue;
         var _newValue2 = "".concat(renderedValue, "%");
         setTrueInternalValue(_newValue2);
