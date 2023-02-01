@@ -4,7 +4,6 @@ import React, {
   forwardRef,
   useRef,
   useState,
-  useImperativeHandle,
 } from "react";
 import "../../scss/textfield.scss";
 import "./PhoneField.scss";
@@ -41,7 +40,6 @@ const PhoneField = forwardRef(
     ref
   ) => {
     const phoneInputRef = useRef();
-    useImperativeHandle(ref, () => phoneInputRef.current);
     useLayoutEffect(() => {
       const elem = phoneInputRef.current;
       console.log(phoneInputRef);
@@ -236,6 +234,7 @@ const PhoneField = forwardRef(
             value={formattedInternalPhone}
             onChange={updateInternalPhone}
             onKeyPress={allowOnlyNumbers}
+            ref={ref}
           />
         </div>
         {(errorMessage || localErrorMessage) && (

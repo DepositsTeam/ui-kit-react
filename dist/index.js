@@ -1,5 +1,5 @@
 import * as React from 'react';
-import React__default, { createContext, useState, useEffect, useLayoutEffect, useContext, useRef, forwardRef, createElement as createElement$1, Component as Component$1, createRef, useMemo as useMemo$1, useReducer } from 'react';
+import React__default, { createContext, useState, useEffect, useLayoutEffect, useContext, useRef, forwardRef, createElement as createElement$1, Component as Component$1, createRef, useImperativeHandle, useMemo as useMemo$1, useReducer } from 'react';
 import * as ReactDOM from 'react-dom';
 import ReactDOM__default, { findDOMNode, unstable_batchedUpdates } from 'react-dom';
 
@@ -20634,8 +20634,7 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
     }
   };
   return /*#__PURE__*/React__default.createElement(Box, {
-    className: wrapperClasses,
-    ref: ref
+    className: wrapperClasses
   }, labelComponent ? labelComponent : label && !invisible && (typeof label === "string" ? /*#__PURE__*/React__default.createElement(Box, {
     is: "label"
   }, /*#__PURE__*/React__default.createElement(Text$1, {
@@ -20663,7 +20662,8 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
     type: localType,
     is: "input",
     value: trueInternalValue,
-    maxLength: computedMaxLength
+    maxLength: computedMaxLength,
+    ref: ref
   })), isPassword && !rightIcon ? /*#__PURE__*/React__default.createElement(Icon, {
     icon: localType === "text" ? EyeFilledIcon : NoEyeFilledIcon,
     className: "ui-text-field__right-icon",
@@ -67889,8 +67889,8 @@ var countryCodes = {
 ]
 };
 
-var _excluded$m = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "disabled", "isUs", "labelClass", "phoneNumber", "onChange", "code"];
-var PhoneField = function PhoneField(_ref) {
+var _excluded$m = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "disabled", "isUs", "labelClass", "phoneNumber", "onChange", "value", "code"];
+var PhoneField = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var _classNames;
   var label = _ref.label,
     leftIcon = _ref.leftIcon,
@@ -67905,9 +67905,13 @@ var PhoneField = function PhoneField(_ref) {
     labelClass = _ref.labelClass,
     phoneNumber = _ref.phoneNumber,
     onChange = _ref.onChange,
+    value = _ref.value,
     code = _ref.code,
     props = _objectWithoutProperties(_ref, _excluded$m);
   var phoneInputRef = useRef();
+  useImperativeHandle(ref, function () {
+    return phoneInputRef.current;
+  });
   useLayoutEffect(function () {
     var elem = phoneInputRef.current;
     console.log(phoneInputRef);
@@ -67948,12 +67952,29 @@ var PhoneField = function PhoneField(_ref) {
     _useState12 = _slicedToArray$4(_useState11, 2),
     lastEvent = _useState12[0],
     setLastEvent = _useState12[1];
+  var _useState13 = useState(false),
+    _useState14 = _slicedToArray$4(_useState13, 2),
+    initialized = _useState14[0],
+    setInitialized = _useState14[1];
   useEffect(function () {
-    if (code) {
-      setInternalCode(code);
-    }
-    if (phoneNumber) {
-      setInternalPhone(phoneNumber);
+    if (!initialized) {
+      if (code) {
+        setInternalCode(code);
+      }
+      if (phoneNumber) {
+        setInternalPhone(phoneNumber);
+      }
+      if (value) {
+        var asYouType = new AsYouType({
+          defaultCountry: countryCodes[internalCode][0]
+        });
+        asYouType.input(value);
+        if (asYouType.getNumber() && asYouType.getNumber().isPossible()) {
+          setInternalPhone(asYouType.getNumber().formatNational());
+          setInternalCode("+".concat(asYouType.getCallingCode()));
+        }
+      }
+      setInitialized(true);
     }
   }, [code, phoneNumber]);
   useEffect(function () {
@@ -68079,7 +68100,7 @@ var PhoneField = function PhoneField(_ref) {
     scale: "subhead",
     fontFace: "circularSTD"
   }, localErrorMessage ? localErrorMessage : errorMessage)));
-};
+});
 PhoneField.propTypes = {
   label: propTypes.exports.string,
   dropDown: propTypes.exports.bool,
