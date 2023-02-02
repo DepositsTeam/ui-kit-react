@@ -146,7 +146,6 @@ Alert.propTypes = {
 };
 
 Alert.defaultProps = {
-  message: "This is a simple message",
   colorScheme: "default",
   theme: "flat",
   closable: false,

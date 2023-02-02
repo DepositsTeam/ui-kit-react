@@ -7,23 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="Made updates to phone field, tag dropdown, text field and exported useful hooks">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/loader/Loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loader/Loader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/loader/Loader.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loader/Loader.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/loader/Loader.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loader/Loader.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/phone-field/PhoneField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/phone-field/PhoneField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/phone-field/PhoneField.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/phone-field/PhoneField.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tag-dropdown/TagDropdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tag-dropdown/TagDropdown.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/TextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/toast/Toast.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/toast/Toast.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/hooks/usePushToast.hook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/hooks/usePushToast.js" afterDir="false" />
-    </list>
+    <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="Made updates to phone field, tag dropdown, text field and exported useful hooks" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -408,7 +392,7 @@
       <workItem from="1674944661852" duration="20156000" />
       <workItem from="1675121229932" duration="17000" />
       <workItem from="1675163884544" duration="28261000" />
-      <workItem from="1675305594614" duration="1566000" />
+      <workItem from="1675305594614" duration="2044000" />
     </task>
     <task id="LOCAL-00001" summary="Worked on several updates to bring the React UI kit on par with the Vue Ui Kit">
       <created>1674563026879</created>
@@ -431,7 +415,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675224378162</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Made updates to phone field, tag dropdown, text field and exported useful hooks">
+      <created>1675310059575</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1675310059575</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
