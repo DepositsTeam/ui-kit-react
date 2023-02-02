@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import PhoneField from "./PhoneField";
 import ThemeProvider from "../providers/ThemeProvider";
 import DarkModeProvider from "../providers/DarkModeProvider";
@@ -8,11 +8,24 @@ export default {
   component: PhoneField,
 };
 
-const Template = (args) => (
-  <ThemeProvider>
-    <PhoneField {...args} onChange={(e) => console.log(e.target.value)} />
-  </ThemeProvider>
-);
+const Template = (args) => {
+  const ref = useRef();
+  const div = useRef();
+  useEffect(() => {
+    console.log(ref.current);
+    console.log(div.current);
+  }, []);
+  const handleChange = (e) => {
+    console.log(e.target.value);
+    console.log(ref.current.value);
+  };
+  return (
+    <ThemeProvider>
+      <div ref={div} />
+      <PhoneField ref={ref} {...args} onChange={handleChange} />
+    </ThemeProvider>
+  );
+};
 
 const DarkModeTemplate = (args) => (
   <ThemeProvider>

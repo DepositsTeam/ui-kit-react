@@ -243,7 +243,12 @@ const TextField = forwardRef(
           setTrueInternalValue(newValue);
           emitValue(
             e,
-            emitOnlyCurrencyValue ? number_format(e.target.value, 2) : newValue
+            emitOnlyCurrencyValue
+              ? number_format(
+                  e.target.value.replaceAll("$", "").replaceAll(",", ""),
+                  2
+                )
+              : newValue
           );
         } else {
           const newValue = "$0.00";
@@ -395,7 +400,7 @@ TextField.propTypes = {
   ...inputPropTypes,
   dropDown: PropTypes.bool,
   rightIcon: PropTypes.element,
-  leftIcon: PropTypes.element,
+  leftIcon: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
   currency: PropTypes.bool,
   emitOnlyCurrencyValue: PropTypes.bool,
   oneCharWide: PropTypes.bool,

@@ -28,11 +28,12 @@ const TagDropdown = ({
   showCheckboxes,
   initiallySelectedTags,
   maxDropdownHeight,
+  initiallyClosed,
   ...props
 }) => {
   const [inputTags, setInputTags] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
-  const [showOptions, setShowOptions] = useState([]);
+  const [showOptions, setShowOptions] = useState(initiallyClosed);
   const [inputValue, setInputValue] = useState("");
   const [availableOptions, setAvailableOptions] = useState([]);
   const validInput = useRef();
@@ -86,7 +87,7 @@ const TagDropdown = ({
 
   useEffect(() => {
     if (showOptions) {
-      validInput.current.getElementsByTagName("input")[0].focus();
+      validInput.current.focus();
     }
   });
 
@@ -238,7 +239,6 @@ const TagDropdown = ({
             <TextField
               ref={validInput}
               invisible
-              search
               leftIcon={Search}
               placeholder={placeholder}
               size={"large"}
@@ -278,10 +278,12 @@ TagDropdown.propTypes = {
   onChange: PropTypes.func,
   initiallySelectedTags: PropTypes.array,
   maxDropdownHeight: PropTypes.string,
+  initiallyClosed: PropTypes.bool,
 };
 
 TagDropdown.defaultProps = {
   ...defaultProps,
   showCheckboxes: true,
   maxDropdownHeight: "250px",
+  initiallyClosed: false,
 };

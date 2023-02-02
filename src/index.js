@@ -47,6 +47,9 @@ import ThemeProvider from "./components/providers/ThemeProvider";
 import Toast from "./components/toast";
 import { ToastContext } from "./components/providers/ToastProvider";
 import ToastProvider from "./components/providers/ToastProvider";
+import { usePushToast } from "./utils/hooks/usePushToast";
+import { useUpdateTheme } from "./utils/hooks/useTheme.hook";
+import { useUpdateDarkMode } from "./utils/hooks/useDarkMode.hook";
 import { getTextColor, hexToRgbA } from "./utils/colorManager";
 
 // import icons from "./components/icons";
@@ -309,6 +312,9 @@ export {
   ToastProvider,
   getTextColor,
   hexToRgbA,
+  useUpdateTheme,
+  useUpdateDarkMode,
+  usePushToast,
 };
 
 export {

@@ -1,11 +1,16 @@
 import Loader from "./Loader";
+import ThemeProvider from "../providers/ThemeProvider";
 
 export default {
   title: "Loader",
   component: Loader,
 };
 
-const Template = (args) => <Loader {...args} />;
+const Template = (args) => (
+  <ThemeProvider>
+    <Loader {...args} />
+  </ThemeProvider>
+);
 
 export const Default = Template.bind({});
 

@@ -4,6 +4,7 @@ import React, {
   forwardRef,
   useRef,
   useState,
+  useImperativeHandle,
 } from "react";
 import "../../scss/textfield.scss";
 import "./PhoneField.scss";
@@ -35,14 +36,16 @@ const PhoneField = forwardRef(
       onChange,
       value,
       code,
+      onLocalErrorChanged,
       ...props
     },
     ref
   ) => {
     const phoneInputRef = useRef();
+    const phoneNumberRef = useRef();
+
     useLayoutEffect(() => {
       const elem = phoneInputRef.current;
-      console.log(phoneInputRef);
       const value = elem.value;
       elem.style.width = "calc(" + value.length + "ch + 4px)";
       const wrapper = elem.closest(".ui-text-field__wrapper");
@@ -69,6 +72,10 @@ const PhoneField = forwardRef(
     const [codeIsFocused, setCodeIsFocused] = useState(false);
     const [lastEvent, setLastEvent] = useState(null);
     const [initialized, setInitialized] = useState(false);
+    useImperativeHandle(ref, () => ({
+      ...phoneNumberRef.current,
+      value: `${internalCode} ${formattedInternalPhone}`,
+    }));
 
     useEffect(() => {
       if (!initialized) {
@@ -117,13 +124,22 @@ const PhoneField = forwardRef(
     }, [internalCode, internalPhone]);
 
     useEffect(() => {
+      if (onLocalErrorChanged && typeof onLocalErrorChanged === "function") {
+        onLocalErrorChanged(!!localErrorMessage);
+      }
+    }, [localErrorMessage]);
+
+    useEffect(() => {
       if (onChange && typeof onChange === "function") {
         if (lastEvent && lastEvent.target) {
           const clonedE = Object.assign({}, lastEvent);
-          clonedE.target.value = `${internalCode} ${internalPhone}`;
+          clonedE.target.value = `${internalCode} ${formattedInternalPhone}`;
           onChange(clonedE, {
             code: internalCode,
             number: internalPhone,
+            formattedNumber: formattedInternalPhone,
+            fullNumber: `${code} ${internalPhone}`,
+            formattedFullNumber: `${code} ${formattedInternalPhone}`,
           });
         }
       }
@@ -234,7 +250,7 @@ const PhoneField = forwardRef(
             value={formattedInternalPhone}
             onChange={updateInternalPhone}
             onKeyPress={allowOnlyNumbers}
-            ref={ref}
+            ref={phoneNumberRef}
           />
         </div>
         {(errorMessage || localErrorMessage) && (
@@ -272,6 +288,7 @@ PhoneField.propTypes = {
   code: PropTypes.string,
   labelClass: PropTypes.string,
   onChange: PropTypes.func,
+  onLocalErrorChanged: PropTypes.func,
 };
 
 PhoneField.defaultProps = {

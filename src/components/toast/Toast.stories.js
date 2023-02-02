@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Toast from "./Toast";
 import ToastProvider from "../providers/ToastProvider";
-import { usePushToastHook } from "../../utils/hooks/usePushToast.hook";
+import { usePushToast } from "../../utils/hooks/usePushToast";
 import Button from "../button";
 
 export default {
@@ -17,7 +17,7 @@ export default {
 };
 
 const Template = (props) => {
-  const { pushToast } = usePushToastHook();
+  const { pushToast } = usePushToast();
   const [timesClicked, setTimesClicked] = useState(0);
   const buttonClicked = () => {
     setTimesClicked(timesClicked + 1);
