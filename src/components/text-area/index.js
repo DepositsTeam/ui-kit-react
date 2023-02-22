@@ -1,1 +1,1 @@
-export { default } from "./src/TextArea";
+export { default } from "./TextArea";

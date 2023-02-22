@@ -1,0 +1,39 @@
+@import "../../scss/variables";
+
+$breakpoints: "xs", "sm", "md", "lg", "xl", "xxl";
+
+.ui-responsive__col {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  //flex: 1 0 0%;
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: var(--gutter-y);
+
+  @each $breakpoint in $breakpoints {
+    @media only screen and (min-width: map-get($responsive-layout-breakpoints, $breakpoint)) {
+      @for $i from 1 through 12 {
+        &.ui-responsive__col-#{$breakpoint}-#{$i} {
+          flex: 0 0 auto;
+          width: calc($i / 12 * 100%);
+          padding-left: var(--gutter-x);
+          padding-right: var(--gutter-x);
+        }
+        &.ui-responsive__offset-#{$breakpoint}-#{$i} {
+          margin-left: calc($i / 12 * 100%);
+        }
+        &.ui-responsive__order-#{$breakpoint}-#{$i} {
+          order: #{$i};
+        }
+        &.ui-responsive__order-first {
+          order: -1;
+        }
+        &.ui-responsive__offset-last {
+          order: 13;
+        }
+      }
+    }
+  }
+}

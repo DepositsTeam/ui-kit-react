@@ -9,6 +9,9 @@ deploy_development:
   only:
     - main
   script:
+    - rm -r /var/www/html/test/ui_kit/storybook/react-ui-kit/src
+    - rm -r /var/www/html/test/ui_kit/storybook/react-ui-kit/public
+    - rm -r /var/www/html/test/ui_kit/storybook/react-ui-kit/.storybook
     - cp -R src/. /var/www/html/test/ui_kit/storybook/react-ui-kit/src/
     - cp -R public/. /var/www/html/test/ui_kit/storybook/react-ui-kit/public/
     - cp -R .storybook/. /var/www/html/test/ui_kit/storybook/react-ui-kit/.storybook/

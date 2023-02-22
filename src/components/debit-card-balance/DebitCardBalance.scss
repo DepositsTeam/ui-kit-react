@@ -1,0 +1,88 @@
+@import url("https://assets.ondeposits.com/fonts/css/Ocrb.css");
+
+.d-debit-card-balance {
+  width: var(--width);
+  aspect-ratio: 25/16;
+  border-radius: 18px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+
+  &.theme__light {
+    background: #fefefe;
+    border: 0.5px solid #f1f5f9;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+
+    .d-debit-card-balance__name {
+      color: #64748b;
+    }
+
+    .d-debit-card-balance__balance {
+      color: #121a26;
+    }
+
+    .d-debit-card-balance__available-balance {
+      color: #8895a7;
+    }
+
+    .d-debit-card-balance__detail {
+      color: #525964;
+    }
+  }
+
+  &.theme__dark {
+    background: #121a26;
+    border: 0.5px solid #202b3c;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+
+    .ui-text {
+      color: white;
+    }
+
+    .d-debit-card-balance__name {
+      color: #94a3b8;
+    }
+
+    .d-debit-card-balance__balance {
+      color: #fff;
+    }
+
+    .d-debit-card-balance__available-balance,
+    .d-debit-card-balance__detail {
+      color: #8895a7;
+    }
+  }
+
+  .ocrb {
+    font-family: "Ocrb", sans-serif;
+  }
+
+  .d-debit-card-balance__logo {
+    height: 18px;
+  }
+
+  .d-debit-card-balance__balance {
+    font-size: 28px;
+  }
+
+  .d-debit-card-balance__detail {
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: #8895a7;
+    margin-bottom: 4px;
+    font-family: "Circular Std", sans-serif;
+  }
+
+  .d-debit-card-balance__detail-value {
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 20px;
+    margin-top: 0;
+    font-family: "Circular Std", sans-serif;
+  }
+
+  .d-debit-card-balance__card-brand {
+    width: 32px;
+  }
+}

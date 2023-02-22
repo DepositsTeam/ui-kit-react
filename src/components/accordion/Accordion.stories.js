@@ -6,7 +6,7 @@ export default {
   component: Accordion,
 };
 
-const Template = ({ children, ...args }) => <Accordion {...args} />;
+const Template = (args) => <Accordion {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

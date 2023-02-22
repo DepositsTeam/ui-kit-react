@@ -1,0 +1,8 @@
+@import "../../scss/textfield";
+.ui-pin-input-container {
+  & > * {
+    &:not(:last-child) {
+      margin-right: var(--spacing);
+    }
+  }
+}

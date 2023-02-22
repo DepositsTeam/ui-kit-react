@@ -1,0 +1,56 @@
+.ui-tab {
+  text-decoration: none;
+  color: #5f6b7a;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &.dark_mode {
+    color: #94a3b8;
+
+    &:hover {
+      background: var(--dark-input-background-color);
+      .ui-text {
+        color: var(--dark-primary-action-color);
+      }
+      &.disabled {
+        opacity: 0.5;
+      }
+    }
+
+    &:active:not(.disabled),
+    &.active:not(.disabled) {
+      background: var(--dark-primary-action-color);
+      .ui-text {
+        color: #fff;
+      }
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+
+  &:hover {
+    color: var(--light-primary-action-color);
+    background: #f5f8fa;
+    &.disabled {
+      opacity: 0.5;
+    }
+  }
+
+  &:active:not(.disabled),
+  &.active:not(.disabled) {
+    color: #fff;
+    background: var(--light-primary-action-color);
+  }
+}
+
+.ui-tabs {
+  display: flex;
+  flex-direction: column;
+
+  &.horizontal {
+    flex-direction: row;
+  }
+}

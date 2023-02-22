@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/accordion/Accordion.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/accordion/Accordion.stories.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/accordion/accordion.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/accordion/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/box/src/box.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/box/src/box.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
-    </list>
+    <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="Made updates to phone field, tag dropdown, text field and exported useful hooks" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +20,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="SCSS File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -35,6 +29,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
     <option name="recentBranches">
       <RecentBranches>
         <option name="branchesForRepo">
@@ -42,6 +37,10 @@
             <RecentBranchesForRepo>
               <option name="branches">
                 <list>
+                  <RecentBranch>
+                    <option name="branchName" value="unstable" />
+                    <option name="lastUsedInstant" value="1666027649" />
+                  </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
                     <option name="lastUsedInstant" value="1662461142" />
@@ -69,7 +68,7 @@
     <setting file="file://$PROJECT_DIR$/package.back.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/package.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/rollup.config.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/box/src/Box.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/box/Box.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/icons/Add.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/icons/AddCircle.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/icons/AddFile.js" root0="FORCE_HIGHLIGHTING" />
@@ -153,17 +152,14 @@
     <setting file="file://$PROJECT_DIR$/src/components/icons/VideoOff.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/icons/Voucher.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/icons/index.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/text-field/TextField.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/text-field/TextField.stories.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/text-field/index.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/text-field/src/FormikTextField.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/text-field/src/HookFormTextField.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/text-field/src/TextField.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/text-field/src/textFieldProps.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/text-field/stories/TextField.stories.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/toast/src/Toast.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/toast/src/useToast.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/toast/stories/Toast.stories.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/text-field/textFieldProps.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/toast/Toast.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/toast/Toast.stories.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/toast/useToast.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/index.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Downloads/Icon 2.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -176,9 +172,12 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.laravel-idea.search-composer-json&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/ericmcwinner/Documents/Work/Projects/Work/React/deposits-react-ui-kit/src/utils&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -186,9 +185,16 @@
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/ericmcwinner/Documents/Projects/Work/React/deposits-react-ui-kit/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;io.unthrottled.amii.config.ui.PluginSettingsUI&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/ericmcwinner/Documents/Work/Projects/Work/React/deposits-react-ui-kit/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/PhpStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Vue&quot;,
+      &quot;JavaScript&quot;
+    ]
   }
 }</component>
   <component name="ReactDesignerToolWindowState">
@@ -201,17 +207,36 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/icons" />
+      <recent name="$PROJECT_DIR$/src/utils" />
+      <recent name="$PROJECT_DIR$/src/scss" />
+      <recent name="$PROJECT_DIR$/src/components/country-dropdown" />
+      <recent name="$PROJECT_DIR$/src/components/table" />
+      <recent name="$PROJECT_DIR$/src/components/debit-card" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/accordion" />
-      <recent name="$PROJECT_DIR$/src/components/accordion/src" />
-      <recent name="$PROJECT_DIR$/src/components/tab/stories" />
+      <recent name="$PROJECT_DIR$/src/components/providers" />
+      <recent name="$PROJECT_DIR$/src/components/toast" />
+      <recent name="$PROJECT_DIR$/src/components/text-area" />
       <recent name="$PROJECT_DIR$/src/components/tab" />
-      <recent name="$PROJECT_DIR$/src/components/tab/src" />
+      <recent name="$PROJECT_DIR$/src/components/switch" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.storybook">
+  <component name="RunManager" selected="Shell Script.Update UI Kit">
+    <configuration name="Update UI Kit" type="ShConfigurationType">
+      <option name="SCRIPT_TEXT" value="npm run build-rollup &amp;&amp; npm publish" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/zsh" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="false" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="storybook (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -230,9 +255,15 @@
         <script value="storybook" />
       </scripts>
       <node-interpreter value="project" />
+      <package-manager value="npm" />
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="npm.storybook" />
+      <item itemvalue="npm.storybook (1)" />
+      <item itemvalue="Shell Script.Update UI Kit" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.storybook" />
@@ -275,8 +306,123 @@
       <workItem from="1665430620853" duration="1029000" />
       <workItem from="1665432326425" duration="1878000" />
       <workItem from="1665436084494" duration="279000" />
-      <workItem from="1665672665495" duration="719000" />
+      <workItem from="1665672665495" duration="1287000" />
+      <workItem from="1665677513026" duration="1306000" />
+      <workItem from="1665689113539" duration="1299000" />
+      <workItem from="1665929877668" duration="26723000" />
+      <workItem from="1666038028477" duration="2725000" />
+      <workItem from="1666042762768" duration="5462000" />
+      <workItem from="1666048440015" duration="3046000" />
+      <workItem from="1666051922688" duration="5824000" />
+      <workItem from="1666109106613" duration="145000" />
+      <workItem from="1666143275063" duration="9031000" />
+      <workItem from="1666233958093" duration="1058000" />
+      <workItem from="1666236740256" duration="2474000" />
+      <workItem from="1666340758160" duration="3853000" />
+      <workItem from="1666366210538" duration="2870000" />
+      <workItem from="1666395532294" duration="18884000" />
+      <workItem from="1666568216435" duration="2705000" />
+      <workItem from="1666573525842" duration="2398000" />
+      <workItem from="1666732742126" duration="315000" />
+      <workItem from="1666747559909" duration="82000" />
+      <workItem from="1668705064713" duration="613000" />
+      <workItem from="1668706558618" duration="89000" />
+      <workItem from="1668706660379" duration="156000" />
+      <workItem from="1668706848627" duration="231000" />
+      <workItem from="1668707096450" duration="36000" />
+      <workItem from="1668707145461" duration="2272000" />
+      <workItem from="1668709433677" duration="6370000" />
+      <workItem from="1668826274532" duration="2397000" />
+      <workItem from="1668828710399" duration="2908000" />
+      <workItem from="1668835001752" duration="1268000" />
+      <workItem from="1668968000964" duration="368000" />
+      <workItem from="1668969158851" duration="807000" />
+      <workItem from="1668973847106" duration="426000" />
+      <workItem from="1668980400645" duration="148000" />
+      <workItem from="1668990817572" duration="711000" />
+      <workItem from="1669006239733" duration="2633000" />
+      <workItem from="1669009135621" duration="5433000" />
+      <workItem from="1669034965538" duration="2472000" />
+      <workItem from="1669068721843" duration="185000" />
+      <workItem from="1669073841598" duration="4679000" />
+      <workItem from="1669079159288" duration="586000" />
+      <workItem from="1669080581763" duration="7948000" />
+      <workItem from="1669094040042" duration="15040000" />
+      <workItem from="1669140018296" duration="223000" />
+      <workItem from="1669141670564" duration="9914000" />
+      <workItem from="1669187254080" duration="712000" />
+      <workItem from="1669188009588" duration="14812000" />
+      <workItem from="1669229164112" duration="9645000" />
+      <workItem from="1669283543369" duration="15748000" />
+      <workItem from="1669312421811" duration="11280000" />
+      <workItem from="1669340525049" duration="4493000" />
+      <workItem from="1669632100836" duration="1192000" />
+      <workItem from="1669963784269" duration="94000" />
+      <workItem from="1670009890617" duration="1756000" />
+      <workItem from="1670242421391" duration="1489000" />
+      <workItem from="1670283344730" duration="2328000" />
+      <workItem from="1670290153307" duration="957000" />
+      <workItem from="1670487459557" duration="246000" />
+      <workItem from="1670487731414" duration="5000" />
+      <workItem from="1670487992970" duration="570000" />
+      <workItem from="1670744924352" duration="14711000" />
+      <workItem from="1670845780883" duration="1236000" />
+      <workItem from="1670869994657" duration="1199000" />
+      <workItem from="1670871466983" duration="888000" />
+      <workItem from="1671436648755" duration="1996000" />
+      <workItem from="1671575500505" duration="128000" />
+      <workItem from="1673366302726" duration="29945000" />
+      <workItem from="1673533437755" duration="853000" />
+      <workItem from="1673534478304" duration="7713000" />
+      <workItem from="1673623964649" duration="207000" />
+      <workItem from="1673706946810" duration="733000" />
+      <workItem from="1673719733412" duration="14157000" />
+      <workItem from="1673871196976" duration="5064000" />
+      <workItem from="1673917456604" duration="21277000" />
+      <workItem from="1674052714702" duration="48423000" />
+      <workItem from="1674164498431" duration="19451000" />
+      <workItem from="1674251903000" duration="1235000" />
+      <workItem from="1674493112648" duration="622000" />
+      <workItem from="1674562770410" duration="2706000" />
+      <workItem from="1674604815777" duration="1237000" />
+      <workItem from="1674651809676" duration="2230000" />
+      <workItem from="1674671433470" duration="628000" />
+      <workItem from="1674781954559" duration="581000" />
+      <workItem from="1674873912154" duration="607000" />
+      <workItem from="1674944661852" duration="20156000" />
+      <workItem from="1675121229932" duration="17000" />
+      <workItem from="1675163884544" duration="28261000" />
+      <workItem from="1675305594614" duration="2044000" />
     </task>
+    <task id="LOCAL-00001" summary="Worked on several updates to bring the React UI kit on par with the Vue Ui Kit">
+      <created>1674563026879</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1674563026879</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Made ergonomic updates to phone input field">
+      <created>1675217971604</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1675217971604</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Fixed forwarded ref for phone input">
+      <created>1675224378162</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1675224378162</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Made updates to phone field, tag dropdown, text field and exported useful hooks">
+      <created>1675310059575</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1675310059575</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,6 +438,13 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Worked on several updates to bring the React UI kit on par with the Vue Ui Kit" />
+    <MESSAGE value="Made ergonomic updates to phone input field" />
+    <MESSAGE value="Fixed forwarded ref for phone input" />
+    <MESSAGE value="Made updates to phone field, tag dropdown, text field and exported useful hooks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made updates to phone field, tag dropdown, text field and exported useful hooks" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

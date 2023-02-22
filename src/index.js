@@ -1,4 +1,6 @@
+import Accordion from "./components/accordion";
 import Alert from "./components/alert";
+import AutoLayout from "./components/auto-layout";
 import Avatar from "./components/avatar";
 import Badge from "./components/badge";
 import Banner from "./components/banner";
@@ -7,27 +9,50 @@ import Button from "./components/button";
 import Card from "./components/card";
 import CardInputField from "./components/card-input-field";
 import Checkbox from "./components/checkbox";
+import Col from "./components/responsive-layout/Col";
+import Counter from "./components/counter/Counter";
+import CountryDropdown from "./components/country-dropdown";
 import DatePicker from "./components/date-picker";
+import { DarkModeContext } from "./components/providers/DarkModeProvider";
+import DarkModeProvider from "./components/providers/DarkModeProvider";
+import DebitCard from "./components/debit-card";
+import DebitCardBalance from "./components/debit-card-balance";
+import Dropdown from "./components/dropdown";
+import FilePicker from "./components/file-picker";
+import FilePickerInline from "./components/file-picker-inline";
+import GridLayout from "./components/grid-layout";
 import Heading from "./components/heading";
 import Icon from "./components/icon";
+import Loader from "./components/loader";
 import Modal from "./components/modal";
 import Pagination from "./components/pagination";
 import PhoneField from "./components/phone-field";
+import PinInput from "./components/pin-input";
+import ProgressBar from "./components/progress-bar";
 import Radio from "./components/radio";
+import ResponsiveLayout from "./components/responsive-layout/ResponsiveLayout";
+import Row from "./components/responsive-layout/Row";
 import SelectField from "./components/select-field";
+import Stepper from "./components/stepper";
 import Switch from "./components/switch";
 import Tab from "./components/tab";
 import Table from "./components/table";
+import TagDropdown from "./components/tag-dropdown";
 import TagInput from "./components/tag-input";
 import Text from "./components/text";
 import TextArea from "./components/text-area";
-import TextField, {
-  FormikTextField,
-  HookFormTextField,
-} from "./components/text-field";
+import TextField from "./components/text-field";
+import { ThemeContext } from "./components/providers/ThemeProvider";
+import ThemeProvider from "./components/providers/ThemeProvider";
 import Toast from "./components/toast";
+import { ToastContext } from "./components/providers/ToastProvider";
+import ToastProvider from "./components/providers/ToastProvider";
+import { usePushToast } from "./utils/hooks/usePushToast";
+import { useUpdateTheme } from "./utils/hooks/useTheme.hook";
+import { useUpdateDarkMode } from "./utils/hooks/useDarkMode.hook";
+import { getTextColor, hexToRgbA } from "./utils/colorManager";
+
 // import icons from "./components/icons";
-import { getTextColor } from "./utils/colorManager";
 
 import AddIcon from "./components/icons/Add";
 import AddBookmarkIcon from "./components/icons/AddBookmark";
@@ -230,6 +255,67 @@ import WalletIcon from "./components/icons/Wallet";
 import WarningIcon from "./components/icons/Warning";
 import WaveIcon from "./components/icons/Wave";
 import WithdrawIcon from "./components/icons/Withdraw";
+
+/// IMPORT FILLED ICONS
+import CloudUploadFilledIcon from "./components/icons/filled/CloudUploadFilledIcon";
+
+export {
+  Accordion,
+  Alert,
+  AutoLayout,
+  Avatar,
+  Badge,
+  Banner,
+  Box,
+  Button,
+  Card,
+  CardInputField,
+  Checkbox,
+  Col,
+  Counter,
+  CountryDropdown,
+  DatePicker,
+  DarkModeContext,
+  DarkModeProvider,
+  DebitCard,
+  DebitCardBalance,
+  Dropdown,
+  FilePicker,
+  FilePickerInline,
+  GridLayout,
+  Heading,
+  // icons,
+  Icon,
+  Loader,
+  Modal,
+  Pagination,
+  PhoneField,
+  PinInput,
+  ProgressBar,
+  Radio,
+  ResponsiveLayout,
+  Row,
+  SelectField,
+  Stepper,
+  Switch,
+  Tab,
+  Table,
+  TagDropdown,
+  TagInput,
+  Text,
+  TextArea,
+  TextField,
+  ThemeContext,
+  ThemeProvider,
+  Toast,
+  ToastContext,
+  ToastProvider,
+  getTextColor,
+  hexToRgbA,
+  useUpdateTheme,
+  useUpdateDarkMode,
+  usePushToast,
+};
 
 export {
   AddIcon,
@@ -435,34 +521,4 @@ export {
   WithdrawIcon,
 };
 
-export {
-  Alert,
-  Avatar,
-  Badge,
-  Banner,
-  Box,
-  Button,
-  Card,
-  CardInputField,
-  Checkbox,
-  DatePicker,
-  Heading,
-  FormikTextField,
-  HookFormTextField,
-  // icons,
-  Icon,
-  Modal,
-  Pagination,
-  PhoneField,
-  Radio,
-  SelectField,
-  Switch,
-  Tab,
-  Table,
-  TagInput,
-  Text,
-  TextArea,
-  TextField,
-  Toast,
-  getTextColor,
-};
+export { CloudUploadFilledIcon };

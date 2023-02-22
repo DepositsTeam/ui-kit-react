@@ -1,0 +1,142 @@
+.ui-heading {
+  &:not(.customFontWeight) {
+    font-weight: bold;
+  }
+
+  &.center {
+    text-align: center;
+  }
+  &.my0 {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  &.h1 {
+    &:not(.customFontSize) {
+      font-size: 64px;
+    }
+    &:not(.customLineHeight) {
+      line-height: 68px;
+    }
+    letter-spacing: -0.32px;
+
+    &.equal-line-height {
+      &:not(.customLineHeight) {
+        line-height: 64px;
+      }
+    }
+  }
+
+  &.h2 {
+    &:not(.customFontSize) {
+      font-size: 48px;
+    }
+    &:not(.customLineHeight) {
+      line-height: 50px;
+    }
+
+    &.equal-line-height {
+      &:not(.customLineHeight) {
+        line-height: 48px;
+      }
+    }
+  }
+
+  &.h3 {
+    &:not(.customFontSize) {
+      font-size: 36px;
+    }
+    &:not(.customLineHeight) {
+      line-height: 40px;
+    }
+
+    &.equal-line-height {
+      &:not(.customLineHeight) {
+        line-height: 36px;
+      }
+    }
+  }
+
+  &.h4 {
+    &:not(.customFontSize) {
+      font-size: 28px;
+    }
+    &:not(.customLineHeight) {
+      line-height: 32px;
+    }
+
+    &.equal-line-height {
+      &:not(.customLineHeight) {
+        line-height: 28px;
+      }
+    }
+  }
+
+  &.h5 {
+    &:not(.customFontSize) {
+      font-size: 20px;
+    }
+    &:not(.customLineHeight) {
+      line-height: 24px;
+    }
+
+    &.equal-line-height {
+      &:not(.customLineHeight) {
+        line-height: 20px;
+      }
+    }
+  }
+
+  &.h6 {
+    &:not(.customFontSize) {
+      font-size: 16px;
+    }
+    &:not(.customLineHeight) {
+      line-height: 24px;
+    }
+
+    &.equal-line-height {
+      &:not(.customLineHeight) {
+        line-height: 16px;
+      }
+    }
+  }
+
+  &.subtitle-1 {
+    font-family: "Circular Std", sans-serif;
+    &:not(.customFontSize) {
+      font-size: 16px;
+    }
+    &:not(.customLineHeight) {
+      line-height: 24px;
+    }
+    &:not(.customFontWeight) {
+      font-weight: 500;
+    }
+
+    &.equal-line-height {
+      &:not(.customLineHeight) {
+        line-height: 16px;
+      }
+    }
+  }
+
+  &.subtitle-2,
+  &.subhead {
+    font-family: "Circular Std", sans-serif;
+    &:not(.customFontSize) {
+      font-size: 14px;
+    }
+    &:not(.customLineHeight) {
+      line-height: 20px;
+    }
+    &:not(.customFontWeight) {
+      font-weight: 500;
+    }
+
+    &.equal-line-height {
+      &:not(.customLineHeight) {
+        line-height: 14px;
+      }
+    }
+  }
+}

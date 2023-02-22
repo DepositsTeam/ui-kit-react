@@ -1,1 +1,1 @@
-export {default} from "./src/PhoneField"
+export {default} from "./PhoneField"

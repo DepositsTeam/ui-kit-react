@@ -1,0 +1,98 @@
+.ui-radio__wrapper {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  &.alignRight {
+    flex-direction: row-reverse;
+    > {
+      input {
+        &.hasLabel {
+          margin-right: 0;
+          margin-left: 8px;
+        }
+      }
+    }
+  }
+
+  .ui-radio__label-text.ui-text {
+    flex: 1;
+    &.dark_mode {
+      color: #cbd5e1;
+    }
+  }
+
+  .ui-radio {
+    pointer-events: none;
+  }
+
+  &.alignToTop {
+    align-items: flex-start;
+  }
+
+  > {
+    * {
+      margin: 0;
+      cursor: pointer;
+    }
+
+    input {
+      &.hasLabel {
+        margin-right: 8px;
+      }
+      position: relative;
+      height: var(--ring-size);
+      width: var(--ring-size);
+      border-radius: 50%;
+      background: white;
+      border: 2px solid #ced6de;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      &.dark_mode {
+        background: #202b3c;
+        border: 1px solid #384860;
+      }
+    }
+  }
+
+  &.ringed {
+    > input {
+      height: var(--ring-size);
+      width: var(--ring-size);
+      border: 1px solid #ced6de;
+    }
+
+    > input:checked {
+      height: var(--ring-size);
+      width: var(--ring-size);
+      border: var(--ring-thickness) solid var(--light-primary-action-color);
+      outline: none;
+      background: white;
+      &.dark_mode {
+        background: #202b3c;
+        border-color: var(--dark-primary-action-color);
+      }
+    }
+
+    &:hover > input {
+      border-color: var(--light-primary-action-color);
+      &.dark_mode {
+        border-color: var(--dark-primary-action-color);
+      }
+    }
+  }
+
+  > input:checked:not(.ringed) {
+    background: var(--light-primary-action-color);
+    width: calc(var(--ring-size) - 4px);
+    height: calc(var(--ring-size) - 4px);
+    outline: 3px solid var(--light-primary-action-color);
+    outline-offset: 1px;
+    border-color: transparent;
+    &.dark_mode {
+      background: var(--dark-primary-action-color);
+      outline: 2px solid var(--dark-primary-action-color);
+    }
+  }
+}
