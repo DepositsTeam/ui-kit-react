@@ -28,6 +28,11 @@
   position: relative;
   width: var(--loader-size);
   height: var(--loader-size);
+  &.color {
+    div {
+      border-color: var(--custom-color) transparent transparent;
+    }
+  }
 
   div {
     box-sizing: border-box;

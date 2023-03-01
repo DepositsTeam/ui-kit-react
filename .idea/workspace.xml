@@ -7,7 +7,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="Made updates to phone field, tag dropdown, text field and exported useful hooks" />
+    <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="Handled loads of updates">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.back.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/alert/Alert.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/alert/Alert.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/box/Box.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/box/Box.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/card-input-field/CardInputField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card-input-field/CardInputField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/country-dropdown/CountryDropdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/country-dropdown/CountryDropdown.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dropdown/Dropdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dropdown/Dropdown.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/file-picker/FilePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/file-picker/FilePicker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/file-picker/FilePicker.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/file-picker/FilePicker.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/file-picker/FilePicker.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/file-picker/FilePicker.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/grid-layout/GridLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid-layout/GridLayout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/heading/Heading.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/heading/Heading.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/Icon.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/Icon.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/Icon.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/Icon.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/loader/Loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loader/Loader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/loader/Loader.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loader/Loader.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/providers/ToastProvider.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/providers/ToastProvider.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/providers/ToastProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/providers/ToastProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/table/Table.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table/Table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tag-dropdown/TagDropdown.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tag-dropdown/TagDropdown.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text-field/TextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text-field/TextField.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/toast/Toast.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/toast/Toast.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/toast/Toast.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/toast/Toast.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/toast/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/toast/useToast.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/components/Portal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/components/Portal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/hooks/useTheme.hook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/hooks/useTheme.hook.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,7 +100,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/.gitignore" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/babel.config.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/package.back.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/package.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/rollup.config.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/box/Box.js" root0="FORCE_HIGHLIGHTING" />
@@ -156,9 +190,7 @@
     <setting file="file://$PROJECT_DIR$/src/components/text-field/TextField.stories.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/text-field/index.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/text-field/textFieldProps.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/toast/Toast.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/toast/Toast.stories.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/toast/useToast.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/index.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -186,7 +218,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/ericmcwinner/Documents/Work/Projects/Work/React/deposits-react-ui-kit/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;indent.rainbow.settings.IrConfigurableAdvanced&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Applications/PhpStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -221,7 +253,7 @@
       <recent name="$PROJECT_DIR$/src/components/switch" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.Update UI Kit">
+  <component name="RunManager" selected="npm.storybook">
     <configuration name="Update UI Kit" type="ShConfigurationType">
       <option name="SCRIPT_TEXT" value="npm run build-rollup &amp;&amp; npm publish" />
       <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
@@ -392,7 +424,18 @@
       <workItem from="1674944661852" duration="20156000" />
       <workItem from="1675121229932" duration="17000" />
       <workItem from="1675163884544" duration="28261000" />
-      <workItem from="1675305594614" duration="2044000" />
+      <workItem from="1675305594614" duration="12769000" />
+      <workItem from="1675390461810" duration="193000" />
+      <workItem from="1675390671839" duration="503000" />
+      <workItem from="1675391367517" duration="1802000" />
+      <workItem from="1675424595823" duration="1197000" />
+      <workItem from="1675490706650" duration="12213000" />
+      <workItem from="1675685332665" duration="10450000" />
+      <workItem from="1675959699566" duration="9579000" />
+      <workItem from="1677050130877" duration="262000" />
+      <workItem from="1677230262452" duration="7241000" />
+      <workItem from="1677498886277" duration="6331000" />
+      <workItem from="1677689891778" duration="3365000" />
     </task>
     <task id="LOCAL-00001" summary="Worked on several updates to bring the React UI kit on par with the Vue Ui Kit">
       <created>1674563026879</created>
@@ -422,7 +465,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675310059575</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Removed default title for Alerts and Toasts">
+      <created>1675310555300</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1675310555300</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -444,7 +494,9 @@
     <MESSAGE value="Made ergonomic updates to phone input field" />
     <MESSAGE value="Fixed forwarded ref for phone input" />
     <MESSAGE value="Made updates to phone field, tag dropdown, text field and exported useful hooks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made updates to phone field, tag dropdown, text field and exported useful hooks" />
+    <MESSAGE value="Removed default title for Alerts and Toasts" />
+    <MESSAGE value="Handled loads of updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Handled loads of updates" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

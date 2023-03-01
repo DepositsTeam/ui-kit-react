@@ -125,14 +125,20 @@ const Dropdown = ({
     }
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = async (e) => {
     switch (e.key) {
       case "ArrowDown":
+        if (!showOptions) {
+          setShowOptions(true);
+        }
         if (selectedIndex + 1 <= computedOptions.length - 1)
           setSelectedIndex(selectedIndex + 1);
         else setSelectedIndex(0);
         break;
       case "ArrowUp":
+        if (!showOptions) {
+          setShowOptions(true);
+        }
         if (selectedIndex - 1 >= 0) setSelectedIndex(selectedIndex - 1);
         else setSelectedIndex(computedOptions.length - 1);
         break;
@@ -142,6 +148,8 @@ const Dropdown = ({
       case "Escape":
         handleBlur();
         e.target.blur();
+        break;
+      default:
         break;
     }
   };

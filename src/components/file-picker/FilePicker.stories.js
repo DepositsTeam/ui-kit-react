@@ -27,6 +27,17 @@ const DarkModeTemplate = (args) => (
 
 export const Default = Template.bind({});
 
+export const Title = Template.bind({});
+Title.args = {
+  title: "Upload beneficiary list",
+};
+
+export const Primary = Template.bind({});
+Primary.args = {
+  title: "Upload beneficiary list",
+  primaryColorScheme: true,
+};
+
 export const OneMb = Template.bind({});
 OneMb.args = {
   fileMaxSize: 1,

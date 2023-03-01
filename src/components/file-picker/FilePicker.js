@@ -10,6 +10,7 @@ import ErrorIcon from "../icons/Error";
 import { useFilePicker } from "../../utils/hooks/useFilePicker.hook";
 import Icon from "../icon";
 import "./FilePicker.scss";
+import Heading from "../heading";
 
 const FilePicker = ({
   label,
@@ -23,6 +24,9 @@ const FilePicker = ({
   fileMaxSize,
   children,
   btnText,
+  title,
+  primaryColorScheme,
+  description,
   ...props
 }) => {
   const file = useRef(null);
@@ -63,7 +67,12 @@ const FilePicker = ({
           </Text>
         </Box>
       )}
-      <Box className="ui-file-picker-box">
+      <Box
+        className={classNames({
+          "ui-file-picker-box": true,
+          primaryColorScheme,
+        })}
+      >
         <Box
           type="file"
           className="ui-file-picker-input"
@@ -80,7 +89,14 @@ const FilePicker = ({
           </Box>
         )}
 
-        <Icon icon={CloudUploadFilledIcon} smartColor="#8895A7" />
+        <Box
+          className={classNames({
+            "file-picker__icon-wrapper": true,
+            primaryColorScheme,
+          })}
+        >
+          <Icon height={"32px"} width={"32px"} icon={CloudUploadFilledIcon} />
+        </Box>
         {selectedFileName ? (
           ""
         ) : children ? (
@@ -92,26 +108,47 @@ const FilePicker = ({
             alignment="center"
             direction="vertical"
           >
-            <Text marginY="0" fontFace="circularSTD">
-              Drag & Drop to upload or{" "}
-              <Box is={"span"} className="blue">
-                browse
-              </Box>{" "}
-              to choose files
-            </Text>
-            <Text marginY="0" fontFace="circularSTD">
-              {computedAccepts ? (
-                <Box is={"span"}>Supported file types ({computedAccepts}).</Box>
-              ) : (
-                <Box is={"span"}>(</Box>
-              )}
-              Max upload size: (MB)
-            </Text>
+            {title && (
+              <Heading
+                center
+                marginTop={"0px"}
+                scale={"h5"}
+                color={"#1B1E21"}
+                fontFace={"circularSTD"}
+              >
+                {title}
+              </Heading>
+            )}
+            {description ? (
+              description
+            ) : (
+              <>
+                <Text center marginY="0" fontFace="circularSTD">
+                  Drag & Drop to upload or{" "}
+                  <Box is={"span"} className="blue">
+                    browse
+                  </Box>{" "}
+                  to choose files
+                </Text>
+                <Text center marginY="0" fontFace="circularSTD">
+                  {computedAccepts ? (
+                    <Box is={"span"}>
+                      Supported file types ({computedAccepts}).
+                    </Box>
+                  ) : (
+                    <Box is={"span"}>(</Box>
+                  )}
+                  Max upload size: (MB)
+                </Text>
+              </>
+            )}
           </AutoLayout>
         )}
-        <Text fontFace="circularSTD" marginTop="16px">
-          {selectedFileName}
-        </Text>
+        {selectedFileName && (
+          <Text fontFace="circularSTD" marginTop="16px">
+            {selectedFileName}
+          </Text>
+        )}
       </Box>
       {computedErrorMessage && (
         <Box className="ui-text-field__error">
@@ -160,6 +197,9 @@ FilePicker.propTypes = {
   labelFontFace: PropTypes.string,
   labelClass: PropTypes.string,
   maxFiles: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  title: PropTypes.string,
+  primaryColorScheme: PropTypes.bool,
+  description: PropTypes.string,
 };
 
 FilePicker.defaultProps = {

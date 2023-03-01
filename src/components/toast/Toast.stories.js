@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import Toast from "./Toast";
 import ToastProvider from "../providers/ToastProvider";
 import { usePushToast } from "../../utils/hooks/usePushToast";
 import Button from "../button";
 
 export default {
   title: "Toast",
-  component: Toast,
   decorators: [
     (Story) => (
       <ToastProvider>
@@ -23,7 +21,6 @@ const Template = (props) => {
     setTimesClicked(timesClicked + 1);
     pushToast({
       colorScheme: "info",
-      message: `I am a tooltip no ${timesClicked}`,
       description: "I am some random text",
       autoclose: 190,
     });

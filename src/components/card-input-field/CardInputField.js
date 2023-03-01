@@ -25,7 +25,9 @@ const CardInputField = ({
   initialCardNo,
   initialCardCvv,
   onChange,
+  onError,
   allowExpiredCardDateInExp,
+  hideScanIcon,
   ...props
 }) => {
   const [selectedCard, setSelectedCard] = useState(-1);
@@ -39,6 +41,7 @@ const CardInputField = ({
   const [cardExpError, setCardExpError] = useState(null);
   const [cardCvvError, setCardCvvError] = useState(null);
   const [computedErrorMessage, setComputedErrorMessage] = useState(null);
+  const [cardType, setCardType] = useState("");
 
   const pseudoInput = useRef();
   const cardNoInput = useRef();
@@ -59,14 +62,26 @@ const CardInputField = ({
 
   useEffect(() => {
     if (cardNoError) {
+      if (onError && typeof onError === "function") {
+        onError(cardNoError);
+      }
       setComputedErrorMessage(cardNoError);
     } else if (cardExpError) {
+      if (onError && typeof onError === "function") {
+        onError(cardExpError);
+      }
       setComputedErrorMessage(cardExpError);
     } else if (cardCvvError) {
+      if (onError && typeof onError === "function") {
+        onError(cardCvvError);
+      }
       setComputedErrorMessage(cardCvvError);
     } else if (errorMessage) {
       setComputedErrorMessage(errorMessage);
     } else {
+      if (onError && typeof onError === "function") {
+        onError(null);
+      }
       setComputedErrorMessage(null);
     }
   }, [cardNoError, cardExpError, cardCvvError, errorMessage]);
@@ -76,8 +91,9 @@ const CardInputField = ({
       cardNo,
       cardExp,
       cardCVV,
+      cardType,
     });
-  }, [cardNo, cardExp, cardCVV, onChange]);
+  }, [cardNo, cardExp, cardCVV, cardType]);
 
   useEffect(() => {
     if (cardExp.length === 5 && !cardExpError) {
@@ -272,6 +288,7 @@ const CardInputField = ({
     switch (value.charAt(0)) {
       case "5":
         setSelectedCard(BRAND_ALIAS.MASTERCARD);
+        setCardType("mastercard");
         setCardNo(parse(BRAND_ALIAS.MASTERCARD));
         setCardNoDisplay(parse(BRAND_ALIAS.MASTERCARD));
         validateCardNo(value);
@@ -281,32 +298,39 @@ const CardInputField = ({
         if (value.length >= 2) {
           if (value.charAt(1) === "4" || value.charAt(1) === "7") {
             setSelectedCard(BRAND_ALIAS.AMEX);
+            setCardType("american_express");
           } else {
+            setCardType("unknown");
             setSelectedCard(BRAND_ALIAS.NOCARD);
           }
         } else {
           setSelectedCard(BRAND_ALIAS.AMEX);
+          setCardType("american_express");
         }
         setCardNo(parse(BRAND_ALIAS.AMEX));
         setCardNoDisplay(parse(BRAND_ALIAS.AMEX));
+        setCardType("american_express");
         validateCardNo(value);
         break;
       case "6":
         setSelectedCard(BRAND_ALIAS.DISCOVER);
         setCardNo(parse(BRAND_ALIAS.DISCOVER));
         setCardNoDisplay(parse(BRAND_ALIAS.DISCOVER));
+        setCardType("discover");
         validateCardNo(value);
         break;
       case "4":
         setSelectedCard(BRAND_ALIAS.VISACARD);
         setCardNo(parse(BRAND_ALIAS.VISACARD));
         setCardNoDisplay(parse(BRAND_ALIAS.VISACARD));
+        setCardType("visa");
         validateCardNo(value);
         break;
       default:
         setSelectedCard(BRAND_ALIAS.NOCARD);
         setCardNo(parse(null));
         setCardNoDisplay(parse(null));
+        setCardType("unknown");
     }
   };
 
@@ -394,11 +418,17 @@ const CardInputField = ({
           })}
         >
           {selectedCard === -1 ? (
-            <Icon
-              icon={CardIcon}
-              smartColor={"#0C9CCC"}
-              className={"ui-card-input-field__left-icon"}
-            />
+            <Box
+              lightClassName={"text-primary-light-500"}
+              darkClassName={"text-primary-dark-500"}
+            >
+              <Icon
+                icon={CardIcon}
+                className={"ui-card-input-field__left-icon"}
+                height={"24px"}
+                width={"24px"}
+              />
+            </Box>
           ) : (
             <img
               src={CardBrands[selectedCard].src}
@@ -448,11 +478,13 @@ const CardInputField = ({
                 ref={cardCVCInput}
                 onChange={handleCardCvvInput}
               />
-              <Icon
-                icon={ScanCardIcon}
-                smartColor={"#B8C4CE"}
-                className={"ui-card-input-field__right-icon"}
-              />
+              {!hideScanIcon && (
+                <Icon
+                  icon={ScanCardIcon}
+                  smartColor={"#B8C4CE"}
+                  className={"ui-card-input-field__right-icon"}
+                />
+              )}
             </Box>
           </Box>
         </Box>
@@ -485,6 +517,8 @@ CardInputField.propTypes = {
   initialCardCvv: PropTypes.string,
   variant: PropTypes.oneOf(["variant-1", "variant-2"]),
   allowExpiredCardDateInExp: PropTypes.bool,
+  hideScanIcon: PropTypes.bool,
+  onError: PropTypes.func,
 };
 
 CardInputField.defaultProps = {

@@ -24,6 +24,7 @@ const GridLayout = ({
         "--row-gutter": rowGutter,
       }}
       width={width}
+      {...props}
     >
       {children}
     </Box>

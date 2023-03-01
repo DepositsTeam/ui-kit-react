@@ -92,13 +92,18 @@ const Alert = ({
             />
           )}
           <Box className={"ui-alert__text"}>
-            <Box className={"ui-alert__header"}>
-              <Heading scale={"subtitle-2"} className={"ui-alert__header-text"}>
-                {message}
-              </Heading>
-            </Box>
+            {message && (
+              <Box className={"ui-alert__header"}>
+                <Heading
+                  scale={"subtitle-2"}
+                  className={"ui-alert__header-text"}
+                >
+                  {message}
+                </Heading>
+              </Box>
+            )}
             {description && theme !== "inline" && (
-              <Text scale={"subhead"} className={"ui-alert__body"}>
+              <Text marginTop={0} scale={"subhead"} className={"ui-alert__body no-top"}>
                 {description}
               </Text>
             )}
@@ -126,7 +131,7 @@ const Alert = ({
 export default Alert;
 
 Alert.propTypes = {
-  message: PropTypes.string.isRequired,
+  message: PropTypes.string,
   description: PropTypes.string,
   colorScheme: PropTypes.oneOf([
     "default",

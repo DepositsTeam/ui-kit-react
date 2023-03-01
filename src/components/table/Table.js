@@ -23,6 +23,7 @@ import Close from "../icons/Close";
 import Funnel from "../icons/Funnel";
 import TableActiveFiltersDropdown from "./components/TableActiveFiltersDropdown";
 import { computePosition, flip, offset, shift } from "@floating-ui/dom";
+import Loader from "../loader";
 
 export const TableContext = createContext({});
 
@@ -49,6 +50,7 @@ const Table = ({
   onPageChange,
   onRowSelected,
   exportCSVUrl,
+  asyncTotalPages,
   ...props
 }) => {
   const [internalCurrentPage, setInternalCurrentPage] = useState();
@@ -206,7 +208,9 @@ const Table = ({
     setInternalCurrentPage(page);
   };
 
-  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const totalPages = asyncPagination
+    ? asyncTotalPages
+    : Math.ceil(data.length / itemsPerPage);
 
   const toggleSelectedRows = (uuuid) => {
     let newSelectedRows = [...selectedRows];
@@ -303,6 +307,7 @@ const Table = ({
                 placeholder={"Placeholder"}
                 size={"large"}
                 value={searchValue}
+                maxWidth={"320px"}
                 onChange={(e) => setSearchValue(e.target.value)}
               />
             </Box>
@@ -437,7 +442,15 @@ const Table = ({
               </Box>
             </Box>
             <Box is={"tbody"} className={"ui-table__body"}>
-              {mappedRows}
+              {loading ? (
+                <Box is={"tr"}>
+                  <Box is={"td"} textAlign={"center"} colSpan={mappedHeadCells.length}>
+                    <Loader size={"70px"} thickness={"6px"} />
+                  </Box>
+                </Box>
+              ) : (
+                mappedRows
+              )}
             </Box>
           </Box>
         </Box>
@@ -449,12 +462,14 @@ const Table = ({
             })}
             marginTop={"1rem"}
           >
-            <Pagination
-              currentPage={internalCurrentPage}
-              currentPageSiblings={currentPageSiblings}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-            />
+            {totalPages && (
+              <Pagination
+                currentPage={internalCurrentPage}
+                currentPageSiblings={currentPageSiblings}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+              />
+            )}
           </Box>
         )}
         <CustomizeViewModal
@@ -493,6 +508,7 @@ Table.propTypes = {
   caseSensitiveSearch: PropTypes.bool,
   onRowSelected: PropTypes.func,
   exportCSVUrl: PropTypes.string,
+  asyncTotalPages: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 Table.defaultProps = {

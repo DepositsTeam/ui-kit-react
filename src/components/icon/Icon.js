@@ -23,7 +23,7 @@ const Icon = ({ className, icon, children, smartColor, ...props }) => {
       fill={props.fill || icon.fill}
       {...props}
     >
-      <IconComponent smartColor= {smartColor || 'currentcolor'} {...props} />
+      <IconComponent smartColor={smartColor || "currentcolor"} {...props} />
     </Box>
   );
 };
@@ -41,3 +41,7 @@ Icon.propTypes = {
   height: PropTypes.string,
 };
 
+Icon.defaultProps = {
+  width: "24px",
+  height: "24px",
+};

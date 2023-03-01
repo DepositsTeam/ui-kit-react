@@ -11,6 +11,7 @@ const CountryDropdown = ({ onChange, ...props }) => {
     states: country.states,
     icon: <span>{country.emoji}</span>,
   }));
+  console.log(options);
   const handleChange = (option) => {
     if (option) {
       onChange(option.value, option.states);

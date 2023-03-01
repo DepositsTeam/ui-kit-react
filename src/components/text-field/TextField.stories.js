@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import TextField from "./index";
 import Search from "../icons/Search";
 import Text from "../text";
 import ThemeProvider from "../providers/ThemeProvider";
 import DarkModeProvider from "../providers/DarkModeProvider";
+import AutoLayout from "../auto-layout";
 
 export default {
   title: "Forms/Text Field",
@@ -26,10 +27,60 @@ const DarkModeTemplate = (args) => (
   </ThemeProvider>
 );
 
+const GroupTemplate = (args) => {
+  const initialState = {
+    firstName: "",
+    lastName: "",
+    email: "",
+  };
+  const [formData, setFormData] = useState({ ...initialState });
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  return (
+    <AutoLayout direction={"vertical"}>
+      {JSON.stringify(formData)}
+      <TextField
+        onChange={handleChange}
+        name={`firstName`}
+        value={formData.firstName}
+        size="large"
+        label="First Name"
+        placeholder="First Name"
+        required
+      />
+      <TextField
+        onChange={handleChange}
+        name={`lastName`}
+        value={formData.lastName}
+        size="large"
+        label="Last Name"
+        placeholder="Last Name"
+        required
+      />
+      <TextField
+        onChange={handleChange}
+        name={`email`}
+        value={formData.email}
+        type={"email"}
+        size="large"
+        label="Email Address"
+        placeholder="Email Address"
+        required
+      />
+    </AutoLayout>
+  );
+};
+
+export const Grouped = GroupTemplate.bind({});
+
 export const Default = Template.bind({});
 Default.args = {
   placeholder: "Input placeholder",
   label: "Form Label",
+  value: "I am a tested value"
 };
 
 export const Ssn = Template.bind({});

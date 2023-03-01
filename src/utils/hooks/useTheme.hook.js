@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../../components/providers/ThemeProvider";
-export const useUpdateTheme = (theme) => {
-  const { setTheme } = useContext(ThemeContext);
+export const useUpdateTheme = () => {
+  const { theme, setTheme } = useContext(ThemeContext);
 
-  const updateTheme = (theme) => setTheme(theme);
+  const updateTheme = (themeParam) => setTheme(themeParam);
 
-  return { updateTheme };
+  return { theme, updateTheme };
 };

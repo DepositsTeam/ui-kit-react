@@ -36,11 +36,18 @@ const ToastProvider = ({ children, position, ...props }) => {
     <ToastContext.Provider value={initialValue}>
       {children}
       <DomPortal>
-        <Box
-          className={classNames(["ui-toast__wrapper", `position__${position}`])}
-        >
-          <Box className={"ui-toast__column"}>{renderedToasts}</Box>
-        </Box>
+        {toasts.length ? (
+          <Box
+            className={classNames([
+              "ui-toast__wrapper",
+              `position__${position}`,
+            ])}
+          >
+            <Box className={"ui-toast__column"}>{renderedToasts}</Box>
+          </Box>
+        ) : (
+          ""
+        )}
       </DomPortal>
     </ToastContext.Provider>
   );

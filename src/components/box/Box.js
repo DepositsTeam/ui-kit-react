@@ -19,6 +19,9 @@ const Box = React.forwardRef(
       className,
       children,
       style,
+      onMouseEnter,
+      onMouseLeave,
+      hoverClassName,
       ...props
     },
     ref
@@ -26,8 +29,23 @@ const Box = React.forwardRef(
     const [uniqueID, setUniqueID] = useState(
       "auto_generated_" + uniqueRandomString(20)
     );
+    const [isHovered, setIsHovered] = useState(false);
     const { theme } = useContext(ThemeContext);
     const { darkMode } = useContext(DarkModeContext);
+
+    const mouseEntered = (e) => {
+      setIsHovered(true);
+      if (onMouseEnter && typeof onMouseEnter === "function") {
+        onMouseEnter(e);
+      }
+    };
+
+    const mouseLeft = (e) => {
+      setIsHovered(false);
+      if (onMouseLeave && typeof onMouseLeave === "function") {
+        onMouseLeave(e);
+      }
+    };
 
     useEffect(() => {
       if (id) {
@@ -44,6 +62,7 @@ const Box = React.forwardRef(
             dark_mode: !!darkMode,
             [darkClassName]: !!darkMode,
             [lightClassName]: !darkMode,
+            [hoverClassName]: isHovered,
             "ui-kit-general-box": true,
           },
           className
@@ -51,6 +70,8 @@ const Box = React.forwardRef(
         {...props}
         id={uniqueID}
         style={{ ...(style ? { ...style } : {}) }}
+        onMouseEnter={mouseEntered}
+        onMouseLeave={mouseLeft}
       >
         {children}
       </BoxComponent>
@@ -63,4 +84,5 @@ export default Box;
 Box.propTypes = {
   lightClassName: PropTypes.string,
   darkClassName: PropTypes.string,
+  hoverClassName: PropTypes.string,
 };

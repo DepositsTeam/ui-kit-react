@@ -9,6 +9,7 @@ const Heading = ({
   equalLineHeight,
   scale,
   uppercase,
+  center,
   ...props
 }) => {
   const is = props.is ?? "h2";
@@ -22,6 +23,7 @@ const Heading = ({
       customFontWeight: props.fontWeight,
       customFontSize: props.fontSize,
       customLineHeight: props.lineHeight,
+      center,
     },
     className
   );
@@ -34,12 +36,23 @@ const Heading = ({
 
 Heading.propTypes = {
   is: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5", "h6"]),
-  scale: PropTypes.oneOf(["subtitle-1", "subtitle-2", "subhead"]),
+  scale: PropTypes.oneOf([
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "subtitle-1",
+    "subtitle-2",
+    "subhead",
+  ]),
   uppercase: PropTypes.bool,
   equalLineHeight: PropTypes.bool,
   fontFace: PropTypes.string,
   darkClassName: PropTypes.string,
   lightClassName: PropTypes.string,
+  center: PropTypes.bool,
 };
 
 Heading.defaultProps = {

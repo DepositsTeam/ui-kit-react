@@ -40,9 +40,9 @@ const TextField = forwardRef(
       labelClass,
       onlyNumbers,
       showError,
-      onKeyup,
-      onKeydown,
-      onKeypress,
+      onKeyUp,
+      onKeyDown,
+      onKeyPress,
       onChange,
       onInput,
       isPassword,
@@ -53,6 +53,7 @@ const TextField = forwardRef(
       percentage,
       maxLength,
       value,
+      onFocus,
       ...props
     },
     ref
@@ -61,16 +62,17 @@ const TextField = forwardRef(
     const [formattedSSN, setFormattedSSN] = useState(["", ""]);
     const [localType, setLocalType] = useState("text");
     const [initialized, setInitialized] = useState(false);
+    const [focused, setFocused] = useState(false);
 
     useLayoutEffect(() => {
-      if (!initialized) {
+      if (!focused && value) {
         if (ssn) {
           setTrueInternalValue(formatSSN(value)[0]);
         } else if (currency) {
           const regex = /[0-9$,\.]/;
           if (regex.test(value)) {
             const strippedValue = value.replaceAll("$", "").replaceAll(",", "");
-            setTrueInternalValue(`$${number_format(strippedValue)}`);
+            setTrueInternalValue(`$${number_format(strippedValue, 2)}`);
           }
         } else if (percentage) {
           const regex = /[0-9%\.]/;
@@ -84,9 +86,13 @@ const TextField = forwardRef(
         } else {
           setTrueInternalValue(value);
         }
-        setInitialized(true);
+        // setInitialized(true);
+      } else {
+        if (!ssn && !currency && !percentage) {
+          setTrueInternalValue(value);
+        }
       }
-    }, []);
+    }, [currency, percentage, ssn, value]);
 
     useLayoutEffect(() => {}, [trueInternalValue]);
 
@@ -126,22 +132,22 @@ const TextField = forwardRef(
     };
 
     const handleKeyup = (e) => {
-      if (onKeyup && typeof onKeyup === "function") {
-        onKeyup(e);
+      if (onKeyUp && typeof onKeyUp === "function") {
+        onKeyUp(e);
       }
       return handleKeyEvents(e);
     };
 
     const handleKeydown = (e) => {
-      if (onKeydown && typeof onKeydown === "function") {
-        onKeydown(e);
+      if (onKeyDown && typeof onKeyDown === "function") {
+        onKeyDown(e);
       }
       return handleKeyEvents(e);
     };
 
     const handleKeypress = (e) => {
-      if (onKeypress && typeof onKeypress === "function") {
-        onKeypress(e);
+      if (onKeyPress && typeof onKeyPress === "function") {
+        onKeyPress(e);
       }
       return handleKeyEvents(e);
     };
@@ -161,15 +167,16 @@ const TextField = forwardRef(
       }
     };
 
-    const emitValue = (e, val) => {
+    const emitValue = (e, val = undefined) => {
       if (onChange && typeof onChange === "function") {
         const clonedE = Object.assign({}, e);
-        clonedE.target.value = val ? val : trueInternalValue;
+        clonedE.target.value = val === undefined ? trueInternalValue : val;
+
         onChange(clonedE);
       }
       if (onInput && typeof onInput === "function") {
         const clonedE = Object.assign({}, e);
-        clonedE.target.value = val ? val : trueInternalValue;
+        clonedE.target.value = val === undefined ? trueInternalValue : val;
         onInput(clonedE);
       }
     };
@@ -222,12 +229,14 @@ const TextField = forwardRef(
           emitValue(e, "");
         }
       } else {
+        // alert("I actually got here " + e.target.value);
         setTrueInternalValue(e.target.value);
         emitValue(e, e.target.value);
       }
     };
 
     const handleBlurEvents = (e) => {
+      setFocused(false);
       if (ssn) {
         setTrueInternalValue(formattedSSN[1]);
         emitValue(e, formattedSSN[0]);
@@ -274,6 +283,7 @@ const TextField = forwardRef(
     };
 
     const handleFocusEvents = (e) => {
+      setFocused(true);
       if (ssn) {
         setTrueInternalValue(formattedSSN[0]);
         setTimeout(() => {
@@ -302,6 +312,9 @@ const TextField = forwardRef(
         setTimeout(() => {
           e.target.select();
         });
+      }
+      if (onFocus && typeof onFocus === "function") {
+        onFocus(e);
       }
     };
 
@@ -358,6 +371,7 @@ const TextField = forwardRef(
             value={trueInternalValue}
             maxLength={computedMaxLength}
             ref={ref}
+            disabled={disabled}
           />
           {isPassword && !rightIcon ? (
             <Icon
@@ -411,11 +425,11 @@ TextField.propTypes = {
   inputClass: PropTypes.string,
   onChange: PropTypes.func,
   onInput: PropTypes.func,
-  onKeypress: PropTypes.func,
-  onKeydown: PropTypes.func,
+  onKeyPress: PropTypes.func,
+  onKeyDown: PropTypes.func,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
-  onKeyup: PropTypes.func,
+  onKeyUp: PropTypes.func,
   leftIconComponent: PropTypes.node,
   rightIconComponent: PropTypes.node,
   onlyNumbers: PropTypes.bool,
