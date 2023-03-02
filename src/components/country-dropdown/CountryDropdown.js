@@ -14,7 +14,13 @@ const CountryDropdown = ({ onChange, ...props }) => {
   console.log(options);
   const handleChange = (option) => {
     if (option) {
-      onChange(option.value, option.states);
+      onChange(
+        option.value,
+        option.states.map((state) => ({
+          text: state.name,
+          value: state.state_code,
+        }))
+      );
     }
   };
   return (

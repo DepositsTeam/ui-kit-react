@@ -7,41 +7,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="Handled loads of updates">
+    <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="Removed redundant code from color manager and updated country dropdown to convert the states before emitting them.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.back.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/alert/Alert.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/alert/Alert.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/box/Box.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/box/Box.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/card-input-field/CardInputField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card-input-field/CardInputField.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/country-dropdown/CountryDropdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/country-dropdown/CountryDropdown.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dropdown/Dropdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dropdown/Dropdown.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/file-picker/FilePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/file-picker/FilePicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/file-picker/FilePicker.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/file-picker/FilePicker.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/file-picker/FilePicker.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/file-picker/FilePicker.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/grid-layout/GridLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid-layout/GridLayout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/heading/Heading.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/heading/Heading.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icon/Icon.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/Icon.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icon/Icon.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/Icon.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/loader/Loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loader/Loader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/loader/Loader.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loader/Loader.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/providers/ToastProvider.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/providers/ToastProvider.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/providers/ToastProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/providers/ToastProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/Table.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table/Table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tag-dropdown/TagDropdown.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tag-dropdown/TagDropdown.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/TextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/TextField.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/toast/Toast.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/toast/Toast.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/toast/Toast.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/toast/Toast.stories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/toast/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/toast/useToast.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/components/Portal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/components/Portal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/hooks/useTheme.hook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/hooks/useTheme.hook.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/colorManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/colorManager.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,7 +226,7 @@
       <recent name="$PROJECT_DIR$/src/components/switch" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.storybook">
+  <component name="RunManager" selected="Shell Script.Update UI Kit">
     <configuration name="Update UI Kit" type="ShConfigurationType">
       <option name="SCRIPT_TEXT" value="npm run build-rollup &amp;&amp; npm publish" />
       <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
@@ -435,7 +408,7 @@
       <workItem from="1677050130877" duration="262000" />
       <workItem from="1677230262452" duration="7241000" />
       <workItem from="1677498886277" duration="6331000" />
-      <workItem from="1677689891778" duration="3365000" />
+      <workItem from="1677689891778" duration="6992000" />
     </task>
     <task id="LOCAL-00001" summary="Worked on several updates to bring the React UI kit on par with the Vue Ui Kit">
       <created>1674563026879</created>
@@ -496,7 +469,9 @@
     <MESSAGE value="Made updates to phone field, tag dropdown, text field and exported useful hooks" />
     <MESSAGE value="Removed default title for Alerts and Toasts" />
     <MESSAGE value="Handled loads of updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Handled loads of updates" />
+    <MESSAGE value="Fixed loads and loads of bugs" />
+    <MESSAGE value="Removed redundant code from color manager and updated country dropdown to convert the states before emitting them." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed redundant code from color manager and updated country dropdown to convert the states before emitting them." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

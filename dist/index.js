@@ -20447,7 +20447,7 @@ function formatPercentage(percentage) {
   }
 }
 
-var _excluded$x = ["label", "labelComponent", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onLeftIconClick", "onRightIconClick", "invisible", "disabled", "inputClass", "oneCharWide", "leftIconComponent", "rightIconComponent", "labelClass", "onlyNumbers", "showError", "onKeyup", "onKeydown", "onKeypress", "onChange", "onInput", "isPassword", "emitOnlyCurrencyValue", "currency", "type", "ssn", "percentage", "maxLength", "value"];
+var _excluded$x = ["label", "labelComponent", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "isHookForm", "isFormik", "onLeftIconClick", "onRightIconClick", "invisible", "disabled", "inputClass", "oneCharWide", "leftIconComponent", "rightIconComponent", "labelClass", "onlyNumbers", "showError", "onKeyUp", "onKeyDown", "onKeyPress", "onChange", "onInput", "isPassword", "emitOnlyCurrencyValue", "currency", "type", "ssn", "percentage", "maxLength", "value", "onFocus"];
 var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var label = _ref.label,
     labelComponent = _ref.labelComponent,
@@ -20471,9 +20471,9 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
     labelClass = _ref.labelClass,
     onlyNumbers = _ref.onlyNumbers,
     showError = _ref.showError,
-    onKeyup = _ref.onKeyup,
-    onKeydown = _ref.onKeydown,
-    onKeypress = _ref.onKeypress,
+    onKeyUp = _ref.onKeyUp,
+    onKeyDown = _ref.onKeyDown,
+    onKeyPress = _ref.onKeyPress,
     onChange = _ref.onChange,
     onInput = _ref.onInput,
     isPassword = _ref.isPassword,
@@ -20484,6 +20484,7 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
     percentage = _ref.percentage,
     maxLength = _ref.maxLength,
     value = _ref.value,
+    onFocus = _ref.onFocus,
     props = _objectWithoutProperties(_ref, _excluded$x);
   var _useState = useState(""),
     _useState2 = _slicedToArray$4(_useState, 2),
@@ -20506,7 +20507,7 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
     focused = _useState10[0],
     setFocused = _useState10[1];
   useLayoutEffect(function () {
-    if (!focused) {
+    if (!focused && value) {
       if (ssn) {
         setTrueInternalValue(formatSSN(value)[0]);
       } else if (currency) {
@@ -20527,6 +20528,10 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
         setTrueInternalValue(value);
       }
       // setInitialized(true);
+    } else {
+      if (!ssn && !currency && !percentage) {
+        setTrueInternalValue(value);
+      }
     }
   }, [currency, percentage, ssn, value]);
   useLayoutEffect(function () {}, [trueInternalValue]);
@@ -20554,20 +20559,20 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
     }
   };
   var handleKeyup = function handleKeyup(e) {
-    if (onKeyup && typeof onKeyup === "function") {
-      onKeyup(e);
+    if (onKeyUp && typeof onKeyUp === "function") {
+      onKeyUp(e);
     }
     return handleKeyEvents(e);
   };
   var handleKeydown = function handleKeydown(e) {
-    if (onKeydown && typeof onKeydown === "function") {
-      onKeydown(e);
+    if (onKeyDown && typeof onKeyDown === "function") {
+      onKeyDown(e);
     }
     return handleKeyEvents(e);
   };
   var handleKeypress = function handleKeypress(e) {
-    if (onKeypress && typeof onKeypress === "function") {
-      onKeypress(e);
+    if (onKeyPress && typeof onKeyPress === "function") {
+      onKeyPress(e);
     }
     return handleKeyEvents(e);
   };
@@ -20701,6 +20706,9 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
         e.target.select();
       });
     }
+    if (onFocus && typeof onFocus === "function") {
+      onFocus(e);
+    }
   };
   return /*#__PURE__*/React__default.createElement(Box, {
     className: wrapperClasses
@@ -20767,11 +20775,11 @@ TextField.propTypes = _objectSpread2$1(_objectSpread2$1({}, inputPropTypes), {},
   inputClass: propTypes.exports.string,
   onChange: propTypes.exports.func,
   onInput: propTypes.exports.func,
-  onKeypress: propTypes.exports.func,
-  onKeydown: propTypes.exports.func,
+  onKeyPress: propTypes.exports.func,
+  onKeyDown: propTypes.exports.func,
   onFocus: propTypes.exports.func,
   onBlur: propTypes.exports.func,
-  onKeyup: propTypes.exports.func,
+  onKeyUp: propTypes.exports.func,
   leftIconComponent: propTypes.exports.node,
   rightIconComponent: propTypes.exports.node,
   onlyNumbers: propTypes.exports.bool,
@@ -20940,23 +20948,47 @@ var Dropdown = function Dropdown(_ref) {
       handleBlur();
     }
   };
-  var handleKeyDown = function handleKeyDown(e) {
-    switch (e.key) {
-      case "ArrowDown":
-        if (selectedIndex + 1 <= computedOptions.length - 1) setSelectedIndex(selectedIndex + 1);else setSelectedIndex(0);
-        break;
-      case "ArrowUp":
-        if (selectedIndex - 1 >= 0) setSelectedIndex(selectedIndex - 1);else setSelectedIndex(computedOptions.length - 1);
-        break;
-      case "Enter":
-        handleClickedOption(computedOptions[selectedIndex]);
-        break;
-      case "Escape":
-        handleBlur();
-        e.target.blur();
-        break;
-    }
-  };
+  var handleKeyDown = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(e) {
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.t0 = e.key;
+              _context3.next = _context3.t0 === "ArrowDown" ? 3 : _context3.t0 === "ArrowUp" ? 6 : _context3.t0 === "Enter" ? 9 : _context3.t0 === "Escape" ? 11 : 14;
+              break;
+            case 3:
+              if (!showOptions) {
+                setShowOptions(true);
+              }
+              if (selectedIndex + 1 <= computedOptions.length - 1) setSelectedIndex(selectedIndex + 1);else setSelectedIndex(0);
+              return _context3.abrupt("break", 15);
+            case 6:
+              if (!showOptions) {
+                setShowOptions(true);
+              }
+              if (selectedIndex - 1 >= 0) setSelectedIndex(selectedIndex - 1);else setSelectedIndex(computedOptions.length - 1);
+              return _context3.abrupt("break", 15);
+            case 9:
+              handleClickedOption(computedOptions[selectedIndex]);
+              return _context3.abrupt("break", 15);
+            case 11:
+              handleBlur();
+              e.target.blur();
+              return _context3.abrupt("break", 15);
+            case 14:
+              return _context3.abrupt("break", 15);
+            case 15:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+    return function handleKeyDown(_x2) {
+      return _ref4.apply(this, arguments);
+    };
+  }();
   useEffect(function () {
     window.addEventListener("click", handleLeave);
     return function () {
@@ -48546,9 +48578,15 @@ var CountryDropdown = function CountryDropdown(_ref) {
       icon: /*#__PURE__*/React__default.createElement("span", null, country.emoji)
     };
   });
+  console.log(options);
   var handleChange = function handleChange(option) {
     if (option) {
-      onChange(option.value, option.states);
+      onChange(option.value, option.states.map(function (state) {
+        return {
+          text: state.name,
+          value: state.state_code
+        };
+      }));
     }
   };
   return /*#__PURE__*/React__default.createElement(Dropdown, _extends$1({
