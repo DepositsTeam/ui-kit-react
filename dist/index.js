@@ -1,5 +1,5 @@
 import * as React from 'react';
-import React__default, { createContext, useState, useEffect, useLayoutEffect, useContext, useRef, forwardRef, createElement as createElement$1, Component as Component$1, createRef, useImperativeHandle, useMemo as useMemo$1, useReducer } from 'react';
+import React__default, { createContext, useState, useLayoutEffect, useContext, useEffect, useRef, forwardRef, createElement as createElement$1, Component as Component$1, createRef, useImperativeHandle, useMemo as useMemo$1, useReducer } from 'react';
 import * as ReactDOM from 'react-dom';
 import ReactDOM__default, { findDOMNode, unstable_batchedUpdates } from 'react-dom';
 
@@ -4469,3437 +4469,7 @@ function clearStyles() {
 }
 src.clearStyles = clearStyles;
 
-var check = function (it) {
-  return it && it.Math == Math && it;
-};
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global$j =
-  // eslint-disable-next-line es-x/no-global-this -- safe
-  check(typeof globalThis == 'object' && globalThis) ||
-  check(typeof window == 'object' && window) ||
-  // eslint-disable-next-line no-restricted-globals -- safe
-  check(typeof self == 'object' && self) ||
-  check(typeof commonjsGlobal == 'object' && commonjsGlobal) ||
-  // eslint-disable-next-line no-new-func -- fallback
-  (function () { return this; })() || Function('return this')();
-
-var objectGetOwnPropertyDescriptor = {};
-
-var fails$q = function (exec) {
-  try {
-    return !!exec();
-  } catch (error) {
-    return true;
-  }
-};
-
-var fails$p = fails$q;
-
-// Detect IE8's incomplete defineProperty implementation
-var descriptors = !fails$p(function () {
-  // eslint-disable-next-line es-x/no-object-defineproperty -- required for testing
-  return Object.defineProperty({}, 1, { get: function () { return 7; } })[1] != 7;
-});
-
-var fails$o = fails$q;
-
-var functionBindNative = !fails$o(function () {
-  // eslint-disable-next-line es-x/no-function-prototype-bind -- safe
-  var test = (function () { /* empty */ }).bind();
-  // eslint-disable-next-line no-prototype-builtins -- safe
-  return typeof test != 'function' || test.hasOwnProperty('prototype');
-});
-
-var NATIVE_BIND$2 = functionBindNative;
-
-var call$f = Function.prototype.call;
-
-var functionCall = NATIVE_BIND$2 ? call$f.bind(call$f) : function () {
-  return call$f.apply(call$f, arguments);
-};
-
-var objectPropertyIsEnumerable = {};
-
-var $propertyIsEnumerable = {}.propertyIsEnumerable;
-// eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
-var getOwnPropertyDescriptor$4 = Object.getOwnPropertyDescriptor;
-
-// Nashorn ~ JDK8 bug
-var NASHORN_BUG = getOwnPropertyDescriptor$4 && !$propertyIsEnumerable.call({ 1: 2 }, 1);
-
-// `Object.prototype.propertyIsEnumerable` method implementation
-// https://tc39.es/ecma262/#sec-object.prototype.propertyisenumerable
-objectPropertyIsEnumerable.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
-  var descriptor = getOwnPropertyDescriptor$4(this, V);
-  return !!descriptor && descriptor.enumerable;
-} : $propertyIsEnumerable;
-
-var createPropertyDescriptor$4 = function (bitmap, value) {
-  return {
-    enumerable: !(bitmap & 1),
-    configurable: !(bitmap & 2),
-    writable: !(bitmap & 4),
-    value: value
-  };
-};
-
-var NATIVE_BIND$1 = functionBindNative;
-
-var FunctionPrototype$2 = Function.prototype;
-var bind = FunctionPrototype$2.bind;
-var call$e = FunctionPrototype$2.call;
-var uncurryThis$t = NATIVE_BIND$1 && bind.bind(call$e, call$e);
-
-var functionUncurryThis = NATIVE_BIND$1 ? function (fn) {
-  return fn && uncurryThis$t(fn);
-} : function (fn) {
-  return fn && function () {
-    return call$e.apply(fn, arguments);
-  };
-};
-
-var uncurryThis$s = functionUncurryThis;
-
-var toString$h = uncurryThis$s({}.toString);
-var stringSlice$9 = uncurryThis$s(''.slice);
-
-var classofRaw$1 = function (it) {
-  return stringSlice$9(toString$h(it), 8, -1);
-};
-
-var uncurryThis$r = functionUncurryThis;
-var fails$n = fails$q;
-var classof$6 = classofRaw$1;
-
-var $Object$4 = Object;
-var split = uncurryThis$r(''.split);
-
-// fallback for non-array-like ES3 and non-enumerable old V8 strings
-var indexedObject = fails$n(function () {
-  // throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
-  // eslint-disable-next-line no-prototype-builtins -- safe
-  return !$Object$4('z').propertyIsEnumerable(0);
-}) ? function (it) {
-  return classof$6(it) == 'String' ? split(it, '') : $Object$4(it);
-} : $Object$4;
-
-var $TypeError$d = TypeError;
-
-// `RequireObjectCoercible` abstract operation
-// https://tc39.es/ecma262/#sec-requireobjectcoercible
-var requireObjectCoercible$b = function (it) {
-  if (it == undefined) throw $TypeError$d("Can't call method on " + it);
-  return it;
-};
-
-// toObject with fallback for non-array-like ES3 strings
-var IndexedObject$2 = indexedObject;
-var requireObjectCoercible$a = requireObjectCoercible$b;
-
-var toIndexedObject$5 = function (it) {
-  return IndexedObject$2(requireObjectCoercible$a(it));
-};
-
-// `IsCallable` abstract operation
-// https://tc39.es/ecma262/#sec-iscallable
-var isCallable$m = function (argument) {
-  return typeof argument == 'function';
-};
-
-var isCallable$l = isCallable$m;
-
-var isObject$8 = function (it) {
-  return typeof it == 'object' ? it !== null : isCallable$l(it);
-};
-
-var global$i = global$j;
-var isCallable$k = isCallable$m;
-
-var aFunction = function (argument) {
-  return isCallable$k(argument) ? argument : undefined;
-};
-
-var getBuiltIn$6 = function (namespace, method) {
-  return arguments.length < 2 ? aFunction(global$i[namespace]) : global$i[namespace] && global$i[namespace][method];
-};
-
-var uncurryThis$q = functionUncurryThis;
-
-var objectIsPrototypeOf = uncurryThis$q({}.isPrototypeOf);
-
-var getBuiltIn$5 = getBuiltIn$6;
-
-var engineUserAgent = getBuiltIn$5('navigator', 'userAgent') || '';
-
-var global$h = global$j;
-var userAgent$2 = engineUserAgent;
-
-var process$1 = global$h.process;
-var Deno = global$h.Deno;
-var versions = process$1 && process$1.versions || Deno && Deno.version;
-var v8 = versions && versions.v8;
-var match$2, version;
-
-if (v8) {
-  match$2 = v8.split('.');
-  // in old Chrome, versions of V8 isn't V8 = Chrome / 10
-  // but their correct versions are not interesting for us
-  version = match$2[0] > 0 && match$2[0] < 4 ? 1 : +(match$2[0] + match$2[1]);
-}
-
-// BrowserFS NodeJS `process` polyfill incorrectly set `.v8` to `0.0`
-// so check `userAgent` even if `.v8` exists, but 0
-if (!version && userAgent$2) {
-  match$2 = userAgent$2.match(/Edge\/(\d+)/);
-  if (!match$2 || match$2[1] >= 74) {
-    match$2 = userAgent$2.match(/Chrome\/(\d+)/);
-    if (match$2) version = +match$2[1];
-  }
-}
-
-var engineV8Version = version;
-
-/* eslint-disable es-x/no-symbol -- required for testing */
-
-var V8_VERSION = engineV8Version;
-var fails$m = fails$q;
-
-// eslint-disable-next-line es-x/no-object-getownpropertysymbols -- required for testing
-var nativeSymbol = !!Object.getOwnPropertySymbols && !fails$m(function () {
-  var symbol = Symbol();
-  // Chrome 38 Symbol has incorrect toString conversion
-  // `get-own-property-symbols` polyfill symbols converted to object are not Symbol instances
-  return !String(symbol) || !(Object(symbol) instanceof Symbol) ||
-    // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
-    !Symbol.sham && V8_VERSION && V8_VERSION < 41;
-});
-
-/* eslint-disable es-x/no-symbol -- required for testing */
-
-var NATIVE_SYMBOL$2 = nativeSymbol;
-
-var useSymbolAsUid = NATIVE_SYMBOL$2
-  && !Symbol.sham
-  && typeof Symbol.iterator == 'symbol';
-
-var getBuiltIn$4 = getBuiltIn$6;
-var isCallable$j = isCallable$m;
-var isPrototypeOf$3 = objectIsPrototypeOf;
-var USE_SYMBOL_AS_UID$1 = useSymbolAsUid;
-
-var $Object$3 = Object;
-
-var isSymbol$2 = USE_SYMBOL_AS_UID$1 ? function (it) {
-  return typeof it == 'symbol';
-} : function (it) {
-  var $Symbol = getBuiltIn$4('Symbol');
-  return isCallable$j($Symbol) && isPrototypeOf$3($Symbol.prototype, $Object$3(it));
-};
-
-var $String$3 = String;
-
-var tryToString$3 = function (argument) {
-  try {
-    return $String$3(argument);
-  } catch (error) {
-    return 'Object';
-  }
-};
-
-var isCallable$i = isCallable$m;
-var tryToString$2 = tryToString$3;
-
-var $TypeError$c = TypeError;
-
-// `Assert: IsCallable(argument) is true`
-var aCallable$3 = function (argument) {
-  if (isCallable$i(argument)) return argument;
-  throw $TypeError$c(tryToString$2(argument) + ' is not a function');
-};
-
-var aCallable$2 = aCallable$3;
-
-// `GetMethod` abstract operation
-// https://tc39.es/ecma262/#sec-getmethod
-var getMethod$5 = function (V, P) {
-  var func = V[P];
-  return func == null ? undefined : aCallable$2(func);
-};
-
-var call$d = functionCall;
-var isCallable$h = isCallable$m;
-var isObject$7 = isObject$8;
-
-var $TypeError$b = TypeError;
-
-// `OrdinaryToPrimitive` abstract operation
-// https://tc39.es/ecma262/#sec-ordinarytoprimitive
-var ordinaryToPrimitive$1 = function (input, pref) {
-  var fn, val;
-  if (pref === 'string' && isCallable$h(fn = input.toString) && !isObject$7(val = call$d(fn, input))) return val;
-  if (isCallable$h(fn = input.valueOf) && !isObject$7(val = call$d(fn, input))) return val;
-  if (pref !== 'string' && isCallable$h(fn = input.toString) && !isObject$7(val = call$d(fn, input))) return val;
-  throw $TypeError$b("Can't convert object to primitive value");
-};
-
-var shared$5 = {exports: {}};
-
-var global$g = global$j;
-
-// eslint-disable-next-line es-x/no-object-defineproperty -- safe
-var defineProperty$8 = Object.defineProperty;
-
-var defineGlobalProperty$3 = function (key, value) {
-  try {
-    defineProperty$8(global$g, key, { value: value, configurable: true, writable: true });
-  } catch (error) {
-    global$g[key] = value;
-  } return value;
-};
-
-var global$f = global$j;
-var defineGlobalProperty$2 = defineGlobalProperty$3;
-
-var SHARED = '__core-js_shared__';
-var store$3 = global$f[SHARED] || defineGlobalProperty$2(SHARED, {});
-
-var sharedStore = store$3;
-
-var store$2 = sharedStore;
-
-(shared$5.exports = function (key, value) {
-  return store$2[key] || (store$2[key] = value !== undefined ? value : {});
-})('versions', []).push({
-  version: '3.24.1',
-  mode: 'global',
-  copyright: '© 2014-2022 Denis Pushkarev (zloirock.ru)',
-  license: 'https://github.com/zloirock/core-js/blob/v3.24.1/LICENSE',
-  source: 'https://github.com/zloirock/core-js'
-});
-
-var requireObjectCoercible$9 = requireObjectCoercible$b;
-
-var $Object$2 = Object;
-
-// `ToObject` abstract operation
-// https://tc39.es/ecma262/#sec-toobject
-var toObject$6 = function (argument) {
-  return $Object$2(requireObjectCoercible$9(argument));
-};
-
-var uncurryThis$p = functionUncurryThis;
-var toObject$5 = toObject$6;
-
-var hasOwnProperty = uncurryThis$p({}.hasOwnProperty);
-
-// `HasOwnProperty` abstract operation
-// https://tc39.es/ecma262/#sec-hasownproperty
-// eslint-disable-next-line es-x/no-object-hasown -- safe
-var hasOwnProperty_1 = Object.hasOwn || function hasOwn(it, key) {
-  return hasOwnProperty(toObject$5(it), key);
-};
-
-var uncurryThis$o = functionUncurryThis;
-
-var id = 0;
-var postfix = Math.random();
-var toString$g = uncurryThis$o(1.0.toString);
-
-var uid$3 = function (key) {
-  return 'Symbol(' + (key === undefined ? '' : key) + ')_' + toString$g(++id + postfix, 36);
-};
-
-var global$e = global$j;
-var shared$4 = shared$5.exports;
-var hasOwn$b = hasOwnProperty_1;
-var uid$2 = uid$3;
-var NATIVE_SYMBOL$1 = nativeSymbol;
-var USE_SYMBOL_AS_UID = useSymbolAsUid;
-
-var WellKnownSymbolsStore = shared$4('wks');
-var Symbol$3 = global$e.Symbol;
-var symbolFor = Symbol$3 && Symbol$3['for'];
-var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol$3 : Symbol$3 && Symbol$3.withoutSetter || uid$2;
-
-var wellKnownSymbol$g = function (name) {
-  if (!hasOwn$b(WellKnownSymbolsStore, name) || !(NATIVE_SYMBOL$1 || typeof WellKnownSymbolsStore[name] == 'string')) {
-    var description = 'Symbol.' + name;
-    if (NATIVE_SYMBOL$1 && hasOwn$b(Symbol$3, name)) {
-      WellKnownSymbolsStore[name] = Symbol$3[name];
-    } else if (USE_SYMBOL_AS_UID && symbolFor) {
-      WellKnownSymbolsStore[name] = symbolFor(description);
-    } else {
-      WellKnownSymbolsStore[name] = createWellKnownSymbol(description);
-    }
-  } return WellKnownSymbolsStore[name];
-};
-
-var call$c = functionCall;
-var isObject$6 = isObject$8;
-var isSymbol$1 = isSymbol$2;
-var getMethod$4 = getMethod$5;
-var ordinaryToPrimitive = ordinaryToPrimitive$1;
-var wellKnownSymbol$f = wellKnownSymbol$g;
-
-var $TypeError$a = TypeError;
-var TO_PRIMITIVE = wellKnownSymbol$f('toPrimitive');
-
-// `ToPrimitive` abstract operation
-// https://tc39.es/ecma262/#sec-toprimitive
-var toPrimitive$1 = function (input, pref) {
-  if (!isObject$6(input) || isSymbol$1(input)) return input;
-  var exoticToPrim = getMethod$4(input, TO_PRIMITIVE);
-  var result;
-  if (exoticToPrim) {
-    if (pref === undefined) pref = 'default';
-    result = call$c(exoticToPrim, input, pref);
-    if (!isObject$6(result) || isSymbol$1(result)) return result;
-    throw $TypeError$a("Can't convert object to primitive value");
-  }
-  if (pref === undefined) pref = 'number';
-  return ordinaryToPrimitive(input, pref);
-};
-
-var toPrimitive = toPrimitive$1;
-var isSymbol = isSymbol$2;
-
-// `ToPropertyKey` abstract operation
-// https://tc39.es/ecma262/#sec-topropertykey
-var toPropertyKey$3 = function (argument) {
-  var key = toPrimitive(argument, 'string');
-  return isSymbol(key) ? key : key + '';
-};
-
-var global$d = global$j;
-var isObject$5 = isObject$8;
-
-var document$1 = global$d.document;
-// typeof document.createElement is 'object' in old IE
-var EXISTS$1 = isObject$5(document$1) && isObject$5(document$1.createElement);
-
-var documentCreateElement$2 = function (it) {
-  return EXISTS$1 ? document$1.createElement(it) : {};
-};
-
-var DESCRIPTORS$c = descriptors;
-var fails$l = fails$q;
-var createElement = documentCreateElement$2;
-
-// Thanks to IE8 for its funny defineProperty
-var ie8DomDefine = !DESCRIPTORS$c && !fails$l(function () {
-  // eslint-disable-next-line es-x/no-object-defineproperty -- required for testing
-  return Object.defineProperty(createElement('div'), 'a', {
-    get: function () { return 7; }
-  }).a != 7;
-});
-
-var DESCRIPTORS$b = descriptors;
-var call$b = functionCall;
-var propertyIsEnumerableModule$1 = objectPropertyIsEnumerable;
-var createPropertyDescriptor$3 = createPropertyDescriptor$4;
-var toIndexedObject$4 = toIndexedObject$5;
-var toPropertyKey$2 = toPropertyKey$3;
-var hasOwn$a = hasOwnProperty_1;
-var IE8_DOM_DEFINE$1 = ie8DomDefine;
-
-// eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
-var $getOwnPropertyDescriptor$1 = Object.getOwnPropertyDescriptor;
-
-// `Object.getOwnPropertyDescriptor` method
-// https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
-objectGetOwnPropertyDescriptor.f = DESCRIPTORS$b ? $getOwnPropertyDescriptor$1 : function getOwnPropertyDescriptor(O, P) {
-  O = toIndexedObject$4(O);
-  P = toPropertyKey$2(P);
-  if (IE8_DOM_DEFINE$1) try {
-    return $getOwnPropertyDescriptor$1(O, P);
-  } catch (error) { /* empty */ }
-  if (hasOwn$a(O, P)) return createPropertyDescriptor$3(!call$b(propertyIsEnumerableModule$1.f, O, P), O[P]);
-};
-
-var objectDefineProperty = {};
-
-var DESCRIPTORS$a = descriptors;
-var fails$k = fails$q;
-
-// V8 ~ Chrome 36-
-// https://bugs.chromium.org/p/v8/issues/detail?id=3334
-var v8PrototypeDefineBug = DESCRIPTORS$a && fails$k(function () {
-  // eslint-disable-next-line es-x/no-object-defineproperty -- required for testing
-  return Object.defineProperty(function () { /* empty */ }, 'prototype', {
-    value: 42,
-    writable: false
-  }).prototype != 42;
-});
-
-var isObject$4 = isObject$8;
-
-var $String$2 = String;
-var $TypeError$9 = TypeError;
-
-// `Assert: Type(argument) is Object`
-var anObject$c = function (argument) {
-  if (isObject$4(argument)) return argument;
-  throw $TypeError$9($String$2(argument) + ' is not an object');
-};
-
-var DESCRIPTORS$9 = descriptors;
-var IE8_DOM_DEFINE = ie8DomDefine;
-var V8_PROTOTYPE_DEFINE_BUG$1 = v8PrototypeDefineBug;
-var anObject$b = anObject$c;
-var toPropertyKey$1 = toPropertyKey$3;
-
-var $TypeError$8 = TypeError;
-// eslint-disable-next-line es-x/no-object-defineproperty -- safe
-var $defineProperty = Object.defineProperty;
-// eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
-var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-var ENUMERABLE = 'enumerable';
-var CONFIGURABLE$1 = 'configurable';
-var WRITABLE = 'writable';
-
-// `Object.defineProperty` method
-// https://tc39.es/ecma262/#sec-object.defineproperty
-objectDefineProperty.f = DESCRIPTORS$9 ? V8_PROTOTYPE_DEFINE_BUG$1 ? function defineProperty(O, P, Attributes) {
-  anObject$b(O);
-  P = toPropertyKey$1(P);
-  anObject$b(Attributes);
-  if (typeof O === 'function' && P === 'prototype' && 'value' in Attributes && WRITABLE in Attributes && !Attributes[WRITABLE]) {
-    var current = $getOwnPropertyDescriptor(O, P);
-    if (current && current[WRITABLE]) {
-      O[P] = Attributes.value;
-      Attributes = {
-        configurable: CONFIGURABLE$1 in Attributes ? Attributes[CONFIGURABLE$1] : current[CONFIGURABLE$1],
-        enumerable: ENUMERABLE in Attributes ? Attributes[ENUMERABLE] : current[ENUMERABLE],
-        writable: false
-      };
-    }
-  } return $defineProperty(O, P, Attributes);
-} : $defineProperty : function defineProperty(O, P, Attributes) {
-  anObject$b(O);
-  P = toPropertyKey$1(P);
-  anObject$b(Attributes);
-  if (IE8_DOM_DEFINE) try {
-    return $defineProperty(O, P, Attributes);
-  } catch (error) { /* empty */ }
-  if ('get' in Attributes || 'set' in Attributes) throw $TypeError$8('Accessors not supported');
-  if ('value' in Attributes) O[P] = Attributes.value;
-  return O;
-};
-
-var DESCRIPTORS$8 = descriptors;
-var definePropertyModule$5 = objectDefineProperty;
-var createPropertyDescriptor$2 = createPropertyDescriptor$4;
-
-var createNonEnumerableProperty$6 = DESCRIPTORS$8 ? function (object, key, value) {
-  return definePropertyModule$5.f(object, key, createPropertyDescriptor$2(1, value));
-} : function (object, key, value) {
-  object[key] = value;
-  return object;
-};
-
-var makeBuiltIn$2 = {exports: {}};
-
-var DESCRIPTORS$7 = descriptors;
-var hasOwn$9 = hasOwnProperty_1;
-
-var FunctionPrototype$1 = Function.prototype;
-// eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
-var getDescriptor = DESCRIPTORS$7 && Object.getOwnPropertyDescriptor;
-
-var EXISTS = hasOwn$9(FunctionPrototype$1, 'name');
-// additional protection from minified / mangled / dropped function names
-var PROPER = EXISTS && (function something() { /* empty */ }).name === 'something';
-var CONFIGURABLE = EXISTS && (!DESCRIPTORS$7 || (DESCRIPTORS$7 && getDescriptor(FunctionPrototype$1, 'name').configurable));
-
-var functionName = {
-  EXISTS: EXISTS,
-  PROPER: PROPER,
-  CONFIGURABLE: CONFIGURABLE
-};
-
-var uncurryThis$n = functionUncurryThis;
-var isCallable$g = isCallable$m;
-var store$1 = sharedStore;
-
-var functionToString = uncurryThis$n(Function.toString);
-
-// this helper broken in `core-js@3.4.1-3.4.4`, so we can't use `shared` helper
-if (!isCallable$g(store$1.inspectSource)) {
-  store$1.inspectSource = function (it) {
-    return functionToString(it);
-  };
-}
-
-var inspectSource$3 = store$1.inspectSource;
-
-var global$c = global$j;
-var isCallable$f = isCallable$m;
-var inspectSource$2 = inspectSource$3;
-
-var WeakMap$1 = global$c.WeakMap;
-
-var nativeWeakMap = isCallable$f(WeakMap$1) && /native code/.test(inspectSource$2(WeakMap$1));
-
-var shared$3 = shared$5.exports;
-var uid$1 = uid$3;
-
-var keys$1 = shared$3('keys');
-
-var sharedKey$3 = function (key) {
-  return keys$1[key] || (keys$1[key] = uid$1(key));
-};
-
-var hiddenKeys$4 = {};
-
-var NATIVE_WEAK_MAP = nativeWeakMap;
-var global$b = global$j;
-var uncurryThis$m = functionUncurryThis;
-var isObject$3 = isObject$8;
-var createNonEnumerableProperty$5 = createNonEnumerableProperty$6;
-var hasOwn$8 = hasOwnProperty_1;
-var shared$2 = sharedStore;
-var sharedKey$2 = sharedKey$3;
-var hiddenKeys$3 = hiddenKeys$4;
-
-var OBJECT_ALREADY_INITIALIZED = 'Object already initialized';
-var TypeError$1 = global$b.TypeError;
-var WeakMap = global$b.WeakMap;
-var set, get, has;
-
-var enforce = function (it) {
-  return has(it) ? get(it) : set(it, {});
-};
-
-var getterFor = function (TYPE) {
-  return function (it) {
-    var state;
-    if (!isObject$3(it) || (state = get(it)).type !== TYPE) {
-      throw TypeError$1('Incompatible receiver, ' + TYPE + ' required');
-    } return state;
-  };
-};
-
-if (NATIVE_WEAK_MAP || shared$2.state) {
-  var store = shared$2.state || (shared$2.state = new WeakMap());
-  var wmget = uncurryThis$m(store.get);
-  var wmhas = uncurryThis$m(store.has);
-  var wmset = uncurryThis$m(store.set);
-  set = function (it, metadata) {
-    if (wmhas(store, it)) throw new TypeError$1(OBJECT_ALREADY_INITIALIZED);
-    metadata.facade = it;
-    wmset(store, it, metadata);
-    return metadata;
-  };
-  get = function (it) {
-    return wmget(store, it) || {};
-  };
-  has = function (it) {
-    return wmhas(store, it);
-  };
-} else {
-  var STATE = sharedKey$2('state');
-  hiddenKeys$3[STATE] = true;
-  set = function (it, metadata) {
-    if (hasOwn$8(it, STATE)) throw new TypeError$1(OBJECT_ALREADY_INITIALIZED);
-    metadata.facade = it;
-    createNonEnumerableProperty$5(it, STATE, metadata);
-    return metadata;
-  };
-  get = function (it) {
-    return hasOwn$8(it, STATE) ? it[STATE] : {};
-  };
-  has = function (it) {
-    return hasOwn$8(it, STATE);
-  };
-}
-
-var internalState = {
-  set: set,
-  get: get,
-  has: has,
-  enforce: enforce,
-  getterFor: getterFor
-};
-
-var fails$j = fails$q;
-var isCallable$e = isCallable$m;
-var hasOwn$7 = hasOwnProperty_1;
-var DESCRIPTORS$6 = descriptors;
-var CONFIGURABLE_FUNCTION_NAME$1 = functionName.CONFIGURABLE;
-var inspectSource$1 = inspectSource$3;
-var InternalStateModule$1 = internalState;
-
-var enforceInternalState$1 = InternalStateModule$1.enforce;
-var getInternalState$2 = InternalStateModule$1.get;
-// eslint-disable-next-line es-x/no-object-defineproperty -- safe
-var defineProperty$7 = Object.defineProperty;
-
-var CONFIGURABLE_LENGTH = DESCRIPTORS$6 && !fails$j(function () {
-  return defineProperty$7(function () { /* empty */ }, 'length', { value: 8 }).length !== 8;
-});
-
-var TEMPLATE = String(String).split('String');
-
-var makeBuiltIn$1 = makeBuiltIn$2.exports = function (value, name, options) {
-  if (String(name).slice(0, 7) === 'Symbol(') {
-    name = '[' + String(name).replace(/^Symbol\(([^)]*)\)/, '$1') + ']';
-  }
-  if (options && options.getter) name = 'get ' + name;
-  if (options && options.setter) name = 'set ' + name;
-  if (!hasOwn$7(value, 'name') || (CONFIGURABLE_FUNCTION_NAME$1 && value.name !== name)) {
-    if (DESCRIPTORS$6) defineProperty$7(value, 'name', { value: name, configurable: true });
-    else value.name = name;
-  }
-  if (CONFIGURABLE_LENGTH && options && hasOwn$7(options, 'arity') && value.length !== options.arity) {
-    defineProperty$7(value, 'length', { value: options.arity });
-  }
-  try {
-    if (options && hasOwn$7(options, 'constructor') && options.constructor) {
-      if (DESCRIPTORS$6) defineProperty$7(value, 'prototype', { writable: false });
-    // in V8 ~ Chrome 53, prototypes of some methods, like `Array.prototype.values`, are non-writable
-    } else if (value.prototype) value.prototype = undefined;
-  } catch (error) { /* empty */ }
-  var state = enforceInternalState$1(value);
-  if (!hasOwn$7(state, 'source')) {
-    state.source = TEMPLATE.join(typeof name == 'string' ? name : '');
-  } return value;
-};
-
-// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
-// eslint-disable-next-line no-extend-native -- required
-Function.prototype.toString = makeBuiltIn$1(function toString() {
-  return isCallable$e(this) && getInternalState$2(this).source || inspectSource$1(this);
-}, 'toString');
-
-var isCallable$d = isCallable$m;
-var definePropertyModule$4 = objectDefineProperty;
-var makeBuiltIn = makeBuiltIn$2.exports;
-var defineGlobalProperty$1 = defineGlobalProperty$3;
-
-var defineBuiltIn$6 = function (O, key, value, options) {
-  if (!options) options = {};
-  var simple = options.enumerable;
-  var name = options.name !== undefined ? options.name : key;
-  if (isCallable$d(value)) makeBuiltIn(value, name, options);
-  if (options.global) {
-    if (simple) O[key] = value;
-    else defineGlobalProperty$1(key, value);
-  } else {
-    try {
-      if (!options.unsafe) delete O[key];
-      else if (O[key]) simple = true;
-    } catch (error) { /* empty */ }
-    if (simple) O[key] = value;
-    else definePropertyModule$4.f(O, key, {
-      value: value,
-      enumerable: false,
-      configurable: !options.nonConfigurable,
-      writable: !options.nonWritable
-    });
-  } return O;
-};
-
-var objectGetOwnPropertyNames = {};
-
-var ceil = Math.ceil;
-var floor$2 = Math.floor;
-
-// `Math.trunc` method
-// https://tc39.es/ecma262/#sec-math.trunc
-// eslint-disable-next-line es-x/no-math-trunc -- safe
-var mathTrunc = Math.trunc || function trunc(x) {
-  var n = +x;
-  return (n > 0 ? floor$2 : ceil)(n);
-};
-
-var trunc = mathTrunc;
-
-// `ToIntegerOrInfinity` abstract operation
-// https://tc39.es/ecma262/#sec-tointegerorinfinity
-var toIntegerOrInfinity$4 = function (argument) {
-  var number = +argument;
-  // eslint-disable-next-line no-self-compare -- NaN check
-  return number !== number || number === 0 ? 0 : trunc(number);
-};
-
-var toIntegerOrInfinity$3 = toIntegerOrInfinity$4;
-
-var max$8 = Math.max;
-var min$9 = Math.min;
-
-// Helper for a popular repeating case of the spec:
-// Let integer be ? ToInteger(index).
-// If integer < 0, let result be max((length + integer), 0); else let result be min(integer, length).
-var toAbsoluteIndex$2 = function (index, length) {
-  var integer = toIntegerOrInfinity$3(index);
-  return integer < 0 ? max$8(integer + length, 0) : min$9(integer, length);
-};
-
-var toIntegerOrInfinity$2 = toIntegerOrInfinity$4;
-
-var min$8 = Math.min;
-
-// `ToLength` abstract operation
-// https://tc39.es/ecma262/#sec-tolength
-var toLength$5 = function (argument) {
-  return argument > 0 ? min$8(toIntegerOrInfinity$2(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
-};
-
-var toLength$4 = toLength$5;
-
-// `LengthOfArrayLike` abstract operation
-// https://tc39.es/ecma262/#sec-lengthofarraylike
-var lengthOfArrayLike$4 = function (obj) {
-  return toLength$4(obj.length);
-};
-
-var toIndexedObject$3 = toIndexedObject$5;
-var toAbsoluteIndex$1 = toAbsoluteIndex$2;
-var lengthOfArrayLike$3 = lengthOfArrayLike$4;
-
-// `Array.prototype.{ indexOf, includes }` methods implementation
-var createMethod$3 = function (IS_INCLUDES) {
-  return function ($this, el, fromIndex) {
-    var O = toIndexedObject$3($this);
-    var length = lengthOfArrayLike$3(O);
-    var index = toAbsoluteIndex$1(fromIndex, length);
-    var value;
-    // Array#includes uses SameValueZero equality algorithm
-    // eslint-disable-next-line no-self-compare -- NaN check
-    if (IS_INCLUDES && el != el) while (length > index) {
-      value = O[index++];
-      // eslint-disable-next-line no-self-compare -- NaN check
-      if (value != value) return true;
-    // Array#indexOf ignores holes, Array#includes - not
-    } else for (;length > index; index++) {
-      if ((IS_INCLUDES || index in O) && O[index] === el) return IS_INCLUDES || index || 0;
-    } return !IS_INCLUDES && -1;
-  };
-};
-
-var arrayIncludes = {
-  // `Array.prototype.includes` method
-  // https://tc39.es/ecma262/#sec-array.prototype.includes
-  includes: createMethod$3(true),
-  // `Array.prototype.indexOf` method
-  // https://tc39.es/ecma262/#sec-array.prototype.indexof
-  indexOf: createMethod$3(false)
-};
-
-var uncurryThis$l = functionUncurryThis;
-var hasOwn$6 = hasOwnProperty_1;
-var toIndexedObject$2 = toIndexedObject$5;
-var indexOf$2 = arrayIncludes.indexOf;
-var hiddenKeys$2 = hiddenKeys$4;
-
-var push$3 = uncurryThis$l([].push);
-
-var objectKeysInternal = function (object, names) {
-  var O = toIndexedObject$2(object);
-  var i = 0;
-  var result = [];
-  var key;
-  for (key in O) !hasOwn$6(hiddenKeys$2, key) && hasOwn$6(O, key) && push$3(result, key);
-  // Don't enum bug & hidden keys
-  while (names.length > i) if (hasOwn$6(O, key = names[i++])) {
-    ~indexOf$2(result, key) || push$3(result, key);
-  }
-  return result;
-};
-
-// IE8- don't enum bug keys
-var enumBugKeys$3 = [
-  'constructor',
-  'hasOwnProperty',
-  'isPrototypeOf',
-  'propertyIsEnumerable',
-  'toLocaleString',
-  'toString',
-  'valueOf'
-];
-
-var internalObjectKeys$1 = objectKeysInternal;
-var enumBugKeys$2 = enumBugKeys$3;
-
-var hiddenKeys$1 = enumBugKeys$2.concat('length', 'prototype');
-
-// `Object.getOwnPropertyNames` method
-// https://tc39.es/ecma262/#sec-object.getownpropertynames
-// eslint-disable-next-line es-x/no-object-getownpropertynames -- safe
-objectGetOwnPropertyNames.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
-  return internalObjectKeys$1(O, hiddenKeys$1);
-};
-
-var objectGetOwnPropertySymbols = {};
-
-// eslint-disable-next-line es-x/no-object-getownpropertysymbols -- safe
-objectGetOwnPropertySymbols.f = Object.getOwnPropertySymbols;
-
-var getBuiltIn$3 = getBuiltIn$6;
-var uncurryThis$k = functionUncurryThis;
-var getOwnPropertyNamesModule = objectGetOwnPropertyNames;
-var getOwnPropertySymbolsModule$1 = objectGetOwnPropertySymbols;
-var anObject$a = anObject$c;
-
-var concat$2 = uncurryThis$k([].concat);
-
-// all object keys, includes non-enumerable and symbols
-var ownKeys$5 = getBuiltIn$3('Reflect', 'ownKeys') || function ownKeys(it) {
-  var keys = getOwnPropertyNamesModule.f(anObject$a(it));
-  var getOwnPropertySymbols = getOwnPropertySymbolsModule$1.f;
-  return getOwnPropertySymbols ? concat$2(keys, getOwnPropertySymbols(it)) : keys;
-};
-
-var hasOwn$5 = hasOwnProperty_1;
-var ownKeys$4 = ownKeys$5;
-var getOwnPropertyDescriptorModule = objectGetOwnPropertyDescriptor;
-var definePropertyModule$3 = objectDefineProperty;
-
-var copyConstructorProperties$2 = function (target, source, exceptions) {
-  var keys = ownKeys$4(source);
-  var defineProperty = definePropertyModule$3.f;
-  var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
-  for (var i = 0; i < keys.length; i++) {
-    var key = keys[i];
-    if (!hasOwn$5(target, key) && !(exceptions && hasOwn$5(exceptions, key))) {
-      defineProperty(target, key, getOwnPropertyDescriptor(source, key));
-    }
-  }
-};
-
-var fails$i = fails$q;
-var isCallable$c = isCallable$m;
-
-var replacement = /#|\.prototype\./;
-
-var isForced$2 = function (feature, detection) {
-  var value = data[normalize(feature)];
-  return value == POLYFILL ? true
-    : value == NATIVE ? false
-    : isCallable$c(detection) ? fails$i(detection)
-    : !!detection;
-};
-
-var normalize = isForced$2.normalize = function (string) {
-  return String(string).replace(replacement, '.').toLowerCase();
-};
-
-var data = isForced$2.data = {};
-var NATIVE = isForced$2.NATIVE = 'N';
-var POLYFILL = isForced$2.POLYFILL = 'P';
-
-var isForced_1 = isForced$2;
-
-var global$a = global$j;
-var getOwnPropertyDescriptor$3 = objectGetOwnPropertyDescriptor.f;
-var createNonEnumerableProperty$4 = createNonEnumerableProperty$6;
-var defineBuiltIn$5 = defineBuiltIn$6;
-var defineGlobalProperty = defineGlobalProperty$3;
-var copyConstructorProperties$1 = copyConstructorProperties$2;
-var isForced$1 = isForced_1;
-
-/*
-  options.target         - name of the target object
-  options.global         - target is the global object
-  options.stat           - export as static methods of target
-  options.proto          - export as prototype methods of target
-  options.real           - real prototype method for the `pure` version
-  options.forced         - export even if the native feature is available
-  options.bind           - bind methods to the target, required for the `pure` version
-  options.wrap           - wrap constructors to preventing global pollution, required for the `pure` version
-  options.unsafe         - use the simple assignment of property instead of delete + defineProperty
-  options.sham           - add a flag to not completely full polyfills
-  options.enumerable     - export as enumerable property
-  options.dontCallGetSet - prevent calling a getter on target
-  options.name           - the .name of the function if it does not match the key
-*/
-var _export = function (options, source) {
-  var TARGET = options.target;
-  var GLOBAL = options.global;
-  var STATIC = options.stat;
-  var FORCED, target, key, targetProperty, sourceProperty, descriptor;
-  if (GLOBAL) {
-    target = global$a;
-  } else if (STATIC) {
-    target = global$a[TARGET] || defineGlobalProperty(TARGET, {});
-  } else {
-    target = (global$a[TARGET] || {}).prototype;
-  }
-  if (target) for (key in source) {
-    sourceProperty = source[key];
-    if (options.dontCallGetSet) {
-      descriptor = getOwnPropertyDescriptor$3(target, key);
-      targetProperty = descriptor && descriptor.value;
-    } else targetProperty = target[key];
-    FORCED = isForced$1(GLOBAL ? key : TARGET + (STATIC ? '.' : '#') + key, options.forced);
-    // contained in target
-    if (!FORCED && targetProperty !== undefined) {
-      if (typeof sourceProperty == typeof targetProperty) continue;
-      copyConstructorProperties$1(sourceProperty, targetProperty);
-    }
-    // add a flag to not completely full polyfills
-    if (options.sham || (targetProperty && targetProperty.sham)) {
-      createNonEnumerableProperty$4(sourceProperty, 'sham', true);
-    }
-    defineBuiltIn$5(target, key, sourceProperty, options);
-  }
-};
-
-var internalObjectKeys = objectKeysInternal;
-var enumBugKeys$1 = enumBugKeys$3;
-
-// `Object.keys` method
-// https://tc39.es/ecma262/#sec-object.keys
-// eslint-disable-next-line es-x/no-object-keys -- safe
-var objectKeys$2 = Object.keys || function keys(O) {
-  return internalObjectKeys(O, enumBugKeys$1);
-};
-
-var DESCRIPTORS$5 = descriptors;
-var uncurryThis$j = functionUncurryThis;
-var call$a = functionCall;
-var fails$h = fails$q;
-var objectKeys$1 = objectKeys$2;
-var getOwnPropertySymbolsModule = objectGetOwnPropertySymbols;
-var propertyIsEnumerableModule = objectPropertyIsEnumerable;
-var toObject$4 = toObject$6;
-var IndexedObject$1 = indexedObject;
-
-// eslint-disable-next-line es-x/no-object-assign -- safe
-var $assign = Object.assign;
-// eslint-disable-next-line es-x/no-object-defineproperty -- required for testing
-var defineProperty$6 = Object.defineProperty;
-var concat$1 = uncurryThis$j([].concat);
-
-// `Object.assign` method
-// https://tc39.es/ecma262/#sec-object.assign
-var objectAssign = !$assign || fails$h(function () {
-  // should have correct order of operations (Edge bug)
-  if (DESCRIPTORS$5 && $assign({ b: 1 }, $assign(defineProperty$6({}, 'a', {
-    enumerable: true,
-    get: function () {
-      defineProperty$6(this, 'b', {
-        value: 3,
-        enumerable: false
-      });
-    }
-  }), { b: 2 })).b !== 1) return true;
-  // should work with symbols and should have deterministic property order (V8 bug)
-  var A = {};
-  var B = {};
-  // eslint-disable-next-line es-x/no-symbol -- safe
-  var symbol = Symbol();
-  var alphabet = 'abcdefghijklmnopqrst';
-  A[symbol] = 7;
-  alphabet.split('').forEach(function (chr) { B[chr] = chr; });
-  return $assign({}, A)[symbol] != 7 || objectKeys$1($assign({}, B)).join('') != alphabet;
-}) ? function assign(target, source) { // eslint-disable-line no-unused-vars -- required for `.length`
-  var T = toObject$4(target);
-  var argumentsLength = arguments.length;
-  var index = 1;
-  var getOwnPropertySymbols = getOwnPropertySymbolsModule.f;
-  var propertyIsEnumerable = propertyIsEnumerableModule.f;
-  while (argumentsLength > index) {
-    var S = IndexedObject$1(arguments[index++]);
-    var keys = getOwnPropertySymbols ? concat$1(objectKeys$1(S), getOwnPropertySymbols(S)) : objectKeys$1(S);
-    var length = keys.length;
-    var j = 0;
-    var key;
-    while (length > j) {
-      key = keys[j++];
-      if (!DESCRIPTORS$5 || call$a(propertyIsEnumerable, S, key)) T[key] = S[key];
-    }
-  } return T;
-} : $assign;
-
-var $$e = _export;
-var assign$1 = objectAssign;
-
-// `Object.assign` method
-// https://tc39.es/ecma262/#sec-object.assign
-// eslint-disable-next-line es-x/no-object-assign -- required for testing
-$$e({ target: 'Object', stat: true, arity: 2, forced: Object.assign !== assign$1 }, {
-  assign: assign$1
-});
-
-var convertObjToVars = function convertObjToVars(obj) {
-  return Object.assign.apply(Object, [{}].concat(_toConsumableArray(Object.keys(obj).map(function (key) {
-    return _defineProperty$A({}, key.substring(0, 2) === "--" ? key : "--" + key, obj[key]);
-  }))));
-};
-
-var wellKnownSymbol$e = wellKnownSymbol$g;
-
-var TO_STRING_TAG$3 = wellKnownSymbol$e('toStringTag');
-var test$1 = {};
-
-test$1[TO_STRING_TAG$3] = 'z';
-
-var toStringTagSupport = String(test$1) === '[object z]';
-
-var TO_STRING_TAG_SUPPORT = toStringTagSupport;
-var isCallable$b = isCallable$m;
-var classofRaw = classofRaw$1;
-var wellKnownSymbol$d = wellKnownSymbol$g;
-
-var TO_STRING_TAG$2 = wellKnownSymbol$d('toStringTag');
-var $Object$1 = Object;
-
-// ES3 wrong here
-var CORRECT_ARGUMENTS = classofRaw(function () { return arguments; }()) == 'Arguments';
-
-// fallback for IE11 Script Access Denied error
-var tryGet = function (it, key) {
-  try {
-    return it[key];
-  } catch (error) { /* empty */ }
-};
-
-// getting tag from ES6+ `Object.prototype.toString`
-var classof$5 = TO_STRING_TAG_SUPPORT ? classofRaw : function (it) {
-  var O, tag, result;
-  return it === undefined ? 'Undefined' : it === null ? 'Null'
-    // @@toStringTag case
-    : typeof (tag = tryGet(O = $Object$1(it), TO_STRING_TAG$2)) == 'string' ? tag
-    // builtinTag case
-    : CORRECT_ARGUMENTS ? classofRaw(O)
-    // ES3 arguments fallback
-    : (result = classofRaw(O)) == 'Object' && isCallable$b(O.callee) ? 'Arguments' : result;
-};
-
-var classof$4 = classof$5;
-
-var $String$1 = String;
-
-var toString$f = function (argument) {
-  if (classof$4(argument) === 'Symbol') throw TypeError('Cannot convert a Symbol value to a string');
-  return $String$1(argument);
-};
-
-var anObject$9 = anObject$c;
-
-// `RegExp.prototype.flags` getter implementation
-// https://tc39.es/ecma262/#sec-get-regexp.prototype.flags
-var regexpFlags$1 = function () {
-  var that = anObject$9(this);
-  var result = '';
-  if (that.hasIndices) result += 'd';
-  if (that.global) result += 'g';
-  if (that.ignoreCase) result += 'i';
-  if (that.multiline) result += 'm';
-  if (that.dotAll) result += 's';
-  if (that.unicode) result += 'u';
-  if (that.unicodeSets) result += 'v';
-  if (that.sticky) result += 'y';
-  return result;
-};
-
-var fails$g = fails$q;
-var global$9 = global$j;
-
-// babel-minify and Closure Compiler transpiles RegExp('a', 'y') -> /a/y and it causes SyntaxError
-var $RegExp$2 = global$9.RegExp;
-
-var UNSUPPORTED_Y$3 = fails$g(function () {
-  var re = $RegExp$2('a', 'y');
-  re.lastIndex = 2;
-  return re.exec('abcd') != null;
-});
-
-// UC Browser bug
-// https://github.com/zloirock/core-js/issues/1008
-var MISSED_STICKY$1 = UNSUPPORTED_Y$3 || fails$g(function () {
-  return !$RegExp$2('a', 'y').sticky;
-});
-
-var BROKEN_CARET = UNSUPPORTED_Y$3 || fails$g(function () {
-  // https://bugzilla.mozilla.org/show_bug.cgi?id=773687
-  var re = $RegExp$2('^r', 'gy');
-  re.lastIndex = 2;
-  return re.exec('str') != null;
-});
-
-var regexpStickyHelpers = {
-  BROKEN_CARET: BROKEN_CARET,
-  MISSED_STICKY: MISSED_STICKY$1,
-  UNSUPPORTED_Y: UNSUPPORTED_Y$3
-};
-
-var objectDefineProperties = {};
-
-var DESCRIPTORS$4 = descriptors;
-var V8_PROTOTYPE_DEFINE_BUG = v8PrototypeDefineBug;
-var definePropertyModule$2 = objectDefineProperty;
-var anObject$8 = anObject$c;
-var toIndexedObject$1 = toIndexedObject$5;
-var objectKeys = objectKeys$2;
-
-// `Object.defineProperties` method
-// https://tc39.es/ecma262/#sec-object.defineproperties
-// eslint-disable-next-line es-x/no-object-defineproperties -- safe
-objectDefineProperties.f = DESCRIPTORS$4 && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {
-  anObject$8(O);
-  var props = toIndexedObject$1(Properties);
-  var keys = objectKeys(Properties);
-  var length = keys.length;
-  var index = 0;
-  var key;
-  while (length > index) definePropertyModule$2.f(O, key = keys[index++], props[key]);
-  return O;
-};
-
-var getBuiltIn$2 = getBuiltIn$6;
-
-var html$1 = getBuiltIn$2('document', 'documentElement');
-
-/* global ActiveXObject -- old IE, WSH */
-
-var anObject$7 = anObject$c;
-var definePropertiesModule = objectDefineProperties;
-var enumBugKeys = enumBugKeys$3;
-var hiddenKeys = hiddenKeys$4;
-var html = html$1;
-var documentCreateElement$1 = documentCreateElement$2;
-var sharedKey$1 = sharedKey$3;
-
-var GT = '>';
-var LT = '<';
-var PROTOTYPE = 'prototype';
-var SCRIPT = 'script';
-var IE_PROTO$1 = sharedKey$1('IE_PROTO');
-
-var EmptyConstructor = function () { /* empty */ };
-
-var scriptTag = function (content) {
-  return LT + SCRIPT + GT + content + LT + '/' + SCRIPT + GT;
-};
-
-// Create object with fake `null` prototype: use ActiveX Object with cleared prototype
-var NullProtoObjectViaActiveX = function (activeXDocument) {
-  activeXDocument.write(scriptTag(''));
-  activeXDocument.close();
-  var temp = activeXDocument.parentWindow.Object;
-  activeXDocument = null; // avoid memory leak
-  return temp;
-};
-
-// Create object with fake `null` prototype: use iframe Object with cleared prototype
-var NullProtoObjectViaIFrame = function () {
-  // Thrash, waste and sodomy: IE GC bug
-  var iframe = documentCreateElement$1('iframe');
-  var JS = 'java' + SCRIPT + ':';
-  var iframeDocument;
-  iframe.style.display = 'none';
-  html.appendChild(iframe);
-  // https://github.com/zloirock/core-js/issues/475
-  iframe.src = String(JS);
-  iframeDocument = iframe.contentWindow.document;
-  iframeDocument.open();
-  iframeDocument.write(scriptTag('document.F=Object'));
-  iframeDocument.close();
-  return iframeDocument.F;
-};
-
-// Check for document.domain and active x support
-// No need to use active x approach when document.domain is not set
-// see https://github.com/es-shims/es5-shim/issues/150
-// variation of https://github.com/kitcambridge/es5-shim/commit/4f738ac066346
-// avoid IE GC bug
-var activeXDocument;
-var NullProtoObject = function () {
-  try {
-    activeXDocument = new ActiveXObject('htmlfile');
-  } catch (error) { /* ignore */ }
-  NullProtoObject = typeof document != 'undefined'
-    ? document.domain && activeXDocument
-      ? NullProtoObjectViaActiveX(activeXDocument) // old IE
-      : NullProtoObjectViaIFrame()
-    : NullProtoObjectViaActiveX(activeXDocument); // WSH
-  var length = enumBugKeys.length;
-  while (length--) delete NullProtoObject[PROTOTYPE][enumBugKeys[length]];
-  return NullProtoObject();
-};
-
-hiddenKeys[IE_PROTO$1] = true;
-
-// `Object.create` method
-// https://tc39.es/ecma262/#sec-object.create
-// eslint-disable-next-line es-x/no-object-create -- safe
-var objectCreate = Object.create || function create(O, Properties) {
-  var result;
-  if (O !== null) {
-    EmptyConstructor[PROTOTYPE] = anObject$7(O);
-    result = new EmptyConstructor();
-    EmptyConstructor[PROTOTYPE] = null;
-    // add "__proto__" for Object.getPrototypeOf polyfill
-    result[IE_PROTO$1] = O;
-  } else result = NullProtoObject();
-  return Properties === undefined ? result : definePropertiesModule.f(result, Properties);
-};
-
-var fails$f = fails$q;
-var global$8 = global$j;
-
-// babel-minify and Closure Compiler transpiles RegExp('.', 's') -> /./s and it causes SyntaxError
-var $RegExp$1 = global$8.RegExp;
-
-var regexpUnsupportedDotAll = fails$f(function () {
-  var re = $RegExp$1('.', 's');
-  return !(re.dotAll && re.exec('\n') && re.flags === 's');
-});
-
-var fails$e = fails$q;
-var global$7 = global$j;
-
-// babel-minify and Closure Compiler transpiles RegExp('(?<a>b)', 'g') -> /(?<a>b)/g and it causes SyntaxError
-var $RegExp = global$7.RegExp;
-
-var regexpUnsupportedNcg = fails$e(function () {
-  var re = $RegExp('(?<a>b)', 'g');
-  return re.exec('b').groups.a !== 'b' ||
-    'b'.replace(re, '$<a>c') !== 'bc';
-});
-
-/* eslint-disable regexp/no-empty-capturing-group, regexp/no-empty-group, regexp/no-lazy-ends -- testing */
-/* eslint-disable regexp/no-useless-quantifier -- testing */
-var call$9 = functionCall;
-var uncurryThis$i = functionUncurryThis;
-var toString$e = toString$f;
-var regexpFlags = regexpFlags$1;
-var stickyHelpers$2 = regexpStickyHelpers;
-var shared$1 = shared$5.exports;
-var create$3 = objectCreate;
-var getInternalState$1 = internalState.get;
-var UNSUPPORTED_DOT_ALL$1 = regexpUnsupportedDotAll;
-var UNSUPPORTED_NCG$1 = regexpUnsupportedNcg;
-
-var nativeReplace = shared$1('native-string-replace', String.prototype.replace);
-var nativeExec = RegExp.prototype.exec;
-var patchedExec = nativeExec;
-var charAt$5 = uncurryThis$i(''.charAt);
-var indexOf$1 = uncurryThis$i(''.indexOf);
-var replace$4 = uncurryThis$i(''.replace);
-var stringSlice$8 = uncurryThis$i(''.slice);
-
-var UPDATES_LAST_INDEX_WRONG = (function () {
-  var re1 = /a/;
-  var re2 = /b*/g;
-  call$9(nativeExec, re1, 'a');
-  call$9(nativeExec, re2, 'a');
-  return re1.lastIndex !== 0 || re2.lastIndex !== 0;
-})();
-
-var UNSUPPORTED_Y$2 = stickyHelpers$2.BROKEN_CARET;
-
-// nonparticipating capturing group, copied from es5-shim's String#split patch.
-var NPCG_INCLUDED = /()??/.exec('')[1] !== undefined;
-
-var PATCH = UPDATES_LAST_INDEX_WRONG || NPCG_INCLUDED || UNSUPPORTED_Y$2 || UNSUPPORTED_DOT_ALL$1 || UNSUPPORTED_NCG$1;
-
-if (PATCH) {
-  patchedExec = function exec(string) {
-    var re = this;
-    var state = getInternalState$1(re);
-    var str = toString$e(string);
-    var raw = state.raw;
-    var result, reCopy, lastIndex, match, i, object, group;
-
-    if (raw) {
-      raw.lastIndex = re.lastIndex;
-      result = call$9(patchedExec, raw, str);
-      re.lastIndex = raw.lastIndex;
-      return result;
-    }
-
-    var groups = state.groups;
-    var sticky = UNSUPPORTED_Y$2 && re.sticky;
-    var flags = call$9(regexpFlags, re);
-    var source = re.source;
-    var charsAdded = 0;
-    var strCopy = str;
-
-    if (sticky) {
-      flags = replace$4(flags, 'y', '');
-      if (indexOf$1(flags, 'g') === -1) {
-        flags += 'g';
-      }
-
-      strCopy = stringSlice$8(str, re.lastIndex);
-      // Support anchored sticky behavior.
-      if (re.lastIndex > 0 && (!re.multiline || re.multiline && charAt$5(str, re.lastIndex - 1) !== '\n')) {
-        source = '(?: ' + source + ')';
-        strCopy = ' ' + strCopy;
-        charsAdded++;
-      }
-      // ^(? + rx + ) is needed, in combination with some str slicing, to
-      // simulate the 'y' flag.
-      reCopy = new RegExp('^(?:' + source + ')', flags);
-    }
-
-    if (NPCG_INCLUDED) {
-      reCopy = new RegExp('^' + source + '$(?!\\s)', flags);
-    }
-    if (UPDATES_LAST_INDEX_WRONG) lastIndex = re.lastIndex;
-
-    match = call$9(nativeExec, sticky ? reCopy : re, strCopy);
-
-    if (sticky) {
-      if (match) {
-        match.input = stringSlice$8(match.input, charsAdded);
-        match[0] = stringSlice$8(match[0], charsAdded);
-        match.index = re.lastIndex;
-        re.lastIndex += match[0].length;
-      } else re.lastIndex = 0;
-    } else if (UPDATES_LAST_INDEX_WRONG && match) {
-      re.lastIndex = re.global ? match.index + match[0].length : lastIndex;
-    }
-    if (NPCG_INCLUDED && match && match.length > 1) {
-      // Fix browsers whose `exec` methods don't consistently return `undefined`
-      // for NPCG, like IE8. NOTE: This doesn't work for /(.?)?/
-      call$9(nativeReplace, match[0], reCopy, function () {
-        for (i = 1; i < arguments.length - 2; i++) {
-          if (arguments[i] === undefined) match[i] = undefined;
-        }
-      });
-    }
-
-    if (match && groups) {
-      match.groups = object = create$3(null);
-      for (i = 0; i < groups.length; i++) {
-        group = groups[i];
-        object[group[0]] = match[group[1]];
-      }
-    }
-
-    return match;
-  };
-}
-
-var regexpExec$3 = patchedExec;
-
-var $$d = _export;
-var exec$4 = regexpExec$3;
-
-// `RegExp.prototype.exec` method
-// https://tc39.es/ecma262/#sec-regexp.prototype.exec
-$$d({ target: 'RegExp', proto: true, forced: /./.exec !== exec$4 }, {
-  exec: exec$4
-});
-
-// TODO: Remove from `core-js@4` since it's moved to entry points
-
-var $$c = _export;
-var call$8 = functionCall;
-var uncurryThis$h = functionUncurryThis;
-var isCallable$a = isCallable$m;
-var isObject$2 = isObject$8;
-
-var DELEGATES_TO_EXEC = function () {
-  var execCalled = false;
-  var re = /[ac]/;
-  re.exec = function () {
-    execCalled = true;
-    return /./.exec.apply(this, arguments);
-  };
-  return re.test('abc') === true && execCalled;
-}();
-
-var $TypeError$7 = TypeError;
-var un$Test = uncurryThis$h(/./.test);
-
-// `RegExp.prototype.test` method
-// https://tc39.es/ecma262/#sec-regexp.prototype.test
-$$c({ target: 'RegExp', proto: true, forced: !DELEGATES_TO_EXEC }, {
-  test: function (str) {
-    var exec = this.exec;
-    if (!isCallable$a(exec)) return un$Test(this, str);
-    var result = call$8(exec, this, str);
-    if (result !== null && !isObject$2(result)) {
-      throw new $TypeError$7('RegExp exec method returned something other than an Object or null');
-    }
-    return !!result;
-  }
-});
-
-// a string of all valid unicode whitespaces
-var whitespaces$4 = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u2002' +
-  '\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
-
-var uncurryThis$g = functionUncurryThis;
-var requireObjectCoercible$8 = requireObjectCoercible$b;
-var toString$d = toString$f;
-var whitespaces$3 = whitespaces$4;
-
-var replace$3 = uncurryThis$g(''.replace);
-var whitespace = '[' + whitespaces$3 + ']';
-var ltrim = RegExp('^' + whitespace + whitespace + '*');
-var rtrim = RegExp(whitespace + whitespace + '*$');
-
-// `String.prototype.{ trim, trimStart, trimEnd, trimLeft, trimRight }` methods implementation
-var createMethod$2 = function (TYPE) {
-  return function ($this) {
-    var string = toString$d(requireObjectCoercible$8($this));
-    if (TYPE & 1) string = replace$3(string, ltrim, '');
-    if (TYPE & 2) string = replace$3(string, rtrim, '');
-    return string;
-  };
-};
-
-var stringTrim = {
-  // `String.prototype.{ trimLeft, trimStart }` methods
-  // https://tc39.es/ecma262/#sec-string.prototype.trimstart
-  start: createMethod$2(1),
-  // `String.prototype.{ trimRight, trimEnd }` methods
-  // https://tc39.es/ecma262/#sec-string.prototype.trimend
-  end: createMethod$2(2),
-  // `String.prototype.trim` method
-  // https://tc39.es/ecma262/#sec-string.prototype.trim
-  trim: createMethod$2(3)
-};
-
-var global$6 = global$j;
-var fails$d = fails$q;
-var uncurryThis$f = functionUncurryThis;
-var toString$c = toString$f;
-var trim$1 = stringTrim.trim;
-var whitespaces$2 = whitespaces$4;
-
-var $parseInt$1 = global$6.parseInt;
-var Symbol$2 = global$6.Symbol;
-var ITERATOR$4 = Symbol$2 && Symbol$2.iterator;
-var hex = /^[+-]?0x/i;
-var exec$3 = uncurryThis$f(hex.exec);
-var FORCED$2 = $parseInt$1(whitespaces$2 + '08') !== 8 || $parseInt$1(whitespaces$2 + '0x16') !== 22
-  // MS Edge 18- broken with boxed symbols
-  || (ITERATOR$4 && !fails$d(function () { $parseInt$1(Object(ITERATOR$4)); }));
-
-// `parseInt` method
-// https://tc39.es/ecma262/#sec-parseint-string-radix
-var numberParseInt = FORCED$2 ? function parseInt(string, radix) {
-  var S = trim$1(toString$c(string));
-  return $parseInt$1(S, (radix >>> 0) || (exec$3(hex, S) ? 16 : 10));
-} : $parseInt$1;
-
-var $$b = _export;
-var $parseInt = numberParseInt;
-
-// `parseInt` method
-// https://tc39.es/ecma262/#sec-parseint-string-radix
-$$b({ global: true, forced: parseInt != $parseInt }, {
-  parseInt: $parseInt
-});
-
-var NATIVE_BIND = functionBindNative;
-
-var FunctionPrototype = Function.prototype;
-var apply$3 = FunctionPrototype.apply;
-var call$7 = FunctionPrototype.call;
-
-// eslint-disable-next-line es-x/no-reflect -- safe
-var functionApply = typeof Reflect == 'object' && Reflect.apply || (NATIVE_BIND ? call$7.bind(apply$3) : function () {
-  return call$7.apply(apply$3, arguments);
-});
-
-// TODO: Remove from `core-js@4` since it's moved to entry points
-
-var uncurryThis$e = functionUncurryThis;
-var defineBuiltIn$4 = defineBuiltIn$6;
-var regexpExec$2 = regexpExec$3;
-var fails$c = fails$q;
-var wellKnownSymbol$c = wellKnownSymbol$g;
-var createNonEnumerableProperty$3 = createNonEnumerableProperty$6;
-
-var SPECIES$2 = wellKnownSymbol$c('species');
-var RegExpPrototype$3 = RegExp.prototype;
-
-var fixRegexpWellKnownSymbolLogic = function (KEY, exec, FORCED, SHAM) {
-  var SYMBOL = wellKnownSymbol$c(KEY);
-
-  var DELEGATES_TO_SYMBOL = !fails$c(function () {
-    // String methods call symbol-named RegEp methods
-    var O = {};
-    O[SYMBOL] = function () { return 7; };
-    return ''[KEY](O) != 7;
-  });
-
-  var DELEGATES_TO_EXEC = DELEGATES_TO_SYMBOL && !fails$c(function () {
-    // Symbol-named RegExp methods call .exec
-    var execCalled = false;
-    var re = /a/;
-
-    if (KEY === 'split') {
-      // We can't use real regex here since it causes deoptimization
-      // and serious performance degradation in V8
-      // https://github.com/zloirock/core-js/issues/306
-      re = {};
-      // RegExp[@@split] doesn't call the regex's exec method, but first creates
-      // a new one. We need to return the patched regex when creating the new one.
-      re.constructor = {};
-      re.constructor[SPECIES$2] = function () { return re; };
-      re.flags = '';
-      re[SYMBOL] = /./[SYMBOL];
-    }
-
-    re.exec = function () { execCalled = true; return null; };
-
-    re[SYMBOL]('');
-    return !execCalled;
-  });
-
-  if (
-    !DELEGATES_TO_SYMBOL ||
-    !DELEGATES_TO_EXEC ||
-    FORCED
-  ) {
-    var uncurriedNativeRegExpMethod = uncurryThis$e(/./[SYMBOL]);
-    var methods = exec(SYMBOL, ''[KEY], function (nativeMethod, regexp, str, arg2, forceStringMethod) {
-      var uncurriedNativeMethod = uncurryThis$e(nativeMethod);
-      var $exec = regexp.exec;
-      if ($exec === regexpExec$2 || $exec === RegExpPrototype$3.exec) {
-        if (DELEGATES_TO_SYMBOL && !forceStringMethod) {
-          // The native String method already delegates to @@method (this
-          // polyfilled function), leasing to infinite recursion.
-          // We avoid it by directly calling the native @@method method.
-          return { done: true, value: uncurriedNativeRegExpMethod(regexp, str, arg2) };
-        }
-        return { done: true, value: uncurriedNativeMethod(str, regexp, arg2) };
-      }
-      return { done: false };
-    });
-
-    defineBuiltIn$4(String.prototype, KEY, methods[0]);
-    defineBuiltIn$4(RegExpPrototype$3, SYMBOL, methods[1]);
-  }
-
-  if (SHAM) createNonEnumerableProperty$3(RegExpPrototype$3[SYMBOL], 'sham', true);
-};
-
-var isObject$1 = isObject$8;
-var classof$3 = classofRaw$1;
-var wellKnownSymbol$b = wellKnownSymbol$g;
-
-var MATCH$2 = wellKnownSymbol$b('match');
-
-// `IsRegExp` abstract operation
-// https://tc39.es/ecma262/#sec-isregexp
-var isRegexp = function (it) {
-  var isRegExp;
-  return isObject$1(it) && ((isRegExp = it[MATCH$2]) !== undefined ? !!isRegExp : classof$3(it) == 'RegExp');
-};
-
-var uncurryThis$d = functionUncurryThis;
-var fails$b = fails$q;
-var isCallable$9 = isCallable$m;
-var classof$2 = classof$5;
-var getBuiltIn$1 = getBuiltIn$6;
-var inspectSource = inspectSource$3;
-
-var noop$3 = function () { /* empty */ };
-var empty$1 = [];
-var construct = getBuiltIn$1('Reflect', 'construct');
-var constructorRegExp = /^\s*(?:class|function)\b/;
-var exec$2 = uncurryThis$d(constructorRegExp.exec);
-var INCORRECT_TO_STRING = !constructorRegExp.exec(noop$3);
-
-var isConstructorModern = function isConstructor(argument) {
-  if (!isCallable$9(argument)) return false;
-  try {
-    construct(noop$3, empty$1, argument);
-    return true;
-  } catch (error) {
-    return false;
-  }
-};
-
-var isConstructorLegacy = function isConstructor(argument) {
-  if (!isCallable$9(argument)) return false;
-  switch (classof$2(argument)) {
-    case 'AsyncFunction':
-    case 'GeneratorFunction':
-    case 'AsyncGeneratorFunction': return false;
-  }
-  try {
-    // we can't check .prototype since constructors produced by .bind haven't it
-    // `Function#toString` throws on some built-it function in some legacy engines
-    // (for example, `DOMQuad` and similar in FF41-)
-    return INCORRECT_TO_STRING || !!exec$2(constructorRegExp, inspectSource(argument));
-  } catch (error) {
-    return true;
-  }
-};
-
-isConstructorLegacy.sham = true;
-
-// `IsConstructor` abstract operation
-// https://tc39.es/ecma262/#sec-isconstructor
-var isConstructor$1 = !construct || fails$b(function () {
-  var called;
-  return isConstructorModern(isConstructorModern.call)
-    || !isConstructorModern(Object)
-    || !isConstructorModern(function () { called = true; })
-    || called;
-}) ? isConstructorLegacy : isConstructorModern;
-
-var isConstructor = isConstructor$1;
-var tryToString$1 = tryToString$3;
-
-var $TypeError$6 = TypeError;
-
-// `Assert: IsConstructor(argument) is true`
-var aConstructor$1 = function (argument) {
-  if (isConstructor(argument)) return argument;
-  throw $TypeError$6(tryToString$1(argument) + ' is not a constructor');
-};
-
-var anObject$6 = anObject$c;
-var aConstructor = aConstructor$1;
-var wellKnownSymbol$a = wellKnownSymbol$g;
-
-var SPECIES$1 = wellKnownSymbol$a('species');
-
-// `SpeciesConstructor` abstract operation
-// https://tc39.es/ecma262/#sec-speciesconstructor
-var speciesConstructor$1 = function (O, defaultConstructor) {
-  var C = anObject$6(O).constructor;
-  var S;
-  return C === undefined || (S = anObject$6(C)[SPECIES$1]) == undefined ? defaultConstructor : aConstructor(S);
-};
-
-var uncurryThis$c = functionUncurryThis;
-var toIntegerOrInfinity$1 = toIntegerOrInfinity$4;
-var toString$b = toString$f;
-var requireObjectCoercible$7 = requireObjectCoercible$b;
-
-var charAt$4 = uncurryThis$c(''.charAt);
-var charCodeAt = uncurryThis$c(''.charCodeAt);
-var stringSlice$7 = uncurryThis$c(''.slice);
-
-var createMethod$1 = function (CONVERT_TO_STRING) {
-  return function ($this, pos) {
-    var S = toString$b(requireObjectCoercible$7($this));
-    var position = toIntegerOrInfinity$1(pos);
-    var size = S.length;
-    var first, second;
-    if (position < 0 || position >= size) return CONVERT_TO_STRING ? '' : undefined;
-    first = charCodeAt(S, position);
-    return first < 0xD800 || first > 0xDBFF || position + 1 === size
-      || (second = charCodeAt(S, position + 1)) < 0xDC00 || second > 0xDFFF
-        ? CONVERT_TO_STRING
-          ? charAt$4(S, position)
-          : first
-        : CONVERT_TO_STRING
-          ? stringSlice$7(S, position, position + 2)
-          : (first - 0xD800 << 10) + (second - 0xDC00) + 0x10000;
-  };
-};
-
-var stringMultibyte = {
-  // `String.prototype.codePointAt` method
-  // https://tc39.es/ecma262/#sec-string.prototype.codepointat
-  codeAt: createMethod$1(false),
-  // `String.prototype.at` method
-  // https://github.com/mathiasbynens/String.prototype.at
-  charAt: createMethod$1(true)
-};
-
-var charAt$3 = stringMultibyte.charAt;
-
-// `AdvanceStringIndex` abstract operation
-// https://tc39.es/ecma262/#sec-advancestringindex
-var advanceStringIndex$2 = function (S, index, unicode) {
-  return index + (unicode ? charAt$3(S, index).length : 1);
-};
-
-var toPropertyKey = toPropertyKey$3;
-var definePropertyModule$1 = objectDefineProperty;
-var createPropertyDescriptor$1 = createPropertyDescriptor$4;
-
-var createProperty$1 = function (object, key, value) {
-  var propertyKey = toPropertyKey(key);
-  if (propertyKey in object) definePropertyModule$1.f(object, propertyKey, createPropertyDescriptor$1(0, value));
-  else object[propertyKey] = value;
-};
-
-var toAbsoluteIndex = toAbsoluteIndex$2;
-var lengthOfArrayLike$2 = lengthOfArrayLike$4;
-var createProperty = createProperty$1;
-
-var $Array = Array;
-var max$7 = Math.max;
-
-var arraySliceSimple = function (O, start, end) {
-  var length = lengthOfArrayLike$2(O);
-  var k = toAbsoluteIndex(start, length);
-  var fin = toAbsoluteIndex(end === undefined ? length : end, length);
-  var result = $Array(max$7(fin - k, 0));
-  for (var n = 0; k < fin; k++, n++) createProperty(result, n, O[k]);
-  result.length = n;
-  return result;
-};
-
-var call$6 = functionCall;
-var anObject$5 = anObject$c;
-var isCallable$8 = isCallable$m;
-var classof$1 = classofRaw$1;
-var regexpExec$1 = regexpExec$3;
-
-var $TypeError$5 = TypeError;
-
-// `RegExpExec` abstract operation
-// https://tc39.es/ecma262/#sec-regexpexec
-var regexpExecAbstract = function (R, S) {
-  var exec = R.exec;
-  if (isCallable$8(exec)) {
-    var result = call$6(exec, R, S);
-    if (result !== null) anObject$5(result);
-    return result;
-  }
-  if (classof$1(R) === 'RegExp') return call$6(regexpExec$1, R, S);
-  throw $TypeError$5('RegExp#exec called on incompatible receiver');
-};
-
-var apply$2 = functionApply;
-var call$5 = functionCall;
-var uncurryThis$b = functionUncurryThis;
-var fixRegExpWellKnownSymbolLogic$2 = fixRegexpWellKnownSymbolLogic;
-var isRegExp$3 = isRegexp;
-var anObject$4 = anObject$c;
-var requireObjectCoercible$6 = requireObjectCoercible$b;
-var speciesConstructor = speciesConstructor$1;
-var advanceStringIndex$1 = advanceStringIndex$2;
-var toLength$3 = toLength$5;
-var toString$a = toString$f;
-var getMethod$3 = getMethod$5;
-var arraySlice$1 = arraySliceSimple;
-var callRegExpExec = regexpExecAbstract;
-var regexpExec = regexpExec$3;
-var stickyHelpers$1 = regexpStickyHelpers;
-var fails$a = fails$q;
-
-var UNSUPPORTED_Y$1 = stickyHelpers$1.UNSUPPORTED_Y;
-var MAX_UINT32 = 0xFFFFFFFF;
-var min$7 = Math.min;
-var $push = [].push;
-var exec$1 = uncurryThis$b(/./.exec);
-var push$2 = uncurryThis$b($push);
-var stringSlice$6 = uncurryThis$b(''.slice);
-
-// Chrome 51 has a buggy "split" implementation when RegExp#exec !== nativeExec
-// Weex JS has frozen built-in prototypes, so use try / catch wrapper
-var SPLIT_WORKS_WITH_OVERWRITTEN_EXEC = !fails$a(function () {
-  // eslint-disable-next-line regexp/no-empty-group -- required for testing
-  var re = /(?:)/;
-  var originalExec = re.exec;
-  re.exec = function () { return originalExec.apply(this, arguments); };
-  var result = 'ab'.split(re);
-  return result.length !== 2 || result[0] !== 'a' || result[1] !== 'b';
-});
-
-// @@split logic
-fixRegExpWellKnownSymbolLogic$2('split', function (SPLIT, nativeSplit, maybeCallNative) {
-  var internalSplit;
-  if (
-    'abbc'.split(/(b)*/)[1] == 'c' ||
-    // eslint-disable-next-line regexp/no-empty-group -- required for testing
-    'test'.split(/(?:)/, -1).length != 4 ||
-    'ab'.split(/(?:ab)*/).length != 2 ||
-    '.'.split(/(.?)(.?)/).length != 4 ||
-    // eslint-disable-next-line regexp/no-empty-capturing-group, regexp/no-empty-group -- required for testing
-    '.'.split(/()()/).length > 1 ||
-    ''.split(/.?/).length
-  ) {
-    // based on es5-shim implementation, need to rework it
-    internalSplit = function (separator, limit) {
-      var string = toString$a(requireObjectCoercible$6(this));
-      var lim = limit === undefined ? MAX_UINT32 : limit >>> 0;
-      if (lim === 0) return [];
-      if (separator === undefined) return [string];
-      // If `separator` is not a regex, use native split
-      if (!isRegExp$3(separator)) {
-        return call$5(nativeSplit, string, separator, lim);
-      }
-      var output = [];
-      var flags = (separator.ignoreCase ? 'i' : '') +
-                  (separator.multiline ? 'm' : '') +
-                  (separator.unicode ? 'u' : '') +
-                  (separator.sticky ? 'y' : '');
-      var lastLastIndex = 0;
-      // Make `global` and avoid `lastIndex` issues by working with a copy
-      var separatorCopy = new RegExp(separator.source, flags + 'g');
-      var match, lastIndex, lastLength;
-      while (match = call$5(regexpExec, separatorCopy, string)) {
-        lastIndex = separatorCopy.lastIndex;
-        if (lastIndex > lastLastIndex) {
-          push$2(output, stringSlice$6(string, lastLastIndex, match.index));
-          if (match.length > 1 && match.index < string.length) apply$2($push, output, arraySlice$1(match, 1));
-          lastLength = match[0].length;
-          lastLastIndex = lastIndex;
-          if (output.length >= lim) break;
-        }
-        if (separatorCopy.lastIndex === match.index) separatorCopy.lastIndex++; // Avoid an infinite loop
-      }
-      if (lastLastIndex === string.length) {
-        if (lastLength || !exec$1(separatorCopy, '')) push$2(output, '');
-      } else push$2(output, stringSlice$6(string, lastLastIndex));
-      return output.length > lim ? arraySlice$1(output, 0, lim) : output;
-    };
-  // Chakra, V8
-  } else if ('0'.split(undefined, 0).length) {
-    internalSplit = function (separator, limit) {
-      return separator === undefined && limit === 0 ? [] : call$5(nativeSplit, this, separator, limit);
-    };
-  } else internalSplit = nativeSplit;
-
-  return [
-    // `String.prototype.split` method
-    // https://tc39.es/ecma262/#sec-string.prototype.split
-    function split(separator, limit) {
-      var O = requireObjectCoercible$6(this);
-      var splitter = separator == undefined ? undefined : getMethod$3(separator, SPLIT);
-      return splitter
-        ? call$5(splitter, separator, O, limit)
-        : call$5(internalSplit, toString$a(O), separator, limit);
-    },
-    // `RegExp.prototype[@@split]` method
-    // https://tc39.es/ecma262/#sec-regexp.prototype-@@split
-    //
-    // NOTE: This cannot be properly polyfilled in engines that don't support
-    // the 'y' flag.
-    function (string, limit) {
-      var rx = anObject$4(this);
-      var S = toString$a(string);
-      var res = maybeCallNative(internalSplit, rx, S, limit, internalSplit !== nativeSplit);
-
-      if (res.done) return res.value;
-
-      var C = speciesConstructor(rx, RegExp);
-
-      var unicodeMatching = rx.unicode;
-      var flags = (rx.ignoreCase ? 'i' : '') +
-                  (rx.multiline ? 'm' : '') +
-                  (rx.unicode ? 'u' : '') +
-                  (UNSUPPORTED_Y$1 ? 'g' : 'y');
-
-      // ^(? + rx + ) is needed, in combination with some S slicing, to
-      // simulate the 'y' flag.
-      var splitter = new C(UNSUPPORTED_Y$1 ? '^(?:' + rx.source + ')' : rx, flags);
-      var lim = limit === undefined ? MAX_UINT32 : limit >>> 0;
-      if (lim === 0) return [];
-      if (S.length === 0) return callRegExpExec(splitter, S) === null ? [S] : [];
-      var p = 0;
-      var q = 0;
-      var A = [];
-      while (q < S.length) {
-        splitter.lastIndex = UNSUPPORTED_Y$1 ? 0 : q;
-        var z = callRegExpExec(splitter, UNSUPPORTED_Y$1 ? stringSlice$6(S, q) : S);
-        var e;
-        if (
-          z === null ||
-          (e = min$7(toLength$3(splitter.lastIndex + (UNSUPPORTED_Y$1 ? q : 0)), S.length)) === p
-        ) {
-          q = advanceStringIndex$1(S, q, unicodeMatching);
-        } else {
-          push$2(A, stringSlice$6(S, p, q));
-          if (A.length === lim) return A;
-          for (var i = 1; i <= z.length - 1; i++) {
-            push$2(A, z[i]);
-            if (A.length === lim) return A;
-          }
-          q = p = e;
-        }
-      }
-      push$2(A, stringSlice$6(S, p));
-      return A;
-    }
-  ];
-}, !SPLIT_WORKS_WITH_OVERWRITTEN_EXEC, UNSUPPORTED_Y$1);
-
-var tinycolor$1 = {exports: {}};
-
-(function (module) {
-	// TinyColor v1.4.2
-	// https://github.com/bgrins/TinyColor
-	// Brian Grinstead, MIT License
-
-	(function(Math) {
-
-	var trimLeft = /^\s+/,
-	    trimRight = /\s+$/,
-	    tinyCounter = 0,
-	    mathRound = Math.round,
-	    mathMin = Math.min,
-	    mathMax = Math.max,
-	    mathRandom = Math.random;
-
-	function tinycolor (color, opts) {
-
-	    color = (color) ? color : '';
-	    opts = opts || { };
-
-	    // If input is already a tinycolor, return itself
-	    if (color instanceof tinycolor) {
-	       return color;
-	    }
-	    // If we are called as a function, call using new instead
-	    if (!(this instanceof tinycolor)) {
-	        return new tinycolor(color, opts);
-	    }
-
-	    var rgb = inputToRGB(color);
-	    this._originalInput = color,
-	    this._r = rgb.r,
-	    this._g = rgb.g,
-	    this._b = rgb.b,
-	    this._a = rgb.a,
-	    this._roundA = mathRound(100*this._a) / 100,
-	    this._format = opts.format || rgb.format;
-	    this._gradientType = opts.gradientType;
-
-	    // Don't let the range of [0,255] come back in [0,1].
-	    // Potentially lose a little bit of precision here, but will fix issues where
-	    // .5 gets interpreted as half of the total, instead of half of 1
-	    // If it was supposed to be 128, this was already taken care of by `inputToRgb`
-	    if (this._r < 1) { this._r = mathRound(this._r); }
-	    if (this._g < 1) { this._g = mathRound(this._g); }
-	    if (this._b < 1) { this._b = mathRound(this._b); }
-
-	    this._ok = rgb.ok;
-	    this._tc_id = tinyCounter++;
-	}
-
-	tinycolor.prototype = {
-	    isDark: function() {
-	        return this.getBrightness() < 128;
-	    },
-	    isLight: function() {
-	        return !this.isDark();
-	    },
-	    isValid: function() {
-	        return this._ok;
-	    },
-	    getOriginalInput: function() {
-	      return this._originalInput;
-	    },
-	    getFormat: function() {
-	        return this._format;
-	    },
-	    getAlpha: function() {
-	        return this._a;
-	    },
-	    getBrightness: function() {
-	        //http://www.w3.org/TR/AERT#color-contrast
-	        var rgb = this.toRgb();
-	        return (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000;
-	    },
-	    getLuminance: function() {
-	        //http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
-	        var rgb = this.toRgb();
-	        var RsRGB, GsRGB, BsRGB, R, G, B;
-	        RsRGB = rgb.r/255;
-	        GsRGB = rgb.g/255;
-	        BsRGB = rgb.b/255;
-
-	        if (RsRGB <= 0.03928) {R = RsRGB / 12.92;} else {R = Math.pow(((RsRGB + 0.055) / 1.055), 2.4);}
-	        if (GsRGB <= 0.03928) {G = GsRGB / 12.92;} else {G = Math.pow(((GsRGB + 0.055) / 1.055), 2.4);}
-	        if (BsRGB <= 0.03928) {B = BsRGB / 12.92;} else {B = Math.pow(((BsRGB + 0.055) / 1.055), 2.4);}
-	        return (0.2126 * R) + (0.7152 * G) + (0.0722 * B);
-	    },
-	    setAlpha: function(value) {
-	        this._a = boundAlpha(value);
-	        this._roundA = mathRound(100*this._a) / 100;
-	        return this;
-	    },
-	    toHsv: function() {
-	        var hsv = rgbToHsv(this._r, this._g, this._b);
-	        return { h: hsv.h * 360, s: hsv.s, v: hsv.v, a: this._a };
-	    },
-	    toHsvString: function() {
-	        var hsv = rgbToHsv(this._r, this._g, this._b);
-	        var h = mathRound(hsv.h * 360), s = mathRound(hsv.s * 100), v = mathRound(hsv.v * 100);
-	        return (this._a == 1) ?
-	          "hsv("  + h + ", " + s + "%, " + v + "%)" :
-	          "hsva(" + h + ", " + s + "%, " + v + "%, "+ this._roundA + ")";
-	    },
-	    toHsl: function() {
-	        var hsl = rgbToHsl(this._r, this._g, this._b);
-	        return { h: hsl.h * 360, s: hsl.s, l: hsl.l, a: this._a };
-	    },
-	    toHslString: function() {
-	        var hsl = rgbToHsl(this._r, this._g, this._b);
-	        var h = mathRound(hsl.h * 360), s = mathRound(hsl.s * 100), l = mathRound(hsl.l * 100);
-	        return (this._a == 1) ?
-	          "hsl("  + h + ", " + s + "%, " + l + "%)" :
-	          "hsla(" + h + ", " + s + "%, " + l + "%, "+ this._roundA + ")";
-	    },
-	    toHex: function(allow3Char) {
-	        return rgbToHex(this._r, this._g, this._b, allow3Char);
-	    },
-	    toHexString: function(allow3Char) {
-	        return '#' + this.toHex(allow3Char);
-	    },
-	    toHex8: function(allow4Char) {
-	        return rgbaToHex(this._r, this._g, this._b, this._a, allow4Char);
-	    },
-	    toHex8String: function(allow4Char) {
-	        return '#' + this.toHex8(allow4Char);
-	    },
-	    toRgb: function() {
-	        return { r: mathRound(this._r), g: mathRound(this._g), b: mathRound(this._b), a: this._a };
-	    },
-	    toRgbString: function() {
-	        return (this._a == 1) ?
-	          "rgb("  + mathRound(this._r) + ", " + mathRound(this._g) + ", " + mathRound(this._b) + ")" :
-	          "rgba(" + mathRound(this._r) + ", " + mathRound(this._g) + ", " + mathRound(this._b) + ", " + this._roundA + ")";
-	    },
-	    toPercentageRgb: function() {
-	        return { r: mathRound(bound01(this._r, 255) * 100) + "%", g: mathRound(bound01(this._g, 255) * 100) + "%", b: mathRound(bound01(this._b, 255) * 100) + "%", a: this._a };
-	    },
-	    toPercentageRgbString: function() {
-	        return (this._a == 1) ?
-	          "rgb("  + mathRound(bound01(this._r, 255) * 100) + "%, " + mathRound(bound01(this._g, 255) * 100) + "%, " + mathRound(bound01(this._b, 255) * 100) + "%)" :
-	          "rgba(" + mathRound(bound01(this._r, 255) * 100) + "%, " + mathRound(bound01(this._g, 255) * 100) + "%, " + mathRound(bound01(this._b, 255) * 100) + "%, " + this._roundA + ")";
-	    },
-	    toName: function() {
-	        if (this._a === 0) {
-	            return "transparent";
-	        }
-
-	        if (this._a < 1) {
-	            return false;
-	        }
-
-	        return hexNames[rgbToHex(this._r, this._g, this._b, true)] || false;
-	    },
-	    toFilter: function(secondColor) {
-	        var hex8String = '#' + rgbaToArgbHex(this._r, this._g, this._b, this._a);
-	        var secondHex8String = hex8String;
-	        var gradientType = this._gradientType ? "GradientType = 1, " : "";
-
-	        if (secondColor) {
-	            var s = tinycolor(secondColor);
-	            secondHex8String = '#' + rgbaToArgbHex(s._r, s._g, s._b, s._a);
-	        }
-
-	        return "progid:DXImageTransform.Microsoft.gradient("+gradientType+"startColorstr="+hex8String+",endColorstr="+secondHex8String+")";
-	    },
-	    toString: function(format) {
-	        var formatSet = !!format;
-	        format = format || this._format;
-
-	        var formattedString = false;
-	        var hasAlpha = this._a < 1 && this._a >= 0;
-	        var needsAlphaFormat = !formatSet && hasAlpha && (format === "hex" || format === "hex6" || format === "hex3" || format === "hex4" || format === "hex8" || format === "name");
-
-	        if (needsAlphaFormat) {
-	            // Special case for "transparent", all other non-alpha formats
-	            // will return rgba when there is transparency.
-	            if (format === "name" && this._a === 0) {
-	                return this.toName();
-	            }
-	            return this.toRgbString();
-	        }
-	        if (format === "rgb") {
-	            formattedString = this.toRgbString();
-	        }
-	        if (format === "prgb") {
-	            formattedString = this.toPercentageRgbString();
-	        }
-	        if (format === "hex" || format === "hex6") {
-	            formattedString = this.toHexString();
-	        }
-	        if (format === "hex3") {
-	            formattedString = this.toHexString(true);
-	        }
-	        if (format === "hex4") {
-	            formattedString = this.toHex8String(true);
-	        }
-	        if (format === "hex8") {
-	            formattedString = this.toHex8String();
-	        }
-	        if (format === "name") {
-	            formattedString = this.toName();
-	        }
-	        if (format === "hsl") {
-	            formattedString = this.toHslString();
-	        }
-	        if (format === "hsv") {
-	            formattedString = this.toHsvString();
-	        }
-
-	        return formattedString || this.toHexString();
-	    },
-	    clone: function() {
-	        return tinycolor(this.toString());
-	    },
-
-	    _applyModification: function(fn, args) {
-	        var color = fn.apply(null, [this].concat([].slice.call(args)));
-	        this._r = color._r;
-	        this._g = color._g;
-	        this._b = color._b;
-	        this.setAlpha(color._a);
-	        return this;
-	    },
-	    lighten: function() {
-	        return this._applyModification(lighten, arguments);
-	    },
-	    brighten: function() {
-	        return this._applyModification(brighten, arguments);
-	    },
-	    darken: function() {
-	        return this._applyModification(darken, arguments);
-	    },
-	    desaturate: function() {
-	        return this._applyModification(desaturate, arguments);
-	    },
-	    saturate: function() {
-	        return this._applyModification(saturate, arguments);
-	    },
-	    greyscale: function() {
-	        return this._applyModification(greyscale, arguments);
-	    },
-	    spin: function() {
-	        return this._applyModification(spin, arguments);
-	    },
-
-	    _applyCombination: function(fn, args) {
-	        return fn.apply(null, [this].concat([].slice.call(args)));
-	    },
-	    analogous: function() {
-	        return this._applyCombination(analogous, arguments);
-	    },
-	    complement: function() {
-	        return this._applyCombination(complement, arguments);
-	    },
-	    monochromatic: function() {
-	        return this._applyCombination(monochromatic, arguments);
-	    },
-	    splitcomplement: function() {
-	        return this._applyCombination(splitcomplement, arguments);
-	    },
-	    triad: function() {
-	        return this._applyCombination(triad, arguments);
-	    },
-	    tetrad: function() {
-	        return this._applyCombination(tetrad, arguments);
-	    }
-	};
-
-	// If input is an object, force 1 into "1.0" to handle ratios properly
-	// String input requires "1.0" as input, so 1 will be treated as 1
-	tinycolor.fromRatio = function(color, opts) {
-	    if (typeof color == "object") {
-	        var newColor = {};
-	        for (var i in color) {
-	            if (color.hasOwnProperty(i)) {
-	                if (i === "a") {
-	                    newColor[i] = color[i];
-	                }
-	                else {
-	                    newColor[i] = convertToPercentage(color[i]);
-	                }
-	            }
-	        }
-	        color = newColor;
-	    }
-
-	    return tinycolor(color, opts);
-	};
-
-	// Given a string or object, convert that input to RGB
-	// Possible string inputs:
-	//
-	//     "red"
-	//     "#f00" or "f00"
-	//     "#ff0000" or "ff0000"
-	//     "#ff000000" or "ff000000"
-	//     "rgb 255 0 0" or "rgb (255, 0, 0)"
-	//     "rgb 1.0 0 0" or "rgb (1, 0, 0)"
-	//     "rgba (255, 0, 0, 1)" or "rgba 255, 0, 0, 1"
-	//     "rgba (1.0, 0, 0, 1)" or "rgba 1.0, 0, 0, 1"
-	//     "hsl(0, 100%, 50%)" or "hsl 0 100% 50%"
-	//     "hsla(0, 100%, 50%, 1)" or "hsla 0 100% 50%, 1"
-	//     "hsv(0, 100%, 100%)" or "hsv 0 100% 100%"
-	//
-	function inputToRGB(color) {
-
-	    var rgb = { r: 0, g: 0, b: 0 };
-	    var a = 1;
-	    var s = null;
-	    var v = null;
-	    var l = null;
-	    var ok = false;
-	    var format = false;
-
-	    if (typeof color == "string") {
-	        color = stringInputToObject(color);
-	    }
-
-	    if (typeof color == "object") {
-	        if (isValidCSSUnit(color.r) && isValidCSSUnit(color.g) && isValidCSSUnit(color.b)) {
-	            rgb = rgbToRgb(color.r, color.g, color.b);
-	            ok = true;
-	            format = String(color.r).substr(-1) === "%" ? "prgb" : "rgb";
-	        }
-	        else if (isValidCSSUnit(color.h) && isValidCSSUnit(color.s) && isValidCSSUnit(color.v)) {
-	            s = convertToPercentage(color.s);
-	            v = convertToPercentage(color.v);
-	            rgb = hsvToRgb(color.h, s, v);
-	            ok = true;
-	            format = "hsv";
-	        }
-	        else if (isValidCSSUnit(color.h) && isValidCSSUnit(color.s) && isValidCSSUnit(color.l)) {
-	            s = convertToPercentage(color.s);
-	            l = convertToPercentage(color.l);
-	            rgb = hslToRgb(color.h, s, l);
-	            ok = true;
-	            format = "hsl";
-	        }
-
-	        if (color.hasOwnProperty("a")) {
-	            a = color.a;
-	        }
-	    }
-
-	    a = boundAlpha(a);
-
-	    return {
-	        ok: ok,
-	        format: color.format || format,
-	        r: mathMin(255, mathMax(rgb.r, 0)),
-	        g: mathMin(255, mathMax(rgb.g, 0)),
-	        b: mathMin(255, mathMax(rgb.b, 0)),
-	        a: a
-	    };
-	}
-
-
-	// Conversion Functions
-	// --------------------
-
-	// `rgbToHsl`, `rgbToHsv`, `hslToRgb`, `hsvToRgb` modified from:
-	// <http://mjijackson.com/2008/02/rgb-to-hsl-and-rgb-to-hsv-color-model-conversion-algorithms-in-javascript>
-
-	// `rgbToRgb`
-	// Handle bounds / percentage checking to conform to CSS color spec
-	// <http://www.w3.org/TR/css3-color/>
-	// *Assumes:* r, g, b in [0, 255] or [0, 1]
-	// *Returns:* { r, g, b } in [0, 255]
-	function rgbToRgb(r, g, b){
-	    return {
-	        r: bound01(r, 255) * 255,
-	        g: bound01(g, 255) * 255,
-	        b: bound01(b, 255) * 255
-	    };
-	}
-
-	// `rgbToHsl`
-	// Converts an RGB color value to HSL.
-	// *Assumes:* r, g, and b are contained in [0, 255] or [0, 1]
-	// *Returns:* { h, s, l } in [0,1]
-	function rgbToHsl(r, g, b) {
-
-	    r = bound01(r, 255);
-	    g = bound01(g, 255);
-	    b = bound01(b, 255);
-
-	    var max = mathMax(r, g, b), min = mathMin(r, g, b);
-	    var h, s, l = (max + min) / 2;
-
-	    if(max == min) {
-	        h = s = 0; // achromatic
-	    }
-	    else {
-	        var d = max - min;
-	        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-	        switch(max) {
-	            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-	            case g: h = (b - r) / d + 2; break;
-	            case b: h = (r - g) / d + 4; break;
-	        }
-
-	        h /= 6;
-	    }
-
-	    return { h: h, s: s, l: l };
-	}
-
-	// `hslToRgb`
-	// Converts an HSL color value to RGB.
-	// *Assumes:* h is contained in [0, 1] or [0, 360] and s and l are contained [0, 1] or [0, 100]
-	// *Returns:* { r, g, b } in the set [0, 255]
-	function hslToRgb(h, s, l) {
-	    var r, g, b;
-
-	    h = bound01(h, 360);
-	    s = bound01(s, 100);
-	    l = bound01(l, 100);
-
-	    function hue2rgb(p, q, t) {
-	        if(t < 0) t += 1;
-	        if(t > 1) t -= 1;
-	        if(t < 1/6) return p + (q - p) * 6 * t;
-	        if(t < 1/2) return q;
-	        if(t < 2/3) return p + (q - p) * (2/3 - t) * 6;
-	        return p;
-	    }
-
-	    if(s === 0) {
-	        r = g = b = l; // achromatic
-	    }
-	    else {
-	        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-	        var p = 2 * l - q;
-	        r = hue2rgb(p, q, h + 1/3);
-	        g = hue2rgb(p, q, h);
-	        b = hue2rgb(p, q, h - 1/3);
-	    }
-
-	    return { r: r * 255, g: g * 255, b: b * 255 };
-	}
-
-	// `rgbToHsv`
-	// Converts an RGB color value to HSV
-	// *Assumes:* r, g, and b are contained in the set [0, 255] or [0, 1]
-	// *Returns:* { h, s, v } in [0,1]
-	function rgbToHsv(r, g, b) {
-
-	    r = bound01(r, 255);
-	    g = bound01(g, 255);
-	    b = bound01(b, 255);
-
-	    var max = mathMax(r, g, b), min = mathMin(r, g, b);
-	    var h, s, v = max;
-
-	    var d = max - min;
-	    s = max === 0 ? 0 : d / max;
-
-	    if(max == min) {
-	        h = 0; // achromatic
-	    }
-	    else {
-	        switch(max) {
-	            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-	            case g: h = (b - r) / d + 2; break;
-	            case b: h = (r - g) / d + 4; break;
-	        }
-	        h /= 6;
-	    }
-	    return { h: h, s: s, v: v };
-	}
-
-	// `hsvToRgb`
-	// Converts an HSV color value to RGB.
-	// *Assumes:* h is contained in [0, 1] or [0, 360] and s and v are contained in [0, 1] or [0, 100]
-	// *Returns:* { r, g, b } in the set [0, 255]
-	 function hsvToRgb(h, s, v) {
-
-	    h = bound01(h, 360) * 6;
-	    s = bound01(s, 100);
-	    v = bound01(v, 100);
-
-	    var i = Math.floor(h),
-	        f = h - i,
-	        p = v * (1 - s),
-	        q = v * (1 - f * s),
-	        t = v * (1 - (1 - f) * s),
-	        mod = i % 6,
-	        r = [v, q, p, p, t, v][mod],
-	        g = [t, v, v, q, p, p][mod],
-	        b = [p, p, t, v, v, q][mod];
-
-	    return { r: r * 255, g: g * 255, b: b * 255 };
-	}
-
-	// `rgbToHex`
-	// Converts an RGB color to hex
-	// Assumes r, g, and b are contained in the set [0, 255]
-	// Returns a 3 or 6 character hex
-	function rgbToHex(r, g, b, allow3Char) {
-
-	    var hex = [
-	        pad2(mathRound(r).toString(16)),
-	        pad2(mathRound(g).toString(16)),
-	        pad2(mathRound(b).toString(16))
-	    ];
-
-	    // Return a 3 character hex if possible
-	    if (allow3Char && hex[0].charAt(0) == hex[0].charAt(1) && hex[1].charAt(0) == hex[1].charAt(1) && hex[2].charAt(0) == hex[2].charAt(1)) {
-	        return hex[0].charAt(0) + hex[1].charAt(0) + hex[2].charAt(0);
-	    }
-
-	    return hex.join("");
-	}
-
-	// `rgbaToHex`
-	// Converts an RGBA color plus alpha transparency to hex
-	// Assumes r, g, b are contained in the set [0, 255] and
-	// a in [0, 1]. Returns a 4 or 8 character rgba hex
-	function rgbaToHex(r, g, b, a, allow4Char) {
-
-	    var hex = [
-	        pad2(mathRound(r).toString(16)),
-	        pad2(mathRound(g).toString(16)),
-	        pad2(mathRound(b).toString(16)),
-	        pad2(convertDecimalToHex(a))
-	    ];
-
-	    // Return a 4 character hex if possible
-	    if (allow4Char && hex[0].charAt(0) == hex[0].charAt(1) && hex[1].charAt(0) == hex[1].charAt(1) && hex[2].charAt(0) == hex[2].charAt(1) && hex[3].charAt(0) == hex[3].charAt(1)) {
-	        return hex[0].charAt(0) + hex[1].charAt(0) + hex[2].charAt(0) + hex[3].charAt(0);
-	    }
-
-	    return hex.join("");
-	}
-
-	// `rgbaToArgbHex`
-	// Converts an RGBA color to an ARGB Hex8 string
-	// Rarely used, but required for "toFilter()"
-	function rgbaToArgbHex(r, g, b, a) {
-
-	    var hex = [
-	        pad2(convertDecimalToHex(a)),
-	        pad2(mathRound(r).toString(16)),
-	        pad2(mathRound(g).toString(16)),
-	        pad2(mathRound(b).toString(16))
-	    ];
-
-	    return hex.join("");
-	}
-
-	// `equals`
-	// Can be called with any tinycolor input
-	tinycolor.equals = function (color1, color2) {
-	    if (!color1 || !color2) { return false; }
-	    return tinycolor(color1).toRgbString() == tinycolor(color2).toRgbString();
-	};
-
-	tinycolor.random = function() {
-	    return tinycolor.fromRatio({
-	        r: mathRandom(),
-	        g: mathRandom(),
-	        b: mathRandom()
-	    });
-	};
-
-
-	// Modification Functions
-	// ----------------------
-	// Thanks to less.js for some of the basics here
-	// <https://github.com/cloudhead/less.js/blob/master/lib/less/functions.js>
-
-	function desaturate(color, amount) {
-	    amount = (amount === 0) ? 0 : (amount || 10);
-	    var hsl = tinycolor(color).toHsl();
-	    hsl.s -= amount / 100;
-	    hsl.s = clamp01(hsl.s);
-	    return tinycolor(hsl);
-	}
-
-	function saturate(color, amount) {
-	    amount = (amount === 0) ? 0 : (amount || 10);
-	    var hsl = tinycolor(color).toHsl();
-	    hsl.s += amount / 100;
-	    hsl.s = clamp01(hsl.s);
-	    return tinycolor(hsl);
-	}
-
-	function greyscale(color) {
-	    return tinycolor(color).desaturate(100);
-	}
-
-	function lighten (color, amount) {
-	    amount = (amount === 0) ? 0 : (amount || 10);
-	    var hsl = tinycolor(color).toHsl();
-	    hsl.l += amount / 100;
-	    hsl.l = clamp01(hsl.l);
-	    return tinycolor(hsl);
-	}
-
-	function brighten(color, amount) {
-	    amount = (amount === 0) ? 0 : (amount || 10);
-	    var rgb = tinycolor(color).toRgb();
-	    rgb.r = mathMax(0, mathMin(255, rgb.r - mathRound(255 * - (amount / 100))));
-	    rgb.g = mathMax(0, mathMin(255, rgb.g - mathRound(255 * - (amount / 100))));
-	    rgb.b = mathMax(0, mathMin(255, rgb.b - mathRound(255 * - (amount / 100))));
-	    return tinycolor(rgb);
-	}
-
-	function darken (color, amount) {
-	    amount = (amount === 0) ? 0 : (amount || 10);
-	    var hsl = tinycolor(color).toHsl();
-	    hsl.l -= amount / 100;
-	    hsl.l = clamp01(hsl.l);
-	    return tinycolor(hsl);
-	}
-
-	// Spin takes a positive or negative amount within [-360, 360] indicating the change of hue.
-	// Values outside of this range will be wrapped into this range.
-	function spin(color, amount) {
-	    var hsl = tinycolor(color).toHsl();
-	    var hue = (hsl.h + amount) % 360;
-	    hsl.h = hue < 0 ? 360 + hue : hue;
-	    return tinycolor(hsl);
-	}
-
-	// Combination Functions
-	// ---------------------
-	// Thanks to jQuery xColor for some of the ideas behind these
-	// <https://github.com/infusion/jQuery-xcolor/blob/master/jquery.xcolor.js>
-
-	function complement(color) {
-	    var hsl = tinycolor(color).toHsl();
-	    hsl.h = (hsl.h + 180) % 360;
-	    return tinycolor(hsl);
-	}
-
-	function triad(color) {
-	    var hsl = tinycolor(color).toHsl();
-	    var h = hsl.h;
-	    return [
-	        tinycolor(color),
-	        tinycolor({ h: (h + 120) % 360, s: hsl.s, l: hsl.l }),
-	        tinycolor({ h: (h + 240) % 360, s: hsl.s, l: hsl.l })
-	    ];
-	}
-
-	function tetrad(color) {
-	    var hsl = tinycolor(color).toHsl();
-	    var h = hsl.h;
-	    return [
-	        tinycolor(color),
-	        tinycolor({ h: (h + 90) % 360, s: hsl.s, l: hsl.l }),
-	        tinycolor({ h: (h + 180) % 360, s: hsl.s, l: hsl.l }),
-	        tinycolor({ h: (h + 270) % 360, s: hsl.s, l: hsl.l })
-	    ];
-	}
-
-	function splitcomplement(color) {
-	    var hsl = tinycolor(color).toHsl();
-	    var h = hsl.h;
-	    return [
-	        tinycolor(color),
-	        tinycolor({ h: (h + 72) % 360, s: hsl.s, l: hsl.l}),
-	        tinycolor({ h: (h + 216) % 360, s: hsl.s, l: hsl.l})
-	    ];
-	}
-
-	function analogous(color, results, slices) {
-	    results = results || 6;
-	    slices = slices || 30;
-
-	    var hsl = tinycolor(color).toHsl();
-	    var part = 360 / slices;
-	    var ret = [tinycolor(color)];
-
-	    for (hsl.h = ((hsl.h - (part * results >> 1)) + 720) % 360; --results; ) {
-	        hsl.h = (hsl.h + part) % 360;
-	        ret.push(tinycolor(hsl));
-	    }
-	    return ret;
-	}
-
-	function monochromatic(color, results) {
-	    results = results || 6;
-	    var hsv = tinycolor(color).toHsv();
-	    var h = hsv.h, s = hsv.s, v = hsv.v;
-	    var ret = [];
-	    var modification = 1 / results;
-
-	    while (results--) {
-	        ret.push(tinycolor({ h: h, s: s, v: v}));
-	        v = (v + modification) % 1;
-	    }
-
-	    return ret;
-	}
-
-	// Utility Functions
-	// ---------------------
-
-	tinycolor.mix = function(color1, color2, amount) {
-	    amount = (amount === 0) ? 0 : (amount || 50);
-
-	    var rgb1 = tinycolor(color1).toRgb();
-	    var rgb2 = tinycolor(color2).toRgb();
-
-	    var p = amount / 100;
-
-	    var rgba = {
-	        r: ((rgb2.r - rgb1.r) * p) + rgb1.r,
-	        g: ((rgb2.g - rgb1.g) * p) + rgb1.g,
-	        b: ((rgb2.b - rgb1.b) * p) + rgb1.b,
-	        a: ((rgb2.a - rgb1.a) * p) + rgb1.a
-	    };
-
-	    return tinycolor(rgba);
-	};
-
-
-	// Readability Functions
-	// ---------------------
-	// <http://www.w3.org/TR/2008/REC-WCAG20-20081211/#contrast-ratiodef (WCAG Version 2)
-
-	// `contrast`
-	// Analyze the 2 colors and returns the color contrast defined by (WCAG Version 2)
-	tinycolor.readability = function(color1, color2) {
-	    var c1 = tinycolor(color1);
-	    var c2 = tinycolor(color2);
-	    return (Math.max(c1.getLuminance(),c2.getLuminance())+0.05) / (Math.min(c1.getLuminance(),c2.getLuminance())+0.05);
-	};
-
-	// `isReadable`
-	// Ensure that foreground and background color combinations meet WCAG2 guidelines.
-	// The third argument is an optional Object.
-	//      the 'level' property states 'AA' or 'AAA' - if missing or invalid, it defaults to 'AA';
-	//      the 'size' property states 'large' or 'small' - if missing or invalid, it defaults to 'small'.
-	// If the entire object is absent, isReadable defaults to {level:"AA",size:"small"}.
-
-	// *Example*
-	//    tinycolor.isReadable("#000", "#111") => false
-	//    tinycolor.isReadable("#000", "#111",{level:"AA",size:"large"}) => false
-	tinycolor.isReadable = function(color1, color2, wcag2) {
-	    var readability = tinycolor.readability(color1, color2);
-	    var wcag2Parms, out;
-
-	    out = false;
-
-	    wcag2Parms = validateWCAG2Parms(wcag2);
-	    switch (wcag2Parms.level + wcag2Parms.size) {
-	        case "AAsmall":
-	        case "AAAlarge":
-	            out = readability >= 4.5;
-	            break;
-	        case "AAlarge":
-	            out = readability >= 3;
-	            break;
-	        case "AAAsmall":
-	            out = readability >= 7;
-	            break;
-	    }
-	    return out;
-
-	};
-
-	// `mostReadable`
-	// Given a base color and a list of possible foreground or background
-	// colors for that base, returns the most readable color.
-	// Optionally returns Black or White if the most readable color is unreadable.
-	// *Example*
-	//    tinycolor.mostReadable(tinycolor.mostReadable("#123", ["#124", "#125"],{includeFallbackColors:false}).toHexString(); // "#112255"
-	//    tinycolor.mostReadable(tinycolor.mostReadable("#123", ["#124", "#125"],{includeFallbackColors:true}).toHexString();  // "#ffffff"
-	//    tinycolor.mostReadable("#a8015a", ["#faf3f3"],{includeFallbackColors:true,level:"AAA",size:"large"}).toHexString(); // "#faf3f3"
-	//    tinycolor.mostReadable("#a8015a", ["#faf3f3"],{includeFallbackColors:true,level:"AAA",size:"small"}).toHexString(); // "#ffffff"
-	tinycolor.mostReadable = function(baseColor, colorList, args) {
-	    var bestColor = null;
-	    var bestScore = 0;
-	    var readability;
-	    var includeFallbackColors, level, size ;
-	    args = args || {};
-	    includeFallbackColors = args.includeFallbackColors ;
-	    level = args.level;
-	    size = args.size;
-
-	    for (var i= 0; i < colorList.length ; i++) {
-	        readability = tinycolor.readability(baseColor, colorList[i]);
-	        if (readability > bestScore) {
-	            bestScore = readability;
-	            bestColor = tinycolor(colorList[i]);
-	        }
-	    }
-
-	    if (tinycolor.isReadable(baseColor, bestColor, {"level":level,"size":size}) || !includeFallbackColors) {
-	        return bestColor;
-	    }
-	    else {
-	        args.includeFallbackColors=false;
-	        return tinycolor.mostReadable(baseColor,["#fff", "#000"],args);
-	    }
-	};
-
-
-	// Big List of Colors
-	// ------------------
-	// <http://www.w3.org/TR/css3-color/#svg-color>
-	var names = tinycolor.names = {
-	    aliceblue: "f0f8ff",
-	    antiquewhite: "faebd7",
-	    aqua: "0ff",
-	    aquamarine: "7fffd4",
-	    azure: "f0ffff",
-	    beige: "f5f5dc",
-	    bisque: "ffe4c4",
-	    black: "000",
-	    blanchedalmond: "ffebcd",
-	    blue: "00f",
-	    blueviolet: "8a2be2",
-	    brown: "a52a2a",
-	    burlywood: "deb887",
-	    burntsienna: "ea7e5d",
-	    cadetblue: "5f9ea0",
-	    chartreuse: "7fff00",
-	    chocolate: "d2691e",
-	    coral: "ff7f50",
-	    cornflowerblue: "6495ed",
-	    cornsilk: "fff8dc",
-	    crimson: "dc143c",
-	    cyan: "0ff",
-	    darkblue: "00008b",
-	    darkcyan: "008b8b",
-	    darkgoldenrod: "b8860b",
-	    darkgray: "a9a9a9",
-	    darkgreen: "006400",
-	    darkgrey: "a9a9a9",
-	    darkkhaki: "bdb76b",
-	    darkmagenta: "8b008b",
-	    darkolivegreen: "556b2f",
-	    darkorange: "ff8c00",
-	    darkorchid: "9932cc",
-	    darkred: "8b0000",
-	    darksalmon: "e9967a",
-	    darkseagreen: "8fbc8f",
-	    darkslateblue: "483d8b",
-	    darkslategray: "2f4f4f",
-	    darkslategrey: "2f4f4f",
-	    darkturquoise: "00ced1",
-	    darkviolet: "9400d3",
-	    deeppink: "ff1493",
-	    deepskyblue: "00bfff",
-	    dimgray: "696969",
-	    dimgrey: "696969",
-	    dodgerblue: "1e90ff",
-	    firebrick: "b22222",
-	    floralwhite: "fffaf0",
-	    forestgreen: "228b22",
-	    fuchsia: "f0f",
-	    gainsboro: "dcdcdc",
-	    ghostwhite: "f8f8ff",
-	    gold: "ffd700",
-	    goldenrod: "daa520",
-	    gray: "808080",
-	    green: "008000",
-	    greenyellow: "adff2f",
-	    grey: "808080",
-	    honeydew: "f0fff0",
-	    hotpink: "ff69b4",
-	    indianred: "cd5c5c",
-	    indigo: "4b0082",
-	    ivory: "fffff0",
-	    khaki: "f0e68c",
-	    lavender: "e6e6fa",
-	    lavenderblush: "fff0f5",
-	    lawngreen: "7cfc00",
-	    lemonchiffon: "fffacd",
-	    lightblue: "add8e6",
-	    lightcoral: "f08080",
-	    lightcyan: "e0ffff",
-	    lightgoldenrodyellow: "fafad2",
-	    lightgray: "d3d3d3",
-	    lightgreen: "90ee90",
-	    lightgrey: "d3d3d3",
-	    lightpink: "ffb6c1",
-	    lightsalmon: "ffa07a",
-	    lightseagreen: "20b2aa",
-	    lightskyblue: "87cefa",
-	    lightslategray: "789",
-	    lightslategrey: "789",
-	    lightsteelblue: "b0c4de",
-	    lightyellow: "ffffe0",
-	    lime: "0f0",
-	    limegreen: "32cd32",
-	    linen: "faf0e6",
-	    magenta: "f0f",
-	    maroon: "800000",
-	    mediumaquamarine: "66cdaa",
-	    mediumblue: "0000cd",
-	    mediumorchid: "ba55d3",
-	    mediumpurple: "9370db",
-	    mediumseagreen: "3cb371",
-	    mediumslateblue: "7b68ee",
-	    mediumspringgreen: "00fa9a",
-	    mediumturquoise: "48d1cc",
-	    mediumvioletred: "c71585",
-	    midnightblue: "191970",
-	    mintcream: "f5fffa",
-	    mistyrose: "ffe4e1",
-	    moccasin: "ffe4b5",
-	    navajowhite: "ffdead",
-	    navy: "000080",
-	    oldlace: "fdf5e6",
-	    olive: "808000",
-	    olivedrab: "6b8e23",
-	    orange: "ffa500",
-	    orangered: "ff4500",
-	    orchid: "da70d6",
-	    palegoldenrod: "eee8aa",
-	    palegreen: "98fb98",
-	    paleturquoise: "afeeee",
-	    palevioletred: "db7093",
-	    papayawhip: "ffefd5",
-	    peachpuff: "ffdab9",
-	    peru: "cd853f",
-	    pink: "ffc0cb",
-	    plum: "dda0dd",
-	    powderblue: "b0e0e6",
-	    purple: "800080",
-	    rebeccapurple: "663399",
-	    red: "f00",
-	    rosybrown: "bc8f8f",
-	    royalblue: "4169e1",
-	    saddlebrown: "8b4513",
-	    salmon: "fa8072",
-	    sandybrown: "f4a460",
-	    seagreen: "2e8b57",
-	    seashell: "fff5ee",
-	    sienna: "a0522d",
-	    silver: "c0c0c0",
-	    skyblue: "87ceeb",
-	    slateblue: "6a5acd",
-	    slategray: "708090",
-	    slategrey: "708090",
-	    snow: "fffafa",
-	    springgreen: "00ff7f",
-	    steelblue: "4682b4",
-	    tan: "d2b48c",
-	    teal: "008080",
-	    thistle: "d8bfd8",
-	    tomato: "ff6347",
-	    turquoise: "40e0d0",
-	    violet: "ee82ee",
-	    wheat: "f5deb3",
-	    white: "fff",
-	    whitesmoke: "f5f5f5",
-	    yellow: "ff0",
-	    yellowgreen: "9acd32"
-	};
-
-	// Make it easy to access colors via `hexNames[hex]`
-	var hexNames = tinycolor.hexNames = flip(names);
-
-
-	// Utilities
-	// ---------
-
-	// `{ 'name1': 'val1' }` becomes `{ 'val1': 'name1' }`
-	function flip(o) {
-	    var flipped = { };
-	    for (var i in o) {
-	        if (o.hasOwnProperty(i)) {
-	            flipped[o[i]] = i;
-	        }
-	    }
-	    return flipped;
-	}
-
-	// Return a valid alpha value [0,1] with all invalid values being set to 1
-	function boundAlpha(a) {
-	    a = parseFloat(a);
-
-	    if (isNaN(a) || a < 0 || a > 1) {
-	        a = 1;
-	    }
-
-	    return a;
-	}
-
-	// Take input from [0, n] and return it as [0, 1]
-	function bound01(n, max) {
-	    if (isOnePointZero(n)) { n = "100%"; }
-
-	    var processPercent = isPercentage(n);
-	    n = mathMin(max, mathMax(0, parseFloat(n)));
-
-	    // Automatically convert percentage into number
-	    if (processPercent) {
-	        n = parseInt(n * max, 10) / 100;
-	    }
-
-	    // Handle floating point rounding errors
-	    if ((Math.abs(n - max) < 0.000001)) {
-	        return 1;
-	    }
-
-	    // Convert into [0, 1] range if it isn't already
-	    return (n % max) / parseFloat(max);
-	}
-
-	// Force a number between 0 and 1
-	function clamp01(val) {
-	    return mathMin(1, mathMax(0, val));
-	}
-
-	// Parse a base-16 hex value into a base-10 integer
-	function parseIntFromHex(val) {
-	    return parseInt(val, 16);
-	}
-
-	// Need to handle 1.0 as 100%, since once it is a number, there is no difference between it and 1
-	// <http://stackoverflow.com/questions/7422072/javascript-how-to-detect-number-as-a-decimal-including-1-0>
-	function isOnePointZero(n) {
-	    return typeof n == "string" && n.indexOf('.') != -1 && parseFloat(n) === 1;
-	}
-
-	// Check to see if string passed in is a percentage
-	function isPercentage(n) {
-	    return typeof n === "string" && n.indexOf('%') != -1;
-	}
-
-	// Force a hex value to have 2 characters
-	function pad2(c) {
-	    return c.length == 1 ? '0' + c : '' + c;
-	}
-
-	// Replace a decimal with it's percentage value
-	function convertToPercentage(n) {
-	    if (n <= 1) {
-	        n = (n * 100) + "%";
-	    }
-
-	    return n;
-	}
-
-	// Converts a decimal to a hex value
-	function convertDecimalToHex(d) {
-	    return Math.round(parseFloat(d) * 255).toString(16);
-	}
-	// Converts a hex value to a decimal
-	function convertHexToDecimal(h) {
-	    return (parseIntFromHex(h) / 255);
-	}
-
-	var matchers = (function() {
-
-	    // <http://www.w3.org/TR/css3-values/#integers>
-	    var CSS_INTEGER = "[-\\+]?\\d+%?";
-
-	    // <http://www.w3.org/TR/css3-values/#number-value>
-	    var CSS_NUMBER = "[-\\+]?\\d*\\.\\d+%?";
-
-	    // Allow positive/negative integer/number.  Don't capture the either/or, just the entire outcome.
-	    var CSS_UNIT = "(?:" + CSS_NUMBER + ")|(?:" + CSS_INTEGER + ")";
-
-	    // Actual matching.
-	    // Parentheses and commas are optional, but not required.
-	    // Whitespace can take the place of commas or opening paren
-	    var PERMISSIVE_MATCH3 = "[\\s|\\(]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")\\s*\\)?";
-	    var PERMISSIVE_MATCH4 = "[\\s|\\(]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")\\s*\\)?";
-
-	    return {
-	        CSS_UNIT: new RegExp(CSS_UNIT),
-	        rgb: new RegExp("rgb" + PERMISSIVE_MATCH3),
-	        rgba: new RegExp("rgba" + PERMISSIVE_MATCH4),
-	        hsl: new RegExp("hsl" + PERMISSIVE_MATCH3),
-	        hsla: new RegExp("hsla" + PERMISSIVE_MATCH4),
-	        hsv: new RegExp("hsv" + PERMISSIVE_MATCH3),
-	        hsva: new RegExp("hsva" + PERMISSIVE_MATCH4),
-	        hex3: /^#?([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/,
-	        hex6: /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/,
-	        hex4: /^#?([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/,
-	        hex8: /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/
-	    };
-	})();
-
-	// `isValidCSSUnit`
-	// Take in a single string / number and check to see if it looks like a CSS unit
-	// (see `matchers` above for definition).
-	function isValidCSSUnit(color) {
-	    return !!matchers.CSS_UNIT.exec(color);
-	}
-
-	// `stringInputToObject`
-	// Permissive string parsing.  Take in a number of formats, and output an object
-	// based on detected format.  Returns `{ r, g, b }` or `{ h, s, l }` or `{ h, s, v}`
-	function stringInputToObject(color) {
-
-	    color = color.replace(trimLeft,'').replace(trimRight, '').toLowerCase();
-	    var named = false;
-	    if (names[color]) {
-	        color = names[color];
-	        named = true;
-	    }
-	    else if (color == 'transparent') {
-	        return { r: 0, g: 0, b: 0, a: 0, format: "name" };
-	    }
-
-	    // Try to match string input using regular expressions.
-	    // Keep most of the number bounding out of this function - don't worry about [0,1] or [0,100] or [0,360]
-	    // Just return an object and let the conversion functions handle that.
-	    // This way the result will be the same whether the tinycolor is initialized with string or object.
-	    var match;
-	    if ((match = matchers.rgb.exec(color))) {
-	        return { r: match[1], g: match[2], b: match[3] };
-	    }
-	    if ((match = matchers.rgba.exec(color))) {
-	        return { r: match[1], g: match[2], b: match[3], a: match[4] };
-	    }
-	    if ((match = matchers.hsl.exec(color))) {
-	        return { h: match[1], s: match[2], l: match[3] };
-	    }
-	    if ((match = matchers.hsla.exec(color))) {
-	        return { h: match[1], s: match[2], l: match[3], a: match[4] };
-	    }
-	    if ((match = matchers.hsv.exec(color))) {
-	        return { h: match[1], s: match[2], v: match[3] };
-	    }
-	    if ((match = matchers.hsva.exec(color))) {
-	        return { h: match[1], s: match[2], v: match[3], a: match[4] };
-	    }
-	    if ((match = matchers.hex8.exec(color))) {
-	        return {
-	            r: parseIntFromHex(match[1]),
-	            g: parseIntFromHex(match[2]),
-	            b: parseIntFromHex(match[3]),
-	            a: convertHexToDecimal(match[4]),
-	            format: named ? "name" : "hex8"
-	        };
-	    }
-	    if ((match = matchers.hex6.exec(color))) {
-	        return {
-	            r: parseIntFromHex(match[1]),
-	            g: parseIntFromHex(match[2]),
-	            b: parseIntFromHex(match[3]),
-	            format: named ? "name" : "hex"
-	        };
-	    }
-	    if ((match = matchers.hex4.exec(color))) {
-	        return {
-	            r: parseIntFromHex(match[1] + '' + match[1]),
-	            g: parseIntFromHex(match[2] + '' + match[2]),
-	            b: parseIntFromHex(match[3] + '' + match[3]),
-	            a: convertHexToDecimal(match[4] + '' + match[4]),
-	            format: named ? "name" : "hex8"
-	        };
-	    }
-	    if ((match = matchers.hex3.exec(color))) {
-	        return {
-	            r: parseIntFromHex(match[1] + '' + match[1]),
-	            g: parseIntFromHex(match[2] + '' + match[2]),
-	            b: parseIntFromHex(match[3] + '' + match[3]),
-	            format: named ? "name" : "hex"
-	        };
-	    }
-
-	    return false;
-	}
-
-	function validateWCAG2Parms(parms) {
-	    // return valid WCAG2 parms for isReadable.
-	    // If input parms are invalid, return {"level":"AA", "size":"small"}
-	    var level, size;
-	    parms = parms || {"level":"AA", "size":"small"};
-	    level = (parms.level || "AA").toUpperCase();
-	    size = (parms.size || "small").toLowerCase();
-	    if (level !== "AA" && level !== "AAA") {
-	        level = "AA";
-	    }
-	    if (size !== "small" && size !== "large") {
-	        size = "small";
-	    }
-	    return {"level":level, "size":size};
-	}
-
-	// Node: Export function
-	if (module.exports) {
-	    module.exports = tinycolor;
-	}
-	// AMD/requirejs: Define the module
-	else {
-	    window.tinycolor = tinycolor;
-	}
-
-	})(Math);
-} (tinycolor$1));
-
-var tinycolor = tinycolor$1.exports;
-
-function handleChannelOverlay(front, alpha) {
-  var back = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-  return back + (front - back) * alpha / 255;
-}
-function overlayWithBlack(color, alpha) {
-  var rgb = color.toRgb();
-  return tinycolor({
-    r: handleChannelOverlay(rgb.r, alpha),
-    g: handleChannelOverlay(rgb.g, alpha),
-    b: handleChannelOverlay(rgb.b, alpha)
-  });
-}
-function overlayWithWhite(color, alpha) {
-  var rgb = color.toRgb();
-  return tinycolor({
-    r: handleChannelOverlay(rgb.r, alpha, 255),
-    g: handleChannelOverlay(rgb.g, alpha, 255),
-    b: handleChannelOverlay(rgb.b, alpha, 255)
-  });
-}
-function generateColorSpectrum(color) {
-  var prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "--light-primary-";
-  var hexColor = "".concat(color.toLowerCase());
-  var mapper = [{
-    level: "100",
-    darken: false,
-    isOriginal: false,
-    darkLightFactor: 0,
-    alpha: 28,
-    brighten: 0,
-    saturate: 0,
-    original: "#F2FAFC"
-  }, {
-    level: "200",
-    darken: false,
-    isOriginal: false,
-    darkLightFactor: 0,
-    brighten: 1,
-    alpha: 70,
-    saturate: 0,
-    original: "#BDF3FC"
-  }, {
-    level: "300",
-    darken: false,
-    isOriginal: false,
-    darkLightFactor: 0,
-    brighten: 0,
-    alpha: 130,
-    saturate: 0,
-    original: "#75E2FA"
-  }, {
-    level: "400",
-    darken: false,
-    isOriginal: false,
-    darkLightFactor: 0,
-    brighten: 0,
-    alpha: 198,
-    saturate: 0,
-    original: "#43D2FA"
-  }, {
-    level: "500",
-    darken: true,
-    isOriginal: true,
-    darkLightFactor: 0
-  }, {
-    level: "600",
-    darken: true,
-    isOriginal: false,
-    darkLightFactor: 3,
-    brighten: 1,
-    alpha: 233,
-    saturate: 1.5,
-    original: "#0C9CCC"
-  }, {
-    level: "700",
-    darken: true,
-    isOriginal: false,
-    darkLightFactor: 0,
-    brighten: 0.5,
-    alpha: 186,
-    saturate: -0.5,
-    original: "#0B87B0"
-  }, {
-    level: "800",
-    darken: true,
-    isOriginal: false,
-    darkLightFactor: 0,
-    brighten: 0,
-    alpha: 130,
-    saturate: -2,
-    original: "#085E7A"
-  }, {
-    level: "900",
-    darken: true,
-    isOriginal: false,
-    darkLightFactor: 0,
-    brighten: 0,
-    alpha: 90,
-    saturate: -12,
-    original: "#094357"
-  }];
-  var returnedSpectrum = {};
-  mapper.forEach(function (item) {
-    var hex = hexColor;
-    if (!item.isOriginal) {
-      var _color = tinycolor(hex);
-      _color = item.darken ? _color.darken(item.darkLightFactor) : _color.lighten(item.darkLightFactor);
-      _color = _color.brighten(item.brighten);
-      _color = item.saturate > 0 ? _color.saturate(item.saturate) : _color.desaturate(Math.abs(item.saturate));
-      _color = item.darken ? overlayWithBlack(_color, item.alpha) : overlayWithWhite(_color, item.alpha);
-      returnedSpectrum["".concat(prefix).concat(item.level)] = _color.toHexString();
-    } else {
-      returnedSpectrum["".concat(prefix, "500")] = hex;
-    }
-  });
-  return returnedSpectrum;
-}
-function getTextColor(hex) {
-  var light = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "#ffffff";
-  var dark = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "#212934";
-  if (!hex) {
-    return "";
-  }
-  if (!/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
-    return "";
-  }
-  var hexCode = hex.charAt(0) === "#" ? hex.substr(1, 6) : hex;
-  var hexR = parseInt(hexCode.substr(0, 2), 16);
-  var hexG = parseInt(hexCode.substr(2, 2), 16);
-  var hexB = parseInt(hexCode.substr(4, 2), 16);
-  // Gets the average value of the colors
-  var contrastRatio = (hexR + hexG + hexB) / (255 * 3);
-  return contrastRatio >= 0.5 ? dark : light;
-}
-function hexToRgbA(hex) {
-  var alpha = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  if (alpha > 1) alpha = 1;
-  if (alpha < 0) alpha = 0;
-  var c;
-  if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
-    c = hex.substring(1).split("");
-    if (c.length == 3) {
-      c = [c[0], c[0], c[1], c[1], c[2], c[2]];
-    }
-    c = "0x" + c.join("");
-    return "rgba(" + [c >> 16 & 255, c >> 8 & 255, c & 255].join(",") + "," + alpha + ")";
-  }
-  throw new Error("Bad Hex");
-}
-
-var defaultTheme = {
-  "light-primary-action-color": "#0db9e9",
-  "light-primary-action-text-color": "#212934",
-  "light-text-color": "#212934",
-  "light-primary-action-hover-color": "#43d2fa",
-  "light-primary-action-text-hover-color": "#ffffff",
-  "light-primary-action-disabled-color": "#bdf3fc",
-  // light-primary-action-disabled-text-color: "",
-  "light-primary-action-box-shadow-color": "rgba(67, 210, 250, 0.25)",
-  "light-secondary-action-color": "",
-  "light-subtle-text-color": "#ced6de",
-  "light-secondary-action-disabled-color": "",
-  "light-input-background-color": "#ffffff",
-  "light-background-color": "#ffffff",
-  "light-outline-action-color": "#0d7fe9",
-  "light-outline-action-disabled-color": "#acd7ff",
-  "light-outline-action-box-shadow-color": "rgba(27, 92, 224, 0.2)",
-  "light-danger-color": "#D62F4B",
-  "light-danger-text-color": "#ffffff",
-  "light-danger-box-shadow-color": "rgba(214, 47, 75, 0.3)",
-  "light-danger-100": "#FFF0F2",
-  "light-danger-200": "#FCC5CE",
-  "light-danger-300": "#F99BAB",
-  "light-danger-400": "#E85E75",
-  "light-danger-500": "#D62F4B",
-  "light-danger-600": "#AD283D",
-  "light-danger-700": "#842432",
-  "light-danger-800": "#5C1E27",
-  "light-danger-900": "#331418",
-  "dark-danger-color": "#df5e74",
-  "dark-danger-text-color": "#121A26",
-  "dark-danger-box-shadow-color": "rgba(214, 47, 75, 0.3)",
-  "dark-danger-100": "#EEA7B3",
-  "dark-danger-200": "#EB98A6",
-  "dark-danger-300": "#E88898",
-  "dark-danger-400": "#E47588",
-  "dark-danger-500": "#DF5E74",
-  "dark-danger-600": "#D93F59",
-  "dark-danger-700": "#C12640",
-  "dark-danger-800": "#911C30",
-  "dark-danger-900": "#350A12",
-  "light-success-color": "#00b058",
-  "light-success-text-color": "#ffffff",
-  "light-success-box-shadow-color": "rgba(0, 176, 88, 0.3)",
-  "light-success-100": "#C4EFDF",
-  "light-success-200": "#9BDFC4",
-  "light-success-300": "#71D0A7",
-  "light-success-400": "#27C079",
-  "light-success-500": "#00B058",
-  "light-success-600": "#158957",
-  "light-success-700": "#1F624A",
-  "light-success-800": "#1D3B32",
-  "light-success-900": "#0D1E19",
-  "dark-success-color": "#2eab6c",
-  "dark-success-text-color": "#121A26",
-  "dark-success-box-shadow-color": "rgba(0, 176, 88, 0.3)",
-  "dark-success-100": "#71D0A7",
-  "dark-success-200": "#53D091",
-  "dark-success-300": "#36C77D",
-  "dark-success-400": "#32BA75",
-  "dark-success-500": "#2EAB6C",
-  "dark-success-600": "#2A9B62",
-  "dark-success-700": "#1F7348",
-  "dark-success-800": "#175636",
-  "dark-success-900": "#081E13",
-  "light-warning-color": "#FFB44F",
-  "light-warning-text-color": getTextColor("#ffb44f"),
-  "light-warning-box-shadow-color": hexToRgbA("#FFB44F", 0.2),
-  "light-warning-100": "#FFF8F0",
-  "light-warning-200": "#FFF0DB",
-  "light-warning-300": "#FFE5C2",
-  "light-warning-400": "#FFD49B",
-  "light-warning-500": "#FFB44F",
-  "light-warning-600": "#FF9505",
-  "light-warning-700": "#E08304",
-  "light-warning-800": "#995A06",
-  "light-warning-900": "#573302",
-  "dark-warning-color": "#C87503",
-  "dark-warning-text-color": getTextColor("#C87503"),
-  "dark-warning-box-shadow-color": hexToRgbA("#C87503", 0.2),
-  "dark-warning-100": "#FCA835",
-  "dark-warning-200": "#FB9810",
-  "dark-warning-300": "#EF8C04",
-  "dark-warning-400": "#DC8104",
-  "dark-warning-500": "#C87503",
-  "dark-warning-600": "#B06703",
-  "dark-warning-700": "#935703",
-  "dark-warning-800": "#6E4102",
-  "dark-warning-900": "#271701",
-  "dark-primary-action-color": "#0db9e9",
-  "dark-text-color": "#212934",
-  "dark-primary-action-hover-color": "#43d2fa",
-  "dark-primary-action-disabled-color": "#bdf3fc",
-  "dark-primary-action-box-shadow-color": "rgba(67, 210, 250, 0.25)",
-  "dark-secondary-action-color": "",
-  "dark-subtle-text-color": "#ced6de",
-  "dark-secondary-action-disabled-color": "",
-  "dark-input-background-color": "#1F2B3B",
-  "dark-input-label-color": "#94A3B8",
-  "dark-input-border-color": "#384860",
-  "dark-input-icon-color": "#94A3B8",
-  "dark-background-color": "#121A26",
-  "dark-input-disabled-text-color": "rgba(148, 163, 184, 0.8)",
-  "light-primary-color": "#0db9e9",
-  "light-primary-100": "#f2fafc",
-  "light-primary-200": "#bdf3fc",
-  "light-primary-300": "#75e2fa",
-  "light-primary-400": "#43d2fa",
-  "light-primary-500": "#0db9e9",
-  "light-primary-600": "#0c9ccc",
-  "light-primary-700": "#0b87b0",
-  "light-primary-800": "#085e7a",
-  "light-primary-900": "#094357",
-  "dark-primary-color": "#0db9e9",
-  "dark-primary-100": "#56c7ee",
-  "dark-primary-200": "#36bdea",
-  "dark-primary-300": "#0ea2d3",
-  "dark-primary-400": "#0b7fa5",
-  "dark-primary-500": "#0db9e9",
-  "dark-primary-600": "#1182a8",
-  "dark-primary-700": "#0f6d8d",
-  "dark-primary-800": "#085e7a",
-  "dark-primary-900": "#094357",
-  "default-font-face": null,
-  "dark-background-100": "#e5e6e7",
-  "dark-background-200": "#bfc1c4",
-  "dark-background-300": "#868a90",
-  "dark-background-400": "#474d57",
-  "dark-background-500": "#121a26",
-  "dark-background-600": "#0f141c",
-  "dark-background-700": "#0e141c",
-  "dark-background-800": "#0a0d13",
-  "dark-background-900": "#070a0c"
-};
-_objectSpread2$1({}, convertObjToVars(defaultTheme));
-
-var uniqueRandomString = (function () {
+var uniqueRandomString = function uniqueRandomString() {
   var length = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 20;
   var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
   var permittedCharacters;
@@ -7943,127 +4513,16 @@ var uniqueRandomString = (function () {
   var start = string.substr(3, index);
   var finalString = start + time + end;
   return finalString;
-});
-
-var _excluded$T = ["initialTheme", "children"];
-var ThemeContext = /*#__PURE__*/createContext({
-  theme: _objectSpread2$1({}, convertObjToVars(defaultTheme))
-});
-var ThemeProvider = function ThemeProvider(_ref) {
-  var initialTheme = _ref.initialTheme,
-    children = _ref.children;
-    _objectWithoutProperties(_ref, _excluded$T);
-  var _useState = useState({}),
-    _useState2 = _slicedToArray$4(_useState, 2),
-    theme = _useState2[0],
-    setTheme = _useState2[1];
-  var _useState3 = useState({
-      theme: _objectSpread2$1(_objectSpread2$1(_objectSpread2$1({}, convertObjToVars(defaultTheme)), convertObjToVars(initialTheme)), convertObjToVars(theme)),
-      setTheme: setTheme
-    }),
-    _useState4 = _slicedToArray$4(_useState3, 2),
-    initialState = _useState4[0],
-    setInitialState = _useState4[1];
-  useEffect(function () {
-    var computedTheme = _objectSpread2$1(_objectSpread2$1(_objectSpread2$1({}, defaultTheme), initialTheme), theme);
-    var primaryColor = computedTheme.primaryColor || computedTheme["primary-color"];
-    if (primaryColor) {
-      computedTheme["light-primary-action-color"] = primaryColor;
-      computedTheme["dark-primary-action-color"] = primaryColor;
-      computedTheme["light-primary-color"] = primaryColor;
-      computedTheme["dark-primary-color"] = primaryColor;
-      computedTheme["primarycolor"] = primaryColor;
-    }
-
-    // Depends on light primary action color
-    // Configure the light primary themes whenever we hydrate the themes
-    computedTheme["light-primary-action-text-color"] = getTextColor(computedTheme["light-primary-action-color"]);
-    computedTheme["light-primary-color"] = computedTheme["light-primary-action-color"];
-    computedTheme["light-primary-action-hover-color"] = "#".concat(tinycolor(computedTheme["light-primary-action-color"]).lighten(15).toHex());
-    computedTheme["light-primary-action-disabled-color"] = "#".concat(tinycolor(computedTheme["light-primary-action-color"]).lighten(38).toHex());
-    computedTheme["light-primary-action-disabled-text-color"] = getTextColor(computedTheme["light-primary-action-disabled-color"], true);
-    computedTheme["light-primary-action-text-hover-color"] = getTextColor(computedTheme["light-primary-action-hover-color"]);
-    computedTheme["light-primary-action-box-shadow-color"] = hexToRgbA(computedTheme["light-primary-action-color"], 0.2);
-
-    // Configure the semantic color text and boxshadow colors whenever we hydrate the theme
-    computedTheme["light-danger-box-shadow-color"] = hexToRgbA(computedTheme["light-danger-color"], 0.2);
-    computedTheme["light-warning-box-shadow-color"] = hexToRgbA(computedTheme["light-warning-color"], 0.2);
-    computedTheme["light-success-box-shadow-color"] = hexToRgbA(computedTheme["light-success-color"], 0.2);
-    computedTheme["dark-danger-box-shadow-color"] = hexToRgbA(computedTheme["dark-danger-color"], 0.2);
-    computedTheme["dark-warning-box-shadow-color"] = hexToRgbA(computedTheme["dark-warning-color"], 0.2);
-    computedTheme["dark-success-box-shadow-color"] = hexToRgbA(computedTheme["dark-success-color"], 0.2);
-    computedTheme["light-danger-text-color"] = getTextColor(computedTheme["light-danger-color"]);
-    computedTheme["dark-danger-text-color"] = getTextColor(computedTheme["dark-danger-color"]);
-    computedTheme["light-success-text-color"] = getTextColor(computedTheme["light-success-color"]);
-    computedTheme["dark-success-text-color"] = getTextColor(computedTheme["dark-success-color"]);
-    computedTheme["light-warning-text-color"] = getTextColor(computedTheme["light-warning-color"]);
-    computedTheme["dark-warning-text-color"] = getTextColor(computedTheme["dark-warning-color"]);
-
-    // Depends on dark primary action color
-    computedTheme["dark-primary-action-text-color"] = getTextColor(computedTheme["dark-primary-action-color"]);
-    computedTheme["light-primary-color"] = computedTheme["light-primary-action-color"];
-    computedTheme["dark-primary-action-hover-color"] = "#".concat(tinycolor(computedTheme["dark-primary-action-color"]).lighten(15).toHex());
-    computedTheme["dark-primary-action-disabled-color"] = "#".concat(tinycolor(computedTheme["dark-primary-action-color"]).lighten(38).toHex());
-    computedTheme["dark-primary-action-disabled-text-color"] = getTextColor(computedTheme["dark-primary-action-disabled-color"], true);
-    computedTheme["dark-primary-action-text-hover-color"] = getTextColor(computedTheme["dark-primary-action-hover-color"]);
-    computedTheme["dark-primary-action-box-shadow-color"] = hexToRgbA(computedTheme["dark-primary-action-color"], 0.2);
-
-    // Depends on dark background color
-    computedTheme["dark-input-background-color"] = "#".concat(tinycolor(computedTheme["dark-background-color"]).lighten(8).toHex());
-    computedTheme["dark-input-border-color"] = "#".concat(tinycolor(computedTheme["dark-input-background-color"]).lighten(23).toHex());
-    computedTheme["dark-input-label-color"] = "#".concat(tinycolor(computedTheme["dark-input-background-color"]).lighten(58).toHex());
-    computedTheme["dark-input-disabled-color"] = "#".concat(tinycolor(computedTheme["dark-input-background-color"]).lighten(2).toHex());
-    computedTheme["dark-input-disabled-text-color"] = hexToRgbA(computedTheme["dark-input-label-color"], 0.8);
-    computedTheme["dark-input-icon-color"] = "#".concat(tinycolor(computedTheme["dark-input-background-color"]).lighten(58).toHex());
-    setInitialState({
-      theme: _objectSpread2$1(_objectSpread2$1(_objectSpread2$1(_objectSpread2$1(_objectSpread2$1(_objectSpread2$1(_objectSpread2$1(_objectSpread2$1(_objectSpread2$1(_objectSpread2$1({}, convertObjToVars(computedTheme)), generateColorSpectrum(computedTheme["light-primary-action-color"])), generateColorSpectrum(computedTheme["dark-primary-action-color"], "--dark-primary-")), generateColorSpectrum(computedTheme["dark-background-color"], "--dark-background-")), generateColorSpectrum(computedTheme["light-danger-color"], "--light-danger-")), generateColorSpectrum(computedTheme["dark-danger-color"], "--dark-danger-")), generateColorSpectrum(computedTheme["light-success-color"], "--light-success-")), generateColorSpectrum(computedTheme["dark-success-color"], "--dark-success-")), generateColorSpectrum(computedTheme["light-warning-color"], "--light-warning-")), generateColorSpectrum(computedTheme["dark-warning-color"], "--dark-warning-")),
-      setTheme: setTheme
-    });
-  }, [initialTheme, theme]);
-  useLayoutEffect(function () {
-    var savedCssEntries = Object.entries(_objectSpread2$1({}, convertObjToVars(initialState.theme)));
-    var cssRules = "\n      box-sizing: border-box;\n      -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n    text-rendering: optimizeLegibility;\n    -webkit-tap-highlight-color: transparent;\n      ";
-    var themeRules = "";
-    if (savedCssEntries.length) {
-      themeRules += savedCssEntries.map(function (_ref2) {
-        var _ref3 = _slicedToArray$4(_ref2, 2),
-          k = _ref3[0],
-          v = _ref3[1];
-        return "".concat(k, ":").concat(v);
-      }).join(";");
-    }
-    if (document.getElementById("ui-kit-react-theme-tag")) {
-      var styleTag = document.getElementById("ui-kit-react-theme-tag");
-      styleTag.setAttribute("id", "ui-kit-react-theme-tag");
-      styleTag.setAttribute("type", "text/css");
-      styleTag.innerHTML = ":root{".concat(themeRules, "}.ui-kit-general-box{").concat(cssRules, "}");
-    } else {
-      var _styleTag = document.createElement("style");
-      _styleTag.setAttribute("id", "ui-kit-react-theme-tag");
-      _styleTag.setAttribute("type", "text/css");
-      _styleTag.innerHTML = ":root{".concat(themeRules, "}.ui-kit-general-box{").concat(cssRules, "}");
-      document.head.appendChild(_styleTag);
-    }
-  }, [initialState, theme, initialTheme]);
-  return /*#__PURE__*/React__default.createElement(ThemeContext.Provider, {
-    value: initialState
-  }, children);
-};
-ThemeProvider.propTypes = {
-  initialTheme: propTypes.exports.object
-};
-ThemeProvider.defaultProps = {
-  initialTheme: {}
 };
 
-var _excluded$S = ["darkMode", "children"];
+var _excluded$T = ["darkMode", "children"];
 var DarkModeContext = /*#__PURE__*/createContext({
   darkMode: null
 });
 var DarkModeProvider = function DarkModeProvider(_ref) {
   var darkMode = _ref.darkMode,
     children = _ref.children;
-    _objectWithoutProperties(_ref, _excluded$S);
+    _objectWithoutProperties(_ref, _excluded$T);
   var _useState = useState(null),
     _useState2 = _slicedToArray$4(_useState, 2),
     darkModeState = _useState2[0],
@@ -8095,20 +4554,1027 @@ DarkModeProvider.defaultProps = {
   darkMode: null
 };
 
-var aCallable$1 = aCallable$3;
-var toObject$3 = toObject$6;
-var IndexedObject = indexedObject;
-var lengthOfArrayLike$1 = lengthOfArrayLike$4;
+var check = function (it) {
+  return it && it.Math == Math && it;
+};
 
-var $TypeError$4 = TypeError;
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global$j =
+  // eslint-disable-next-line es/no-global-this -- safe
+  check(typeof globalThis == 'object' && globalThis) ||
+  check(typeof window == 'object' && window) ||
+  // eslint-disable-next-line no-restricted-globals -- safe
+  check(typeof self == 'object' && self) ||
+  check(typeof commonjsGlobal == 'object' && commonjsGlobal) ||
+  // eslint-disable-next-line no-new-func -- fallback
+  (function () { return this; })() || commonjsGlobal || Function('return this')();
+
+var objectGetOwnPropertyDescriptor = {};
+
+var fails$o = function (exec) {
+  try {
+    return !!exec();
+  } catch (error) {
+    return true;
+  }
+};
+
+var fails$n = fails$o;
+
+// Detect IE8's incomplete defineProperty implementation
+var descriptors = !fails$n(function () {
+  // eslint-disable-next-line es/no-object-defineproperty -- required for testing
+  return Object.defineProperty({}, 1, { get: function () { return 7; } })[1] != 7;
+});
+
+var fails$m = fails$o;
+
+var functionBindNative = !fails$m(function () {
+  // eslint-disable-next-line es/no-function-prototype-bind -- safe
+  var test = (function () { /* empty */ }).bind();
+  // eslint-disable-next-line no-prototype-builtins -- safe
+  return typeof test != 'function' || test.hasOwnProperty('prototype');
+});
+
+var NATIVE_BIND$2 = functionBindNative;
+
+var call$e = Function.prototype.call;
+
+var functionCall = NATIVE_BIND$2 ? call$e.bind(call$e) : function () {
+  return call$e.apply(call$e, arguments);
+};
+
+var objectPropertyIsEnumerable = {};
+
+var $propertyIsEnumerable = {}.propertyIsEnumerable;
+// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+var getOwnPropertyDescriptor$4 = Object.getOwnPropertyDescriptor;
+
+// Nashorn ~ JDK8 bug
+var NASHORN_BUG = getOwnPropertyDescriptor$4 && !$propertyIsEnumerable.call({ 1: 2 }, 1);
+
+// `Object.prototype.propertyIsEnumerable` method implementation
+// https://tc39.es/ecma262/#sec-object.prototype.propertyisenumerable
+objectPropertyIsEnumerable.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
+  var descriptor = getOwnPropertyDescriptor$4(this, V);
+  return !!descriptor && descriptor.enumerable;
+} : $propertyIsEnumerable;
+
+var createPropertyDescriptor$4 = function (bitmap, value) {
+  return {
+    enumerable: !(bitmap & 1),
+    configurable: !(bitmap & 2),
+    writable: !(bitmap & 4),
+    value: value
+  };
+};
+
+var NATIVE_BIND$1 = functionBindNative;
+
+var FunctionPrototype$2 = Function.prototype;
+var call$d = FunctionPrototype$2.call;
+var uncurryThisWithBind = NATIVE_BIND$1 && FunctionPrototype$2.bind.bind(call$d, call$d);
+
+var functionUncurryThis = NATIVE_BIND$1 ? uncurryThisWithBind : function (fn) {
+  return function () {
+    return call$d.apply(fn, arguments);
+  };
+};
+
+var uncurryThis$q = functionUncurryThis;
+
+var toString$h = uncurryThis$q({}.toString);
+var stringSlice$9 = uncurryThis$q(''.slice);
+
+var classofRaw$2 = function (it) {
+  return stringSlice$9(toString$h(it), 8, -1);
+};
+
+var uncurryThis$p = functionUncurryThis;
+var fails$l = fails$o;
+var classof$5 = classofRaw$2;
+
+var $Object$4 = Object;
+var split = uncurryThis$p(''.split);
+
+// fallback for non-array-like ES3 and non-enumerable old V8 strings
+var indexedObject = fails$l(function () {
+  // throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
+  // eslint-disable-next-line no-prototype-builtins -- safe
+  return !$Object$4('z').propertyIsEnumerable(0);
+}) ? function (it) {
+  return classof$5(it) == 'String' ? split(it, '') : $Object$4(it);
+} : $Object$4;
+
+// we can't use just `it == null` since of `document.all` special case
+// https://tc39.es/ecma262/#sec-IsHTMLDDA-internal-slot-aec
+var isNullOrUndefined$5 = function (it) {
+  return it === null || it === undefined;
+};
+
+var isNullOrUndefined$4 = isNullOrUndefined$5;
+
+var $TypeError$b = TypeError;
+
+// `RequireObjectCoercible` abstract operation
+// https://tc39.es/ecma262/#sec-requireobjectcoercible
+var requireObjectCoercible$a = function (it) {
+  if (isNullOrUndefined$4(it)) throw $TypeError$b("Can't call method on " + it);
+  return it;
+};
+
+// toObject with fallback for non-array-like ES3 strings
+var IndexedObject$2 = indexedObject;
+var requireObjectCoercible$9 = requireObjectCoercible$a;
+
+var toIndexedObject$5 = function (it) {
+  return IndexedObject$2(requireObjectCoercible$9(it));
+};
+
+var documentAll$2 = typeof document == 'object' && document.all;
+
+// https://tc39.es/ecma262/#sec-IsHTMLDDA-internal-slot
+// eslint-disable-next-line unicorn/no-typeof-undefined -- required for testing
+var IS_HTMLDDA = typeof documentAll$2 == 'undefined' && documentAll$2 !== undefined;
+
+var documentAll_1 = {
+  all: documentAll$2,
+  IS_HTMLDDA: IS_HTMLDDA
+};
+
+var $documentAll$1 = documentAll_1;
+
+var documentAll$1 = $documentAll$1.all;
+
+// `IsCallable` abstract operation
+// https://tc39.es/ecma262/#sec-iscallable
+var isCallable$l = $documentAll$1.IS_HTMLDDA ? function (argument) {
+  return typeof argument == 'function' || argument === documentAll$1;
+} : function (argument) {
+  return typeof argument == 'function';
+};
+
+var isCallable$k = isCallable$l;
+var $documentAll = documentAll_1;
+
+var documentAll = $documentAll.all;
+
+var isObject$8 = $documentAll.IS_HTMLDDA ? function (it) {
+  return typeof it == 'object' ? it !== null : isCallable$k(it) || it === documentAll;
+} : function (it) {
+  return typeof it == 'object' ? it !== null : isCallable$k(it);
+};
+
+var global$i = global$j;
+var isCallable$j = isCallable$l;
+
+var aFunction = function (argument) {
+  return isCallable$j(argument) ? argument : undefined;
+};
+
+var getBuiltIn$4 = function (namespace, method) {
+  return arguments.length < 2 ? aFunction(global$i[namespace]) : global$i[namespace] && global$i[namespace][method];
+};
+
+var uncurryThis$o = functionUncurryThis;
+
+var objectIsPrototypeOf = uncurryThis$o({}.isPrototypeOf);
+
+var engineUserAgent = typeof navigator != 'undefined' && String(navigator.userAgent) || '';
+
+var global$h = global$j;
+var userAgent$2 = engineUserAgent;
+
+var process$1 = global$h.process;
+var Deno = global$h.Deno;
+var versions = process$1 && process$1.versions || Deno && Deno.version;
+var v8 = versions && versions.v8;
+var match$2, version;
+
+if (v8) {
+  match$2 = v8.split('.');
+  // in old Chrome, versions of V8 isn't V8 = Chrome / 10
+  // but their correct versions are not interesting for us
+  version = match$2[0] > 0 && match$2[0] < 4 ? 1 : +(match$2[0] + match$2[1]);
+}
+
+// BrowserFS NodeJS `process` polyfill incorrectly set `.v8` to `0.0`
+// so check `userAgent` even if `.v8` exists, but 0
+if (!version && userAgent$2) {
+  match$2 = userAgent$2.match(/Edge\/(\d+)/);
+  if (!match$2 || match$2[1] >= 74) {
+    match$2 = userAgent$2.match(/Chrome\/(\d+)/);
+    if (match$2) version = +match$2[1];
+  }
+}
+
+var engineV8Version = version;
+
+/* eslint-disable es/no-symbol -- required for testing */
+
+var V8_VERSION = engineV8Version;
+var fails$k = fails$o;
+var global$g = global$j;
+
+var $String$5 = global$g.String;
+
+// eslint-disable-next-line es/no-object-getownpropertysymbols -- required for testing
+var symbolConstructorDetection = !!Object.getOwnPropertySymbols && !fails$k(function () {
+  var symbol = Symbol();
+  // Chrome 38 Symbol has incorrect toString conversion
+  // `get-own-property-symbols` polyfill symbols converted to object are not Symbol instances
+  // nb: Do not call `String` directly to avoid this being optimized out to `symbol+''` which will,
+  // of course, fail.
+  return !$String$5(symbol) || !(Object(symbol) instanceof Symbol) ||
+    // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
+    !Symbol.sham && V8_VERSION && V8_VERSION < 41;
+});
+
+/* eslint-disable es/no-symbol -- required for testing */
+
+var NATIVE_SYMBOL$2 = symbolConstructorDetection;
+
+var useSymbolAsUid = NATIVE_SYMBOL$2
+  && !Symbol.sham
+  && typeof Symbol.iterator == 'symbol';
+
+var getBuiltIn$3 = getBuiltIn$4;
+var isCallable$i = isCallable$l;
+var isPrototypeOf$3 = objectIsPrototypeOf;
+var USE_SYMBOL_AS_UID$1 = useSymbolAsUid;
+
+var $Object$3 = Object;
+
+var isSymbol$2 = USE_SYMBOL_AS_UID$1 ? function (it) {
+  return typeof it == 'symbol';
+} : function (it) {
+  var $Symbol = getBuiltIn$3('Symbol');
+  return isCallable$i($Symbol) && isPrototypeOf$3($Symbol.prototype, $Object$3(it));
+};
+
+var $String$4 = String;
+
+var tryToString$2 = function (argument) {
+  try {
+    return $String$4(argument);
+  } catch (error) {
+    return 'Object';
+  }
+};
+
+var isCallable$h = isCallable$l;
+var tryToString$1 = tryToString$2;
+
+var $TypeError$a = TypeError;
+
+// `Assert: IsCallable(argument) is true`
+var aCallable$4 = function (argument) {
+  if (isCallable$h(argument)) return argument;
+  throw $TypeError$a(tryToString$1(argument) + ' is not a function');
+};
+
+var aCallable$3 = aCallable$4;
+var isNullOrUndefined$3 = isNullOrUndefined$5;
+
+// `GetMethod` abstract operation
+// https://tc39.es/ecma262/#sec-getmethod
+var getMethod$4 = function (V, P) {
+  var func = V[P];
+  return isNullOrUndefined$3(func) ? undefined : aCallable$3(func);
+};
+
+var call$c = functionCall;
+var isCallable$g = isCallable$l;
+var isObject$7 = isObject$8;
+
+var $TypeError$9 = TypeError;
+
+// `OrdinaryToPrimitive` abstract operation
+// https://tc39.es/ecma262/#sec-ordinarytoprimitive
+var ordinaryToPrimitive$1 = function (input, pref) {
+  var fn, val;
+  if (pref === 'string' && isCallable$g(fn = input.toString) && !isObject$7(val = call$c(fn, input))) return val;
+  if (isCallable$g(fn = input.valueOf) && !isObject$7(val = call$c(fn, input))) return val;
+  if (pref !== 'string' && isCallable$g(fn = input.toString) && !isObject$7(val = call$c(fn, input))) return val;
+  throw $TypeError$9("Can't convert object to primitive value");
+};
+
+var shared$5 = {exports: {}};
+
+var global$f = global$j;
+
+// eslint-disable-next-line es/no-object-defineproperty -- safe
+var defineProperty$8 = Object.defineProperty;
+
+var defineGlobalProperty$3 = function (key, value) {
+  try {
+    defineProperty$8(global$f, key, { value: value, configurable: true, writable: true });
+  } catch (error) {
+    global$f[key] = value;
+  } return value;
+};
+
+var global$e = global$j;
+var defineGlobalProperty$2 = defineGlobalProperty$3;
+
+var SHARED = '__core-js_shared__';
+var store$3 = global$e[SHARED] || defineGlobalProperty$2(SHARED, {});
+
+var sharedStore = store$3;
+
+var store$2 = sharedStore;
+
+(shared$5.exports = function (key, value) {
+  return store$2[key] || (store$2[key] = value !== undefined ? value : {});
+})('versions', []).push({
+  version: '3.31.0',
+  mode: 'global',
+  copyright: '© 2014-2023 Denis Pushkarev (zloirock.ru)',
+  license: 'https://github.com/zloirock/core-js/blob/v3.31.0/LICENSE',
+  source: 'https://github.com/zloirock/core-js'
+});
+
+var requireObjectCoercible$8 = requireObjectCoercible$a;
+
+var $Object$2 = Object;
+
+// `ToObject` abstract operation
+// https://tc39.es/ecma262/#sec-toobject
+var toObject$6 = function (argument) {
+  return $Object$2(requireObjectCoercible$8(argument));
+};
+
+var uncurryThis$n = functionUncurryThis;
+var toObject$5 = toObject$6;
+
+var hasOwnProperty = uncurryThis$n({}.hasOwnProperty);
+
+// `HasOwnProperty` abstract operation
+// https://tc39.es/ecma262/#sec-hasownproperty
+// eslint-disable-next-line es/no-object-hasown -- safe
+var hasOwnProperty_1 = Object.hasOwn || function hasOwn(it, key) {
+  return hasOwnProperty(toObject$5(it), key);
+};
+
+var uncurryThis$m = functionUncurryThis;
+
+var id = 0;
+var postfix = Math.random();
+var toString$g = uncurryThis$m(1.0.toString);
+
+var uid$3 = function (key) {
+  return 'Symbol(' + (key === undefined ? '' : key) + ')_' + toString$g(++id + postfix, 36);
+};
+
+var global$d = global$j;
+var shared$4 = shared$5.exports;
+var hasOwn$b = hasOwnProperty_1;
+var uid$2 = uid$3;
+var NATIVE_SYMBOL$1 = symbolConstructorDetection;
+var USE_SYMBOL_AS_UID = useSymbolAsUid;
+
+var Symbol$3 = global$d.Symbol;
+var WellKnownSymbolsStore = shared$4('wks');
+var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol$3['for'] || Symbol$3 : Symbol$3 && Symbol$3.withoutSetter || uid$2;
+
+var wellKnownSymbol$f = function (name) {
+  if (!hasOwn$b(WellKnownSymbolsStore, name)) {
+    WellKnownSymbolsStore[name] = NATIVE_SYMBOL$1 && hasOwn$b(Symbol$3, name)
+      ? Symbol$3[name]
+      : createWellKnownSymbol('Symbol.' + name);
+  } return WellKnownSymbolsStore[name];
+};
+
+var call$b = functionCall;
+var isObject$6 = isObject$8;
+var isSymbol$1 = isSymbol$2;
+var getMethod$3 = getMethod$4;
+var ordinaryToPrimitive = ordinaryToPrimitive$1;
+var wellKnownSymbol$e = wellKnownSymbol$f;
+
+var $TypeError$8 = TypeError;
+var TO_PRIMITIVE = wellKnownSymbol$e('toPrimitive');
+
+// `ToPrimitive` abstract operation
+// https://tc39.es/ecma262/#sec-toprimitive
+var toPrimitive$1 = function (input, pref) {
+  if (!isObject$6(input) || isSymbol$1(input)) return input;
+  var exoticToPrim = getMethod$3(input, TO_PRIMITIVE);
+  var result;
+  if (exoticToPrim) {
+    if (pref === undefined) pref = 'default';
+    result = call$b(exoticToPrim, input, pref);
+    if (!isObject$6(result) || isSymbol$1(result)) return result;
+    throw $TypeError$8("Can't convert object to primitive value");
+  }
+  if (pref === undefined) pref = 'number';
+  return ordinaryToPrimitive(input, pref);
+};
+
+var toPrimitive = toPrimitive$1;
+var isSymbol = isSymbol$2;
+
+// `ToPropertyKey` abstract operation
+// https://tc39.es/ecma262/#sec-topropertykey
+var toPropertyKey$3 = function (argument) {
+  var key = toPrimitive(argument, 'string');
+  return isSymbol(key) ? key : key + '';
+};
+
+var global$c = global$j;
+var isObject$5 = isObject$8;
+
+var document$1 = global$c.document;
+// typeof document.createElement is 'object' in old IE
+var EXISTS$1 = isObject$5(document$1) && isObject$5(document$1.createElement);
+
+var documentCreateElement$2 = function (it) {
+  return EXISTS$1 ? document$1.createElement(it) : {};
+};
+
+var DESCRIPTORS$c = descriptors;
+var fails$j = fails$o;
+var createElement = documentCreateElement$2;
+
+// Thanks to IE8 for its funny defineProperty
+var ie8DomDefine = !DESCRIPTORS$c && !fails$j(function () {
+  // eslint-disable-next-line es/no-object-defineproperty -- required for testing
+  return Object.defineProperty(createElement('div'), 'a', {
+    get: function () { return 7; }
+  }).a != 7;
+});
+
+var DESCRIPTORS$b = descriptors;
+var call$a = functionCall;
+var propertyIsEnumerableModule$1 = objectPropertyIsEnumerable;
+var createPropertyDescriptor$3 = createPropertyDescriptor$4;
+var toIndexedObject$4 = toIndexedObject$5;
+var toPropertyKey$2 = toPropertyKey$3;
+var hasOwn$a = hasOwnProperty_1;
+var IE8_DOM_DEFINE$1 = ie8DomDefine;
+
+// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+var $getOwnPropertyDescriptor$1 = Object.getOwnPropertyDescriptor;
+
+// `Object.getOwnPropertyDescriptor` method
+// https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
+objectGetOwnPropertyDescriptor.f = DESCRIPTORS$b ? $getOwnPropertyDescriptor$1 : function getOwnPropertyDescriptor(O, P) {
+  O = toIndexedObject$4(O);
+  P = toPropertyKey$2(P);
+  if (IE8_DOM_DEFINE$1) try {
+    return $getOwnPropertyDescriptor$1(O, P);
+  } catch (error) { /* empty */ }
+  if (hasOwn$a(O, P)) return createPropertyDescriptor$3(!call$a(propertyIsEnumerableModule$1.f, O, P), O[P]);
+};
+
+var objectDefineProperty = {};
+
+var DESCRIPTORS$a = descriptors;
+var fails$i = fails$o;
+
+// V8 ~ Chrome 36-
+// https://bugs.chromium.org/p/v8/issues/detail?id=3334
+var v8PrototypeDefineBug = DESCRIPTORS$a && fails$i(function () {
+  // eslint-disable-next-line es/no-object-defineproperty -- required for testing
+  return Object.defineProperty(function () { /* empty */ }, 'prototype', {
+    value: 42,
+    writable: false
+  }).prototype != 42;
+});
+
+var isObject$4 = isObject$8;
+
+var $String$3 = String;
+var $TypeError$7 = TypeError;
+
+// `Assert: Type(argument) is Object`
+var anObject$b = function (argument) {
+  if (isObject$4(argument)) return argument;
+  throw $TypeError$7($String$3(argument) + ' is not an object');
+};
+
+var DESCRIPTORS$9 = descriptors;
+var IE8_DOM_DEFINE = ie8DomDefine;
+var V8_PROTOTYPE_DEFINE_BUG$1 = v8PrototypeDefineBug;
+var anObject$a = anObject$b;
+var toPropertyKey$1 = toPropertyKey$3;
+
+var $TypeError$6 = TypeError;
+// eslint-disable-next-line es/no-object-defineproperty -- safe
+var $defineProperty = Object.defineProperty;
+// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+var ENUMERABLE = 'enumerable';
+var CONFIGURABLE$1 = 'configurable';
+var WRITABLE = 'writable';
+
+// `Object.defineProperty` method
+// https://tc39.es/ecma262/#sec-object.defineproperty
+objectDefineProperty.f = DESCRIPTORS$9 ? V8_PROTOTYPE_DEFINE_BUG$1 ? function defineProperty(O, P, Attributes) {
+  anObject$a(O);
+  P = toPropertyKey$1(P);
+  anObject$a(Attributes);
+  if (typeof O === 'function' && P === 'prototype' && 'value' in Attributes && WRITABLE in Attributes && !Attributes[WRITABLE]) {
+    var current = $getOwnPropertyDescriptor(O, P);
+    if (current && current[WRITABLE]) {
+      O[P] = Attributes.value;
+      Attributes = {
+        configurable: CONFIGURABLE$1 in Attributes ? Attributes[CONFIGURABLE$1] : current[CONFIGURABLE$1],
+        enumerable: ENUMERABLE in Attributes ? Attributes[ENUMERABLE] : current[ENUMERABLE],
+        writable: false
+      };
+    }
+  } return $defineProperty(O, P, Attributes);
+} : $defineProperty : function defineProperty(O, P, Attributes) {
+  anObject$a(O);
+  P = toPropertyKey$1(P);
+  anObject$a(Attributes);
+  if (IE8_DOM_DEFINE) try {
+    return $defineProperty(O, P, Attributes);
+  } catch (error) { /* empty */ }
+  if ('get' in Attributes || 'set' in Attributes) throw $TypeError$6('Accessors not supported');
+  if ('value' in Attributes) O[P] = Attributes.value;
+  return O;
+};
+
+var DESCRIPTORS$8 = descriptors;
+var definePropertyModule$4 = objectDefineProperty;
+var createPropertyDescriptor$2 = createPropertyDescriptor$4;
+
+var createNonEnumerableProperty$6 = DESCRIPTORS$8 ? function (object, key, value) {
+  return definePropertyModule$4.f(object, key, createPropertyDescriptor$2(1, value));
+} : function (object, key, value) {
+  object[key] = value;
+  return object;
+};
+
+var makeBuiltIn$3 = {exports: {}};
+
+var DESCRIPTORS$7 = descriptors;
+var hasOwn$9 = hasOwnProperty_1;
+
+var FunctionPrototype$1 = Function.prototype;
+// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+var getDescriptor = DESCRIPTORS$7 && Object.getOwnPropertyDescriptor;
+
+var EXISTS = hasOwn$9(FunctionPrototype$1, 'name');
+// additional protection from minified / mangled / dropped function names
+var PROPER = EXISTS && (function something() { /* empty */ }).name === 'something';
+var CONFIGURABLE = EXISTS && (!DESCRIPTORS$7 || (DESCRIPTORS$7 && getDescriptor(FunctionPrototype$1, 'name').configurable));
+
+var functionName = {
+  EXISTS: EXISTS,
+  PROPER: PROPER,
+  CONFIGURABLE: CONFIGURABLE
+};
+
+var uncurryThis$l = functionUncurryThis;
+var isCallable$f = isCallable$l;
+var store$1 = sharedStore;
+
+var functionToString = uncurryThis$l(Function.toString);
+
+// this helper broken in `core-js@3.4.1-3.4.4`, so we can't use `shared` helper
+if (!isCallable$f(store$1.inspectSource)) {
+  store$1.inspectSource = function (it) {
+    return functionToString(it);
+  };
+}
+
+var inspectSource$1 = store$1.inspectSource;
+
+var global$b = global$j;
+var isCallable$e = isCallable$l;
+
+var WeakMap$1 = global$b.WeakMap;
+
+var weakMapBasicDetection = isCallable$e(WeakMap$1) && /native code/.test(String(WeakMap$1));
+
+var shared$3 = shared$5.exports;
+var uid$1 = uid$3;
+
+var keys$1 = shared$3('keys');
+
+var sharedKey$3 = function (key) {
+  return keys$1[key] || (keys$1[key] = uid$1(key));
+};
+
+var hiddenKeys$4 = {};
+
+var NATIVE_WEAK_MAP = weakMapBasicDetection;
+var global$a = global$j;
+var isObject$3 = isObject$8;
+var createNonEnumerableProperty$5 = createNonEnumerableProperty$6;
+var hasOwn$8 = hasOwnProperty_1;
+var shared$2 = sharedStore;
+var sharedKey$2 = sharedKey$3;
+var hiddenKeys$3 = hiddenKeys$4;
+
+var OBJECT_ALREADY_INITIALIZED = 'Object already initialized';
+var TypeError$1 = global$a.TypeError;
+var WeakMap = global$a.WeakMap;
+var set, get, has;
+
+var enforce = function (it) {
+  return has(it) ? get(it) : set(it, {});
+};
+
+var getterFor = function (TYPE) {
+  return function (it) {
+    var state;
+    if (!isObject$3(it) || (state = get(it)).type !== TYPE) {
+      throw TypeError$1('Incompatible receiver, ' + TYPE + ' required');
+    } return state;
+  };
+};
+
+if (NATIVE_WEAK_MAP || shared$2.state) {
+  var store = shared$2.state || (shared$2.state = new WeakMap());
+  /* eslint-disable no-self-assign -- prototype methods protection */
+  store.get = store.get;
+  store.has = store.has;
+  store.set = store.set;
+  /* eslint-enable no-self-assign -- prototype methods protection */
+  set = function (it, metadata) {
+    if (store.has(it)) throw TypeError$1(OBJECT_ALREADY_INITIALIZED);
+    metadata.facade = it;
+    store.set(it, metadata);
+    return metadata;
+  };
+  get = function (it) {
+    return store.get(it) || {};
+  };
+  has = function (it) {
+    return store.has(it);
+  };
+} else {
+  var STATE = sharedKey$2('state');
+  hiddenKeys$3[STATE] = true;
+  set = function (it, metadata) {
+    if (hasOwn$8(it, STATE)) throw TypeError$1(OBJECT_ALREADY_INITIALIZED);
+    metadata.facade = it;
+    createNonEnumerableProperty$5(it, STATE, metadata);
+    return metadata;
+  };
+  get = function (it) {
+    return hasOwn$8(it, STATE) ? it[STATE] : {};
+  };
+  has = function (it) {
+    return hasOwn$8(it, STATE);
+  };
+}
+
+var internalState = {
+  set: set,
+  get: get,
+  has: has,
+  enforce: enforce,
+  getterFor: getterFor
+};
+
+var uncurryThis$k = functionUncurryThis;
+var fails$h = fails$o;
+var isCallable$d = isCallable$l;
+var hasOwn$7 = hasOwnProperty_1;
+var DESCRIPTORS$6 = descriptors;
+var CONFIGURABLE_FUNCTION_NAME$1 = functionName.CONFIGURABLE;
+var inspectSource = inspectSource$1;
+var InternalStateModule$1 = internalState;
+
+var enforceInternalState$1 = InternalStateModule$1.enforce;
+var getInternalState$2 = InternalStateModule$1.get;
+var $String$2 = String;
+// eslint-disable-next-line es/no-object-defineproperty -- safe
+var defineProperty$7 = Object.defineProperty;
+var stringSlice$8 = uncurryThis$k(''.slice);
+var replace$5 = uncurryThis$k(''.replace);
+var join = uncurryThis$k([].join);
+
+var CONFIGURABLE_LENGTH = DESCRIPTORS$6 && !fails$h(function () {
+  return defineProperty$7(function () { /* empty */ }, 'length', { value: 8 }).length !== 8;
+});
+
+var TEMPLATE = String(String).split('String');
+
+var makeBuiltIn$2 = makeBuiltIn$3.exports = function (value, name, options) {
+  if (stringSlice$8($String$2(name), 0, 7) === 'Symbol(') {
+    name = '[' + replace$5($String$2(name), /^Symbol\(([^)]*)\)/, '$1') + ']';
+  }
+  if (options && options.getter) name = 'get ' + name;
+  if (options && options.setter) name = 'set ' + name;
+  if (!hasOwn$7(value, 'name') || (CONFIGURABLE_FUNCTION_NAME$1 && value.name !== name)) {
+    if (DESCRIPTORS$6) defineProperty$7(value, 'name', { value: name, configurable: true });
+    else value.name = name;
+  }
+  if (CONFIGURABLE_LENGTH && options && hasOwn$7(options, 'arity') && value.length !== options.arity) {
+    defineProperty$7(value, 'length', { value: options.arity });
+  }
+  try {
+    if (options && hasOwn$7(options, 'constructor') && options.constructor) {
+      if (DESCRIPTORS$6) defineProperty$7(value, 'prototype', { writable: false });
+    // in V8 ~ Chrome 53, prototypes of some methods, like `Array.prototype.values`, are non-writable
+    } else if (value.prototype) value.prototype = undefined;
+  } catch (error) { /* empty */ }
+  var state = enforceInternalState$1(value);
+  if (!hasOwn$7(state, 'source')) {
+    state.source = join(TEMPLATE, typeof name == 'string' ? name : '');
+  } return value;
+};
+
+// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
+// eslint-disable-next-line no-extend-native -- required
+Function.prototype.toString = makeBuiltIn$2(function toString() {
+  return isCallable$d(this) && getInternalState$2(this).source || inspectSource(this);
+}, 'toString');
+
+var isCallable$c = isCallable$l;
+var definePropertyModule$3 = objectDefineProperty;
+var makeBuiltIn$1 = makeBuiltIn$3.exports;
+var defineGlobalProperty$1 = defineGlobalProperty$3;
+
+var defineBuiltIn$6 = function (O, key, value, options) {
+  if (!options) options = {};
+  var simple = options.enumerable;
+  var name = options.name !== undefined ? options.name : key;
+  if (isCallable$c(value)) makeBuiltIn$1(value, name, options);
+  if (options.global) {
+    if (simple) O[key] = value;
+    else defineGlobalProperty$1(key, value);
+  } else {
+    try {
+      if (!options.unsafe) delete O[key];
+      else if (O[key]) simple = true;
+    } catch (error) { /* empty */ }
+    if (simple) O[key] = value;
+    else definePropertyModule$3.f(O, key, {
+      value: value,
+      enumerable: false,
+      configurable: !options.nonConfigurable,
+      writable: !options.nonWritable
+    });
+  } return O;
+};
+
+var objectGetOwnPropertyNames = {};
+
+var ceil = Math.ceil;
+var floor$2 = Math.floor;
+
+// `Math.trunc` method
+// https://tc39.es/ecma262/#sec-math.trunc
+// eslint-disable-next-line es/no-math-trunc -- safe
+var mathTrunc = Math.trunc || function trunc(x) {
+  var n = +x;
+  return (n > 0 ? floor$2 : ceil)(n);
+};
+
+var trunc = mathTrunc;
+
+// `ToIntegerOrInfinity` abstract operation
+// https://tc39.es/ecma262/#sec-tointegerorinfinity
+var toIntegerOrInfinity$4 = function (argument) {
+  var number = +argument;
+  // eslint-disable-next-line no-self-compare -- NaN check
+  return number !== number || number === 0 ? 0 : trunc(number);
+};
+
+var toIntegerOrInfinity$3 = toIntegerOrInfinity$4;
+
+var max$8 = Math.max;
+var min$8 = Math.min;
+
+// Helper for a popular repeating case of the spec:
+// Let integer be ? ToInteger(index).
+// If integer < 0, let result be max((length + integer), 0); else let result be min(integer, length).
+var toAbsoluteIndex$2 = function (index, length) {
+  var integer = toIntegerOrInfinity$3(index);
+  return integer < 0 ? max$8(integer + length, 0) : min$8(integer, length);
+};
+
+var toIntegerOrInfinity$2 = toIntegerOrInfinity$4;
+
+var min$7 = Math.min;
+
+// `ToLength` abstract operation
+// https://tc39.es/ecma262/#sec-tolength
+var toLength$4 = function (argument) {
+  return argument > 0 ? min$7(toIntegerOrInfinity$2(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
+};
+
+var toLength$3 = toLength$4;
+
+// `LengthOfArrayLike` abstract operation
+// https://tc39.es/ecma262/#sec-lengthofarraylike
+var lengthOfArrayLike$4 = function (obj) {
+  return toLength$3(obj.length);
+};
+
+var toIndexedObject$3 = toIndexedObject$5;
+var toAbsoluteIndex$1 = toAbsoluteIndex$2;
+var lengthOfArrayLike$3 = lengthOfArrayLike$4;
+
+// `Array.prototype.{ indexOf, includes }` methods implementation
+var createMethod$3 = function (IS_INCLUDES) {
+  return function ($this, el, fromIndex) {
+    var O = toIndexedObject$3($this);
+    var length = lengthOfArrayLike$3(O);
+    var index = toAbsoluteIndex$1(fromIndex, length);
+    var value;
+    // Array#includes uses SameValueZero equality algorithm
+    // eslint-disable-next-line no-self-compare -- NaN check
+    if (IS_INCLUDES && el != el) while (length > index) {
+      value = O[index++];
+      // eslint-disable-next-line no-self-compare -- NaN check
+      if (value != value) return true;
+    // Array#indexOf ignores holes, Array#includes - not
+    } else for (;length > index; index++) {
+      if ((IS_INCLUDES || index in O) && O[index] === el) return IS_INCLUDES || index || 0;
+    } return !IS_INCLUDES && -1;
+  };
+};
+
+var arrayIncludes = {
+  // `Array.prototype.includes` method
+  // https://tc39.es/ecma262/#sec-array.prototype.includes
+  includes: createMethod$3(true),
+  // `Array.prototype.indexOf` method
+  // https://tc39.es/ecma262/#sec-array.prototype.indexof
+  indexOf: createMethod$3(false)
+};
+
+var uncurryThis$j = functionUncurryThis;
+var hasOwn$6 = hasOwnProperty_1;
+var toIndexedObject$2 = toIndexedObject$5;
+var indexOf$2 = arrayIncludes.indexOf;
+var hiddenKeys$2 = hiddenKeys$4;
+
+var push$2 = uncurryThis$j([].push);
+
+var objectKeysInternal = function (object, names) {
+  var O = toIndexedObject$2(object);
+  var i = 0;
+  var result = [];
+  var key;
+  for (key in O) !hasOwn$6(hiddenKeys$2, key) && hasOwn$6(O, key) && push$2(result, key);
+  // Don't enum bug & hidden keys
+  while (names.length > i) if (hasOwn$6(O, key = names[i++])) {
+    ~indexOf$2(result, key) || push$2(result, key);
+  }
+  return result;
+};
+
+// IE8- don't enum bug keys
+var enumBugKeys$3 = [
+  'constructor',
+  'hasOwnProperty',
+  'isPrototypeOf',
+  'propertyIsEnumerable',
+  'toLocaleString',
+  'toString',
+  'valueOf'
+];
+
+var internalObjectKeys$1 = objectKeysInternal;
+var enumBugKeys$2 = enumBugKeys$3;
+
+var hiddenKeys$1 = enumBugKeys$2.concat('length', 'prototype');
+
+// `Object.getOwnPropertyNames` method
+// https://tc39.es/ecma262/#sec-object.getownpropertynames
+// eslint-disable-next-line es/no-object-getownpropertynames -- safe
+objectGetOwnPropertyNames.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
+  return internalObjectKeys$1(O, hiddenKeys$1);
+};
+
+var objectGetOwnPropertySymbols = {};
+
+// eslint-disable-next-line es/no-object-getownpropertysymbols -- safe
+objectGetOwnPropertySymbols.f = Object.getOwnPropertySymbols;
+
+var getBuiltIn$2 = getBuiltIn$4;
+var uncurryThis$i = functionUncurryThis;
+var getOwnPropertyNamesModule = objectGetOwnPropertyNames;
+var getOwnPropertySymbolsModule$1 = objectGetOwnPropertySymbols;
+var anObject$9 = anObject$b;
+
+var concat$2 = uncurryThis$i([].concat);
+
+// all object keys, includes non-enumerable and symbols
+var ownKeys$5 = getBuiltIn$2('Reflect', 'ownKeys') || function ownKeys(it) {
+  var keys = getOwnPropertyNamesModule.f(anObject$9(it));
+  var getOwnPropertySymbols = getOwnPropertySymbolsModule$1.f;
+  return getOwnPropertySymbols ? concat$2(keys, getOwnPropertySymbols(it)) : keys;
+};
+
+var hasOwn$5 = hasOwnProperty_1;
+var ownKeys$4 = ownKeys$5;
+var getOwnPropertyDescriptorModule = objectGetOwnPropertyDescriptor;
+var definePropertyModule$2 = objectDefineProperty;
+
+var copyConstructorProperties$2 = function (target, source, exceptions) {
+  var keys = ownKeys$4(source);
+  var defineProperty = definePropertyModule$2.f;
+  var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
+    if (!hasOwn$5(target, key) && !(exceptions && hasOwn$5(exceptions, key))) {
+      defineProperty(target, key, getOwnPropertyDescriptor(source, key));
+    }
+  }
+};
+
+var fails$g = fails$o;
+var isCallable$b = isCallable$l;
+
+var replacement = /#|\.prototype\./;
+
+var isForced$2 = function (feature, detection) {
+  var value = data[normalize(feature)];
+  return value == POLYFILL ? true
+    : value == NATIVE ? false
+    : isCallable$b(detection) ? fails$g(detection)
+    : !!detection;
+};
+
+var normalize = isForced$2.normalize = function (string) {
+  return String(string).replace(replacement, '.').toLowerCase();
+};
+
+var data = isForced$2.data = {};
+var NATIVE = isForced$2.NATIVE = 'N';
+var POLYFILL = isForced$2.POLYFILL = 'P';
+
+var isForced_1 = isForced$2;
+
+var global$9 = global$j;
+var getOwnPropertyDescriptor$3 = objectGetOwnPropertyDescriptor.f;
+var createNonEnumerableProperty$4 = createNonEnumerableProperty$6;
+var defineBuiltIn$5 = defineBuiltIn$6;
+var defineGlobalProperty = defineGlobalProperty$3;
+var copyConstructorProperties$1 = copyConstructorProperties$2;
+var isForced$1 = isForced_1;
+
+/*
+  options.target         - name of the target object
+  options.global         - target is the global object
+  options.stat           - export as static methods of target
+  options.proto          - export as prototype methods of target
+  options.real           - real prototype method for the `pure` version
+  options.forced         - export even if the native feature is available
+  options.bind           - bind methods to the target, required for the `pure` version
+  options.wrap           - wrap constructors to preventing global pollution, required for the `pure` version
+  options.unsafe         - use the simple assignment of property instead of delete + defineProperty
+  options.sham           - add a flag to not completely full polyfills
+  options.enumerable     - export as enumerable property
+  options.dontCallGetSet - prevent calling a getter on target
+  options.name           - the .name of the function if it does not match the key
+*/
+var _export = function (options, source) {
+  var TARGET = options.target;
+  var GLOBAL = options.global;
+  var STATIC = options.stat;
+  var FORCED, target, key, targetProperty, sourceProperty, descriptor;
+  if (GLOBAL) {
+    target = global$9;
+  } else if (STATIC) {
+    target = global$9[TARGET] || defineGlobalProperty(TARGET, {});
+  } else {
+    target = (global$9[TARGET] || {}).prototype;
+  }
+  if (target) for (key in source) {
+    sourceProperty = source[key];
+    if (options.dontCallGetSet) {
+      descriptor = getOwnPropertyDescriptor$3(target, key);
+      targetProperty = descriptor && descriptor.value;
+    } else targetProperty = target[key];
+    FORCED = isForced$1(GLOBAL ? key : TARGET + (STATIC ? '.' : '#') + key, options.forced);
+    // contained in target
+    if (!FORCED && targetProperty !== undefined) {
+      if (typeof sourceProperty == typeof targetProperty) continue;
+      copyConstructorProperties$1(sourceProperty, targetProperty);
+    }
+    // add a flag to not completely full polyfills
+    if (options.sham || (targetProperty && targetProperty.sham)) {
+      createNonEnumerableProperty$4(sourceProperty, 'sham', true);
+    }
+    defineBuiltIn$5(target, key, sourceProperty, options);
+  }
+};
+
+var aCallable$2 = aCallable$4;
+var toObject$4 = toObject$6;
+var IndexedObject$1 = indexedObject;
+var lengthOfArrayLike$2 = lengthOfArrayLike$4;
+
+var $TypeError$5 = TypeError;
 
 // `Array.prototype.{ reduce, reduceRight }` methods implementation
-var createMethod = function (IS_RIGHT) {
+var createMethod$2 = function (IS_RIGHT) {
   return function (that, callbackfn, argumentsLength, memo) {
-    aCallable$1(callbackfn);
-    var O = toObject$3(that);
-    var self = IndexedObject(O);
-    var length = lengthOfArrayLike$1(O);
+    aCallable$2(callbackfn);
+    var O = toObject$4(that);
+    var self = IndexedObject$1(O);
+    var length = lengthOfArrayLike$2(O);
     var index = IS_RIGHT ? length - 1 : 0;
     var i = IS_RIGHT ? -1 : 1;
     if (argumentsLength < 2) while (true) {
@@ -8119,7 +5585,7 @@ var createMethod = function (IS_RIGHT) {
       }
       index += i;
       if (IS_RIGHT ? index < 0 : length <= index) {
-        throw $TypeError$4('Reduce of empty array with no initial value');
+        throw $TypeError$5('Reduce of empty array with no initial value');
       }
     }
     for (;IS_RIGHT ? index >= 0 : length > index; index += i) if (index in self) {
@@ -8132,70 +5598,152 @@ var createMethod = function (IS_RIGHT) {
 var arrayReduce = {
   // `Array.prototype.reduce` method
   // https://tc39.es/ecma262/#sec-array.prototype.reduce
-  left: createMethod(false),
+  left: createMethod$2(false),
   // `Array.prototype.reduceRight` method
   // https://tc39.es/ecma262/#sec-array.prototype.reduceright
-  right: createMethod(true)
+  right: createMethod$2(true)
 };
 
-var fails$9 = fails$q;
+var fails$f = fails$o;
 
 var arrayMethodIsStrict$2 = function (METHOD_NAME, argument) {
   var method = [][METHOD_NAME];
-  return !!method && fails$9(function () {
+  return !!method && fails$f(function () {
     // eslint-disable-next-line no-useless-call -- required for testing
     method.call(null, argument || function () { return 1; }, 1);
   });
 };
 
-var classof = classofRaw$1;
-var global$5 = global$j;
+var classof$4 = classofRaw$2;
 
-var engineIsNode = classof(global$5.process) == 'process';
+var engineIsNode = typeof process != 'undefined' && classof$4(process) == 'process';
 
-var $$a = _export;
+var $$e = _export;
 var $reduce = arrayReduce.left;
 var arrayMethodIsStrict$1 = arrayMethodIsStrict$2;
 var CHROME_VERSION = engineV8Version;
 var IS_NODE = engineIsNode;
 
-var STRICT_METHOD$1 = arrayMethodIsStrict$1('reduce');
 // Chrome 80-82 has a critical bug
 // https://bugs.chromium.org/p/chromium/issues/detail?id=1049982
 var CHROME_BUG = !IS_NODE && CHROME_VERSION > 79 && CHROME_VERSION < 83;
+var FORCED$3 = CHROME_BUG || !arrayMethodIsStrict$1('reduce');
 
 // `Array.prototype.reduce` method
 // https://tc39.es/ecma262/#sec-array.prototype.reduce
-$$a({ target: 'Array', proto: true, forced: !STRICT_METHOD$1 || CHROME_BUG }, {
+$$e({ target: 'Array', proto: true, forced: FORCED$3 }, {
   reduce: function reduce(callbackfn /* , initialValue */) {
     var length = arguments.length;
     return $reduce(this, callbackfn, length, length > 1 ? arguments[1] : undefined);
   }
 });
 
+var wellKnownSymbol$d = wellKnownSymbol$f;
+
+var TO_STRING_TAG$3 = wellKnownSymbol$d('toStringTag');
+var test$1 = {};
+
+test$1[TO_STRING_TAG$3] = 'z';
+
+var toStringTagSupport = String(test$1) === '[object z]';
+
+var TO_STRING_TAG_SUPPORT = toStringTagSupport;
+var isCallable$a = isCallable$l;
+var classofRaw$1 = classofRaw$2;
+var wellKnownSymbol$c = wellKnownSymbol$f;
+
+var TO_STRING_TAG$2 = wellKnownSymbol$c('toStringTag');
+var $Object$1 = Object;
+
+// ES3 wrong here
+var CORRECT_ARGUMENTS = classofRaw$1(function () { return arguments; }()) == 'Arguments';
+
+// fallback for IE11 Script Access Denied error
+var tryGet = function (it, key) {
+  try {
+    return it[key];
+  } catch (error) { /* empty */ }
+};
+
+// getting tag from ES6+ `Object.prototype.toString`
+var classof$3 = TO_STRING_TAG_SUPPORT ? classofRaw$1 : function (it) {
+  var O, tag, result;
+  return it === undefined ? 'Undefined' : it === null ? 'Null'
+    // @@toStringTag case
+    : typeof (tag = tryGet(O = $Object$1(it), TO_STRING_TAG$2)) == 'string' ? tag
+    // builtinTag case
+    : CORRECT_ARGUMENTS ? classofRaw$1(O)
+    // ES3 arguments fallback
+    : (result = classofRaw$1(O)) == 'Object' && isCallable$a(O.callee) ? 'Arguments' : result;
+};
+
+var classof$2 = classof$3;
+
+var $String$1 = String;
+
+var toString$f = function (argument) {
+  if (classof$2(argument) === 'Symbol') throw TypeError('Cannot convert a Symbol value to a string');
+  return $String$1(argument);
+};
+
+// a string of all valid unicode whitespaces
+var whitespaces$4 = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u2002' +
+  '\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
+
+var uncurryThis$h = functionUncurryThis;
+var requireObjectCoercible$7 = requireObjectCoercible$a;
+var toString$e = toString$f;
+var whitespaces$3 = whitespaces$4;
+
+var replace$4 = uncurryThis$h(''.replace);
+var ltrim = RegExp('^[' + whitespaces$3 + ']+');
+var rtrim = RegExp('(^|[^' + whitespaces$3 + '])[' + whitespaces$3 + ']+$');
+
+// `String.prototype.{ trim, trimStart, trimEnd, trimLeft, trimRight }` methods implementation
+var createMethod$1 = function (TYPE) {
+  return function ($this) {
+    var string = toString$e(requireObjectCoercible$7($this));
+    if (TYPE & 1) string = replace$4(string, ltrim, '');
+    if (TYPE & 2) string = replace$4(string, rtrim, '$1');
+    return string;
+  };
+};
+
+var stringTrim = {
+  // `String.prototype.{ trimLeft, trimStart }` methods
+  // https://tc39.es/ecma262/#sec-string.prototype.trimstart
+  start: createMethod$1(1),
+  // `String.prototype.{ trimRight, trimEnd }` methods
+  // https://tc39.es/ecma262/#sec-string.prototype.trimend
+  end: createMethod$1(2),
+  // `String.prototype.trim` method
+  // https://tc39.es/ecma262/#sec-string.prototype.trim
+  trim: createMethod$1(3)
+};
+
 var PROPER_FUNCTION_NAME$2 = functionName.PROPER;
-var fails$8 = fails$q;
-var whitespaces$1 = whitespaces$4;
+var fails$e = fails$o;
+var whitespaces$2 = whitespaces$4;
 
 var non = '\u200B\u0085\u180E';
 
 // check that a method works with the correct list
 // of whitespaces and has a correct name
 var stringTrimForced = function (METHOD_NAME) {
-  return fails$8(function () {
-    return !!whitespaces$1[METHOD_NAME]()
+  return fails$e(function () {
+    return !!whitespaces$2[METHOD_NAME]()
       || non[METHOD_NAME]() !== non
-      || (PROPER_FUNCTION_NAME$2 && whitespaces$1[METHOD_NAME].name !== METHOD_NAME);
+      || (PROPER_FUNCTION_NAME$2 && whitespaces$2[METHOD_NAME].name !== METHOD_NAME);
   });
 };
 
-var $$9 = _export;
+var $$d = _export;
 var $trim = stringTrim.trim;
 var forcedStringTrimMethod = stringTrimForced;
 
 // `String.prototype.trim` method
 // https://tc39.es/ecma262/#sec-string.prototype.trim
-$$9({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
+$$d({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
   trim: function trim() {
     return $trim(this);
   }
@@ -8215,7 +5763,7 @@ function classNames(obj, className) {
   return (generatedClass + (className ? " ".concat(className) : "")).trim();
 }
 
-var _excluded$R = ["fontFace", "lightClassName", "darkClassName", "id", "className", "children", "style", "onMouseEnter", "onMouseLeave", "hoverClassName"];
+var _excluded$S = ["fontFace", "lightClassName", "darkClassName", "id", "className", "children", "style", "onMouseEnter", "onMouseLeave", "hoverClassName"];
 var Box = /*#__PURE__*/React__default.forwardRef(function (_ref, ref) {
   var _classNames;
   var fontFace = _ref.fontFace,
@@ -8228,7 +5776,7 @@ var Box = /*#__PURE__*/React__default.forwardRef(function (_ref, ref) {
     onMouseEnter = _ref.onMouseEnter,
     onMouseLeave = _ref.onMouseLeave,
     hoverClassName = _ref.hoverClassName,
-    props = _objectWithoutProperties(_ref, _excluded$R);
+    props = _objectWithoutProperties(_ref, _excluded$S);
   var _useState = useState("auto_generated_" + uniqueRandomString(20)),
     _useState2 = _slicedToArray$4(_useState, 2),
     uniqueID = _useState2[0],
@@ -8237,10 +5785,8 @@ var Box = /*#__PURE__*/React__default.forwardRef(function (_ref, ref) {
     _useState4 = _slicedToArray$4(_useState3, 2),
     isHovered = _useState4[0],
     setIsHovered = _useState4[1];
-  var _useContext = useContext(ThemeContext);
-    _useContext.theme;
-  var _useContext2 = useContext(DarkModeContext),
-    darkMode = _useContext2.darkMode;
+  var _useContext = useContext(DarkModeContext),
+    darkMode = _useContext.darkMode;
   var mouseEntered = function mouseEntered(e) {
     setIsHovered(true);
     if (onMouseEnter && typeof onMouseEnter === "function") {
@@ -8274,13 +5820,13 @@ Box.propTypes = {
   hoverClassName: propTypes.exports.string
 };
 
-var _excluded$Q = ["className", "icon", "children", "smartColor"];
+var _excluded$R = ["className", "icon", "children", "smartColor"];
 var Icon = function Icon(_ref) {
   var className = _ref.className,
     icon = _ref.icon;
     _ref.children;
     var smartColor = _ref.smartColor,
-    props = _objectWithoutProperties(_ref, _excluded$Q);
+    props = _objectWithoutProperties(_ref, _excluded$R);
   var defaultViewBox = "0 0 24 24";
   var IconComponent = icon.component;
   var generatedClassName = classNames({
@@ -8310,7 +5856,7 @@ Icon.defaultProps = {
   height: "24px"
 };
 
-var _excluded$P = ["className", "scale", "uppercase", "center", "equalLineHeight", "fontWeight", "fontSize", "lineHeight"];
+var _excluded$Q = ["className", "scale", "uppercase", "center", "equalLineHeight", "fontWeight", "fontSize", "lineHeight"];
 var Text$1 = function Text(_ref) {
   var _props$is, _classNames;
   var className = _ref.className,
@@ -8321,7 +5867,7 @@ var Text$1 = function Text(_ref) {
     fontWeight = _ref.fontWeight,
     fontSize = _ref.fontSize,
     lineHeight = _ref.lineHeight,
-    props = _objectWithoutProperties(_ref, _excluded$P);
+    props = _objectWithoutProperties(_ref, _excluded$Q);
   var is = (_props$is = props.is) !== null && _props$is !== void 0 ? _props$is : "p";
   var generatedClass = classNames((_classNames = {}, _defineProperty$A(_classNames, scale, scale), _defineProperty$A(_classNames, "uppercase", uppercase), _defineProperty$A(_classNames, "equal-line-height", equalLineHeight), _defineProperty$A(_classNames, "ui-text", true), _defineProperty$A(_classNames, "center", center), _defineProperty$A(_classNames, "customFontWeight", fontWeight), _defineProperty$A(_classNames, "customFontSize", fontSize), _defineProperty$A(_classNames, "customLineHeight", lineHeight), _classNames), className);
   return /*#__PURE__*/React__default.createElement(Box, _extends$1({
@@ -9770,7 +7316,7 @@ CameraComponent.defaultProps = {
   strokeLineJoin: "round"
 };
 
-var _excluded$O = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
+var _excluded$P = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
 var CardComponent = function CardComponent(_ref) {
   var fill = _ref.fill,
     stroke = _ref.stroke,
@@ -9778,7 +7324,7 @@ var CardComponent = function CardComponent(_ref) {
     strokeWidth = _ref.strokeWidth,
     strokeLineCap = _ref.strokeLineCap,
     strokeLineJoin = _ref.strokeLineJoin;
-    _objectWithoutProperties(_ref, _excluded$O);
+    _objectWithoutProperties(_ref, _excluded$P);
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M21 12.7707V15.9881C21 16.5216 20.7893 17.0333 20.4143 17.4106C20.0392 17.7879 19.5306 18 19.0001 18H4.99995C4.46951 18 3.96087 17.7879 3.5858 17.4106C3.21073 17.0333 3.00006 16.5216 3.00006 15.9881V7.01176C3.00006 6.47819 3.21073 5.96653 3.5858 5.58924C3.96087 5.21195 4.46951 5.00003 4.99995 5.00003H19.0001C19.5306 5.00003 20.0392 5.21195 20.4143 5.58924C20.7893 5.96653 21 6.47819 21 7.01176V9.84096",
     fill: fill || 'white'
@@ -12838,7 +10384,7 @@ GitlabComponent.defaultProps = {
   clipRule: "evenodd"
 };
 
-var _excluded$N = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin", "fillRule", "clipRule"];
+var _excluded$O = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin", "fillRule", "clipRule"];
 var GlobeComponent = function GlobeComponent(_ref) {
   var fill = _ref.fill;
     _ref.stroke;
@@ -12848,7 +10394,7 @@ var GlobeComponent = function GlobeComponent(_ref) {
     _ref.strokeLineJoin;
     var fillRule = _ref.fillRule,
     clipRule = _ref.clipRule;
-    _objectWithoutProperties(_ref, _excluded$N);
+    _objectWithoutProperties(_ref, _excluded$O);
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     fillRule: fillRule,
     clipRule: clipRule,
@@ -15784,7 +13330,7 @@ ShieldComponent$1.defaultProps = {
   strokeLineJoin: "round"
 };
 
-var _excluded$M = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
+var _excluded$N = ["fill", "stroke", "smartColor", "strokeWidth", "strokeLineCap", "strokeLineJoin"];
 var ShieldComponent = function ShieldComponent(_ref) {
   _ref.fill;
     var stroke = _ref.stroke,
@@ -15792,7 +13338,7 @@ var ShieldComponent = function ShieldComponent(_ref) {
     strokeWidth = _ref.strokeWidth,
     strokeLineCap = _ref.strokeLineCap,
     strokeLineJoin = _ref.strokeLineJoin;
-    _objectWithoutProperties(_ref, _excluded$M);
+    _objectWithoutProperties(_ref, _excluded$N);
   return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("path", {
     d: "M15.4601 9.38818L11.3591 13.4892L9.09308 11.4232M9.45518 4.021L12.13 3L19.2601 5.72021V11.2783C19.2598 13.4293 18.566 15.5226 17.2816 17.248C15.9972 18.9735 14.1905 20.2386 12.13 20.856C10.0695 20.2386 8.26294 18.9725 6.97852 17.2471C5.6941 15.5217 5.00028 13.4284 5 11.2774V5.71926L6.97412 4.96633",
     stroke: smartColor || stroke,
@@ -17167,7 +14713,7 @@ WithdrawComponent.defaultProps = {
   strokeLineJoin: "round"
 };
 
-var _excluded$L = ["title", "leftIconActive", "leftIconInactive", "rightIcon", "children", "className"];
+var _excluded$M = ["title", "leftIconActive", "leftIconInactive", "rightIcon", "children", "className"];
 var Accordion = function Accordion(_ref) {
   var title = _ref.title,
     leftIconActive = _ref.leftIconActive,
@@ -17175,7 +14721,7 @@ var Accordion = function Accordion(_ref) {
     rightIcon = _ref.rightIcon,
     children = _ref.children,
     className = _ref.className;
-    _objectWithoutProperties(_ref, _excluded$L);
+    _objectWithoutProperties(_ref, _excluded$M);
   var _useState = useState(false),
     _useState2 = _slicedToArray$4(_useState, 2),
     visible = _useState2[0],
@@ -17232,28 +14778,37 @@ Accordion.propTypes = {
   rightIcon: propTypes.exports.element
 };
 
-var $$8 = _export;
-var DESCRIPTORS$3 = descriptors;
-var global$4 = global$j;
-var uncurryThis$a = functionUncurryThis;
+var makeBuiltIn = makeBuiltIn$3.exports;
+var defineProperty$6 = objectDefineProperty;
+
+var defineBuiltInAccessor$2 = function (target, name, descriptor) {
+  if (descriptor.get) makeBuiltIn(descriptor.get, name, { getter: true });
+  if (descriptor.set) makeBuiltIn(descriptor.set, name, { setter: true });
+  return defineProperty$6.f(target, name, descriptor);
+};
+
+var $$c = _export;
+var DESCRIPTORS$5 = descriptors;
+var global$8 = global$j;
+var uncurryThis$g = functionUncurryThis;
 var hasOwn$4 = hasOwnProperty_1;
-var isCallable$7 = isCallable$m;
+var isCallable$9 = isCallable$l;
 var isPrototypeOf$2 = objectIsPrototypeOf;
-var toString$9 = toString$f;
-var defineProperty$5 = objectDefineProperty.f;
+var toString$d = toString$f;
+var defineBuiltInAccessor$1 = defineBuiltInAccessor$2;
 var copyConstructorProperties = copyConstructorProperties$2;
 
-var NativeSymbol = global$4.Symbol;
+var NativeSymbol = global$8.Symbol;
 var SymbolPrototype = NativeSymbol && NativeSymbol.prototype;
 
-if (DESCRIPTORS$3 && isCallable$7(NativeSymbol) && (!('description' in SymbolPrototype) ||
+if (DESCRIPTORS$5 && isCallable$9(NativeSymbol) && (!('description' in SymbolPrototype) ||
   // Safari 12 bug
   NativeSymbol().description !== undefined
 )) {
   var EmptyStringDescriptionStore = {};
   // wrap Symbol constructor for correct work with undefined description
   var SymbolWrapper = function Symbol() {
-    var description = arguments.length < 1 || arguments[0] === undefined ? undefined : toString$9(arguments[0]);
+    var description = arguments.length < 1 || arguments[0] === undefined ? undefined : toString$d(arguments[0]);
     var result = isPrototypeOf$2(SymbolPrototype, this)
       ? new NativeSymbol(description)
       // in Edge 13, String(Symbol(undefined)) === 'Symbol(undefined)'
@@ -17267,29 +14822,1763 @@ if (DESCRIPTORS$3 && isCallable$7(NativeSymbol) && (!('description' in SymbolPro
   SymbolPrototype.constructor = SymbolWrapper;
 
   var NATIVE_SYMBOL = String(NativeSymbol('test')) == 'Symbol(test)';
-  var symbolToString = uncurryThis$a(SymbolPrototype.toString);
-  var symbolValueOf = uncurryThis$a(SymbolPrototype.valueOf);
+  var thisSymbolValue = uncurryThis$g(SymbolPrototype.valueOf);
+  var symbolDescriptiveString = uncurryThis$g(SymbolPrototype.toString);
   var regexp = /^Symbol\((.*)\)[^)]+$/;
-  var replace$2 = uncurryThis$a(''.replace);
-  var stringSlice$5 = uncurryThis$a(''.slice);
+  var replace$3 = uncurryThis$g(''.replace);
+  var stringSlice$7 = uncurryThis$g(''.slice);
 
-  defineProperty$5(SymbolPrototype, 'description', {
+  defineBuiltInAccessor$1(SymbolPrototype, 'description', {
     configurable: true,
     get: function description() {
-      var symbol = symbolValueOf(this);
-      var string = symbolToString(symbol);
+      var symbol = thisSymbolValue(this);
       if (hasOwn$4(EmptyStringDescriptionStore, symbol)) return '';
-      var desc = NATIVE_SYMBOL ? stringSlice$5(string, 7, -1) : replace$2(string, regexp, '$1');
+      var string = symbolDescriptiveString(symbol);
+      var desc = NATIVE_SYMBOL ? stringSlice$7(string, 7, -1) : replace$3(string, regexp, '$1');
       return desc === '' ? undefined : desc;
     }
   });
 
-  $$8({ global: true, constructor: true, forced: true }, {
+  $$c({ global: true, constructor: true, forced: true }, {
     Symbol: SymbolWrapper
   });
 }
 
-var _excluded$K = ["is", "leftIcon", "rightIcon", "dropDown", "disabled", "size", "className", "colorScheme", "responsive", "text", "loading", "loadingText", "pill", "smartColor", "smartHoverColor"];
+var tinycolor$1 = {exports: {}};
+
+(function (module) {
+	// TinyColor v1.4.2
+	// https://github.com/bgrins/TinyColor
+	// Brian Grinstead, MIT License
+
+	(function(Math) {
+
+	var trimLeft = /^\s+/,
+	    trimRight = /\s+$/,
+	    tinyCounter = 0,
+	    mathRound = Math.round,
+	    mathMin = Math.min,
+	    mathMax = Math.max,
+	    mathRandom = Math.random;
+
+	function tinycolor (color, opts) {
+
+	    color = (color) ? color : '';
+	    opts = opts || { };
+
+	    // If input is already a tinycolor, return itself
+	    if (color instanceof tinycolor) {
+	       return color;
+	    }
+	    // If we are called as a function, call using new instead
+	    if (!(this instanceof tinycolor)) {
+	        return new tinycolor(color, opts);
+	    }
+
+	    var rgb = inputToRGB(color);
+	    this._originalInput = color,
+	    this._r = rgb.r,
+	    this._g = rgb.g,
+	    this._b = rgb.b,
+	    this._a = rgb.a,
+	    this._roundA = mathRound(100*this._a) / 100,
+	    this._format = opts.format || rgb.format;
+	    this._gradientType = opts.gradientType;
+
+	    // Don't let the range of [0,255] come back in [0,1].
+	    // Potentially lose a little bit of precision here, but will fix issues where
+	    // .5 gets interpreted as half of the total, instead of half of 1
+	    // If it was supposed to be 128, this was already taken care of by `inputToRgb`
+	    if (this._r < 1) { this._r = mathRound(this._r); }
+	    if (this._g < 1) { this._g = mathRound(this._g); }
+	    if (this._b < 1) { this._b = mathRound(this._b); }
+
+	    this._ok = rgb.ok;
+	    this._tc_id = tinyCounter++;
+	}
+
+	tinycolor.prototype = {
+	    isDark: function() {
+	        return this.getBrightness() < 128;
+	    },
+	    isLight: function() {
+	        return !this.isDark();
+	    },
+	    isValid: function() {
+	        return this._ok;
+	    },
+	    getOriginalInput: function() {
+	      return this._originalInput;
+	    },
+	    getFormat: function() {
+	        return this._format;
+	    },
+	    getAlpha: function() {
+	        return this._a;
+	    },
+	    getBrightness: function() {
+	        //http://www.w3.org/TR/AERT#color-contrast
+	        var rgb = this.toRgb();
+	        return (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000;
+	    },
+	    getLuminance: function() {
+	        //http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
+	        var rgb = this.toRgb();
+	        var RsRGB, GsRGB, BsRGB, R, G, B;
+	        RsRGB = rgb.r/255;
+	        GsRGB = rgb.g/255;
+	        BsRGB = rgb.b/255;
+
+	        if (RsRGB <= 0.03928) {R = RsRGB / 12.92;} else {R = Math.pow(((RsRGB + 0.055) / 1.055), 2.4);}
+	        if (GsRGB <= 0.03928) {G = GsRGB / 12.92;} else {G = Math.pow(((GsRGB + 0.055) / 1.055), 2.4);}
+	        if (BsRGB <= 0.03928) {B = BsRGB / 12.92;} else {B = Math.pow(((BsRGB + 0.055) / 1.055), 2.4);}
+	        return (0.2126 * R) + (0.7152 * G) + (0.0722 * B);
+	    },
+	    setAlpha: function(value) {
+	        this._a = boundAlpha(value);
+	        this._roundA = mathRound(100*this._a) / 100;
+	        return this;
+	    },
+	    toHsv: function() {
+	        var hsv = rgbToHsv(this._r, this._g, this._b);
+	        return { h: hsv.h * 360, s: hsv.s, v: hsv.v, a: this._a };
+	    },
+	    toHsvString: function() {
+	        var hsv = rgbToHsv(this._r, this._g, this._b);
+	        var h = mathRound(hsv.h * 360), s = mathRound(hsv.s * 100), v = mathRound(hsv.v * 100);
+	        return (this._a == 1) ?
+	          "hsv("  + h + ", " + s + "%, " + v + "%)" :
+	          "hsva(" + h + ", " + s + "%, " + v + "%, "+ this._roundA + ")";
+	    },
+	    toHsl: function() {
+	        var hsl = rgbToHsl(this._r, this._g, this._b);
+	        return { h: hsl.h * 360, s: hsl.s, l: hsl.l, a: this._a };
+	    },
+	    toHslString: function() {
+	        var hsl = rgbToHsl(this._r, this._g, this._b);
+	        var h = mathRound(hsl.h * 360), s = mathRound(hsl.s * 100), l = mathRound(hsl.l * 100);
+	        return (this._a == 1) ?
+	          "hsl("  + h + ", " + s + "%, " + l + "%)" :
+	          "hsla(" + h + ", " + s + "%, " + l + "%, "+ this._roundA + ")";
+	    },
+	    toHex: function(allow3Char) {
+	        return rgbToHex(this._r, this._g, this._b, allow3Char);
+	    },
+	    toHexString: function(allow3Char) {
+	        return '#' + this.toHex(allow3Char);
+	    },
+	    toHex8: function(allow4Char) {
+	        return rgbaToHex(this._r, this._g, this._b, this._a, allow4Char);
+	    },
+	    toHex8String: function(allow4Char) {
+	        return '#' + this.toHex8(allow4Char);
+	    },
+	    toRgb: function() {
+	        return { r: mathRound(this._r), g: mathRound(this._g), b: mathRound(this._b), a: this._a };
+	    },
+	    toRgbString: function() {
+	        return (this._a == 1) ?
+	          "rgb("  + mathRound(this._r) + ", " + mathRound(this._g) + ", " + mathRound(this._b) + ")" :
+	          "rgba(" + mathRound(this._r) + ", " + mathRound(this._g) + ", " + mathRound(this._b) + ", " + this._roundA + ")";
+	    },
+	    toPercentageRgb: function() {
+	        return { r: mathRound(bound01(this._r, 255) * 100) + "%", g: mathRound(bound01(this._g, 255) * 100) + "%", b: mathRound(bound01(this._b, 255) * 100) + "%", a: this._a };
+	    },
+	    toPercentageRgbString: function() {
+	        return (this._a == 1) ?
+	          "rgb("  + mathRound(bound01(this._r, 255) * 100) + "%, " + mathRound(bound01(this._g, 255) * 100) + "%, " + mathRound(bound01(this._b, 255) * 100) + "%)" :
+	          "rgba(" + mathRound(bound01(this._r, 255) * 100) + "%, " + mathRound(bound01(this._g, 255) * 100) + "%, " + mathRound(bound01(this._b, 255) * 100) + "%, " + this._roundA + ")";
+	    },
+	    toName: function() {
+	        if (this._a === 0) {
+	            return "transparent";
+	        }
+
+	        if (this._a < 1) {
+	            return false;
+	        }
+
+	        return hexNames[rgbToHex(this._r, this._g, this._b, true)] || false;
+	    },
+	    toFilter: function(secondColor) {
+	        var hex8String = '#' + rgbaToArgbHex(this._r, this._g, this._b, this._a);
+	        var secondHex8String = hex8String;
+	        var gradientType = this._gradientType ? "GradientType = 1, " : "";
+
+	        if (secondColor) {
+	            var s = tinycolor(secondColor);
+	            secondHex8String = '#' + rgbaToArgbHex(s._r, s._g, s._b, s._a);
+	        }
+
+	        return "progid:DXImageTransform.Microsoft.gradient("+gradientType+"startColorstr="+hex8String+",endColorstr="+secondHex8String+")";
+	    },
+	    toString: function(format) {
+	        var formatSet = !!format;
+	        format = format || this._format;
+
+	        var formattedString = false;
+	        var hasAlpha = this._a < 1 && this._a >= 0;
+	        var needsAlphaFormat = !formatSet && hasAlpha && (format === "hex" || format === "hex6" || format === "hex3" || format === "hex4" || format === "hex8" || format === "name");
+
+	        if (needsAlphaFormat) {
+	            // Special case for "transparent", all other non-alpha formats
+	            // will return rgba when there is transparency.
+	            if (format === "name" && this._a === 0) {
+	                return this.toName();
+	            }
+	            return this.toRgbString();
+	        }
+	        if (format === "rgb") {
+	            formattedString = this.toRgbString();
+	        }
+	        if (format === "prgb") {
+	            formattedString = this.toPercentageRgbString();
+	        }
+	        if (format === "hex" || format === "hex6") {
+	            formattedString = this.toHexString();
+	        }
+	        if (format === "hex3") {
+	            formattedString = this.toHexString(true);
+	        }
+	        if (format === "hex4") {
+	            formattedString = this.toHex8String(true);
+	        }
+	        if (format === "hex8") {
+	            formattedString = this.toHex8String();
+	        }
+	        if (format === "name") {
+	            formattedString = this.toName();
+	        }
+	        if (format === "hsl") {
+	            formattedString = this.toHslString();
+	        }
+	        if (format === "hsv") {
+	            formattedString = this.toHsvString();
+	        }
+
+	        return formattedString || this.toHexString();
+	    },
+	    clone: function() {
+	        return tinycolor(this.toString());
+	    },
+
+	    _applyModification: function(fn, args) {
+	        var color = fn.apply(null, [this].concat([].slice.call(args)));
+	        this._r = color._r;
+	        this._g = color._g;
+	        this._b = color._b;
+	        this.setAlpha(color._a);
+	        return this;
+	    },
+	    lighten: function() {
+	        return this._applyModification(lighten, arguments);
+	    },
+	    brighten: function() {
+	        return this._applyModification(brighten, arguments);
+	    },
+	    darken: function() {
+	        return this._applyModification(darken, arguments);
+	    },
+	    desaturate: function() {
+	        return this._applyModification(desaturate, arguments);
+	    },
+	    saturate: function() {
+	        return this._applyModification(saturate, arguments);
+	    },
+	    greyscale: function() {
+	        return this._applyModification(greyscale, arguments);
+	    },
+	    spin: function() {
+	        return this._applyModification(spin, arguments);
+	    },
+
+	    _applyCombination: function(fn, args) {
+	        return fn.apply(null, [this].concat([].slice.call(args)));
+	    },
+	    analogous: function() {
+	        return this._applyCombination(analogous, arguments);
+	    },
+	    complement: function() {
+	        return this._applyCombination(complement, arguments);
+	    },
+	    monochromatic: function() {
+	        return this._applyCombination(monochromatic, arguments);
+	    },
+	    splitcomplement: function() {
+	        return this._applyCombination(splitcomplement, arguments);
+	    },
+	    triad: function() {
+	        return this._applyCombination(triad, arguments);
+	    },
+	    tetrad: function() {
+	        return this._applyCombination(tetrad, arguments);
+	    }
+	};
+
+	// If input is an object, force 1 into "1.0" to handle ratios properly
+	// String input requires "1.0" as input, so 1 will be treated as 1
+	tinycolor.fromRatio = function(color, opts) {
+	    if (typeof color == "object") {
+	        var newColor = {};
+	        for (var i in color) {
+	            if (color.hasOwnProperty(i)) {
+	                if (i === "a") {
+	                    newColor[i] = color[i];
+	                }
+	                else {
+	                    newColor[i] = convertToPercentage(color[i]);
+	                }
+	            }
+	        }
+	        color = newColor;
+	    }
+
+	    return tinycolor(color, opts);
+	};
+
+	// Given a string or object, convert that input to RGB
+	// Possible string inputs:
+	//
+	//     "red"
+	//     "#f00" or "f00"
+	//     "#ff0000" or "ff0000"
+	//     "#ff000000" or "ff000000"
+	//     "rgb 255 0 0" or "rgb (255, 0, 0)"
+	//     "rgb 1.0 0 0" or "rgb (1, 0, 0)"
+	//     "rgba (255, 0, 0, 1)" or "rgba 255, 0, 0, 1"
+	//     "rgba (1.0, 0, 0, 1)" or "rgba 1.0, 0, 0, 1"
+	//     "hsl(0, 100%, 50%)" or "hsl 0 100% 50%"
+	//     "hsla(0, 100%, 50%, 1)" or "hsla 0 100% 50%, 1"
+	//     "hsv(0, 100%, 100%)" or "hsv 0 100% 100%"
+	//
+	function inputToRGB(color) {
+
+	    var rgb = { r: 0, g: 0, b: 0 };
+	    var a = 1;
+	    var s = null;
+	    var v = null;
+	    var l = null;
+	    var ok = false;
+	    var format = false;
+
+	    if (typeof color == "string") {
+	        color = stringInputToObject(color);
+	    }
+
+	    if (typeof color == "object") {
+	        if (isValidCSSUnit(color.r) && isValidCSSUnit(color.g) && isValidCSSUnit(color.b)) {
+	            rgb = rgbToRgb(color.r, color.g, color.b);
+	            ok = true;
+	            format = String(color.r).substr(-1) === "%" ? "prgb" : "rgb";
+	        }
+	        else if (isValidCSSUnit(color.h) && isValidCSSUnit(color.s) && isValidCSSUnit(color.v)) {
+	            s = convertToPercentage(color.s);
+	            v = convertToPercentage(color.v);
+	            rgb = hsvToRgb(color.h, s, v);
+	            ok = true;
+	            format = "hsv";
+	        }
+	        else if (isValidCSSUnit(color.h) && isValidCSSUnit(color.s) && isValidCSSUnit(color.l)) {
+	            s = convertToPercentage(color.s);
+	            l = convertToPercentage(color.l);
+	            rgb = hslToRgb(color.h, s, l);
+	            ok = true;
+	            format = "hsl";
+	        }
+
+	        if (color.hasOwnProperty("a")) {
+	            a = color.a;
+	        }
+	    }
+
+	    a = boundAlpha(a);
+
+	    return {
+	        ok: ok,
+	        format: color.format || format,
+	        r: mathMin(255, mathMax(rgb.r, 0)),
+	        g: mathMin(255, mathMax(rgb.g, 0)),
+	        b: mathMin(255, mathMax(rgb.b, 0)),
+	        a: a
+	    };
+	}
+
+
+	// Conversion Functions
+	// --------------------
+
+	// `rgbToHsl`, `rgbToHsv`, `hslToRgb`, `hsvToRgb` modified from:
+	// <http://mjijackson.com/2008/02/rgb-to-hsl-and-rgb-to-hsv-color-model-conversion-algorithms-in-javascript>
+
+	// `rgbToRgb`
+	// Handle bounds / percentage checking to conform to CSS color spec
+	// <http://www.w3.org/TR/css3-color/>
+	// *Assumes:* r, g, b in [0, 255] or [0, 1]
+	// *Returns:* { r, g, b } in [0, 255]
+	function rgbToRgb(r, g, b){
+	    return {
+	        r: bound01(r, 255) * 255,
+	        g: bound01(g, 255) * 255,
+	        b: bound01(b, 255) * 255
+	    };
+	}
+
+	// `rgbToHsl`
+	// Converts an RGB color value to HSL.
+	// *Assumes:* r, g, and b are contained in [0, 255] or [0, 1]
+	// *Returns:* { h, s, l } in [0,1]
+	function rgbToHsl(r, g, b) {
+
+	    r = bound01(r, 255);
+	    g = bound01(g, 255);
+	    b = bound01(b, 255);
+
+	    var max = mathMax(r, g, b), min = mathMin(r, g, b);
+	    var h, s, l = (max + min) / 2;
+
+	    if(max == min) {
+	        h = s = 0; // achromatic
+	    }
+	    else {
+	        var d = max - min;
+	        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+	        switch(max) {
+	            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+	            case g: h = (b - r) / d + 2; break;
+	            case b: h = (r - g) / d + 4; break;
+	        }
+
+	        h /= 6;
+	    }
+
+	    return { h: h, s: s, l: l };
+	}
+
+	// `hslToRgb`
+	// Converts an HSL color value to RGB.
+	// *Assumes:* h is contained in [0, 1] or [0, 360] and s and l are contained [0, 1] or [0, 100]
+	// *Returns:* { r, g, b } in the set [0, 255]
+	function hslToRgb(h, s, l) {
+	    var r, g, b;
+
+	    h = bound01(h, 360);
+	    s = bound01(s, 100);
+	    l = bound01(l, 100);
+
+	    function hue2rgb(p, q, t) {
+	        if(t < 0) t += 1;
+	        if(t > 1) t -= 1;
+	        if(t < 1/6) return p + (q - p) * 6 * t;
+	        if(t < 1/2) return q;
+	        if(t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+	        return p;
+	    }
+
+	    if(s === 0) {
+	        r = g = b = l; // achromatic
+	    }
+	    else {
+	        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+	        var p = 2 * l - q;
+	        r = hue2rgb(p, q, h + 1/3);
+	        g = hue2rgb(p, q, h);
+	        b = hue2rgb(p, q, h - 1/3);
+	    }
+
+	    return { r: r * 255, g: g * 255, b: b * 255 };
+	}
+
+	// `rgbToHsv`
+	// Converts an RGB color value to HSV
+	// *Assumes:* r, g, and b are contained in the set [0, 255] or [0, 1]
+	// *Returns:* { h, s, v } in [0,1]
+	function rgbToHsv(r, g, b) {
+
+	    r = bound01(r, 255);
+	    g = bound01(g, 255);
+	    b = bound01(b, 255);
+
+	    var max = mathMax(r, g, b), min = mathMin(r, g, b);
+	    var h, s, v = max;
+
+	    var d = max - min;
+	    s = max === 0 ? 0 : d / max;
+
+	    if(max == min) {
+	        h = 0; // achromatic
+	    }
+	    else {
+	        switch(max) {
+	            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+	            case g: h = (b - r) / d + 2; break;
+	            case b: h = (r - g) / d + 4; break;
+	        }
+	        h /= 6;
+	    }
+	    return { h: h, s: s, v: v };
+	}
+
+	// `hsvToRgb`
+	// Converts an HSV color value to RGB.
+	// *Assumes:* h is contained in [0, 1] or [0, 360] and s and v are contained in [0, 1] or [0, 100]
+	// *Returns:* { r, g, b } in the set [0, 255]
+	 function hsvToRgb(h, s, v) {
+
+	    h = bound01(h, 360) * 6;
+	    s = bound01(s, 100);
+	    v = bound01(v, 100);
+
+	    var i = Math.floor(h),
+	        f = h - i,
+	        p = v * (1 - s),
+	        q = v * (1 - f * s),
+	        t = v * (1 - (1 - f) * s),
+	        mod = i % 6,
+	        r = [v, q, p, p, t, v][mod],
+	        g = [t, v, v, q, p, p][mod],
+	        b = [p, p, t, v, v, q][mod];
+
+	    return { r: r * 255, g: g * 255, b: b * 255 };
+	}
+
+	// `rgbToHex`
+	// Converts an RGB color to hex
+	// Assumes r, g, and b are contained in the set [0, 255]
+	// Returns a 3 or 6 character hex
+	function rgbToHex(r, g, b, allow3Char) {
+
+	    var hex = [
+	        pad2(mathRound(r).toString(16)),
+	        pad2(mathRound(g).toString(16)),
+	        pad2(mathRound(b).toString(16))
+	    ];
+
+	    // Return a 3 character hex if possible
+	    if (allow3Char && hex[0].charAt(0) == hex[0].charAt(1) && hex[1].charAt(0) == hex[1].charAt(1) && hex[2].charAt(0) == hex[2].charAt(1)) {
+	        return hex[0].charAt(0) + hex[1].charAt(0) + hex[2].charAt(0);
+	    }
+
+	    return hex.join("");
+	}
+
+	// `rgbaToHex`
+	// Converts an RGBA color plus alpha transparency to hex
+	// Assumes r, g, b are contained in the set [0, 255] and
+	// a in [0, 1]. Returns a 4 or 8 character rgba hex
+	function rgbaToHex(r, g, b, a, allow4Char) {
+
+	    var hex = [
+	        pad2(mathRound(r).toString(16)),
+	        pad2(mathRound(g).toString(16)),
+	        pad2(mathRound(b).toString(16)),
+	        pad2(convertDecimalToHex(a))
+	    ];
+
+	    // Return a 4 character hex if possible
+	    if (allow4Char && hex[0].charAt(0) == hex[0].charAt(1) && hex[1].charAt(0) == hex[1].charAt(1) && hex[2].charAt(0) == hex[2].charAt(1) && hex[3].charAt(0) == hex[3].charAt(1)) {
+	        return hex[0].charAt(0) + hex[1].charAt(0) + hex[2].charAt(0) + hex[3].charAt(0);
+	    }
+
+	    return hex.join("");
+	}
+
+	// `rgbaToArgbHex`
+	// Converts an RGBA color to an ARGB Hex8 string
+	// Rarely used, but required for "toFilter()"
+	function rgbaToArgbHex(r, g, b, a) {
+
+	    var hex = [
+	        pad2(convertDecimalToHex(a)),
+	        pad2(mathRound(r).toString(16)),
+	        pad2(mathRound(g).toString(16)),
+	        pad2(mathRound(b).toString(16))
+	    ];
+
+	    return hex.join("");
+	}
+
+	// `equals`
+	// Can be called with any tinycolor input
+	tinycolor.equals = function (color1, color2) {
+	    if (!color1 || !color2) { return false; }
+	    return tinycolor(color1).toRgbString() == tinycolor(color2).toRgbString();
+	};
+
+	tinycolor.random = function() {
+	    return tinycolor.fromRatio({
+	        r: mathRandom(),
+	        g: mathRandom(),
+	        b: mathRandom()
+	    });
+	};
+
+
+	// Modification Functions
+	// ----------------------
+	// Thanks to less.js for some of the basics here
+	// <https://github.com/cloudhead/less.js/blob/master/lib/less/functions.js>
+
+	function desaturate(color, amount) {
+	    amount = (amount === 0) ? 0 : (amount || 10);
+	    var hsl = tinycolor(color).toHsl();
+	    hsl.s -= amount / 100;
+	    hsl.s = clamp01(hsl.s);
+	    return tinycolor(hsl);
+	}
+
+	function saturate(color, amount) {
+	    amount = (amount === 0) ? 0 : (amount || 10);
+	    var hsl = tinycolor(color).toHsl();
+	    hsl.s += amount / 100;
+	    hsl.s = clamp01(hsl.s);
+	    return tinycolor(hsl);
+	}
+
+	function greyscale(color) {
+	    return tinycolor(color).desaturate(100);
+	}
+
+	function lighten (color, amount) {
+	    amount = (amount === 0) ? 0 : (amount || 10);
+	    var hsl = tinycolor(color).toHsl();
+	    hsl.l += amount / 100;
+	    hsl.l = clamp01(hsl.l);
+	    return tinycolor(hsl);
+	}
+
+	function brighten(color, amount) {
+	    amount = (amount === 0) ? 0 : (amount || 10);
+	    var rgb = tinycolor(color).toRgb();
+	    rgb.r = mathMax(0, mathMin(255, rgb.r - mathRound(255 * - (amount / 100))));
+	    rgb.g = mathMax(0, mathMin(255, rgb.g - mathRound(255 * - (amount / 100))));
+	    rgb.b = mathMax(0, mathMin(255, rgb.b - mathRound(255 * - (amount / 100))));
+	    return tinycolor(rgb);
+	}
+
+	function darken (color, amount) {
+	    amount = (amount === 0) ? 0 : (amount || 10);
+	    var hsl = tinycolor(color).toHsl();
+	    hsl.l -= amount / 100;
+	    hsl.l = clamp01(hsl.l);
+	    return tinycolor(hsl);
+	}
+
+	// Spin takes a positive or negative amount within [-360, 360] indicating the change of hue.
+	// Values outside of this range will be wrapped into this range.
+	function spin(color, amount) {
+	    var hsl = tinycolor(color).toHsl();
+	    var hue = (hsl.h + amount) % 360;
+	    hsl.h = hue < 0 ? 360 + hue : hue;
+	    return tinycolor(hsl);
+	}
+
+	// Combination Functions
+	// ---------------------
+	// Thanks to jQuery xColor for some of the ideas behind these
+	// <https://github.com/infusion/jQuery-xcolor/blob/master/jquery.xcolor.js>
+
+	function complement(color) {
+	    var hsl = tinycolor(color).toHsl();
+	    hsl.h = (hsl.h + 180) % 360;
+	    return tinycolor(hsl);
+	}
+
+	function triad(color) {
+	    var hsl = tinycolor(color).toHsl();
+	    var h = hsl.h;
+	    return [
+	        tinycolor(color),
+	        tinycolor({ h: (h + 120) % 360, s: hsl.s, l: hsl.l }),
+	        tinycolor({ h: (h + 240) % 360, s: hsl.s, l: hsl.l })
+	    ];
+	}
+
+	function tetrad(color) {
+	    var hsl = tinycolor(color).toHsl();
+	    var h = hsl.h;
+	    return [
+	        tinycolor(color),
+	        tinycolor({ h: (h + 90) % 360, s: hsl.s, l: hsl.l }),
+	        tinycolor({ h: (h + 180) % 360, s: hsl.s, l: hsl.l }),
+	        tinycolor({ h: (h + 270) % 360, s: hsl.s, l: hsl.l })
+	    ];
+	}
+
+	function splitcomplement(color) {
+	    var hsl = tinycolor(color).toHsl();
+	    var h = hsl.h;
+	    return [
+	        tinycolor(color),
+	        tinycolor({ h: (h + 72) % 360, s: hsl.s, l: hsl.l}),
+	        tinycolor({ h: (h + 216) % 360, s: hsl.s, l: hsl.l})
+	    ];
+	}
+
+	function analogous(color, results, slices) {
+	    results = results || 6;
+	    slices = slices || 30;
+
+	    var hsl = tinycolor(color).toHsl();
+	    var part = 360 / slices;
+	    var ret = [tinycolor(color)];
+
+	    for (hsl.h = ((hsl.h - (part * results >> 1)) + 720) % 360; --results; ) {
+	        hsl.h = (hsl.h + part) % 360;
+	        ret.push(tinycolor(hsl));
+	    }
+	    return ret;
+	}
+
+	function monochromatic(color, results) {
+	    results = results || 6;
+	    var hsv = tinycolor(color).toHsv();
+	    var h = hsv.h, s = hsv.s, v = hsv.v;
+	    var ret = [];
+	    var modification = 1 / results;
+
+	    while (results--) {
+	        ret.push(tinycolor({ h: h, s: s, v: v}));
+	        v = (v + modification) % 1;
+	    }
+
+	    return ret;
+	}
+
+	// Utility Functions
+	// ---------------------
+
+	tinycolor.mix = function(color1, color2, amount) {
+	    amount = (amount === 0) ? 0 : (amount || 50);
+
+	    var rgb1 = tinycolor(color1).toRgb();
+	    var rgb2 = tinycolor(color2).toRgb();
+
+	    var p = amount / 100;
+
+	    var rgba = {
+	        r: ((rgb2.r - rgb1.r) * p) + rgb1.r,
+	        g: ((rgb2.g - rgb1.g) * p) + rgb1.g,
+	        b: ((rgb2.b - rgb1.b) * p) + rgb1.b,
+	        a: ((rgb2.a - rgb1.a) * p) + rgb1.a
+	    };
+
+	    return tinycolor(rgba);
+	};
+
+
+	// Readability Functions
+	// ---------------------
+	// <http://www.w3.org/TR/2008/REC-WCAG20-20081211/#contrast-ratiodef (WCAG Version 2)
+
+	// `contrast`
+	// Analyze the 2 colors and returns the color contrast defined by (WCAG Version 2)
+	tinycolor.readability = function(color1, color2) {
+	    var c1 = tinycolor(color1);
+	    var c2 = tinycolor(color2);
+	    return (Math.max(c1.getLuminance(),c2.getLuminance())+0.05) / (Math.min(c1.getLuminance(),c2.getLuminance())+0.05);
+	};
+
+	// `isReadable`
+	// Ensure that foreground and background color combinations meet WCAG2 guidelines.
+	// The third argument is an optional Object.
+	//      the 'level' property states 'AA' or 'AAA' - if missing or invalid, it defaults to 'AA';
+	//      the 'size' property states 'large' or 'small' - if missing or invalid, it defaults to 'small'.
+	// If the entire object is absent, isReadable defaults to {level:"AA",size:"small"}.
+
+	// *Example*
+	//    tinycolor.isReadable("#000", "#111") => false
+	//    tinycolor.isReadable("#000", "#111",{level:"AA",size:"large"}) => false
+	tinycolor.isReadable = function(color1, color2, wcag2) {
+	    var readability = tinycolor.readability(color1, color2);
+	    var wcag2Parms, out;
+
+	    out = false;
+
+	    wcag2Parms = validateWCAG2Parms(wcag2);
+	    switch (wcag2Parms.level + wcag2Parms.size) {
+	        case "AAsmall":
+	        case "AAAlarge":
+	            out = readability >= 4.5;
+	            break;
+	        case "AAlarge":
+	            out = readability >= 3;
+	            break;
+	        case "AAAsmall":
+	            out = readability >= 7;
+	            break;
+	    }
+	    return out;
+
+	};
+
+	// `mostReadable`
+	// Given a base color and a list of possible foreground or background
+	// colors for that base, returns the most readable color.
+	// Optionally returns Black or White if the most readable color is unreadable.
+	// *Example*
+	//    tinycolor.mostReadable(tinycolor.mostReadable("#123", ["#124", "#125"],{includeFallbackColors:false}).toHexString(); // "#112255"
+	//    tinycolor.mostReadable(tinycolor.mostReadable("#123", ["#124", "#125"],{includeFallbackColors:true}).toHexString();  // "#ffffff"
+	//    tinycolor.mostReadable("#a8015a", ["#faf3f3"],{includeFallbackColors:true,level:"AAA",size:"large"}).toHexString(); // "#faf3f3"
+	//    tinycolor.mostReadable("#a8015a", ["#faf3f3"],{includeFallbackColors:true,level:"AAA",size:"small"}).toHexString(); // "#ffffff"
+	tinycolor.mostReadable = function(baseColor, colorList, args) {
+	    var bestColor = null;
+	    var bestScore = 0;
+	    var readability;
+	    var includeFallbackColors, level, size ;
+	    args = args || {};
+	    includeFallbackColors = args.includeFallbackColors ;
+	    level = args.level;
+	    size = args.size;
+
+	    for (var i= 0; i < colorList.length ; i++) {
+	        readability = tinycolor.readability(baseColor, colorList[i]);
+	        if (readability > bestScore) {
+	            bestScore = readability;
+	            bestColor = tinycolor(colorList[i]);
+	        }
+	    }
+
+	    if (tinycolor.isReadable(baseColor, bestColor, {"level":level,"size":size}) || !includeFallbackColors) {
+	        return bestColor;
+	    }
+	    else {
+	        args.includeFallbackColors=false;
+	        return tinycolor.mostReadable(baseColor,["#fff", "#000"],args);
+	    }
+	};
+
+
+	// Big List of Colors
+	// ------------------
+	// <http://www.w3.org/TR/css3-color/#svg-color>
+	var names = tinycolor.names = {
+	    aliceblue: "f0f8ff",
+	    antiquewhite: "faebd7",
+	    aqua: "0ff",
+	    aquamarine: "7fffd4",
+	    azure: "f0ffff",
+	    beige: "f5f5dc",
+	    bisque: "ffe4c4",
+	    black: "000",
+	    blanchedalmond: "ffebcd",
+	    blue: "00f",
+	    blueviolet: "8a2be2",
+	    brown: "a52a2a",
+	    burlywood: "deb887",
+	    burntsienna: "ea7e5d",
+	    cadetblue: "5f9ea0",
+	    chartreuse: "7fff00",
+	    chocolate: "d2691e",
+	    coral: "ff7f50",
+	    cornflowerblue: "6495ed",
+	    cornsilk: "fff8dc",
+	    crimson: "dc143c",
+	    cyan: "0ff",
+	    darkblue: "00008b",
+	    darkcyan: "008b8b",
+	    darkgoldenrod: "b8860b",
+	    darkgray: "a9a9a9",
+	    darkgreen: "006400",
+	    darkgrey: "a9a9a9",
+	    darkkhaki: "bdb76b",
+	    darkmagenta: "8b008b",
+	    darkolivegreen: "556b2f",
+	    darkorange: "ff8c00",
+	    darkorchid: "9932cc",
+	    darkred: "8b0000",
+	    darksalmon: "e9967a",
+	    darkseagreen: "8fbc8f",
+	    darkslateblue: "483d8b",
+	    darkslategray: "2f4f4f",
+	    darkslategrey: "2f4f4f",
+	    darkturquoise: "00ced1",
+	    darkviolet: "9400d3",
+	    deeppink: "ff1493",
+	    deepskyblue: "00bfff",
+	    dimgray: "696969",
+	    dimgrey: "696969",
+	    dodgerblue: "1e90ff",
+	    firebrick: "b22222",
+	    floralwhite: "fffaf0",
+	    forestgreen: "228b22",
+	    fuchsia: "f0f",
+	    gainsboro: "dcdcdc",
+	    ghostwhite: "f8f8ff",
+	    gold: "ffd700",
+	    goldenrod: "daa520",
+	    gray: "808080",
+	    green: "008000",
+	    greenyellow: "adff2f",
+	    grey: "808080",
+	    honeydew: "f0fff0",
+	    hotpink: "ff69b4",
+	    indianred: "cd5c5c",
+	    indigo: "4b0082",
+	    ivory: "fffff0",
+	    khaki: "f0e68c",
+	    lavender: "e6e6fa",
+	    lavenderblush: "fff0f5",
+	    lawngreen: "7cfc00",
+	    lemonchiffon: "fffacd",
+	    lightblue: "add8e6",
+	    lightcoral: "f08080",
+	    lightcyan: "e0ffff",
+	    lightgoldenrodyellow: "fafad2",
+	    lightgray: "d3d3d3",
+	    lightgreen: "90ee90",
+	    lightgrey: "d3d3d3",
+	    lightpink: "ffb6c1",
+	    lightsalmon: "ffa07a",
+	    lightseagreen: "20b2aa",
+	    lightskyblue: "87cefa",
+	    lightslategray: "789",
+	    lightslategrey: "789",
+	    lightsteelblue: "b0c4de",
+	    lightyellow: "ffffe0",
+	    lime: "0f0",
+	    limegreen: "32cd32",
+	    linen: "faf0e6",
+	    magenta: "f0f",
+	    maroon: "800000",
+	    mediumaquamarine: "66cdaa",
+	    mediumblue: "0000cd",
+	    mediumorchid: "ba55d3",
+	    mediumpurple: "9370db",
+	    mediumseagreen: "3cb371",
+	    mediumslateblue: "7b68ee",
+	    mediumspringgreen: "00fa9a",
+	    mediumturquoise: "48d1cc",
+	    mediumvioletred: "c71585",
+	    midnightblue: "191970",
+	    mintcream: "f5fffa",
+	    mistyrose: "ffe4e1",
+	    moccasin: "ffe4b5",
+	    navajowhite: "ffdead",
+	    navy: "000080",
+	    oldlace: "fdf5e6",
+	    olive: "808000",
+	    olivedrab: "6b8e23",
+	    orange: "ffa500",
+	    orangered: "ff4500",
+	    orchid: "da70d6",
+	    palegoldenrod: "eee8aa",
+	    palegreen: "98fb98",
+	    paleturquoise: "afeeee",
+	    palevioletred: "db7093",
+	    papayawhip: "ffefd5",
+	    peachpuff: "ffdab9",
+	    peru: "cd853f",
+	    pink: "ffc0cb",
+	    plum: "dda0dd",
+	    powderblue: "b0e0e6",
+	    purple: "800080",
+	    rebeccapurple: "663399",
+	    red: "f00",
+	    rosybrown: "bc8f8f",
+	    royalblue: "4169e1",
+	    saddlebrown: "8b4513",
+	    salmon: "fa8072",
+	    sandybrown: "f4a460",
+	    seagreen: "2e8b57",
+	    seashell: "fff5ee",
+	    sienna: "a0522d",
+	    silver: "c0c0c0",
+	    skyblue: "87ceeb",
+	    slateblue: "6a5acd",
+	    slategray: "708090",
+	    slategrey: "708090",
+	    snow: "fffafa",
+	    springgreen: "00ff7f",
+	    steelblue: "4682b4",
+	    tan: "d2b48c",
+	    teal: "008080",
+	    thistle: "d8bfd8",
+	    tomato: "ff6347",
+	    turquoise: "40e0d0",
+	    violet: "ee82ee",
+	    wheat: "f5deb3",
+	    white: "fff",
+	    whitesmoke: "f5f5f5",
+	    yellow: "ff0",
+	    yellowgreen: "9acd32"
+	};
+
+	// Make it easy to access colors via `hexNames[hex]`
+	var hexNames = tinycolor.hexNames = flip(names);
+
+
+	// Utilities
+	// ---------
+
+	// `{ 'name1': 'val1' }` becomes `{ 'val1': 'name1' }`
+	function flip(o) {
+	    var flipped = { };
+	    for (var i in o) {
+	        if (o.hasOwnProperty(i)) {
+	            flipped[o[i]] = i;
+	        }
+	    }
+	    return flipped;
+	}
+
+	// Return a valid alpha value [0,1] with all invalid values being set to 1
+	function boundAlpha(a) {
+	    a = parseFloat(a);
+
+	    if (isNaN(a) || a < 0 || a > 1) {
+	        a = 1;
+	    }
+
+	    return a;
+	}
+
+	// Take input from [0, n] and return it as [0, 1]
+	function bound01(n, max) {
+	    if (isOnePointZero(n)) { n = "100%"; }
+
+	    var processPercent = isPercentage(n);
+	    n = mathMin(max, mathMax(0, parseFloat(n)));
+
+	    // Automatically convert percentage into number
+	    if (processPercent) {
+	        n = parseInt(n * max, 10) / 100;
+	    }
+
+	    // Handle floating point rounding errors
+	    if ((Math.abs(n - max) < 0.000001)) {
+	        return 1;
+	    }
+
+	    // Convert into [0, 1] range if it isn't already
+	    return (n % max) / parseFloat(max);
+	}
+
+	// Force a number between 0 and 1
+	function clamp01(val) {
+	    return mathMin(1, mathMax(0, val));
+	}
+
+	// Parse a base-16 hex value into a base-10 integer
+	function parseIntFromHex(val) {
+	    return parseInt(val, 16);
+	}
+
+	// Need to handle 1.0 as 100%, since once it is a number, there is no difference between it and 1
+	// <http://stackoverflow.com/questions/7422072/javascript-how-to-detect-number-as-a-decimal-including-1-0>
+	function isOnePointZero(n) {
+	    return typeof n == "string" && n.indexOf('.') != -1 && parseFloat(n) === 1;
+	}
+
+	// Check to see if string passed in is a percentage
+	function isPercentage(n) {
+	    return typeof n === "string" && n.indexOf('%') != -1;
+	}
+
+	// Force a hex value to have 2 characters
+	function pad2(c) {
+	    return c.length == 1 ? '0' + c : '' + c;
+	}
+
+	// Replace a decimal with it's percentage value
+	function convertToPercentage(n) {
+	    if (n <= 1) {
+	        n = (n * 100) + "%";
+	    }
+
+	    return n;
+	}
+
+	// Converts a decimal to a hex value
+	function convertDecimalToHex(d) {
+	    return Math.round(parseFloat(d) * 255).toString(16);
+	}
+	// Converts a hex value to a decimal
+	function convertHexToDecimal(h) {
+	    return (parseIntFromHex(h) / 255);
+	}
+
+	var matchers = (function() {
+
+	    // <http://www.w3.org/TR/css3-values/#integers>
+	    var CSS_INTEGER = "[-\\+]?\\d+%?";
+
+	    // <http://www.w3.org/TR/css3-values/#number-value>
+	    var CSS_NUMBER = "[-\\+]?\\d*\\.\\d+%?";
+
+	    // Allow positive/negative integer/number.  Don't capture the either/or, just the entire outcome.
+	    var CSS_UNIT = "(?:" + CSS_NUMBER + ")|(?:" + CSS_INTEGER + ")";
+
+	    // Actual matching.
+	    // Parentheses and commas are optional, but not required.
+	    // Whitespace can take the place of commas or opening paren
+	    var PERMISSIVE_MATCH3 = "[\\s|\\(]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")\\s*\\)?";
+	    var PERMISSIVE_MATCH4 = "[\\s|\\(]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")\\s*\\)?";
+
+	    return {
+	        CSS_UNIT: new RegExp(CSS_UNIT),
+	        rgb: new RegExp("rgb" + PERMISSIVE_MATCH3),
+	        rgba: new RegExp("rgba" + PERMISSIVE_MATCH4),
+	        hsl: new RegExp("hsl" + PERMISSIVE_MATCH3),
+	        hsla: new RegExp("hsla" + PERMISSIVE_MATCH4),
+	        hsv: new RegExp("hsv" + PERMISSIVE_MATCH3),
+	        hsva: new RegExp("hsva" + PERMISSIVE_MATCH4),
+	        hex3: /^#?([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/,
+	        hex6: /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/,
+	        hex4: /^#?([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/,
+	        hex8: /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/
+	    };
+	})();
+
+	// `isValidCSSUnit`
+	// Take in a single string / number and check to see if it looks like a CSS unit
+	// (see `matchers` above for definition).
+	function isValidCSSUnit(color) {
+	    return !!matchers.CSS_UNIT.exec(color);
+	}
+
+	// `stringInputToObject`
+	// Permissive string parsing.  Take in a number of formats, and output an object
+	// based on detected format.  Returns `{ r, g, b }` or `{ h, s, l }` or `{ h, s, v}`
+	function stringInputToObject(color) {
+
+	    color = color.replace(trimLeft,'').replace(trimRight, '').toLowerCase();
+	    var named = false;
+	    if (names[color]) {
+	        color = names[color];
+	        named = true;
+	    }
+	    else if (color == 'transparent') {
+	        return { r: 0, g: 0, b: 0, a: 0, format: "name" };
+	    }
+
+	    // Try to match string input using regular expressions.
+	    // Keep most of the number bounding out of this function - don't worry about [0,1] or [0,100] or [0,360]
+	    // Just return an object and let the conversion functions handle that.
+	    // This way the result will be the same whether the tinycolor is initialized with string or object.
+	    var match;
+	    if ((match = matchers.rgb.exec(color))) {
+	        return { r: match[1], g: match[2], b: match[3] };
+	    }
+	    if ((match = matchers.rgba.exec(color))) {
+	        return { r: match[1], g: match[2], b: match[3], a: match[4] };
+	    }
+	    if ((match = matchers.hsl.exec(color))) {
+	        return { h: match[1], s: match[2], l: match[3] };
+	    }
+	    if ((match = matchers.hsla.exec(color))) {
+	        return { h: match[1], s: match[2], l: match[3], a: match[4] };
+	    }
+	    if ((match = matchers.hsv.exec(color))) {
+	        return { h: match[1], s: match[2], v: match[3] };
+	    }
+	    if ((match = matchers.hsva.exec(color))) {
+	        return { h: match[1], s: match[2], v: match[3], a: match[4] };
+	    }
+	    if ((match = matchers.hex8.exec(color))) {
+	        return {
+	            r: parseIntFromHex(match[1]),
+	            g: parseIntFromHex(match[2]),
+	            b: parseIntFromHex(match[3]),
+	            a: convertHexToDecimal(match[4]),
+	            format: named ? "name" : "hex8"
+	        };
+	    }
+	    if ((match = matchers.hex6.exec(color))) {
+	        return {
+	            r: parseIntFromHex(match[1]),
+	            g: parseIntFromHex(match[2]),
+	            b: parseIntFromHex(match[3]),
+	            format: named ? "name" : "hex"
+	        };
+	    }
+	    if ((match = matchers.hex4.exec(color))) {
+	        return {
+	            r: parseIntFromHex(match[1] + '' + match[1]),
+	            g: parseIntFromHex(match[2] + '' + match[2]),
+	            b: parseIntFromHex(match[3] + '' + match[3]),
+	            a: convertHexToDecimal(match[4] + '' + match[4]),
+	            format: named ? "name" : "hex8"
+	        };
+	    }
+	    if ((match = matchers.hex3.exec(color))) {
+	        return {
+	            r: parseIntFromHex(match[1] + '' + match[1]),
+	            g: parseIntFromHex(match[2] + '' + match[2]),
+	            b: parseIntFromHex(match[3] + '' + match[3]),
+	            format: named ? "name" : "hex"
+	        };
+	    }
+
+	    return false;
+	}
+
+	function validateWCAG2Parms(parms) {
+	    // return valid WCAG2 parms for isReadable.
+	    // If input parms are invalid, return {"level":"AA", "size":"small"}
+	    var level, size;
+	    parms = parms || {"level":"AA", "size":"small"};
+	    level = (parms.level || "AA").toUpperCase();
+	    size = (parms.size || "small").toLowerCase();
+	    if (level !== "AA" && level !== "AAA") {
+	        level = "AA";
+	    }
+	    if (size !== "small" && size !== "large") {
+	        size = "small";
+	    }
+	    return {"level":level, "size":size};
+	}
+
+	// Node: Export function
+	if (module.exports) {
+	    module.exports = tinycolor;
+	}
+	// AMD/requirejs: Define the module
+	else {
+	    window.tinycolor = tinycolor;
+	}
+
+	})(Math);
+} (tinycolor$1));
+
+var tinycolor = tinycolor$1.exports;
+
+var anObject$8 = anObject$b;
+
+// `RegExp.prototype.flags` getter implementation
+// https://tc39.es/ecma262/#sec-get-regexp.prototype.flags
+var regexpFlags$1 = function () {
+  var that = anObject$8(this);
+  var result = '';
+  if (that.hasIndices) result += 'd';
+  if (that.global) result += 'g';
+  if (that.ignoreCase) result += 'i';
+  if (that.multiline) result += 'm';
+  if (that.dotAll) result += 's';
+  if (that.unicode) result += 'u';
+  if (that.unicodeSets) result += 'v';
+  if (that.sticky) result += 'y';
+  return result;
+};
+
+var fails$d = fails$o;
+var global$7 = global$j;
+
+// babel-minify and Closure Compiler transpiles RegExp('a', 'y') -> /a/y and it causes SyntaxError
+var $RegExp$2 = global$7.RegExp;
+
+var UNSUPPORTED_Y$2 = fails$d(function () {
+  var re = $RegExp$2('a', 'y');
+  re.lastIndex = 2;
+  return re.exec('abcd') != null;
+});
+
+// UC Browser bug
+// https://github.com/zloirock/core-js/issues/1008
+var MISSED_STICKY$1 = UNSUPPORTED_Y$2 || fails$d(function () {
+  return !$RegExp$2('a', 'y').sticky;
+});
+
+var BROKEN_CARET = UNSUPPORTED_Y$2 || fails$d(function () {
+  // https://bugzilla.mozilla.org/show_bug.cgi?id=773687
+  var re = $RegExp$2('^r', 'gy');
+  re.lastIndex = 2;
+  return re.exec('str') != null;
+});
+
+var regexpStickyHelpers = {
+  BROKEN_CARET: BROKEN_CARET,
+  MISSED_STICKY: MISSED_STICKY$1,
+  UNSUPPORTED_Y: UNSUPPORTED_Y$2
+};
+
+var objectDefineProperties = {};
+
+var internalObjectKeys = objectKeysInternal;
+var enumBugKeys$1 = enumBugKeys$3;
+
+// `Object.keys` method
+// https://tc39.es/ecma262/#sec-object.keys
+// eslint-disable-next-line es/no-object-keys -- safe
+var objectKeys$2 = Object.keys || function keys(O) {
+  return internalObjectKeys(O, enumBugKeys$1);
+};
+
+var DESCRIPTORS$4 = descriptors;
+var V8_PROTOTYPE_DEFINE_BUG = v8PrototypeDefineBug;
+var definePropertyModule$1 = objectDefineProperty;
+var anObject$7 = anObject$b;
+var toIndexedObject$1 = toIndexedObject$5;
+var objectKeys$1 = objectKeys$2;
+
+// `Object.defineProperties` method
+// https://tc39.es/ecma262/#sec-object.defineproperties
+// eslint-disable-next-line es/no-object-defineproperties -- safe
+objectDefineProperties.f = DESCRIPTORS$4 && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {
+  anObject$7(O);
+  var props = toIndexedObject$1(Properties);
+  var keys = objectKeys$1(Properties);
+  var length = keys.length;
+  var index = 0;
+  var key;
+  while (length > index) definePropertyModule$1.f(O, key = keys[index++], props[key]);
+  return O;
+};
+
+var getBuiltIn$1 = getBuiltIn$4;
+
+var html$1 = getBuiltIn$1('document', 'documentElement');
+
+/* global ActiveXObject -- old IE, WSH */
+
+var anObject$6 = anObject$b;
+var definePropertiesModule = objectDefineProperties;
+var enumBugKeys = enumBugKeys$3;
+var hiddenKeys = hiddenKeys$4;
+var html = html$1;
+var documentCreateElement$1 = documentCreateElement$2;
+var sharedKey$1 = sharedKey$3;
+
+var GT = '>';
+var LT = '<';
+var PROTOTYPE = 'prototype';
+var SCRIPT = 'script';
+var IE_PROTO$1 = sharedKey$1('IE_PROTO');
+
+var EmptyConstructor = function () { /* empty */ };
+
+var scriptTag = function (content) {
+  return LT + SCRIPT + GT + content + LT + '/' + SCRIPT + GT;
+};
+
+// Create object with fake `null` prototype: use ActiveX Object with cleared prototype
+var NullProtoObjectViaActiveX = function (activeXDocument) {
+  activeXDocument.write(scriptTag(''));
+  activeXDocument.close();
+  var temp = activeXDocument.parentWindow.Object;
+  activeXDocument = null; // avoid memory leak
+  return temp;
+};
+
+// Create object with fake `null` prototype: use iframe Object with cleared prototype
+var NullProtoObjectViaIFrame = function () {
+  // Thrash, waste and sodomy: IE GC bug
+  var iframe = documentCreateElement$1('iframe');
+  var JS = 'java' + SCRIPT + ':';
+  var iframeDocument;
+  iframe.style.display = 'none';
+  html.appendChild(iframe);
+  // https://github.com/zloirock/core-js/issues/475
+  iframe.src = String(JS);
+  iframeDocument = iframe.contentWindow.document;
+  iframeDocument.open();
+  iframeDocument.write(scriptTag('document.F=Object'));
+  iframeDocument.close();
+  return iframeDocument.F;
+};
+
+// Check for document.domain and active x support
+// No need to use active x approach when document.domain is not set
+// see https://github.com/es-shims/es5-shim/issues/150
+// variation of https://github.com/kitcambridge/es5-shim/commit/4f738ac066346
+// avoid IE GC bug
+var activeXDocument;
+var NullProtoObject = function () {
+  try {
+    activeXDocument = new ActiveXObject('htmlfile');
+  } catch (error) { /* ignore */ }
+  NullProtoObject = typeof document != 'undefined'
+    ? document.domain && activeXDocument
+      ? NullProtoObjectViaActiveX(activeXDocument) // old IE
+      : NullProtoObjectViaIFrame()
+    : NullProtoObjectViaActiveX(activeXDocument); // WSH
+  var length = enumBugKeys.length;
+  while (length--) delete NullProtoObject[PROTOTYPE][enumBugKeys[length]];
+  return NullProtoObject();
+};
+
+hiddenKeys[IE_PROTO$1] = true;
+
+// `Object.create` method
+// https://tc39.es/ecma262/#sec-object.create
+// eslint-disable-next-line es/no-object-create -- safe
+var objectCreate = Object.create || function create(O, Properties) {
+  var result;
+  if (O !== null) {
+    EmptyConstructor[PROTOTYPE] = anObject$6(O);
+    result = new EmptyConstructor();
+    EmptyConstructor[PROTOTYPE] = null;
+    // add "__proto__" for Object.getPrototypeOf polyfill
+    result[IE_PROTO$1] = O;
+  } else result = NullProtoObject();
+  return Properties === undefined ? result : definePropertiesModule.f(result, Properties);
+};
+
+var fails$c = fails$o;
+var global$6 = global$j;
+
+// babel-minify and Closure Compiler transpiles RegExp('.', 's') -> /./s and it causes SyntaxError
+var $RegExp$1 = global$6.RegExp;
+
+var regexpUnsupportedDotAll = fails$c(function () {
+  var re = $RegExp$1('.', 's');
+  return !(re.dotAll && re.exec('\n') && re.flags === 's');
+});
+
+var fails$b = fails$o;
+var global$5 = global$j;
+
+// babel-minify and Closure Compiler transpiles RegExp('(?<a>b)', 'g') -> /(?<a>b)/g and it causes SyntaxError
+var $RegExp = global$5.RegExp;
+
+var regexpUnsupportedNcg = fails$b(function () {
+  var re = $RegExp('(?<a>b)', 'g');
+  return re.exec('b').groups.a !== 'b' ||
+    'b'.replace(re, '$<a>c') !== 'bc';
+});
+
+/* eslint-disable regexp/no-empty-capturing-group, regexp/no-empty-group, regexp/no-lazy-ends -- testing */
+/* eslint-disable regexp/no-useless-quantifier -- testing */
+var call$9 = functionCall;
+var uncurryThis$f = functionUncurryThis;
+var toString$c = toString$f;
+var regexpFlags = regexpFlags$1;
+var stickyHelpers$1 = regexpStickyHelpers;
+var shared$1 = shared$5.exports;
+var create$3 = objectCreate;
+var getInternalState$1 = internalState.get;
+var UNSUPPORTED_DOT_ALL$1 = regexpUnsupportedDotAll;
+var UNSUPPORTED_NCG$1 = regexpUnsupportedNcg;
+
+var nativeReplace = shared$1('native-string-replace', String.prototype.replace);
+var nativeExec = RegExp.prototype.exec;
+var patchedExec = nativeExec;
+var charAt$5 = uncurryThis$f(''.charAt);
+var indexOf$1 = uncurryThis$f(''.indexOf);
+var replace$2 = uncurryThis$f(''.replace);
+var stringSlice$6 = uncurryThis$f(''.slice);
+
+var UPDATES_LAST_INDEX_WRONG = (function () {
+  var re1 = /a/;
+  var re2 = /b*/g;
+  call$9(nativeExec, re1, 'a');
+  call$9(nativeExec, re2, 'a');
+  return re1.lastIndex !== 0 || re2.lastIndex !== 0;
+})();
+
+var UNSUPPORTED_Y$1 = stickyHelpers$1.BROKEN_CARET;
+
+// nonparticipating capturing group, copied from es5-shim's String#split patch.
+var NPCG_INCLUDED = /()??/.exec('')[1] !== undefined;
+
+var PATCH = UPDATES_LAST_INDEX_WRONG || NPCG_INCLUDED || UNSUPPORTED_Y$1 || UNSUPPORTED_DOT_ALL$1 || UNSUPPORTED_NCG$1;
+
+if (PATCH) {
+  patchedExec = function exec(string) {
+    var re = this;
+    var state = getInternalState$1(re);
+    var str = toString$c(string);
+    var raw = state.raw;
+    var result, reCopy, lastIndex, match, i, object, group;
+
+    if (raw) {
+      raw.lastIndex = re.lastIndex;
+      result = call$9(patchedExec, raw, str);
+      re.lastIndex = raw.lastIndex;
+      return result;
+    }
+
+    var groups = state.groups;
+    var sticky = UNSUPPORTED_Y$1 && re.sticky;
+    var flags = call$9(regexpFlags, re);
+    var source = re.source;
+    var charsAdded = 0;
+    var strCopy = str;
+
+    if (sticky) {
+      flags = replace$2(flags, 'y', '');
+      if (indexOf$1(flags, 'g') === -1) {
+        flags += 'g';
+      }
+
+      strCopy = stringSlice$6(str, re.lastIndex);
+      // Support anchored sticky behavior.
+      if (re.lastIndex > 0 && (!re.multiline || re.multiline && charAt$5(str, re.lastIndex - 1) !== '\n')) {
+        source = '(?: ' + source + ')';
+        strCopy = ' ' + strCopy;
+        charsAdded++;
+      }
+      // ^(? + rx + ) is needed, in combination with some str slicing, to
+      // simulate the 'y' flag.
+      reCopy = new RegExp('^(?:' + source + ')', flags);
+    }
+
+    if (NPCG_INCLUDED) {
+      reCopy = new RegExp('^' + source + '$(?!\\s)', flags);
+    }
+    if (UPDATES_LAST_INDEX_WRONG) lastIndex = re.lastIndex;
+
+    match = call$9(nativeExec, sticky ? reCopy : re, strCopy);
+
+    if (sticky) {
+      if (match) {
+        match.input = stringSlice$6(match.input, charsAdded);
+        match[0] = stringSlice$6(match[0], charsAdded);
+        match.index = re.lastIndex;
+        re.lastIndex += match[0].length;
+      } else re.lastIndex = 0;
+    } else if (UPDATES_LAST_INDEX_WRONG && match) {
+      re.lastIndex = re.global ? match.index + match[0].length : lastIndex;
+    }
+    if (NPCG_INCLUDED && match && match.length > 1) {
+      // Fix browsers whose `exec` methods don't consistently return `undefined`
+      // for NPCG, like IE8. NOTE: This doesn't work for /(.?)?/
+      call$9(nativeReplace, match[0], reCopy, function () {
+        for (i = 1; i < arguments.length - 2; i++) {
+          if (arguments[i] === undefined) match[i] = undefined;
+        }
+      });
+    }
+
+    if (match && groups) {
+      match.groups = object = create$3(null);
+      for (i = 0; i < groups.length; i++) {
+        group = groups[i];
+        object[group[0]] = match[group[1]];
+      }
+    }
+
+    return match;
+  };
+}
+
+var regexpExec$2 = patchedExec;
+
+var $$b = _export;
+var exec$2 = regexpExec$2;
+
+// `RegExp.prototype.exec` method
+// https://tc39.es/ecma262/#sec-regexp.prototype.exec
+$$b({ target: 'RegExp', proto: true, forced: /./.exec !== exec$2 }, {
+  exec: exec$2
+});
+
+// TODO: Remove from `core-js@4` since it's moved to entry points
+
+var $$a = _export;
+var call$8 = functionCall;
+var isCallable$8 = isCallable$l;
+var anObject$5 = anObject$b;
+var toString$b = toString$f;
+
+var DELEGATES_TO_EXEC = function () {
+  var execCalled = false;
+  var re = /[ac]/;
+  re.exec = function () {
+    execCalled = true;
+    return /./.exec.apply(this, arguments);
+  };
+  return re.test('abc') === true && execCalled;
+}();
+
+var nativeTest = /./.test;
+
+// `RegExp.prototype.test` method
+// https://tc39.es/ecma262/#sec-regexp.prototype.test
+$$a({ target: 'RegExp', proto: true, forced: !DELEGATES_TO_EXEC }, {
+  test: function (S) {
+    var R = anObject$5(this);
+    var string = toString$b(S);
+    var exec = R.exec;
+    if (!isCallable$8(exec)) return call$8(nativeTest, R, string);
+    var result = call$8(exec, R, string);
+    if (result === null) return false;
+    anObject$5(result);
+    return true;
+  }
+});
+
+var global$4 = global$j;
+var fails$a = fails$o;
+var uncurryThis$e = functionUncurryThis;
+var toString$a = toString$f;
+var trim$1 = stringTrim.trim;
+var whitespaces$1 = whitespaces$4;
+
+var $parseInt$1 = global$4.parseInt;
+var Symbol$2 = global$4.Symbol;
+var ITERATOR$4 = Symbol$2 && Symbol$2.iterator;
+var hex = /^[+-]?0x/i;
+var exec$1 = uncurryThis$e(hex.exec);
+var FORCED$2 = $parseInt$1(whitespaces$1 + '08') !== 8 || $parseInt$1(whitespaces$1 + '0x16') !== 22
+  // MS Edge 18- broken with boxed symbols
+  || (ITERATOR$4 && !fails$a(function () { $parseInt$1(Object(ITERATOR$4)); }));
+
+// `parseInt` method
+// https://tc39.es/ecma262/#sec-parseint-string-radix
+var numberParseInt = FORCED$2 ? function parseInt(string, radix) {
+  var S = trim$1(toString$a(string));
+  return $parseInt$1(S, (radix >>> 0) || (exec$1(hex, S) ? 16 : 10));
+} : $parseInt$1;
+
+var $$9 = _export;
+var $parseInt = numberParseInt;
+
+// `parseInt` method
+// https://tc39.es/ecma262/#sec-parseint-string-radix
+$$9({ global: true, forced: parseInt != $parseInt }, {
+  parseInt: $parseInt
+});
+
+function handleChannelOverlay(front, alpha) {
+  var back = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+  return back + (front - back) * alpha / 255;
+}
+function overlayWithBlack(color, alpha) {
+  var rgb = color.toRgb();
+  return tinycolor({
+    r: handleChannelOverlay(rgb.r, alpha),
+    g: handleChannelOverlay(rgb.g, alpha),
+    b: handleChannelOverlay(rgb.b, alpha)
+  });
+}
+function overlayWithWhite(color, alpha) {
+  var rgb = color.toRgb();
+  return tinycolor({
+    r: handleChannelOverlay(rgb.r, alpha, 255),
+    g: handleChannelOverlay(rgb.g, alpha, 255),
+    b: handleChannelOverlay(rgb.b, alpha, 255)
+  });
+}
+function generateColorSpectrum(color) {
+  var prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "--light-primary-";
+  var hexColor = "".concat(color.toLowerCase());
+  var mapper = [{
+    level: "100",
+    darken: false,
+    isOriginal: false,
+    darkLightFactor: 0,
+    alpha: 28,
+    brighten: 0,
+    saturate: 0,
+    original: "#F2FAFC"
+  }, {
+    level: "200",
+    darken: false,
+    isOriginal: false,
+    darkLightFactor: 0,
+    brighten: 1,
+    alpha: 70,
+    saturate: 0,
+    original: "#BDF3FC"
+  }, {
+    level: "300",
+    darken: false,
+    isOriginal: false,
+    darkLightFactor: 0,
+    brighten: 0,
+    alpha: 130,
+    saturate: 0,
+    original: "#75E2FA"
+  }, {
+    level: "400",
+    darken: false,
+    isOriginal: false,
+    darkLightFactor: 0,
+    brighten: 0,
+    alpha: 198,
+    saturate: 0,
+    original: "#43D2FA"
+  }, {
+    level: "500",
+    darken: true,
+    isOriginal: true,
+    darkLightFactor: 0
+  }, {
+    level: "600",
+    darken: true,
+    isOriginal: false,
+    darkLightFactor: 3,
+    brighten: 1,
+    alpha: 233,
+    saturate: 1.5,
+    original: "#0C9CCC"
+  }, {
+    level: "700",
+    darken: true,
+    isOriginal: false,
+    darkLightFactor: 0,
+    brighten: 0.5,
+    alpha: 186,
+    saturate: -0.5,
+    original: "#0B87B0"
+  }, {
+    level: "800",
+    darken: true,
+    isOriginal: false,
+    darkLightFactor: 0,
+    brighten: 0,
+    alpha: 130,
+    saturate: -2,
+    original: "#085E7A"
+  }, {
+    level: "900",
+    darken: true,
+    isOriginal: false,
+    darkLightFactor: 0,
+    brighten: 0,
+    alpha: 90,
+    saturate: -12,
+    original: "#094357"
+  }];
+  var returnedSpectrum = {};
+  mapper.forEach(function (item) {
+    var hex = hexColor;
+    if (!item.isOriginal) {
+      var _color = tinycolor(hex);
+      _color = item.darken ? _color.darken(item.darkLightFactor) : _color.lighten(item.darkLightFactor);
+      _color = _color.brighten(item.brighten);
+      _color = item.saturate > 0 ? _color.saturate(item.saturate) : _color.desaturate(Math.abs(item.saturate));
+      _color = item.darken ? overlayWithBlack(_color, item.alpha) : overlayWithWhite(_color, item.alpha);
+      returnedSpectrum["".concat(prefix).concat(item.level)] = _color.toHexString();
+    } else {
+      returnedSpectrum["".concat(prefix, "500")] = hex;
+    }
+  });
+  return returnedSpectrum;
+}
+function getTextColor(hex) {
+  var light = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "#ffffff";
+  var dark = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "#212934";
+  if (!hex) {
+    return "";
+  }
+  if (!/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+    return "";
+  }
+  var hexCode = hex.charAt(0) === "#" ? hex.substr(1, 6) : hex;
+  var hexR = parseInt(hexCode.substr(0, 2), 16);
+  var hexG = parseInt(hexCode.substr(2, 2), 16);
+  var hexB = parseInt(hexCode.substr(4, 2), 16);
+  var contrastRatio = (hexR + hexG + hexB) / (255 * 3);
+  return contrastRatio >= 0.5 ? dark : light;
+}
+function hexToRgbA(hex) {
+  var alpha = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  if (alpha > 1) alpha = 1;
+  if (alpha < 0) alpha = 0;
+  var c;
+  if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+    c = hex.substring(1).split("");
+    if (c.length == 3) {
+      c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+    }
+    c = "0x" + c.join("");
+    return "rgba(" + [c >> 16 & 255, c >> 8 & 255, c & 255].join(",") + "," + alpha + ")";
+  }
+  throw new Error("Bad Hex");
+}
+
+var _excluded$L = ["is", "leftIcon", "rightIcon", "dropDown", "disabled", "size", "className", "colorScheme", "responsive", "text", "loading", "loadingText", "pill", "smartColor", "smartHoverColor"];
 var Button = function Button(_ref) {
   var _classNames;
   var is = _ref.is,
@@ -17307,7 +16596,7 @@ var Button = function Button(_ref) {
     pill = _ref.pill,
     smartColor = _ref.smartColor,
     smartHoverColor = _ref.smartHoverColor,
-    props = _objectWithoutProperties(_ref, _excluded$K);
+    props = _objectWithoutProperties(_ref, _excluded$L);
   var generatedClassName = classNames((_classNames = {
     "ui-button": true
   }, _defineProperty$A(_classNames, "semantic__".concat(colorScheme), colorScheme), _defineProperty$A(_classNames, "state__disabled", disabled), _defineProperty$A(_classNames, "size__".concat(size), size), _defineProperty$A(_classNames, "responsive", responsive), _defineProperty$A(_classNames, "smartColor", smartColor), _defineProperty$A(_classNames, "smartHoverColor", smartHoverColor), _defineProperty$A(_classNames, "pill", pill), _classNames), className);
@@ -17369,7 +16658,7 @@ Button.defaultProps = {
   colorScheme: "default"
 };
 
-var _excluded$J = ["className", "equalLineHeight", "scale", "uppercase", "center"];
+var _excluded$K = ["className", "equalLineHeight", "scale", "uppercase", "center"];
 var Heading = function Heading(_ref) {
   var _props$is, _classNames;
   var className = _ref.className,
@@ -17377,7 +16666,7 @@ var Heading = function Heading(_ref) {
     scale = _ref.scale,
     uppercase = _ref.uppercase,
     center = _ref.center,
-    props = _objectWithoutProperties(_ref, _excluded$J);
+    props = _objectWithoutProperties(_ref, _excluded$K);
   var is = (_props$is = props.is) !== null && _props$is !== void 0 ? _props$is : "h2";
   var generatedClass = classNames((_classNames = {}, _defineProperty$A(_classNames, scale, scale), _defineProperty$A(_classNames, is, is), _defineProperty$A(_classNames, "uppercase", uppercase), _defineProperty$A(_classNames, "ui-heading", true), _defineProperty$A(_classNames, "equal-line-height", equalLineHeight), _defineProperty$A(_classNames, "customFontWeight", props.fontWeight), _defineProperty$A(_classNames, "customFontSize", props.fontSize), _defineProperty$A(_classNames, "customLineHeight", props.lineHeight), _defineProperty$A(_classNames, "center", center), _classNames), className);
   return /*#__PURE__*/React__default.createElement(Box, _extends$1({
@@ -17403,6 +16692,326 @@ Heading.defaultProps = {
   uppercase: false,
   equalLineHeight: false,
   darkClassName: "text-neutral-300"
+};
+
+var DESCRIPTORS$3 = descriptors;
+var uncurryThis$d = functionUncurryThis;
+var call$7 = functionCall;
+var fails$9 = fails$o;
+var objectKeys = objectKeys$2;
+var getOwnPropertySymbolsModule = objectGetOwnPropertySymbols;
+var propertyIsEnumerableModule = objectPropertyIsEnumerable;
+var toObject$3 = toObject$6;
+var IndexedObject = indexedObject;
+
+// eslint-disable-next-line es/no-object-assign -- safe
+var $assign = Object.assign;
+// eslint-disable-next-line es/no-object-defineproperty -- required for testing
+var defineProperty$5 = Object.defineProperty;
+var concat$1 = uncurryThis$d([].concat);
+
+// `Object.assign` method
+// https://tc39.es/ecma262/#sec-object.assign
+var objectAssign = !$assign || fails$9(function () {
+  // should have correct order of operations (Edge bug)
+  if (DESCRIPTORS$3 && $assign({ b: 1 }, $assign(defineProperty$5({}, 'a', {
+    enumerable: true,
+    get: function () {
+      defineProperty$5(this, 'b', {
+        value: 3,
+        enumerable: false
+      });
+    }
+  }), { b: 2 })).b !== 1) return true;
+  // should work with symbols and should have deterministic property order (V8 bug)
+  var A = {};
+  var B = {};
+  // eslint-disable-next-line es/no-symbol -- safe
+  var symbol = Symbol();
+  var alphabet = 'abcdefghijklmnopqrst';
+  A[symbol] = 7;
+  alphabet.split('').forEach(function (chr) { B[chr] = chr; });
+  return $assign({}, A)[symbol] != 7 || objectKeys($assign({}, B)).join('') != alphabet;
+}) ? function assign(target, source) { // eslint-disable-line no-unused-vars -- required for `.length`
+  var T = toObject$3(target);
+  var argumentsLength = arguments.length;
+  var index = 1;
+  var getOwnPropertySymbols = getOwnPropertySymbolsModule.f;
+  var propertyIsEnumerable = propertyIsEnumerableModule.f;
+  while (argumentsLength > index) {
+    var S = IndexedObject(arguments[index++]);
+    var keys = getOwnPropertySymbols ? concat$1(objectKeys(S), getOwnPropertySymbols(S)) : objectKeys(S);
+    var length = keys.length;
+    var j = 0;
+    var key;
+    while (length > j) {
+      key = keys[j++];
+      if (!DESCRIPTORS$3 || call$7(propertyIsEnumerable, S, key)) T[key] = S[key];
+    }
+  } return T;
+} : $assign;
+
+var $$8 = _export;
+var assign$1 = objectAssign;
+
+// `Object.assign` method
+// https://tc39.es/ecma262/#sec-object.assign
+// eslint-disable-next-line es/no-object-assign -- required for testing
+$$8({ target: 'Object', stat: true, arity: 2, forced: Object.assign !== assign$1 }, {
+  assign: assign$1
+});
+
+var convertObjToVars = function convertObjToVars(obj) {
+  return Object.assign.apply(Object, [{}].concat(_toConsumableArray(Object.keys(obj).map(function (key) {
+    return _defineProperty$A({}, key.substring(0, 2) === "--" ? key : "--" + key, obj[key]);
+  }))));
+};
+
+var defaultTheme = {
+  "light-primary-action-color": "#0db9e9",
+  "light-primary-action-text-color": "#212934",
+  "light-text-color": "#212934",
+  "light-primary-action-hover-color": "#43d2fa",
+  "light-primary-action-text-hover-color": "#ffffff",
+  "light-primary-action-disabled-color": "#bdf3fc",
+  // light-primary-action-disabled-text-color: "",
+  "light-primary-action-box-shadow-color": "rgba(67, 210, 250, 0.25)",
+  "light-secondary-action-color": "",
+  "light-subtle-text-color": "#ced6de",
+  "light-secondary-action-disabled-color": "",
+  "light-input-background-color": "#ffffff",
+  "light-background-color": "#ffffff",
+  "light-outline-action-color": "#0d7fe9",
+  "light-outline-action-disabled-color": "#acd7ff",
+  "light-outline-action-box-shadow-color": "rgba(27, 92, 224, 0.2)",
+  "light-danger-color": "#D62F4B",
+  "light-danger-text-color": "#ffffff",
+  "light-danger-box-shadow-color": "rgba(214, 47, 75, 0.3)",
+  "light-danger-100": "#FFF0F2",
+  "light-danger-200": "#FCC5CE",
+  "light-danger-300": "#F99BAB",
+  "light-danger-400": "#E85E75",
+  "light-danger-500": "#D62F4B",
+  "light-danger-600": "#AD283D",
+  "light-danger-700": "#842432",
+  "light-danger-800": "#5C1E27",
+  "light-danger-900": "#331418",
+  "dark-danger-color": "#df5e74",
+  "dark-danger-text-color": "#121A26",
+  "dark-danger-box-shadow-color": "rgba(214, 47, 75, 0.3)",
+  "dark-danger-100": "#EEA7B3",
+  "dark-danger-200": "#EB98A6",
+  "dark-danger-300": "#E88898",
+  "dark-danger-400": "#E47588",
+  "dark-danger-500": "#DF5E74",
+  "dark-danger-600": "#D93F59",
+  "dark-danger-700": "#C12640",
+  "dark-danger-800": "#911C30",
+  "dark-danger-900": "#350A12",
+  "light-success-color": "#00b058",
+  "light-success-text-color": "#ffffff",
+  "light-success-box-shadow-color": "rgba(0, 176, 88, 0.3)",
+  "light-success-100": "#C4EFDF",
+  "light-success-200": "#9BDFC4",
+  "light-success-300": "#71D0A7",
+  "light-success-400": "#27C079",
+  "light-success-500": "#00B058",
+  "light-success-600": "#158957",
+  "light-success-700": "#1F624A",
+  "light-success-800": "#1D3B32",
+  "light-success-900": "#0D1E19",
+  "dark-success-color": "#2eab6c",
+  "dark-success-text-color": "#121A26",
+  "dark-success-box-shadow-color": "rgba(0, 176, 88, 0.3)",
+  "dark-success-100": "#71D0A7",
+  "dark-success-200": "#53D091",
+  "dark-success-300": "#36C77D",
+  "dark-success-400": "#32BA75",
+  "dark-success-500": "#2EAB6C",
+  "dark-success-600": "#2A9B62",
+  "dark-success-700": "#1F7348",
+  "dark-success-800": "#175636",
+  "dark-success-900": "#081E13",
+  "light-warning-color": "#FFB44F",
+  "light-warning-text-color": getTextColor("#ffb44f"),
+  "light-warning-box-shadow-color": hexToRgbA("#FFB44F", 0.2),
+  "light-warning-100": "#FFF8F0",
+  "light-warning-200": "#FFF0DB",
+  "light-warning-300": "#FFE5C2",
+  "light-warning-400": "#FFD49B",
+  "light-warning-500": "#FFB44F",
+  "light-warning-600": "#FF9505",
+  "light-warning-700": "#E08304",
+  "light-warning-800": "#995A06",
+  "light-warning-900": "#573302",
+  "dark-warning-color": "#C87503",
+  "dark-warning-text-color": getTextColor("#C87503"),
+  "dark-warning-box-shadow-color": hexToRgbA("#C87503", 0.2),
+  "dark-warning-100": "#FCA835",
+  "dark-warning-200": "#FB9810",
+  "dark-warning-300": "#EF8C04",
+  "dark-warning-400": "#DC8104",
+  "dark-warning-500": "#C87503",
+  "dark-warning-600": "#B06703",
+  "dark-warning-700": "#935703",
+  "dark-warning-800": "#6E4102",
+  "dark-warning-900": "#271701",
+  "dark-primary-action-color": "#0db9e9",
+  "dark-text-color": "#212934",
+  "dark-primary-action-hover-color": "#43d2fa",
+  "dark-primary-action-disabled-color": "#bdf3fc",
+  "dark-primary-action-box-shadow-color": "rgba(67, 210, 250, 0.25)",
+  "dark-secondary-action-color": "",
+  "dark-subtle-text-color": "#ced6de",
+  "dark-secondary-action-disabled-color": "",
+  "dark-input-background-color": "#1F2B3B",
+  "dark-input-label-color": "#94A3B8",
+  "dark-input-border-color": "#384860",
+  "dark-input-icon-color": "#94A3B8",
+  "dark-background-color": "#121A26",
+  "dark-input-disabled-text-color": "rgba(148, 163, 184, 0.8)",
+  "light-primary-color": "#0db9e9",
+  "light-primary-100": "#f2fafc",
+  "light-primary-200": "#bdf3fc",
+  "light-primary-300": "#75e2fa",
+  "light-primary-400": "#43d2fa",
+  "light-primary-500": "#0db9e9",
+  "light-primary-600": "#0c9ccc",
+  "light-primary-700": "#0b87b0",
+  "light-primary-800": "#085e7a",
+  "light-primary-900": "#094357",
+  "dark-primary-color": "#0db9e9",
+  "dark-primary-100": "#56c7ee",
+  "dark-primary-200": "#36bdea",
+  "dark-primary-300": "#0ea2d3",
+  "dark-primary-400": "#0b7fa5",
+  "dark-primary-500": "#0db9e9",
+  "dark-primary-600": "#1182a8",
+  "dark-primary-700": "#0f6d8d",
+  "dark-primary-800": "#085e7a",
+  "dark-primary-900": "#094357",
+  "default-font-face": null,
+  "dark-background-100": "#e5e6e7",
+  "dark-background-200": "#bfc1c4",
+  "dark-background-300": "#868a90",
+  "dark-background-400": "#474d57",
+  "dark-background-500": "#121a26",
+  "dark-background-600": "#0f141c",
+  "dark-background-700": "#0e141c",
+  "dark-background-800": "#0a0d13",
+  "dark-background-900": "#070a0c"
+};
+_objectSpread2$1({}, convertObjToVars(defaultTheme));
+
+var _excluded$J = ["initialTheme", "children"];
+var ThemeContext = /*#__PURE__*/createContext({
+  theme: _objectSpread2$1({}, convertObjToVars(defaultTheme))
+});
+var ThemeProvider = function ThemeProvider(_ref) {
+  var initialTheme = _ref.initialTheme,
+    children = _ref.children;
+    _objectWithoutProperties(_ref, _excluded$J);
+  var _useState = useState({}),
+    _useState2 = _slicedToArray$4(_useState, 2),
+    theme = _useState2[0],
+    setTheme = _useState2[1];
+  var _useState3 = useState({
+      theme: _objectSpread2$1(_objectSpread2$1(_objectSpread2$1({}, convertObjToVars(defaultTheme)), convertObjToVars(initialTheme)), convertObjToVars(theme)),
+      setTheme: setTheme
+    }),
+    _useState4 = _slicedToArray$4(_useState3, 2),
+    initialState = _useState4[0],
+    setInitialState = _useState4[1];
+  useEffect(function () {
+    var computedTheme = _objectSpread2$1(_objectSpread2$1(_objectSpread2$1({}, defaultTheme), initialTheme), theme);
+    var primaryColor = computedTheme.primaryColor || computedTheme["primary-color"];
+    if (primaryColor) {
+      computedTheme["light-primary-action-color"] = primaryColor;
+      computedTheme["dark-primary-action-color"] = primaryColor;
+      computedTheme["light-primary-color"] = primaryColor;
+      computedTheme["dark-primary-color"] = primaryColor;
+      computedTheme["primarycolor"] = primaryColor;
+    }
+
+    // Depends on light primary action color
+    // Configure the light primary themes whenever we hydrate the themes
+    computedTheme["light-primary-action-text-color"] = getTextColor(computedTheme["light-primary-action-color"]);
+    computedTheme["light-primary-color"] = computedTheme["light-primary-action-color"];
+    computedTheme["light-primary-action-hover-color"] = "#".concat(tinycolor(computedTheme["light-primary-action-color"]).lighten(15).toHex());
+    computedTheme["light-primary-action-disabled-color"] = "#".concat(tinycolor(computedTheme["light-primary-action-color"]).lighten(38).toHex());
+    computedTheme["light-primary-action-disabled-text-color"] = getTextColor(computedTheme["light-primary-action-disabled-color"], true);
+    computedTheme["light-primary-action-text-hover-color"] = getTextColor(computedTheme["light-primary-action-hover-color"]);
+    computedTheme["light-primary-action-box-shadow-color"] = hexToRgbA(computedTheme["light-primary-action-color"], 0.2);
+
+    // Configure the semantic color text and boxshadow colors whenever we hydrate the theme
+    computedTheme["light-danger-box-shadow-color"] = hexToRgbA(computedTheme["light-danger-color"], 0.2);
+    computedTheme["light-warning-box-shadow-color"] = hexToRgbA(computedTheme["light-warning-color"], 0.2);
+    computedTheme["light-success-box-shadow-color"] = hexToRgbA(computedTheme["light-success-color"], 0.2);
+    computedTheme["dark-danger-box-shadow-color"] = hexToRgbA(computedTheme["dark-danger-color"], 0.2);
+    computedTheme["dark-warning-box-shadow-color"] = hexToRgbA(computedTheme["dark-warning-color"], 0.2);
+    computedTheme["dark-success-box-shadow-color"] = hexToRgbA(computedTheme["dark-success-color"], 0.2);
+    computedTheme["light-danger-text-color"] = getTextColor(computedTheme["light-danger-color"]);
+    computedTheme["dark-danger-text-color"] = getTextColor(computedTheme["dark-danger-color"]);
+    computedTheme["light-success-text-color"] = getTextColor(computedTheme["light-success-color"]);
+    computedTheme["dark-success-text-color"] = getTextColor(computedTheme["dark-success-color"]);
+    computedTheme["light-warning-text-color"] = getTextColor(computedTheme["light-warning-color"]);
+    computedTheme["dark-warning-text-color"] = getTextColor(computedTheme["dark-warning-color"]);
+
+    // Depends on dark primary action color
+    computedTheme["dark-primary-action-text-color"] = getTextColor(computedTheme["dark-primary-action-color"]);
+    computedTheme["light-primary-color"] = computedTheme["light-primary-action-color"];
+    computedTheme["dark-primary-action-hover-color"] = "#".concat(tinycolor(computedTheme["dark-primary-action-color"]).lighten(15).toHex());
+    computedTheme["dark-primary-action-disabled-color"] = "#".concat(tinycolor(computedTheme["dark-primary-action-color"]).lighten(38).toHex());
+    computedTheme["dark-primary-action-disabled-text-color"] = getTextColor(computedTheme["dark-primary-action-disabled-color"], true);
+    computedTheme["dark-primary-action-text-hover-color"] = getTextColor(computedTheme["dark-primary-action-hover-color"]);
+    computedTheme["dark-primary-action-box-shadow-color"] = hexToRgbA(computedTheme["dark-primary-action-color"], 0.2);
+
+    // Depends on dark background color
+    computedTheme["dark-input-background-color"] = "#".concat(tinycolor(computedTheme["dark-background-color"]).lighten(8).toHex());
+    computedTheme["dark-input-border-color"] = "#".concat(tinycolor(computedTheme["dark-input-background-color"]).lighten(23).toHex());
+    computedTheme["dark-input-label-color"] = "#".concat(tinycolor(computedTheme["dark-input-background-color"]).lighten(58).toHex());
+    computedTheme["dark-input-disabled-color"] = "#".concat(tinycolor(computedTheme["dark-input-background-color"]).lighten(2).toHex());
+    computedTheme["dark-input-disabled-text-color"] = hexToRgbA(computedTheme["dark-input-label-color"], 0.8);
+    computedTheme["dark-input-icon-color"] = "#".concat(tinycolor(computedTheme["dark-input-background-color"]).lighten(58).toHex());
+    setInitialState({
+      theme: _objectSpread2$1(_objectSpread2$1(_objectSpread2$1(_objectSpread2$1(_objectSpread2$1(_objectSpread2$1(_objectSpread2$1(_objectSpread2$1(_objectSpread2$1(_objectSpread2$1({}, convertObjToVars(computedTheme)), generateColorSpectrum(computedTheme["light-primary-action-color"])), generateColorSpectrum(computedTheme["dark-primary-action-color"], "--dark-primary-")), generateColorSpectrum(computedTheme["dark-background-color"], "--dark-background-")), generateColorSpectrum(computedTheme["light-danger-color"], "--light-danger-")), generateColorSpectrum(computedTheme["dark-danger-color"], "--dark-danger-")), generateColorSpectrum(computedTheme["light-success-color"], "--light-success-")), generateColorSpectrum(computedTheme["dark-success-color"], "--dark-success-")), generateColorSpectrum(computedTheme["light-warning-color"], "--light-warning-")), generateColorSpectrum(computedTheme["dark-warning-color"], "--dark-warning-")),
+      setTheme: setTheme
+    });
+  }, [initialTheme, theme]);
+  useLayoutEffect(function () {
+    var savedCssEntries = Object.entries(_objectSpread2$1({}, convertObjToVars(initialState.theme)));
+    var cssRules = "\n      box-sizing: border-box;\n      -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n    text-rendering: optimizeLegibility;\n    -webkit-tap-highlight-color: transparent;\n      ";
+    var themeRules = "";
+    if (savedCssEntries.length) {
+      themeRules += savedCssEntries.map(function (_ref2) {
+        var _ref3 = _slicedToArray$4(_ref2, 2),
+          k = _ref3[0],
+          v = _ref3[1];
+        return "".concat(k, ":").concat(v);
+      }).join(";");
+    }
+    if (document.getElementById("ui-kit-react-theme-tag")) {
+      var styleTag = document.getElementById("ui-kit-react-theme-tag");
+      styleTag.setAttribute("id", "ui-kit-react-theme-tag");
+      styleTag.setAttribute("type", "text/css");
+      styleTag.innerHTML = ":root{".concat(themeRules, "}.ui-kit-general-box{").concat(cssRules, "}");
+    } else {
+      var _styleTag = document.createElement("style");
+      _styleTag.setAttribute("id", "ui-kit-react-theme-tag");
+      _styleTag.setAttribute("type", "text/css");
+      _styleTag.innerHTML = ":root{".concat(themeRules, "}.ui-kit-general-box{").concat(cssRules, "}");
+      document.head.appendChild(_styleTag);
+    }
+  }, [initialState, theme, initialTheme]);
+  return /*#__PURE__*/React__default.createElement(ThemeContext.Provider, {
+    value: initialState
+  }, children);
+};
+ThemeProvider.propTypes = {
+  initialTheme: propTypes.exports.object
+};
+ThemeProvider.defaultProps = {
+  initialTheme: {}
 };
 
 var _excluded$I = ["message", "description", "colorScheme", "theme", "button", "buttonAction", "onAction", "className", "closable", "bordered", "smartColor", "iconColor", "icon"];
@@ -17527,6 +17136,146 @@ AutoLayout.defaultProps = {
   itemSpacing: "10px"
 };
 
+var NATIVE_BIND = functionBindNative;
+
+var FunctionPrototype = Function.prototype;
+var apply$2 = FunctionPrototype.apply;
+var call$6 = FunctionPrototype.call;
+
+// eslint-disable-next-line es/no-reflect -- safe
+var functionApply = typeof Reflect == 'object' && Reflect.apply || (NATIVE_BIND ? call$6.bind(apply$2) : function () {
+  return call$6.apply(apply$2, arguments);
+});
+
+var classofRaw = classofRaw$2;
+var uncurryThis$c = functionUncurryThis;
+
+var functionUncurryThisClause = function (fn) {
+  // Nashorn bug:
+  //   https://github.com/zloirock/core-js/issues/1128
+  //   https://github.com/zloirock/core-js/issues/1130
+  if (classofRaw(fn) === 'Function') return uncurryThis$c(fn);
+};
+
+// TODO: Remove from `core-js@4` since it's moved to entry points
+
+var uncurryThis$b = functionUncurryThisClause;
+var defineBuiltIn$4 = defineBuiltIn$6;
+var regexpExec$1 = regexpExec$2;
+var fails$8 = fails$o;
+var wellKnownSymbol$b = wellKnownSymbol$f;
+var createNonEnumerableProperty$3 = createNonEnumerableProperty$6;
+
+var SPECIES$1 = wellKnownSymbol$b('species');
+var RegExpPrototype$3 = RegExp.prototype;
+
+var fixRegexpWellKnownSymbolLogic = function (KEY, exec, FORCED, SHAM) {
+  var SYMBOL = wellKnownSymbol$b(KEY);
+
+  var DELEGATES_TO_SYMBOL = !fails$8(function () {
+    // String methods call symbol-named RegEp methods
+    var O = {};
+    O[SYMBOL] = function () { return 7; };
+    return ''[KEY](O) != 7;
+  });
+
+  var DELEGATES_TO_EXEC = DELEGATES_TO_SYMBOL && !fails$8(function () {
+    // Symbol-named RegExp methods call .exec
+    var execCalled = false;
+    var re = /a/;
+
+    if (KEY === 'split') {
+      // We can't use real regex here since it causes deoptimization
+      // and serious performance degradation in V8
+      // https://github.com/zloirock/core-js/issues/306
+      re = {};
+      // RegExp[@@split] doesn't call the regex's exec method, but first creates
+      // a new one. We need to return the patched regex when creating the new one.
+      re.constructor = {};
+      re.constructor[SPECIES$1] = function () { return re; };
+      re.flags = '';
+      re[SYMBOL] = /./[SYMBOL];
+    }
+
+    re.exec = function () { execCalled = true; return null; };
+
+    re[SYMBOL]('');
+    return !execCalled;
+  });
+
+  if (
+    !DELEGATES_TO_SYMBOL ||
+    !DELEGATES_TO_EXEC ||
+    FORCED
+  ) {
+    var uncurriedNativeRegExpMethod = uncurryThis$b(/./[SYMBOL]);
+    var methods = exec(SYMBOL, ''[KEY], function (nativeMethod, regexp, str, arg2, forceStringMethod) {
+      var uncurriedNativeMethod = uncurryThis$b(nativeMethod);
+      var $exec = regexp.exec;
+      if ($exec === regexpExec$1 || $exec === RegExpPrototype$3.exec) {
+        if (DELEGATES_TO_SYMBOL && !forceStringMethod) {
+          // The native String method already delegates to @@method (this
+          // polyfilled function), leasing to infinite recursion.
+          // We avoid it by directly calling the native @@method method.
+          return { done: true, value: uncurriedNativeRegExpMethod(regexp, str, arg2) };
+        }
+        return { done: true, value: uncurriedNativeMethod(str, regexp, arg2) };
+      }
+      return { done: false };
+    });
+
+    defineBuiltIn$4(String.prototype, KEY, methods[0]);
+    defineBuiltIn$4(RegExpPrototype$3, SYMBOL, methods[1]);
+  }
+
+  if (SHAM) createNonEnumerableProperty$3(RegExpPrototype$3[SYMBOL], 'sham', true);
+};
+
+var uncurryThis$a = functionUncurryThis;
+var toIntegerOrInfinity$1 = toIntegerOrInfinity$4;
+var toString$9 = toString$f;
+var requireObjectCoercible$6 = requireObjectCoercible$a;
+
+var charAt$4 = uncurryThis$a(''.charAt);
+var charCodeAt = uncurryThis$a(''.charCodeAt);
+var stringSlice$5 = uncurryThis$a(''.slice);
+
+var createMethod = function (CONVERT_TO_STRING) {
+  return function ($this, pos) {
+    var S = toString$9(requireObjectCoercible$6($this));
+    var position = toIntegerOrInfinity$1(pos);
+    var size = S.length;
+    var first, second;
+    if (position < 0 || position >= size) return CONVERT_TO_STRING ? '' : undefined;
+    first = charCodeAt(S, position);
+    return first < 0xD800 || first > 0xDBFF || position + 1 === size
+      || (second = charCodeAt(S, position + 1)) < 0xDC00 || second > 0xDFFF
+        ? CONVERT_TO_STRING
+          ? charAt$4(S, position)
+          : first
+        : CONVERT_TO_STRING
+          ? stringSlice$5(S, position, position + 2)
+          : (first - 0xD800 << 10) + (second - 0xDC00) + 0x10000;
+  };
+};
+
+var stringMultibyte = {
+  // `String.prototype.codePointAt` method
+  // https://tc39.es/ecma262/#sec-string.prototype.codepointat
+  codeAt: createMethod(false),
+  // `String.prototype.at` method
+  // https://github.com/mathiasbynens/String.prototype.at
+  charAt: createMethod(true)
+};
+
+var charAt$3 = stringMultibyte.charAt;
+
+// `AdvanceStringIndex` abstract operation
+// https://tc39.es/ecma262/#sec-advancestringindex
+var advanceStringIndex$1 = function (S, index, unicode) {
+  return index + (unicode ? charAt$3(S, index).length : 1);
+};
+
 var uncurryThis$9 = functionUncurryThis;
 var toObject$2 = toObject$6;
 
@@ -17534,6 +17283,7 @@ var floor$1 = Math.floor;
 var charAt$2 = uncurryThis$9(''.charAt);
 var replace$1 = uncurryThis$9(''.replace);
 var stringSlice$4 = uncurryThis$9(''.slice);
+// eslint-disable-next-line redos/no-vulnerable -- safe
 var SUBSTITUTION_SYMBOLS = /\$([$&'`]|\d{1,2}|<[^>]*>)/g;
 var SUBSTITUTION_SYMBOLS_NO_NAMED = /\$([$&'`]|\d{1,2})/g;
 
@@ -17572,25 +17322,47 @@ var getSubstitution$2 = function (matched, str, position, captures, namedCapture
   });
 };
 
+var call$5 = functionCall;
+var anObject$4 = anObject$b;
+var isCallable$7 = isCallable$l;
+var classof$1 = classofRaw$2;
+var regexpExec = regexpExec$2;
+
+var $TypeError$4 = TypeError;
+
+// `RegExpExec` abstract operation
+// https://tc39.es/ecma262/#sec-regexpexec
+var regexpExecAbstract = function (R, S) {
+  var exec = R.exec;
+  if (isCallable$7(exec)) {
+    var result = call$5(exec, R, S);
+    if (result !== null) anObject$4(result);
+    return result;
+  }
+  if (classof$1(R) === 'RegExp') return call$5(regexpExec, R, S);
+  throw $TypeError$4('RegExp#exec called on incompatible receiver');
+};
+
 var apply$1 = functionApply;
 var call$4 = functionCall;
 var uncurryThis$8 = functionUncurryThis;
 var fixRegExpWellKnownSymbolLogic$1 = fixRegexpWellKnownSymbolLogic;
-var fails$7 = fails$q;
-var anObject$3 = anObject$c;
-var isCallable$6 = isCallable$m;
+var fails$7 = fails$o;
+var anObject$3 = anObject$b;
+var isCallable$6 = isCallable$l;
+var isNullOrUndefined$2 = isNullOrUndefined$5;
 var toIntegerOrInfinity = toIntegerOrInfinity$4;
-var toLength$2 = toLength$5;
+var toLength$2 = toLength$4;
 var toString$8 = toString$f;
-var requireObjectCoercible$5 = requireObjectCoercible$b;
-var advanceStringIndex = advanceStringIndex$2;
-var getMethod$2 = getMethod$5;
+var requireObjectCoercible$5 = requireObjectCoercible$a;
+var advanceStringIndex = advanceStringIndex$1;
+var getMethod$2 = getMethod$4;
 var getSubstitution$1 = getSubstitution$2;
 var regExpExec$1 = regexpExecAbstract;
-var wellKnownSymbol$9 = wellKnownSymbol$g;
+var wellKnownSymbol$a = wellKnownSymbol$f;
 
-var REPLACE$1 = wellKnownSymbol$9('replace');
-var max$6 = Math.max;
+var REPLACE$1 = wellKnownSymbol$a('replace');
+var max$7 = Math.max;
 var min$6 = Math.min;
 var concat = uncurryThis$8([].concat);
 var push$1 = uncurryThis$8([].push);
@@ -17636,7 +17408,7 @@ fixRegExpWellKnownSymbolLogic$1('replace', function (_, nativeReplace, maybeCall
     // https://tc39.es/ecma262/#sec-string.prototype.replace
     function replace(searchValue, replaceValue) {
       var O = requireObjectCoercible$5(this);
-      var replacer = searchValue == undefined ? undefined : getMethod$2(searchValue, REPLACE$1);
+      var replacer = isNullOrUndefined$2(searchValue) ? undefined : getMethod$2(searchValue, REPLACE$1);
       return replacer
         ? call$4(replacer, searchValue, O, replaceValue)
         : call$4(nativeReplace, toString$8(O), searchValue, replaceValue);
@@ -17682,7 +17454,7 @@ fixRegExpWellKnownSymbolLogic$1('replace', function (_, nativeReplace, maybeCall
         result = results[i];
 
         var matched = toString$8(result[0]);
-        var position = max$6(min$6(toIntegerOrInfinity(result.index), S.length), 0);
+        var position = max$7(min$6(toIntegerOrInfinity(result.index), S.length), 0);
         var captures = [];
         // NOTE: This is equivalent to
         //   captures = result.slice(1).map(maybeToString)
@@ -17968,7 +17740,6 @@ var Radio = function Radio(_ref) {
       }
     }
   };
-  label ? label : props.children;
   var generateRadioClassName = classNames({
     ringed: ringed,
     "ui-radio__wrapper": true,
@@ -18217,6 +17988,19 @@ Card.defaultProps = {
   // icon: ChevronFilledDown
 };
 
+var isObject$2 = isObject$8;
+var classof = classofRaw$2;
+var wellKnownSymbol$9 = wellKnownSymbol$f;
+
+var MATCH$2 = wellKnownSymbol$9('match');
+
+// `IsRegExp` abstract operation
+// https://tc39.es/ecma262/#sec-isregexp
+var isRegexp = function (it) {
+  var isRegExp;
+  return isObject$2(it) && ((isRegExp = it[MATCH$2]) !== undefined ? !!isRegExp : classof(it) == 'RegExp');
+};
+
 var call$3 = functionCall;
 var hasOwn$3 = hasOwnProperty_1;
 var isPrototypeOf$1 = objectIsPrototypeOf;
@@ -18233,21 +18017,22 @@ var regexpGetFlags = function (R) {
 var $$7 = _export;
 var call$2 = functionCall;
 var uncurryThis$7 = functionUncurryThis;
-var requireObjectCoercible$4 = requireObjectCoercible$b;
-var isCallable$5 = isCallable$m;
+var requireObjectCoercible$4 = requireObjectCoercible$a;
+var isCallable$5 = isCallable$l;
+var isNullOrUndefined$1 = isNullOrUndefined$5;
 var isRegExp$2 = isRegexp;
 var toString$7 = toString$f;
-var getMethod$1 = getMethod$5;
+var getMethod$1 = getMethod$4;
 var getRegExpFlags$2 = regexpGetFlags;
 var getSubstitution = getSubstitution$2;
-var wellKnownSymbol$8 = wellKnownSymbol$g;
+var wellKnownSymbol$8 = wellKnownSymbol$f;
 
 var REPLACE = wellKnownSymbol$8('replace');
 var $TypeError$3 = TypeError;
 var indexOf = uncurryThis$7(''.indexOf);
 uncurryThis$7(''.replace);
 var stringSlice$2 = uncurryThis$7(''.slice);
-var max$5 = Math.max;
+var max$6 = Math.max;
 
 var stringIndexOf$2 = function (string, searchValue, fromIndex) {
   if (fromIndex > string.length) return -1;
@@ -18264,7 +18049,7 @@ $$7({ target: 'String', proto: true }, {
     var position = 0;
     var endOfLastMatch = 0;
     var result = '';
-    if (searchValue != null) {
+    if (!isNullOrUndefined$1(searchValue)) {
       IS_REG_EXP = isRegExp$2(searchValue);
       if (IS_REG_EXP) {
         flags = toString$7(requireObjectCoercible$4(getRegExpFlags$2(searchValue)));
@@ -18280,7 +18065,7 @@ $$7({ target: 'String', proto: true }, {
     functionalReplace = isCallable$5(replaceValue);
     if (!functionalReplace) replaceValue = toString$7(replaceValue);
     searchLength = searchString.length;
-    advanceBy = max$5(1, searchLength);
+    advanceBy = max$6(1, searchLength);
     position = stringIndexOf$2(string, searchString, 0);
     while (position !== -1) {
       replacement = functionalReplace
@@ -18298,27 +18083,27 @@ $$7({ target: 'String', proto: true }, {
 });
 
 var global$3 = global$j;
-var fails$6 = fails$q;
+var fails$6 = fails$o;
 var uncurryThis$6 = functionUncurryThis;
 var toString$6 = toString$f;
 var trim = stringTrim.trim;
 var whitespaces = whitespaces$4;
 
 var charAt$1 = uncurryThis$6(''.charAt);
-var n$ParseFloat = global$3.parseFloat;
+var $parseFloat$1 = global$3.parseFloat;
 var Symbol$1 = global$3.Symbol;
 var ITERATOR$3 = Symbol$1 && Symbol$1.iterator;
-var FORCED$1 = 1 / n$ParseFloat(whitespaces + '-0') !== -Infinity
+var FORCED$1 = 1 / $parseFloat$1(whitespaces + '-0') !== -Infinity
   // MS Edge 18- broken with boxed symbols
-  || (ITERATOR$3 && !fails$6(function () { n$ParseFloat(Object(ITERATOR$3)); }));
+  || (ITERATOR$3 && !fails$6(function () { $parseFloat$1(Object(ITERATOR$3)); }));
 
 // `parseFloat` method
 // https://tc39.es/ecma262/#sec-parsefloat-string
 var numberParseFloat = FORCED$1 ? function parseFloat(string) {
   var trimmedString = trim(toString$6(string));
-  var result = n$ParseFloat(trimmedString);
+  var result = $parseFloat$1(trimmedString);
   return result === 0 && charAt$1(trimmedString, 0) == '-' ? -0 : result;
-} : n$ParseFloat;
+} : $parseFloat$1;
 
 var $$6 = _export;
 var $parseFloat = numberParseFloat;
@@ -18331,18 +18116,18 @@ $$6({ global: true, forced: parseFloat != $parseFloat }, {
 
 var PROPER_FUNCTION_NAME$1 = functionName.PROPER;
 var defineBuiltIn$3 = defineBuiltIn$6;
-var anObject$2 = anObject$c;
+var anObject$2 = anObject$b;
 var $toString = toString$f;
-var fails$5 = fails$q;
+var fails$5 = fails$o;
 var getRegExpFlags$1 = regexpGetFlags;
 
 var TO_STRING = 'toString';
 var RegExpPrototype$1 = RegExp.prototype;
-var n$ToString = RegExpPrototype$1[TO_STRING];
+var nativeToString = RegExpPrototype$1[TO_STRING];
 
-var NOT_GENERIC = fails$5(function () { return n$ToString.call({ source: 'a', flags: 'b' }) != '/a/b'; });
+var NOT_GENERIC = fails$5(function () { return nativeToString.call({ source: 'a', flags: 'b' }) != '/a/b'; });
 // FF44- RegExp#toString has a wrong name
-var INCORRECT_NAME = PROPER_FUNCTION_NAME$1 && n$ToString.name != TO_STRING;
+var INCORRECT_NAME = PROPER_FUNCTION_NAME$1 && nativeToString.name != TO_STRING;
 
 // `RegExp.prototype.toString` method
 // https://tc39.es/ecma262/#sec-regexp.prototype.tostring
@@ -19214,7 +18999,7 @@ function includes(array, thing) {
     }
     return false;
 }
-function max$4(array) {
+function max$5(array) {
     var maximum = DEFAULT_LENGTH;
     var i = 0;
     for (; i < array.length; i++) {
@@ -19240,7 +19025,7 @@ function cvv(value, maxLength) {
     if (value.length < Math.min.apply(null, maxLength)) {
         return verification$1(false, true);
     }
-    if (value.length > max$4(maxLength)) {
+    if (value.length > max$5(maxLength)) {
         return verification$1(false, false);
     }
     return verification$1(true, true);
@@ -19360,8 +19145,8 @@ var CardInputField = function CardInputField(_ref) {
     setCardExpError = _useState16[1];
   var _useState17 = useState(null),
     _useState18 = _slicedToArray$4(_useState17, 2),
-    cardCvvError = _useState18[0];
-    _useState18[1];
+    cardCvvError = _useState18[0],
+    setCardCvvError = _useState18[1];
   var _useState19 = useState(null),
     _useState20 = _slicedToArray$4(_useState19, 2),
     computedErrorMessage = _useState20[0],
@@ -19493,7 +19278,13 @@ var CardInputField = function CardInputField(_ref) {
     }
   };
   var handleCVVBlur = function handleCVVBlur() {
-    pseudoInput.current.classList.remove("focus");
+    if (cardNoError.value) {
+      cardNoInput.current.focus();
+    } else if (cardExpError.value) {
+      cardExpInput.current.focus();
+    } else {
+      pseudoInput.current.classList.remove("focus");
+    }
   };
   var handleCardNoChange = function handleCardNoChange(e) {
     setTimeout(function () {
@@ -19540,6 +19331,12 @@ var CardInputField = function CardInputField(_ref) {
   var handleCardCvvInput = function handleCardCvvInput(e) {
     var value = _typeof$E(e) === "object" ? e.target.value : e;
     setCardCVV(value);
+    var validatedCardNo = dist.number(props.cardNo.replaceAll(" ", ""));
+    if (validatedCardNo.card.code.size === e.target.value.length) {
+      setCardCvvError("");
+    } else {
+      setCardCvvError("Invalid CVC size. The CVC must be ".concat(validatedCardNo.card.code.size));
+    }
   };
   var handleCardNoInput = function handleCardNoInput(e) {
     var value = _typeof$E(e) === "object" ? e.target.value.replace(/\s/g, "") : e;
@@ -19958,7 +19755,7 @@ Counter.defaultProps = {
   value: 0
 };
 
-var wellKnownSymbol$7 = wellKnownSymbol$g;
+var wellKnownSymbol$7 = wellKnownSymbol$f;
 var create$2 = objectCreate;
 var defineProperty$4 = objectDefineProperty.f;
 
@@ -19981,11 +19778,12 @@ var addToUnscopables$2 = function (key) {
 
 var $$5 = _export;
 var $includes = arrayIncludes.includes;
-var fails$4 = fails$q;
+var fails$4 = fails$o;
 var addToUnscopables$1 = addToUnscopables$2;
 
 // FF99+ bug
 var BROKEN_ON_SPARSE = fails$4(function () {
+  // eslint-disable-next-line es/no-array-prototype-includes -- detection
   return !Array(1).includes();
 });
 
@@ -20010,7 +19808,7 @@ var notARegexp = function (it) {
   } return it;
 };
 
-var wellKnownSymbol$6 = wellKnownSymbol$g;
+var wellKnownSymbol$6 = wellKnownSymbol$f;
 
 var MATCH$1 = wellKnownSymbol$6('match');
 
@@ -20029,7 +19827,7 @@ var correctIsRegexpLogic = function (METHOD_NAME) {
 var $$4 = _export;
 var uncurryThis$5 = functionUncurryThis;
 var notARegExp$2 = notARegexp;
-var requireObjectCoercible$3 = requireObjectCoercible$b;
+var requireObjectCoercible$3 = requireObjectCoercible$a;
 var toString$5 = toString$f;
 var correctIsRegExpLogic$2 = correctIsRegexpLogic;
 
@@ -20047,7 +19845,17 @@ $$4({ target: 'String', proto: true, forced: !correctIsRegExpLogic$2('includes')
   }
 });
 
-var isCallable$4 = isCallable$m;
+var uncurryThis$4 = functionUncurryThis;
+var aCallable$1 = aCallable$4;
+
+var functionUncurryThisAccessor = function (object, key, method) {
+  try {
+    // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+    return uncurryThis$4(aCallable$1(Object.getOwnPropertyDescriptor(object, key)[method]));
+  } catch (error) { /* empty */ }
+};
+
+var isCallable$4 = isCallable$l;
 
 var $String = String;
 var $TypeError$1 = TypeError;
@@ -20059,21 +19867,20 @@ var aPossiblePrototype$1 = function (argument) {
 
 /* eslint-disable no-proto -- safe */
 
-var uncurryThis$4 = functionUncurryThis;
-var anObject$1 = anObject$c;
+var uncurryThisAccessor = functionUncurryThisAccessor;
+var anObject$1 = anObject$b;
 var aPossiblePrototype = aPossiblePrototype$1;
 
 // `Object.setPrototypeOf` method
 // https://tc39.es/ecma262/#sec-object.setprototypeof
 // Works with __proto__ only. Old v8 can't work with null proto objects.
-// eslint-disable-next-line es-x/no-object-setprototypeof -- safe
+// eslint-disable-next-line es/no-object-setprototypeof -- safe
 var objectSetPrototypeOf = Object.setPrototypeOf || ('__proto__' in {} ? function () {
   var CORRECT_SETTER = false;
   var test = {};
   var setter;
   try {
-    // eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
-    setter = uncurryThis$4(Object.getOwnPropertyDescriptor(Object.prototype, '__proto__').set);
+    setter = uncurryThisAccessor(Object.prototype, '__proto__', 'set');
     setter(test, []);
     CORRECT_SETTER = test instanceof Array;
   } catch (error) { /* empty */ }
@@ -20086,8 +19893,8 @@ var objectSetPrototypeOf = Object.setPrototypeOf || ('__proto__' in {} ? functio
   };
 }() : undefined);
 
-var isCallable$3 = isCallable$m;
-var isObject = isObject$8;
+var isCallable$3 = isCallable$l;
+var isObject$1 = isObject$8;
 var setPrototypeOf$1 = objectSetPrototypeOf;
 
 // makes subclassing work correct for wrapped built-ins
@@ -20099,7 +19906,7 @@ var inheritIfRequired$1 = function ($this, dummy, Wrapper) {
     // we haven't completely correct pre-ES6 way for getting `new.target`, so use this
     isCallable$3(NewTarget = dummy.constructor) &&
     NewTarget !== Wrapper &&
-    isObject(NewTargetPrototype = NewTarget.prototype) &&
+    isObject$1(NewTargetPrototype = NewTarget.prototype) &&
     NewTargetPrototype !== Wrapper.prototype
   ) setPrototypeOf$1($this, NewTargetPrototype);
   return $this;
@@ -20115,19 +19922,18 @@ var proxyAccessor$1 = function (Target, Source, key) {
   });
 };
 
-var getBuiltIn = getBuiltIn$6;
-var definePropertyModule = objectDefineProperty;
-var wellKnownSymbol$5 = wellKnownSymbol$g;
+var getBuiltIn = getBuiltIn$4;
+var defineBuiltInAccessor = defineBuiltInAccessor$2;
+var wellKnownSymbol$5 = wellKnownSymbol$f;
 var DESCRIPTORS$2 = descriptors;
 
 var SPECIES = wellKnownSymbol$5('species');
 
 var setSpecies$1 = function (CONSTRUCTOR_NAME) {
   var Constructor = getBuiltIn(CONSTRUCTOR_NAME);
-  var defineProperty = definePropertyModule.f;
 
   if (DESCRIPTORS$2 && Constructor && !Constructor[SPECIES]) {
-    defineProperty(Constructor, SPECIES, {
+    defineBuiltInAccessor(Constructor, SPECIES, {
       configurable: true,
       get: function () { return this; }
     });
@@ -20148,11 +19954,11 @@ var getRegExpFlags = regexpGetFlags;
 var stickyHelpers = regexpStickyHelpers;
 var proxyAccessor = proxyAccessor$1;
 var defineBuiltIn$2 = defineBuiltIn$6;
-var fails$3 = fails$q;
+var fails$3 = fails$o;
 var hasOwn$2 = hasOwnProperty_1;
 var enforceInternalState = internalState.enforce;
 var setSpecies = setSpecies$1;
-var wellKnownSymbol$4 = wellKnownSymbol$g;
+var wellKnownSymbol$4 = wellKnownSymbol$f;
 var UNSUPPORTED_DOT_ALL = regexpUnsupportedDotAll;
 var UNSUPPORTED_NCG = regexpUnsupportedNcg;
 
@@ -20499,13 +20305,9 @@ var TextField = /*#__PURE__*/forwardRef(function (_ref, ref) {
     localType = _useState6[0],
     setLocalType = _useState6[1];
   var _useState7 = useState(false),
-    _useState8 = _slicedToArray$4(_useState7, 2);
-    _useState8[0];
-    _useState8[1];
-  var _useState9 = useState(false),
-    _useState10 = _slicedToArray$4(_useState9, 2),
-    focused = _useState10[0],
-    setFocused = _useState10[1];
+    _useState8 = _slicedToArray$4(_useState7, 2),
+    focused = _useState8[0],
+    setFocused = _useState8[1];
   useLayoutEffect(function () {
     if (!focused && value) {
       if (ssn) {
@@ -20789,10 +20591,13 @@ TextField.defaultProps = _objectSpread2$1(_objectSpread2$1({}, defaultProps$1), 
   type: "text"
 });
 
-var _excluded$w = ["options", "onChange", "initialValue", "returnObjModel"];
-var Dropdown = function Dropdown(_ref) {
-  var options = _ref.options,
-    onChange = _ref.onChange,
+var _excluded$w = ["label", "onChange", "onBlur", "name", "options", "initialValue", "returnObjModel"];
+var Dropdown = /*#__PURE__*/forwardRef(function (_ref, ref) {
+  _ref.label;
+    var onChange = _ref.onChange;
+    _ref.onBlur;
+    _ref.name;
+    var options = _ref.options,
     initialValue = _ref.initialValue,
     returnObjModel = _ref.returnObjModel,
     props = _objectWithoutProperties(_ref, _excluded$w);
@@ -20897,17 +20702,15 @@ var Dropdown = function Dropdown(_ref) {
   var handleBlur = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       return _regeneratorRuntime().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              setIsBlur(true);
-              setTimeout(function () {
-                setShowOptions(false);
-              }, 300);
-            case 2:
-            case "end":
-              return _context.stop();
-          }
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            setIsBlur(true);
+            setTimeout(function () {
+              setShowOptions(false);
+            }, 300);
+          case 2:
+          case "end":
+            return _context.stop();
         }
       }, _callee);
     }));
@@ -20918,24 +20721,22 @@ var Dropdown = function Dropdown(_ref) {
   var handleClickedOption = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(option) {
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              if (option) {
-                if (typeof option === "string") {
-                  setInputValue(option);
-                } else {
-                  setInputValue(option.text);
-                }
-                setSelectedOption(option);
-                setTimeout(function () {
-                  setShowOptions(false);
-                }, 300);
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            if (option) {
+              if (typeof option === "string") {
+                setInputValue(option);
+              } else {
+                setInputValue(option.text);
               }
-            case 1:
-            case "end":
-              return _context2.stop();
-          }
+              setSelectedOption(option);
+              setTimeout(function () {
+                setShowOptions(false);
+              }, 300);
+            }
+          case 1:
+          case "end":
+            return _context2.stop();
         }
       }, _callee2);
     }));
@@ -20951,37 +20752,35 @@ var Dropdown = function Dropdown(_ref) {
   var handleKeyDown = /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(e) {
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-        while (1) {
-          switch (_context3.prev = _context3.next) {
-            case 0:
-              _context3.t0 = e.key;
-              _context3.next = _context3.t0 === "ArrowDown" ? 3 : _context3.t0 === "ArrowUp" ? 6 : _context3.t0 === "Enter" ? 9 : _context3.t0 === "Escape" ? 11 : 14;
-              break;
-            case 3:
-              if (!showOptions) {
-                setShowOptions(true);
-              }
-              if (selectedIndex + 1 <= computedOptions.length - 1) setSelectedIndex(selectedIndex + 1);else setSelectedIndex(0);
-              return _context3.abrupt("break", 15);
-            case 6:
-              if (!showOptions) {
-                setShowOptions(true);
-              }
-              if (selectedIndex - 1 >= 0) setSelectedIndex(selectedIndex - 1);else setSelectedIndex(computedOptions.length - 1);
-              return _context3.abrupt("break", 15);
-            case 9:
-              handleClickedOption(computedOptions[selectedIndex]);
-              return _context3.abrupt("break", 15);
-            case 11:
-              handleBlur();
-              e.target.blur();
-              return _context3.abrupt("break", 15);
-            case 14:
-              return _context3.abrupt("break", 15);
-            case 15:
-            case "end":
-              return _context3.stop();
-          }
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.t0 = e.key;
+            _context3.next = _context3.t0 === "ArrowDown" ? 3 : _context3.t0 === "ArrowUp" ? 6 : _context3.t0 === "Enter" ? 9 : _context3.t0 === "Escape" ? 11 : 14;
+            break;
+          case 3:
+            if (!showOptions) {
+              setShowOptions(true);
+            }
+            if (selectedIndex + 1 <= computedOptions.length - 1) setSelectedIndex(selectedIndex + 1);else setSelectedIndex(0);
+            return _context3.abrupt("break", 15);
+          case 6:
+            if (!showOptions) {
+              setShowOptions(true);
+            }
+            if (selectedIndex - 1 >= 0) setSelectedIndex(selectedIndex - 1);else setSelectedIndex(computedOptions.length - 1);
+            return _context3.abrupt("break", 15);
+          case 9:
+            handleClickedOption(computedOptions[selectedIndex]);
+            return _context3.abrupt("break", 15);
+          case 11:
+            handleBlur();
+            e.target.blur();
+            return _context3.abrupt("break", 15);
+          case 14:
+            return _context3.abrupt("break", 15);
+          case 15:
+          case "end":
+            return _context3.stop();
         }
       }, _callee3);
     }));
@@ -21031,11 +20830,12 @@ var Dropdown = function Dropdown(_ref) {
     onRightIconClick: function onRightIconClick() {
       return setShowOptions(!showOptions);
     },
-    leftIconComponent: selectedOption === null || selectedOption === void 0 ? void 0 : selectedOption.icon
+    leftIconComponent: selectedOption === null || selectedOption === void 0 ? void 0 : selectedOption.icon,
+    ref: ref
   })), showOptions && /*#__PURE__*/React__default.createElement(Box, {
     className: "ui-dropdown__options"
   }, mappedComputedOptions));
-};
+});
 Dropdown.defaultProps = _objectSpread2$1({}, defaultProps$1);
 Dropdown.propTypes = _objectSpread2$1(_objectSpread2$1({}, inputPropTypes), {}, {
   options: propTypes.exports.array,
@@ -51988,7 +51788,7 @@ function _typeof$A(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "func
  * //=> Sun Jul 02 1995 00:00:00
  */
 
-function max$3(dirtyDatesArray) {
+function max$4(dirtyDatesArray) {
   requiredArgs(1, arguments);
   var datesArray; // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
 
@@ -57264,7 +57064,7 @@ function getBasePlacement(placement) {
   return placement.split('-')[0];
 }
 
-var max$2 = Math.max;
+var max$3 = Math.max;
 var min$4 = Math.min;
 var round$1 = Math.round;
 
@@ -57468,7 +57268,7 @@ function getMainAxisFromPlacement$1(placement) {
 }
 
 function within$1(min, value, max) {
-  return max$2(min, min$4(value, max));
+  return max$3(min, min$4(value, max));
 }
 function withinMaxClamp(min, value, max) {
   var v = within$1(min, value, max);
@@ -57890,13 +57690,13 @@ function getDocumentRect$1(element) {
   var html = getDocumentElement$2(element);
   var winScroll = getWindowScroll$2(element);
   var body = (_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body;
-  var width = max$2(html.scrollWidth, html.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
-  var height = max$2(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
+  var width = max$3(html.scrollWidth, html.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
+  var height = max$3(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
   var x = -winScroll.scrollLeft + getWindowScrollBarX$1(element);
   var y = -winScroll.scrollTop;
 
   if (getComputedStyle$1(body || html).direction === 'rtl') {
-    x += max$2(html.clientWidth, body ? body.clientWidth : 0) - width;
+    x += max$3(html.clientWidth, body ? body.clientWidth : 0) - width;
   }
 
   return {
@@ -58005,10 +57805,10 @@ function getClippingRect$1(element, boundary, rootBoundary, strategy) {
   var firstClippingParent = clippingParents[0];
   var clippingRect = clippingParents.reduce(function (accRect, clippingParent) {
     var rect = getClientRectFromMixedType(element, clippingParent, strategy);
-    accRect.top = max$2(rect.top, accRect.top);
+    accRect.top = max$3(rect.top, accRect.top);
     accRect.right = min$4(rect.right, accRect.right);
     accRect.bottom = min$4(rect.bottom, accRect.bottom);
-    accRect.left = max$2(rect.left, accRect.left);
+    accRect.left = max$3(rect.left, accRect.left);
     return accRect;
   }, getClientRectFromMixedType(element, firstClippingParent, strategy));
   clippingRect.width = clippingRect.right - clippingRect.left;
@@ -58547,7 +58347,7 @@ function preventOverflow(_ref) {
     var offsetModifierValue = (_offsetModifierState$ = offsetModifierState == null ? void 0 : offsetModifierState[mainAxis]) != null ? _offsetModifierState$ : 0;
     var tetherMin = offset + minOffset - offsetModifierValue - clientOffset;
     var tetherMax = offset + maxOffset - offsetModifierValue;
-    var preventedOffset = within$1(tether ? min$4(min, tetherMin) : min, offset, tether ? max$2(max, tetherMax) : max);
+    var preventedOffset = within$1(tether ? min$4(min, tetherMin) : min, offset, tether ? max$3(max, tetherMax) : max);
     popperOffsets[mainAxis] = preventedOffset;
     data[mainAxis] = preventedOffset - offset;
   }
@@ -59471,7 +59271,7 @@ function Reference(_ref) {
   });
 }
 
-function ae(e,t){var r=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);t&&(n=n.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),r.push.apply(r,n);}return r}function se(e){for(var t=1;t<arguments.length;t++){var r=null!=arguments[t]?arguments[t]:{};t%2?ae(Object(r),!0).forEach((function(t){de(e,t,r[t]);})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(r)):ae(Object(r)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(r,t));}));}return e}function ie(e){return (ie="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function pe(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function ce(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n);}}function le(e,t,r){return t&&ce(e.prototype,t),r&&ce(e,r),Object.defineProperty(e,"prototype",{writable:!1}),e}function de(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function ue(){return (ue=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(e[n]=r[n]);}return e}).apply(this,arguments)}function he(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");Object.defineProperty(e,"prototype",{value:Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),writable:!1}),t&&fe(e,t);}function me(e){return (me=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function fe(e,t){return (fe=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function ye(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function ve(e,t){if(t&&("object"==typeof t||"function"==typeof t))return t;if(void 0!==t)throw new TypeError("Derived constructors may only return object or undefined");return ye(e)}function De(e){var t=function(){if("undefined"==typeof Reflect||!Reflect.construct)return !1;if(Reflect.construct.sham)return !1;if("function"==typeof Proxy)return !0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return !1}}();return function(){var r,n=me(e);if(t){var o=me(this).constructor;r=Reflect.construct(n,arguments,o);}else r=n.apply(this,arguments);return ve(this,r)}}function we(e){return function(e){if(Array.isArray(e))return ge(e)}(e)||function(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}(e)||function(e,t){if(!e)return;if("string"==typeof e)return ge(e,t);var r=Object.prototype.toString.call(e).slice(8,-1);"Object"===r&&e.constructor&&(r=e.constructor.name);if("Map"===r||"Set"===r)return Array.from(e);if("Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r))return ge(e,t)}(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function ge(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=new Array(t);r<t;r++)n[r]=e[r];return n}function ke(e,t){switch(e){case"P":return t.date({width:"short"});case"PP":return t.date({width:"medium"});case"PPP":return t.date({width:"long"});case"PPPP":default:return t.date({width:"full"})}}function be(e,t){switch(e){case"p":return t.time({width:"short"});case"pp":return t.time({width:"medium"});case"ppp":return t.time({width:"long"});case"pppp":default:return t.time({width:"full"})}}var Ce={p:be,P:function(e,t){var r,n=e.match(/(P+)(p+)?/)||[],o=n[1],a=n[2];if(!a)return ke(e,t);switch(o){case"P":r=t.dateTime({width:"short"});break;case"PP":r=t.dateTime({width:"medium"});break;case"PPP":r=t.dateTime({width:"long"});break;case"PPPP":default:r=t.dateTime({width:"full"});}return r.replace("{{date}}",ke(o,t)).replace("{{time}}",be(a,t))}},Se=/P+p+|P+|p+|''|'(''|[^'])+('|$)|./g;function _e(e){var t=e?"string"==typeof e||e instanceof String?parseISO(e):toDate(e):new Date;return Pe(t)?t:null}function Me(e,t,r,n,o){var a=null,s=Ue(r)||Ue(qe()),i=!0;return Array.isArray(t)?(t.forEach((function(t){var p=parse$2(e,t,new Date,{locale:s});n&&(i=Pe(p,o)&&e===Ee(p,t,r)),Pe(p,o)&&i&&(a=p);})),a):(a=parse$2(e,t,new Date,{locale:s}),n?i=Pe(a)&&e===Ee(a,t,r):Pe(a)||(t=t.match(Se).map((function(e){var t=e[0];return "p"===t||"P"===t?s?(0, Ce[t])(e,s.formatLong):t:e})).join(""),e.length>0&&(a=parse$2(e,t.slice(0,e.length),new Date)),Pe(a)||(a=new Date(e))),Pe(a)&&i?a:null)}function Pe(e,t){return t=t||new Date("1/1/1000"),isValid(e)&&!isBefore(e,t)}function Ee(e,t,r){if("en"===r)return format$1(e,t,{awareOfUnicodeTokens:!0});var n=Ue(r);return r&&!n&&console.warn('A locale object was not found for the provided string ["'.concat(r,'"].')),!n&&qe()&&Ue(qe())&&(n=Ue(qe())),format$1(e,t,{locale:n||null,awareOfUnicodeTokens:!0})}function Ne(e,t){var r=t.dateFormat,n=t.locale;return e&&Ee(e,Array.isArray(r)?r[0]:r,n)||""}function xe(e,t){var r=t.hour,n=void 0===r?0:r,o=t.minute,a=void 0===o?0:o,s=t.second;return setHours(setMinutes(setSeconds(e,void 0===s?0:s),a),n)}function Ye(e,t){var r=t&&Ue(t)||qe()&&Ue(qe());return getISOWeek(e,r?{locale:r}:null)}function Oe(e,t){return Ee(e,"ddd",t)}function Ie(e){return startOfDay(e)}function Te(e,t,r){var n=Ue(t||qe());return startOfWeek(e,{locale:n,weekStartsOn:r})}function Le(e){return startOfMonth(e)}function Re(e){return startOfYear(e)}function Fe(e){return startOfQuarter(e)}function Ae(e,t){return e&&t?isSameYear(e,t):!e&&!t}function Be(e,t){return e&&t?isSameMonth(e,t):!e&&!t}function Ke(e,t){return e&&t?isSameQuarter(e,t):!e&&!t}function We(e,t){return e&&t?isSameDay(e,t):!e&&!t}function je(e,t){return e&&t?isEqual$3(e,t):!e&&!t}function He(e,t,r){var n,o=startOfDay(t),a=endOfDay(r);try{n=isWithinInterval(e,{start:o,end:a});}catch(e){n=!1;}return n}function qe(){return ("undefined"!=typeof window?window:globalThis).__localeId__}function Ue(e){if("string"==typeof e){var t="undefined"!=typeof window?window:globalThis;return t.__localeData__?t.__localeData__[e]:null}return e}function $e(e,t){return Ee(setMonth(_e(),e),"LLLL",t)}function ze(e,t){return Ee(setMonth(_e(),e),"LLL",t)}function Ge(e,t){return Ee(setQuarter(_e(),e),"QQQ",t)}function Je(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=t.excludeDates,a=t.excludeDateIntervals,s=t.includeDates,i=t.includeDateIntervals,p=t.filterDate;return ot(e,{minDate:r,maxDate:n})||o&&o.some((function(t){return We(e,t)}))||a&&a.some((function(t){var r=t.start,n=t.end;return isWithinInterval(e,{start:r,end:n})}))||s&&!s.some((function(t){return We(e,t)}))||i&&!i.some((function(t){var r=t.start,n=t.end;return isWithinInterval(e,{start:r,end:n})}))||p&&!p(_e(e))||!1}function Xe(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.excludeDates,n=t.excludeDateIntervals;return n&&n.length>0?n.some((function(t){var r=t.start,n=t.end;return isWithinInterval(e,{start:r,end:n})})):r&&r.some((function(t){return We(e,t)}))||!1}function Ze(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=t.excludeDates,a=t.includeDates,s=t.filterDate;return ot(e,{minDate:r,maxDate:n})||o&&o.some((function(t){return Be(e,t)}))||a&&!a.some((function(t){return Be(e,t)}))||s&&!s(_e(e))||!1}function et(e,t,r,n){var o=getYear(e),a=getMonth(e),s=getYear(t),i=getMonth(t),p=getYear(n);return o===s&&o===p?a<=r&&r<=i:o<s?p===o&&a<=r||p===s&&i>=r||p<s&&p>o:void 0}function tt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=t.excludeDates,a=t.includeDates,s=t.filterDate;return ot(e,{minDate:r,maxDate:n})||o&&o.some((function(t){return Ke(e,t)}))||a&&!a.some((function(t){return Ke(e,t)}))||s&&!s(_e(e))||!1}function rt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=new Date(e,0,1);return ot(o,{minDate:r,maxDate:n})||!1}function nt(e,t,r,n){var o=getYear(e),a=getQuarter(e),s=getYear(t),i=getQuarter(t),p=getYear(n);return o===s&&o===p?a<=r&&r<=i:o<s?p===o&&a<=r||p===s&&i>=r||p<s&&p>o:void 0}function ot(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate;return r&&differenceInCalendarDays(e,r)<0||n&&differenceInCalendarDays(e,n)>0}function at(e,t){return t.some((function(t){return getHours(t)===getHours(e)&&getMinutes(t)===getMinutes(e)}))}function st(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.excludeTimes,n=t.includeTimes,o=t.filterTime;return r&&at(e,r)||n&&!at(e,n)||o&&!o(e)||!1}function it(e,t){var r=t.minTime,n=t.maxTime;if(!r||!n)throw new Error("Both minTime and maxTime props required");var o,a=_e(),s=setHours(setMinutes(a,getMinutes(e)),getHours(e)),i=setHours(setMinutes(a,getMinutes(r)),getHours(r)),p=setHours(setMinutes(a,getMinutes(n)),getHours(n));try{o=!isWithinInterval(s,{start:i,end:p});}catch(e){o=!1;}return o}function pt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.includeDates,o=subMonths(e,1);return r&&differenceInCalendarMonths(r,o)>0||n&&n.every((function(e){return differenceInCalendarMonths(e,o)>0}))||!1}function ct(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.maxDate,n=t.includeDates,o=addMonths(e,1);return r&&differenceInCalendarMonths(o,r)>0||n&&n.every((function(e){return differenceInCalendarMonths(o,e)>0}))||!1}function lt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.includeDates,o=subYears(e,1);return r&&differenceInCalendarYears(r,o)>0||n&&n.every((function(e){return differenceInCalendarYears(e,o)>0}))||!1}function dt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.maxDate,n=t.includeDates,o=addYears(e,1);return r&&differenceInCalendarYears(o,r)>0||n&&n.every((function(e){return differenceInCalendarYears(o,e)>0}))||!1}function ut(e){var t=e.minDate,r=e.includeDates;if(r&&t){var n=r.filter((function(e){return differenceInCalendarDays(e,t)>=0}));return min$5(n)}return r?min$5(r):t}function ht(e){var t=e.maxDate,r=e.includeDates;if(r&&t){var n=r.filter((function(e){return differenceInCalendarDays(e,t)<=0}));return max$3(n)}return r?max$3(r):t}function mt(){for(var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:[],t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"react-datepicker__day--highlighted",r=new Map,o=0,a=e.length;o<a;o++){var s=e[o];if(isDate$1(s)){var i=Ee(s,"MM.dd.yyyy"),p=r.get(i)||[];p.includes(t)||(p.push(t),r.set(i,p));}else if("object"===ie(s)){var c=Object.keys(s),l=c[0],d=s[c[0]];if("string"==typeof l&&d.constructor===Array)for(var u=0,h=d.length;u<h;u++){var m=Ee(d[u],"MM.dd.yyyy"),f=r.get(m)||[];f.includes(l)||(f.push(l),r.set(m,f));}}}return r}function ft(e,t,r,n,o){for(var a=o.length,p=[],c=0;c<a;c++){var l=addMinutes(addHours(e,getHours(o[c])),getMinutes(o[c])),d=addMinutes(e,(r+1)*n);isAfter(l,t)&&isBefore(l,d)&&p.push(o[c]);}return p}function yt(e){return e<10?"0".concat(e):"".concat(e)}function vt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:12,r=Math.ceil(getYear(e)/t)*t,n=r-(t-1);return {startPeriod:n,endPeriod:r}}function Dt(e,t,r,n){for(var o=[],a=0;a<2*t+1;a++){var s=e+t-a,i=!0;r&&(i=getYear(r)<=s),n&&i&&(i=getYear(n)>=s),i&&o.push(s);}return o}var wt=onClickOutsideHOC(function(n){he(a,React__default.Component);var o=De(a);function a(r){var n;pe(this,a),de(ye(n=o.call(this,r)),"renderOptions",(function(){var t=n.props.year,r=n.state.yearsList.map((function(r){return React__default.createElement("div",{className:t===r?"react-datepicker__year-option react-datepicker__year-option--selected_year":"react-datepicker__year-option",key:r,onClick:n.onChange.bind(ye(n),r),"aria-selected":t===r?"true":void 0},t===r?React__default.createElement("span",{className:"react-datepicker__year-option--selected"},"✓"):"",r)})),o=n.props.minDate?getYear(n.props.minDate):null,a=n.props.maxDate?getYear(n.props.maxDate):null;return a&&n.state.yearsList.find((function(e){return e===a}))||r.unshift(React__default.createElement("div",{className:"react-datepicker__year-option",key:"upcoming",onClick:n.incrementYears},React__default.createElement("a",{className:"react-datepicker__navigation react-datepicker__navigation--years react-datepicker__navigation--years-upcoming"}))),o&&n.state.yearsList.find((function(e){return e===o}))||r.push(React__default.createElement("div",{className:"react-datepicker__year-option",key:"previous",onClick:n.decrementYears},React__default.createElement("a",{className:"react-datepicker__navigation react-datepicker__navigation--years react-datepicker__navigation--years-previous"}))),r})),de(ye(n),"onChange",(function(e){n.props.onChange(e);})),de(ye(n),"handleClickOutside",(function(){n.props.onCancel();})),de(ye(n),"shiftYears",(function(e){var t=n.state.yearsList.map((function(t){return t+e}));n.setState({yearsList:t});})),de(ye(n),"incrementYears",(function(){return n.shiftYears(1)})),de(ye(n),"decrementYears",(function(){return n.shiftYears(-1)}));var s=r.yearDropdownItemNumber,i=r.scrollableYearDropdown,p=s||(i?10:5);return n.state={yearsList:Dt(n.props.year,p,n.props.minDate,n.props.maxDate)},n.dropdownRef=createRef(),n}return le(a,[{key:"componentDidMount",value:function(){var e=this.dropdownRef.current;e&&(e.scrollTop=e.scrollHeight/2-e.clientHeight/2);}},{key:"render",value:function(){var t=r({"react-datepicker__year-dropdown":!0,"react-datepicker__year-dropdown--scrollable":this.props.scrollableYearDropdown});return React__default.createElement("div",{className:t,ref:this.dropdownRef},this.renderOptions())}}]),a}()),gt=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{dropdownVisible:!1}),de(ye(t),"renderSelectOptions",(function(){for(var r=t.props.minDate?getYear(t.props.minDate):1900,n=t.props.maxDate?getYear(t.props.maxDate):2100,o=[],a=r;a<=n;a++)o.push(React__default.createElement("option",{key:a,value:a},a));return o})),de(ye(t),"onSelectChange",(function(e){t.onChange(e.target.value);})),de(ye(t),"renderSelectMode",(function(){return React__default.createElement("select",{value:t.props.year,className:"react-datepicker__year-select",onChange:t.onSelectChange},t.renderSelectOptions())})),de(ye(t),"renderReadView",(function(r){return React__default.createElement("div",{key:"read",style:{visibility:r?"visible":"hidden"},className:"react-datepicker__year-read-view",onClick:function(e){return t.toggleDropdown(e)}},React__default.createElement("span",{className:"react-datepicker__year-read-view--down-arrow"}),React__default.createElement("span",{className:"react-datepicker__year-read-view--selected-year"},t.props.year))})),de(ye(t),"renderDropdown",(function(){return React__default.createElement(wt,{key:"dropdown",year:t.props.year,onChange:t.onChange,onCancel:t.toggleDropdown,minDate:t.props.minDate,maxDate:t.props.maxDate,scrollableYearDropdown:t.props.scrollableYearDropdown,yearDropdownItemNumber:t.props.yearDropdownItemNumber})})),de(ye(t),"renderScrollMode",(function(){var e=t.state.dropdownVisible,r=[t.renderReadView(!e)];return e&&r.unshift(t.renderDropdown()),r})),de(ye(t),"onChange",(function(e){t.toggleDropdown(),e!==t.props.year&&t.props.onChange(e);})),de(ye(t),"toggleDropdown",(function(e){t.setState({dropdownVisible:!t.state.dropdownVisible},(function(){t.props.adjustDateOnChange&&t.handleYearChange(t.props.date,e);}));})),de(ye(t),"handleYearChange",(function(e,r){t.onSelect(e,r),t.setOpen();})),de(ye(t),"onSelect",(function(e,r){t.props.onSelect&&t.props.onSelect(e,r);})),de(ye(t),"setOpen",(function(){t.props.setOpen&&t.props.setOpen(!0);})),t}return le(n,[{key:"render",value:function(){var t;switch(this.props.dropdownMode){case"scroll":t=this.renderScrollMode();break;case"select":t=this.renderSelectMode();}return React__default.createElement("div",{className:"react-datepicker__year-dropdown-container react-datepicker__year-dropdown-container--".concat(this.props.dropdownMode)},t)}}]),n}(),kt=onClickOutsideHOC(function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"isSelectedMonth",(function(e){return t.props.month===e})),de(ye(t),"renderOptions",(function(){return t.props.monthNames.map((function(r,n){return React__default.createElement("div",{className:t.isSelectedMonth(n)?"react-datepicker__month-option react-datepicker__month-option--selected_month":"react-datepicker__month-option",key:r,onClick:t.onChange.bind(ye(t),n),"aria-selected":t.isSelectedMonth(n)?"true":void 0},t.isSelectedMonth(n)?React__default.createElement("span",{className:"react-datepicker__month-option--selected"},"✓"):"",r)}))})),de(ye(t),"onChange",(function(e){return t.props.onChange(e)})),de(ye(t),"handleClickOutside",(function(){return t.props.onCancel()})),t}return le(n,[{key:"render",value:function(){return React__default.createElement("div",{className:"react-datepicker__month-dropdown"},this.renderOptions())}}]),n}()),bt=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{dropdownVisible:!1}),de(ye(t),"renderSelectOptions",(function(t){return t.map((function(t,r){return React__default.createElement("option",{key:r,value:r},t)}))})),de(ye(t),"renderSelectMode",(function(r){return React__default.createElement("select",{value:t.props.month,className:"react-datepicker__month-select",onChange:function(e){return t.onChange(e.target.value)}},t.renderSelectOptions(r))})),de(ye(t),"renderReadView",(function(r,n){return React__default.createElement("div",{key:"read",style:{visibility:r?"visible":"hidden"},className:"react-datepicker__month-read-view",onClick:t.toggleDropdown},React__default.createElement("span",{className:"react-datepicker__month-read-view--down-arrow"}),React__default.createElement("span",{className:"react-datepicker__month-read-view--selected-month"},n[t.props.month]))})),de(ye(t),"renderDropdown",(function(r){return React__default.createElement(kt,{key:"dropdown",month:t.props.month,monthNames:r,onChange:t.onChange,onCancel:t.toggleDropdown})})),de(ye(t),"renderScrollMode",(function(e){var r=t.state.dropdownVisible,n=[t.renderReadView(!r,e)];return r&&n.unshift(t.renderDropdown(e)),n})),de(ye(t),"onChange",(function(e){t.toggleDropdown(),e!==t.props.month&&t.props.onChange(e);})),de(ye(t),"toggleDropdown",(function(){return t.setState({dropdownVisible:!t.state.dropdownVisible})})),t}return le(n,[{key:"render",value:function(){var t,r=this,n=[0,1,2,3,4,5,6,7,8,9,10,11].map(this.props.useShortMonthInDropdown?function(e){return ze(e,r.props.locale)}:function(e){return $e(e,r.props.locale)});switch(this.props.dropdownMode){case"scroll":t=this.renderScrollMode(n);break;case"select":t=this.renderSelectMode(n);}return React__default.createElement("div",{className:"react-datepicker__month-dropdown-container react-datepicker__month-dropdown-container--".concat(this.props.dropdownMode)},t)}}]),n}();function Ct(e,t){for(var r=[],n=Le(e),o=Le(t);!isAfter(n,o);)r.push(_e(n)),n=addMonths(n,1);return r}var St=onClickOutsideHOC(function(t){he(o,React__default.Component);var n=De(o);function o(t){var r;return pe(this,o),de(ye(r=n.call(this,t)),"renderOptions",(function(){return r.state.monthYearsList.map((function(t){var n=getTime(t),o=Ae(r.props.date,t)&&Be(r.props.date,t);return React__default.createElement("div",{className:o?"react-datepicker__month-year-option--selected_month-year":"react-datepicker__month-year-option",key:n,onClick:r.onChange.bind(ye(r),n),"aria-selected":o?"true":void 0},o?React__default.createElement("span",{className:"react-datepicker__month-year-option--selected"},"✓"):"",Ee(t,r.props.dateFormat,r.props.locale))}))})),de(ye(r),"onChange",(function(e){return r.props.onChange(e)})),de(ye(r),"handleClickOutside",(function(){r.props.onCancel();})),r.state={monthYearsList:Ct(r.props.minDate,r.props.maxDate)},r}return le(o,[{key:"render",value:function(){var t=r({"react-datepicker__month-year-dropdown":!0,"react-datepicker__month-year-dropdown--scrollable":this.props.scrollableMonthYearDropdown});return React__default.createElement("div",{className:t},this.renderOptions())}}]),o}()),_t=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{dropdownVisible:!1}),de(ye(t),"renderSelectOptions",(function(){for(var r=Le(t.props.minDate),n=Le(t.props.maxDate),o=[];!isAfter(r,n);){var a=getTime(r);o.push(React__default.createElement("option",{key:a,value:a},Ee(r,t.props.dateFormat,t.props.locale))),r=addMonths(r,1);}return o})),de(ye(t),"onSelectChange",(function(e){t.onChange(e.target.value);})),de(ye(t),"renderSelectMode",(function(){return React__default.createElement("select",{value:getTime(Le(t.props.date)),className:"react-datepicker__month-year-select",onChange:t.onSelectChange},t.renderSelectOptions())})),de(ye(t),"renderReadView",(function(r){var n=Ee(t.props.date,t.props.dateFormat,t.props.locale);return React__default.createElement("div",{key:"read",style:{visibility:r?"visible":"hidden"},className:"react-datepicker__month-year-read-view",onClick:function(e){return t.toggleDropdown(e)}},React__default.createElement("span",{className:"react-datepicker__month-year-read-view--down-arrow"}),React__default.createElement("span",{className:"react-datepicker__month-year-read-view--selected-month-year"},n))})),de(ye(t),"renderDropdown",(function(){return React__default.createElement(St,{key:"dropdown",date:t.props.date,dateFormat:t.props.dateFormat,onChange:t.onChange,onCancel:t.toggleDropdown,minDate:t.props.minDate,maxDate:t.props.maxDate,scrollableMonthYearDropdown:t.props.scrollableMonthYearDropdown,locale:t.props.locale})})),de(ye(t),"renderScrollMode",(function(){var e=t.state.dropdownVisible,r=[t.renderReadView(!e)];return e&&r.unshift(t.renderDropdown()),r})),de(ye(t),"onChange",(function(e){t.toggleDropdown();var r=_e(parseInt(e));Ae(t.props.date,r)&&Be(t.props.date,r)||t.props.onChange(r);})),de(ye(t),"toggleDropdown",(function(){return t.setState({dropdownVisible:!t.state.dropdownVisible})})),t}return le(n,[{key:"render",value:function(){var t;switch(this.props.dropdownMode){case"scroll":t=this.renderScrollMode();break;case"select":t=this.renderSelectMode();}return React__default.createElement("div",{className:"react-datepicker__month-year-dropdown-container react-datepicker__month-year-dropdown-container--".concat(this.props.dropdownMode)},t)}}]),n}(),Mt=function(t){he(o,React__default.Component);var n=De(o);function o(){var t;pe(this,o);for(var a=arguments.length,s=new Array(a),i=0;i<a;i++)s[i]=arguments[i];return de(ye(t=n.call.apply(n,[this].concat(s))),"dayEl",React__default.createRef()),de(ye(t),"handleClick",(function(e){!t.isDisabled()&&t.props.onClick&&t.props.onClick(e);})),de(ye(t),"handleMouseEnter",(function(e){!t.isDisabled()&&t.props.onMouseEnter&&t.props.onMouseEnter(e);})),de(ye(t),"handleOnKeyDown",(function(e){" "===e.key&&(e.preventDefault(),e.key="Enter"),t.props.handleOnKeyDown(e);})),de(ye(t),"isSameDay",(function(e){return We(t.props.day,e)})),de(ye(t),"isKeyboardSelected",(function(){return !t.props.disabledKeyboardNavigation&&!t.isSameDay(t.props.selected)&&t.isSameDay(t.props.preSelection)})),de(ye(t),"isDisabled",(function(){return Je(t.props.day,t.props)})),de(ye(t),"isExcluded",(function(){return Xe(t.props.day,t.props)})),de(ye(t),"getHighLightedClass",(function(e){var r=t.props,n=r.day,o=r.highlightDates;if(!o)return !1;var a=Ee(n,"MM.dd.yyyy");return o.get(a)})),de(ye(t),"isInRange",(function(){var e=t.props,r=e.day,n=e.startDate,o=e.endDate;return !(!n||!o)&&He(r,n,o)})),de(ye(t),"isInSelectingRange",(function(){var e,r=t.props,n=r.day,o=r.selectsStart,a=r.selectsEnd,s=r.selectsRange,i=r.selectsDisabledDaysInRange,p=r.startDate,c=r.endDate,l=null!==(e=t.props.selectingDate)&&void 0!==e?e:t.props.preSelection;return !(!(o||a||s)||!l||!i&&t.isDisabled())&&(o&&c&&(isBefore(l,c)||je(l,c))?He(n,l,c):(a&&p&&(isAfter(l,p)||je(l,p))||!(!s||!p||c||!isAfter(l,p)&&!je(l,p)))&&He(n,p,l))})),de(ye(t),"isSelectingRangeStart",(function(){var e;if(!t.isInSelectingRange())return !1;var r=t.props,n=r.day,o=r.startDate,a=r.selectsStart,s=null!==(e=t.props.selectingDate)&&void 0!==e?e:t.props.preSelection;return We(n,a?s:o)})),de(ye(t),"isSelectingRangeEnd",(function(){var e;if(!t.isInSelectingRange())return !1;var r=t.props,n=r.day,o=r.endDate,a=r.selectsEnd,s=null!==(e=t.props.selectingDate)&&void 0!==e?e:t.props.preSelection;return We(n,a?s:o)})),de(ye(t),"isRangeStart",(function(){var e=t.props,r=e.day,n=e.startDate,o=e.endDate;return !(!n||!o)&&We(n,r)})),de(ye(t),"isRangeEnd",(function(){var e=t.props,r=e.day,n=e.startDate,o=e.endDate;return !(!n||!o)&&We(o,r)})),de(ye(t),"isWeekend",(function(){var e=getDay(t.props.day);return 0===e||6===e})),de(ye(t),"isAfterMonth",(function(){return void 0!==t.props.month&&(t.props.month+1)%12===getMonth(t.props.day)})),de(ye(t),"isBeforeMonth",(function(){return void 0!==t.props.month&&(getMonth(t.props.day)+1)%12===t.props.month})),de(ye(t),"isCurrentDay",(function(){return t.isSameDay(_e())})),de(ye(t),"isSelected",(function(){return t.isSameDay(t.props.selected)})),de(ye(t),"getClassNames",(function(e){var n=t.props.dayClassName?t.props.dayClassName(e):void 0;return r("react-datepicker__day",n,"react-datepicker__day--"+Oe(t.props.day),{"react-datepicker__day--disabled":t.isDisabled(),"react-datepicker__day--excluded":t.isExcluded(),"react-datepicker__day--selected":t.isSelected(),"react-datepicker__day--keyboard-selected":t.isKeyboardSelected(),"react-datepicker__day--range-start":t.isRangeStart(),"react-datepicker__day--range-end":t.isRangeEnd(),"react-datepicker__day--in-range":t.isInRange(),"react-datepicker__day--in-selecting-range":t.isInSelectingRange(),"react-datepicker__day--selecting-range-start":t.isSelectingRangeStart(),"react-datepicker__day--selecting-range-end":t.isSelectingRangeEnd(),"react-datepicker__day--today":t.isCurrentDay(),"react-datepicker__day--weekend":t.isWeekend(),"react-datepicker__day--outside-month":t.isAfterMonth()||t.isBeforeMonth()},t.getHighLightedClass("react-datepicker__day--highlighted"))})),de(ye(t),"getAriaLabel",(function(){var e=t.props,r=e.day,n=e.ariaLabelPrefixWhenEnabled,o=void 0===n?"Choose":n,a=e.ariaLabelPrefixWhenDisabled,s=void 0===a?"Not available":a,i=t.isDisabled()||t.isExcluded()?s:o;return "".concat(i," ").concat(Ee(r,"PPPP",t.props.locale))})),de(ye(t),"getTabIndex",(function(e,r){var n=e||t.props.selected,o=r||t.props.preSelection;return t.isKeyboardSelected()||t.isSameDay(n)&&We(o,n)?0:-1})),de(ye(t),"handleFocusDay",(function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},r=!1;0===t.getTabIndex()&&!e.isInputFocused&&t.isSameDay(t.props.preSelection)&&(document.activeElement&&document.activeElement!==document.body||(r=!0),t.props.inline&&!t.props.shouldFocusDayInline&&(r=!1),t.props.containerRef&&t.props.containerRef.current&&t.props.containerRef.current.contains(document.activeElement)&&document.activeElement.classList.contains("react-datepicker__day")&&(r=!0)),r&&t.dayEl.current.focus({preventScroll:!0});})),de(ye(t),"renderDayContents",(function(){return t.props.monthShowsDuplicateDaysEnd&&t.isAfterMonth()||t.props.monthShowsDuplicateDaysStart&&t.isBeforeMonth()?null:t.props.renderDayContents?t.props.renderDayContents(getDate(t.props.day),t.props.day):getDate(t.props.day)})),de(ye(t),"render",(function(){return React__default.createElement("div",{ref:t.dayEl,className:t.getClassNames(t.props.day),onKeyDown:t.handleOnKeyDown,onClick:t.handleClick,onMouseEnter:t.handleMouseEnter,tabIndex:t.getTabIndex(),"aria-label":t.getAriaLabel(),role:"option","aria-disabled":t.isDisabled(),"aria-current":t.isCurrentDay()?"date":void 0,"aria-selected":t.isSelected()},t.renderDayContents())})),t}return le(o,[{key:"componentDidMount",value:function(){this.handleFocusDay();}},{key:"componentDidUpdate",value:function(e){this.handleFocusDay(e);}}]),o}(),Pt=function(t){he(o,React__default.Component);var n=De(o);function o(){var e;pe(this,o);for(var t=arguments.length,r=new Array(t),a=0;a<t;a++)r[a]=arguments[a];return de(ye(e=n.call.apply(n,[this].concat(r))),"handleClick",(function(t){e.props.onClick&&e.props.onClick(t);})),e}return le(o,[{key:"render",value:function(){var t=this.props,n=t.weekNumber,o=t.ariaLabelPrefix,a=void 0===o?"week ":o,s={"react-datepicker__week-number":!0,"react-datepicker__week-number--clickable":!!t.onClick};return React__default.createElement("div",{className:r(s),"aria-label":"".concat(a," ").concat(this.props.weekNumber),onClick:this.handleClick},n)}}]),o}(),Et=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"handleDayClick",(function(e,r){t.props.onDayClick&&t.props.onDayClick(e,r);})),de(ye(t),"handleDayMouseEnter",(function(e){t.props.onDayMouseEnter&&t.props.onDayMouseEnter(e);})),de(ye(t),"handleWeekClick",(function(e,r,n){"function"==typeof t.props.onWeekSelect&&t.props.onWeekSelect(e,r,n),t.props.shouldCloseOnSelect&&t.props.setOpen(!1);})),de(ye(t),"formatWeekNumber",(function(e){return t.props.formatWeekNumber?t.props.formatWeekNumber(e):Ye(e)})),de(ye(t),"renderDays",(function(){var r=Te(t.props.day,t.props.locale,t.props.calendarStartDay),n=[],o=t.formatWeekNumber(r);if(t.props.showWeekNumber){var a=t.props.onWeekSelect?t.handleWeekClick.bind(ye(t),r,o):void 0;n.push(React__default.createElement(Pt,{key:"W",weekNumber:o,onClick:a,ariaLabelPrefix:t.props.ariaLabelPrefix}));}return n.concat([0,1,2,3,4,5,6].map((function(n){var o=addDays(r,n);return React__default.createElement(Mt,{ariaLabelPrefixWhenEnabled:t.props.chooseDayAriaLabelPrefix,ariaLabelPrefixWhenDisabled:t.props.disabledDayAriaLabelPrefix,key:o.valueOf(),day:o,month:t.props.month,onClick:t.handleDayClick.bind(ye(t),o),onMouseEnter:t.handleDayMouseEnter.bind(ye(t),o),minDate:t.props.minDate,maxDate:t.props.maxDate,excludeDates:t.props.excludeDates,excludeDateIntervals:t.props.excludeDateIntervals,includeDates:t.props.includeDates,includeDateIntervals:t.props.includeDateIntervals,highlightDates:t.props.highlightDates,selectingDate:t.props.selectingDate,filterDate:t.props.filterDate,preSelection:t.props.preSelection,selected:t.props.selected,selectsStart:t.props.selectsStart,selectsEnd:t.props.selectsEnd,selectsRange:t.props.selectsRange,selectsDisabledDaysInRange:t.props.selectsDisabledDaysInRange,startDate:t.props.startDate,endDate:t.props.endDate,dayClassName:t.props.dayClassName,renderDayContents:t.props.renderDayContents,disabledKeyboardNavigation:t.props.disabledKeyboardNavigation,handleOnKeyDown:t.props.handleOnKeyDown,isInputFocused:t.props.isInputFocused,containerRef:t.props.containerRef,inline:t.props.inline,shouldFocusDayInline:t.props.shouldFocusDayInline,monthShowsDuplicateDaysEnd:t.props.monthShowsDuplicateDaysEnd,monthShowsDuplicateDaysStart:t.props.monthShowsDuplicateDaysStart,locale:t.props.locale})})))})),t}return le(n,[{key:"render",value:function(){return React__default.createElement("div",{className:"react-datepicker__week"},this.renderDays())}}],[{key:"defaultProps",get:function(){return {shouldCloseOnSelect:!0}}}]),n}(),Nt=function(t){he(o,React__default.Component);var n=De(o);function o(){var t;pe(this,o);for(var a=arguments.length,s=new Array(a),i=0;i<a;i++)s[i]=arguments[i];return de(ye(t=n.call.apply(n,[this].concat(s))),"MONTH_REFS",we(Array(12)).map((function(){return React__default.createRef()}))),de(ye(t),"isDisabled",(function(e){return Je(e,t.props)})),de(ye(t),"isExcluded",(function(e){return Xe(e,t.props)})),de(ye(t),"handleDayClick",(function(e,r){t.props.onDayClick&&t.props.onDayClick(e,r,t.props.orderInDisplay);})),de(ye(t),"handleDayMouseEnter",(function(e){t.props.onDayMouseEnter&&t.props.onDayMouseEnter(e);})),de(ye(t),"handleMouseLeave",(function(){t.props.onMouseLeave&&t.props.onMouseLeave();})),de(ye(t),"isRangeStartMonth",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Be(setMonth(n,e),o)})),de(ye(t),"isRangeStartQuarter",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Ke(setQuarter(n,e),o)})),de(ye(t),"isRangeEndMonth",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Be(setMonth(n,e),a)})),de(ye(t),"isRangeEndQuarter",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Ke(setQuarter(n,e),a)})),de(ye(t),"isWeekInMonth",(function(e){var r=t.props.day,n=addDays(e,6);return Be(e,r)||Be(n,r)})),de(ye(t),"isCurrentMonth",(function(e,t){return getYear(e)===getYear(_e())&&t===getMonth(_e())})),de(ye(t),"isSelectedMonth",(function(e,t,r){return getMonth(e)===t&&getYear(e)===getYear(r)})),de(ye(t),"isSelectedQuarter",(function(e,t,r){return getQuarter(e)===t&&getYear(e)===getYear(r)})),de(ye(t),"renderWeeks",(function(){for(var r=[],n=t.props.fixedHeight,o=0,a=!1,s=Te(Le(t.props.day),t.props.locale,t.props.calendarStartDay);r.push(React__default.createElement(Et,{ariaLabelPrefix:t.props.weekAriaLabelPrefix,chooseDayAriaLabelPrefix:t.props.chooseDayAriaLabelPrefix,disabledDayAriaLabelPrefix:t.props.disabledDayAriaLabelPrefix,key:o,day:s,month:getMonth(t.props.day),onDayClick:t.handleDayClick,onDayMouseEnter:t.handleDayMouseEnter,onWeekSelect:t.props.onWeekSelect,formatWeekNumber:t.props.formatWeekNumber,locale:t.props.locale,minDate:t.props.minDate,maxDate:t.props.maxDate,excludeDates:t.props.excludeDates,excludeDateIntervals:t.props.excludeDateIntervals,includeDates:t.props.includeDates,includeDateIntervals:t.props.includeDateIntervals,inline:t.props.inline,shouldFocusDayInline:t.props.shouldFocusDayInline,highlightDates:t.props.highlightDates,selectingDate:t.props.selectingDate,filterDate:t.props.filterDate,preSelection:t.props.preSelection,selected:t.props.selected,selectsStart:t.props.selectsStart,selectsEnd:t.props.selectsEnd,selectsRange:t.props.selectsRange,selectsDisabledDaysInRange:t.props.selectsDisabledDaysInRange,showWeekNumber:t.props.showWeekNumbers,startDate:t.props.startDate,endDate:t.props.endDate,dayClassName:t.props.dayClassName,setOpen:t.props.setOpen,shouldCloseOnSelect:t.props.shouldCloseOnSelect,disabledKeyboardNavigation:t.props.disabledKeyboardNavigation,renderDayContents:t.props.renderDayContents,handleOnKeyDown:t.props.handleOnKeyDown,isInputFocused:t.props.isInputFocused,containerRef:t.props.containerRef,calendarStartDay:t.props.calendarStartDay,monthShowsDuplicateDaysEnd:t.props.monthShowsDuplicateDaysEnd,monthShowsDuplicateDaysStart:t.props.monthShowsDuplicateDaysStart})),!a;){o++,s=addWeeks(s,1);var i=n&&o>=6,p=!n&&!t.isWeekInMonth(s);if(i||p){if(!t.props.peekNextMonth)break;a=!0;}}return r})),de(ye(t),"onMonthClick",(function(e,r){t.handleDayClick(Le(setMonth(t.props.day,r)),e);})),de(ye(t),"handleMonthNavigation",(function(e,r){t.isDisabled(r)||t.isExcluded(r)||(t.props.setPreSelection(r),t.MONTH_REFS[e].current&&t.MONTH_REFS[e].current.focus());})),de(ye(t),"onMonthKeyDown",(function(e,r){var n=e.key;if(!t.props.disabledKeyboardNavigation)switch(n){case"Enter":t.onMonthClick(e,r),t.props.setPreSelection(t.props.selected);break;case"ArrowRight":t.handleMonthNavigation(11===r?0:r+1,addMonths(t.props.preSelection,1));break;case"ArrowLeft":t.handleMonthNavigation(0===r?11:r-1,subMonths(t.props.preSelection,1));}})),de(ye(t),"onQuarterClick",(function(e,r){t.handleDayClick(Fe(setQuarter(t.props.day,r)),e);})),de(ye(t),"getMonthClassNames",(function(e){var n=t.props,o=n.day,a=n.startDate,s=n.endDate,i=n.selected,p=n.minDate,c=n.maxDate,l=n.preSelection,d=n.monthClassName,u=d?d(o):void 0;return r("react-datepicker__month-text","react-datepicker__month-".concat(e),u,{"react-datepicker__month--disabled":(p||c)&&Ze(setMonth(o,e),t.props),"react-datepicker__month--selected":t.isSelectedMonth(o,e,i),"react-datepicker__month-text--keyboard-selected":getMonth(l)===e,"react-datepicker__month--in-range":et(a,s,e,o),"react-datepicker__month--range-start":t.isRangeStartMonth(e),"react-datepicker__month--range-end":t.isRangeEndMonth(e),"react-datepicker__month-text--today":t.isCurrentMonth(o,e)})})),de(ye(t),"getTabIndex",(function(e){var r=getMonth(t.props.preSelection);return t.props.disabledKeyboardNavigation||e!==r?"-1":"0"})),de(ye(t),"getAriaLabel",(function(e){var r=t.props,n=r.chooseDayAriaLabelPrefix,o=void 0===n?"Choose":n,a=r.disabledDayAriaLabelPrefix,s=void 0===a?"Not available":a,i=r.day,p=setMonth(i,e),c=t.isDisabled(p)||t.isExcluded(p)?s:o;return "".concat(c," ").concat(Ee(p,"MMMM yyyy"))})),de(ye(t),"getQuarterClassNames",(function(e){var n=t.props,o=n.day,a=n.startDate,s=n.endDate,i=n.selected,p=n.minDate,c=n.maxDate;return r("react-datepicker__quarter-text","react-datepicker__quarter-".concat(e),{"react-datepicker__quarter--disabled":(p||c)&&tt(setQuarter(o,e),t.props),"react-datepicker__quarter--selected":t.isSelectedQuarter(o,e,i),"react-datepicker__quarter--in-range":nt(a,s,e,o),"react-datepicker__quarter--range-start":t.isRangeStartQuarter(e),"react-datepicker__quarter--range-end":t.isRangeEndQuarter(e)})})),de(ye(t),"renderMonths",(function(){var r=t.props,n=r.showFullMonthYearPicker,o=r.showTwoColumnMonthYearPicker,a=r.showFourColumnMonthYearPicker,s=r.locale,i=r.day,p=r.selected;return (a?[[0,1,2,3],[4,5,6,7],[8,9,10,11]]:o?[[0,1],[2,3],[4,5],[6,7],[8,9],[10,11]]:[[0,1,2],[3,4,5],[6,7,8],[9,10,11]]).map((function(r,o){return React__default.createElement("div",{className:"react-datepicker__month-wrapper",key:o},r.map((function(r,o){return React__default.createElement("div",{ref:t.MONTH_REFS[r],key:o,onClick:function(e){t.onMonthClick(e,r);},onKeyDown:function(e){t.onMonthKeyDown(e,r);},tabIndex:t.getTabIndex(r),className:t.getMonthClassNames(r),role:"option","aria-label":t.getAriaLabel(r),"aria-current":t.isCurrentMonth(i,r)?"date":void 0,"aria-selected":t.isSelectedMonth(i,r,p)},n?$e(r,s):ze(r,s))})))}))})),de(ye(t),"renderQuarters",(function(){var r=t.props,n=r.day,o=r.selected;return React__default.createElement("div",{className:"react-datepicker__quarter-wrapper"},[1,2,3,4].map((function(r,a){return React__default.createElement("div",{key:a,role:"option",onClick:function(e){t.onQuarterClick(e,r);},className:t.getQuarterClassNames(r),"aria-selected":t.isSelectedQuarter(n,r,o)},Ge(r,t.props.locale))})))})),de(ye(t),"getClassNames",(function(){var e=t.props;e.day;var n=e.selectingDate,o=e.selectsStart,a=e.selectsEnd,s=e.showMonthYearPicker,i=e.showQuarterYearPicker;return r("react-datepicker__month",{"react-datepicker__month--selecting-range":n&&(o||a)},{"react-datepicker__monthPicker":s},{"react-datepicker__quarterPicker":i})})),t}return le(o,[{key:"render",value:function(){var t=this.props,r=t.showMonthYearPicker,n=t.showQuarterYearPicker,o=t.day,a=t.ariaLabelPrefix,s=void 0===a?"month ":a;return React__default.createElement("div",{className:this.getClassNames(),onMouseLeave:this.handleMouseLeave,"aria-label":"".concat(s," ").concat(Ee(o,"yyyy-MM")),role:"listbox"},r?this.renderMonths():n?this.renderQuarters():this.renderWeeks())}}]),o}(),xt=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),i=0;i<o;i++)a[i]=arguments[i];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{height:null}),de(ye(t),"handleClick",(function(e){(t.props.minTime||t.props.maxTime)&&it(e,t.props)||(t.props.excludeTimes||t.props.includeTimes||t.props.filterTime)&&st(e,t.props)||t.props.onChange(e);})),de(ye(t),"isSelectedTime",(function(e,r,n){return t.props.selected&&r===getHours(e)&&n===getMinutes(e)})),de(ye(t),"liClasses",(function(e,r,n){var o=["react-datepicker__time-list-item",t.props.timeClassName?t.props.timeClassName(e,r,n):void 0];return t.isSelectedTime(e,r,n)&&o.push("react-datepicker__time-list-item--selected"),((t.props.minTime||t.props.maxTime)&&it(e,t.props)||(t.props.excludeTimes||t.props.includeTimes||t.props.filterTime)&&st(e,t.props))&&o.push("react-datepicker__time-list-item--disabled"),t.props.injectTimes&&(60*getHours(e)+getMinutes(e))%t.props.intervals!=0&&o.push("react-datepicker__time-list-item--injected"),o.join(" ")})),de(ye(t),"handleOnKeyDown",(function(e,r){" "===e.key&&(e.preventDefault(),e.key="Enter"),"Enter"===e.key&&t.handleClick(r),t.props.handleOnKeyDown(e);})),de(ye(t),"renderTimes",(function(){for(var r=[],n=t.props.format?t.props.format:"p",o=t.props.intervals,a=Ie(_e(t.props.selected)),i=1440/o,p=t.props.injectTimes&&t.props.injectTimes.sort((function(e,t){return e-t})),c=t.props.selected||t.props.openToDate||_e(),l=getHours(c),d=getMinutes(c),u=setHours(setMinutes(a,d),l),h=0;h<i;h++){var m=addMinutes(a,h*o);if(r.push(m),p){var f=ft(a,m,h,o,p);r=r.concat(f);}}return r.map((function(r,o){return React__default.createElement("li",{key:o,onClick:t.handleClick.bind(ye(t),r),className:t.liClasses(r,l,d),ref:function(e){(isBefore(r,u)||je(r,u))&&(t.centerLi=e);},onKeyDown:function(e){t.handleOnKeyDown(e,r);},tabIndex:"0","aria-selected":t.isSelectedTime(r,l,d)?"true":void 0},Ee(r,n,t.props.locale))}))})),t}return le(n,[{key:"componentDidMount",value:function(){this.list.scrollTop=n.calcCenterPosition(this.props.monthRef?this.props.monthRef.clientHeight-this.header.clientHeight:this.list.clientHeight,this.centerLi),this.props.monthRef&&this.header&&this.setState({height:this.props.monthRef.clientHeight-this.header.clientHeight});}},{key:"render",value:function(){var t=this,r=this.state.height;return React__default.createElement("div",{className:"react-datepicker__time-container ".concat(this.props.todayButton?"react-datepicker__time-container--with-today-button":"")},React__default.createElement("div",{className:"react-datepicker__header react-datepicker__header--time ".concat(this.props.showTimeSelectOnly?"react-datepicker__header--time--only":""),ref:function(e){t.header=e;}},React__default.createElement("div",{className:"react-datepicker-time__header"},this.props.timeCaption)),React__default.createElement("div",{className:"react-datepicker__time"},React__default.createElement("div",{className:"react-datepicker__time-box"},React__default.createElement("ul",{className:"react-datepicker__time-list",ref:function(e){t.list=e;},style:r?{height:r}:{},tabIndex:"0"},this.renderTimes()))))}}],[{key:"defaultProps",get:function(){return {intervals:30,onTimeChange:function(){},todayButton:null,timeCaption:"Time"}}}]),n}();de(xt,"calcCenterPosition",(function(e,t){return t.offsetTop-(e/2-t.clientHeight/2)}));var Yt=function(t){he(o,React__default.Component);var n=De(o);function o(t){var a;return pe(this,o),de(ye(a=n.call(this,t)),"YEAR_REFS",we(Array(a.props.yearItemNumber)).map((function(){return React__default.createRef()}))),de(ye(a),"isDisabled",(function(e){return Je(e,a.props)})),de(ye(a),"isExcluded",(function(e){return Xe(e,a.props)})),de(ye(a),"updateFocusOnPaginate",(function(e){var t=function(){this.YEAR_REFS[e].current.focus();}.bind(ye(a));window.requestAnimationFrame(t);})),de(ye(a),"handleYearClick",(function(e,t){a.props.onDayClick&&a.props.onDayClick(e,t);})),de(ye(a),"handleYearNavigation",(function(e,t){var r=a.props,n=r.date,o=r.yearItemNumber,s=vt(n,o).startPeriod;a.isDisabled(t)||a.isExcluded(t)||(a.props.setPreSelection(t),e-s==-1?a.updateFocusOnPaginate(o-1):e-s===o?a.updateFocusOnPaginate(0):a.YEAR_REFS[e-s].current.focus());})),de(ye(a),"isSameDay",(function(e,t){return We(e,t)})),de(ye(a),"isCurrentYear",(function(e){return e===getYear(_e())})),de(ye(a),"isKeyboardSelected",(function(e){var t=Re(setYear(a.props.date,e));return !a.props.disabledKeyboardNavigation&&!a.props.inline&&!We(t,Re(a.props.selected))&&We(t,Re(a.props.preSelection))})),de(ye(a),"onYearClick",(function(e,t){var r=a.props.date;a.handleYearClick(Re(setYear(r,t)),e);})),de(ye(a),"onYearKeyDown",(function(e,t){var r=e.key;if(!a.props.disabledKeyboardNavigation)switch(r){case"Enter":a.onYearClick(e,t),a.props.setPreSelection(a.props.selected);break;case"ArrowRight":a.handleYearNavigation(t+1,addYears(a.props.preSelection,1));break;case"ArrowLeft":a.handleYearNavigation(t-1,subYears(a.props.preSelection,1));}})),de(ye(a),"getYearClassNames",(function(e){var t=a.props,n=t.minDate,o=t.maxDate,s=t.selected;return r("react-datepicker__year-text",{"react-datepicker__year-text--selected":e===getYear(s),"react-datepicker__year-text--disabled":(n||o)&&rt(e,a.props),"react-datepicker__year-text--keyboard-selected":a.isKeyboardSelected(e),"react-datepicker__year-text--today":a.isCurrentYear(e)})})),de(ye(a),"getYearTabIndex",(function(e){return a.props.disabledKeyboardNavigation?"-1":e===getYear(a.props.preSelection)?"0":"-1"})),a}return le(o,[{key:"render",value:function(){for(var t=this,r=[],n=this.props,o=vt(n.date,n.yearItemNumber),a=o.startPeriod,s=o.endPeriod,i=function(n){r.push(React__default.createElement("div",{ref:t.YEAR_REFS[n-a],onClick:function(e){t.onYearClick(e,n);},onKeyDown:function(e){t.onYearKeyDown(e,n);},tabIndex:t.getYearTabIndex(n),className:t.getYearClassNames(n),key:n,"aria-current":t.isCurrentYear(n)?"date":void 0},n));},p=a;p<=s;p++)i(p);return React__default.createElement("div",{className:"react-datepicker__year"},React__default.createElement("div",{className:"react-datepicker__year-wrapper"},r))}}]),o}(),Ot=function(t){he(n,React__default.Component);var r=De(n);function n(t){var o;return pe(this,n),de(ye(o=r.call(this,t)),"onTimeChange",(function(e){o.setState({time:e});var t=new Date;t.setHours(e.split(":")[0]),t.setMinutes(e.split(":")[1]),o.props.onChange(t);})),de(ye(o),"renderTimeInput",(function(){var t=o.state.time,r=o.props,n=r.date,a=r.timeString,s=r.customTimeInput;return s?React__default.cloneElement(s,{date:n,value:t,onChange:o.onTimeChange}):React__default.createElement("input",{type:"time",className:"react-datepicker-time__input",placeholder:"Time",name:"time-input",required:!0,value:t,onChange:function(e){o.onTimeChange(e.target.value||a);}})})),o.state={time:o.props.timeString},o}return le(n,[{key:"render",value:function(){return React__default.createElement("div",{className:"react-datepicker__input-time-container"},React__default.createElement("div",{className:"react-datepicker-time__caption"},this.props.timeInputLabel),React__default.createElement("div",{className:"react-datepicker-time__input-container"},React__default.createElement("div",{className:"react-datepicker-time__input"},this.renderTimeInput())))}}],[{key:"getDerivedStateFromProps",value:function(e,t){return e.timeString!==t.time?{time:e.timeString}:null}}]),n}();function It(t){var r=t.className,n=t.children,o=t.showPopperArrow,a=t.arrowProps,s=void 0===a?{}:a;return React__default.createElement("div",{className:r},o&&React__default.createElement("div",ue({className:"react-datepicker__triangle"},s)),n)}var Tt=["react-datepicker__year-select","react-datepicker__month-select","react-datepicker__month-year-select"],Lt=function(t){he(o,React__default.Component);var n=De(o);function o(t){var a;return pe(this,o),de(ye(a=n.call(this,t)),"handleClickOutside",(function(e){a.props.onClickOutside(e);})),de(ye(a),"setClickOutsideRef",(function(){return a.containerRef.current})),de(ye(a),"handleDropdownFocus",(function(e){(function(){var e=((arguments.length>0&&void 0!==arguments[0]?arguments[0]:{}).className||"").split(/\s+/);return Tt.some((function(t){return e.indexOf(t)>=0}))})(e.target)&&a.props.onDropdownFocus();})),de(ye(a),"getDateInView",(function(){var e=a.props,t=e.preSelection,r=e.selected,n=e.openToDate,o=ut(a.props),s=ht(a.props),i=_e(),p=n||r||t;return p||(o&&isBefore(i,o)?o:s&&isAfter(i,s)?s:i)})),de(ye(a),"increaseMonth",(function(){a.setState((function(e){var t=e.date;return {date:addMonths(t,1)}}),(function(){return a.handleMonthChange(a.state.date)}));})),de(ye(a),"decreaseMonth",(function(){a.setState((function(e){var t=e.date;return {date:subMonths(t,1)}}),(function(){return a.handleMonthChange(a.state.date)}));})),de(ye(a),"handleDayClick",(function(e,t,r){a.props.onSelect(e,t,r),a.props.setPreSelection&&a.props.setPreSelection(e);})),de(ye(a),"handleDayMouseEnter",(function(e){a.setState({selectingDate:e}),a.props.onDayMouseEnter&&a.props.onDayMouseEnter(e);})),de(ye(a),"handleMonthMouseLeave",(function(){a.setState({selectingDate:null}),a.props.onMonthMouseLeave&&a.props.onMonthMouseLeave();})),de(ye(a),"handleYearChange",(function(e){a.props.onYearChange&&a.props.onYearChange(e),a.props.adjustDateOnChange&&(a.props.onSelect&&a.props.onSelect(e),a.props.setOpen&&a.props.setOpen(!0)),a.props.setPreSelection&&a.props.setPreSelection(e);})),de(ye(a),"handleMonthChange",(function(e){a.props.onMonthChange&&a.props.onMonthChange(e),a.props.adjustDateOnChange&&(a.props.onSelect&&a.props.onSelect(e),a.props.setOpen&&a.props.setOpen(!0)),a.props.setPreSelection&&a.props.setPreSelection(e);})),de(ye(a),"handleMonthYearChange",(function(e){a.handleYearChange(e),a.handleMonthChange(e);})),de(ye(a),"changeYear",(function(e){a.setState((function(t){var r=t.date;return {date:setYear(r,e)}}),(function(){return a.handleYearChange(a.state.date)}));})),de(ye(a),"changeMonth",(function(e){a.setState((function(t){var r=t.date;return {date:setMonth(r,e)}}),(function(){return a.handleMonthChange(a.state.date)}));})),de(ye(a),"changeMonthYear",(function(e){a.setState((function(t){var r=t.date;return {date:setYear(setMonth(r,getMonth(e)),getYear(e))}}),(function(){return a.handleMonthYearChange(a.state.date)}));})),de(ye(a),"header",(function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:a.state.date,n=Te(t,a.props.locale,a.props.calendarStartDay),o=[];return a.props.showWeekNumbers&&o.push(React__default.createElement("div",{key:"W",className:"react-datepicker__day-name"},a.props.weekLabel||"#")),o.concat([0,1,2,3,4,5,6].map((function(t){var o=addDays(n,t),s=a.formatWeekday(o,a.props.locale),i=a.props.weekDayClassName?a.props.weekDayClassName(o):void 0;return React__default.createElement("div",{key:t,className:r("react-datepicker__day-name",i)},s)})))})),de(ye(a),"formatWeekday",(function(e,t){return a.props.formatWeekDay?function(e,t,r){return t(Ee(e,"EEEE",r))}(e,a.props.formatWeekDay,t):a.props.useWeekdaysShort?function(e,t){return Ee(e,"EEE",t)}(e,t):function(e,t){return Ee(e,"EEEEEE",t)}(e,t)})),de(ye(a),"decreaseYear",(function(){a.setState((function(e){var t=e.date;return {date:subYears(t,a.props.showYearPicker?a.props.yearItemNumber:1)}}),(function(){return a.handleYearChange(a.state.date)}));})),de(ye(a),"renderPreviousButton",(function(){if(!a.props.renderCustomHeader){var t;switch(!0){case a.props.showMonthYearPicker:t=lt(a.state.date,a.props);break;case a.props.showYearPicker:t=function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.yearItemNumber,o=void 0===n?12:n,a=vt(Re(subYears(e,o)),o).endPeriod,s=r&&getYear(r);return s&&s>a||!1}(a.state.date,a.props);break;default:t=pt(a.state.date,a.props);}if((a.props.forceShowMonthNavigation||a.props.showDisabledMonthNavigation||!t)&&!a.props.showTimeSelectOnly){var r=["react-datepicker__navigation","react-datepicker__navigation--previous"],n=a.decreaseMonth;(a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker)&&(n=a.decreaseYear),t&&a.props.showDisabledMonthNavigation&&(r.push("react-datepicker__navigation--previous--disabled"),n=null);var o=a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker,s=a.props,i=s.previousMonthButtonLabel,p=s.previousYearButtonLabel,c=a.props,l=c.previousMonthAriaLabel,d=void 0===l?"string"==typeof i?i:"Previous Month":l,u=c.previousYearAriaLabel,h=void 0===u?"string"==typeof p?p:"Previous Year":u;return React__default.createElement("button",{type:"button",className:r.join(" "),onClick:n,onKeyDown:a.props.handleOnKeyDown,"aria-label":o?h:d},React__default.createElement("span",{className:["react-datepicker__navigation-icon","react-datepicker__navigation-icon--previous"].join(" ")},o?a.props.previousYearButtonLabel:a.props.previousMonthButtonLabel))}}})),de(ye(a),"increaseYear",(function(){a.setState((function(e){var t=e.date;return {date:addYears(t,a.props.showYearPicker?a.props.yearItemNumber:1)}}),(function(){return a.handleYearChange(a.state.date)}));})),de(ye(a),"renderNextButton",(function(){if(!a.props.renderCustomHeader){var t;switch(!0){case a.props.showMonthYearPicker:t=dt(a.state.date,a.props);break;case a.props.showYearPicker:t=function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.maxDate,n=t.yearItemNumber,o=void 0===n?12:n,a=vt(addYears(e,o),o).startPeriod,s=r&&getYear(r);return s&&s<a||!1}(a.state.date,a.props);break;default:t=ct(a.state.date,a.props);}if((a.props.forceShowMonthNavigation||a.props.showDisabledMonthNavigation||!t)&&!a.props.showTimeSelectOnly){var r=["react-datepicker__navigation","react-datepicker__navigation--next"];a.props.showTimeSelect&&r.push("react-datepicker__navigation--next--with-time"),a.props.todayButton&&r.push("react-datepicker__navigation--next--with-today-button");var n=a.increaseMonth;(a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker)&&(n=a.increaseYear),t&&a.props.showDisabledMonthNavigation&&(r.push("react-datepicker__navigation--next--disabled"),n=null);var o=a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker,s=a.props,i=s.nextMonthButtonLabel,p=s.nextYearButtonLabel,c=a.props,l=c.nextMonthAriaLabel,u=void 0===l?"string"==typeof i?i:"Next Month":l,h=c.nextYearAriaLabel,m=void 0===h?"string"==typeof p?p:"Next Year":h;return React__default.createElement("button",{type:"button",className:r.join(" "),onClick:n,onKeyDown:a.props.handleOnKeyDown,"aria-label":o?m:u},React__default.createElement("span",{className:["react-datepicker__navigation-icon","react-datepicker__navigation-icon--next"].join(" ")},o?a.props.nextYearButtonLabel:a.props.nextMonthButtonLabel))}}})),de(ye(a),"renderCurrentMonth",(function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:a.state.date,r=["react-datepicker__current-month"];return a.props.showYearDropdown&&r.push("react-datepicker__current-month--hasYearDropdown"),a.props.showMonthDropdown&&r.push("react-datepicker__current-month--hasMonthDropdown"),a.props.showMonthYearDropdown&&r.push("react-datepicker__current-month--hasMonthYearDropdown"),React__default.createElement("div",{className:r.join(" ")},Ee(t,a.props.dateFormat,a.props.locale))})),de(ye(a),"renderYearDropdown",(function(){var t=arguments.length>0&&void 0!==arguments[0]&&arguments[0];if(a.props.showYearDropdown&&!t)return React__default.createElement(gt,{adjustDateOnChange:a.props.adjustDateOnChange,date:a.state.date,onSelect:a.props.onSelect,setOpen:a.props.setOpen,dropdownMode:a.props.dropdownMode,onChange:a.changeYear,minDate:a.props.minDate,maxDate:a.props.maxDate,year:getYear(a.state.date),scrollableYearDropdown:a.props.scrollableYearDropdown,yearDropdownItemNumber:a.props.yearDropdownItemNumber})})),de(ye(a),"renderMonthDropdown",(function(){var t=arguments.length>0&&void 0!==arguments[0]&&arguments[0];if(a.props.showMonthDropdown&&!t)return React__default.createElement(bt,{dropdownMode:a.props.dropdownMode,locale:a.props.locale,onChange:a.changeMonth,month:getMonth(a.state.date),useShortMonthInDropdown:a.props.useShortMonthInDropdown})})),de(ye(a),"renderMonthYearDropdown",(function(){var t=arguments.length>0&&void 0!==arguments[0]&&arguments[0];if(a.props.showMonthYearDropdown&&!t)return React__default.createElement(_t,{dropdownMode:a.props.dropdownMode,locale:a.props.locale,dateFormat:a.props.dateFormat,onChange:a.changeMonthYear,minDate:a.props.minDate,maxDate:a.props.maxDate,date:a.state.date,scrollableMonthYearDropdown:a.props.scrollableMonthYearDropdown})})),de(ye(a),"renderTodayButton",(function(){if(a.props.todayButton&&!a.props.showTimeSelectOnly)return React__default.createElement("div",{className:"react-datepicker__today-button",onClick:function(e){return a.props.onSelect(startOfDay(_e()),e)}},a.props.todayButton)})),de(ye(a),"renderDefaultHeader",(function(t){var r=t.monthDate,n=t.i;return React__default.createElement("div",{className:"react-datepicker__header ".concat(a.props.showTimeSelect?"react-datepicker__header--has-time-select":"")},a.renderCurrentMonth(r),React__default.createElement("div",{className:"react-datepicker__header__dropdown react-datepicker__header__dropdown--".concat(a.props.dropdownMode),onFocus:a.handleDropdownFocus},a.renderMonthDropdown(0!==n),a.renderMonthYearDropdown(0!==n),a.renderYearDropdown(0!==n)),React__default.createElement("div",{className:"react-datepicker__day-names"},a.header(r)))})),de(ye(a),"renderCustomHeader",(function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},r=t.monthDate,n=t.i;if(a.props.showTimeSelect&&!a.state.monthContainer||a.props.showTimeSelectOnly)return null;var o=pt(a.state.date,a.props),s=ct(a.state.date,a.props),i=lt(a.state.date,a.props),p=dt(a.state.date,a.props),c=!a.props.showMonthYearPicker&&!a.props.showQuarterYearPicker&&!a.props.showYearPicker;return React__default.createElement("div",{className:"react-datepicker__header react-datepicker__header--custom",onFocus:a.props.onDropdownFocus},a.props.renderCustomHeader(se(se({},a.state),{},{customHeaderCount:n,monthDate:r,changeMonth:a.changeMonth,changeYear:a.changeYear,decreaseMonth:a.decreaseMonth,increaseMonth:a.increaseMonth,decreaseYear:a.decreaseYear,increaseYear:a.increaseYear,prevMonthButtonDisabled:o,nextMonthButtonDisabled:s,prevYearButtonDisabled:i,nextYearButtonDisabled:p})),c&&React__default.createElement("div",{className:"react-datepicker__day-names"},a.header(r)))})),de(ye(a),"renderYearHeader",(function(){var t=a.state.date,r=a.props,n=r.showYearPicker,o=vt(t,r.yearItemNumber),s=o.startPeriod,i=o.endPeriod;return React__default.createElement("div",{className:"react-datepicker__header react-datepicker-year-header"},n?"".concat(s," - ").concat(i):getYear(t))})),de(ye(a),"renderHeader",(function(e){switch(!0){case void 0!==a.props.renderCustomHeader:return a.renderCustomHeader(e);case a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker:return a.renderYearHeader(e);default:return a.renderDefaultHeader(e)}})),de(ye(a),"renderMonths",(function(){if(!a.props.showTimeSelectOnly&&!a.props.showYearPicker){for(var t=[],r=a.props.showPreviousMonths?a.props.monthsShown-1:0,n=subMonths(a.state.date,r),o=0;o<a.props.monthsShown;++o){var s=o-a.props.monthSelectedIn,i=addMonths(n,s),p="month-".concat(o),c=o<a.props.monthsShown-1,d=o>0;t.push(React__default.createElement("div",{key:p,ref:function(e){a.monthContainer=e;},className:"react-datepicker__month-container"},a.renderHeader({monthDate:i,i:o}),React__default.createElement(Nt,{chooseDayAriaLabelPrefix:a.props.chooseDayAriaLabelPrefix,disabledDayAriaLabelPrefix:a.props.disabledDayAriaLabelPrefix,weekAriaLabelPrefix:a.props.weekAriaLabelPrefix,ariaLabelPrefix:a.props.monthAriaLabelPrefix,onChange:a.changeMonthYear,day:i,dayClassName:a.props.dayClassName,calendarStartDay:a.props.calendarStartDay,monthClassName:a.props.monthClassName,onDayClick:a.handleDayClick,handleOnKeyDown:a.props.handleOnDayKeyDown,onDayMouseEnter:a.handleDayMouseEnter,onMouseLeave:a.handleMonthMouseLeave,onWeekSelect:a.props.onWeekSelect,orderInDisplay:o,formatWeekNumber:a.props.formatWeekNumber,locale:a.props.locale,minDate:a.props.minDate,maxDate:a.props.maxDate,excludeDates:a.props.excludeDates,excludeDateIntervals:a.props.excludeDateIntervals,highlightDates:a.props.highlightDates,selectingDate:a.state.selectingDate,includeDates:a.props.includeDates,includeDateIntervals:a.props.includeDateIntervals,inline:a.props.inline,shouldFocusDayInline:a.props.shouldFocusDayInline,fixedHeight:a.props.fixedHeight,filterDate:a.props.filterDate,preSelection:a.props.preSelection,setPreSelection:a.props.setPreSelection,selected:a.props.selected,selectsStart:a.props.selectsStart,selectsEnd:a.props.selectsEnd,selectsRange:a.props.selectsRange,selectsDisabledDaysInRange:a.props.selectsDisabledDaysInRange,showWeekNumbers:a.props.showWeekNumbers,startDate:a.props.startDate,endDate:a.props.endDate,peekNextMonth:a.props.peekNextMonth,setOpen:a.props.setOpen,shouldCloseOnSelect:a.props.shouldCloseOnSelect,renderDayContents:a.props.renderDayContents,disabledKeyboardNavigation:a.props.disabledKeyboardNavigation,showMonthYearPicker:a.props.showMonthYearPicker,showFullMonthYearPicker:a.props.showFullMonthYearPicker,showTwoColumnMonthYearPicker:a.props.showTwoColumnMonthYearPicker,showFourColumnMonthYearPicker:a.props.showFourColumnMonthYearPicker,showYearPicker:a.props.showYearPicker,showQuarterYearPicker:a.props.showQuarterYearPicker,isInputFocused:a.props.isInputFocused,containerRef:a.containerRef,monthShowsDuplicateDaysEnd:c,monthShowsDuplicateDaysStart:d})));}return t}})),de(ye(a),"renderYears",(function(){if(!a.props.showTimeSelectOnly)return a.props.showYearPicker?React__default.createElement("div",{className:"react-datepicker__year--container"},a.renderHeader(),React__default.createElement(Yt,ue({onDayClick:a.handleDayClick,date:a.state.date},a.props))):void 0})),de(ye(a),"renderTimeSection",(function(){if(a.props.showTimeSelect&&(a.state.monthContainer||a.props.showTimeSelectOnly))return React__default.createElement(xt,{selected:a.props.selected,openToDate:a.props.openToDate,onChange:a.props.onTimeChange,timeClassName:a.props.timeClassName,format:a.props.timeFormat,includeTimes:a.props.includeTimes,intervals:a.props.timeIntervals,minTime:a.props.minTime,maxTime:a.props.maxTime,excludeTimes:a.props.excludeTimes,filterTime:a.props.filterTime,timeCaption:a.props.timeCaption,todayButton:a.props.todayButton,showMonthDropdown:a.props.showMonthDropdown,showMonthYearDropdown:a.props.showMonthYearDropdown,showYearDropdown:a.props.showYearDropdown,withPortal:a.props.withPortal,monthRef:a.state.monthContainer,injectTimes:a.props.injectTimes,locale:a.props.locale,handleOnKeyDown:a.props.handleOnKeyDown,showTimeSelectOnly:a.props.showTimeSelectOnly})})),de(ye(a),"renderInputTimeSection",(function(){var t=new Date(a.props.selected),r=Pe(t)&&Boolean(a.props.selected)?"".concat(yt(t.getHours()),":").concat(yt(t.getMinutes())):"";if(a.props.showTimeInput)return React__default.createElement(Ot,{date:t,timeString:r,timeInputLabel:a.props.timeInputLabel,onChange:a.props.onTimeChange,customTimeInput:a.props.customTimeInput})})),a.containerRef=React__default.createRef(),a.state={date:a.getDateInView(),selectingDate:null,monthContainer:null},a}return le(o,[{key:"componentDidMount",value:function(){var e=this;this.props.showTimeSelect&&(this.assignMonthContainer=void e.setState({monthContainer:e.monthContainer}));}},{key:"componentDidUpdate",value:function(e){this.props.preSelection&&!We(this.props.preSelection,e.preSelection)?this.setState({date:this.props.preSelection}):this.props.openToDate&&!We(this.props.openToDate,e.openToDate)&&this.setState({date:this.props.openToDate});}},{key:"render",value:function(){var t=this.props.container||It;return React__default.createElement("div",{ref:this.containerRef},React__default.createElement(t,{className:r("react-datepicker",this.props.className,{"react-datepicker--time-only":this.props.showTimeSelectOnly}),showPopperArrow:this.props.showPopperArrow,arrowProps:this.props.arrowProps},this.renderPreviousButton(),this.renderNextButton(),this.renderMonths(),this.renderYears(),this.renderTodayButton(),this.renderTimeSection(),this.renderInputTimeSection(),this.props.children))}}],[{key:"defaultProps",get:function(){return {onDropdownFocus:function(){},monthsShown:1,monthSelectedIn:0,forceShowMonthNavigation:!1,timeCaption:"Time",previousYearButtonLabel:"Previous Year",nextYearButtonLabel:"Next Year",previousMonthButtonLabel:"Previous Month",nextMonthButtonLabel:"Next Month",customTimeInput:null,yearItemNumber:12}}}]),o}(),Rt=function(t){he(n,React__default.Component);var r=De(n);function n(e){var t;return pe(this,n),(t=r.call(this,e)).el=document.createElement("div"),t}return le(n,[{key:"componentDidMount",value:function(){this.portalRoot=(this.props.portalHost||document).getElementById(this.props.portalId),this.portalRoot||(this.portalRoot=document.createElement("div"),this.portalRoot.setAttribute("id",this.props.portalId),(this.props.portalHost||document.body).appendChild(this.portalRoot)),this.portalRoot.appendChild(this.el);}},{key:"componentWillUnmount",value:function(){this.portalRoot.removeChild(this.el);}},{key:"render",value:function(){return ReactDOM__default.createPortal(this.props.children,this.el)}}]),n}(),Ft=function(e){return !e.disabled&&-1!==e.tabIndex},At=function(t){he(n,React__default.Component);var r=De(n);function n(t){var o;return pe(this,n),de(ye(o=r.call(this,t)),"getTabChildren",(function(){return Array.prototype.slice.call(o.tabLoopRef.current.querySelectorAll("[tabindex], a, button, input, select, textarea"),1,-1).filter(Ft)})),de(ye(o),"handleFocusStart",(function(e){var t=o.getTabChildren();t&&t.length>1&&t[t.length-1].focus();})),de(ye(o),"handleFocusEnd",(function(e){var t=o.getTabChildren();t&&t.length>1&&t[0].focus();})),o.tabLoopRef=React__default.createRef(),o}return le(n,[{key:"render",value:function(){return this.props.enableTabLoop?React__default.createElement("div",{className:"react-datepicker__tab-loop",ref:this.tabLoopRef},React__default.createElement("div",{className:"react-datepicker__tab-loop__start",tabIndex:"0",onFocus:this.handleFocusStart}),this.props.children,React__default.createElement("div",{className:"react-datepicker__tab-loop__end",tabIndex:"0",onFocus:this.handleFocusEnd})):this.props.children}}],[{key:"defaultProps",get:function(){return {enableTabLoop:!0}}}]),n}(),Bt=function(t){he(o,React__default.Component);var n=De(o);function o(){return pe(this,o),n.apply(this,arguments)}return le(o,[{key:"render",value:function(){var t,n=this.props,o=n.className,a=n.wrapperClassName,s=n.hidePopper,i=n.popperComponent,p=n.popperModifiers,c=n.popperPlacement,l=n.popperProps,d=n.targetComponent,u=n.enableTabLoop,h=n.popperOnKeyDown,m=n.portalId,f=n.portalHost;if(!s){var y=r("react-datepicker-popper",o);t=React__default.createElement(Popper,ue({modifiers:p,placement:c},l),(function(t){var r=t.ref,n=t.style,o=t.placement,a=t.arrowProps;return React__default.createElement(At,{enableTabLoop:u},React__default.createElement("div",{ref:r,style:n,className:y,"data-placement":o,onKeyDown:h},React__default.cloneElement(i,{arrowProps:a})))}));}this.props.popperContainer&&(t=React__default.createElement(this.props.popperContainer,{},t)),m&&!s&&(t=React__default.createElement(Rt,{portalId:m,portalHost:f},t));var v=r("react-datepicker-wrapper",a);return React__default.createElement(Manager,{className:"react-datepicker-manager"},React__default.createElement(Reference,null,(function(t){var r=t.ref;return React__default.createElement("div",{ref:r,className:v},d)})),t)}}],[{key:"defaultProps",get:function(){return {hidePopper:!0,popperModifiers:[],popperProps:{},popperPlacement:"bottom-start"}}}]),o}(),Kt=onClickOutsideHOC(Lt);var Wt=function(t){he(a,React__default.Component);var o=De(a);function a(t){var s;return pe(this,a),de(ye(s=o.call(this,t)),"getPreSelection",(function(){return s.props.openToDate?s.props.openToDate:s.props.selectsEnd&&s.props.startDate?s.props.startDate:s.props.selectsStart&&s.props.endDate?s.props.endDate:_e()})),de(ye(s),"calcInitialState",(function(){var e,t=s.getPreSelection(),r=ut(s.props),n=ht(s.props),o=r&&isBefore(t,startOfDay(r))?r:n&&isAfter(t,endOfDay(n))?n:t;return {open:s.props.startOpen||!1,preventFocus:!1,preSelection:null!==(e=s.props.selectsRange?s.props.startDate:s.props.selected)&&void 0!==e?e:o,highlightDates:mt(s.props.highlightDates),focused:!1,shouldFocusDayInline:!1}})),de(ye(s),"clearPreventFocusTimeout",(function(){s.preventFocusTimeout&&clearTimeout(s.preventFocusTimeout);})),de(ye(s),"setFocus",(function(){s.input&&s.input.focus&&s.input.focus({preventScroll:!0});})),de(ye(s),"setBlur",(function(){s.input&&s.input.blur&&s.input.blur(),s.cancelFocusInput();})),de(ye(s),"setOpen",(function(e){var t=arguments.length>1&&void 0!==arguments[1]&&arguments[1];s.setState({open:e,preSelection:e&&s.state.open?s.state.preSelection:s.calcInitialState().preSelection,lastPreSelectChange:Ht},(function(){e||s.setState((function(e){return {focused:!!t&&e.focused}}),(function(){!t&&s.setBlur(),s.setState({inputValue:null});}));}));})),de(ye(s),"inputOk",(function(){return isDate$1(s.state.preSelection)})),de(ye(s),"isCalendarOpen",(function(){return void 0===s.props.open?s.state.open&&!s.props.disabled&&!s.props.readOnly:s.props.open})),de(ye(s),"handleFocus",(function(e){s.state.preventFocus||(s.props.onFocus(e),s.props.preventOpenOnFocus||s.props.readOnly||s.setOpen(!0)),s.setState({focused:!0});})),de(ye(s),"cancelFocusInput",(function(){clearTimeout(s.inputFocusTimeout),s.inputFocusTimeout=null;})),de(ye(s),"deferFocusInput",(function(){s.cancelFocusInput(),s.inputFocusTimeout=setTimeout((function(){return s.setFocus()}),1);})),de(ye(s),"handleDropdownFocus",(function(){s.cancelFocusInput();})),de(ye(s),"handleBlur",(function(e){(!s.state.open||s.props.withPortal||s.props.showTimeInput)&&s.props.onBlur(e),s.setState({focused:!1});})),de(ye(s),"handleCalendarClickOutside",(function(e){s.props.inline||s.setOpen(!1),s.props.onClickOutside(e),s.props.withPortal&&e.preventDefault();})),de(ye(s),"handleChange",(function(){for(var e=arguments.length,t=new Array(e),r=0;r<e;r++)t[r]=arguments[r];var n=t[0];if(!s.props.onChangeRaw||(s.props.onChangeRaw.apply(ye(s),t),"function"==typeof n.isDefaultPrevented&&!n.isDefaultPrevented())){s.setState({inputValue:n.target.value,lastPreSelectChange:jt});var o=Me(n.target.value,s.props.dateFormat,s.props.locale,s.props.strictParsing,s.props.minDate);!o&&n.target.value||s.setSelected(o,n,!0);}})),de(ye(s),"handleSelect",(function(e,t,r){if(s.setState({preventFocus:!0},(function(){return s.preventFocusTimeout=setTimeout((function(){return s.setState({preventFocus:!1})}),50),s.preventFocusTimeout})),s.props.onChangeRaw&&s.props.onChangeRaw(t),s.setSelected(e,t,!1,r),!s.props.shouldCloseOnSelect||s.props.showTimeSelect)s.setPreSelection(e);else if(!s.props.inline){s.props.selectsRange||s.setOpen(!1);var n=s.props,o=n.startDate,a=n.endDate;!o||a||isBefore(e,o)||s.setOpen(!1);}})),de(ye(s),"setSelected",(function(e,t,r,n){var o=e;if(null===o||!Je(o,s.props)){var a=s.props,i=a.onChange,p=a.selectsRange,c=a.startDate,l=a.endDate;if(!je(s.props.selected,o)||s.props.allowSameDay||p)if(null!==o&&(!s.props.selected||r&&(s.props.showTimeSelect||s.props.showTimeSelectOnly||s.props.showTimeInput)||(o=xe(o,{hour:getHours(s.props.selected),minute:getMinutes(s.props.selected),second:getSeconds(s.props.selected)})),s.props.inline||s.setState({preSelection:o}),s.props.focusSelectedMonth||s.setState({monthSelectedIn:n})),p){var d=c&&!l,u=c&&l;!c&&!l?i([o,null],t):d&&(isBefore(o,c)?i([o,null],t):i([c,o],t)),u&&i([o,null],t);}else i(o,t);r||(s.props.onSelect(o,t),s.setState({inputValue:null}));}})),de(ye(s),"setPreSelection",(function(e){var t=void 0!==s.props.minDate,r=void 0!==s.props.maxDate,n=!0;if(e){var o=startOfDay(e);if(t&&r)n=He(e,s.props.minDate,s.props.maxDate);else if(t){var a=startOfDay(s.props.minDate);n=isAfter(e,a)||je(o,a);}else if(r){var i=endOfDay(s.props.maxDate);n=isBefore(e,i)||je(o,i);}}n&&s.setState({preSelection:e});})),de(ye(s),"handleTimeChange",(function(e){var t=xe(s.props.selected?s.props.selected:s.getPreSelection(),{hour:getHours(e),minute:getMinutes(e)});s.setState({preSelection:t}),s.props.onChange(t),s.props.shouldCloseOnSelect&&s.setOpen(!1),s.props.showTimeInput&&s.setOpen(!0),s.setState({inputValue:null});})),de(ye(s),"onInputClick",(function(){s.props.disabled||s.props.readOnly||s.setOpen(!0),s.props.onInputClick();})),de(ye(s),"onInputKeyDown",(function(e){s.props.onKeyDown(e);var t=e.key;if(s.state.open||s.props.inline||s.props.preventOpenOnFocus){if(s.state.open){if("ArrowDown"===t||"ArrowUp"===t){e.preventDefault();var r=s.calendar.componentNode&&s.calendar.componentNode.querySelector('.react-datepicker__day[tabindex="0"]');return void(r&&r.focus({preventScroll:!0}))}var n=_e(s.state.preSelection);"Enter"===t?(e.preventDefault(),s.inputOk()&&s.state.lastPreSelectChange===Ht?(s.handleSelect(n,e),!s.props.shouldCloseOnSelect&&s.setPreSelection(n)):s.setOpen(!1)):"Escape"===t&&(e.preventDefault(),s.setOpen(!1)),s.inputOk()||s.props.onInputError({code:1,msg:"Date input not valid."});}}else "ArrowDown"!==t&&"ArrowUp"!==t&&"Enter"!==t||s.onInputClick();})),de(ye(s),"onDayKeyDown",(function(e){s.props.onKeyDown(e);var t=e.key,r=_e(s.state.preSelection);if("Enter"===t)e.preventDefault(),s.handleSelect(r,e),!s.props.shouldCloseOnSelect&&s.setPreSelection(r);else if("Escape"===t)e.preventDefault(),s.setOpen(!1),s.inputOk()||s.props.onInputError({code:1,msg:"Date input not valid."});else if(!s.props.disabledKeyboardNavigation){var n;switch(t){case"ArrowLeft":n=subDays(r,1);break;case"ArrowRight":n=addDays(r,1);break;case"ArrowUp":n=subWeeks(r,1);break;case"ArrowDown":n=addWeeks(r,1);break;case"PageUp":n=subMonths(r,1);break;case"PageDown":n=addMonths(r,1);break;case"Home":n=subYears(r,1);break;case"End":n=addYears(r,1);}if(!n)return void(s.props.onInputError&&s.props.onInputError({code:1,msg:"Date input not valid."}));if(e.preventDefault(),s.setState({lastPreSelectChange:Ht}),s.props.adjustDateOnChange&&s.setSelected(n),s.setPreSelection(n),s.props.inline){var o=getMonth(r),a=getMonth(n),i=getYear(r),y=getYear(n);o!==a||i!==y?s.setState({shouldFocusDayInline:!0}):s.setState({shouldFocusDayInline:!1});}}})),de(ye(s),"onPopperKeyDown",(function(e){"Escape"===e.key&&(e.preventDefault(),s.setState({preventFocus:!0},(function(){s.setOpen(!1),setTimeout((function(){s.setFocus(),s.setState({preventFocus:!1});}));})));})),de(ye(s),"onClearClick",(function(e){e&&e.preventDefault&&e.preventDefault(),s.props.selectsRange?s.props.onChange([null,null],e):s.props.onChange(null,e),s.setState({inputValue:null});})),de(ye(s),"clear",(function(){s.onClearClick();})),de(ye(s),"onScroll",(function(e){"boolean"==typeof s.props.closeOnScroll&&s.props.closeOnScroll?e.target!==document&&e.target!==document.documentElement&&e.target!==document.body||s.setOpen(!1):"function"==typeof s.props.closeOnScroll&&s.props.closeOnScroll(e)&&s.setOpen(!1);})),de(ye(s),"renderCalendar",(function(){return s.props.inline||s.isCalendarOpen()?React__default.createElement(Kt,{ref:function(e){s.calendar=e;},locale:s.props.locale,calendarStartDay:s.props.calendarStartDay,chooseDayAriaLabelPrefix:s.props.chooseDayAriaLabelPrefix,disabledDayAriaLabelPrefix:s.props.disabledDayAriaLabelPrefix,weekAriaLabelPrefix:s.props.weekAriaLabelPrefix,monthAriaLabelPrefix:s.props.monthAriaLabelPrefix,adjustDateOnChange:s.props.adjustDateOnChange,setOpen:s.setOpen,shouldCloseOnSelect:s.props.shouldCloseOnSelect,dateFormat:s.props.dateFormatCalendar,useWeekdaysShort:s.props.useWeekdaysShort,formatWeekDay:s.props.formatWeekDay,dropdownMode:s.props.dropdownMode,selected:s.props.selected,preSelection:s.state.preSelection,onSelect:s.handleSelect,onWeekSelect:s.props.onWeekSelect,openToDate:s.props.openToDate,minDate:s.props.minDate,maxDate:s.props.maxDate,selectsStart:s.props.selectsStart,selectsEnd:s.props.selectsEnd,selectsRange:s.props.selectsRange,startDate:s.props.startDate,endDate:s.props.endDate,excludeDates:s.props.excludeDates,excludeDateIntervals:s.props.excludeDateIntervals,filterDate:s.props.filterDate,onClickOutside:s.handleCalendarClickOutside,formatWeekNumber:s.props.formatWeekNumber,highlightDates:s.state.highlightDates,includeDates:s.props.includeDates,includeDateIntervals:s.props.includeDateIntervals,includeTimes:s.props.includeTimes,injectTimes:s.props.injectTimes,inline:s.props.inline,shouldFocusDayInline:s.state.shouldFocusDayInline,peekNextMonth:s.props.peekNextMonth,showMonthDropdown:s.props.showMonthDropdown,showPreviousMonths:s.props.showPreviousMonths,useShortMonthInDropdown:s.props.useShortMonthInDropdown,showMonthYearDropdown:s.props.showMonthYearDropdown,showWeekNumbers:s.props.showWeekNumbers,showYearDropdown:s.props.showYearDropdown,withPortal:s.props.withPortal,forceShowMonthNavigation:s.props.forceShowMonthNavigation,showDisabledMonthNavigation:s.props.showDisabledMonthNavigation,scrollableYearDropdown:s.props.scrollableYearDropdown,scrollableMonthYearDropdown:s.props.scrollableMonthYearDropdown,todayButton:s.props.todayButton,weekLabel:s.props.weekLabel,outsideClickIgnoreClass:"react-datepicker-ignore-onclickoutside",fixedHeight:s.props.fixedHeight,monthsShown:s.props.monthsShown,monthSelectedIn:s.state.monthSelectedIn,onDropdownFocus:s.handleDropdownFocus,onMonthChange:s.props.onMonthChange,onYearChange:s.props.onYearChange,dayClassName:s.props.dayClassName,weekDayClassName:s.props.weekDayClassName,monthClassName:s.props.monthClassName,timeClassName:s.props.timeClassName,showTimeSelect:s.props.showTimeSelect,showTimeSelectOnly:s.props.showTimeSelectOnly,onTimeChange:s.handleTimeChange,timeFormat:s.props.timeFormat,timeIntervals:s.props.timeIntervals,minTime:s.props.minTime,maxTime:s.props.maxTime,excludeTimes:s.props.excludeTimes,filterTime:s.props.filterTime,timeCaption:s.props.timeCaption,className:s.props.calendarClassName,container:s.props.calendarContainer,yearItemNumber:s.props.yearItemNumber,yearDropdownItemNumber:s.props.yearDropdownItemNumber,previousMonthAriaLabel:s.props.previousMonthAriaLabel,previousMonthButtonLabel:s.props.previousMonthButtonLabel,nextMonthAriaLabel:s.props.nextMonthAriaLabel,nextMonthButtonLabel:s.props.nextMonthButtonLabel,previousYearAriaLabel:s.props.previousYearAriaLabel,previousYearButtonLabel:s.props.previousYearButtonLabel,nextYearAriaLabel:s.props.nextYearAriaLabel,nextYearButtonLabel:s.props.nextYearButtonLabel,timeInputLabel:s.props.timeInputLabel,disabledKeyboardNavigation:s.props.disabledKeyboardNavigation,renderCustomHeader:s.props.renderCustomHeader,popperProps:s.props.popperProps,renderDayContents:s.props.renderDayContents,onDayMouseEnter:s.props.onDayMouseEnter,onMonthMouseLeave:s.props.onMonthMouseLeave,selectsDisabledDaysInRange:s.props.selectsDisabledDaysInRange,showTimeInput:s.props.showTimeInput,showMonthYearPicker:s.props.showMonthYearPicker,showFullMonthYearPicker:s.props.showFullMonthYearPicker,showTwoColumnMonthYearPicker:s.props.showTwoColumnMonthYearPicker,showFourColumnMonthYearPicker:s.props.showFourColumnMonthYearPicker,showYearPicker:s.props.showYearPicker,showQuarterYearPicker:s.props.showQuarterYearPicker,showPopperArrow:s.props.showPopperArrow,excludeScrollbar:s.props.excludeScrollbar,handleOnKeyDown:s.props.onKeyDown,handleOnDayKeyDown:s.onDayKeyDown,isInputFocused:s.state.focused,customTimeInput:s.props.customTimeInput,setPreSelection:s.setPreSelection},s.props.children):null})),de(ye(s),"renderDateInput",(function(){var t,n=r(s.props.className,de({},"react-datepicker-ignore-onclickoutside",s.state.open)),o=s.props.customInput||React__default.createElement("input",{type:"text"}),a=s.props.customInputRef||"ref",i="string"==typeof s.props.value?s.props.value:"string"==typeof s.state.inputValue?s.state.inputValue:s.props.selectsRange?function(e,t,r){if(!e)return "";var n=Ne(e,r),o=t?Ne(t,r):"";return "".concat(n," - ").concat(o)}(s.props.startDate,s.props.endDate,s.props):Ne(s.props.selected,s.props);return React__default.cloneElement(o,(de(t={},a,(function(e){s.input=e;})),de(t,"value",i),de(t,"onBlur",s.handleBlur),de(t,"onChange",s.handleChange),de(t,"onClick",s.onInputClick),de(t,"onFocus",s.handleFocus),de(t,"onKeyDown",s.onInputKeyDown),de(t,"id",s.props.id),de(t,"name",s.props.name),de(t,"autoFocus",s.props.autoFocus),de(t,"placeholder",s.props.placeholderText),de(t,"disabled",s.props.disabled),de(t,"autoComplete",s.props.autoComplete),de(t,"className",r(o.props.className,n)),de(t,"title",s.props.title),de(t,"readOnly",s.props.readOnly),de(t,"required",s.props.required),de(t,"tabIndex",s.props.tabIndex),de(t,"aria-describedby",s.props.ariaDescribedBy),de(t,"aria-invalid",s.props.ariaInvalid),de(t,"aria-labelledby",s.props.ariaLabelledBy),de(t,"aria-required",s.props.ariaRequired),t))})),de(ye(s),"renderClearButton",(function(){var t=s.props,r=t.isClearable,n=t.selected,o=t.startDate,a=t.endDate,i=t.clearButtonTitle,p=t.clearButtonClassName,c=void 0===p?"":p,l=t.ariaLabelClose,d=void 0===l?"Close":l;return !r||null==n&&null==o&&null==a?null:React__default.createElement("button",{type:"button",className:"react-datepicker__close-icon ".concat(c).trim(),"aria-label":d,onClick:s.onClearClick,title:i,tabIndex:-1})})),s.state=s.calcInitialState(),s}return le(a,[{key:"componentDidMount",value:function(){window.addEventListener("scroll",this.onScroll,!0);}},{key:"componentDidUpdate",value:function(e,t){var r,n;e.inline&&(r=e.selected,n=this.props.selected,r&&n?getMonth(r)!==getMonth(n)||getYear(r)!==getYear(n):r!==n)&&this.setPreSelection(this.props.selected),void 0!==this.state.monthSelectedIn&&e.monthsShown!==this.props.monthsShown&&this.setState({monthSelectedIn:0}),e.highlightDates!==this.props.highlightDates&&this.setState({highlightDates:mt(this.props.highlightDates)}),t.focused||je(e.selected,this.props.selected)||this.setState({inputValue:null}),t.open!==this.state.open&&(!1===t.open&&!0===this.state.open&&this.props.onCalendarOpen(),!0===t.open&&!1===this.state.open&&this.props.onCalendarClose());}},{key:"componentWillUnmount",value:function(){this.clearPreventFocusTimeout(),window.removeEventListener("scroll",this.onScroll,!0);}},{key:"renderInputContainer",value:function(){return React__default.createElement("div",{className:"react-datepicker__input-container"},this.renderDateInput(),this.renderClearButton())}},{key:"render",value:function(){var t=this.renderCalendar();if(this.props.inline)return t;if(this.props.withPortal){var r=this.state.open?React__default.createElement("div",{className:"react-datepicker__portal"},t):null;return this.state.open&&this.props.portalId&&(r=React__default.createElement(Rt,{portalId:this.props.portalId,portalHost:this.props.portalHost},r)),React__default.createElement("div",null,this.renderInputContainer(),r)}return React__default.createElement(Bt,{className:this.props.popperClassName,wrapperClassName:this.props.wrapperClassName,hidePopper:!this.isCalendarOpen(),portalId:this.props.portalId,portalHost:this.props.portalHost,popperModifiers:this.props.popperModifiers,targetComponent:this.renderInputContainer(),popperContainer:this.props.popperContainer,popperComponent:t,popperPlacement:this.props.popperPlacement,popperProps:this.props.popperProps,popperOnKeyDown:this.onPopperKeyDown,enableTabLoop:this.props.enableTabLoop})}}],[{key:"defaultProps",get:function(){return {allowSameDay:!1,dateFormat:"MM/dd/yyyy",dateFormatCalendar:"LLLL yyyy",onChange:function(){},disabled:!1,disabledKeyboardNavigation:!1,dropdownMode:"scroll",onFocus:function(){},onBlur:function(){},onKeyDown:function(){},onInputClick:function(){},onSelect:function(){},onClickOutside:function(){},onMonthChange:function(){},onCalendarOpen:function(){},onCalendarClose:function(){},preventOpenOnFocus:!1,onYearChange:function(){},onInputError:function(){},monthsShown:1,readOnly:!1,withPortal:!1,selectsDisabledDaysInRange:!1,shouldCloseOnSelect:!0,showTimeSelect:!1,showTimeInput:!1,showPreviousMonths:!1,showMonthYearPicker:!1,showFullMonthYearPicker:!1,showTwoColumnMonthYearPicker:!1,showFourColumnMonthYearPicker:!1,showYearPicker:!1,showQuarterYearPicker:!1,strictParsing:!1,timeIntervals:30,timeCaption:"Time",previousMonthAriaLabel:"Previous Month",previousMonthButtonLabel:"Previous Month",nextMonthAriaLabel:"Next Month",nextMonthButtonLabel:"Next Month",previousYearAriaLabel:"Previous Year",previousYearButtonLabel:"Previous Year",nextYearAriaLabel:"Next Year",nextYearButtonLabel:"Next Year",timeInputLabel:"Time",enableTabLoop:!0,yearItemNumber:12,renderDayContents:function(e){return e},focusSelectedMonth:!1,showPopperArrow:!0,excludeScrollbar:!0,customTimeInput:null,calendarStartDay:void 0}}}]),a}(),jt="input",Ht="navigate";
+function ae(e,t){var r=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);t&&(n=n.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),r.push.apply(r,n);}return r}function se(e){for(var t=1;t<arguments.length;t++){var r=null!=arguments[t]?arguments[t]:{};t%2?ae(Object(r),!0).forEach((function(t){de(e,t,r[t]);})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(r)):ae(Object(r)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(r,t));}));}return e}function ie(e){return (ie="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function pe(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function ce(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n);}}function le(e,t,r){return t&&ce(e.prototype,t),r&&ce(e,r),Object.defineProperty(e,"prototype",{writable:!1}),e}function de(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function ue(){return (ue=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(e[n]=r[n]);}return e}).apply(this,arguments)}function he(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");Object.defineProperty(e,"prototype",{value:Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),writable:!1}),t&&fe(e,t);}function me(e){return (me=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function fe(e,t){return (fe=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function ye(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function ve(e,t){if(t&&("object"==typeof t||"function"==typeof t))return t;if(void 0!==t)throw new TypeError("Derived constructors may only return object or undefined");return ye(e)}function De(e){var t=function(){if("undefined"==typeof Reflect||!Reflect.construct)return !1;if(Reflect.construct.sham)return !1;if("function"==typeof Proxy)return !0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return !1}}();return function(){var r,n=me(e);if(t){var o=me(this).constructor;r=Reflect.construct(n,arguments,o);}else r=n.apply(this,arguments);return ve(this,r)}}function we(e){return function(e){if(Array.isArray(e))return ge(e)}(e)||function(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}(e)||function(e,t){if(!e)return;if("string"==typeof e)return ge(e,t);var r=Object.prototype.toString.call(e).slice(8,-1);"Object"===r&&e.constructor&&(r=e.constructor.name);if("Map"===r||"Set"===r)return Array.from(e);if("Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r))return ge(e,t)}(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function ge(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=new Array(t);r<t;r++)n[r]=e[r];return n}function ke(e,t){switch(e){case"P":return t.date({width:"short"});case"PP":return t.date({width:"medium"});case"PPP":return t.date({width:"long"});case"PPPP":default:return t.date({width:"full"})}}function be(e,t){switch(e){case"p":return t.time({width:"short"});case"pp":return t.time({width:"medium"});case"ppp":return t.time({width:"long"});case"pppp":default:return t.time({width:"full"})}}var Ce={p:be,P:function(e,t){var r,n=e.match(/(P+)(p+)?/)||[],o=n[1],a=n[2];if(!a)return ke(e,t);switch(o){case"P":r=t.dateTime({width:"short"});break;case"PP":r=t.dateTime({width:"medium"});break;case"PPP":r=t.dateTime({width:"long"});break;case"PPPP":default:r=t.dateTime({width:"full"});}return r.replace("{{date}}",ke(o,t)).replace("{{time}}",be(a,t))}},Se=/P+p+|P+|p+|''|'(''|[^'])+('|$)|./g;function _e(e){var t=e?"string"==typeof e||e instanceof String?parseISO(e):toDate(e):new Date;return Pe(t)?t:null}function Me(e,t,r,n,o){var a=null,s=Ue(r)||Ue(qe()),i=!0;return Array.isArray(t)?(t.forEach((function(t){var p=parse$2(e,t,new Date,{locale:s});n&&(i=Pe(p,o)&&e===Ee(p,t,r)),Pe(p,o)&&i&&(a=p);})),a):(a=parse$2(e,t,new Date,{locale:s}),n?i=Pe(a)&&e===Ee(a,t,r):Pe(a)||(t=t.match(Se).map((function(e){var t=e[0];return "p"===t||"P"===t?s?(0, Ce[t])(e,s.formatLong):t:e})).join(""),e.length>0&&(a=parse$2(e,t.slice(0,e.length),new Date)),Pe(a)||(a=new Date(e))),Pe(a)&&i?a:null)}function Pe(e,t){return t=t||new Date("1/1/1000"),isValid(e)&&!isBefore(e,t)}function Ee(e,t,r){if("en"===r)return format$1(e,t,{awareOfUnicodeTokens:!0});var n=Ue(r);return r&&!n&&console.warn('A locale object was not found for the provided string ["'.concat(r,'"].')),!n&&qe()&&Ue(qe())&&(n=Ue(qe())),format$1(e,t,{locale:n||null,awareOfUnicodeTokens:!0})}function Ne(e,t){var r=t.dateFormat,n=t.locale;return e&&Ee(e,Array.isArray(r)?r[0]:r,n)||""}function xe(e,t){var r=t.hour,n=void 0===r?0:r,o=t.minute,a=void 0===o?0:o,s=t.second;return setHours(setMinutes(setSeconds(e,void 0===s?0:s),a),n)}function Ye(e,t){var r=t&&Ue(t)||qe()&&Ue(qe());return getISOWeek(e,r?{locale:r}:null)}function Oe(e,t){return Ee(e,"ddd",t)}function Ie(e){return startOfDay(e)}function Te(e,t,r){var n=Ue(t||qe());return startOfWeek(e,{locale:n,weekStartsOn:r})}function Le(e){return startOfMonth(e)}function Re(e){return startOfYear(e)}function Fe(e){return startOfQuarter(e)}function Ae(e,t){return e&&t?isSameYear(e,t):!e&&!t}function Be(e,t){return e&&t?isSameMonth(e,t):!e&&!t}function Ke(e,t){return e&&t?isSameQuarter(e,t):!e&&!t}function We(e,t){return e&&t?isSameDay(e,t):!e&&!t}function je(e,t){return e&&t?isEqual$3(e,t):!e&&!t}function He(e,t,r){var n,o=startOfDay(t),a=endOfDay(r);try{n=isWithinInterval(e,{start:o,end:a});}catch(e){n=!1;}return n}function qe(){return ("undefined"!=typeof window?window:globalThis).__localeId__}function Ue(e){if("string"==typeof e){var t="undefined"!=typeof window?window:globalThis;return t.__localeData__?t.__localeData__[e]:null}return e}function $e(e,t){return Ee(setMonth(_e(),e),"LLLL",t)}function ze(e,t){return Ee(setMonth(_e(),e),"LLL",t)}function Ge(e,t){return Ee(setQuarter(_e(),e),"QQQ",t)}function Je(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=t.excludeDates,a=t.excludeDateIntervals,s=t.includeDates,i=t.includeDateIntervals,p=t.filterDate;return ot(e,{minDate:r,maxDate:n})||o&&o.some((function(t){return We(e,t)}))||a&&a.some((function(t){var r=t.start,n=t.end;return isWithinInterval(e,{start:r,end:n})}))||s&&!s.some((function(t){return We(e,t)}))||i&&!i.some((function(t){var r=t.start,n=t.end;return isWithinInterval(e,{start:r,end:n})}))||p&&!p(_e(e))||!1}function Xe(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.excludeDates,n=t.excludeDateIntervals;return n&&n.length>0?n.some((function(t){var r=t.start,n=t.end;return isWithinInterval(e,{start:r,end:n})})):r&&r.some((function(t){return We(e,t)}))||!1}function Ze(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=t.excludeDates,a=t.includeDates,s=t.filterDate;return ot(e,{minDate:r,maxDate:n})||o&&o.some((function(t){return Be(e,t)}))||a&&!a.some((function(t){return Be(e,t)}))||s&&!s(_e(e))||!1}function et(e,t,r,n){var o=getYear(e),a=getMonth(e),s=getYear(t),i=getMonth(t),p=getYear(n);return o===s&&o===p?a<=r&&r<=i:o<s?p===o&&a<=r||p===s&&i>=r||p<s&&p>o:void 0}function tt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=t.excludeDates,a=t.includeDates,s=t.filterDate;return ot(e,{minDate:r,maxDate:n})||o&&o.some((function(t){return Ke(e,t)}))||a&&!a.some((function(t){return Ke(e,t)}))||s&&!s(_e(e))||!1}function rt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate,o=new Date(e,0,1);return ot(o,{minDate:r,maxDate:n})||!1}function nt(e,t,r,n){var o=getYear(e),a=getQuarter(e),s=getYear(t),i=getQuarter(t),p=getYear(n);return o===s&&o===p?a<=r&&r<=i:o<s?p===o&&a<=r||p===s&&i>=r||p<s&&p>o:void 0}function ot(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.maxDate;return r&&differenceInCalendarDays(e,r)<0||n&&differenceInCalendarDays(e,n)>0}function at(e,t){return t.some((function(t){return getHours(t)===getHours(e)&&getMinutes(t)===getMinutes(e)}))}function st(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.excludeTimes,n=t.includeTimes,o=t.filterTime;return r&&at(e,r)||n&&!at(e,n)||o&&!o(e)||!1}function it(e,t){var r=t.minTime,n=t.maxTime;if(!r||!n)throw new Error("Both minTime and maxTime props required");var o,a=_e(),s=setHours(setMinutes(a,getMinutes(e)),getHours(e)),i=setHours(setMinutes(a,getMinutes(r)),getHours(r)),p=setHours(setMinutes(a,getMinutes(n)),getHours(n));try{o=!isWithinInterval(s,{start:i,end:p});}catch(e){o=!1;}return o}function pt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.includeDates,o=subMonths(e,1);return r&&differenceInCalendarMonths(r,o)>0||n&&n.every((function(e){return differenceInCalendarMonths(e,o)>0}))||!1}function ct(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.maxDate,n=t.includeDates,o=addMonths(e,1);return r&&differenceInCalendarMonths(o,r)>0||n&&n.every((function(e){return differenceInCalendarMonths(o,e)>0}))||!1}function lt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.includeDates,o=subYears(e,1);return r&&differenceInCalendarYears(r,o)>0||n&&n.every((function(e){return differenceInCalendarYears(e,o)>0}))||!1}function dt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.maxDate,n=t.includeDates,o=addYears(e,1);return r&&differenceInCalendarYears(o,r)>0||n&&n.every((function(e){return differenceInCalendarYears(o,e)>0}))||!1}function ut(e){var t=e.minDate,r=e.includeDates;if(r&&t){var n=r.filter((function(e){return differenceInCalendarDays(e,t)>=0}));return min$5(n)}return r?min$5(r):t}function ht(e){var t=e.maxDate,r=e.includeDates;if(r&&t){var n=r.filter((function(e){return differenceInCalendarDays(e,t)<=0}));return max$4(n)}return r?max$4(r):t}function mt(){for(var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:[],t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"react-datepicker__day--highlighted",r=new Map,o=0,a=e.length;o<a;o++){var s=e[o];if(isDate$1(s)){var i=Ee(s,"MM.dd.yyyy"),p=r.get(i)||[];p.includes(t)||(p.push(t),r.set(i,p));}else if("object"===ie(s)){var c=Object.keys(s),l=c[0],d=s[c[0]];if("string"==typeof l&&d.constructor===Array)for(var u=0,h=d.length;u<h;u++){var m=Ee(d[u],"MM.dd.yyyy"),f=r.get(m)||[];f.includes(l)||(f.push(l),r.set(m,f));}}}return r}function ft(e,t,r,n,o){for(var a=o.length,p=[],c=0;c<a;c++){var l=addMinutes(addHours(e,getHours(o[c])),getMinutes(o[c])),d=addMinutes(e,(r+1)*n);isAfter(l,t)&&isBefore(l,d)&&p.push(o[c]);}return p}function yt(e){return e<10?"0".concat(e):"".concat(e)}function vt(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:12,r=Math.ceil(getYear(e)/t)*t,n=r-(t-1);return {startPeriod:n,endPeriod:r}}function Dt(e,t,r,n){for(var o=[],a=0;a<2*t+1;a++){var s=e+t-a,i=!0;r&&(i=getYear(r)<=s),n&&i&&(i=getYear(n)>=s),i&&o.push(s);}return o}var wt=onClickOutsideHOC(function(n){he(a,React__default.Component);var o=De(a);function a(r){var n;pe(this,a),de(ye(n=o.call(this,r)),"renderOptions",(function(){var t=n.props.year,r=n.state.yearsList.map((function(r){return React__default.createElement("div",{className:t===r?"react-datepicker__year-option react-datepicker__year-option--selected_year":"react-datepicker__year-option",key:r,onClick:n.onChange.bind(ye(n),r),"aria-selected":t===r?"true":void 0},t===r?React__default.createElement("span",{className:"react-datepicker__year-option--selected"},"✓"):"",r)})),o=n.props.minDate?getYear(n.props.minDate):null,a=n.props.maxDate?getYear(n.props.maxDate):null;return a&&n.state.yearsList.find((function(e){return e===a}))||r.unshift(React__default.createElement("div",{className:"react-datepicker__year-option",key:"upcoming",onClick:n.incrementYears},React__default.createElement("a",{className:"react-datepicker__navigation react-datepicker__navigation--years react-datepicker__navigation--years-upcoming"}))),o&&n.state.yearsList.find((function(e){return e===o}))||r.push(React__default.createElement("div",{className:"react-datepicker__year-option",key:"previous",onClick:n.decrementYears},React__default.createElement("a",{className:"react-datepicker__navigation react-datepicker__navigation--years react-datepicker__navigation--years-previous"}))),r})),de(ye(n),"onChange",(function(e){n.props.onChange(e);})),de(ye(n),"handleClickOutside",(function(){n.props.onCancel();})),de(ye(n),"shiftYears",(function(e){var t=n.state.yearsList.map((function(t){return t+e}));n.setState({yearsList:t});})),de(ye(n),"incrementYears",(function(){return n.shiftYears(1)})),de(ye(n),"decrementYears",(function(){return n.shiftYears(-1)}));var s=r.yearDropdownItemNumber,i=r.scrollableYearDropdown,p=s||(i?10:5);return n.state={yearsList:Dt(n.props.year,p,n.props.minDate,n.props.maxDate)},n.dropdownRef=createRef(),n}return le(a,[{key:"componentDidMount",value:function(){var e=this.dropdownRef.current;e&&(e.scrollTop=e.scrollHeight/2-e.clientHeight/2);}},{key:"render",value:function(){var t=r({"react-datepicker__year-dropdown":!0,"react-datepicker__year-dropdown--scrollable":this.props.scrollableYearDropdown});return React__default.createElement("div",{className:t,ref:this.dropdownRef},this.renderOptions())}}]),a}()),gt=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{dropdownVisible:!1}),de(ye(t),"renderSelectOptions",(function(){for(var r=t.props.minDate?getYear(t.props.minDate):1900,n=t.props.maxDate?getYear(t.props.maxDate):2100,o=[],a=r;a<=n;a++)o.push(React__default.createElement("option",{key:a,value:a},a));return o})),de(ye(t),"onSelectChange",(function(e){t.onChange(e.target.value);})),de(ye(t),"renderSelectMode",(function(){return React__default.createElement("select",{value:t.props.year,className:"react-datepicker__year-select",onChange:t.onSelectChange},t.renderSelectOptions())})),de(ye(t),"renderReadView",(function(r){return React__default.createElement("div",{key:"read",style:{visibility:r?"visible":"hidden"},className:"react-datepicker__year-read-view",onClick:function(e){return t.toggleDropdown(e)}},React__default.createElement("span",{className:"react-datepicker__year-read-view--down-arrow"}),React__default.createElement("span",{className:"react-datepicker__year-read-view--selected-year"},t.props.year))})),de(ye(t),"renderDropdown",(function(){return React__default.createElement(wt,{key:"dropdown",year:t.props.year,onChange:t.onChange,onCancel:t.toggleDropdown,minDate:t.props.minDate,maxDate:t.props.maxDate,scrollableYearDropdown:t.props.scrollableYearDropdown,yearDropdownItemNumber:t.props.yearDropdownItemNumber})})),de(ye(t),"renderScrollMode",(function(){var e=t.state.dropdownVisible,r=[t.renderReadView(!e)];return e&&r.unshift(t.renderDropdown()),r})),de(ye(t),"onChange",(function(e){t.toggleDropdown(),e!==t.props.year&&t.props.onChange(e);})),de(ye(t),"toggleDropdown",(function(e){t.setState({dropdownVisible:!t.state.dropdownVisible},(function(){t.props.adjustDateOnChange&&t.handleYearChange(t.props.date,e);}));})),de(ye(t),"handleYearChange",(function(e,r){t.onSelect(e,r),t.setOpen();})),de(ye(t),"onSelect",(function(e,r){t.props.onSelect&&t.props.onSelect(e,r);})),de(ye(t),"setOpen",(function(){t.props.setOpen&&t.props.setOpen(!0);})),t}return le(n,[{key:"render",value:function(){var t;switch(this.props.dropdownMode){case"scroll":t=this.renderScrollMode();break;case"select":t=this.renderSelectMode();}return React__default.createElement("div",{className:"react-datepicker__year-dropdown-container react-datepicker__year-dropdown-container--".concat(this.props.dropdownMode)},t)}}]),n}(),kt=onClickOutsideHOC(function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"isSelectedMonth",(function(e){return t.props.month===e})),de(ye(t),"renderOptions",(function(){return t.props.monthNames.map((function(r,n){return React__default.createElement("div",{className:t.isSelectedMonth(n)?"react-datepicker__month-option react-datepicker__month-option--selected_month":"react-datepicker__month-option",key:r,onClick:t.onChange.bind(ye(t),n),"aria-selected":t.isSelectedMonth(n)?"true":void 0},t.isSelectedMonth(n)?React__default.createElement("span",{className:"react-datepicker__month-option--selected"},"✓"):"",r)}))})),de(ye(t),"onChange",(function(e){return t.props.onChange(e)})),de(ye(t),"handleClickOutside",(function(){return t.props.onCancel()})),t}return le(n,[{key:"render",value:function(){return React__default.createElement("div",{className:"react-datepicker__month-dropdown"},this.renderOptions())}}]),n}()),bt=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{dropdownVisible:!1}),de(ye(t),"renderSelectOptions",(function(t){return t.map((function(t,r){return React__default.createElement("option",{key:r,value:r},t)}))})),de(ye(t),"renderSelectMode",(function(r){return React__default.createElement("select",{value:t.props.month,className:"react-datepicker__month-select",onChange:function(e){return t.onChange(e.target.value)}},t.renderSelectOptions(r))})),de(ye(t),"renderReadView",(function(r,n){return React__default.createElement("div",{key:"read",style:{visibility:r?"visible":"hidden"},className:"react-datepicker__month-read-view",onClick:t.toggleDropdown},React__default.createElement("span",{className:"react-datepicker__month-read-view--down-arrow"}),React__default.createElement("span",{className:"react-datepicker__month-read-view--selected-month"},n[t.props.month]))})),de(ye(t),"renderDropdown",(function(r){return React__default.createElement(kt,{key:"dropdown",month:t.props.month,monthNames:r,onChange:t.onChange,onCancel:t.toggleDropdown})})),de(ye(t),"renderScrollMode",(function(e){var r=t.state.dropdownVisible,n=[t.renderReadView(!r,e)];return r&&n.unshift(t.renderDropdown(e)),n})),de(ye(t),"onChange",(function(e){t.toggleDropdown(),e!==t.props.month&&t.props.onChange(e);})),de(ye(t),"toggleDropdown",(function(){return t.setState({dropdownVisible:!t.state.dropdownVisible})})),t}return le(n,[{key:"render",value:function(){var t,r=this,n=[0,1,2,3,4,5,6,7,8,9,10,11].map(this.props.useShortMonthInDropdown?function(e){return ze(e,r.props.locale)}:function(e){return $e(e,r.props.locale)});switch(this.props.dropdownMode){case"scroll":t=this.renderScrollMode(n);break;case"select":t=this.renderSelectMode(n);}return React__default.createElement("div",{className:"react-datepicker__month-dropdown-container react-datepicker__month-dropdown-container--".concat(this.props.dropdownMode)},t)}}]),n}();function Ct(e,t){for(var r=[],n=Le(e),o=Le(t);!isAfter(n,o);)r.push(_e(n)),n=addMonths(n,1);return r}var St=onClickOutsideHOC(function(t){he(o,React__default.Component);var n=De(o);function o(t){var r;return pe(this,o),de(ye(r=n.call(this,t)),"renderOptions",(function(){return r.state.monthYearsList.map((function(t){var n=getTime(t),o=Ae(r.props.date,t)&&Be(r.props.date,t);return React__default.createElement("div",{className:o?"react-datepicker__month-year-option--selected_month-year":"react-datepicker__month-year-option",key:n,onClick:r.onChange.bind(ye(r),n),"aria-selected":o?"true":void 0},o?React__default.createElement("span",{className:"react-datepicker__month-year-option--selected"},"✓"):"",Ee(t,r.props.dateFormat,r.props.locale))}))})),de(ye(r),"onChange",(function(e){return r.props.onChange(e)})),de(ye(r),"handleClickOutside",(function(){r.props.onCancel();})),r.state={monthYearsList:Ct(r.props.minDate,r.props.maxDate)},r}return le(o,[{key:"render",value:function(){var t=r({"react-datepicker__month-year-dropdown":!0,"react-datepicker__month-year-dropdown--scrollable":this.props.scrollableMonthYearDropdown});return React__default.createElement("div",{className:t},this.renderOptions())}}]),o}()),_t=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{dropdownVisible:!1}),de(ye(t),"renderSelectOptions",(function(){for(var r=Le(t.props.minDate),n=Le(t.props.maxDate),o=[];!isAfter(r,n);){var a=getTime(r);o.push(React__default.createElement("option",{key:a,value:a},Ee(r,t.props.dateFormat,t.props.locale))),r=addMonths(r,1);}return o})),de(ye(t),"onSelectChange",(function(e){t.onChange(e.target.value);})),de(ye(t),"renderSelectMode",(function(){return React__default.createElement("select",{value:getTime(Le(t.props.date)),className:"react-datepicker__month-year-select",onChange:t.onSelectChange},t.renderSelectOptions())})),de(ye(t),"renderReadView",(function(r){var n=Ee(t.props.date,t.props.dateFormat,t.props.locale);return React__default.createElement("div",{key:"read",style:{visibility:r?"visible":"hidden"},className:"react-datepicker__month-year-read-view",onClick:function(e){return t.toggleDropdown(e)}},React__default.createElement("span",{className:"react-datepicker__month-year-read-view--down-arrow"}),React__default.createElement("span",{className:"react-datepicker__month-year-read-view--selected-month-year"},n))})),de(ye(t),"renderDropdown",(function(){return React__default.createElement(St,{key:"dropdown",date:t.props.date,dateFormat:t.props.dateFormat,onChange:t.onChange,onCancel:t.toggleDropdown,minDate:t.props.minDate,maxDate:t.props.maxDate,scrollableMonthYearDropdown:t.props.scrollableMonthYearDropdown,locale:t.props.locale})})),de(ye(t),"renderScrollMode",(function(){var e=t.state.dropdownVisible,r=[t.renderReadView(!e)];return e&&r.unshift(t.renderDropdown()),r})),de(ye(t),"onChange",(function(e){t.toggleDropdown();var r=_e(parseInt(e));Ae(t.props.date,r)&&Be(t.props.date,r)||t.props.onChange(r);})),de(ye(t),"toggleDropdown",(function(){return t.setState({dropdownVisible:!t.state.dropdownVisible})})),t}return le(n,[{key:"render",value:function(){var t;switch(this.props.dropdownMode){case"scroll":t=this.renderScrollMode();break;case"select":t=this.renderSelectMode();}return React__default.createElement("div",{className:"react-datepicker__month-year-dropdown-container react-datepicker__month-year-dropdown-container--".concat(this.props.dropdownMode)},t)}}]),n}(),Mt=function(t){he(o,React__default.Component);var n=De(o);function o(){var t;pe(this,o);for(var a=arguments.length,s=new Array(a),i=0;i<a;i++)s[i]=arguments[i];return de(ye(t=n.call.apply(n,[this].concat(s))),"dayEl",React__default.createRef()),de(ye(t),"handleClick",(function(e){!t.isDisabled()&&t.props.onClick&&t.props.onClick(e);})),de(ye(t),"handleMouseEnter",(function(e){!t.isDisabled()&&t.props.onMouseEnter&&t.props.onMouseEnter(e);})),de(ye(t),"handleOnKeyDown",(function(e){" "===e.key&&(e.preventDefault(),e.key="Enter"),t.props.handleOnKeyDown(e);})),de(ye(t),"isSameDay",(function(e){return We(t.props.day,e)})),de(ye(t),"isKeyboardSelected",(function(){return !t.props.disabledKeyboardNavigation&&!t.isSameDay(t.props.selected)&&t.isSameDay(t.props.preSelection)})),de(ye(t),"isDisabled",(function(){return Je(t.props.day,t.props)})),de(ye(t),"isExcluded",(function(){return Xe(t.props.day,t.props)})),de(ye(t),"getHighLightedClass",(function(e){var r=t.props,n=r.day,o=r.highlightDates;if(!o)return !1;var a=Ee(n,"MM.dd.yyyy");return o.get(a)})),de(ye(t),"isInRange",(function(){var e=t.props,r=e.day,n=e.startDate,o=e.endDate;return !(!n||!o)&&He(r,n,o)})),de(ye(t),"isInSelectingRange",(function(){var e,r=t.props,n=r.day,o=r.selectsStart,a=r.selectsEnd,s=r.selectsRange,i=r.selectsDisabledDaysInRange,p=r.startDate,c=r.endDate,l=null!==(e=t.props.selectingDate)&&void 0!==e?e:t.props.preSelection;return !(!(o||a||s)||!l||!i&&t.isDisabled())&&(o&&c&&(isBefore(l,c)||je(l,c))?He(n,l,c):(a&&p&&(isAfter(l,p)||je(l,p))||!(!s||!p||c||!isAfter(l,p)&&!je(l,p)))&&He(n,p,l))})),de(ye(t),"isSelectingRangeStart",(function(){var e;if(!t.isInSelectingRange())return !1;var r=t.props,n=r.day,o=r.startDate,a=r.selectsStart,s=null!==(e=t.props.selectingDate)&&void 0!==e?e:t.props.preSelection;return We(n,a?s:o)})),de(ye(t),"isSelectingRangeEnd",(function(){var e;if(!t.isInSelectingRange())return !1;var r=t.props,n=r.day,o=r.endDate,a=r.selectsEnd,s=null!==(e=t.props.selectingDate)&&void 0!==e?e:t.props.preSelection;return We(n,a?s:o)})),de(ye(t),"isRangeStart",(function(){var e=t.props,r=e.day,n=e.startDate,o=e.endDate;return !(!n||!o)&&We(n,r)})),de(ye(t),"isRangeEnd",(function(){var e=t.props,r=e.day,n=e.startDate,o=e.endDate;return !(!n||!o)&&We(o,r)})),de(ye(t),"isWeekend",(function(){var e=getDay(t.props.day);return 0===e||6===e})),de(ye(t),"isAfterMonth",(function(){return void 0!==t.props.month&&(t.props.month+1)%12===getMonth(t.props.day)})),de(ye(t),"isBeforeMonth",(function(){return void 0!==t.props.month&&(getMonth(t.props.day)+1)%12===t.props.month})),de(ye(t),"isCurrentDay",(function(){return t.isSameDay(_e())})),de(ye(t),"isSelected",(function(){return t.isSameDay(t.props.selected)})),de(ye(t),"getClassNames",(function(e){var n=t.props.dayClassName?t.props.dayClassName(e):void 0;return r("react-datepicker__day",n,"react-datepicker__day--"+Oe(t.props.day),{"react-datepicker__day--disabled":t.isDisabled(),"react-datepicker__day--excluded":t.isExcluded(),"react-datepicker__day--selected":t.isSelected(),"react-datepicker__day--keyboard-selected":t.isKeyboardSelected(),"react-datepicker__day--range-start":t.isRangeStart(),"react-datepicker__day--range-end":t.isRangeEnd(),"react-datepicker__day--in-range":t.isInRange(),"react-datepicker__day--in-selecting-range":t.isInSelectingRange(),"react-datepicker__day--selecting-range-start":t.isSelectingRangeStart(),"react-datepicker__day--selecting-range-end":t.isSelectingRangeEnd(),"react-datepicker__day--today":t.isCurrentDay(),"react-datepicker__day--weekend":t.isWeekend(),"react-datepicker__day--outside-month":t.isAfterMonth()||t.isBeforeMonth()},t.getHighLightedClass("react-datepicker__day--highlighted"))})),de(ye(t),"getAriaLabel",(function(){var e=t.props,r=e.day,n=e.ariaLabelPrefixWhenEnabled,o=void 0===n?"Choose":n,a=e.ariaLabelPrefixWhenDisabled,s=void 0===a?"Not available":a,i=t.isDisabled()||t.isExcluded()?s:o;return "".concat(i," ").concat(Ee(r,"PPPP",t.props.locale))})),de(ye(t),"getTabIndex",(function(e,r){var n=e||t.props.selected,o=r||t.props.preSelection;return t.isKeyboardSelected()||t.isSameDay(n)&&We(o,n)?0:-1})),de(ye(t),"handleFocusDay",(function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},r=!1;0===t.getTabIndex()&&!e.isInputFocused&&t.isSameDay(t.props.preSelection)&&(document.activeElement&&document.activeElement!==document.body||(r=!0),t.props.inline&&!t.props.shouldFocusDayInline&&(r=!1),t.props.containerRef&&t.props.containerRef.current&&t.props.containerRef.current.contains(document.activeElement)&&document.activeElement.classList.contains("react-datepicker__day")&&(r=!0)),r&&t.dayEl.current.focus({preventScroll:!0});})),de(ye(t),"renderDayContents",(function(){return t.props.monthShowsDuplicateDaysEnd&&t.isAfterMonth()||t.props.monthShowsDuplicateDaysStart&&t.isBeforeMonth()?null:t.props.renderDayContents?t.props.renderDayContents(getDate(t.props.day),t.props.day):getDate(t.props.day)})),de(ye(t),"render",(function(){return React__default.createElement("div",{ref:t.dayEl,className:t.getClassNames(t.props.day),onKeyDown:t.handleOnKeyDown,onClick:t.handleClick,onMouseEnter:t.handleMouseEnter,tabIndex:t.getTabIndex(),"aria-label":t.getAriaLabel(),role:"option","aria-disabled":t.isDisabled(),"aria-current":t.isCurrentDay()?"date":void 0,"aria-selected":t.isSelected()},t.renderDayContents())})),t}return le(o,[{key:"componentDidMount",value:function(){this.handleFocusDay();}},{key:"componentDidUpdate",value:function(e){this.handleFocusDay(e);}}]),o}(),Pt=function(t){he(o,React__default.Component);var n=De(o);function o(){var e;pe(this,o);for(var t=arguments.length,r=new Array(t),a=0;a<t;a++)r[a]=arguments[a];return de(ye(e=n.call.apply(n,[this].concat(r))),"handleClick",(function(t){e.props.onClick&&e.props.onClick(t);})),e}return le(o,[{key:"render",value:function(){var t=this.props,n=t.weekNumber,o=t.ariaLabelPrefix,a=void 0===o?"week ":o,s={"react-datepicker__week-number":!0,"react-datepicker__week-number--clickable":!!t.onClick};return React__default.createElement("div",{className:r(s),"aria-label":"".concat(a," ").concat(this.props.weekNumber),onClick:this.handleClick},n)}}]),o}(),Et=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),s=0;s<o;s++)a[s]=arguments[s];return de(ye(t=r.call.apply(r,[this].concat(a))),"handleDayClick",(function(e,r){t.props.onDayClick&&t.props.onDayClick(e,r);})),de(ye(t),"handleDayMouseEnter",(function(e){t.props.onDayMouseEnter&&t.props.onDayMouseEnter(e);})),de(ye(t),"handleWeekClick",(function(e,r,n){"function"==typeof t.props.onWeekSelect&&t.props.onWeekSelect(e,r,n),t.props.shouldCloseOnSelect&&t.props.setOpen(!1);})),de(ye(t),"formatWeekNumber",(function(e){return t.props.formatWeekNumber?t.props.formatWeekNumber(e):Ye(e)})),de(ye(t),"renderDays",(function(){var r=Te(t.props.day,t.props.locale,t.props.calendarStartDay),n=[],o=t.formatWeekNumber(r);if(t.props.showWeekNumber){var a=t.props.onWeekSelect?t.handleWeekClick.bind(ye(t),r,o):void 0;n.push(React__default.createElement(Pt,{key:"W",weekNumber:o,onClick:a,ariaLabelPrefix:t.props.ariaLabelPrefix}));}return n.concat([0,1,2,3,4,5,6].map((function(n){var o=addDays(r,n);return React__default.createElement(Mt,{ariaLabelPrefixWhenEnabled:t.props.chooseDayAriaLabelPrefix,ariaLabelPrefixWhenDisabled:t.props.disabledDayAriaLabelPrefix,key:o.valueOf(),day:o,month:t.props.month,onClick:t.handleDayClick.bind(ye(t),o),onMouseEnter:t.handleDayMouseEnter.bind(ye(t),o),minDate:t.props.minDate,maxDate:t.props.maxDate,excludeDates:t.props.excludeDates,excludeDateIntervals:t.props.excludeDateIntervals,includeDates:t.props.includeDates,includeDateIntervals:t.props.includeDateIntervals,highlightDates:t.props.highlightDates,selectingDate:t.props.selectingDate,filterDate:t.props.filterDate,preSelection:t.props.preSelection,selected:t.props.selected,selectsStart:t.props.selectsStart,selectsEnd:t.props.selectsEnd,selectsRange:t.props.selectsRange,selectsDisabledDaysInRange:t.props.selectsDisabledDaysInRange,startDate:t.props.startDate,endDate:t.props.endDate,dayClassName:t.props.dayClassName,renderDayContents:t.props.renderDayContents,disabledKeyboardNavigation:t.props.disabledKeyboardNavigation,handleOnKeyDown:t.props.handleOnKeyDown,isInputFocused:t.props.isInputFocused,containerRef:t.props.containerRef,inline:t.props.inline,shouldFocusDayInline:t.props.shouldFocusDayInline,monthShowsDuplicateDaysEnd:t.props.monthShowsDuplicateDaysEnd,monthShowsDuplicateDaysStart:t.props.monthShowsDuplicateDaysStart,locale:t.props.locale})})))})),t}return le(n,[{key:"render",value:function(){return React__default.createElement("div",{className:"react-datepicker__week"},this.renderDays())}}],[{key:"defaultProps",get:function(){return {shouldCloseOnSelect:!0}}}]),n}(),Nt=function(t){he(o,React__default.Component);var n=De(o);function o(){var t;pe(this,o);for(var a=arguments.length,s=new Array(a),i=0;i<a;i++)s[i]=arguments[i];return de(ye(t=n.call.apply(n,[this].concat(s))),"MONTH_REFS",we(Array(12)).map((function(){return React__default.createRef()}))),de(ye(t),"isDisabled",(function(e){return Je(e,t.props)})),de(ye(t),"isExcluded",(function(e){return Xe(e,t.props)})),de(ye(t),"handleDayClick",(function(e,r){t.props.onDayClick&&t.props.onDayClick(e,r,t.props.orderInDisplay);})),de(ye(t),"handleDayMouseEnter",(function(e){t.props.onDayMouseEnter&&t.props.onDayMouseEnter(e);})),de(ye(t),"handleMouseLeave",(function(){t.props.onMouseLeave&&t.props.onMouseLeave();})),de(ye(t),"isRangeStartMonth",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Be(setMonth(n,e),o)})),de(ye(t),"isRangeStartQuarter",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Ke(setQuarter(n,e),o)})),de(ye(t),"isRangeEndMonth",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Be(setMonth(n,e),a)})),de(ye(t),"isRangeEndQuarter",(function(e){var r=t.props,n=r.day,o=r.startDate,a=r.endDate;return !(!o||!a)&&Ke(setQuarter(n,e),a)})),de(ye(t),"isWeekInMonth",(function(e){var r=t.props.day,n=addDays(e,6);return Be(e,r)||Be(n,r)})),de(ye(t),"isCurrentMonth",(function(e,t){return getYear(e)===getYear(_e())&&t===getMonth(_e())})),de(ye(t),"isSelectedMonth",(function(e,t,r){return getMonth(e)===t&&getYear(e)===getYear(r)})),de(ye(t),"isSelectedQuarter",(function(e,t,r){return getQuarter(e)===t&&getYear(e)===getYear(r)})),de(ye(t),"renderWeeks",(function(){for(var r=[],n=t.props.fixedHeight,o=0,a=!1,s=Te(Le(t.props.day),t.props.locale,t.props.calendarStartDay);r.push(React__default.createElement(Et,{ariaLabelPrefix:t.props.weekAriaLabelPrefix,chooseDayAriaLabelPrefix:t.props.chooseDayAriaLabelPrefix,disabledDayAriaLabelPrefix:t.props.disabledDayAriaLabelPrefix,key:o,day:s,month:getMonth(t.props.day),onDayClick:t.handleDayClick,onDayMouseEnter:t.handleDayMouseEnter,onWeekSelect:t.props.onWeekSelect,formatWeekNumber:t.props.formatWeekNumber,locale:t.props.locale,minDate:t.props.minDate,maxDate:t.props.maxDate,excludeDates:t.props.excludeDates,excludeDateIntervals:t.props.excludeDateIntervals,includeDates:t.props.includeDates,includeDateIntervals:t.props.includeDateIntervals,inline:t.props.inline,shouldFocusDayInline:t.props.shouldFocusDayInline,highlightDates:t.props.highlightDates,selectingDate:t.props.selectingDate,filterDate:t.props.filterDate,preSelection:t.props.preSelection,selected:t.props.selected,selectsStart:t.props.selectsStart,selectsEnd:t.props.selectsEnd,selectsRange:t.props.selectsRange,selectsDisabledDaysInRange:t.props.selectsDisabledDaysInRange,showWeekNumber:t.props.showWeekNumbers,startDate:t.props.startDate,endDate:t.props.endDate,dayClassName:t.props.dayClassName,setOpen:t.props.setOpen,shouldCloseOnSelect:t.props.shouldCloseOnSelect,disabledKeyboardNavigation:t.props.disabledKeyboardNavigation,renderDayContents:t.props.renderDayContents,handleOnKeyDown:t.props.handleOnKeyDown,isInputFocused:t.props.isInputFocused,containerRef:t.props.containerRef,calendarStartDay:t.props.calendarStartDay,monthShowsDuplicateDaysEnd:t.props.monthShowsDuplicateDaysEnd,monthShowsDuplicateDaysStart:t.props.monthShowsDuplicateDaysStart})),!a;){o++,s=addWeeks(s,1);var i=n&&o>=6,p=!n&&!t.isWeekInMonth(s);if(i||p){if(!t.props.peekNextMonth)break;a=!0;}}return r})),de(ye(t),"onMonthClick",(function(e,r){t.handleDayClick(Le(setMonth(t.props.day,r)),e);})),de(ye(t),"handleMonthNavigation",(function(e,r){t.isDisabled(r)||t.isExcluded(r)||(t.props.setPreSelection(r),t.MONTH_REFS[e].current&&t.MONTH_REFS[e].current.focus());})),de(ye(t),"onMonthKeyDown",(function(e,r){var n=e.key;if(!t.props.disabledKeyboardNavigation)switch(n){case"Enter":t.onMonthClick(e,r),t.props.setPreSelection(t.props.selected);break;case"ArrowRight":t.handleMonthNavigation(11===r?0:r+1,addMonths(t.props.preSelection,1));break;case"ArrowLeft":t.handleMonthNavigation(0===r?11:r-1,subMonths(t.props.preSelection,1));}})),de(ye(t),"onQuarterClick",(function(e,r){t.handleDayClick(Fe(setQuarter(t.props.day,r)),e);})),de(ye(t),"getMonthClassNames",(function(e){var n=t.props,o=n.day,a=n.startDate,s=n.endDate,i=n.selected,p=n.minDate,c=n.maxDate,l=n.preSelection,d=n.monthClassName,u=d?d(o):void 0;return r("react-datepicker__month-text","react-datepicker__month-".concat(e),u,{"react-datepicker__month--disabled":(p||c)&&Ze(setMonth(o,e),t.props),"react-datepicker__month--selected":t.isSelectedMonth(o,e,i),"react-datepicker__month-text--keyboard-selected":getMonth(l)===e,"react-datepicker__month--in-range":et(a,s,e,o),"react-datepicker__month--range-start":t.isRangeStartMonth(e),"react-datepicker__month--range-end":t.isRangeEndMonth(e),"react-datepicker__month-text--today":t.isCurrentMonth(o,e)})})),de(ye(t),"getTabIndex",(function(e){var r=getMonth(t.props.preSelection);return t.props.disabledKeyboardNavigation||e!==r?"-1":"0"})),de(ye(t),"getAriaLabel",(function(e){var r=t.props,n=r.chooseDayAriaLabelPrefix,o=void 0===n?"Choose":n,a=r.disabledDayAriaLabelPrefix,s=void 0===a?"Not available":a,i=r.day,p=setMonth(i,e),c=t.isDisabled(p)||t.isExcluded(p)?s:o;return "".concat(c," ").concat(Ee(p,"MMMM yyyy"))})),de(ye(t),"getQuarterClassNames",(function(e){var n=t.props,o=n.day,a=n.startDate,s=n.endDate,i=n.selected,p=n.minDate,c=n.maxDate;return r("react-datepicker__quarter-text","react-datepicker__quarter-".concat(e),{"react-datepicker__quarter--disabled":(p||c)&&tt(setQuarter(o,e),t.props),"react-datepicker__quarter--selected":t.isSelectedQuarter(o,e,i),"react-datepicker__quarter--in-range":nt(a,s,e,o),"react-datepicker__quarter--range-start":t.isRangeStartQuarter(e),"react-datepicker__quarter--range-end":t.isRangeEndQuarter(e)})})),de(ye(t),"renderMonths",(function(){var r=t.props,n=r.showFullMonthYearPicker,o=r.showTwoColumnMonthYearPicker,a=r.showFourColumnMonthYearPicker,s=r.locale,i=r.day,p=r.selected;return (a?[[0,1,2,3],[4,5,6,7],[8,9,10,11]]:o?[[0,1],[2,3],[4,5],[6,7],[8,9],[10,11]]:[[0,1,2],[3,4,5],[6,7,8],[9,10,11]]).map((function(r,o){return React__default.createElement("div",{className:"react-datepicker__month-wrapper",key:o},r.map((function(r,o){return React__default.createElement("div",{ref:t.MONTH_REFS[r],key:o,onClick:function(e){t.onMonthClick(e,r);},onKeyDown:function(e){t.onMonthKeyDown(e,r);},tabIndex:t.getTabIndex(r),className:t.getMonthClassNames(r),role:"option","aria-label":t.getAriaLabel(r),"aria-current":t.isCurrentMonth(i,r)?"date":void 0,"aria-selected":t.isSelectedMonth(i,r,p)},n?$e(r,s):ze(r,s))})))}))})),de(ye(t),"renderQuarters",(function(){var r=t.props,n=r.day,o=r.selected;return React__default.createElement("div",{className:"react-datepicker__quarter-wrapper"},[1,2,3,4].map((function(r,a){return React__default.createElement("div",{key:a,role:"option",onClick:function(e){t.onQuarterClick(e,r);},className:t.getQuarterClassNames(r),"aria-selected":t.isSelectedQuarter(n,r,o)},Ge(r,t.props.locale))})))})),de(ye(t),"getClassNames",(function(){var e=t.props;e.day;var n=e.selectingDate,o=e.selectsStart,a=e.selectsEnd,s=e.showMonthYearPicker,i=e.showQuarterYearPicker;return r("react-datepicker__month",{"react-datepicker__month--selecting-range":n&&(o||a)},{"react-datepicker__monthPicker":s},{"react-datepicker__quarterPicker":i})})),t}return le(o,[{key:"render",value:function(){var t=this.props,r=t.showMonthYearPicker,n=t.showQuarterYearPicker,o=t.day,a=t.ariaLabelPrefix,s=void 0===a?"month ":a;return React__default.createElement("div",{className:this.getClassNames(),onMouseLeave:this.handleMouseLeave,"aria-label":"".concat(s," ").concat(Ee(o,"yyyy-MM")),role:"listbox"},r?this.renderMonths():n?this.renderQuarters():this.renderWeeks())}}]),o}(),xt=function(t){he(n,React__default.Component);var r=De(n);function n(){var t;pe(this,n);for(var o=arguments.length,a=new Array(o),i=0;i<o;i++)a[i]=arguments[i];return de(ye(t=r.call.apply(r,[this].concat(a))),"state",{height:null}),de(ye(t),"handleClick",(function(e){(t.props.minTime||t.props.maxTime)&&it(e,t.props)||(t.props.excludeTimes||t.props.includeTimes||t.props.filterTime)&&st(e,t.props)||t.props.onChange(e);})),de(ye(t),"isSelectedTime",(function(e,r,n){return t.props.selected&&r===getHours(e)&&n===getMinutes(e)})),de(ye(t),"liClasses",(function(e,r,n){var o=["react-datepicker__time-list-item",t.props.timeClassName?t.props.timeClassName(e,r,n):void 0];return t.isSelectedTime(e,r,n)&&o.push("react-datepicker__time-list-item--selected"),((t.props.minTime||t.props.maxTime)&&it(e,t.props)||(t.props.excludeTimes||t.props.includeTimes||t.props.filterTime)&&st(e,t.props))&&o.push("react-datepicker__time-list-item--disabled"),t.props.injectTimes&&(60*getHours(e)+getMinutes(e))%t.props.intervals!=0&&o.push("react-datepicker__time-list-item--injected"),o.join(" ")})),de(ye(t),"handleOnKeyDown",(function(e,r){" "===e.key&&(e.preventDefault(),e.key="Enter"),"Enter"===e.key&&t.handleClick(r),t.props.handleOnKeyDown(e);})),de(ye(t),"renderTimes",(function(){for(var r=[],n=t.props.format?t.props.format:"p",o=t.props.intervals,a=Ie(_e(t.props.selected)),i=1440/o,p=t.props.injectTimes&&t.props.injectTimes.sort((function(e,t){return e-t})),c=t.props.selected||t.props.openToDate||_e(),l=getHours(c),d=getMinutes(c),u=setHours(setMinutes(a,d),l),h=0;h<i;h++){var m=addMinutes(a,h*o);if(r.push(m),p){var f=ft(a,m,h,o,p);r=r.concat(f);}}return r.map((function(r,o){return React__default.createElement("li",{key:o,onClick:t.handleClick.bind(ye(t),r),className:t.liClasses(r,l,d),ref:function(e){(isBefore(r,u)||je(r,u))&&(t.centerLi=e);},onKeyDown:function(e){t.handleOnKeyDown(e,r);},tabIndex:"0","aria-selected":t.isSelectedTime(r,l,d)?"true":void 0},Ee(r,n,t.props.locale))}))})),t}return le(n,[{key:"componentDidMount",value:function(){this.list.scrollTop=n.calcCenterPosition(this.props.monthRef?this.props.monthRef.clientHeight-this.header.clientHeight:this.list.clientHeight,this.centerLi),this.props.monthRef&&this.header&&this.setState({height:this.props.monthRef.clientHeight-this.header.clientHeight});}},{key:"render",value:function(){var t=this,r=this.state.height;return React__default.createElement("div",{className:"react-datepicker__time-container ".concat(this.props.todayButton?"react-datepicker__time-container--with-today-button":"")},React__default.createElement("div",{className:"react-datepicker__header react-datepicker__header--time ".concat(this.props.showTimeSelectOnly?"react-datepicker__header--time--only":""),ref:function(e){t.header=e;}},React__default.createElement("div",{className:"react-datepicker-time__header"},this.props.timeCaption)),React__default.createElement("div",{className:"react-datepicker__time"},React__default.createElement("div",{className:"react-datepicker__time-box"},React__default.createElement("ul",{className:"react-datepicker__time-list",ref:function(e){t.list=e;},style:r?{height:r}:{},tabIndex:"0"},this.renderTimes()))))}}],[{key:"defaultProps",get:function(){return {intervals:30,onTimeChange:function(){},todayButton:null,timeCaption:"Time"}}}]),n}();de(xt,"calcCenterPosition",(function(e,t){return t.offsetTop-(e/2-t.clientHeight/2)}));var Yt=function(t){he(o,React__default.Component);var n=De(o);function o(t){var a;return pe(this,o),de(ye(a=n.call(this,t)),"YEAR_REFS",we(Array(a.props.yearItemNumber)).map((function(){return React__default.createRef()}))),de(ye(a),"isDisabled",(function(e){return Je(e,a.props)})),de(ye(a),"isExcluded",(function(e){return Xe(e,a.props)})),de(ye(a),"updateFocusOnPaginate",(function(e){var t=function(){this.YEAR_REFS[e].current.focus();}.bind(ye(a));window.requestAnimationFrame(t);})),de(ye(a),"handleYearClick",(function(e,t){a.props.onDayClick&&a.props.onDayClick(e,t);})),de(ye(a),"handleYearNavigation",(function(e,t){var r=a.props,n=r.date,o=r.yearItemNumber,s=vt(n,o).startPeriod;a.isDisabled(t)||a.isExcluded(t)||(a.props.setPreSelection(t),e-s==-1?a.updateFocusOnPaginate(o-1):e-s===o?a.updateFocusOnPaginate(0):a.YEAR_REFS[e-s].current.focus());})),de(ye(a),"isSameDay",(function(e,t){return We(e,t)})),de(ye(a),"isCurrentYear",(function(e){return e===getYear(_e())})),de(ye(a),"isKeyboardSelected",(function(e){var t=Re(setYear(a.props.date,e));return !a.props.disabledKeyboardNavigation&&!a.props.inline&&!We(t,Re(a.props.selected))&&We(t,Re(a.props.preSelection))})),de(ye(a),"onYearClick",(function(e,t){var r=a.props.date;a.handleYearClick(Re(setYear(r,t)),e);})),de(ye(a),"onYearKeyDown",(function(e,t){var r=e.key;if(!a.props.disabledKeyboardNavigation)switch(r){case"Enter":a.onYearClick(e,t),a.props.setPreSelection(a.props.selected);break;case"ArrowRight":a.handleYearNavigation(t+1,addYears(a.props.preSelection,1));break;case"ArrowLeft":a.handleYearNavigation(t-1,subYears(a.props.preSelection,1));}})),de(ye(a),"getYearClassNames",(function(e){var t=a.props,n=t.minDate,o=t.maxDate,s=t.selected;return r("react-datepicker__year-text",{"react-datepicker__year-text--selected":e===getYear(s),"react-datepicker__year-text--disabled":(n||o)&&rt(e,a.props),"react-datepicker__year-text--keyboard-selected":a.isKeyboardSelected(e),"react-datepicker__year-text--today":a.isCurrentYear(e)})})),de(ye(a),"getYearTabIndex",(function(e){return a.props.disabledKeyboardNavigation?"-1":e===getYear(a.props.preSelection)?"0":"-1"})),a}return le(o,[{key:"render",value:function(){for(var t=this,r=[],n=this.props,o=vt(n.date,n.yearItemNumber),a=o.startPeriod,s=o.endPeriod,i=function(n){r.push(React__default.createElement("div",{ref:t.YEAR_REFS[n-a],onClick:function(e){t.onYearClick(e,n);},onKeyDown:function(e){t.onYearKeyDown(e,n);},tabIndex:t.getYearTabIndex(n),className:t.getYearClassNames(n),key:n,"aria-current":t.isCurrentYear(n)?"date":void 0},n));},p=a;p<=s;p++)i(p);return React__default.createElement("div",{className:"react-datepicker__year"},React__default.createElement("div",{className:"react-datepicker__year-wrapper"},r))}}]),o}(),Ot=function(t){he(n,React__default.Component);var r=De(n);function n(t){var o;return pe(this,n),de(ye(o=r.call(this,t)),"onTimeChange",(function(e){o.setState({time:e});var t=new Date;t.setHours(e.split(":")[0]),t.setMinutes(e.split(":")[1]),o.props.onChange(t);})),de(ye(o),"renderTimeInput",(function(){var t=o.state.time,r=o.props,n=r.date,a=r.timeString,s=r.customTimeInput;return s?React__default.cloneElement(s,{date:n,value:t,onChange:o.onTimeChange}):React__default.createElement("input",{type:"time",className:"react-datepicker-time__input",placeholder:"Time",name:"time-input",required:!0,value:t,onChange:function(e){o.onTimeChange(e.target.value||a);}})})),o.state={time:o.props.timeString},o}return le(n,[{key:"render",value:function(){return React__default.createElement("div",{className:"react-datepicker__input-time-container"},React__default.createElement("div",{className:"react-datepicker-time__caption"},this.props.timeInputLabel),React__default.createElement("div",{className:"react-datepicker-time__input-container"},React__default.createElement("div",{className:"react-datepicker-time__input"},this.renderTimeInput())))}}],[{key:"getDerivedStateFromProps",value:function(e,t){return e.timeString!==t.time?{time:e.timeString}:null}}]),n}();function It(t){var r=t.className,n=t.children,o=t.showPopperArrow,a=t.arrowProps,s=void 0===a?{}:a;return React__default.createElement("div",{className:r},o&&React__default.createElement("div",ue({className:"react-datepicker__triangle"},s)),n)}var Tt=["react-datepicker__year-select","react-datepicker__month-select","react-datepicker__month-year-select"],Lt=function(t){he(o,React__default.Component);var n=De(o);function o(t){var a;return pe(this,o),de(ye(a=n.call(this,t)),"handleClickOutside",(function(e){a.props.onClickOutside(e);})),de(ye(a),"setClickOutsideRef",(function(){return a.containerRef.current})),de(ye(a),"handleDropdownFocus",(function(e){(function(){var e=((arguments.length>0&&void 0!==arguments[0]?arguments[0]:{}).className||"").split(/\s+/);return Tt.some((function(t){return e.indexOf(t)>=0}))})(e.target)&&a.props.onDropdownFocus();})),de(ye(a),"getDateInView",(function(){var e=a.props,t=e.preSelection,r=e.selected,n=e.openToDate,o=ut(a.props),s=ht(a.props),i=_e(),p=n||r||t;return p||(o&&isBefore(i,o)?o:s&&isAfter(i,s)?s:i)})),de(ye(a),"increaseMonth",(function(){a.setState((function(e){var t=e.date;return {date:addMonths(t,1)}}),(function(){return a.handleMonthChange(a.state.date)}));})),de(ye(a),"decreaseMonth",(function(){a.setState((function(e){var t=e.date;return {date:subMonths(t,1)}}),(function(){return a.handleMonthChange(a.state.date)}));})),de(ye(a),"handleDayClick",(function(e,t,r){a.props.onSelect(e,t,r),a.props.setPreSelection&&a.props.setPreSelection(e);})),de(ye(a),"handleDayMouseEnter",(function(e){a.setState({selectingDate:e}),a.props.onDayMouseEnter&&a.props.onDayMouseEnter(e);})),de(ye(a),"handleMonthMouseLeave",(function(){a.setState({selectingDate:null}),a.props.onMonthMouseLeave&&a.props.onMonthMouseLeave();})),de(ye(a),"handleYearChange",(function(e){a.props.onYearChange&&a.props.onYearChange(e),a.props.adjustDateOnChange&&(a.props.onSelect&&a.props.onSelect(e),a.props.setOpen&&a.props.setOpen(!0)),a.props.setPreSelection&&a.props.setPreSelection(e);})),de(ye(a),"handleMonthChange",(function(e){a.props.onMonthChange&&a.props.onMonthChange(e),a.props.adjustDateOnChange&&(a.props.onSelect&&a.props.onSelect(e),a.props.setOpen&&a.props.setOpen(!0)),a.props.setPreSelection&&a.props.setPreSelection(e);})),de(ye(a),"handleMonthYearChange",(function(e){a.handleYearChange(e),a.handleMonthChange(e);})),de(ye(a),"changeYear",(function(e){a.setState((function(t){var r=t.date;return {date:setYear(r,e)}}),(function(){return a.handleYearChange(a.state.date)}));})),de(ye(a),"changeMonth",(function(e){a.setState((function(t){var r=t.date;return {date:setMonth(r,e)}}),(function(){return a.handleMonthChange(a.state.date)}));})),de(ye(a),"changeMonthYear",(function(e){a.setState((function(t){var r=t.date;return {date:setYear(setMonth(r,getMonth(e)),getYear(e))}}),(function(){return a.handleMonthYearChange(a.state.date)}));})),de(ye(a),"header",(function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:a.state.date,n=Te(t,a.props.locale,a.props.calendarStartDay),o=[];return a.props.showWeekNumbers&&o.push(React__default.createElement("div",{key:"W",className:"react-datepicker__day-name"},a.props.weekLabel||"#")),o.concat([0,1,2,3,4,5,6].map((function(t){var o=addDays(n,t),s=a.formatWeekday(o,a.props.locale),i=a.props.weekDayClassName?a.props.weekDayClassName(o):void 0;return React__default.createElement("div",{key:t,className:r("react-datepicker__day-name",i)},s)})))})),de(ye(a),"formatWeekday",(function(e,t){return a.props.formatWeekDay?function(e,t,r){return t(Ee(e,"EEEE",r))}(e,a.props.formatWeekDay,t):a.props.useWeekdaysShort?function(e,t){return Ee(e,"EEE",t)}(e,t):function(e,t){return Ee(e,"EEEEEE",t)}(e,t)})),de(ye(a),"decreaseYear",(function(){a.setState((function(e){var t=e.date;return {date:subYears(t,a.props.showYearPicker?a.props.yearItemNumber:1)}}),(function(){return a.handleYearChange(a.state.date)}));})),de(ye(a),"renderPreviousButton",(function(){if(!a.props.renderCustomHeader){var t;switch(!0){case a.props.showMonthYearPicker:t=lt(a.state.date,a.props);break;case a.props.showYearPicker:t=function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.minDate,n=t.yearItemNumber,o=void 0===n?12:n,a=vt(Re(subYears(e,o)),o).endPeriod,s=r&&getYear(r);return s&&s>a||!1}(a.state.date,a.props);break;default:t=pt(a.state.date,a.props);}if((a.props.forceShowMonthNavigation||a.props.showDisabledMonthNavigation||!t)&&!a.props.showTimeSelectOnly){var r=["react-datepicker__navigation","react-datepicker__navigation--previous"],n=a.decreaseMonth;(a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker)&&(n=a.decreaseYear),t&&a.props.showDisabledMonthNavigation&&(r.push("react-datepicker__navigation--previous--disabled"),n=null);var o=a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker,s=a.props,i=s.previousMonthButtonLabel,p=s.previousYearButtonLabel,c=a.props,l=c.previousMonthAriaLabel,d=void 0===l?"string"==typeof i?i:"Previous Month":l,u=c.previousYearAriaLabel,h=void 0===u?"string"==typeof p?p:"Previous Year":u;return React__default.createElement("button",{type:"button",className:r.join(" "),onClick:n,onKeyDown:a.props.handleOnKeyDown,"aria-label":o?h:d},React__default.createElement("span",{className:["react-datepicker__navigation-icon","react-datepicker__navigation-icon--previous"].join(" ")},o?a.props.previousYearButtonLabel:a.props.previousMonthButtonLabel))}}})),de(ye(a),"increaseYear",(function(){a.setState((function(e){var t=e.date;return {date:addYears(t,a.props.showYearPicker?a.props.yearItemNumber:1)}}),(function(){return a.handleYearChange(a.state.date)}));})),de(ye(a),"renderNextButton",(function(){if(!a.props.renderCustomHeader){var t;switch(!0){case a.props.showMonthYearPicker:t=dt(a.state.date,a.props);break;case a.props.showYearPicker:t=function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=t.maxDate,n=t.yearItemNumber,o=void 0===n?12:n,a=vt(addYears(e,o),o).startPeriod,s=r&&getYear(r);return s&&s<a||!1}(a.state.date,a.props);break;default:t=ct(a.state.date,a.props);}if((a.props.forceShowMonthNavigation||a.props.showDisabledMonthNavigation||!t)&&!a.props.showTimeSelectOnly){var r=["react-datepicker__navigation","react-datepicker__navigation--next"];a.props.showTimeSelect&&r.push("react-datepicker__navigation--next--with-time"),a.props.todayButton&&r.push("react-datepicker__navigation--next--with-today-button");var n=a.increaseMonth;(a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker)&&(n=a.increaseYear),t&&a.props.showDisabledMonthNavigation&&(r.push("react-datepicker__navigation--next--disabled"),n=null);var o=a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker,s=a.props,i=s.nextMonthButtonLabel,p=s.nextYearButtonLabel,c=a.props,l=c.nextMonthAriaLabel,u=void 0===l?"string"==typeof i?i:"Next Month":l,h=c.nextYearAriaLabel,m=void 0===h?"string"==typeof p?p:"Next Year":h;return React__default.createElement("button",{type:"button",className:r.join(" "),onClick:n,onKeyDown:a.props.handleOnKeyDown,"aria-label":o?m:u},React__default.createElement("span",{className:["react-datepicker__navigation-icon","react-datepicker__navigation-icon--next"].join(" ")},o?a.props.nextYearButtonLabel:a.props.nextMonthButtonLabel))}}})),de(ye(a),"renderCurrentMonth",(function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:a.state.date,r=["react-datepicker__current-month"];return a.props.showYearDropdown&&r.push("react-datepicker__current-month--hasYearDropdown"),a.props.showMonthDropdown&&r.push("react-datepicker__current-month--hasMonthDropdown"),a.props.showMonthYearDropdown&&r.push("react-datepicker__current-month--hasMonthYearDropdown"),React__default.createElement("div",{className:r.join(" ")},Ee(t,a.props.dateFormat,a.props.locale))})),de(ye(a),"renderYearDropdown",(function(){var t=arguments.length>0&&void 0!==arguments[0]&&arguments[0];if(a.props.showYearDropdown&&!t)return React__default.createElement(gt,{adjustDateOnChange:a.props.adjustDateOnChange,date:a.state.date,onSelect:a.props.onSelect,setOpen:a.props.setOpen,dropdownMode:a.props.dropdownMode,onChange:a.changeYear,minDate:a.props.minDate,maxDate:a.props.maxDate,year:getYear(a.state.date),scrollableYearDropdown:a.props.scrollableYearDropdown,yearDropdownItemNumber:a.props.yearDropdownItemNumber})})),de(ye(a),"renderMonthDropdown",(function(){var t=arguments.length>0&&void 0!==arguments[0]&&arguments[0];if(a.props.showMonthDropdown&&!t)return React__default.createElement(bt,{dropdownMode:a.props.dropdownMode,locale:a.props.locale,onChange:a.changeMonth,month:getMonth(a.state.date),useShortMonthInDropdown:a.props.useShortMonthInDropdown})})),de(ye(a),"renderMonthYearDropdown",(function(){var t=arguments.length>0&&void 0!==arguments[0]&&arguments[0];if(a.props.showMonthYearDropdown&&!t)return React__default.createElement(_t,{dropdownMode:a.props.dropdownMode,locale:a.props.locale,dateFormat:a.props.dateFormat,onChange:a.changeMonthYear,minDate:a.props.minDate,maxDate:a.props.maxDate,date:a.state.date,scrollableMonthYearDropdown:a.props.scrollableMonthYearDropdown})})),de(ye(a),"renderTodayButton",(function(){if(a.props.todayButton&&!a.props.showTimeSelectOnly)return React__default.createElement("div",{className:"react-datepicker__today-button",onClick:function(e){return a.props.onSelect(startOfDay(_e()),e)}},a.props.todayButton)})),de(ye(a),"renderDefaultHeader",(function(t){var r=t.monthDate,n=t.i;return React__default.createElement("div",{className:"react-datepicker__header ".concat(a.props.showTimeSelect?"react-datepicker__header--has-time-select":"")},a.renderCurrentMonth(r),React__default.createElement("div",{className:"react-datepicker__header__dropdown react-datepicker__header__dropdown--".concat(a.props.dropdownMode),onFocus:a.handleDropdownFocus},a.renderMonthDropdown(0!==n),a.renderMonthYearDropdown(0!==n),a.renderYearDropdown(0!==n)),React__default.createElement("div",{className:"react-datepicker__day-names"},a.header(r)))})),de(ye(a),"renderCustomHeader",(function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},r=t.monthDate,n=t.i;if(a.props.showTimeSelect&&!a.state.monthContainer||a.props.showTimeSelectOnly)return null;var o=pt(a.state.date,a.props),s=ct(a.state.date,a.props),i=lt(a.state.date,a.props),p=dt(a.state.date,a.props),c=!a.props.showMonthYearPicker&&!a.props.showQuarterYearPicker&&!a.props.showYearPicker;return React__default.createElement("div",{className:"react-datepicker__header react-datepicker__header--custom",onFocus:a.props.onDropdownFocus},a.props.renderCustomHeader(se(se({},a.state),{},{customHeaderCount:n,monthDate:r,changeMonth:a.changeMonth,changeYear:a.changeYear,decreaseMonth:a.decreaseMonth,increaseMonth:a.increaseMonth,decreaseYear:a.decreaseYear,increaseYear:a.increaseYear,prevMonthButtonDisabled:o,nextMonthButtonDisabled:s,prevYearButtonDisabled:i,nextYearButtonDisabled:p})),c&&React__default.createElement("div",{className:"react-datepicker__day-names"},a.header(r)))})),de(ye(a),"renderYearHeader",(function(){var t=a.state.date,r=a.props,n=r.showYearPicker,o=vt(t,r.yearItemNumber),s=o.startPeriod,i=o.endPeriod;return React__default.createElement("div",{className:"react-datepicker__header react-datepicker-year-header"},n?"".concat(s," - ").concat(i):getYear(t))})),de(ye(a),"renderHeader",(function(e){switch(!0){case void 0!==a.props.renderCustomHeader:return a.renderCustomHeader(e);case a.props.showMonthYearPicker||a.props.showQuarterYearPicker||a.props.showYearPicker:return a.renderYearHeader(e);default:return a.renderDefaultHeader(e)}})),de(ye(a),"renderMonths",(function(){if(!a.props.showTimeSelectOnly&&!a.props.showYearPicker){for(var t=[],r=a.props.showPreviousMonths?a.props.monthsShown-1:0,n=subMonths(a.state.date,r),o=0;o<a.props.monthsShown;++o){var s=o-a.props.monthSelectedIn,i=addMonths(n,s),p="month-".concat(o),c=o<a.props.monthsShown-1,d=o>0;t.push(React__default.createElement("div",{key:p,ref:function(e){a.monthContainer=e;},className:"react-datepicker__month-container"},a.renderHeader({monthDate:i,i:o}),React__default.createElement(Nt,{chooseDayAriaLabelPrefix:a.props.chooseDayAriaLabelPrefix,disabledDayAriaLabelPrefix:a.props.disabledDayAriaLabelPrefix,weekAriaLabelPrefix:a.props.weekAriaLabelPrefix,ariaLabelPrefix:a.props.monthAriaLabelPrefix,onChange:a.changeMonthYear,day:i,dayClassName:a.props.dayClassName,calendarStartDay:a.props.calendarStartDay,monthClassName:a.props.monthClassName,onDayClick:a.handleDayClick,handleOnKeyDown:a.props.handleOnDayKeyDown,onDayMouseEnter:a.handleDayMouseEnter,onMouseLeave:a.handleMonthMouseLeave,onWeekSelect:a.props.onWeekSelect,orderInDisplay:o,formatWeekNumber:a.props.formatWeekNumber,locale:a.props.locale,minDate:a.props.minDate,maxDate:a.props.maxDate,excludeDates:a.props.excludeDates,excludeDateIntervals:a.props.excludeDateIntervals,highlightDates:a.props.highlightDates,selectingDate:a.state.selectingDate,includeDates:a.props.includeDates,includeDateIntervals:a.props.includeDateIntervals,inline:a.props.inline,shouldFocusDayInline:a.props.shouldFocusDayInline,fixedHeight:a.props.fixedHeight,filterDate:a.props.filterDate,preSelection:a.props.preSelection,setPreSelection:a.props.setPreSelection,selected:a.props.selected,selectsStart:a.props.selectsStart,selectsEnd:a.props.selectsEnd,selectsRange:a.props.selectsRange,selectsDisabledDaysInRange:a.props.selectsDisabledDaysInRange,showWeekNumbers:a.props.showWeekNumbers,startDate:a.props.startDate,endDate:a.props.endDate,peekNextMonth:a.props.peekNextMonth,setOpen:a.props.setOpen,shouldCloseOnSelect:a.props.shouldCloseOnSelect,renderDayContents:a.props.renderDayContents,disabledKeyboardNavigation:a.props.disabledKeyboardNavigation,showMonthYearPicker:a.props.showMonthYearPicker,showFullMonthYearPicker:a.props.showFullMonthYearPicker,showTwoColumnMonthYearPicker:a.props.showTwoColumnMonthYearPicker,showFourColumnMonthYearPicker:a.props.showFourColumnMonthYearPicker,showYearPicker:a.props.showYearPicker,showQuarterYearPicker:a.props.showQuarterYearPicker,isInputFocused:a.props.isInputFocused,containerRef:a.containerRef,monthShowsDuplicateDaysEnd:c,monthShowsDuplicateDaysStart:d})));}return t}})),de(ye(a),"renderYears",(function(){if(!a.props.showTimeSelectOnly)return a.props.showYearPicker?React__default.createElement("div",{className:"react-datepicker__year--container"},a.renderHeader(),React__default.createElement(Yt,ue({onDayClick:a.handleDayClick,date:a.state.date},a.props))):void 0})),de(ye(a),"renderTimeSection",(function(){if(a.props.showTimeSelect&&(a.state.monthContainer||a.props.showTimeSelectOnly))return React__default.createElement(xt,{selected:a.props.selected,openToDate:a.props.openToDate,onChange:a.props.onTimeChange,timeClassName:a.props.timeClassName,format:a.props.timeFormat,includeTimes:a.props.includeTimes,intervals:a.props.timeIntervals,minTime:a.props.minTime,maxTime:a.props.maxTime,excludeTimes:a.props.excludeTimes,filterTime:a.props.filterTime,timeCaption:a.props.timeCaption,todayButton:a.props.todayButton,showMonthDropdown:a.props.showMonthDropdown,showMonthYearDropdown:a.props.showMonthYearDropdown,showYearDropdown:a.props.showYearDropdown,withPortal:a.props.withPortal,monthRef:a.state.monthContainer,injectTimes:a.props.injectTimes,locale:a.props.locale,handleOnKeyDown:a.props.handleOnKeyDown,showTimeSelectOnly:a.props.showTimeSelectOnly})})),de(ye(a),"renderInputTimeSection",(function(){var t=new Date(a.props.selected),r=Pe(t)&&Boolean(a.props.selected)?"".concat(yt(t.getHours()),":").concat(yt(t.getMinutes())):"";if(a.props.showTimeInput)return React__default.createElement(Ot,{date:t,timeString:r,timeInputLabel:a.props.timeInputLabel,onChange:a.props.onTimeChange,customTimeInput:a.props.customTimeInput})})),a.containerRef=React__default.createRef(),a.state={date:a.getDateInView(),selectingDate:null,monthContainer:null},a}return le(o,[{key:"componentDidMount",value:function(){var e=this;this.props.showTimeSelect&&(this.assignMonthContainer=void e.setState({monthContainer:e.monthContainer}));}},{key:"componentDidUpdate",value:function(e){this.props.preSelection&&!We(this.props.preSelection,e.preSelection)?this.setState({date:this.props.preSelection}):this.props.openToDate&&!We(this.props.openToDate,e.openToDate)&&this.setState({date:this.props.openToDate});}},{key:"render",value:function(){var t=this.props.container||It;return React__default.createElement("div",{ref:this.containerRef},React__default.createElement(t,{className:r("react-datepicker",this.props.className,{"react-datepicker--time-only":this.props.showTimeSelectOnly}),showPopperArrow:this.props.showPopperArrow,arrowProps:this.props.arrowProps},this.renderPreviousButton(),this.renderNextButton(),this.renderMonths(),this.renderYears(),this.renderTodayButton(),this.renderTimeSection(),this.renderInputTimeSection(),this.props.children))}}],[{key:"defaultProps",get:function(){return {onDropdownFocus:function(){},monthsShown:1,monthSelectedIn:0,forceShowMonthNavigation:!1,timeCaption:"Time",previousYearButtonLabel:"Previous Year",nextYearButtonLabel:"Next Year",previousMonthButtonLabel:"Previous Month",nextMonthButtonLabel:"Next Month",customTimeInput:null,yearItemNumber:12}}}]),o}(),Rt=function(t){he(n,React__default.Component);var r=De(n);function n(e){var t;return pe(this,n),(t=r.call(this,e)).el=document.createElement("div"),t}return le(n,[{key:"componentDidMount",value:function(){this.portalRoot=(this.props.portalHost||document).getElementById(this.props.portalId),this.portalRoot||(this.portalRoot=document.createElement("div"),this.portalRoot.setAttribute("id",this.props.portalId),(this.props.portalHost||document.body).appendChild(this.portalRoot)),this.portalRoot.appendChild(this.el);}},{key:"componentWillUnmount",value:function(){this.portalRoot.removeChild(this.el);}},{key:"render",value:function(){return ReactDOM__default.createPortal(this.props.children,this.el)}}]),n}(),Ft=function(e){return !e.disabled&&-1!==e.tabIndex},At=function(t){he(n,React__default.Component);var r=De(n);function n(t){var o;return pe(this,n),de(ye(o=r.call(this,t)),"getTabChildren",(function(){return Array.prototype.slice.call(o.tabLoopRef.current.querySelectorAll("[tabindex], a, button, input, select, textarea"),1,-1).filter(Ft)})),de(ye(o),"handleFocusStart",(function(e){var t=o.getTabChildren();t&&t.length>1&&t[t.length-1].focus();})),de(ye(o),"handleFocusEnd",(function(e){var t=o.getTabChildren();t&&t.length>1&&t[0].focus();})),o.tabLoopRef=React__default.createRef(),o}return le(n,[{key:"render",value:function(){return this.props.enableTabLoop?React__default.createElement("div",{className:"react-datepicker__tab-loop",ref:this.tabLoopRef},React__default.createElement("div",{className:"react-datepicker__tab-loop__start",tabIndex:"0",onFocus:this.handleFocusStart}),this.props.children,React__default.createElement("div",{className:"react-datepicker__tab-loop__end",tabIndex:"0",onFocus:this.handleFocusEnd})):this.props.children}}],[{key:"defaultProps",get:function(){return {enableTabLoop:!0}}}]),n}(),Bt=function(t){he(o,React__default.Component);var n=De(o);function o(){return pe(this,o),n.apply(this,arguments)}return le(o,[{key:"render",value:function(){var t,n=this.props,o=n.className,a=n.wrapperClassName,s=n.hidePopper,i=n.popperComponent,p=n.popperModifiers,c=n.popperPlacement,l=n.popperProps,d=n.targetComponent,u=n.enableTabLoop,h=n.popperOnKeyDown,m=n.portalId,f=n.portalHost;if(!s){var y=r("react-datepicker-popper",o);t=React__default.createElement(Popper,ue({modifiers:p,placement:c},l),(function(t){var r=t.ref,n=t.style,o=t.placement,a=t.arrowProps;return React__default.createElement(At,{enableTabLoop:u},React__default.createElement("div",{ref:r,style:n,className:y,"data-placement":o,onKeyDown:h},React__default.cloneElement(i,{arrowProps:a})))}));}this.props.popperContainer&&(t=React__default.createElement(this.props.popperContainer,{},t)),m&&!s&&(t=React__default.createElement(Rt,{portalId:m,portalHost:f},t));var v=r("react-datepicker-wrapper",a);return React__default.createElement(Manager,{className:"react-datepicker-manager"},React__default.createElement(Reference,null,(function(t){var r=t.ref;return React__default.createElement("div",{ref:r,className:v},d)})),t)}}],[{key:"defaultProps",get:function(){return {hidePopper:!0,popperModifiers:[],popperProps:{},popperPlacement:"bottom-start"}}}]),o}(),Kt=onClickOutsideHOC(Lt);var Wt=function(t){he(a,React__default.Component);var o=De(a);function a(t){var s;return pe(this,a),de(ye(s=o.call(this,t)),"getPreSelection",(function(){return s.props.openToDate?s.props.openToDate:s.props.selectsEnd&&s.props.startDate?s.props.startDate:s.props.selectsStart&&s.props.endDate?s.props.endDate:_e()})),de(ye(s),"calcInitialState",(function(){var e,t=s.getPreSelection(),r=ut(s.props),n=ht(s.props),o=r&&isBefore(t,startOfDay(r))?r:n&&isAfter(t,endOfDay(n))?n:t;return {open:s.props.startOpen||!1,preventFocus:!1,preSelection:null!==(e=s.props.selectsRange?s.props.startDate:s.props.selected)&&void 0!==e?e:o,highlightDates:mt(s.props.highlightDates),focused:!1,shouldFocusDayInline:!1}})),de(ye(s),"clearPreventFocusTimeout",(function(){s.preventFocusTimeout&&clearTimeout(s.preventFocusTimeout);})),de(ye(s),"setFocus",(function(){s.input&&s.input.focus&&s.input.focus({preventScroll:!0});})),de(ye(s),"setBlur",(function(){s.input&&s.input.blur&&s.input.blur(),s.cancelFocusInput();})),de(ye(s),"setOpen",(function(e){var t=arguments.length>1&&void 0!==arguments[1]&&arguments[1];s.setState({open:e,preSelection:e&&s.state.open?s.state.preSelection:s.calcInitialState().preSelection,lastPreSelectChange:Ht},(function(){e||s.setState((function(e){return {focused:!!t&&e.focused}}),(function(){!t&&s.setBlur(),s.setState({inputValue:null});}));}));})),de(ye(s),"inputOk",(function(){return isDate$1(s.state.preSelection)})),de(ye(s),"isCalendarOpen",(function(){return void 0===s.props.open?s.state.open&&!s.props.disabled&&!s.props.readOnly:s.props.open})),de(ye(s),"handleFocus",(function(e){s.state.preventFocus||(s.props.onFocus(e),s.props.preventOpenOnFocus||s.props.readOnly||s.setOpen(!0)),s.setState({focused:!0});})),de(ye(s),"cancelFocusInput",(function(){clearTimeout(s.inputFocusTimeout),s.inputFocusTimeout=null;})),de(ye(s),"deferFocusInput",(function(){s.cancelFocusInput(),s.inputFocusTimeout=setTimeout((function(){return s.setFocus()}),1);})),de(ye(s),"handleDropdownFocus",(function(){s.cancelFocusInput();})),de(ye(s),"handleBlur",(function(e){(!s.state.open||s.props.withPortal||s.props.showTimeInput)&&s.props.onBlur(e),s.setState({focused:!1});})),de(ye(s),"handleCalendarClickOutside",(function(e){s.props.inline||s.setOpen(!1),s.props.onClickOutside(e),s.props.withPortal&&e.preventDefault();})),de(ye(s),"handleChange",(function(){for(var e=arguments.length,t=new Array(e),r=0;r<e;r++)t[r]=arguments[r];var n=t[0];if(!s.props.onChangeRaw||(s.props.onChangeRaw.apply(ye(s),t),"function"==typeof n.isDefaultPrevented&&!n.isDefaultPrevented())){s.setState({inputValue:n.target.value,lastPreSelectChange:jt});var o=Me(n.target.value,s.props.dateFormat,s.props.locale,s.props.strictParsing,s.props.minDate);!o&&n.target.value||s.setSelected(o,n,!0);}})),de(ye(s),"handleSelect",(function(e,t,r){if(s.setState({preventFocus:!0},(function(){return s.preventFocusTimeout=setTimeout((function(){return s.setState({preventFocus:!1})}),50),s.preventFocusTimeout})),s.props.onChangeRaw&&s.props.onChangeRaw(t),s.setSelected(e,t,!1,r),!s.props.shouldCloseOnSelect||s.props.showTimeSelect)s.setPreSelection(e);else if(!s.props.inline){s.props.selectsRange||s.setOpen(!1);var n=s.props,o=n.startDate,a=n.endDate;!o||a||isBefore(e,o)||s.setOpen(!1);}})),de(ye(s),"setSelected",(function(e,t,r,n){var o=e;if(null===o||!Je(o,s.props)){var a=s.props,i=a.onChange,p=a.selectsRange,c=a.startDate,l=a.endDate;if(!je(s.props.selected,o)||s.props.allowSameDay||p)if(null!==o&&(!s.props.selected||r&&(s.props.showTimeSelect||s.props.showTimeSelectOnly||s.props.showTimeInput)||(o=xe(o,{hour:getHours(s.props.selected),minute:getMinutes(s.props.selected),second:getSeconds(s.props.selected)})),s.props.inline||s.setState({preSelection:o}),s.props.focusSelectedMonth||s.setState({monthSelectedIn:n})),p){var d=c&&!l,u=c&&l;!c&&!l?i([o,null],t):d&&(isBefore(o,c)?i([o,null],t):i([c,o],t)),u&&i([o,null],t);}else i(o,t);r||(s.props.onSelect(o,t),s.setState({inputValue:null}));}})),de(ye(s),"setPreSelection",(function(e){var t=void 0!==s.props.minDate,r=void 0!==s.props.maxDate,n=!0;if(e){var o=startOfDay(e);if(t&&r)n=He(e,s.props.minDate,s.props.maxDate);else if(t){var a=startOfDay(s.props.minDate);n=isAfter(e,a)||je(o,a);}else if(r){var i=endOfDay(s.props.maxDate);n=isBefore(e,i)||je(o,i);}}n&&s.setState({preSelection:e});})),de(ye(s),"handleTimeChange",(function(e){var t=xe(s.props.selected?s.props.selected:s.getPreSelection(),{hour:getHours(e),minute:getMinutes(e)});s.setState({preSelection:t}),s.props.onChange(t),s.props.shouldCloseOnSelect&&s.setOpen(!1),s.props.showTimeInput&&s.setOpen(!0),s.setState({inputValue:null});})),de(ye(s),"onInputClick",(function(){s.props.disabled||s.props.readOnly||s.setOpen(!0),s.props.onInputClick();})),de(ye(s),"onInputKeyDown",(function(e){s.props.onKeyDown(e);var t=e.key;if(s.state.open||s.props.inline||s.props.preventOpenOnFocus){if(s.state.open){if("ArrowDown"===t||"ArrowUp"===t){e.preventDefault();var r=s.calendar.componentNode&&s.calendar.componentNode.querySelector('.react-datepicker__day[tabindex="0"]');return void(r&&r.focus({preventScroll:!0}))}var n=_e(s.state.preSelection);"Enter"===t?(e.preventDefault(),s.inputOk()&&s.state.lastPreSelectChange===Ht?(s.handleSelect(n,e),!s.props.shouldCloseOnSelect&&s.setPreSelection(n)):s.setOpen(!1)):"Escape"===t&&(e.preventDefault(),s.setOpen(!1)),s.inputOk()||s.props.onInputError({code:1,msg:"Date input not valid."});}}else "ArrowDown"!==t&&"ArrowUp"!==t&&"Enter"!==t||s.onInputClick();})),de(ye(s),"onDayKeyDown",(function(e){s.props.onKeyDown(e);var t=e.key,r=_e(s.state.preSelection);if("Enter"===t)e.preventDefault(),s.handleSelect(r,e),!s.props.shouldCloseOnSelect&&s.setPreSelection(r);else if("Escape"===t)e.preventDefault(),s.setOpen(!1),s.inputOk()||s.props.onInputError({code:1,msg:"Date input not valid."});else if(!s.props.disabledKeyboardNavigation){var n;switch(t){case"ArrowLeft":n=subDays(r,1);break;case"ArrowRight":n=addDays(r,1);break;case"ArrowUp":n=subWeeks(r,1);break;case"ArrowDown":n=addWeeks(r,1);break;case"PageUp":n=subMonths(r,1);break;case"PageDown":n=addMonths(r,1);break;case"Home":n=subYears(r,1);break;case"End":n=addYears(r,1);}if(!n)return void(s.props.onInputError&&s.props.onInputError({code:1,msg:"Date input not valid."}));if(e.preventDefault(),s.setState({lastPreSelectChange:Ht}),s.props.adjustDateOnChange&&s.setSelected(n),s.setPreSelection(n),s.props.inline){var o=getMonth(r),a=getMonth(n),i=getYear(r),y=getYear(n);o!==a||i!==y?s.setState({shouldFocusDayInline:!0}):s.setState({shouldFocusDayInline:!1});}}})),de(ye(s),"onPopperKeyDown",(function(e){"Escape"===e.key&&(e.preventDefault(),s.setState({preventFocus:!0},(function(){s.setOpen(!1),setTimeout((function(){s.setFocus(),s.setState({preventFocus:!1});}));})));})),de(ye(s),"onClearClick",(function(e){e&&e.preventDefault&&e.preventDefault(),s.props.selectsRange?s.props.onChange([null,null],e):s.props.onChange(null,e),s.setState({inputValue:null});})),de(ye(s),"clear",(function(){s.onClearClick();})),de(ye(s),"onScroll",(function(e){"boolean"==typeof s.props.closeOnScroll&&s.props.closeOnScroll?e.target!==document&&e.target!==document.documentElement&&e.target!==document.body||s.setOpen(!1):"function"==typeof s.props.closeOnScroll&&s.props.closeOnScroll(e)&&s.setOpen(!1);})),de(ye(s),"renderCalendar",(function(){return s.props.inline||s.isCalendarOpen()?React__default.createElement(Kt,{ref:function(e){s.calendar=e;},locale:s.props.locale,calendarStartDay:s.props.calendarStartDay,chooseDayAriaLabelPrefix:s.props.chooseDayAriaLabelPrefix,disabledDayAriaLabelPrefix:s.props.disabledDayAriaLabelPrefix,weekAriaLabelPrefix:s.props.weekAriaLabelPrefix,monthAriaLabelPrefix:s.props.monthAriaLabelPrefix,adjustDateOnChange:s.props.adjustDateOnChange,setOpen:s.setOpen,shouldCloseOnSelect:s.props.shouldCloseOnSelect,dateFormat:s.props.dateFormatCalendar,useWeekdaysShort:s.props.useWeekdaysShort,formatWeekDay:s.props.formatWeekDay,dropdownMode:s.props.dropdownMode,selected:s.props.selected,preSelection:s.state.preSelection,onSelect:s.handleSelect,onWeekSelect:s.props.onWeekSelect,openToDate:s.props.openToDate,minDate:s.props.minDate,maxDate:s.props.maxDate,selectsStart:s.props.selectsStart,selectsEnd:s.props.selectsEnd,selectsRange:s.props.selectsRange,startDate:s.props.startDate,endDate:s.props.endDate,excludeDates:s.props.excludeDates,excludeDateIntervals:s.props.excludeDateIntervals,filterDate:s.props.filterDate,onClickOutside:s.handleCalendarClickOutside,formatWeekNumber:s.props.formatWeekNumber,highlightDates:s.state.highlightDates,includeDates:s.props.includeDates,includeDateIntervals:s.props.includeDateIntervals,includeTimes:s.props.includeTimes,injectTimes:s.props.injectTimes,inline:s.props.inline,shouldFocusDayInline:s.state.shouldFocusDayInline,peekNextMonth:s.props.peekNextMonth,showMonthDropdown:s.props.showMonthDropdown,showPreviousMonths:s.props.showPreviousMonths,useShortMonthInDropdown:s.props.useShortMonthInDropdown,showMonthYearDropdown:s.props.showMonthYearDropdown,showWeekNumbers:s.props.showWeekNumbers,showYearDropdown:s.props.showYearDropdown,withPortal:s.props.withPortal,forceShowMonthNavigation:s.props.forceShowMonthNavigation,showDisabledMonthNavigation:s.props.showDisabledMonthNavigation,scrollableYearDropdown:s.props.scrollableYearDropdown,scrollableMonthYearDropdown:s.props.scrollableMonthYearDropdown,todayButton:s.props.todayButton,weekLabel:s.props.weekLabel,outsideClickIgnoreClass:"react-datepicker-ignore-onclickoutside",fixedHeight:s.props.fixedHeight,monthsShown:s.props.monthsShown,monthSelectedIn:s.state.monthSelectedIn,onDropdownFocus:s.handleDropdownFocus,onMonthChange:s.props.onMonthChange,onYearChange:s.props.onYearChange,dayClassName:s.props.dayClassName,weekDayClassName:s.props.weekDayClassName,monthClassName:s.props.monthClassName,timeClassName:s.props.timeClassName,showTimeSelect:s.props.showTimeSelect,showTimeSelectOnly:s.props.showTimeSelectOnly,onTimeChange:s.handleTimeChange,timeFormat:s.props.timeFormat,timeIntervals:s.props.timeIntervals,minTime:s.props.minTime,maxTime:s.props.maxTime,excludeTimes:s.props.excludeTimes,filterTime:s.props.filterTime,timeCaption:s.props.timeCaption,className:s.props.calendarClassName,container:s.props.calendarContainer,yearItemNumber:s.props.yearItemNumber,yearDropdownItemNumber:s.props.yearDropdownItemNumber,previousMonthAriaLabel:s.props.previousMonthAriaLabel,previousMonthButtonLabel:s.props.previousMonthButtonLabel,nextMonthAriaLabel:s.props.nextMonthAriaLabel,nextMonthButtonLabel:s.props.nextMonthButtonLabel,previousYearAriaLabel:s.props.previousYearAriaLabel,previousYearButtonLabel:s.props.previousYearButtonLabel,nextYearAriaLabel:s.props.nextYearAriaLabel,nextYearButtonLabel:s.props.nextYearButtonLabel,timeInputLabel:s.props.timeInputLabel,disabledKeyboardNavigation:s.props.disabledKeyboardNavigation,renderCustomHeader:s.props.renderCustomHeader,popperProps:s.props.popperProps,renderDayContents:s.props.renderDayContents,onDayMouseEnter:s.props.onDayMouseEnter,onMonthMouseLeave:s.props.onMonthMouseLeave,selectsDisabledDaysInRange:s.props.selectsDisabledDaysInRange,showTimeInput:s.props.showTimeInput,showMonthYearPicker:s.props.showMonthYearPicker,showFullMonthYearPicker:s.props.showFullMonthYearPicker,showTwoColumnMonthYearPicker:s.props.showTwoColumnMonthYearPicker,showFourColumnMonthYearPicker:s.props.showFourColumnMonthYearPicker,showYearPicker:s.props.showYearPicker,showQuarterYearPicker:s.props.showQuarterYearPicker,showPopperArrow:s.props.showPopperArrow,excludeScrollbar:s.props.excludeScrollbar,handleOnKeyDown:s.props.onKeyDown,handleOnDayKeyDown:s.onDayKeyDown,isInputFocused:s.state.focused,customTimeInput:s.props.customTimeInput,setPreSelection:s.setPreSelection},s.props.children):null})),de(ye(s),"renderDateInput",(function(){var t,n=r(s.props.className,de({},"react-datepicker-ignore-onclickoutside",s.state.open)),o=s.props.customInput||React__default.createElement("input",{type:"text"}),a=s.props.customInputRef||"ref",i="string"==typeof s.props.value?s.props.value:"string"==typeof s.state.inputValue?s.state.inputValue:s.props.selectsRange?function(e,t,r){if(!e)return "";var n=Ne(e,r),o=t?Ne(t,r):"";return "".concat(n," - ").concat(o)}(s.props.startDate,s.props.endDate,s.props):Ne(s.props.selected,s.props);return React__default.cloneElement(o,(de(t={},a,(function(e){s.input=e;})),de(t,"value",i),de(t,"onBlur",s.handleBlur),de(t,"onChange",s.handleChange),de(t,"onClick",s.onInputClick),de(t,"onFocus",s.handleFocus),de(t,"onKeyDown",s.onInputKeyDown),de(t,"id",s.props.id),de(t,"name",s.props.name),de(t,"autoFocus",s.props.autoFocus),de(t,"placeholder",s.props.placeholderText),de(t,"disabled",s.props.disabled),de(t,"autoComplete",s.props.autoComplete),de(t,"className",r(o.props.className,n)),de(t,"title",s.props.title),de(t,"readOnly",s.props.readOnly),de(t,"required",s.props.required),de(t,"tabIndex",s.props.tabIndex),de(t,"aria-describedby",s.props.ariaDescribedBy),de(t,"aria-invalid",s.props.ariaInvalid),de(t,"aria-labelledby",s.props.ariaLabelledBy),de(t,"aria-required",s.props.ariaRequired),t))})),de(ye(s),"renderClearButton",(function(){var t=s.props,r=t.isClearable,n=t.selected,o=t.startDate,a=t.endDate,i=t.clearButtonTitle,p=t.clearButtonClassName,c=void 0===p?"":p,l=t.ariaLabelClose,d=void 0===l?"Close":l;return !r||null==n&&null==o&&null==a?null:React__default.createElement("button",{type:"button",className:"react-datepicker__close-icon ".concat(c).trim(),"aria-label":d,onClick:s.onClearClick,title:i,tabIndex:-1})})),s.state=s.calcInitialState(),s}return le(a,[{key:"componentDidMount",value:function(){window.addEventListener("scroll",this.onScroll,!0);}},{key:"componentDidUpdate",value:function(e,t){var r,n;e.inline&&(r=e.selected,n=this.props.selected,r&&n?getMonth(r)!==getMonth(n)||getYear(r)!==getYear(n):r!==n)&&this.setPreSelection(this.props.selected),void 0!==this.state.monthSelectedIn&&e.monthsShown!==this.props.monthsShown&&this.setState({monthSelectedIn:0}),e.highlightDates!==this.props.highlightDates&&this.setState({highlightDates:mt(this.props.highlightDates)}),t.focused||je(e.selected,this.props.selected)||this.setState({inputValue:null}),t.open!==this.state.open&&(!1===t.open&&!0===this.state.open&&this.props.onCalendarOpen(),!0===t.open&&!1===this.state.open&&this.props.onCalendarClose());}},{key:"componentWillUnmount",value:function(){this.clearPreventFocusTimeout(),window.removeEventListener("scroll",this.onScroll,!0);}},{key:"renderInputContainer",value:function(){return React__default.createElement("div",{className:"react-datepicker__input-container"},this.renderDateInput(),this.renderClearButton())}},{key:"render",value:function(){var t=this.renderCalendar();if(this.props.inline)return t;if(this.props.withPortal){var r=this.state.open?React__default.createElement("div",{className:"react-datepicker__portal"},t):null;return this.state.open&&this.props.portalId&&(r=React__default.createElement(Rt,{portalId:this.props.portalId,portalHost:this.props.portalHost},r)),React__default.createElement("div",null,this.renderInputContainer(),r)}return React__default.createElement(Bt,{className:this.props.popperClassName,wrapperClassName:this.props.wrapperClassName,hidePopper:!this.isCalendarOpen(),portalId:this.props.portalId,portalHost:this.props.portalHost,popperModifiers:this.props.popperModifiers,targetComponent:this.renderInputContainer(),popperContainer:this.props.popperContainer,popperComponent:t,popperPlacement:this.props.popperPlacement,popperProps:this.props.popperProps,popperOnKeyDown:this.onPopperKeyDown,enableTabLoop:this.props.enableTabLoop})}}],[{key:"defaultProps",get:function(){return {allowSameDay:!1,dateFormat:"MM/dd/yyyy",dateFormatCalendar:"LLLL yyyy",onChange:function(){},disabled:!1,disabledKeyboardNavigation:!1,dropdownMode:"scroll",onFocus:function(){},onBlur:function(){},onKeyDown:function(){},onInputClick:function(){},onSelect:function(){},onClickOutside:function(){},onMonthChange:function(){},onCalendarOpen:function(){},onCalendarClose:function(){},preventOpenOnFocus:!1,onYearChange:function(){},onInputError:function(){},monthsShown:1,readOnly:!1,withPortal:!1,selectsDisabledDaysInRange:!1,shouldCloseOnSelect:!0,showTimeSelect:!1,showTimeInput:!1,showPreviousMonths:!1,showMonthYearPicker:!1,showFullMonthYearPicker:!1,showTwoColumnMonthYearPicker:!1,showFourColumnMonthYearPicker:!1,showYearPicker:!1,showQuarterYearPicker:!1,strictParsing:!1,timeIntervals:30,timeCaption:"Time",previousMonthAriaLabel:"Previous Month",previousMonthButtonLabel:"Previous Month",nextMonthAriaLabel:"Next Month",nextMonthButtonLabel:"Next Month",previousYearAriaLabel:"Previous Year",previousYearButtonLabel:"Previous Year",nextYearAriaLabel:"Next Year",nextYearButtonLabel:"Next Year",timeInputLabel:"Time",enableTabLoop:!0,yearItemNumber:12,renderDayContents:function(e){return e},focusSelectedMonth:!1,showPopperArrow:!0,excludeScrollbar:!0,customTimeInput:null,calendarStartDay:void 0}}}]),a}(),jt="input",Ht="navigate";
 
 var _excluded$u = ["label", "leftIcon", "size", "dropDown", "rightIcon", "errorMessage", "inputClassName", "className", "dateFormat", "range", "noCalendarIcon", "onChange"];
 var DatePickerField = function DatePickerField(_ref) {
@@ -59908,17 +59708,17 @@ var domTokenListPrototype = DOMTokenListPrototype$1 === Object.prototype ? undef
 
 var iterators = {};
 
-var fails$2 = fails$q;
+var fails$2 = fails$o;
 
 var correctPrototypeGetter = !fails$2(function () {
   function F() { /* empty */ }
   F.prototype.constructor = null;
-  // eslint-disable-next-line es-x/no-object-getprototypeof -- required for testing
+  // eslint-disable-next-line es/no-object-getprototypeof -- required for testing
   return Object.getPrototypeOf(new F()) !== F.prototype;
 });
 
 var hasOwn$1 = hasOwnProperty_1;
-var isCallable$2 = isCallable$m;
+var isCallable$2 = isCallable$l;
 var toObject$1 = toObject$6;
 var sharedKey = sharedKey$3;
 var CORRECT_PROTOTYPE_GETTER = correctPrototypeGetter;
@@ -59929,7 +59729,7 @@ var ObjectPrototype = $Object.prototype;
 
 // `Object.getPrototypeOf` method
 // https://tc39.es/ecma262/#sec-object.getprototypeof
-// eslint-disable-next-line es-x/no-object-getprototypeof -- safe
+// eslint-disable-next-line es/no-object-getprototypeof -- safe
 var objectGetPrototypeOf = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function (O) {
   var object = toObject$1(O);
   if (hasOwn$1(object, IE_PROTO)) return object[IE_PROTO];
@@ -59939,11 +59739,12 @@ var objectGetPrototypeOf = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : f
   } return object instanceof $Object ? ObjectPrototype : null;
 };
 
-var fails$1 = fails$q;
-var isCallable$1 = isCallable$m;
+var fails$1 = fails$o;
+var isCallable$1 = isCallable$l;
+var isObject = isObject$8;
 var getPrototypeOf$2 = objectGetPrototypeOf;
 var defineBuiltIn$1 = defineBuiltIn$6;
-var wellKnownSymbol$3 = wellKnownSymbol$g;
+var wellKnownSymbol$3 = wellKnownSymbol$f;
 
 var ITERATOR$2 = wellKnownSymbol$3('iterator');
 var BUGGY_SAFARI_ITERATORS$1 = false;
@@ -59952,7 +59753,7 @@ var BUGGY_SAFARI_ITERATORS$1 = false;
 // https://tc39.es/ecma262/#sec-%iteratorprototype%-object
 var IteratorPrototype$2, PrototypeOfArrayIteratorPrototype, arrayIterator;
 
-/* eslint-disable es-x/no-array-prototype-keys -- safe */
+/* eslint-disable es/no-array-prototype-keys -- safe */
 if ([].keys) {
   arrayIterator = [].keys();
   // Safari 8 has buggy iterators w/o `next`
@@ -59963,7 +59764,7 @@ if ([].keys) {
   }
 }
 
-var NEW_ITERATOR_PROTOTYPE = IteratorPrototype$2 == undefined || fails$1(function () {
+var NEW_ITERATOR_PROTOTYPE = !isObject(IteratorPrototype$2) || fails$1(function () {
   var test = {};
   // FF44- legacy iterators case
   return IteratorPrototype$2[ITERATOR$2].call(test) !== test;
@@ -59986,7 +59787,7 @@ var iteratorsCore = {
 
 var defineProperty$2 = objectDefineProperty.f;
 var hasOwn = hasOwnProperty_1;
-var wellKnownSymbol$2 = wellKnownSymbol$g;
+var wellKnownSymbol$2 = wellKnownSymbol$f;
 
 var TO_STRING_TAG$1 = wellKnownSymbol$2('toStringTag');
 
@@ -59999,15 +59800,15 @@ var setToStringTag$2 = function (target, TAG, STATIC) {
 
 var IteratorPrototype$1 = iteratorsCore.IteratorPrototype;
 var create$1 = objectCreate;
-var createPropertyDescriptor = createPropertyDescriptor$4;
+var createPropertyDescriptor$1 = createPropertyDescriptor$4;
 var setToStringTag$1 = setToStringTag$2;
 var Iterators$2 = iterators;
 
 var returnThis$1 = function () { return this; };
 
-var createIteratorConstructor$1 = function (IteratorConstructor, NAME, next, ENUMERABLE_NEXT) {
+var iteratorCreateConstructor = function (IteratorConstructor, NAME, next, ENUMERABLE_NEXT) {
   var TO_STRING_TAG = NAME + ' Iterator';
-  IteratorConstructor.prototype = create$1(IteratorPrototype$1, { next: createPropertyDescriptor(+!ENUMERABLE_NEXT, next) });
+  IteratorConstructor.prototype = create$1(IteratorPrototype$1, { next: createPropertyDescriptor$1(+!ENUMERABLE_NEXT, next) });
   setToStringTag$1(IteratorConstructor, TO_STRING_TAG, false);
   Iterators$2[TO_STRING_TAG] = returnThis$1;
   return IteratorConstructor;
@@ -60016,14 +59817,14 @@ var createIteratorConstructor$1 = function (IteratorConstructor, NAME, next, ENU
 var $$3 = _export;
 var call$1 = functionCall;
 var FunctionName = functionName;
-var isCallable = isCallable$m;
-var createIteratorConstructor = createIteratorConstructor$1;
+var isCallable = isCallable$l;
+var createIteratorConstructor = iteratorCreateConstructor;
 var getPrototypeOf$1 = objectGetPrototypeOf;
 var setPrototypeOf = objectSetPrototypeOf;
 var setToStringTag = setToStringTag$2;
 var createNonEnumerableProperty$1 = createNonEnumerableProperty$6;
 var defineBuiltIn = defineBuiltIn$6;
-var wellKnownSymbol$1 = wellKnownSymbol$g;
+var wellKnownSymbol$1 = wellKnownSymbol$f;
 var Iterators$1 = iterators;
 var IteratorsCore = iteratorsCore;
 
@@ -60038,7 +59839,7 @@ var ENTRIES = 'entries';
 
 var returnThis = function () { return this; };
 
-var defineIterator$1 = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, IS_SET, FORCED) {
+var iteratorDefine = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, IS_SET, FORCED) {
   createIteratorConstructor(IteratorConstructor, NAME, next);
 
   var getIterationMethod = function (KIND) {
@@ -60110,12 +59911,19 @@ var defineIterator$1 = function (Iterable, NAME, IteratorConstructor, next, DEFA
   return methods;
 };
 
+// `CreateIterResultObject` abstract operation
+// https://tc39.es/ecma262/#sec-createiterresultobject
+var createIterResultObject$1 = function (value, done) {
+  return { value: value, done: done };
+};
+
 var toIndexedObject = toIndexedObject$5;
 var addToUnscopables = addToUnscopables$2;
 var Iterators = iterators;
 var InternalStateModule = internalState;
 var defineProperty$1 = objectDefineProperty.f;
-var defineIterator = defineIterator$1;
+var defineIterator = iteratorDefine;
+var createIterResultObject = createIterResultObject$1;
 var DESCRIPTORS = descriptors;
 
 var ARRAY_ITERATOR = 'Array Iterator';
@@ -60148,11 +59956,11 @@ var es_array_iterator = defineIterator(Array, 'Array', function (iterated, kind)
   var index = state.index++;
   if (!target || index >= target.length) {
     state.target = undefined;
-    return { value: undefined, done: true };
+    return createIterResultObject(undefined, true);
   }
-  if (kind == 'keys') return { value: index, done: false };
-  if (kind == 'values') return { value: target[index], done: false };
-  return { value: [index, target[index]], done: false };
+  if (kind == 'keys') return createIterResultObject(index, false);
+  if (kind == 'values') return createIterResultObject(target[index], false);
+  return createIterResultObject([index, target[index]], false);
 }, 'values');
 
 // argumentsList[@@iterator] is %ArrayProto_values%
@@ -60175,7 +59983,7 @@ var DOMIterables = domIterables;
 var DOMTokenListPrototype = domTokenListPrototype;
 var ArrayIteratorMethods = es_array_iterator;
 var createNonEnumerableProperty = createNonEnumerableProperty$6;
-var wellKnownSymbol = wellKnownSymbol$g;
+var wellKnownSymbol = wellKnownSymbol$f;
 
 var ITERATOR = wellKnownSymbol('iterator');
 var TO_STRING_TAG = wellKnownSymbol('toStringTag');
@@ -60627,13 +60435,6 @@ GridLayout.defaultProps = {
   width: "100%"
 };
 
-({
-  colorName: propTypes.exports.string.isRequired,
-  colorCode: propTypes.exports.string.isRequired,
-  textColor: propTypes.exports.string,
-  colors: propTypes.exports.array
-});
-
 var _excluded$o = ["fullPage", "loading", "loader", "customLoader", "children", "size", "thickness", "color"];
 var Loader = function Loader(_ref) {
   var fullPage = _ref.fullPage,
@@ -60788,7 +60589,7 @@ Modal.propTypes = {
   bodyClass: propTypes.exports.string
 };
 
-var rangedArray = (function (min, max) {
+var rangedArray = function rangedArray(min, max) {
   var inclusive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
   if (!inclusive) {
     min += 1;
@@ -60799,7 +60600,7 @@ var rangedArray = (function (min, max) {
   }, function (v, i) {
     return min + i;
   });
-});
+};
 
 var dots = "...";
 var usePagination = function usePagination(_ref) {
@@ -68371,31 +68172,29 @@ var PinInput = function PinInput(_ref) {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e, index) {
       var nextInput, _nextInput2;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              if (e.key === "ArrowLeft") {
-                if (index !== 0) {
-                  nextInput = document.getElementById(data[index - 1].id);
-                  nextInput.focus();
-                  setTimeout(function () {
-                    nextInput.select();
-                  });
-                }
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            if (e.key === "ArrowLeft") {
+              if (index !== 0) {
+                nextInput = document.getElementById(data[index - 1].id);
+                nextInput.focus();
+                setTimeout(function () {
+                  nextInput.select();
+                });
               }
-              if (e.key === "ArrowRight") {
-                if (index !== data.length - 1) {
-                  _nextInput2 = document.getElementById(data[index + 1].id);
-                  _nextInput2.focus();
-                  setTimeout(function () {
-                    _nextInput2.select();
-                  });
-                }
+            }
+            if (e.key === "ArrowRight") {
+              if (index !== data.length - 1) {
+                _nextInput2 = document.getElementById(data[index + 1].id);
+                _nextInput2.focus();
+                setTimeout(function () {
+                  _nextInput2.select();
+                });
               }
-            case 2:
-            case "end":
-              return _context.stop();
-          }
+            }
+          case 2:
+          case "end":
+            return _context.stop();
         }
       }, _callee);
     }));
@@ -68897,7 +68696,7 @@ Tab.defaultProps = {
 
 // `SameValue` abstract operation
 // https://tc39.es/ecma262/#sec-samevalue
-// eslint-disable-next-line es-x/no-object-is -- safe
+// eslint-disable-next-line es/no-object-is -- safe
 var sameValue$1 = Object.is || function is(x, y) {
   // eslint-disable-next-line no-self-compare -- NaN check
   return x === y ? x !== 0 || 1 / x === 1 / y : x != x && y != y;
@@ -68905,11 +68704,12 @@ var sameValue$1 = Object.is || function is(x, y) {
 
 var call = functionCall;
 var fixRegExpWellKnownSymbolLogic = fixRegexpWellKnownSymbolLogic;
-var anObject = anObject$c;
-var requireObjectCoercible$2 = requireObjectCoercible$b;
+var anObject = anObject$b;
+var isNullOrUndefined = isNullOrUndefined$5;
+var requireObjectCoercible$2 = requireObjectCoercible$a;
 var sameValue = sameValue$1;
 var toString$3 = toString$f;
-var getMethod = getMethod$5;
+var getMethod = getMethod$4;
 var regExpExec = regexpExecAbstract;
 
 // @@search logic
@@ -68919,7 +68719,7 @@ fixRegExpWellKnownSymbolLogic('search', function (SEARCH, nativeSearch, maybeCal
     // https://tc39.es/ecma262/#sec-string.prototype.search
     function search(regexp) {
       var O = requireObjectCoercible$2(this);
-      var searcher = regexp == undefined ? undefined : getMethod(regexp, SEARCH);
+      var searcher = isNullOrUndefined(regexp) ? undefined : getMethod(regexp, SEARCH);
       return searcher ? call(searcher, regexp, O) : new RegExp(regexp)[SEARCH](toString$3(O));
     },
     // `RegExp.prototype[@@search]` method
@@ -69382,10 +69182,10 @@ async function detectOverflow(middlewareArguments, options) {
 }
 
 const min$3 = Math.min;
-const max$1 = Math.max;
+const max$2 = Math.max;
 
-function within(min$1, value, max$1$1) {
-  return max$1(min$1, min$3(value, max$1$1));
+function within(min$1, value, max$1) {
+  return max$2(min$1, min$3(value, max$1));
 }
 
 const hash$1 = {
@@ -69789,7 +69589,7 @@ function isLastTraversableNode(node) {
 }
 
 const min$2 = Math.min;
-const max = Math.max;
+const max$1 = Math.max;
 const round = Math.round;
 
 function getBoundingClientRect(element, includeScale, isFixedStrategy) {
@@ -70042,13 +69842,13 @@ function getDocumentRect(element) {
   const html = getDocumentElement$1(element);
   const scroll = getNodeScroll(element);
   const body = (_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body;
-  const width = max(html.scrollWidth, html.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
-  const height = max(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
+  const width = max$1(html.scrollWidth, html.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
+  const height = max$1(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
   let x = -scroll.scrollLeft + getWindowScrollBarX(element);
   const y = -scroll.scrollTop;
 
   if (getComputedStyle(body || html).direction === 'rtl') {
-    x += max(html.clientWidth, body ? body.clientWidth : 0) - width;
+    x += max$1(html.clientWidth, body ? body.clientWidth : 0) - width;
   }
 
   return {
@@ -70157,10 +69957,10 @@ function getClippingRect(_ref) {
   const firstClippingAncestor = clippingAncestors[0];
   const clippingRect = clippingAncestors.reduce((accRect, clippingAncestor) => {
     const rect = getClientRectFromClippingAncestor(element, clippingAncestor, strategy);
-    accRect.top = max(rect.top, accRect.top);
+    accRect.top = max$1(rect.top, accRect.top);
     accRect.right = min$2(rect.right, accRect.right);
     accRect.bottom = min$2(rect.bottom, accRect.bottom);
-    accRect.left = max(rect.left, accRect.left);
+    accRect.left = max$1(rect.left, accRect.left);
     return accRect;
   }, getClientRectFromClippingAncestor(element, firstClippingAncestor, strategy));
   return {
@@ -70353,7 +70153,7 @@ var TableHeadCell = function TableHeadCell(_ref) {
     if (e === undefined) {
       shouldProceed = true;
     } else {
-      ["ui-table__heading-cell__content", "ui-table__heading-cell-text", "ui-table__heading-cell__icon"].map(function (target) {
+      ["ui-table__heading-cell__content", "ui-table__heading-cell-text", "ui-table__heading-cell__icon"].forEach(function (target) {
         if (e.target.classList.contains(target)) {
           shouldProceed = true;
         }
@@ -70672,16 +70472,16 @@ function useExportCsv(data, generatedCsvName) {
 }
 
 var $$2 = _export;
-var uncurryThis$2 = functionUncurryThis;
+var uncurryThis$2 = functionUncurryThisClause;
 var getOwnPropertyDescriptor$2 = objectGetOwnPropertyDescriptor.f;
-var toLength$1 = toLength$5;
+var toLength$1 = toLength$4;
 var toString$2 = toString$f;
 var notARegExp$1 = notARegexp;
-var requireObjectCoercible$1 = requireObjectCoercible$b;
+var requireObjectCoercible$1 = requireObjectCoercible$a;
 var correctIsRegExpLogic$1 = correctIsRegexpLogic;
 
-// eslint-disable-next-line es-x/no-string-prototype-startswith -- safe
-var un$StartsWith = uncurryThis$2(''.startsWith);
+// eslint-disable-next-line es/no-string-prototype-startswith -- safe
+var nativeStartsWith = uncurryThis$2(''.startsWith);
 var stringSlice = uncurryThis$2(''.slice);
 var min$1 = Math.min;
 
@@ -70700,23 +70500,23 @@ $$2({ target: 'String', proto: true, forced: !MDN_POLYFILL_BUG$1 && !CORRECT_IS_
     notARegExp$1(searchString);
     var index = toLength$1(min$1(arguments.length > 1 ? arguments[1] : undefined, that.length));
     var search = toString$2(searchString);
-    return un$StartsWith
-      ? un$StartsWith(that, search, index)
+    return nativeStartsWith
+      ? nativeStartsWith(that, search, index)
       : stringSlice(that, index, index + search.length) === search;
   }
 });
 
 var $$1 = _export;
-var uncurryThis$1 = functionUncurryThis;
+var uncurryThis$1 = functionUncurryThisClause;
 var getOwnPropertyDescriptor$1 = objectGetOwnPropertyDescriptor.f;
-var toLength = toLength$5;
+var toLength = toLength$4;
 var toString$1 = toString$f;
 var notARegExp = notARegexp;
-var requireObjectCoercible = requireObjectCoercible$b;
+var requireObjectCoercible = requireObjectCoercible$a;
 var correctIsRegExpLogic = correctIsRegexpLogic;
 
-// eslint-disable-next-line es-x/no-string-prototype-endswith -- safe
-var un$EndsWith = uncurryThis$1(''.endsWith);
+// eslint-disable-next-line es/no-string-prototype-endswith -- safe
+var nativeEndsWith = uncurryThis$1(''.endsWith);
 var slice = uncurryThis$1(''.slice);
 var min = Math.min;
 
@@ -70737,8 +70537,8 @@ $$1({ target: 'String', proto: true, forced: !MDN_POLYFILL_BUG && !CORRECT_IS_RE
     var len = that.length;
     var end = endPosition === undefined ? len : min(toLength(endPosition), len);
     var search = toString$1(searchString);
-    return un$EndsWith
-      ? un$EndsWith(that, search, end)
+    return nativeEndsWith
+      ? nativeEndsWith(that, search, end)
       : slice(that, end - search.length, end) === search;
   }
 });
@@ -70808,12 +70608,39 @@ var filter = function filter(_filter, rows) {
   });
 };
 
-var tryToString = tryToString$3;
+var tryToString = tryToString$2;
 
 var $TypeError = TypeError;
 
 var deletePropertyOrThrow$1 = function (O, P) {
   if (!delete O[P]) throw $TypeError('Cannot delete property ' + tryToString(P) + ' of ' + tryToString(O));
+};
+
+var toPropertyKey = toPropertyKey$3;
+var definePropertyModule = objectDefineProperty;
+var createPropertyDescriptor = createPropertyDescriptor$4;
+
+var createProperty$1 = function (object, key, value) {
+  var propertyKey = toPropertyKey(key);
+  if (propertyKey in object) definePropertyModule.f(object, propertyKey, createPropertyDescriptor(0, value));
+  else object[propertyKey] = value;
+};
+
+var toAbsoluteIndex = toAbsoluteIndex$2;
+var lengthOfArrayLike$1 = lengthOfArrayLike$4;
+var createProperty = createProperty$1;
+
+var $Array = Array;
+var max = Math.max;
+
+var arraySliceSimple = function (O, start, end) {
+  var length = lengthOfArrayLike$1(O);
+  var k = toAbsoluteIndex(start, length);
+  var fin = toAbsoluteIndex(end === undefined ? length : end, length);
+  var result = $Array(max(fin - k, 0));
+  for (var n = 0; k < fin; k++, n++) createProperty(result, n, O[k]);
+  result.length = n;
+  return result;
 };
 
 var arraySlice = arraySliceSimple;
@@ -70879,12 +70706,12 @@ var engineWebkitVersion = !!webkit && +webkit[1];
 
 var $ = _export;
 var uncurryThis = functionUncurryThis;
-var aCallable = aCallable$3;
+var aCallable = aCallable$4;
 var toObject = toObject$6;
 var lengthOfArrayLike = lengthOfArrayLike$4;
 var deletePropertyOrThrow = deletePropertyOrThrow$1;
 var toString = toString$f;
-var fails = fails$q;
+var fails = fails$o;
 var internalSort = arraySort;
 var arrayMethodIsStrict = arrayMethodIsStrict$2;
 var FF = engineFfVersion;
@@ -70893,7 +70720,7 @@ var V8 = engineV8Version;
 var WEBKIT = engineWebkitVersion;
 
 var test = [];
-var un$Sort = uncurryThis(test.sort);
+var nativeSort = uncurryThis(test.sort);
 var push = uncurryThis(test.push);
 
 // IE8-
@@ -70961,7 +70788,7 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
 
     var array = toObject(this);
 
-    if (STABLE_SORT) return comparefn === undefined ? un$Sort(array) : un$Sort(array, comparefn);
+    if (STABLE_SORT) return comparefn === undefined ? nativeSort(array) : nativeSort(array, comparefn);
 
     var items = [];
     var arrayLength = lengthOfArrayLike(array);
@@ -70973,7 +70800,7 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
 
     internalSort(items, getSortCompare(comparefn));
 
-    itemsLength = items.length;
+    itemsLength = lengthOfArrayLike(items);
     index = 0;
 
     while (index < itemsLength) array[index] = items[index++];
@@ -82668,7 +82495,7 @@ Table.defaultProps = {
   caseSensitiveSearch: false
 };
 
-var _excluded$3 = ["size", "options", "labelClass", "labelFontFace", "label", "errorMessage", "leftIcon", "rightIcon", "onChange", "placeholder", "showCheckboxes", "initiallySelectedTags", "maxDropdownHeight", "initiallyClosed"];
+var _excluded$3 = ["size", "options", "labelClass", "labelFontFace", "label", "errorMessage", "leftIcon", "rightIcon", "onChange", "placeholder", "showCheckboxes", "initiallySelectedTags", "maxDropdownHeight", "initiallyClosed", "selectOneItem"];
 var TagDropdown = function TagDropdown(_ref) {
   var _classNames2;
   var size = _ref.size,
@@ -82684,7 +82511,8 @@ var TagDropdown = function TagDropdown(_ref) {
     showCheckboxes = _ref.showCheckboxes,
     initiallySelectedTags = _ref.initiallySelectedTags,
     maxDropdownHeight = _ref.maxDropdownHeight,
-    initiallyClosed = _ref.initiallyClosed;
+    initiallyClosed = _ref.initiallyClosed,
+    selectOneItem = _ref.selectOneItem;
     _objectWithoutProperties(_ref, _excluded$3);
   var _useState = useState([]),
     _useState2 = _slicedToArray$4(_useState, 2),
@@ -82707,6 +82535,10 @@ var TagDropdown = function TagDropdown(_ref) {
     availableOptions = _useState10[0],
     setAvailableOptions = _useState10[1];
   var validInput = useRef();
+  var _useState11 = useState(false),
+    _useState12 = _slicedToArray$4(_useState11, 2),
+    mounted = _useState12[0],
+    setMounted = _useState12[1];
   useEffect(function () {
     setInputTags(_toConsumableArray(options).filter(function (option) {
       if (typeof option === "string") {
@@ -82717,6 +82549,7 @@ var TagDropdown = function TagDropdown(_ref) {
     }));
   }, [options, selectedTags]);
   useEffect(function () {
+    setMounted(true);
     if (initiallySelectedTags && Array.isArray(initiallySelectedTags)) {
       options.forEach(function (option) {
         var optionValue = returnOptionValue(option);
@@ -82731,8 +82564,10 @@ var TagDropdown = function TagDropdown(_ref) {
     }
   }, []);
   useEffect(function () {
-    onChange(selectedTags);
-  }, [selectedTags, onChange]);
+    if (mounted) {
+      onChange(selectedTags);
+    }
+  }, [selectedTags]);
   var hideOptionsOnOutsideClick = function hideOptionsOnOutsideClick(e) {
     if (!e.target.closest(".ui-tag-dropdown__wrapper")) {
       setShowOptions(false);
@@ -82775,9 +82610,18 @@ var TagDropdown = function TagDropdown(_ref) {
     if (clonedTags.includes(optionValue)) {
       clonedTags.splice(selectedTags.indexOf(optionValue), 1);
     } else {
-      clonedTags.push(optionValue);
+      if (selectOneItem) {
+        clonedTags = [optionValue];
+      } else {
+        clonedTags.push(optionValue);
+      }
     }
     setSelectedTags(clonedTags);
+  };
+  var toggleOptionInSelectedOptions = function toggleOptionInSelectedOptions(option) {
+    if (!showCheckboxes) {
+      switchOptionInTags(option);
+    }
   };
   var mappedInputTags = inputTags.map(function (tag, index) {
     return /*#__PURE__*/React__default.createElement(Box, {
@@ -82805,6 +82649,9 @@ var TagDropdown = function TagDropdown(_ref) {
         selected: selectedTags.includes(returnOptionValue(option))
       }),
       cursor: showCheckboxes ? "auto" : "pointer",
+      onClick: function onClick() {
+        return toggleOptionInSelectedOptions(option);
+      },
       key: "option-".concat(index)
     }, showCheckboxes ? /*#__PURE__*/React__default.createElement(Checkbox, {
       checked: selectedTags.includes(returnOptionValue(option)),
@@ -82889,7 +82736,8 @@ TagDropdown.propTypes = _objectSpread2$1(_objectSpread2$1({}, inputPropTypes), {
   onChange: propTypes.exports.func,
   initiallySelectedTags: propTypes.exports.array,
   maxDropdownHeight: propTypes.exports.string,
-  initiallyClosed: propTypes.exports.bool
+  initiallyClosed: propTypes.exports.bool,
+  selectOneItem: propTypes.exports.bool
 });
 TagDropdown.defaultProps = _objectSpread2$1(_objectSpread2$1({}, defaultProps$1), {}, {
   showCheckboxes: true,
@@ -83059,49 +82907,23 @@ TagInput.defaultProps = {
   }
 };
 
-var _excluded$1 = ["label", "errorMessage", "textAreaClassName", "className", "isHookForm"];
-var TextArea = function TextArea(_ref) {
+var _excluded$1 = ["label", "errorMessage", "textAreaClassName", "className", "isHookForm", "onChange", "onBlur", "name"];
+var TextArea = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var label = _ref.label,
     errorMessage = _ref.errorMessage,
     textAreaClassName = _ref.textAreaClassName,
-    className = _ref.className,
-    isHookForm = _ref.isHookForm,
+    className = _ref.className;
+    _ref.isHookForm;
+    var onChange = _ref.onChange,
+    onBlur = _ref.onBlur,
+    name = _ref.name,
     props = _objectWithoutProperties(_ref, _excluded$1);
   var generateTextAreaClasses = classNames({
     "ui-text-area__textarea": true,
     "has-error": errorMessage
   }, textAreaClassName);
   var wrapperClasses = classNames(["ui-text-area__wrapper"], className);
-  return isHookForm ? /*#__PURE__*/React__default.forwardRef(function (_ref2, ref) {
-    var onChange = _ref2.onChange,
-      onBlur = _ref2.onBlur,
-      name = _ref2.name,
-      label = _ref2.label;
-    return /*#__PURE__*/React__default.createElement(Box, null, /*#__PURE__*/React__default.createElement(Box, {
-      is: "label",
-      className: wrapperClasses
-    }, /*#__PURE__*/React__default.createElement(Text$1, {
-      scale: "subhead",
-      className: "ui-text-area__label"
-    }, label)), /*#__PURE__*/React__default.createElement(Box, _extends$1({
-      className: generateTextAreaClasses,
-      is: "textarea"
-    }, props, {
-      ref: ref,
-      onChange: onChange,
-      onBlur: onBlur,
-      name: name
-    })), errorMessage && /*#__PURE__*/React__default.createElement(Box, {
-      className: "ui-text-area__error"
-    }, /*#__PURE__*/React__default.createElement(Icon, {
-      icon: Error$1,
-      className: "ui-text-area__error-icon"
-    }), /*#__PURE__*/React__default.createElement(Text$1, {
-      className: "ui-text-area__error-text",
-      scale: "footnote",
-      fontFace: "circularSTD"
-    }, errorMessage)));
-  }) : /*#__PURE__*/React__default.createElement(Box, null, /*#__PURE__*/React__default.createElement(Box, {
+  return /*#__PURE__*/React__default.createElement(Box, null, /*#__PURE__*/React__default.createElement(Box, {
     is: "label",
     className: wrapperClasses
   }, /*#__PURE__*/React__default.createElement(Text$1, {
@@ -83110,7 +82932,12 @@ var TextArea = function TextArea(_ref) {
   }, label)), /*#__PURE__*/React__default.createElement(Box, _extends$1({
     className: generateTextAreaClasses,
     is: "textarea"
-  }, props)), errorMessage && /*#__PURE__*/React__default.createElement(Box, {
+  }, props, {
+    ref: ref,
+    onChange: onChange,
+    onBlur: onBlur,
+    name: name
+  })), errorMessage && /*#__PURE__*/React__default.createElement(Box, {
     className: "ui-text-area__error"
   }, /*#__PURE__*/React__default.createElement(Icon, {
     icon: Error$1,
@@ -83120,7 +82947,7 @@ var TextArea = function TextArea(_ref) {
     scale: "footnote",
     fontFace: "circularSTD"
   }, errorMessage)));
-};
+});
 TextArea.propTypes = {
   label: propTypes.exports.string,
   disabled: propTypes.exports.bool

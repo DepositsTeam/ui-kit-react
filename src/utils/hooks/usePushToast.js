@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { ToastContext } from "../../components/providers/ToastProvider";
+import { useContext } from "react";
+import { ToastContext } from "../../components/providers/ToastProvider.jsx";
 import uniqueRandomString from "../uniqueRandomString";
 
 export const usePushToast = () => {

@@ -1,4 +1,4 @@
-export default (length = 20, type = 0) => {
+const uniqueRandomString = (length = 20, type = 0) => {
   let permittedCharacters;
   const time = `${new Date().getTime()}`;
   switch (type) {
@@ -48,3 +48,5 @@ export default (length = 20, type = 0) => {
   let finalString = start + time + end;
   return finalString;
 };
+
+export default uniqueRandomString;

@@ -1,1 +1,1 @@
-export { default } from "./TagDropdown";
+export { default } from "./TagDropdown.jsx";

@@ -1,1 +1,1 @@
-export { default } from "./FilePickerInline";
+export { default } from "./FilePickerInline.jsx";

@@ -1,0 +1,6 @@
+- **16th June, 2023 - Eric McWinNEr**
+    - Upgraded Storybook to version 7
+    - Migrated from webpack to vite
+      - Changed all file extensions for component based files from .js to .jsx
+    - Updated tag dropdown to be able to select only one time
+    - Updated tag dropdown to work with checkbox mode

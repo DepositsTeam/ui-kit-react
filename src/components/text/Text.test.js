@@ -1,5 +1,5 @@
 import React from 'react';
-import Text from './Text'
+import Text from './Text.jsx'
 import { render, cleanup } from '@testing-library/react'
 
 describe('Text testing', () => {

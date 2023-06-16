@@ -185,9 +185,11 @@
 
 .ui-tag-dropdown__dropdown__option {
   padding: 8px 16px;
+
   &.dropdownMode {
     &:hover,
-    &:active {
+    &:active,
+    &.selected {
       background: #f2fafc;
       color: #0db9e9;
       position: relative;

@@ -1,1 +1,1 @@
-export { default } from "./DebitCardVertical";
+export { default } from "./DebitCardVertical.jsx";

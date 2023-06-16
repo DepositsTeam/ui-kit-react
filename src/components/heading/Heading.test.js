@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Heading from './Heading'
+import Heading from './Heading.jsx'
 import { render, cleanup } from '@testing-library/react'
 
 describe('Heading testing', () => {
