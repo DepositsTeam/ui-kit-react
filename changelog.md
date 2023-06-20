@@ -1,6 +1,7 @@
 - **21st June, 2023 - Eric McWinNEr**
   - Fixed bug to make the height of the tag dropdown options configurable by the `maxDropdownHeight` prop
   - Added an event that gets triggered when the tag dropdown options is scrolled to the bottom.
+  - Fixed build process for npm
 - **20th June, 2023 - Eric McWinNEr**
   - Migrated from npm to yarn
   - Updated the Storybook docs documentation page to reflect the React UI kit instead of Vue
