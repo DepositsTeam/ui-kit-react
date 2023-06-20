@@ -115,3 +115,19 @@ DarkModeStringOptions.args = {
   options: [...stringOptions],
   label: "String Options",
 };
+
+export const Loading = Template.bind({});
+Loading.args = {
+  options: [...options],
+  label: "Loading",
+  loading: true,
+};
+
+export const TrackBottomScroll = Template.bind({});
+TrackBottomScroll.args = {
+  options: [...options],
+  label: "Alert at bottom scroll",
+  onScrolledToBottom: () => {
+    alert("Scrolled to the bottom");
+  },
+};

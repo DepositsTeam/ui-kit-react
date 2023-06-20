@@ -1,53 +1,61 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import "./Loader.scss";
 import Box from "../box";
 import classNames from "../../utils/classNames";
+import { ThemeContext } from "../providers/ThemeProvider.jsx";
+import { DarkModeContext } from "../providers/DarkModeProvider.jsx";
 
 const Loader = ({
   fullPage,
   loading,
   loader,
+  loaderSize,
+  smartColor,
+  translucent,
+  ringThickness,
   customLoader,
   children,
   size,
-  thickness,
-  color,
   ...props
 }) => {
+  const { theme } = useContext(ThemeContext);
+  const { darkMode } = useContext(DarkModeContext);
+
+  const computedColor = smartColor
+    ? smartColor
+    : darkMode
+    ? theme["--dark-primary-color"]
+    : theme["--light-primary-color"];
+
   return (
-    <Box className={"ui-d-loader-wrapper"}>
+    <Box
+      style={{
+        "--smart-color": computedColor,
+        "--loader-size": loaderSize,
+        "--ring-thickness": ringThickness,
+      }}
+      className={classNames({
+        "ui-d-loader": true,
+        fullPage,
+        loading,
+        translucent,
+      })}
+    >
       {loading ? (
-        <Box
-          style={{
-            "--loader-size": size,
-            "--loader-thickness": thickness,
-            "--custom-color": color,
-          }}
-          className={classNames({
-            "ui-d-loader": true,
-            fullPage,
-            loading,
-            color,
-          })}
-        >
-          <Box>
-            {loader === "ring" ? (
-              <Box
-                className={classNames({
-                  "ring-loader": true,
-                  color,
-                })}
-              >
-                <Box></Box>
-                <Box></Box>
-                <Box></Box>
-                <Box></Box>
-              </Box>
-            ) : (
-              customLoader
-            )}
-          </Box>
+        <Box className={"ui-d-loader__wrapper"}>
+          {loader === "ring" && (
+            <Box className={"ring-loader"}>
+              <Box />
+              <Box />
+              <Box />
+              <Box />
+            </Box>
+          )}
+          {loader === "equalizer" && <Box className={"equalizer-loader"} />}
+          {loader === "ringed-circle" && (
+            <Box className={"ringed-circle-loader"} />
+          )}
         </Box>
       ) : (
         children
@@ -61,7 +69,7 @@ export default Loader;
 Loader.propTypes = {
   fullPage: PropTypes.bool,
   loading: PropTypes.bool,
-  loader: PropTypes.oneOf(["ring"]),
+  loader: PropTypes.oneOf(["ring", "equalizer", "ringed-circle"]),
   size: PropTypes.string,
   thickness: PropTypes.string,
   customLoader: PropTypes.oneOf([PropTypes.element, PropTypes.node]),
@@ -71,6 +79,6 @@ Loader.propTypes = {
 Loader.defaultProps = {
   loading: true,
   loader: "ring",
-  size: "80px",
-  thickness: "8px",
+  loaderSize: "80px",
+  ringThickness: "8px",
 };

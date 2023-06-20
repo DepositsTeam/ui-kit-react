@@ -9,20 +9,15 @@
   <component name="ChangeListManager">
     <list default="true" id="d42eceea-3e5a-4247-b408-160409de5eb9" name="Changes" comment="Removed redundant code from color manager and updated country dropdown to convert the states before emitting them.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/changelog.md" beforeDir="false" afterPath="$PROJECT_DIR$/changelog.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Button.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Button.stories.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Header.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Header.stories.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Introduction.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/stories/Introduction.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Introduction.stories.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Page.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Page.stories.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/button.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/header.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/page.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/loader/Loader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loader/Loader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/loader/Loader.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loader/Loader.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/loader/Loader.stories.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loader/Loader.stories.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tag-dropdown/TagDropdown.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tag-dropdown/TagDropdown.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tag-dropdown/TagDropdown.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tag-dropdown/TagDropdown.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tag-dropdown/TagDropdown.stories.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tag-dropdown/TagDropdown.stories.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +231,7 @@
       <recent name="$PROJECT_DIR$/src/components/switch" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.storybook">
+  <component name="RunManager" selected="npm.build-storybook">
     <configuration name="Update UI Kit" type="ShConfigurationType">
       <option name="SCRIPT_TEXT" value="yarn run build-rollup &amp;&amp; yarn publish" />
       <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
@@ -252,11 +247,11 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="storybook (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="build-storybook" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="storybook" />
+        <script value="build-storybook" />
       </scripts>
       <node-interpreter value="project" />
       <package-manager value="npm" />
@@ -276,13 +271,13 @@
     </configuration>
     <list>
       <item itemvalue="npm.storybook" />
-      <item itemvalue="npm.storybook (1)" />
+      <item itemvalue="npm.build-storybook" />
       <item itemvalue="Shell Script.Update UI Kit" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build-storybook" />
         <item itemvalue="npm.storybook" />
-        <item itemvalue="npm.storybook (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -437,7 +432,7 @@
       <workItem from="1686777938720" duration="13840000" />
       <workItem from="1686860473849" duration="4028000" />
       <workItem from="1686914872718" duration="31000" />
-      <workItem from="1687266051721" duration="4263000" />
+      <workItem from="1687266051721" duration="15292000" />
     </task>
     <task id="LOCAL-00001" summary="Worked on several updates to bring the React UI kit on par with the Vue Ui Kit">
       <created>1674563026879</created>

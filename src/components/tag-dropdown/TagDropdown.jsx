@@ -13,6 +13,7 @@ import Search from "../icons/Search.jsx";
 import Checkbox from "../checkbox";
 import Error from "../icons/Error.jsx";
 import "./TagDropdown.scss";
+import Loader from "../loader/index.js";
 
 const TagDropdown = ({
   size,
@@ -30,6 +31,8 @@ const TagDropdown = ({
   maxDropdownHeight,
   initiallyClosed,
   selectOneItem,
+  onScrolledToBottom,
+  loading,
   ...props
 }) => {
   const [inputTags, setInputTags] = useState([]);
@@ -143,6 +146,15 @@ const TagDropdown = ({
   const toggleOptionInSelectedOptions = (option) => {
     if (!showCheckboxes) {
       switchOptionInTags(option);
+    }
+  };
+
+  const handleScroll = (e) => {
+    const { scrollHeight, scrollTop, clientHeight } = e.target;
+    if (Math.abs(scrollHeight - clientHeight - scrollTop) < 1) {
+      if (onScrolledToBottom && typeof onScrolledToBottom === "function") {
+        onScrolledToBottom(e);
+      }
     }
   };
 
@@ -262,8 +274,16 @@ const TagDropdown = ({
               onChange={(e) => setInputValue(e.target.value)}
             />
           </Box>
-          <Box className={"ui-tag-dropdown__dropdown__options"}>
+          <Box
+            className={"ui-tag-dropdown__dropdown__options"}
+            onScroll={handleScroll}
+          >
             {mappedAvailableOptions}
+            {loading && (
+              <Box className={"ui-tag-dropdown__loader"}>
+                <Loader loaderSize={"48px"} />
+              </Box>
+            )}
           </Box>
         </Box>
       )}
@@ -296,6 +316,8 @@ TagDropdown.propTypes = {
   maxDropdownHeight: PropTypes.string,
   initiallyClosed: PropTypes.bool,
   selectOneItem: PropTypes.bool,
+  onScrolledToBottom: PropTypes.func,
+  loading: PropTypes.bool,
 };
 
 TagDropdown.defaultProps = {
