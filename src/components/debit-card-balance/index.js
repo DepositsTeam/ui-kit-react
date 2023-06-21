@@ -1,1 +1,1 @@
-export { default } from "./DebitCardBalance";
+export { default } from "./DebitCardBalance.jsx";

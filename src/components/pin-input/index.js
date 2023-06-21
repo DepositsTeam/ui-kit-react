@@ -1,1 +1,1 @@
-export { default } from "./PinInput";
+export { default } from "./PinInput.jsx";

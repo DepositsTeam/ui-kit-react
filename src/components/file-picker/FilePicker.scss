@@ -8,8 +8,21 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 50px;
+  padding: 24px 50px;
   color: #6d7786;
+  &.primaryColorScheme {
+    background: var(--light-primary-100);
+    border-color: var(--light-primary-300);
+  }
+  .file-picker__icon-wrapper {
+    color: #8895a7;
+    &.primaryColorScheme {
+      color: var(--light-primary-action-color);
+      &.dark_mode {
+        color: var(--dark-primary-action-color);
+      }
+    }
+  }
   &.dark_mode {
     background: var(--dark-input-background-color);
     border-color: var(--dark-primary-300);
@@ -41,6 +54,8 @@
     span.blue {
       color: #0ebae9;
     }
+    position: relative;
+    z-index: 11;
   }
   .ui-file-picker-input {
     position: absolute;

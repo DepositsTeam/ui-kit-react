@@ -1,1 +1,1 @@
-export { default } from "./AutoLayout";
+export { default } from "./AutoLayout.jsx";

@@ -1,1 +1,1 @@
-export { default } from "./CardInputField";
+export { default } from "./CardInputField.jsx";

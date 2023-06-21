@@ -1,0 +1,37 @@
+import Counter from "./Counter.jsx";
+import DarkModeProvider from "../providers/DarkModeProvider.jsx";
+import ThemeProvider from "../providers/ThemeProvider.jsx";
+
+
+export default {
+  title: "Forms/Counter",
+  component: Counter,
+  argTypes: {},
+};
+
+const Template = (args) => (
+  <ThemeProvider>
+    <Counter {...args} />
+  </ThemeProvider>
+);
+
+const DarkModeTemplate = (args) => (
+    <ThemeProvider>
+      <div style={{ padding: "3em", background: "#121A26" }}>
+        <DarkModeProvider darkMode={true}>
+          <Counter {...args} />
+        </DarkModeProvider>
+      </div>
+    </ThemeProvider>
+);
+
+
+export const Default = Template.bind({});
+
+export const DarkDefault = DarkModeTemplate.bind({});
+
+export const MaxIs10AndMinIs0 = Template.bind({});
+MaxIs10AndMinIs0.args = {
+  max: 10,
+  min: 0,
+};

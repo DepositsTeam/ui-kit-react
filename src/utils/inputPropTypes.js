@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export default {
+const inputPropTypes = {
   label: PropTypes.string,
   fontFace: PropTypes.string,
   size: PropTypes.oneOf([
@@ -36,6 +36,8 @@ export default {
   step: PropTypes.string,
   autofocus: PropTypes.string,
 };
+
+export default inputPropTypes;
 
 export const defaultProps = {
   size: "huge",

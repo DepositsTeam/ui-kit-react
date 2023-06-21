@@ -16,9 +16,12 @@ deploy_development:
     - cp -R public/. /var/www/html/test/ui_kit/storybook/react-ui-kit/public/
     - cp -R .storybook/. /var/www/html/test/ui_kit/storybook/react-ui-kit/.storybook/
     - cp package.json /var/www/html/test/ui_kit/storybook/react-ui-kit/
+    - rm -r /var/www/html/test/ui_kit/storybook/react-ui-kit/storybook-static
+    - mkdir /var/www/html/test/ui_kit/storybook/react-ui-kit/storybook-static
+    - cp -R storybook-static/. /var/www/html/test/ui_kit/storybook/react-ui-kit/storybook-static/
     - cd /var/www/html/test/ui_kit/storybook/react-ui-kit
-    - npm install
-    - npm run build-storybook
+#    - npm install
+#    - npm run build-storybook
 #    - npm run build-npm
 #    - npm publish
 

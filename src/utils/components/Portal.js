@@ -11,7 +11,6 @@ export const Portal = ({ children, className = "root-portal", el = "div" }) => {
   React.useEffect(() => {
     container.classList.add(className);
     document.body.appendChild(container);
-    console.log(container)
     document.body.insertAdjacentElement("beforeend", container);
     return () => {
       document.body.removeChild(container);
