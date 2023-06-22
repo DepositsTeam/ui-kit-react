@@ -1,3 +1,5 @@
+- **22nd June, 2023 - Eric McWinNEr**
+  - Renamed the CSS class for overline font size to prevent collisions with tailwind
 - **21st June, 2023 - Eric McWinNEr**
   - Fixed bug to make the height of the tag dropdown options configurable by the `maxDropdownHeight` prop
   - Added an event that gets triggered when the tag dropdown options is scrolled to the bottom.
