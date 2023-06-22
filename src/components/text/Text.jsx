@@ -16,9 +16,14 @@ const Text = ({
   ...props
 }) => {
   const is = props.is ?? "p";
+  const scaleClass = (scale) => {
+    if (scale === "overline") {
+      return "overline-font-size";
+    } else return scale;
+  };
   const generatedClass = classNames(
     {
-      [scale]: scale,
+      [scaleClass(scale)]: scale,
       uppercase,
       "equal-line-height": equalLineHeight,
       "ui-text": true,
@@ -56,7 +61,6 @@ Text.propTypes = {
     "p-16",
     "overline",
     "footnote",
-    "overline",
     "footnote-caps",
   ]),
   uppercase: PropTypes.bool,
